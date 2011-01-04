@@ -1,0 +1,39 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; LINE-HEIGHT: 15px; PADDING-TOP: 0px
+}
+DIV#map-container {
+	WIDTH: 100%; HEIGHT: 100%
+}
+#legend {
+	FONT-SIZE: 10px
+}
+#blip_person {
+	BACKGROUND: url(data/person.gif) no-repeat; WIDTH: 10px; HEIGHT: 10px
+}
+#map-nav {
+	
+}
+#map-nav IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+#map-nav-up {
+	LEFT: 50px; WIDTH: 30px; POSITION: absolute; TOP: 5px; HEIGHT: 30px
+}
+#map-nav-down {
+	LEFT: 50px; WIDTH: 30px; POSITION: absolute; TOP: 65px; HEIGHT: 30px
+}
+#map-nav-left {
+	LEFT: 10px; WIDTH: 30px; POSITION: absolute; TOP: 35px; HEIGHT: 30px
+}
+#map-nav-right {
+	LEFT: 90px; WIDTH: 30px; POSITION: absolute; TOP: 35px; HEIGHT: 30px
+}
+#map-nav-center {
+	LEFT: 50px; WIDTH: 30px; POSITION: absolute; TOP: 35px; HEIGHT: 30px
+}
+#map-zoom-plus {
+	LEFT: 50px; WIDTH: 30px; POSITION: absolute; TOP: 125px; HEIGHT: 30px
+}
+#map-zoom-minus {
+	LEFT: 50px; WIDTH: 30px; POSITION: absolute; TOP: 160px; HEIGHT: 30px
+}
