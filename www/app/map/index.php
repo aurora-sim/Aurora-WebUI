@@ -31,13 +31,14 @@ $minuszoom=192; $pluszoom=0; $infosize=40;
 
 <SCRIPT type=text/javascript>
 
-function loadmap() {
+function loadmap() 
+{
   mapInstance = new ZoomSize(<?=$size?>);
   mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: false, hasPanningControls: true});
   mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?=$mapstartX?>,<?=$mapstartY?>),1);
 <?
 $DbLink = new DB;
-$DbLink->query("SELECT regionName,locX,locY,PrincipalID FROM ".C_REGIONS_TBL." Order by locX");
+$DbLink->query("SELECT regionName,locX,locY,owner_uuid FROM ".C_REGIONS_TBL." Order by locX");
 while(list($regionName,$locX,$locY,$owner) = $DbLink->next_record()){
 
 $DbLink1 = new DB;
@@ -48,18 +49,25 @@ $MarkerCoordX=$locX+0.00;
 $MarkerCoordY=$locY+0.00;
 
 
-if($display_marker=="tl"){
-$MarkerCoordX=$MarkerCoordX-0.40;
-$MarkerCoordY=$MarkerCoordY+0.40;
-}else if($display_marker=="tr"){
-$MarkerCoordX=$MarkerCoordX+0.40;
-$MarkerCoordY=$MarkerCoordY+0.40;
-}else if($display_marker=="dl"){
-$MarkerCoordX=$MarkerCoordX-0.40;
-$MarkerCoordY=$MarkerCoordY-0.40;
-}else if($display_marker=="dr"){
-$MarkerCoordX=$MarkerCoordX+0.40;
-$MarkerCoordY=$MarkerCoordY-0.40;
+if($display_marker=="tl")
+{
+	$MarkerCoordX=($MarkerCoordX/256)-0.40;
+	$MarkerCoordY=($MarkerCoordY/256)+0.40;
+}
+else if($display_marker=="tr")
+{
+	$MarkerCoordX=($MarkerCoordX/256)+0.40;
+	$MarkerCoordY=($MarkerCoordY/256)+0.40;
+}
+else if($display_marker=="dl")
+{
+	$MarkerCoordX=($MarkerCoordX/256)-0.40;
+	$MarkerCoordY=($MarkerCoordY/256)-0.40;
+}
+else if($display_marker=="dr")
+{
+	$MarkerCoordX=($MarkerCoordX/256)+0.40;
+	$MarkerCoordY=($MarkerCoordY/256)-0.40;
 }
 ?>
 
@@ -77,12 +85,12 @@ $MarkerCoordY=$MarkerCoordY-0.40;
 	?>
 	var region_loc = new Icon(tmp_region_image);
 	var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];
-	var marker = new Marker(all_images, new XYPoint(<?=$locX?>,<?=$locY?>));
+	var marker = new Marker(all_images, new XYPoint(<?=($locX/256)?>,<?=($locY/256)?>));
 	mapInstance.addMarker(marker);
 	
 	var map_marker_img = new Img("images/info.gif",<?=$infosize?>,<?=$infosize?>);
 	var map_marker_icon = new Icon(map_marker_img);
-	var mapWindow = new MapWindow("Region Name: <?=$regionName?><br><br>Coordinates: <?=$locX?>,<?=$locY?><br><br>Owner: <?=$firstN?> <?=$lastN?>",{closeOnMove: true});
+	var mapWindow = new MapWindow("Region Name: <?=$regionName?><br><br>Coordinates: <?=($locX/256)?>,<?=($locY/256)?><br><br>Owner: <?=$firstN?> <?=$lastN?>",{closeOnMove: true});
 	var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
 	var marker = new Marker(all_images, new XYPoint(<?=$MarkerCoordX?>,<?=$MarkerCoordY?>));
 	mapInstance.addMarker(marker, mapWindow);
