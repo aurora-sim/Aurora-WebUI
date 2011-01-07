@@ -533,44 +533,16 @@ window.location.href='index.php?page=create';
                                                 }
 
                                                 $code = code_gen();
-// CODE generator
 
-                                                $image = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', 0, 0, 0, 0, 0, 0, 0, 0);
-                                                $UUID = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-                                                                mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff),
-                                                                mt_rand(0, 0x0fff) | 0x4000,
-                                                                mt_rand(0, 0x3fff) | 0x8000,
-                                                                mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
-
-                                                $DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUID','confirm','$_SESSION[EMAIL]'," . time() . ")");
-
-                                                $DbLink->query("INSERT INTO " . C_USERS_TBL . " 	(PrincipalID,ScopeID,FirstName,LastName,Email,ServiceURLs,Created,UserLevel,UserFlags,UserTitle)
-	VALUES
-('$UUID','00000000-0000-0000-0000-000000000000','$_SESSION[ACCFIRST]','$_SESSION[ACCLAST]','$_SESSION[EMAIL]','HomeURI= GatekeeperURI= InventoryServerURI= AssetServerURI='," . time() . ",'0','0','')   ");
-
-                                                $DbLink->query("INSERT INTO " . C_AUTH_TBL . " 	(UUID,passwordHash,passwordSalt,webLoginKey,accountType)
-	VALUES
-('$UUID','$passwordHash','$passwordSalt','00000000-0000-0000-0000-000000000000','UserAccount')   ");
-
-                                                $DbLink->query("INSERT INTO " . C_GRIDUSER_TBL . " 	(UserID,HomeRegionID,HomePosition,HomeLookAt,LastRegionID,LastPosition,LastLookAt,Online,Login,Logout)
-	VALUES
-('$UUID','$_SESSION[REGIONID]','<128,128,128>','<0,0,0>','00000000-0000-0000-0000-000000000000','<0,0,0>','<0,0,0>','false','0','0')   ");
-
-                                                $DbLink->query("INSERT INTO " . C_WIUSR_TBL . "  	(UUID,username,lastname,passwordHash,passwordSalt,realname1,realname2,adress1,zip1,city1,country1,emailadress,agentIP,active)
-  VALUES
-('$UUID','$_SESSION[ACCFIRST]','$_SESSION[ACCLAST]','0','$passwordHash','$_SESSION[NAMEF]','$_SESSION[NAMEL]','$_SESSION[ADRESS]','$_SESSION[ZIP]','$_SESSION[CITY]','$_SESSION[COUNTRY]','$_SESSION[EMAIL]','$userIP','confirm')  ");
-
-
-                                                $DbLink = new DB;
-                                                $DbLink->query("SELECT table_name FROM information_schema.tables WHERE table_schema = '" . C_DB_NAME . "' AND table_name = '" . C_PROFILE_TBL . "';");
-                                                list($found) = $DbLink->next_record();
-
-                                                if ($found) {
-                                                    $DbLink->query("INSERT INTO " . C_PROFILE_TBL . "  	(PrincipalID,AllowPublish,MaturePublish,Partner,WebURL,AboutText,FirstLifeAboutText,Image,FirstLifeImage,CustomType,WantToMask,WantToText,CanDoMask,CanDoText,Languages,Visible,IMViaEmail,MembershipGroup,AArchiveName,IsNewUser)
-  VALUES
-('$UUID','True','True','00000000-0000-0000-0000-000000000000','','','','00000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000','','0','','0','','True','False','','$_SESSION[APPEARANCE]','True'," . time() . ")  ");
-                                                }
-
+                                                $found = array();
+    $found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => WIREDUX_PASSWORD,
+        'First' => $_SESSION[ACCFIRST], 'Last' => $_SESSION[ACCLAST],
+        'Email' => $_SESSION[EMAIL],
+        'HomeRegion' => $_SESSION[REGIONID],
+        'PasswordHash' => $passwordHash,
+        'PasswordSalt' => $passwordSalt));
+    $do_post_request = do_post_request($found);
+    $recieved = json_decode($do_post_request);
 
 
 //-----------------------------------MAIL--------------------------------------

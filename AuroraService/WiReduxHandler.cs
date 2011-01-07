@@ -47,7 +47,7 @@ namespace OpenSim.Server.Handlers.Caps
             if (handlerConfig.GetString("WireduxHandler", "") != Name)
                 return;
             m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
-            
+
             string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
             if (Password != "")
             {
@@ -88,12 +88,17 @@ namespace OpenSim.Server.Handlers.Caps
             try
             {
                 OSDMap map = (OSDMap)OSDParser.DeserializeJson(body);
+                //Make sure that the person who is calling can access the web service
                 if (VerifyPassword(map))
                 {
                     method = map["Method"].AsString();
                     if (method == "Login")
                     {
                         return ProcessLogin(map);
+                    }
+                    else if (method == "CreateAccount")
+                    {
+                        return ProcessCreateAccount(map);
                     }
                 }
             }
@@ -114,6 +119,31 @@ namespace OpenSim.Server.Handlers.Caps
                 return map["WebPassword"] == m_password;
             }
             return false;
+        }
+
+        private byte[] ProcessCreateAccount(OSDMap map)
+        {
+            bool Verified = false;
+            string FirstName = map["First"].AsString();
+            string LastName = map["Last"].AsString();
+            string PasswordHash = map["PasswordHash"].AsString();
+            string PasswordSalt = map["PasswordSalt"].AsString();
+            string HomeRegion = map["HomeRegion"].AsString();
+            string Email = map["Email"].AsString();
+
+            ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
+            IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+            if (accountService == null)
+                return null;
+
+            accountService.CreateUser(FirstName, LastName, PasswordHash, Email);
+
+            Verified = accountService.GetUserAccount(UUID.Zero, FirstName, LastName) != null;
+            OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromBoolean(Verified);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
         }
 
         private byte[] ProcessLogin(OSDMap map)
