@@ -99,6 +99,15 @@ function do_post_request($found)
                             </table>
                         </td>
                     </tr>
+                    <!-- This is a bar that can be extended further for links across the center of the screen
+                        It is directly below the logo and isn't currently used. -->
+                    <td height="20" colspan="2" bgcolor="#000000">
+                            <table border="0" width="100%" cellspacing="0" cellpadding="0" height="20">
+                                <tr>
+                                    <td width="590" height="20" background="images/main/header.jpg"></td>
+                                </tr>
+                            </table>
+                        </td>
                     <tr>
                         <td width="145" height="100%" valign="top" background="images/main/menu_bg.jpg" bgcolor="#CCCCCC">
 <?
