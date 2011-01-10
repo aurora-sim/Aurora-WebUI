@@ -12,17 +12,14 @@ $ORDERBY=" ORDER by regionName ASC";
 $GoPage= "index.php?page=regions";
 
 $AnzeigeStart 		= 0;
-$AnzeigeLimit		= 25;
 
 // LINK SELECTOR
 $LinkAusgabe="page=$GoPage&";
 
 if($_GET[AStart]){$AStart=$_GET[AStart];};
-if($_GET[ALimit]){$ALimit=$_GET[ALimit];};
 
 if(!$AStart) $AStart = $AnzeigeStart;
-if(!$ALimit) $ALimit = $AnzeigeLimit;
-
+$ALimit = $AStart + 10;
 $Limit = "LIMIT $AStart, $ALimit";
 
 $DbLink->query("SELECT COUNT(*) FROM ".C_REGIONS_TBL.""); 

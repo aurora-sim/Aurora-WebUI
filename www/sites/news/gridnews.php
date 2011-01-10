@@ -1,20 +1,3 @@
-<style type="text/css">
-<!--
-.style2 {	font-size: 16px;
-	font-weight: bold;
-}
-#scr {position:absolute;
-  height:100%;
-  width:100%;
-  margin:0;
-  padding:0;
-  overflow:auto;
-}
-.Stil1 {font-size: 12px}
--->
-</style>
-
-
 <? if($_GET[scr] != ""){
 echo "<script language='javascript'>
 <!--

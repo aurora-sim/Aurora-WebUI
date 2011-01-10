@@ -79,14 +79,13 @@ function do_post_request($found)
 
 <body>
     <table width="100%" height="100%" border="0" align="center" cellpadding="0" cellspacing="0" marginheight="0" marginwidth="0">
-        <tr>
+        <!-- <tr>
             <td width="25" rowspan="3">&nbsp;</td>
             <td height="0"></td>
             <td width="25" rowspan="3">&nbsp;</td>
-        </tr>
+        </tr> -->
         <tr>
             <td>
-
                 <table width="100%" height="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" marginwidth="0" marginheight="0">
                     <tr>
                         <td height="136" colspan="2" bgcolor="#000000">
@@ -114,7 +113,7 @@ function do_post_request($found)
 if ($_SESSION[USERID]) {
     include("loggedinmenu.php");
 } else {
-    include("menu.php");
+    include("loggedoutmenu.php");
 }
 ?>
                         </td>

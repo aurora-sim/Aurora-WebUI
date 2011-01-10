@@ -7,6 +7,19 @@
  *
 */
 ?>
+<style type="text/css">
+<!--
+.Stil9 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
+.box {font-size: 12px;height: 20; width:120;}
+.style1 {color: #FFFFFF}
+.box1 {font-size: 12px;height: 20;width: 100;}
+.style2 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF; }
+.boxspace {
+	font-size: 1px;
+	color: #000000;
+}
+-->
+</style>
 <script language="JavaScript">
 <!--
 function Form(theForm)
@@ -37,20 +50,6 @@ function Form(theForm)
 }
 //-->
 </script>
-
-<style type="text/css">
-<!--
-.Stil9 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
-.box {font-size: 12px;height: 20; width:120;}
-.style1 {color: #FFFFFF}
-.box1 {font-size: 12px;height: 20;width: 100;}
-.style2 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF; }
-.boxspace {
-	font-size: 1px;
-	color: #000000;
-}
--->
-</style>
 <table width="245" border="0" align="center" cellpadding="0" cellspacing="0">
  <?
  $DbLink = new DB;
@@ -187,26 +186,7 @@ function Form(theForm)
           <input style="cursor:pointer" type="submit" name="Submit" value="Login" />
         </div></td>
       </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
 	  </form>
     </table></td>
-  </tr>
-  <tr>
-      <td><table width="196" border="0" align="center" cellpadding="0" cellspacing="0">
-	<td><div align="center"><span class="style1">Links</span></div></td>
-      
-        <td>&nbsp;</td>
-    </table></td>
-  </tr>
-  <tr>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
   </tr>
 </table>

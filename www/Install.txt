@@ -24,18 +24,6 @@ Password: test
 
 Enjoy OpenSimWebInterface-Redux
 
-
-== Notes about MoneySystem ==
-
-You need to have Curl enabled at your Webserver and XMLRPC
-
-Also you need to set in your shortcut to the client a -helperuri
-
-e.g.  Secondlife.exe -helperuri http://yourdomain.com/opensimwi/currency.php
-
-if you have no uuid set in the config file as source or sink account the transactions history 
-on opensimwi wont show up !
-
 == Notes about Upgrading your old opensimwi ==
 
 You need to install the new tables wich comes with this version, 
@@ -48,14 +36,14 @@ You need also the new pagemanager table instead off sitemanager table
 
 -----* Page editor will not load in Administrator Section.
 
-	While testing on osgrid.org we resolved this issue by creating a .htaccess file in the root of your website with the following code
+    While testing on osgrid.org we resolved this issue by creating a .htaccess file in the root of your website with the following code
 
-	[code]
-		RewriteEngine On  
-		RewriteCond %{HTTP_HOST} ^www.yourdomain.com$  
-		RewriteRule (.*)$ http://yourdomain.com/$1 [R=301,L]
-	
-	[/code]
+    [code]
+        RewriteEngine On  
+        RewriteCond %{HTTP_HOST} ^www.yourdomain.com$  
+        RewriteRule (.*)$ http://yourdomain.com/$1 [R=301,L]
+    
+    [/code]
 
 
 
@@ -115,5 +103,4 @@ error_reporting = E_ALL & ~E_NOTICE
 
 -----------------------------------------------------------------
 
-Please report all errors and bugs to http://www.osgrid.org/forums or #osgrid channel on irc.freenode.net
-		
+Please report all errors and bugs to #aurora-dev channel on irc.freenode.net
