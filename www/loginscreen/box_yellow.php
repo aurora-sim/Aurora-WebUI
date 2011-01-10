@@ -1,4 +1,4 @@
-﻿<TABLE cellSpacing=0 cellPadding=0 width=300 border=0>
+<TABLE cellSpacing=0 cellPadding=0 width=300 border=0>
   <TBODY>
   <TR>
     <TD vAlign=top align=right>
