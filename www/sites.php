@@ -187,6 +187,12 @@ switch($_SESSION[page])
 
 		return;
 
+	case 'login':
+
+		include("./sites/login.php");
+
+		return;
+
 	default:
 
         include("./sites/sitemodul.php");

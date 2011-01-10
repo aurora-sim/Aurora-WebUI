@@ -20,36 +20,6 @@
     }
     -->
 </style>
-<script>
-    <!--
-    function Form(theForm)
-    {
-
-        if (theForm.logfirstname.value == "")
-        {
-            alert("Please enter your \"Firstname\" ");
-            theForm.logfirstname.focus();
-            return (false);
-        }
-  
-        if (theForm.loglastname.value == "")
-        {
-            alert("Please enter your \"Lastname\" ");
-            theForm.loglastname.focus();
-            return (false);
-        }
-
-        if (theForm.logpassword.value == "")
-        {
-            alert("Please enter your \"Password\" ");
-            theForm.logpassword.focus();
-            return (false);
-        }
-
-        return (true);
-    }
-        -->
-</script>
 <table width="245" border="0" align="center" cellpadding="0" cellspacing="0">
     <?
     $DbLink = new DB;
@@ -139,55 +109,4 @@
         <tr>
             <td>&nbsp;</td>
         </tr>
-        <td><table width="220" border="0" align="right" cellpadding="0" cellspacing="0" background="images/main/login_user.gif">
-                <form action="index.php" method="POST" onSubmit="return Form(this)">
-                    <tr>
-                        <td class="style2">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="boxspace">.</td>
-                    </tr>
-                    <tr>
-                        <td width="296" height="31"><div align="center"><span class="style2">
-                                <?
-                                if ($_GET[error]) {
-                                    echo"<font color=FF00000><b>$_GET[error]</b></font>";
-                                }
-                                ?>
-                            </span></div></td>
-                </tr>
-                <tr>
-                    <td><div align="center"><span class="style1">First Name</span></div></td>
-                </tr>
-                <tr>
-                    <td><div align="center">
-                            <input name="logfirstname" type="text" class="box" value="<?= $_POST[logfirstname] ?>" />
-                        </div></td>
-                </tr>
-                <tr>
-                    <td><div align="center"><span class="style1">Last Name</span></div></td>
-                </tr>
-                <tr>
-                    <td><div align="center">
-                            <input name="loglastname" type="text" class="box" value="<?= $_POST[loglastname] ?>" />
-                        </div></td>
-                </tr>
-                <tr>
-                    <td><div align="center"><span class="style1">Password</span></div></td>
-                </tr>
-                <tr>
-                    <td><div align="center">
-                            <input type="password" name="logpassword" class="box"/>
-                        </div></td>
-                </tr>
-                <tr>
-                    <td><div align="center"><a style="color:#FFFFFF; font-size:13px" href="index.php?page=forgotpass">Forgot my Password</a></div></td>
-                </tr>
-                <tr>
-                    <td><div align="center">
-                            <input style="cursor:pointer" type="submit" name="Submit" value="Login" />
-                        </div></td>
-                </tr>
-            </form>
-        </table></td>
 </table>

@@ -28,8 +28,6 @@ if ($_POST[Submit] == "Login") {
         'Password' => $_POST[logpassword]));
     $do_post_request = do_post_request($found);
     $recieved = json_decode($do_post_request);
-    echo $recieved->{'Verified'};
-    echo $recieved->{'UUID'};
     $UUIDC = $recieved->{'UUID'};
     if ($recieved->{'Verified'} == "true") {
         $_SESSION[USERID] = $UUIDC;
