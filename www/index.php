@@ -127,7 +127,6 @@ if ($_SESSION[USERID]) {
                 <table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
                     <tr>
                         <td background="images/main/footer.jpg">&nbsp;</td>
-                        <td background="images/main/footer.jpg">&nbsp;</td>
                     </tr>
                 </table>
             <td>

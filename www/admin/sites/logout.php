@@ -20,7 +20,7 @@
                       <br />
                       <br />
 <P id=rom align=center></P>
-<SCRIPT type=text/javascript>
+<script>
 time = 2;
 
 function download() {
@@ -43,7 +43,7 @@ time--;
 }
 
 download();
-</SCRIPT>
+</script>
 
 <br /> 
 <center><img src="../images/icons/loader.gif" width="126" height="22" /></center>

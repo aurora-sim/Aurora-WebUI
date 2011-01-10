@@ -145,7 +145,7 @@ window.location.href='index.php?page=home&btn=1&error=$ERROR';
     </tr>
   </tbody>
 </table>
-</DIV>
+</div>
 <?
 $DbLink = new DB;
 $DbLink->query("SELECT content FROM ".C_PAGE_TBL." WHERE id='1'");
