@@ -101,21 +101,12 @@ function do_post_request($found)
                     <td height="20" colspan="2" bgcolor="#000000">
                             <table border="0" width="100%" cellspacing="0" cellpadding="0" height="20">
                                 <tr>
-                                    <td width="590" height="20" background="images/main/header.jpg"></td>
+                                    <td width="590" height="20" background="images/main/header.jpg"><? include("menubar.php"); ?></td>
                                 </tr>
                             </table>
                         </td>
                     <tr>
-                        <td width="145" height="100%" valign="top" background="images/main/menu_bg.jpg" bgcolor="#CCCCCC">
-<?
-if ($_SESSION[USERID]) {
-    include("loggedinmenu.php");
-} else {
-    include("loggedoutmenu.php");
-}
-?>
-                        </td>
-                        <td width="100%" height="100%" background="images/main/page_bg.jpg"><? include("sites.php"); ?></td>
+                       <td width="100%" height="100%" background="images/main/page_bg.jpg"><? include("sites.php"); ?></td>
                     </tr>
                 </table>
             </td>
