@@ -1,4 +1,11 @@
 <?
+/*
+ * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
+ * See CONTRIBUTORS for a full list of copyright holders.
+ *
+ * See LICENSE for the full licensing terms of this file.
+ *
+ */
 include("settings/config.php");
 include("settings/mysql.php");
 
@@ -8,6 +15,12 @@ $DbLink->query("SELECT gridstatus,active,color,title,message  FROM ".C_INFOWINDO
 list($GRIDSTATUS,$INFOBOX,$BOXCOLOR,$BOX_TITLE,$BOX_INFOTEXT) = $DbLink->next_record();
 
 
+$found = array();
+$found[0] = json_encode(array('Method' => 'OnlineStatus', 'WebPassword' => md5(WIREDUX_PASSWORD)));
+$do_post_request = do_post_request($found);
+$recieved = json_decode($do_post_request);
+$GRIDSTATUS = $recieved->{'Online'};
+    
 // Doing it the same as the Who's Online now part
 $DbLink = new DB;
 $DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online = 1 AND ". 
@@ -96,6 +109,32 @@ include("loginscreen/box_green.php");
 include("loginscreen/box_yellow.php"); 
 }else if(($INFOBOX=="1")&&($BOXCOLOR=="red")){
 include("loginscreen/box_red.php"); 
+}
+function do_post_request($found)
+{
+    $params = array('http' => array(
+              'method' => 'POST',
+              'content' => implode(',', $found)
+            ));
+    if ($optional_headers !== null) {
+        $params['http']['header'] = $optional_headers;
+    }
+    $ctx = stream_context_create($params);
+    $timeout = 3;
+    $old = ini_set('default_socket_timeout', $timeout);
+    $fp = @fopen(WIREDUX_SERVICE_URL, 'rb', false, $ctx);
+    ini_set('default_socket_timeout', $old);
+    stream_set_timeout($file, $timeout);
+    stream_set_blocking($file, 0);
+    if (!$fp) {
+    //throw new Exception("Problem with " . WIREDUX_SERVICE_URL . ", $php_errormsg");
+      return false;
+  }
+  $response = @stream_get_contents($fp);
+  if ($response === false) {
+    //throw new Exception("Problem reading data from " . WIREDUX_SERVICE_URL . ", $php_errormsg");
+  }
+  return $response;
 }
 ?>
 </DIV>

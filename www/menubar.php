@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2007, 2008 Contributors, http://opensimulator.org/
+ * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
  *
  * See LICENSE for the full licensing terms of this file.

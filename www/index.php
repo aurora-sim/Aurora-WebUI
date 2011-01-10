@@ -2,7 +2,7 @@
 session_start();
 
 /*
- * Copyright (c) 2007, 2008 Contributors, http://opensimulator.org/
+ * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
  *
  * See LICENSE for the full licensing terms of this file.
@@ -23,7 +23,7 @@ if ($_GET[page] != '') {
 if ($_POST[Submit] == "Login") {
 
     $found = array();
-    $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => WIREDUX_PASSWORD,
+    $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => md5(WIREDUX_PASSWORD),
         'First' => $_POST[logfirstname], 'Last' => $_POST[loglastname],
         'Password' => $_POST[logpassword]));
     $do_post_request = do_post_request($found);

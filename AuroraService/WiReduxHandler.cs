@@ -72,7 +72,7 @@ namespace OpenSim.Server.Handlers.Caps
             base("POST", "/WIREDUX")
         {
             m_registry = reg;
-            m_password = pass;
+            m_password = Util.Md5Hash(pass);
         }
 
         public override byte[] Handle(string path, Stream requestData,
@@ -99,6 +99,10 @@ namespace OpenSim.Server.Handlers.Caps
                     else if (method == "CreateAccount")
                     {
                         return ProcessCreateAccount(map);
+                    }
+                    else if (method == "OnlineStatus")
+                    {
+                        return ProcessOnlineStatus(map);
                     }
                 }
             }
@@ -167,6 +171,19 @@ namespace OpenSim.Server.Handlers.Caps
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(Verified);
             resp["UUID"] = OSD.FromUUID(userID);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        private byte[] ProcessOnlineStatus(OSDMap map)
+        {
+            ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
+            bool LoginEnabled = loginService.MinLoginLevel == 0;
+
+            OSDMap resp = new OSDMap();
+            resp["Online"] = OSD.FromInteger(1);
+            resp["LoginEnabled"] = OSD.FromInteger(LoginEnabled ? 1 : 0);
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);

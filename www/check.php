@@ -1,4 +1,11 @@
 <?
+/*
+ * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
+ * See CONTRIBUTORS for a full list of copyright holders.
+ *
+ * See LICENSE for the full licensing terms of this file.
+ *
+ */
 $DbLink = new DB;
 
 $DbLink->query("DELETE FROM ".C_CODES_TBL." where (time + 86400) < ".time()." and info='pwreset'");
