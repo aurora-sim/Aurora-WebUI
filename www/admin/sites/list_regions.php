@@ -18,19 +18,19 @@ $DbLink->query("SELECT uuid,regionName,locX,locY FROM ".C_REGIONS_TBL." ORDER BY
 <div style="height:100%;">
  <table width="640" border="1" align="center" cellpadding="2" cellspacing="2" bordercolor="#777777" bgcolor="#FFFFFF" style="border-collapse: collapse">
    <tr bgcolor="#CCCCCC">
-     <td align="center"><div class="title"><b>UUID</div></td>
-     <td align="center"><div class="title"><b>region name</div></td>
-     <td align="center"><div class="title"><b>loc x</div></td>
-     <td align="center"><div class="title"><b>loc y</div></td>
+     <td align="center"><div class="title"><b>UUID</b></div></td>
+     <td align="center"><div class="title"><b>region name</b></div></td>
+     <td align="center"><div class="title"><b>Loc X</b></div></td>
+     <td align="center"><div class="title"><b>Loc Y</b></div></td>
    </tr>
    <?
 while(list($regionName,$locX,$locY,$uuid) = $DbLink->next_record()){
 ?>
    <tr>
-     <td align="center"><div class="results"><b><? echo $regionName; ?></div></td>
-     <td align="center"><div class="results"><b><? echo $locX; ?></div></td>
-     <td align="center"><div class="results"><b><? echo $locY; ?></div></td>
-     <td align="center"><div class="results"><b><? echo $uuid; ?></div></td>
+     <td align="center"><div class="results"><b><? echo $regionName; ?></b></div></td>
+     <td align="center"><div class="results"><b><? echo $locX; ?></b></div></td>
+     <td align="center"><div class="results"><b><? echo $locY; ?></b></div></td>
+     <td align="center"><div class="results"><b><? echo $uuid; ?></b></div></td>
    </tr>
    <?	
 }

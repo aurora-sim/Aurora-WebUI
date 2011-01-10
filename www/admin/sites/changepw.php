@@ -88,8 +88,7 @@ $ERROR="Password validation doesnt match";
                       <td bgcolor="#999999">&nbsp;</td>
                       <td bgcolor="#999999"><input type="submit" name="Submit" value="Save"></td>
                     </tr>
-                  </table>  
-				  </form>                
+                  </table>               
                   <p align="left"><br />
                   <br />
                     </p>

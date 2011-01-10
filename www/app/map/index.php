@@ -21,7 +21,7 @@ $minuszoom=192; $pluszoom=0; $infosize=40;
 }
 ?>
 
-<HEAD><TITLE><?=SYSNAME?> WorldMap</TITLE>
+<HEAD><TITLE><?=SYSNAME?> World Map</TITLE>
 <STYLE type=text/css media=all>@import url(map.css);</STYLE>
 
 <SCRIPT src="prototype.js" type=text/javascript></SCRIPT>
@@ -90,7 +90,7 @@ else if($display_marker=="dr")
 	
 	var map_marker_img = new Img("images/info.gif",<?=$infosize?>,<?=$infosize?>);
 	var map_marker_icon = new Icon(map_marker_img);
-	var mapWindow = new MapWindow("Region Name: <?=$regionName?><br><br>Coordinates: <?=($locX/256)?>,<?=($locY/256)?><br><br>Owner: <?=$firstN?> <?=$lastN?>",{closeOnMove: true});
+	var mapWindow = new MapWindow("Region Name: <?=$regionName?><br><br>Coordinates: <?=$locX/256?>,<?=$locY/256?><br><br>Owner: <?=$firstN?> <?=$lastN?>",{closeOnMove: true});
 	var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
 	var marker = new Marker(all_images, new XYPoint(<?=$MarkerCoordX?>,<?=$MarkerCoordY?>));
 	mapInstance.addMarker(marker, mapWindow);

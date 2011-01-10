@@ -66,7 +66,7 @@ if($GENERATED)
 <TABLE width="80%" border=0 align=center cellpadding="0" cellspacing="0">
    <TR>
       <TD width="221" height="40" align="center" valign="bottom" background="images/main/regions_middle.jpg"><b>Region UUID</b></TD>
-	  <TD width="221" height="40" align="center" valign="bottom" background="images/main/regions_middle.jpg"><b><input type=text name=region_uuid size=80 readonly value=<?$str = UUID::generate(UUID::UUID_TIME, UUID::FMT_STRING, "osgrid");echo $str;?>></b></a></TD>
+	  <TD width="221" height="40" align="center" valign="bottom" background="images/main/regions_middle.jpg"><b><input type=text name=region_uuid size=80 readonly value=<?$str = UUID::generate(UUID::UUID_TIME, UUID::FMT_STRING, "osgrid");echo $str;?>></b></TD>
     </TR>
     <TR style='BACKGROUND-COLOR: #e8eff5'>
       <TD width="221" height="40" align="center" valign="middle" bgcolor="#FFFFFF"><b>Region - Name</b></TD>

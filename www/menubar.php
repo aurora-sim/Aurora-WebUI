@@ -28,7 +28,7 @@
     else
         $Display = 0;
     $DbLink->query("SELECT id,code,sitename,url,target FROM " . C_PAGE_TBL . " Where active='1' and type='1' and ((display='$Display') or (display='2')) ORDER BY rank ASC ");
-    $tableWidth = 1250 / $DbLink->num_rows();
+    $tableWidth = 1520 / $DbLink->num_rows();
     while (list($siteid, $sitecode, $sitename, $siteurl, $sitetarget) = $DbLink->next_record()) {
     ?>
         <td>

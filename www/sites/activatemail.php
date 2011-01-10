@@ -32,6 +32,7 @@ else
 			<tr>
 				<td><p align="center" class="Stil1">Activate New Email</p></td>
 			</tr>
+                        </table>
 		</td>
 	</tr>
 </table>
@@ -46,10 +47,4 @@ else
 			<br>
 		</td>
 	</tr>
-</table>
-<?
-// No clue why there's more here but hey, it works ....
-?>
-</td>
-</tr>
 </table>

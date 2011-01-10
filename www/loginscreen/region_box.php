@@ -71,7 +71,7 @@ $ORDERBY=" ORDER by locY ASC";
 			 <?
 			 }
 			 ?> 
-			 </DIV>
+			 </div>
 
 			  </TD>
           <TD class=gridbox_r></TD></TR>

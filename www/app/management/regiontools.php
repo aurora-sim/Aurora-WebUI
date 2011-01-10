@@ -10,7 +10,7 @@ window.location.href='index.php?page=home';
 else
 { 
 ?>
-<DIV style="height:100%">
+<div style="height:100%">
 <br />
 <table width="80%" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#CCCC00">
   <tr>
@@ -22,6 +22,7 @@ else
     </table></td>
   </tr>
 </table>
+</div>
 <?
 }
 ?>

@@ -18,11 +18,11 @@
           <TD class=gridbox_l></TD>
           <TD class=black_content>
 			<div style=" border:hidden; color:#ffffff; padding:0px; width:300px; height:90px; overflow:auto; ">
-			<CENTER>
+			<center>
 			At this moment we would like to ask you<br>to go to the website and make<br>sure that you have your email registered<p>
 			Visit <a target = _new href = <?=SYSURL?>>the website</a> for more information
 			</center>
-			 </DIV>
+			 </div>
 		  </TD>
           <TD class=gridbox_r></TD></TR>
         <TR>
