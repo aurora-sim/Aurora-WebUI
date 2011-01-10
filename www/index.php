@@ -97,14 +97,17 @@ function do_post_request($found)
                         </td>
                     </tr>
                     <!-- This is a bar that can be extended further for links across the center of the screen
-                        It is directly below the logo and isn't currently used. -->
+                        It is directly below the logo and is currently used for the links around the site. -->
                     <td height="20" colspan="2" bgcolor="#000000">
-                            <table border="0" width="100%" cellspacing="0" cellpadding="0" height="20">
+                            <table border="0" width="100%" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td width="590" height="20" background="images/main/header.jpg"><? include("menubar.php"); ?></td>
+                                    <td width="590" height="20"><? include("menubar.php"); ?></td>
                                 </tr>
                             </table>
                         </td>
+                        <!-- This is the actual page, it has all the information in the page.
+                        The page itself is loaded by the sites.php which takes the page= part of the URL
+                        and finds the corresponding page. -->
                     <tr>
                        <td width="100%" height="100%" background="images/main/page_bg.jpg"><? include("sites.php"); ?></td>
                     </tr>
