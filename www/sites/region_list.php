@@ -40,7 +40,7 @@ if($sitemax == 0){$sitemax=1;}
     <td><table width="100%" border="0" cellspacing="0" cellpadding="10">
       <tr>
         <td bgcolor="#FFFFFF">
-          <div align="center">This is the Regions List, click on a Region Name to get more Informations about that Region </div></td>
+           <div align="center">This is the Regions List, click on a Region Name to get more information about that Region </div></td>
       </tr>
     </table></td>
   </tr>
@@ -108,8 +108,8 @@ if($sitemax == 0){$sitemax=1;}
     <TR <? if($w==2){$w=0; echo"style='BACKGROUND-COLOR: #e8e0c5'";}else{echo"style='BACKGROUND-COLOR: #e8eff5'";}?>>
       <TD bgcolor="#FFFFFF">&nbsp;</TD>
       <TD><DIV style="COLOR: #000000"><B><?=$regionName?></B></DIV></TD>
-      <TD><DIV style="COLOR: #ff0000"><B><?=$locX?></B></DIV></TD>
-      <TD><DIV style="COLOR: #339900"><B><?=$locY?></B></DIV></TD>
+      <TD><DIV style="COLOR: #ff0000"><B><?=$locX/256?></B></DIV></TD>
+      <TD><DIV style="COLOR: #339900"><B><?=$locY/256?></B></DIV></TD>
       <TD><DIV style="COLOR: #9966ff"><A style="cursor:pointer" onClick="window.open('<?=SYSURL?>/app/region/?x=<?=$locX?>&y=<?=$locY?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,width=800,height=400')"><B><u>Click for more Info</u></B></A></DIV></TD>
       <TD bgcolor="#FFFFFF">&nbsp;</TD>
 	</TR>

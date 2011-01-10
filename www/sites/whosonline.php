@@ -25,11 +25,11 @@ function OpenAgent(firstname, lastname)
     <TR>
       <TD width="25" background="images/main/regions_left.gif">&nbsp;</TD>
       <TD width="221" height="40" valign="bottom" background="images/main/regions_middle.jpg">
-	  <b>User Name:</b></a></TD>
+	  <b>User Name:</b></TD>
       <TD width="178" valign="bottom" background="images/main/regions_middle.jpg">
-	  <b>Region:</b></a></TD>
+	  <b>Region:</b></TD>
       <TD width="175" valign="bottom" background="images/main/regions_middle.jpg">
-	  <b>&nbsp;</b></a></TD>
+	  <b>&nbsp;</b></TD>
       <TD width="195" valign="bottom" background="images/main/regions_middle.jpg"><b>Info</b></TD>
       <TD width="25" background="images/main/regions_right.gif">&nbsp;</TD>
     </TR>
