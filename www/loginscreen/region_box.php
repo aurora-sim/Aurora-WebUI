@@ -39,7 +39,7 @@ $ORDERBY=" ORDER by locY ASC";
 			  <div align="left"><a style="cursor:pointer" onclick="document.location.href='?regio=x'"><strong>X</strong></a></div></TD>
             <TD width="20%" align=right class=regiontoptext>
 			<div align="left"><a style="cursor:pointer" onclick="document.location.href='?regio=y'">
-			  <strong>Y</strong></div>
+			  <strong>Y</strong></a></div>
 			</TD>
 			</TR>
 		     	</TBODY>
@@ -64,8 +64,8 @@ $ORDERBY=" ORDER by locY ASC";
 				<a style="cursor:pointer" onclick="document.location.href='secondlife://<?=$regionName?>/128/128/50'">
 				<font color="#cccccc"><u><?=$regionName?></u></font></a>
 				</TD>
-                <TD width="20%" align=left vAlign=top noWrap class=regiontext><div align="left"><?=$locX?></div></TD>
-                <TD width="20%" align=left vAlign=top noWrap class=regiontext><div align="left"><?=$locY?></div></TD>
+                <TD width="20%" align=left vAlign=top noWrap class=regiontext><div align="left"><?=$locX/256?></div></TD>
+                <TD width="20%" align=left vAlign=top noWrap class=regiontext><div align="left"><?=$locY/256?></div></TD>
                 </TR>
 			 </TBODY></TABLE>
 			 <?

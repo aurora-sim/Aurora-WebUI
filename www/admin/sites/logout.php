@@ -49,7 +49,7 @@ download();
 <center><img src="../images/icons/loader.gif" width="126" height="22" /></center>
                     <br />
                     <br />
-                  </p></td>
+                  </td>
                 </tr>
               </table></td>
             </tr>

@@ -20,7 +20,7 @@
 			<div style=" border:hidden; color:#ffffff; padding:0px; width:300px; height:90px; overflow:auto; ">
 			<CENTER>
 			At this moment we would like to ask you<br>to go to the website and make<br>sure that you have your email registered<p>
-			Visit <a target = _new href = http://osgrid.org/>the website</a> for more information
+			Visit <a target = _new href = <?=SYSURL?>>the website</a> for more information
 			</center>
 			 </DIV>
 		  </TD>
