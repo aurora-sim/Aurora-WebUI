@@ -22,6 +22,7 @@
 				Every 24 hours these stats will be refreshed</span>
 				</td>
 			</tr>
+                        </table>
 		</td>
 	</tr>
 </table>
@@ -47,4 +48,4 @@ echo "</TR>";
 	</TBODY>
 </TABLE>
 
-</table>
+</CENTER>

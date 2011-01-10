@@ -24,12 +24,6 @@ $economy_sink_account="00000000-0000-0000-0000-000000000000";
 // Key of the account that all purchased currency is debited from:
 $economy_source_account="00000000-0000-0000-0000-000000000000";
 
-// Minimum amount of real currency (in CENTS!) to allow purchasing:
-$minimum_real=1;
-
-// Error message if the amount is not reached:
-$low_amount_error="You tried to buy less than the minimum amount of currency. You cannot buy currency for less than US$ %.2f.";
-
 // Sets wich Pageeditor should be used:
 $editor_to_use='standard';
 //$editor_to_use='fckeditor';
@@ -40,7 +34,7 @@ $editor_to_use='standard';
 $ALLOW_ZOOM=TRUE;
 
 //Default StartPoint for Map
-$mapstartX=1001;
+$mapstartX=1000;
 $mapstartY=1000;
 
 //Direction where Info Image has to stay ex.: dr = down right ; dl =down left ; tr = top right ; tl = top left ; c = center 
