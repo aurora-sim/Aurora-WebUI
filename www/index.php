@@ -70,8 +70,8 @@ if ($_POST[Submit] == "Login") {
                         <td height="136" colspan="2" bgcolor="#000000">
                             <table border="0" width="100%" cellspacing="0" cellpadding="0" height="132">
                                 <tr>
-                                    <td width="590" height="139" background="images/main/header.jpg"><img src="images/main/logo.gif" width="534" height="139"></td>
-                                    <td width="124" background="images/main/header.jpg">&nbsp;</td>
+                                    <td width="100%" height="139" background="images/main/header.jpg"><img src="images/main/logo.gif" width="50%" height="100%""></td>
+                                    <td width="100%" background="images/main/header.jpg">&nbsp;</td>
                                     <td background="images/main/header.jpg" width="237">&nbsp;</td>
                                 </tr>
                             </table>

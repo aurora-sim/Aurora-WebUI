@@ -1,13 +1,3 @@
-<style type="text/css">
-    <!--
-    .styleTitel {font-size: 16px; font-weight: bold; color: #105BA7; font-family: Arial, Helvetica, sans-serif;}
-    .styleText {font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #666666;}
-    .styleTopTitle {font-size: 20px; font-weight: bold;	font-family: Arial, Helvetica, sans-serif;}
-    .styleOnline {font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #009900;}
-    .styleOffline {font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #FF0000;}
-    .styleplace {color: #FFFFFF;font-size: 3px;}
-    -->
-</style>
 <?
 include("../../settings/config.php");
 include("../../settings/mysql.php");
@@ -101,7 +91,7 @@ if ($_GET[aktion] == "") {
     <table width="100%" height="410" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
             <td valign="top">
-                <table width="600" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
+                <table width="90%" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
                     <? if ($_SESSION[ERROR]) {
                     ?>
                         <tr>
@@ -278,7 +268,7 @@ if ($_GET[aktion] == "") {
     ?>
                                                     <table width="100%" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
                                                         <tr>
-                                                        <table width="600" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
+                                                        <table width="90%" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
                                                             <td>
                                                                 <br>
                                                                 <br>
@@ -321,7 +311,7 @@ if ($_GET[aktion] == "") {
 
                                                 <table width="100%" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                    <table width="600" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
+                                                    <table width="90%" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
 
                                                         <td bgcolor="#FFFFFF">&nbsp;</td>
                                                         <td bgcolor="#FFFFFF">
@@ -341,7 +331,7 @@ if ($_GET[aktion] == "") {
                                     </table>                                
                                     <table width="100%" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
                                         <tr>
-                                        <table width="600" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
+                                        <table width="90%" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
 
                                             <td bgcolor="#FFFFFF">&nbsp;</td>
                                             <td bgcolor="#FFFFFF">

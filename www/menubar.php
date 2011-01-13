@@ -10,9 +10,9 @@
 <style type="text/css">
     <!--
     .Stil9 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
-    .box {font-size: 12px;height: 20; width:120;}
+    .box {font-size: 12px;height: 25; width:120;}
     .style1 {color: #FFFFFF}
-    .box1 {font-size: 12px;height: 20;width: 100;}
+    .box1 {font-size: 12px;height: 25;width: 100;}
     .style2 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF; }
     .boxspace {
         font-size: 1px;
@@ -34,6 +34,9 @@
         <td>
             <table width="<? echo $tableWidth ?>" border="0" align="center" cellpadding="0" cellspacing="0"
         <?
+        //This adds the selected image to the table, as well as the link to the page that the
+        //  button goes to. Having the page have '_self' as the target makes the page appear
+        //  in the same page as the current, otherwise, a popup will come up.
         if ($siteurl != "") {
             if (($siteurl != "") & ($sitetarget == '_self')) {
                 if ($_GET[btn] == $siteid) {
