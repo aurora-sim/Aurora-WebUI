@@ -131,7 +131,7 @@ if ($_POST[action] == "") {
                                 <td class="odd">
                                     <select id="register_input" wide="25" name="startregion">
                             <?
-                            $DbLink->query("SELECT regionName,regionHandle FROM " . C_REGIONS_TBL . " ORDER BY regionName ASC ");
+                            $DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " ORDER BY regionName ASC ");
                             while (list($RegionName, $RegionHandle) = $DbLink->next_record()) {
                             ?>
 
