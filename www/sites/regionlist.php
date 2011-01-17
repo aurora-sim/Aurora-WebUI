@@ -167,8 +167,8 @@ if($sitemax == 0){$sitemax=1;}
 
   	<?
 	  $w=0;
-  	$DbLink->query("SELECT regionHandle,regionName,locX,locY,serverIP FROM ".C_REGIONS_TBL." $ORDERBY $Limit");
-  	 while(list($UUID,$regionName,$locX,$locY,$serverIP) = $DbLink->next_record()){
+  	$DbLink->query("SELECT RegionName,LocX,LocY FROM ".C_REGIONS_TBL." $ORDERBY $Limit");
+  	 while(list($regionName,$locX,$locY) = $DbLink->next_record()){
 	   $w++;
 	 ?>
 	 
