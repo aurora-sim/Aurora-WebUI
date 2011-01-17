@@ -20,11 +20,13 @@ include("../../settings/config.php");
 include("../../settings/mysql.php");
 
 $DbLink = new DB;
-$query = "SELECT uuid,regionName,serverIP,serverPort,locX,locY,owner_uuid,regionType FROM ".C_REGIONS_TBL." where locX='".$_GET[x]."' and locY='".$_GET[y]."'";
+$query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM ".C_REGIONS_TBL." where LocX='".$_GET[x]."' and LocY='".$_GET[y]."'";
 $DbLink->query($query);
-list($UUID,$regionName,$serverIP,$serverHttpPort,$locX,$locY,$owner, $regionType) = $DbLink->next_record();
+list($regionName,$locX,$locY,$owner, $info) = $DbLink->next_record();
 $locX = $locX/256;
 $locY = $locY/256;
+$recieved = json_decode($info);
+$regionType = $recieved->{'regionType'};
 if($regionType == '')
 $regionType = 'Unknown';
 $DbLink->query("SELECT FirstName,LastName FROM ".C_USERS_TBL." where PrincipalID='$owner'");
