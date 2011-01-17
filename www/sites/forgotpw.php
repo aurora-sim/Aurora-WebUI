@@ -57,83 +57,50 @@ function Form(theForm)
 //-->
 </script>
 <?
-
-$DbLink = new DB;
-
-if($_POST[Submit]=="Submit"){
-
-$DbLink->query("SELECT UUID,active FROM ".C_WIUSR_TBL." WHERE emailadress='$_POST[email]'");
-list($UUID,$active) = $DbLink->next_record();
-
-if($active=='1'){
-$DbLink->query("SELECT UUID FROM ".C_CODES_TBL." WHERE UUID='$UUID' and info='pwreset'");
-list($UUIDCODE) = $DbLink->next_record();
-
-if($UUIDCODE != ""){
-echo "<script language='javascript'>
-<!--
-alert(\"Sorry you have already requested a new Password;\n you need to wait 24 hours to request another\");
-// -->
-</script>";
-}else{
-echo "<script language='javascript'>
-<!--
-alert(\"We have sent you a link to change your password\");
-// -->
-</script>";
-
-// CODE generator
-function code_gen($cod=""){ 
-// ######## CODE LENGTH ########
-$cod_l = 10;
-// ######## CODE LENGTH ########
-$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9"; 
-$array_b = explode(",",$zeichen); 
-for($i=0;$i<$cod_l;$i++) { 
-srand((double)microtime()*1000000); 
-$z = rand(0,35); 
-$cod .= "".$array_b[$z].""; 
-} 
-return $cod; 
-}
-$code=code_gen(); 
-// CODE generator
+if($_POST[Submit]=="Submit")
+{
+	$found = array();
+	$found[0] = json_encode(array('Method' => 'ConfirmUserEmailName', 'WebPassword' => md5(WIREDUX_PASSWORD)
+		, 'FirstName' => $_POST[first]
+		, 'LastName' => $_POST[last]
+		, 'Email' => $_POST[email]));
+	$do_post_requested = do_post_request($found);
+	$recieved = json_decode($do_post_requested);
 	
-$DbLink->query("INSERT INTO ".C_CODES_TBL." (code,UUID,info,email,time)VALUES('$code','$UUID','pwreset','$_POST[email]',".time().")");	
-
-//-----------------------------------MAIL--------------------------------------
-	 $date_arr = getdate();
-	 $date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
-	 $sendto = $_POST[email];
-	 $subject = "Reset Account Password from ".SYSNAME;
-	 $body .= "Here is the link to change your password for ".SYSNAME.".";
-	 $body .= "\n\n";
-	 $body .= "Password reset code: $code";
-	 $body .= "\n\n";
-	 $body .= "To get a new password just click the link below this text:";
-	 $body .= "\n";
-	 $body .= "".SYSURL."/index.php?page=pwreset&code=$code";
-	 $body .= "\n\n"; 
-	 $body .= "Thank you for using ".SYSNAME."";
-	 $header = "";
-	 $mail_status = mail($sendto, $subject, $body, $header);
-//-----------------------------MAIL END --------------------------------------
-
-}	
-}else if($active == '0'){
-echo "<script language='javascript'>
-<!--
-alert(\"Sorry, your account is deactivated\");
-// -->
-</script>";
-}else{
-echo "<script language='javascript'>
-<!--
-alert(\"Sorry, we have no account with that email address\");
-// -->
-</script>";
-}
-}
+	if ($recieved->{'Verified'} == "true") 
+	{		// CODE generator		function code_gen($cod=""){ 			// ######## CODE LENGTH ########			$cod_l = 10;			// ######## CODE LENGTH ########			$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9"; 			$array_b = explode(",",$zeichen); 			for($i=0;$i<$cod_l;$i++) { 				srand((double)microtime()*1000000); 				$z = rand(0,35); 				$cod .= "".$array_b[$z].""; 			} 			return $cod; 		}		$code=code_gen(); 		// CODE generator				$UUID = $recieved->{'UUID'};		$DbLink->query("INSERT INTO ".C_CODES_TBL." (code,UUID,info,email,time)VALUES('$code','$UUID','pwreset','$_POST[email]',".time().")");	
+		//-----------------------------------MAIL--------------------------------------
+		 $date_arr = getdate();
+		 $date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
+		 $sendto = $_POST[email];
+		 $subject = "Reset Account Password from ".SYSNAME;
+		 $body .= "Here is the link to change your password for ".SYSNAME.".";
+		 $body .= "\n\n";
+		 $body .= "Password reset code: $code";
+		 $body .= "\n\n";
+		 $body .= "To get a new password just click the link below this text:";
+		 $body .= "\n";
+		 $body .= "".SYSURL."/index.php?page=pwreset&code=$code";
+		 $body .= "\n\n"; 
+		 $body .= "Thank you for using ".SYSNAME."";
+		 $header = 'From: Webmaster <noreply@osgrid.org>' . "\r\n";
+		 $mail_status = mail($sendto, $subject, $body, $header);
+		//-----------------------------MAIL END --------------------------------------
+		
+		
+		echo "<script language='javascript'>
+		<!--
+			window.alert('Check your email.');
+			window.location.href='/index.php?page=login&btn=9';
+		// -->
+		</script>";
+	}
+	else
+	{
+		if ($recieved->{'Error'} != "") 
+		{
+			echo "<script language='javascript'>
+			<!--			alert(\"" . $recieved->{'Error'} . "\");			// -->			</script>";		}		else		{			echo "<script language='javascript'>			<!--			alert(\"Unknow error. Please try again later.\");			// -->			</script>";		}	}}
 ?>
 
 <table width="100%" height="425" border="0" align="center">
@@ -153,6 +120,18 @@ alert(\"Sorry, we have no account with that email address\");
                   <br>
                   <table width="91%" height="59" border="0" align="center" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
                     <tr>
+                      <td width="31%" bgcolor="#CCCCCC">First Name</td>
+                      <td width="69%" bgcolor="#CCCCCC">
+                        <input name="first" type="text" size="40" maxlength="50" value="<?=$_POST[First]?>">
+                      </td>
+                    </tr>
+					<tr>
+                      <td width="31%" bgcolor="#CCCCCC">Last Name</td>
+                      <td width="69%" bgcolor="#CCCCCC">
+                        <input name="last" type="text" size="40" maxlength="50" value="<?=$_POST[Last]?>">
+                      </td>
+                    </tr>
+					<tr>
                       <td width="31%" bgcolor="#CCCCCC">Email</td>
                       <td width="69%" bgcolor="#CCCCCC">
                         <input name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">                      </td>
@@ -169,5 +148,5 @@ alert(\"Sorry, we have no account with that email address\");
                 </tr>
               </table></td>
             </tr>
-			</form>
+	  </form>
         </table>

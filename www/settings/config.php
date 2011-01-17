@@ -8,7 +8,7 @@
 */
 
 ##################### System #########################
-define("SYSNAME","Opensim Webinterface Redux");
+define("SYSNAME","Aurora WiRedux");
 define("SYSURL","http://localhost:8080");
 define("SYSMAIL","your@email.com");
 
@@ -54,8 +54,9 @@ define("C_DB_PASS","");
 ################ Database Tables #########################
 define("C_ADMIN_TBL","wi_admin");
 define("C_WIUSR_TBL","wi_users");
-define("WIREDUX_SERVICE_URL","http://auroraserver.ath.cx:8007/WIREDUX");
-define("WIREDUX_PASSWORD","password");
+define("WIREDUX_MAPTILE_URL","http://localhost:9000");
+define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
+define("WIREDUX_PASSWORD","***");
 define("C_WI_APPEARANCE_TBL","wi_appearance");
 define("C_USRBAN_TBL","wi_banned");
 define("C_CODES_TBL","wi_codetable");
@@ -67,7 +68,7 @@ define("C_TRANSACTION_TBL","wi_economy_transactions");
 define("C_INFOWINDOW_TBL","wi_startscreen_infowindow");
 define("C_NEWS_TBL","wi_startscreen_news");
 define("C_PAGE_TBL","wi_pagemanager");
-// REGION MANAGER 
+// REGION MANAGER
 define("C_MANAGEMENT_PAGE_TBL","wi_management_pagemanager");
 define("C_MAP_REGIONS_TBL", "wi_regions");
 // OFFLINE IM'S

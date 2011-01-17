@@ -38,8 +38,8 @@ function loadmap()
   mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?=$mapstartX?>,<?=$mapstartY?>),1);
 <?
 $DbLink = new DB;
-$DbLink->query("SELECT regionName,locX,locY,owner_uuid FROM ".C_REGIONS_TBL." Order by locX");
-while(list($regionName,$locX,$locY,$owner) = $DbLink->next_record()){
+$DbLink->query("SELECT uuid, regionName,locX,locY,owner_uuid FROM ".C_REGIONS_TBL." Order by locX");
+while(list($uuid,$regionName,$locX,$locY,$owner) = $DbLink->next_record()){
 
 $DbLink1 = new DB;
 $DbLink1->query("SELECT FirstName,LastName FROM ".C_USERS_TBL." where PrincipalID='$owner'");
@@ -73,15 +73,9 @@ else if($display_marker=="dr")
 
 
     <?
-	$filename = "maptiles/mapimage-".$locX."-".$locY.".jpg";
-	if (file_exists($filename)) 
-	{
+	$uuid = str_replace('-', '', $uuid);
+	$filename = WIREDUX_MAPTILE_URL."/index.php?method=regionImage".$uuid;
 	echo 'var tmp_region_image = new Img("'.$filename.'",'.$size.','.$size.');';
-	}
-	else
-	{
-	echo 'var tmp_region_image = new Img("maptiles/no-mapimage.jpg",'.$size.','.$size.');';
-	}
 	?>
 	var region_loc = new Icon(tmp_region_image);
 	var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];

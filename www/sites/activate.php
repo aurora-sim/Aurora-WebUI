@@ -1,24 +1,32 @@
 <?
 
-if($_GET[code]){
-$DbLink = new DB;
+if($_GET[code])
+{
+	$DbLink = new DB;
 
-$DbLink->query("SELECT UUID FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='confirm'");
-list($UUID) = $DbLink->next_record();
+	$DbLink->query("SELECT UUID FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='confirm'");
+	list($UUID) = $DbLink->next_record();
 }
 
-if($UUID){
-$WERROR="Thank you, your account is now active and ready to use.";
-
-$DbLink->query("SELECT passwordSalt FROM ".C_WIUSR_TBL." WHERE UUID='$UUID'");
-list($passwordHash) = $DbLink->next_record();
-	
-$DbLink->query("UPDATE ".C_AUTH_TBL." SET passwordHash='$passwordHash' WHERE UUID='$UUID'");	
-$DbLink->query("UPDATE ".C_WIUSR_TBL." SET passwordHash='$passwordHash', passwordSalt='',active='1' WHERE UUID='$UUID'");	
-$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='confirm'");
-
-}else{
-$WERROR="This isnt a valid code or maybe the code was older than 24h";
+if($UUID)
+{	
+	$found = array();
+	$found[0] = json_encode(array('Method' => 'Authenticated', 'WebPassword' => md5(WIREDUX_PASSWORD), 'UUID' => $UUID));
+	$do_post_requested = do_post_request($found);
+	$recieved = json_decode($do_post_requested);
+	if ($recieved->{'Verified'} == "true") 
+	{
+		$WERROR="Thank you, your account is now active and ready to use.";
+		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='confirm'");
+	}
+	else
+	{
+		$WERROR="Internal error, please try again later.";
+	}
+}
+else
+{
+	$WERROR="This isnt a valid code or maybe the code was older than 24h";
 }
 ?>
 

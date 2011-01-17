@@ -106,15 +106,15 @@ switch($_SESSION[page])
     case 'make-events':
 
 		include("./sites/make-events.php");
-	
+
 		return;
 
     case 'save-events':
-    
+
 		include("./sites/save-events.php");
-	
+
 		return;
-	
+
     case 'classifieds':
 
         include("./sites/classifieds.php");
@@ -137,8 +137,8 @@ switch($_SESSION[page])
 
 		return;
 
-	// Added Accounting Tools	
-	
+	// Added Accounting Tools
+
 	case 'accounting':
 
 		include("./sites/accounting.php");
@@ -152,7 +152,7 @@ switch($_SESSION[page])
 		include("./sites/stats.php");
 
 		return;
-		
+
 	// Adding Region Tools
 
 	case 'regiontools':
@@ -166,7 +166,7 @@ switch($_SESSION[page])
 		include("./app/management/region-generate.php");
 
 		return;
-		
+
 	case 'region-overview':
 
 		include("./app/management/region-overview.php");
@@ -196,7 +196,7 @@ switch($_SESSION[page])
 	default:
 
         include("./sites/sitemodul.php");
-		
+
 		return;
 }
 ?>

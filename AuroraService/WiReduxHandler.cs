@@ -18,6 +18,8 @@ using Aurora.Framework;
 using Aurora.Services.DataService;
 using OpenMetaverse.StructuredData;
 
+using System.Collections.Specialized;
+
 namespace OpenSim.Server.Handlers.Caps
 {
     public class WireduxHandler : IService
@@ -104,6 +106,38 @@ namespace OpenSim.Server.Handlers.Caps
                     {
                         return ProcessOnlineStatus(map);
                     }
+                    else if (method == "Authenticated")
+                    {
+                        return Authenticated(map);
+                    }
+                    else if (method == "GetGridUserInfo")
+                    {
+                        return GetGridUserInfo(map);
+                    }
+                    else if (method == "ChangePassword")
+                    {
+                        return ChangePassword(map);
+                    }
+                    else if (method == "CheckIfUserExists")
+                    {
+                        return CheckIfUserExists(map);
+                    }
+                    else if (method == "SaveEmail")
+                    {
+                        return SaveEmail(map);
+                    }
+                    else if (method == "ChangeName")
+                    {
+                        return ChangeName(map);
+                    }
+                    else if (method == "ConfirmUserEmailName")
+                    {
+                        return ConfirmUserEmailName(map);
+                    }
+                    else if (method == "ForgotPassword")
+                    {
+                        return ForgotPassword(map);
+                    }
                 }
             }
             catch (Exception)
@@ -125,6 +159,19 @@ namespace OpenSim.Server.Handlers.Caps
             return false;
         }
 
+        private byte[] CheckIfUserExists(OSDMap map)
+        {
+            IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, map["First"].AsString(), map["Last"].AsString());
+
+            bool Verified = user != null;
+            OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromString(Verified.ToString());
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
         private byte[] ProcessCreateAccount(OSDMap map)
         {
             bool Verified = false;
@@ -140,11 +187,26 @@ namespace OpenSim.Server.Handlers.Caps
             if (accountService == null)
                 return null;
 
-            accountService.CreateUser(FirstName, LastName, PasswordHash, Email);
+            if (!PasswordHash.StartsWith("$1$"))
+                PasswordHash = "$1$" + Util.Md5Hash(PasswordHash);
+            PasswordHash = PasswordHash.Remove(0, 3); //remove $1$
 
-            Verified = accountService.GetUserAccount(UUID.Zero, FirstName, LastName) != null;
+            accountService.CreateUser(FirstName, LastName, PasswordHash, Email);
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, FirstName, LastName);
+            Verified = user != null;
+            UUID userID = UUID.Zero;
+
+            if (Verified)
+            {
+                userID = user.PrincipalID;
+                user.UserLevel = -1;
+                accountService.StoreUserAccount(user);
+            }
+
+
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(Verified);
+            resp["UUID"] = OSD.FromUUID(userID);
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
@@ -168,6 +230,8 @@ namespace OpenSim.Server.Handlers.Caps
             {
                 userID = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, FirstName, LastName).PrincipalID;
             }
+
+
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(Verified);
             resp["UUID"] = OSD.FromUUID(userID);
@@ -184,6 +248,228 @@ namespace OpenSim.Server.Handlers.Caps
             OSDMap resp = new OSDMap();
             resp["Online"] = OSD.FromInteger(1);
             resp["LoginEnabled"] = OSD.FromInteger(LoginEnabled ? 1 : 0);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        private byte[] Authenticated(OSDMap map)
+        {
+            IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UUID"].AsUUID());
+
+            bool Verified = user != null;
+            OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromBoolean(Verified);
+
+            if (Verified)
+            {
+                user.UserLevel = 0;
+                accountService.StoreUserAccount(user);
+            }
+
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        /// <summary>
+        /// Gets user information for change user info page on site
+        /// </summary>
+        /// <param name="map">UUID</param>
+        /// <returns>Verified, HomeName, HomeUUID, Online, Email, FirstName, LastName</returns>
+        byte[] GetGridUserInfo(OSDMap map)
+        {
+            string uuid = String.Empty;
+            uuid = map["UUID"].AsString();
+
+            IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UUID"].AsUUID());
+            IGridUserService griduserService = m_registry.RequestModuleInterface<IGridUserService>();
+
+            GridUserInfo userinfo;
+            OSDMap resp = new OSDMap();
+
+            bool verified = user != null;
+            resp["Verified"] = OSD.FromBoolean(verified);
+            if (verified)
+            {
+                userinfo = griduserService.GetGridUserInfo(uuid);
+                IGridService gs = m_registry.RequestModuleInterface<IGridService>();
+                Services.Interfaces.GridRegion gr = gs.GetRegionByUUID(UUID.Zero, userinfo.HomeRegionID);
+
+                resp["HomeUUID"] = OSD.FromUUID(userinfo.HomeRegionID);
+                resp["HomeName"] = OSD.FromString(gr.RegionName);
+                resp["Online"] = OSD.FromBoolean(userinfo.Online);
+                resp["Email"] = OSD.FromString(user.Email);
+                resp["FirstName"] = OSD.FromString(user.FirstName);
+                resp["LastName"] = OSD.FromString(user.LastName);
+            }
+
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        /// <summary>
+        /// After conformation the email is saved
+        /// </summary>
+        /// <param name="map">UUID, Email</param>
+        /// <returns>Verified</returns>
+        byte[] SaveEmail(OSDMap map)
+        {
+            string uuid = String.Empty;
+            uuid = map["UUID"].AsString();
+            string email = map["Email"].AsString();
+
+            IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UUID"].AsUUID());
+            OSDMap resp = new OSDMap();
+
+            bool verified = user != null;
+            resp["Verified"] = OSD.FromBoolean(verified);
+            if (verified)
+            {
+                user.Email = email;
+                user.UserLevel = 0;
+                accountService.StoreUserAccount(user);
+            }
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        /// <summary>
+        /// Changes user name
+        /// </summary>
+        /// <param name="map">UUID, FirstName, LastName</param>
+        /// <returns>Verified</returns>
+        byte[] ChangeName(OSDMap map)
+        {
+            IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UUID"].AsUUID());
+            OSDMap resp = new OSDMap();
+
+            bool verified = user != null;
+            resp["Verified"] = OSD.FromBoolean(verified);
+            if (verified)
+            {
+                user.FirstName = map["FirstName"].AsString();
+                user.LastName = map["LastName"].AsString();
+                accountService.StoreUserAccount(user);
+            }
+
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] ChangePassword(OSDMap map)
+        {
+            string FirstName = map["FirstName"].AsString();
+            string LastName = map["LastName"].AsString();
+            string Password = map["Password"].AsString();
+            string newPassword = map["NewPassword"].AsString();
+
+            ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
+            UUID secureSessionID;
+            UUID userID = UUID.Zero;
+            userID = map["UUID"].AsUUID();
+
+
+            IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
+
+            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", out secureSessionID);
+            OSDMap resp = new OSDMap();
+            //Null means it went through without an error
+            bool Verified = loginresp == null;
+
+            // we should validate the uuid against the password.. but this didn't work.. 
+            // if ((auths.Authenticate(userID, Password, 100) != string.Empty) && (Verified))
+
+            if (Verified)
+            {
+                auths.SetPassword(userID, newPassword);
+                resp["Verified"] = OSD.FromBoolean(Verified);
+            }
+
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] ForgotPassword(OSDMap map)
+        {
+            UUID UUDI = map["UUID"].AsUUID();
+            string Password = map["Password"].AsString();
+
+            IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, UUDI);
+
+            OSDMap resp = new OSDMap();
+            bool verified = user != null;
+            resp["Verified"] = OSD.FromBoolean(verified);
+            resp["UserLevel"] = OSD.FromInteger(0);
+            if (verified)
+            {
+                resp["UserLevel"] = OSD.FromInteger(user.UserLevel);
+                if (user.UserLevel >= 0)
+                {
+                    IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
+                    auths.SetPassword(user.PrincipalID, Password);
+                }
+                else
+                {
+                    resp["Verified"] = OSD.FromBoolean(false);
+                }
+            }
+
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] ConfirmUserEmailName(OSDMap map)
+        {
+            string FirstName = map["FirstName"].AsString();
+            string LastName = map["LastName"].AsString();
+            string Email = map["Email"].AsString();
+
+            OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromBoolean(false);
+            resp["Error"] = OSD.FromString("");
+            if ((FirstName.Length > 0) & (LastName.Length > 0))
+            {
+                IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+                UserAccount user = accountService.GetUserAccount(UUID.Zero, FirstName, LastName);
+                bool verified = user != null;
+
+                if (verified)
+                {
+                    if (user.UserLevel >= 0)
+                    {
+                        resp["UUID"] = OSD.FromUUID(user.PrincipalID);
+                        if (user.Email.ToLower() == Email.ToLower())
+                        {
+                            resp["Verified"] = OSD.FromBoolean(true);
+                        }
+                        else
+                        {
+                            resp["Error"] = OSD.FromString("Email does not match the user name.");
+                        }
+                    }
+                    else
+                    {
+                        resp["Error"] = OSD.FromString("This account is disabled.");
+                    }
+                }
+                else
+                {
+                    resp["Error"] = OSD.FromString("No such user.");
+                }
+            }
+
+
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
