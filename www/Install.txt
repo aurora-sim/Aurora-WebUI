@@ -1,4 +1,4 @@
-OpenSim WebInterface Redux v0.28
+Skidz Partz Aurora WebInterface Redux v0.29
 
 Originally created by Rookiie84
 
@@ -9,7 +9,17 @@ Please remember to backup your database regularly.
 1. Upload these files to your webserver.
 2. Edit "./settings/config.php"
 3. Make a backup of your database ;)
-4. Import the .sql files inside "./sql_update/" into your MySql database
+4. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the opensim database)
+5. copy the ./AuroraService/WiReduxHandler.cs to your ~/aurora-sim-Aurora-Sim/OpenSim/Server/Handlers/AuroraService/ directory
+6. Run runprebuild.bat or runprebuild2010.bat
+7. Run compile.bat
+8. Edit your approprate config file and add the following under [Handlers]. For example: ~/aurora-sim-Aurora-Sim/bin/Configuration/Standalone/Standalone.ini
+
+	WireduxHandler = WireduxHandler
+	WireduxHandlerPort = 8007
+	WireduxHandlerPassword = ***
+	
+* note, I don't know if that is the best place for them.. but it works.. 
 
 If you install a new version over your old one, remember to run "Update DB" from the admin menu, 
 it will update the webinterface users table.
@@ -45,7 +55,16 @@ You need also the new pagemanager table instead off sitemanager table
     
     [/code]
 
+-----* Set up your php.ini mail
 
+-----* Says unknow error, or something when wrong right after I turned on opensim.. 
+
+<skidz> oh.. one thing to note.. 
+<skidz> opensim seems to have a bug.. when making calls to the handler.. the first one always fails after you start opensim
+<skidz> It actually runs.. but.. the data is never returned to the php.. 
+<skidz> but.. after that first.. seems to work fine.. 
+<skidz> I have not tried to debug this yet
+<skidz> I should add that in the install.. lol
 
 -----* I get the following message trying to load opensimwi in my web browser:
 
