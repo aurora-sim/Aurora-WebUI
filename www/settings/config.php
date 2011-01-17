@@ -49,12 +49,11 @@ define("C_DB_NAME","aurora");
 //Your Username from Database here:
 define("C_DB_USER","aurora");
 //Your Database Password here:
-define("C_DB_PASS","");
+define("C_DB_PASS","***");
 
 ################ Database Tables #########################
 define("C_ADMIN_TBL","wi_admin");
 define("C_WIUSR_TBL","wi_users");
-define("WIREDUX_MAPTILE_URL","http://localhost:9000");
 define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
 define("WIREDUX_PASSWORD","***");
 define("C_WI_APPEARANCE_TBL","wi_appearance");
@@ -80,7 +79,7 @@ define("C_STATS_REGIONS_TBL", "wi_statistics");
 //OPENSIM DEFAULT TABLES (NEEDED FOR LOGINSCREEN & MONEY SYSTEM)
 define("C_USERS_TBL","UserAccounts");
 define("C_AUTH_TBL","auth");
-define("C_REGIONS_TBL","regions");
+define("C_REGIONS_TBL","gridregions");
 define("C_GRIDUSER_TBL","GridUser");
 define("C_APPEARANCE_TBL", "avatar");
 define("C_PRESENCE_TBL", "Presence");
