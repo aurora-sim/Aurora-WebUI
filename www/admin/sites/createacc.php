@@ -60,11 +60,11 @@ or this:
                   <td bgcolor="#999999">Start Region* </td>
 				  <td bgcolor="#CCCCCC"><select class="box" wide="25" name="region">
                     <?   
-	  $DbLink->query("SELECT regionName,regionHandle FROM ".C_REGIONS_TBL." ORDER BY regionName ASC ");
-	  while(list($regionName,$regionHandle) = $DbLink->next_record())
+	  $DbLink->query("SELECT RegionName,RegionUUID FROM ".C_REGIONS_TBL." ORDER BY RegionName ASC ");
+	  while(list($RegionName,$RegionUUID) = $DbLink->next_record())
 	  {
 	  ?>
-       <option value="<?=$regionHandle?>"><?=$regionName?></option>
+       <option value="<?=$RegionUUID?>"><?=$RegionName?></option>
       <?	
 	  }
       ?>
