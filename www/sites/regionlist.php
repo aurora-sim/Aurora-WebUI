@@ -200,6 +200,6 @@ if($sitemax == 0){$sitemax=1;}
   </table>
 </div>
 
-<p>Worl Map Demo @ <a href="index.php?page=map&btn=6">map.php</a></p>
+<p>World Map Demo @ <a href="index.php?page=map&btn=6">map.php</a></p>
 
 </div>
