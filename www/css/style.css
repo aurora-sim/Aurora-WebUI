@@ -10,7 +10,7 @@ body.wiredux {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: center;
   color:#ffffff;
-  background: #09091B url('../images/main/background_12.jpg') 50% 0% no-repeat;
+  background: #000000 url('../images/main/background_12.jpg') 50% 0% no-repeat;
 }
 
 .wiredux #container {
