@@ -43,67 +43,97 @@ if ($_POST[Submit] == "Login") {
 
 //LOGIN END
 ?>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>Welcome to <?= SYSNAME ?></title>
-    <style type="text/css">
-        <!--
-        .Stil9 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
-        body {
-            background-image: url(images/main/bg.jpg);
-        }
-        -->
-    </style>
-</head>
 
-<body>
-    <table width="100%" height="100%" border="0" align="center" cellpadding="0" cellspacing="0" marginheight="0" marginwidth="0">
-        <!-- <tr>
-            <td width="25" rowspan="3">&nbsp;</td>
-            <td height="0"></td>
-            <td width="25" rowspan="3">&nbsp;</td>
-        </tr> -->
-        <tr>
-            <td>
-                <table width="100%" height="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" marginwidth="0" marginheight="0">
-                    <tr>
-                        <td height="136" colspan="2" bgcolor="#000000">
-                            <table border="0" width="100%" cellspacing="0" cellpadding="0" height="132">
-                                <tr>
-                                    <td width="100%" height="139" background="images/main/header.jpg"><img src="images/main/logo.gif" width="50%" height="100%""></td>
-                                    <td width="100%" background="images/main/header.jpg">&nbsp;</td>
-                                    <td background="images/main/header.jpg" width="237">&nbsp;</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <!-- This is a bar that can be extended further for links across the center of the screen
-                        It is directly below the logo and is currently used for the links around the site. -->
-                    <td height="20" colspan="2" bgcolor="#000000">
-                            <table border="0" width="100%" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="590" height="20"><? include("menubar.php"); ?></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <!-- This is the actual page, it has all the information in the page.
-                        The page itself is loaded by the sites.php which takes the page= part of the URL
-                        and finds the corresponding page. -->
-                    <tr>
-                       <td width="100%" height="100%" background="images/main/page_bg.jpg"><? include("sites.php"); ?></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td height="25" bgcolor="#000000" align="right">
-                <table border="0" width="100%" cellspacing="0" cellpadding="0" height="25">
-                    <tr>
-                        <td background="images/main/footer.jpg">&nbsp;</td>
-                    </tr>
-                </table>
-            <td>
-        </tr>
-    </table>
+
+<!-- *** removed from home.php and add here *** -->
+<?
+$DbLink = new DB;
+
+$DbLink->query("SELECT gridstatus,active,color,title,message  FROM ".C_INFOWINDOW_TBL." ");
+list($GRIDSTATUS,$INFOBOX,$BOXCOLOR,$BOX_TITLE,$BOX_INFOTEXT) = $DbLink->next_record();
+
+// Doing it the same as the Who's Online now part
+$DbLink = new DB;
+	$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online = 1 AND ". 
+					"Login < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND ".
+					"Logout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) ".
+					"ORDER BY Login DESC");
+	while(list($UUID) = $DbLink->next_record())
+	{
+		// Let's get the user info
+		$DbLink2 = new DB;
+		$DbLink2->query("SELECT username, lastname from ".C_USERS_TBL." where UUID = '".$UUID."'");
+		list($firstname, $lastname) = $DbLink2->next_record();
+		$DbLink3 = new DB;
+		$DbLink3->query("SELECT RegionID from ".C_PRESENCE_TBL." where UserID = '".$UUID."'");
+		list($regionUUID) = $DbLink3->next_record();
+	$username = $firstname." ".$lastname;
+	// Let's get the region information
+	$DbLink3 = new DB;
+	$DbLink3->query("SELECT regionName from ".C_REGIONS_TBL." where UUID = '".$regionUUID."'");
+	list($region) = $DbLink3->next_record();
+	if ($region != "")
+	{
+	$NOWONLINE = $NOWONLINE + 1;
+	}
+}
+
+$DbLink->query("SELECT count(*) FROM ".C_GRIDUSER_TBL." where Login > UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now()) - 2419200))");
+list($LASTMONTHONLINE) = $DbLink->next_record();
+ 
+$DbLink->query("SELECT count(*) FROM ".C_USERS_TBL."");
+list($USERCOUNT) = $DbLink->next_record();
+
+$DbLink->query("SELECT count(*) FROM ".C_REGIONS_TBL."");
+list($REGIONSCOUNT) = $DbLink->next_record();
+
+if(($_GET[btn]=="") and ($ERROR == "")){
+echo "<script language='javascript'>
+<!--
+window.location.href='index.php?page=home&btn=1';
+// -->
+</script>";
+}else if(($_GET[btn]=="") and ($ERROR != "")){
+echo "<script language='javascript'>
+<!--
+window.location.href='index.php?page=home&btn=1&error=$ERROR';
+// -->
+</script>";
+}
+
+?>
+<!-- *** END OF removed from home.php and add here *** -->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="<?= SYSURL ?>/css/style.css" type="text/css" />
+<link rel="icon" href="<?= SYSURL ?>/images/main/favicon.ico" />
+<title>Welcome to <?= SYSNAME ?></title>
+
+</head>
+<body class="wiredux">
+<div id="container">
+  <div id="header">
+    <h1><span><?= SYSNAME ?> GridStatus</span></h1>
+
+    <div id="gridstatus"><?php include("sites/gridstatus.php"); ?></div>
+    <div id="menubar"><? include("sites/menubar.php"); ?></div>
+    <div id="translator"><?php include("languages/translator.php"); ?></div>
+<!-- fin de #header --></div>
+
+    <div id="MainContainer">
+    <div id="sites"><? include("sites.php"); ?></div>   
+<!-- fin de #mainContent --></div>
+
+    <div id="footer">
+    <h3><span>Aurora-Sim WiRedux Footer</span></h3>
+    <?php include("sites/footer.php"); ?>
+
+<!-- fin de #footer --></div>
+<!-- fin de #container --></div>
 </body>
 </html>

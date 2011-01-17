@@ -136,14 +136,6 @@ alert(\"Sorry, we have no account with that email address\");
 }
 ?>
 
-<style type="text/css">
-<!--
-.Stil1 {
-	font-size: 18px;
-	font-weight: bold;
-}
--->
-</style>
 <table width="100%" height="425" border="0" align="center">
 <form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
             <tr>

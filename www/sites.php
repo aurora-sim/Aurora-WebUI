@@ -85,7 +85,7 @@ switch($_SESSION[page])
 
     case 'regions':
 
-        include("./sites/region_list.php");
+        include("./sites/regionlist.php");
 
         return;
 

@@ -33,43 +33,38 @@ if($_POST[purge])
 	}
 }
 ?>
-<style type="text/css">
-<!--
-.Stil1 {
-	font-size: 18px;
-	font-weight: bold;
-}
-.box {	font-size: 12px;
-	height: 20;	
-}
--->
-</style>
-		<table width="100%" height="425" border="0" align="center">
-            <tr>
-              <td valign="top"><table width="50%" border="0" align="center">
-				<tr>
-                  <td><p align="center" class="Stil1">Additional Account settings</p></td>
-                </tr>
-              </table>
-              <br>
-			  <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
-				<tr>
-                  <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong>Purge Avatar Appearance</strong></div></td>
-                </tr>
-				<? if($ERRORS){?>
-                <tr>
-                  <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?=$ERRORS?></div></td>
-                </tr>
-				<? } ?>
-				<form name="form1" method="post" action="index.php?page=accounting">
-                <tr>
-                  <td valign="top" align="center" bgcolor="#FFFFFF"><input type="submit" name="purge" value="Purge my Avatar Appearance"></td>
-                </tr>
-			   </form>
-			  </table>
-			 </td>
-            </tr>
-		</table>
-<?
-} 
-?>
+
+<table width="100%" height="425" border="0" align="center">
+  <tr>
+    <td valign="top">
+      <table width="50%" border="0" align="center">
+	      <tr>
+          <td><p align="center" class="Stil1">Additional Account settings</p></td>
+        </tr>
+      </table>
+      
+      <br />
+      
+      <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
+        <tr>
+          <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong>Purge Avatar Appearance</strong></div></td>
+        </tr>
+        
+          <? if($ERRORS){?>
+      
+        <tr>
+          <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?=$ERRORS?></div></td>
+        </tr>
+	
+        <? } ?>
+	
+        <form name="form1" method="post" action="index.php?page=accounting">
+          <tr>
+            <td valign="top" align="center" bgcolor="#FFFFFF"><input type="submit" name="purge" value="Purge my Avatar Appearance"></td>
+          </tr>
+	     </form>
+    </table>
+  </td>
+</tr>
+</table>
+<? } ?>

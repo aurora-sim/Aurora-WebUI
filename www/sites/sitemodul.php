@@ -1,15 +1,4 @@
-<style type="text/css">
-<!--
-#scr {
-  position:absolute;
-  height:100%;
-  width:100%;
-  margin:0;
-  padding:0;
-  overflow:auto;
-}
--->
-</style>
+
 <?
 $DbLink = new DB;
 if($_GET[id]){

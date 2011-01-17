@@ -199,13 +199,13 @@ $w=1;
 		<TD BGCOLOR=#547FDB>
 			<TABLE CELLPADDING=2 CELLSPACING=0 border=0 WIDTH=100%>
 				<TR>
-					<TD WIDTH=28>&nbsp;</TD>
+					<TD WIDTH=28></TD>
 					<TD WIDTH=83><B>EDIT</B></TD>
 					<TD WIDTH=241><B>Firstname</B></TD>
 					<TD WIDTH=229><B>Lastname</B></TD>
 					<TD width=170><B>Created</B></TD>
 					<TD width=124><B>Active</B></TD>
-					<TD WIDTH=41>&nbsp;</TD>
+					<TD WIDTH=41></TD>
 				</TR>
 			</TABLE>
 		</TD>

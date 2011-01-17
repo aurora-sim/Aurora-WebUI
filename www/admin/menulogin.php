@@ -22,34 +22,34 @@
 <input type="hidden" name="check" value="1" />
 <table width="245" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="129" class="style1">&nbsp;</td>
+    <td width="129" class="style1"></td>
     <td width="894" class="style1">Username:</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
+    <td></td>
     <td>
       <input class="box" type="textfield" name="username" />    </td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
+    <td></td>
     <td><span class="style1">Password:</span></td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
+    <td></td>
     <td><input class="box" type="password" name="password" /></td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
+    <td></td>
     <td>
     <input type="submit" name="Submit" value="Login" /></td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 </form>
