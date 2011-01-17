@@ -20,6 +20,6 @@ INSERT INTO `wi_pagemanager` (`id`, `code`, `sitename`, `content`, `rank`, `type
 (4, '1211832121', 'Transaction History', '', '4', '1', '1', 'index.php?page=transactions', '_self', '1'),
 (5, '1213729504', 'Region List', '', '5', '1', '1', 'index.php?page=regions', '_self', '2'),
 (6, '1213811351', 'World Map', '', '6', '1', '1', 'index.php?page=map', '_self', '2'),
-(7, '1211832149', 'Create Account', '', '7', '1', '1', 'index.php?page=create', '_self', '0'),
+(7, '1211832149', 'Register', '', '7', '1', '1', 'index.php?page=create', '_self', '0'),
 (8, '1211832173', 'Logout', '', '8', '1', '1', 'index.php?page=logout', '_self', '1'),
 (9, '1211832174', 'Login', '', '9', '1', '1', 'index.php?page=login', '_self', '0');
