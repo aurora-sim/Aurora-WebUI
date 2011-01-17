@@ -1,6 +1,6 @@
 <?php
 $DbLink = new DB;
-$DbLink->query("SELECT uuid,regionName,locX,locY FROM ".C_REGIONS_TBL." ORDER BY locX ASC, locY ASC");
+$DbLink->query("SELECT RegionUUID,RegionName,locX,locY FROM ".C_REGIONS_TBL." ORDER BY locX ASC, locY ASC");
 
 ?>
 <style type="text/css">
