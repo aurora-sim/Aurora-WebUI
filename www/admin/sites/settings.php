@@ -72,7 +72,7 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
                   <td colspan="2"><table width="100%" border="0" cellpadding="5" cellspacing="0">
                     <form id="form41" name="form41" method="post" action="index.php?page=settings">
 				<tr>
-                  <td width="373" bgcolor="#FFFFFF"><span class="Stil4">Start Region changeable at:</span>
+                  <td width="373" bgcolor="#565051"><span class="Stil4">Start Region changeable at:</span>
                     <select class="box" wide="25" name="regtyp" >
 					  <?
 					  echo "
@@ -83,20 +83,20 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
 
 					  ?> 
                   </select>                  </td>
-                  <td width="205" bgcolor="#FFFFFF">
+                  <td width="205" bgcolor="#565051">
 				  <span class="Stil4">Startregion:</span>				  
 				  <select class="box" wide="25" name="region">
                     <?   
-	  $DbLink->query("SELECT regionName,regionHandle FROM ".C_REGIONS_TBL." ORDER BY regionName ASC ");
-	  while(list($RegionName,$RegionHandle) = $DbLink->next_record())
+	  $DbLink->query("SELECT RegionName FROM ".C_REGIONS_TBL." ORDER BY RegionName ASC ");
+	  while(list($RegionName,$RegionUUID) = $DbLink->next_record())
 	  {
-	  echo"<option value='$RegionHandle' " . ($STARTREGION == '$RegionHandle' ? 'selected' : '') . ">$RegionName</option>";
+	  echo"<option value='$RegionUUID' " . ($STARTREGION == '$RegionUUID' ? 'selected' : '') . ">$RegionName</option>";
 	  }
       ?>
                   </select></td>
                 </tr>
 				<tr>
-				  <td bgcolor="#FFFFFF"><span class="Stil4">Require address for account creation?</span>
+				  <td bgcolor="#565051"><span class="Stil4">Require address for account creation?</span>
 				  <select class="box" wide="25" name="adressset" >
                       <?
 					  echo " 
@@ -106,7 +106,7 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
 
 					  ?>
                   </select></td>
-				  <td bgcolor="#FFFFFF">
+				  <td bgcolor="#565051">
 				    <div align="center">
 				      <input type="submit" name="Submitreg" value="Save" />
 		            </div></td>
@@ -120,17 +120,17 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
                 </tr>
 				<form id="form6" name="form6" method="post" action="index.php?page=settings">
                 <tr>
-				  <td bgcolor="#FFFFFF"><span class="Stil4">Grid Server Log Directory </span></td>
-                  <td bgcolor="#FFFFFF"><input type="text" value="<?=$GRIDSDIR?>" name="griddir"></td>
+				  <td bgcolor="#565051"><span class="Stil4">Grid Server Log Directory </span></td>
+                  <td bgcolor="#565051"><input type="text" value="<?=$GRIDSDIR?>" name="griddir"></td>
                 </tr>
                 <tr>
-                  <td bgcolor="#FFFFFF"><span class="Stil4">Asset Server Log Directory </span></td>
-                  <td bgcolor="#FFFFFF"><input type="text" value="<?=$ASSETSDIR?>" name="assetdir" />
+                  <td bgcolor="#565051"><span class="Stil4">Asset Server Log Directory </span></td>
+                  <td bgcolor="#565051"><input type="text" value="<?=$ASSETSDIR?>" name="assetdir" />
                   </td>
                 </tr>
                 <tr>
-                  <td bgcolor="#FFFFFF"><span class="Stil4">User Server Log Directory </span></td>
-                  <td bgcolor="#FFFFFF"><input type="text" value="<?=$USERSDIR?>" name="userdir" />
+                  <td bgcolor="#565051"><span class="Stil4">User Server Log Directory </span></td>
+                  <td bgcolor="#565051"><input type="text" value="<?=$USERSDIR?>" name="userdir" />
                   <input type="submit" name="Submitgau" value="Save" /></td>
                 </tr>
 				</form>
@@ -140,8 +140,8 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
                 </tr>
                 <tr>
 				<form id="form9" name="form9" method="post" action="index.php?page=settings">
-                  <td width="58%" bgcolor="#FFFFFF"><span class="Stil4">Activate Lastnames </span></td>
-                  <td width="42%" bgcolor="#FFFFFF">
+                  <td width="58%" bgcolor="#565051"><span class="Stil4">Activate Lastnames </span></td>
+                  <td width="42%" bgcolor="#565051">
 				  <? if($LASTNMS==0){?>
 				  <input type="submit" name="Submitnam2" value="Activate" />
 				  <? }else{?>
@@ -151,8 +151,8 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
                 </tr>
 				<form id="form2" name="form2" method="post" action="index.php?page=settings">
                 <tr>
-                  <td bgcolor="#FFFFFF"><span class="Stil4">Add last name </span></td>
-                  <td bgcolor="#FFFFFF">
+                  <td bgcolor="#565051"><span class="Stil4">Add last name </span></td>
+                  <td bgcolor="#565051">
                     <input type="text" name="lastname" />
                     <input type="submit" name="Submit2" value="Save" />                  </td>
                 </tr>
@@ -160,8 +160,8 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
                 
                 <form id="form3" name="form3" method="post" action="index.php?page=settings">
 				<tr>
-                  <td bgcolor="#FFFFFF"><span class="Stil4">Deactivate last name </span></td>
-                  <td bgcolor="#FFFFFF">
+                  <td bgcolor="#565051"><span class="Stil4">Deactivate last name </span></td>
+                  <td bgcolor="#565051">
 				  <select class="box" wide="25" name="deactivelast">
                     <?
 	  $DbLink->query("SELECT name FROM ".C_NAMES_TBL." WHERE active=1 ORDER BY name ASC ");
@@ -181,8 +181,8 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
                 
 				<form id="form4" name="form4" method="post" action="index.php?page=settings">
                 <tr>
-                  <td bgcolor="#FFFFFF"><span class="Stil4">Reactivate last name </span></td>
-                  <td bgcolor="#FFFFFF"><select class="box" wide="25" name="activatelast">
+                  <td bgcolor="#565051"><span class="Stil4">Reactivate last name </span></td>
+                  <td bgcolor="#565051"><select class="box" wide="25" name="activatelast">
                     <?
 	  $DbLink->query("SELECT name FROM ".C_NAMES_TBL." WHERE active=0 ORDER BY name ASC ");
 	  while(list($NAMEDB) = $DbLink->next_record())
@@ -201,8 +201,8 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
                 
 				<form id="form5" name="form5" method="post" action="index.php?page=settings">
                 <tr>
-                  <td bgcolor="#FFFFFF"><span class="Stil4">Delete last name </span></td>
-                  <td bgcolor="#FFFFFF"><select class="box" wide="25" name="delname">
+                  <td bgcolor="#565051"><span class="Stil4">Delete last name </span></td>
+                  <td bgcolor="#565051"><select class="box" wide="25" name="delname">
                     <?
 	  $DbLink->query("SELECT name FROM ".C_NAMES_TBL." ORDER BY name ASC ");
 	  while(list($NAMEDB) = $DbLink->next_record())
