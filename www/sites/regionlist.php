@@ -6,7 +6,7 @@ $ORDERBY=" ORDER by locX ASC";
 }else if($_GET[order]=="y"){
 $ORDERBY=" ORDER by locY ASC";
 }else{
-$ORDERBY=" ORDER by regionName ASC";
+$ORDERBY=" ORDER by RegionName ASC";
 }
 
 $GoPage= "index.php?page=regions";
@@ -168,14 +168,14 @@ if($sitemax == 0){$sitemax=1;}
   	<?
 	  $w=0;
   	$DbLink->query("SELECT RegionName,LocX,LocY FROM ".C_REGIONS_TBL." $ORDERBY $Limit");
-  	 while(list($regionName,$locX,$locY) = $DbLink->next_record()){
+  	 while(list($RegionName,$locX,$locY) = $DbLink->next_record()){
 	   $w++;
 	 ?>
 	 
 
    <TR <? if($w==2){$w=0; echo"style='BACKGROUND-COLOR: #e8e0c5'";}else{echo"style='BACKGROUND-COLOR: #e8eff5'";}?>>
       <TD bgcolor="#FFFFFF"></TD>
-      <TD><DIV style="COLOR: #000000"><B><?=$regionName?></B></DIV></TD>
+      <TD><DIV style="COLOR: #000000"><B><?=$RegionName?></B></DIV></TD>
       <TD><DIV style="COLOR: #ff0000"><B><?=$locX/256?></B></DIV></TD>
       <TD><DIV style="COLOR: #339900"><B><?=$locY/256?></B></DIV></TD>
       <TD>
