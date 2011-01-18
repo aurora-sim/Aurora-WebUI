@@ -16,7 +16,7 @@ $DbLink->query("SELECT RegionUUID,RegionName,locX,locY FROM ".C_REGIONS_TBL." OR
 -->
 </style>
 <div style="height:100%;">
- <table width="640" border="1" align="center" cellpadding="2" cellspacing="2" bordercolor="#777777" bgcolor="#FFFFFF" style="border-collapse: collapse">
+ <table width="640" border="1" align="center" cellpadding="2" cellspacing="2" bordercolor="#777777" bgcolor="#565051" style="border-collapse: collapse">
    <tr bgcolor="#CCCCCC">
      <td align="center"><div class="title"><b>UUID</b></div></td>
      <td align="center"><div class="title"><b>region name</b></div></td>
