@@ -20,7 +20,6 @@ $found[0] = json_encode(array('Method' => 'OnlineStatus', 'WebPassword' => md5(W
 $do_post_request = do_post_request($found);
 $recieved = json_decode($do_post_request);
 $GRIDSTATUS = $recieved->{'Online'};
-
 // Doing it the same as the Who's Online now part
 $DbLink = new DB;
 $DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online = 1 AND ". 
