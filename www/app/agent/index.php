@@ -34,8 +34,8 @@ $DbLink = new DB;
 $DbLink->query("SELECT HomeRegionID, Online FROM ".C_GRIDUSER_TBL." where UserID='$UUID'");
 list($regID,$agentOnline) = $DbLink->next_record();
 
-$DbLink->query("SELECT locX, locY,regionName FROM ".C_REGIONS_TBL." where uuid='$regID'");
-list($locX,$locY,$regionName) = $DbLink->next_record();
+$DbLink->query("SELECT LocX, LocY,RegionName FROM ".C_REGIONS_TBL." where OwnerUUID='$regID'");
+list($LocX,$LocY,$RegionName) = $DbLink->next_record();
 
 $date=date("D d M Y - g:i A",$created);
 
