@@ -9,7 +9,7 @@
 
 ##################### System #########################
 define("SYSNAME","Aurora WiRedux");
-define("SYSURL","http://localhost:8080");
+define("SYSURL","***");
 define("SYSMAIL","your@email.com");
 
 ############ Delete Unconfirmed accounts ################
