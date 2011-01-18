@@ -77,7 +77,7 @@ define("C_STATS_REGIONS_TBL", "wi_statistics");
 
 
 //OPENSIM DEFAULT TABLES (NEEDED FOR LOGINSCREEN & MONEY SYSTEM)
-define("C_USERS_TBL","UserAccounts");
+define("C_USERS_TBL","useraccounts");
 define("C_AUTH_TBL","auth");
 define("C_REGIONS_TBL","gridregions");
 define("C_GRIDUSER_TBL","GridUser");

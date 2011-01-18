@@ -24,10 +24,10 @@ $DbLink->query("SELECT RegionUUID,RegionName,locX,locY FROM ".C_REGIONS_TBL." OR
      <td align="center"><div class="title"><b>Loc Y</b></div></td>
    </tr>
    <?
-while(list($regionName,$locX,$locY,$uuid) = $DbLink->next_record()){
+while(list($RegionName,$locX,$locY,$uuid) = $DbLink->next_record()){
 ?>
    <tr>
-     <td align="center"><div class="results"><b><? echo $regionName; ?></b></div></td>
+     <td align="center"><div class="results"><b><? echo $RegionName; ?></b></div></td>
      <td align="center"><div class="results"><b><? echo $locX; ?></b></div></td>
      <td align="center"><div class="results"><b><? echo $locY; ?></b></div></td>
      <td align="center"><div class="results"><b><? echo $uuid; ?></b></div></td>
