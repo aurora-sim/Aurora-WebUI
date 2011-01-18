@@ -1,6 +1,6 @@
 <? 
 if($_SESSION[ADMINUID] == $ADMINCHECK){
-if($_GET[aktion]==""){
+if($_GET[action]==""){
 if($_POST[action]==""){ ?>
 <style type="text/css">
 <!--
@@ -60,11 +60,11 @@ or this:
                   <td bgcolor="#999999">Start Region* </td>
 				  <td bgcolor="#CCCCCC"><select class="box" wide="25" name="region">
                     <?   
-	  $DbLink->query("SELECT regionName,regionHandle FROM ".C_REGIONS_TBL." ORDER BY regionName ASC ");
-	  while(list($regionName,$regionHandle) = $DbLink->next_record())
+	  $DbLink->query("SELECT RegionName,RegionUUID FROM ".C_REGIONS_TBL." ORDER BY RegionName ASC ");
+	  while(list($RegionName,$RegionUUID) = $DbLink->next_record())
 	  {
 	  ?>
-       <option value="<?=$regionHandle?>"><?=$regionName?></option>
+       <option value="<?=$RegionUUID?>"><?=$RegionName?></option>
       <?	
 	  }
       ?>
@@ -234,10 +234,10 @@ window.location.href='index.php?page=createacc';
 </script>";
 }else{
   
-$DbLink->query("SELECT FirstName FROM ".C_USERS_TBL." WHERE FirstName ='$_SESSION[ACCFIRST]' and LastName='$_SESSION[ACCLAST]'");
+$DbLink->query("SELECT FirstName FROM ".C_USERS_TBL." WHERE FirstName ='$_SESSION[ACCFIRST]' and LastName ='$_SESSION[ACCLAST]'");
 list($NAMECHECK1) = $DbLink->next_record();
 
-$DbLink->query("SELECT LastNameFROM ".C_USERS_TBL." WHERE FirstName ='$_SESSION[ACCFIRSTL]' and LastName='$_SESSION[ACCLAST]'");
+$DbLink->query("SELECT LastName FROM ".C_USERS_TBL." WHERE FirstName ='$_SESSION[ACCFIRSTL]' and LastName ='$_SESSION[ACCLAST]'");
 list($NAMECHECK2) = $DbLink->next_record();
 
 $DbLink->query("SELECT emailadress FROM ".C_WIUSR_TBL." WHERE emailadress='$_SESSION[EMAIL]'");
@@ -273,7 +273,7 @@ $_SESSION[ERROR]="";
 
 echo "<script language='javascript'>
 <!--
-window.location.href='index.php?page=createacc&aktion=ok';
+window.location.href='index.php?page=createacc&action=ok';
 // -->
 </script>";
 
@@ -291,7 +291,7 @@ window.location.href='index.php?page=createacc';
 
 }
 }
-}else if($_GET[aktion]=="ok"){
+}else if($_GET[action]=="ok"){
 
 if(($_SESSION[PASSWD] == '')or($_SESSION[EMAIC] == '')or($_SESSION[EMAIL] == '')or($_SESSION[CITY] == '')or($_SESSION[ZIP] == '')or($_SESSION[ADRESS] == '')or($_SESSION[NAMEL] == '')or($_SESSION[NAMEF] == '')or($_SESSION[ACCFIRST] == '')){
 
@@ -300,10 +300,10 @@ if(($_SESSION[ERROR] == '') and ($_SESSION[ACTION] == 'THX')) {
 	$passneu = $_SESSION[PASSWD];
 	$passwordHash = md5(md5($passneu) . ":" );
 
-	$DbLink->query("SELECT username FROM ".C_USERS_TBL." where username='$_SESSION[ACCFIRST]' and lastname='$_SESSION[ACCLAST]' ");
+	$DbLink->query("SELECT FirstName FROM ".C_USERS_TBL." where FirstName='$_SESSION[ACCFIRST]' and LastName='$_SESSION[ACCLAST]' ");
 	list($USERCHECK) = $DbLink->next_record();
 
-	$DbLink->query("SELECT username FROM ".C_USERS_TBL." where username='$_SESSION[ACCFIRSL]' and lastname='$_SESSION[ACCLAST]' ");
+	$DbLink->query("SELECT FirstName FROM ".C_USERS_TBL." where FirstName='$_SESSION[ACCFIRSL]' and LastName='$_SESSION[ACCLAST]' ");
 	list($USERCHE2CK) = $DbLink->next_record();
 	
 	

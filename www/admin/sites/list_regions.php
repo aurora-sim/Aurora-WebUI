@@ -1,6 +1,6 @@
 <?php
 $DbLink = new DB;
-$DbLink->query("SELECT uuid,regionName,locX,locY FROM ".C_REGIONS_TBL." ORDER BY locX ASC, locY ASC");
+$DbLink->query("SELECT RegionUUID,RegionName,locX,locY FROM ".C_REGIONS_TBL." ORDER BY locX ASC, locY ASC");
 
 ?>
 <style type="text/css">
@@ -24,10 +24,10 @@ $DbLink->query("SELECT uuid,regionName,locX,locY FROM ".C_REGIONS_TBL." ORDER BY
      <td align="center"><div class="title"><b>Loc Y</b></div></td>
    </tr>
    <?
-while(list($regionName,$locX,$locY,$uuid) = $DbLink->next_record()){
+while(list($RegionName,$locX,$locY,$uuid) = $DbLink->next_record()){
 ?>
    <tr>
-     <td align="center"><div class="results"><b><? echo $regionName; ?></b></div></td>
+     <td align="center"><div class="results"><b><? echo $RegionName; ?></b></div></td>
      <td align="center"><div class="results"><b><? echo $locX; ?></b></div></td>
      <td align="center"><div class="results"><b><? echo $locY; ?></b></div></td>
      <td align="center"><div class="results"><b><? echo $uuid; ?></b></div></td>

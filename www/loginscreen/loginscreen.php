@@ -33,15 +33,15 @@ while(list($UUID) = $DbLink->next_record())
 	// Let's get the user info
 	$DbLink3 = new DB;
 	$DbLink3->query("SELECT RegionID from ".C_PRESENCE_TBL." where UserID = '".$UUID."'");
-	list($regionUUID) = $DbLink3->next_record();
+	list($RegionUUID) = $DbLink3->next_record();
 
 	$DbLink2 = new DB;
-	$DbLink2->query("SELECT username, lastname from ".C_USERS_TBL." where UUID = '".$UUID."'");
+	$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where UUID = '".$UUID."'");
 	list($firstname, $lastname) = $DbLink2->next_record();
 	$username = $firstname." ".$lastname;
 	// Let's get the region information
 	$DbLink3 = new DB;
-	$DbLink3->query("SELECT regionName from ".C_REGIONS_TBL." where UUID = '".$regionUUID."'");
+	$DbLink3->query("SELECT RegionName from ".C_REGIONS_TBL." where UUID = '".$RegionUUID."'");
 	list($region) = $DbLink3->next_record();
 	if ($region != "")
 	{
