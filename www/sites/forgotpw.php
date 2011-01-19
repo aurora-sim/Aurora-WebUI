@@ -120,29 +120,29 @@ if($_POST[Submit]=="Submit")
                   <br>
                   <table width="91%" height="59" border="0" align="center" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
                     <tr>
-                      <td width="31%" bgcolor="#CCCCCC">First Name</td>
+                      <td width="31%" bgcolor="#CCCCCC"><? echo $wiredux_first_name ?></td>
                       <td width="69%" bgcolor="#CCCCCC">
                         <input name="first" type="text" size="40" maxlength="50" value="<?=$_POST[First]?>">
                       </td>
                     </tr>
 					<tr>
-                      <td width="31%" bgcolor="#CCCCCC">Last Name</td>
+                      <td width="31%" bgcolor="#CCCCCC"><? echo $wiredux_last_name ?></td>
                       <td width="69%" bgcolor="#CCCCCC">
                         <input name="last" type="text" size="40" maxlength="50" value="<?=$_POST[Last]?>">
                       </td>
                     </tr>
 					<tr>
-                      <td width="31%" bgcolor="#CCCCCC">Email</td>
+                      <td width="31%" bgcolor="#CCCCCC"><? echo $wiredux_email ?></td>
                       <td width="69%" bgcolor="#CCCCCC">
                         <input name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">                      </td>
                     </tr>
                     <tr>
-                      <td bgcolor="#CCCCCC">Confirm Email </td>
+                      <td bgcolor="#CCCCCC"><? echo $wiredux_confirm ?> <? echo $wiredux_email ?> </td>
                       <td bgcolor="#CCCCCC"><input name="email2" type="text" size="40" maxlength="50" value="<?=$_POST[email2]?>"></td>
                     </tr>
                     <tr>
                       <td bgcolor="#FFFFFF">&nbsp;</td>
-                      <td bgcolor="#CCCCCC"><input type="submit" name="Submit" value="Submit"></td>
+                      <td bgcolor="#CCCCCC"><input type="submit" name="Submit" value="<? echo $wiredux_submit ?>"></td>
                     </tr>
                   </table>
                 </tr>

@@ -219,22 +219,24 @@ else
     <tr>
         <td valign="top"><table width="50%" border="0" align="center">
                 <tr>
-                    <td><p align="center" class="Stil1">Change Account</p>                  </td>
+                    <td>
+                        <p align="center" class="Stil1"><? echo $wiredux_change_account ?></p>
+                    </td>
                 </tr>
             </table>
             <br>
             <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
 <? if (($REGIOCHECK == "0") or ($REGIOCHECK == "1")) { ?>
                 <tr>
-                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong>Change home region </strong></div></td>
+                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong><? echo $wiredux_change_home_region ?> </strong></div></td>
                 </tr>
                 <form name="form1" method="post" action="index.php?page=change">
                     <tr>
-                        <td valign="top" bgcolor="#FFFFFF">Old Region: </td>
+                        <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_old_region ?>: </td>
                         <td valign="top" bgcolor="#FFFFFF"><?= $oldregionname ?></td>
                     </tr>
                     <tr>
-                        <td width="47%" valign="top" bgcolor="#FFFFFF">Start Region:  </td>
+                        <td width="47%" valign="top" bgcolor="#FFFFFF"><? echo $wiredux_start_region ?>:  </td>
                         <td width="53%" valign="top" bgcolor="#FFFFFF"><select class="box" wide="25" name="region">
                                 <?
                                 $DbLink->query("SELECT regionName FROM " . C_REGIONS_TBL . " ORDER BY regionName ASC ");
@@ -251,7 +253,8 @@ else
                     <tr>
                         <td valign="top" bgcolor="#666666">&nbsp;</td>
                         <td valign="top" bgcolor="#FFFFFF">
-                            <input type="submit" name="Submit1" value="Save">                  </td>
+                            <input type="submit" name="Submit1" value="<? echo $wiredux_submit ?>">
+                        </td>
                     </tr>
                 </form>
 <? } ?>
@@ -259,7 +262,7 @@ else
                             <BR>
                             <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
                                 <tr>
-                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong>Change Password </strong></div></td>
+                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong><? echo $wiredux_change_password ?> </strong></div></td>
                                 </tr>
 <? if ($ERRORS) { ?>
                                 <tr>
@@ -268,27 +271,27 @@ else
 <? } ?>
                                 <form name="form1" method="post" action="index.php?page=change">
                                     <tr>
-                                        <td valign="top" bgcolor="#FFFFFF">Old password </td>
+                                        <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_change_password ?> </td>
                                         <td valign="top" bgcolor="#FFFFFF"><input type="password" name="passold"></td>
                                     </tr>
                                     <tr>
-                                        <td valign="top" bgcolor="#FFFFFF">New password </td>
+                                        <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_password ?> </td>
                                         <td valign="top" bgcolor="#FFFFFF"><input type="password" name="passnew"></td>
                                     </tr>
                                     <tr>
-                                        <td valign="top" bgcolor="#FFFFFF">Validate password </td>
+                                        <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_confirm ?> <? echo $wiredux_password ?> </td>
                                         <td valign="top" bgcolor="#FFFFFF"><input type="password" name="passvalid"></td>
                                     </tr>
                                     <tr>
                                         <td valign="top" bgcolor="#666666">&nbsp;</td>
-                                        <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit2" value="Save"></td>
+                                        <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit2" value="<? echo $wiredux_submit ?>"></td>
                                     </tr>
                                 </form>
                             </table>
                             <BR>
                             <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
                                 <tr>
-                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong>Change Email </strong></div></td>
+                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong><? echo $wiredux_change_email ?> </strong></div></td>
                                 </tr>
 <? if ($ERRORS2) { ?>
                                 <tr>
@@ -297,23 +300,23 @@ else
 <? } ?>
                                 <form name="form1" method="post" action="index.php?page=change">
                                     <tr>
-                                        <td valign="top" bgcolor="#FFFFFF">Old Email</td>
+                                        <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_old_email ?></td>
                                         <td valign="top" bgcolor="#FFFFFF"><input type="text" size="40" value="<?= $oldemail ?>" name="emailold"></td>
                                     </tr>
                                     <tr>
-                                        <td valign="top" bgcolor="#FFFFFF">New Email</td>
+                                        <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_email ?></td>
                                         <td valign="top" bgcolor="#FFFFFF"><input type="text" size="40" name="emailnew"></td>
                                     </tr>
                                     <tr>
                                         <td valign="top" bgcolor="#666666">&nbsp;</td>
-                                        <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit3" value="Save"></td>
+                                        <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit3" value="<? echo $wiredux_submit ?>"></td>
                                     </tr>
                                 </form>
                             </table>
                             <BR>
                             <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
                                 <tr>
-                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong>Change Name </strong></div></td>
+                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong><? echo $wiredux_change_name ?> </strong></div></td>
                                 </tr>
 <? if ($ERRORS2) { ?>
                                 <tr>
@@ -322,16 +325,16 @@ else
 <? } ?>
                                 <form name="form1" method="post" action="index.php?page=change">
                                     <tr>
-                                        <td valign="top" bgcolor="#FFFFFF">New First Name</td>
+                                        <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_first_name ?></td>
                                         <td valign="top" bgcolor="#FFFFFF"><input type="text" size="40" name="nameFirstNew" value ="<? echo $firstName; ?>"></td>
                                     </tr>
                                     <tr>
-                                        <td valign="top" bgcolor="#FFFFFF">New Last Name</td>
+                                        <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_last_name ?></td>
                                         <td valign="top" bgcolor="#FFFFFF"><input type="text" size="40" name="nameLastNew" value ="<? echo $lastName; ?>"></td>
                                     </tr>
                                     <tr>
                                         <td valign="top" bgcolor="#666666">&nbsp;</td>
-                                        <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit4" value="Save"></td>
+                                        <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit4" value="<? echo $wiredux_submit ?>"></td>
                                     </tr>
                                 </form>
                             </table>
