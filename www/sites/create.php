@@ -72,14 +72,14 @@ if ($_POST[action] == "") {
 <? } else { ?><? } ?>
 
                 <tr>
-                    <td class="even" width="50%"><?= SYSNAME ?> First name*</td>
+                    <td class="even" width="50%"><? echo $wiredux_first_name ?>*</td>
                     <td class="even" width="50%">
                         <input id="register_input" name="accountfirst" OnBlur="checkFirstName(this.value)" type="text" size="25" maxlength="15" value="<?= $_SESSION[ACCFIRST] ?>">
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="odd"><?= SYSNAME ?> Last name*</td>
+                    <td class="odd"><? echo $wiredux_last_name ?>*</td>
                     <td class="odd">
 
                         <?
@@ -111,14 +111,14 @@ if ($_POST[action] == "") {
                 </tr>
 
                 <tr>
-                    <td class="even"><?= SYSNAME ?> Password*</td>
+                    <td class="even"><? echo $wiredux_password ?>*</td>
                     <td class="even">
                         <input id="register_input" name="wordpass" type="password" size="25" maxlength="15">
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="odd"><?= SYSNAME ?> Password Confirm*</td>
+                    <td class="odd"><? echo $wiredux_password ?> <? echo $wiredux_confirm ?>*</td>
                     <td class="odd"><input id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
                     </td>
                 </tr>
@@ -127,11 +127,11 @@ if ($_POST[action] == "") {
 
 
                             <tr>
-                                <td class="even"> Start Region*</td>
+                                <td class="even"><? echo $wiredux_password ?>*</td>
                                 <td class="odd">
                                     <select id="register_input" wide="25" name="startregion">
                             <?
-                            $DbLink->query("SELECT regionName,regionHandle FROM " . C_REGIONS_TBL . " ORDER BY regionName ASC ");
+                            $DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " ORDER BY RegionName ASC ");
                             while (list($RegionName, $RegionHandle) = $DbLink->next_record()) {
                             ?>
 
@@ -145,42 +145,42 @@ if ($_POST[action] == "") {
 <? } if ($ADRESSCHECK == "1") { ?>
 
                             <tr>
-                                <td class="even">First Name*</td>
+                                <td class="even"><? echo $wiredux_first_name ?>*</td>
                                 <td class="even">
                                     <input id="register_input" name="firstname" type="text" size="25" maxlength="15" value="<?= $_SESSION[NAMEF] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="odd">Last Name*</td>
+                                <td class="odd"><? echo $wiredux_last_name ?>*</td>
                                 <td bgcolor="#CCCCCC">
                                     <input id="register_input" name="lastname" type="text" size="25" maxlength="15" value="<?= $_SESSION[NAMEL] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="even">Address*</td>
+                                <td class="even"><? echo $wiredux_address ?>*</td>
                                 <td bgcolor="#CCCCCC">
                                     <input id="register_input" name="adress" type="text" size="50" maxlength="60" value="<?= $_SESSION[ADRESS] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="odd">Zip*</td>
+                                <td class="odd"><? echo $wiredux_zip_code ?>*</td>
                                 <td bgcolor="#CCCCCC">
                                     <input id="register_input" name="zip" type="text" size="25" maxlength="15" value="<?= $_SESSION[ZIP] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="even">City*</td>
+                                <td class="even"><? echo $wiredux_city ?>*</td>
                                 <td bgcolor="#CCCCCC">
                                     <input id="register_input" name="city" type="text" size="25" maxlength="15" value="<?= $_SESSION[CITY] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="odd">Country*</td>
+                                <td class="odd"><? echo $wiredux_country ?>*</td>
                                 <td bgcolor="#CCCCCC">
                                     <select class="box" wide="25" name="country" value="<?= $_SESSION[COUNTRY] ?>">
                             <?
@@ -196,7 +196,7 @@ if ($_POST[action] == "") {
                 </tr>
 
                 <tr>
-                    <td class="even">Date of Birth*</td>
+                    <td class="even"><? echo $wiredux_date_of_birth ?>*</td>
                     <td bgcolor="#CCCCCC">
                         <table cellspacing="0" cellpadding="0" border="0">
 
@@ -257,7 +257,7 @@ if ($_POST[action] == "") {
 <? } ?>
 
                                             <tr>
-                                                <td class="odd"> Email*</td>
+                                                <td class="odd"> <? echo $wiredux_email ?>*</td>
 
                                                 <td class="odd">
                                                     <input id="register_input" name="email" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIL] ?>"></td>
@@ -265,7 +265,7 @@ if ($_POST[action] == "") {
 
 
                                             <tr>
-                                                <td class="even"> Confirm Email*</td>
+                                                <td class="even"> <? echo $wiredux_confirm ?> <? echo $wiredux_email ?>*</td>
                                                 <td class="even">
                                                     <input id="register_input" name="emaic" type="text" size="40" maxlength="40" ></td>
                                             </tr>
@@ -355,7 +355,7 @@ if ($_POST[action] == "") {
                                     <td class="odd">
                                         <center>
                                             <input type="hidden" name="action" value="check">
-                                            <input id="register_bouton" name="submit" TYPE="submit" value='Create new Account'>
+                                            <input id="register_bouton" name="submit" TYPE="submit" value='<? echo $wiredux_create_new_account ?>'>
                                         </center>
                                     </td>
                                 </tr>
