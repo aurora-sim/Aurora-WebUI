@@ -30,12 +30,12 @@ $sitestart=round($AStart / $ALimit ,0)+1;
 if($sitemax == 0){$sitemax=1;}
 ?>
 
-<div id="content"><h2><?= SYSNAME ?>: Region List </h2>
+<div id="content"><h2><?= SYSNAME ?>: <? echo $wiredux_region_list ?> </h2>
 
   <div id="region">
 
   <div id="message">
-    <p>This is the Regions List, click on a Region Name to get more information about that Region.</p>
+    <p><? echo $wiredux_region_list_page_info ?></p>
   </div>
 
 
@@ -45,15 +45,15 @@ if($sitemax == 0){$sitemax=1;}
         <td width="25px" background="images/main/regions_left.gif"></td>
         
         <td width="195" height="40" valign="bottom" background="images/main/regions_middle.jpg">
-	        <a href="index.php?page=regions&order=name"><b><u>Region Name</u></b></a></td>
+	        <a href="index.php?page=regions&order=name"><b><u><? echo $wiredux_region_name ?></u></b></a></td>
         
         <td width="175" valign="bottom" background="images/main/regions_middle.jpg">
-	        <a href="index.php?page=regions&order=x"><b><u>Location: X</u></b></a></td>
+	        <a href="index.php?page=regions&order=x"><b><u><? echo $wiredux_location ?>: X</u></b></a></td>
         
         <td width="175" valign="bottom" background="images/main/regions_middle.jpg">
-	        <a href="index.php?page=regions&order=y"><b><u>Location: Y</u></b></a></td>
+	        <a href="index.php?page=regions&order=y"><b><u><? echo $wiredux_location ?>: Y</u></b></a></td>
       
-        <td width="195" valign="bottom" background="images/main/regions_middle.jpg"><b>Info</b></td>
+        <td width="195" valign="bottom" background="images/main/regions_middle.jpg"><b><? echo $wiredux_info ?></b></td>
         
         <td width="25px" background="images/main/regions_right.gif"></td>
      </tr>
@@ -78,7 +78,7 @@ if($sitemax == 0){$sitemax=1;}
     	     <table CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
              <tr>
                <td>
-                 <font><b><?=$count?> Regions found</b></font>
+                 <font><b><?=$count?> <? echo $wiredux_regions_found ?></b></font>
                </td>
           
                <td align=right>
@@ -156,8 +156,7 @@ if($sitemax == 0){$sitemax=1;}
   </td>
 
   <TD bgcolor="#FFFFFF"></TD>
-    </TR>
-      <TR>
+    <TR>
         <TD bgcolor="#FFFFFF"></TD>
         <TD colspan="4" bgcolor="#FFFFFF"><hr /></TD>
         
@@ -181,7 +180,7 @@ if($sitemax == 0){$sitemax=1;}
       <TD>
         <DIV style="COLOR: #9966ff">
           <a style="cursor:pointer" onClick="window.open('<?=SYSURL?>/app/region/?x=<?=$locX?>&y=<?=$locY?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,width=800,height=400')">
-          <b><u>Click for more Info</u></b></a>
+          <b><u><? echo $wiredux_more_info ?></u></b></a>
           </DIV></TD>
       <TD bgcolor="#FFFFFF"></TD>
 	</TR>
@@ -199,7 +198,4 @@ if($sitemax == 0){$sitemax=1;}
     </tbody>
   </table>
 </div>
-
-<p>World Map Demo @ <a href="index.php?page=map&btn=6">map.php</a></p>
-
 </div>

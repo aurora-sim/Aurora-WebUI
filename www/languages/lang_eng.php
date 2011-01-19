@@ -20,4 +20,16 @@ $wiredux_country='Country';
 $wiredux_date_of_birth='Date Of Birth';
 $wiredux_email='Email';
 $wiredux_create_new_account='Create New Account';
+$wiredux_world_map='World Map';
+$wiredux_region_name='Region Name';
+$wiredux_location='Location';
+$wiredux_info='Info';
+$wiredux_regions_found='Regions Found';
+$wiredux_region_list='Region List';
+$wiredux_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
+$wiredux_more_info='More Info';
+$wiredux_email='Email';
+$wiredux_email='Email';
+$wiredux_email='Email';
+$wiredux_email='Email';
 ?>
