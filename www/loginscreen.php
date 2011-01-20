@@ -40,7 +40,7 @@ while(list($UUID) = $DbLink->next_record())
 	$username = $firstname." ".$lastname;
 	// Let's get the region information
 	$DbLink3 = new DB;
-	$DbLink3->query("SELECT regionName from ".C_REGIONS_TBL." where UUID = '".$regionUUID."'");
+	$DbLink3->query("SELECT RegionName from ".C_REGIONS_TBL." where RegionUUID = '".$regionUUID."'");
 	list($region) = $DbLink3->next_record();
 	if ($region != "")
 	{
@@ -60,9 +60,9 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <TITLE><?=SYSNAME?> Login</TITLE>
-<LINK href="loginscreen/style.css" type=text/css rel=stylesheet>
-<SCRIPT src="loginscreen/resize.js" type=text/javascript></SCRIPT>
-<SCRIPT src="loginscreen/imageswitch.js" type=text/javascript></SCRIPT>
+<LINK href="loginscreen/style.css" type="text/css" rel="stylesheet">
+<SCRIPT src="loginscreen/resize.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="loginscreen/imageswitch.js" type="text/javascript"></SCRIPT>
 
 <SCRIPT>
 $(document).ready(function(){

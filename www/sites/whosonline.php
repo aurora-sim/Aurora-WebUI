@@ -35,7 +35,7 @@ function OpenAgent(firstname, lastname)
     </TR>
 <?
 	$DbLink = new DB;
-	$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online = 1 AND ". 
+	$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online = 'True' AND ".
 					"Login < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND ".
 					"Logout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) ".
 					"ORDER BY Login DESC");
@@ -43,7 +43,7 @@ function OpenAgent(firstname, lastname)
 	{
 		// Let's get the user info
 		$DbLink2 = new DB;
-		$DbLink2->query("SELECT username, lastname from ".C_USERS_TBL." where UUID = '".$UUID."'");
+		$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where PrincipalID = '".$UUID."'");
 		list($firstname, $lastname) = $DbLink2->next_record();
 		$DbLink3 = new DB;
 		$DbLink3->query("SELECT RegionID from ".C_PRESENCE_TBL." where UserID = '".$UUID."'");
@@ -52,7 +52,7 @@ function OpenAgent(firstname, lastname)
 		$username = $firstname." ".$lastname;
 		// Let's get the region information
 		$DbLink3 = new DB;
-		$DbLink3->query("SELECT regionName from ".C_REGIONS_TBL." where UUID = '".$regionUUID."'");
+		$DbLink3->query("SELECT RegionName from ".C_REGIONS_TBL." where RegionUUID = '".$regionUUID."'");
 		list($region) = $DbLink3->next_record();
 		if ($region != "")
 		{
@@ -86,3 +86,4 @@ function OpenAgent(firstname, lastname)
 $DbLink->query("SELECT count(*) FROM ".C_GRIDUSER_TBL." where Online = 1 and 
 Login > (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now()) - 86400)))");
 list($NOWONLINE) = $DbLink->next_record();
+?>
