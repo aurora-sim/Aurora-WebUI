@@ -15,13 +15,13 @@ if($_GET[scr] != "") {
 
 
 <div id="content">
-<h2><?= SYSNAME ?>: Grid News </h2>
+<h2><?= SYSNAME ?>: <? echo $wiredux_news; ?> </h2>
   <table>
     <tr>
-      <td width="33%">News</td>
+      <td width="33%"><? echo $wiredux_news; ?></td>
       <td width="33%"></td>
       <td width="34%">
-          <a href="index.php?page=gridstatushistory">History</a>
+          <a href="index.php?page=gridstatushistory"><? echo $wiredux_history; ?></a>
       </td>
     </tr>
     <tr>

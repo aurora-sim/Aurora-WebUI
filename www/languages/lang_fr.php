@@ -46,14 +46,15 @@ $wiredux_old_email='Old Email';
 $wiredux_change_name='Change Name';
 $wiredux_login='Login';
 $wiredux_register='Register';
-
+$wiredux_news='News';
+$wiredux_history='History';
 
 //
 //Menu items
 //
 $wiredux_menu_item_1_name = 'Home';
 $wiredux_menu_item_2_name = 'Edit Account';
-$wiredux_menu_item_3_name = 'Grid Status';
+$wiredux_menu_item_3_name = 'News';
 $wiredux_menu_item_4_name = 'Transaction History';
 $wiredux_menu_item_5_name = 'Region List';
 $wiredux_menu_item_6_name = 'Map';
