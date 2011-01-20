@@ -118,7 +118,7 @@ if ($_POST[action] == "") {
                 </tr>
 
                 <tr>
-                    <td class="odd"><? echo $wiredux_password ?> <? echo $wiredux_confirm ?>*</td>
+                    <td class="odd"><? echo $wiredux_confirm ?> <? echo $wiredux_password ?>*</td>
                     <td class="odd"><input id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
                     </td>
                 </tr>
@@ -127,7 +127,7 @@ if ($_POST[action] == "") {
 
 
                             <tr>
-                                <td class="even"><? echo $wiredux_password ?>*</td>
+                                <td class="even"><? echo $wiredux_start_region ?>*</td>
                                 <td class="odd">
                                     <select id="register_input" wide="25" name="startregion">
                             <?

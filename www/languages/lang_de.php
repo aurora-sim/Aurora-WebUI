@@ -11,7 +11,7 @@ $wiredux_last_name='Nachname';
 $wiredux_password='Passwort';
 $wiredux_forgot_password='Passwort vergessen?';
 $wiredux_login='Einloggen';
-$wiredux_confirm='Bestätigen';
+$wiredux_confirm='Best&auml;tigen';
 $wiredux_start_region='Startregion';
 $wiredux_address='Addresse';
 $wiredux_zip_code='Postleitzahl';
@@ -26,21 +26,34 @@ $wiredux_location='Position';
 $wiredux_info='Info';
 $wiredux_regions_found='Regionen gefunden';
 $wiredux_region_list='Regionsliste';
-$wiredux_region_list_page_info='Dies ist die Regionsliste, mehr Informationen über eine Region per Klick of einen Regionsnamen.';
+$wiredux_region_list_page_info='Dies ist die Regionsliste, mehr Informationen &uuml;ber eine Region per Klick of einen Regionsnamen.';
 $wiredux_more_info='Mehr Info';
 $wiredux_user_name='Nutzername';
 $wiredux_online_users_info='Zeigt alle Nutzer, die in diesem Moment online sind.';
 $wiredux_submit='Absenden';
 $wiredux_verified_account='Vielen Dank, Ihr Konto ist nun aktiv und bereit zur Nutzung.';
-$wiredux_internal_error='Interner Fehler, bitte später erneut versuchen.';
-$wiredux_invalid_code='Dies ist unzulässiger Code oder der Code ist älter als 24 Stunden.';
+$wiredux_internal_error='Interner Fehler, bitte sp&auml;ter erneut versuchen.';
+$wiredux_invalid_code='Dies ist unzul&auml;ssiger Code oder der Code ist &auml;lter als 24 Stunden.';
 $wiredux_activate_account='Konto aktivieren';
-$wiredux_change_account='Konto ändern';
-$wiredux_change_home_region='Heimatregion ändern';
+$wiredux_change_account='Konto &auml;ndern';
+$wiredux_change_home_region='Heimatregion &auml;ndern';
 $wiredux_old_region='Alte Region';
-$wiredux_change_password='Passwort ändern';
+$wiredux_change_password='Passwort &auml;ndern';
 $wiredux_old_password='Altes Password';
-$wiredux_change_email='Email ändern';
+$wiredux_change_email='Email &auml;ndern';
 $wiredux_old_email='Alte Email';
-$wiredux_change_name='Name ändern';
+$wiredux_change_name='Name &auml;ndern';
+
+//
+//Menu items
+//
+$wiredux_menu_item_1_name = 'Home';
+$wiredux_menu_item_2_name = 'Edit Account';
+$wiredux_menu_item_3_name = 'Grid Status';
+$wiredux_menu_item_4_name = 'Transaction History';
+$wiredux_menu_item_5_name = 'Region List';
+$wiredux_menu_item_6_name = 'Map';
+$wiredux_menu_item_7_name = 'Register';
+$wiredux_menu_item_8_name = 'Logout';
+$wiredux_menu_item_9_name = 'Login';
 ?>
