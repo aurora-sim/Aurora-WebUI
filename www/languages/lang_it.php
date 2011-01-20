@@ -58,6 +58,7 @@ $wiredux_menu_item_6_name = 'Map';
 $wiredux_menu_item_7_name = 'Register';
 $wiredux_menu_item_8_name = 'Logout';
 $wiredux_menu_item_9_name = 'Login';
+$wiredux_menu_item_10_name = 'Who\'s Online';
 
 //
 // Home Page

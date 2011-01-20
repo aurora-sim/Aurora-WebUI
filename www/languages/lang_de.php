@@ -57,6 +57,7 @@ $wiredux_menu_item_6_name = 'Karte';
 $wiredux_menu_item_7_name = 'Registrieren';
 $wiredux_menu_item_8_name = 'Ausloggen';
 $wiredux_menu_item_9_name = 'Einloggen';
+$wiredux_menu_item_10_name = 'Nutzer online';
 
 //
 // Home Page

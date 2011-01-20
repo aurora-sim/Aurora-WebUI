@@ -16,7 +16,7 @@
     else
         $Display = 0;
     $DbLink->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where active='1' and type='1' and ((display='$Display') or (display='2')) ORDER BY rank ASC ");
-    $tableWidth = 850 / $DbLink->num_rows();
+    $tableWidth = 1000 / $DbLink->num_rows();
     $a = get_defined_vars();
     while (list($siteid, $siteurl, $sitetarget) = $DbLink->next_record()) {
     ?>
@@ -44,8 +44,8 @@
             }
         }
         ?> >
-            <td width="25"></td>
-            <td style="cursor:pointer;font-weight:bold;font-variant: small-caps;font-size: 1em;"> <?= ($a[$siteid]); ?></td>
+            <td width="20"></td>
+            <td style="cursor:pointer;font-weight:bold;font-variant: small-caps;font-size: 0.9em;"> <?= ($a[$siteid]); ?></td>
         </table>
     </td>
     <?

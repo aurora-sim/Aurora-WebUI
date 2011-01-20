@@ -20,4 +20,5 @@ INSERT INTO `wi_pagemanager` (`id`, `code`, `rank`, `type`, `active`, `url`, `ta
 ('wiredux_menu_item_6_name', '1213811351', '6', '1', '1', 'index.php?page=map', '_self', '2'),
 ('wiredux_menu_item_7_name', '1211832149', '7', '1', '1', 'index.php?page=create', '_self', '0'),
 ('wiredux_menu_item_8_name', '1211832173', '8', '1', '1', 'index.php?page=logout', '_self', '1'),
-('wiredux_menu_item_9_name', '1211832174', '9', '1', '1', 'index.php?page=login', '_self', '0');
+('wiredux_menu_item_9_name', '1211832174', '9', '1', '1', 'index.php?page=login', '_self', '0'),
+('wiredux_menu_item_10_name', '1211832175', '10', '1', '1', 'index.php?page=online', '_self', '2');
