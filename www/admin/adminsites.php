@@ -16,10 +16,6 @@ if($_SESSION[page]=='home')
 {
 include("sites/home.php");
 }
-if($_SESSION[page]=='updatedb')
-{
-include("sites/updatedb.php");
-}
 if($_SESSION[page]=='createacc')
 {
 include("sites/createacc.php");

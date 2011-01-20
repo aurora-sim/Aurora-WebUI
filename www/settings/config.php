@@ -18,13 +18,6 @@ define("WIREDUX_PASSWORD","");
 // e.g. 24 for 24 hours  leave empty for no timed delete
 $unconfirmed_deltime="24";
 
-######################## Page Editor #######################
-
-// Sets wich Pageeditor should be used:
-$editor_to_use='standard';
-//$editor_to_use='fckeditor';
-
-
 ################### GridMap Settings  #####################
 //Allowing Zoom on your Map
 $ALLOW_ZOOM=TRUE;
