@@ -72,16 +72,6 @@ include("sites/loginscreenmanager.php");
 }
 
 
-//PAGEMANAGER 
-if($_SESSION[page]=='pagemanager')
-{
-include("sites/pagemanager/pagemanager.php");
-}
-if($_SESSION[page]=='pageedit')
-{
-include("sites/pagemanager/pageeditor.php");
-}
-
 //NEWSEDITOR
 elseif ($_SESSION[page]=="news_add"){
 include("sites/news/news_add.php");
