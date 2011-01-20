@@ -9,7 +9,7 @@
 
 ##################### System #########################
 define("SYSNAME","Aurora WiRedux");
-define("SYSURL","***");
+define("SYSURL","");
 define("SYSMAIL","your@email.com");
 
 ############ Delete Unconfirmed accounts ################
@@ -40,6 +40,11 @@ $mapstartY=1000;
 //Direction where Info Image has to stay ex.: dr = down right ; dl =down left ; tr = top right ; tl = top left ; c = center 
 $display_marker="dr";
 
+####################### Skin ##########################
+
+//Current skins are 'Default'
+$skin='Default';
+
 ##################### Database ########################
 define("C_DB_TYPE","mysql");
 //Your Hostname here:
@@ -47,15 +52,15 @@ define("C_DB_HOST","localhost");
 //Your Databasename here:
 define("C_DB_NAME","aurora");
 //Your Username from Database here:
-define("C_DB_USER","aurora");
+define("C_DB_USER","root");
 //Your Database Password here:
-define("C_DB_PASS","***");
+define("C_DB_PASS","");
 
 ################ Database Tables #########################
 define("C_ADMIN_TBL","wi_admin");
 define("C_WIUSR_TBL","wi_users");
 define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
-define("WIREDUX_PASSWORD","***");
+define("WIREDUX_PASSWORD","");
 define("C_WI_APPEARANCE_TBL","wi_appearance");
 define("C_USRBAN_TBL","wi_banned");
 define("C_CODES_TBL","wi_codetable");

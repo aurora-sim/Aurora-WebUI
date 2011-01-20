@@ -13,7 +13,7 @@ function OpenAgent(firstname, lastname)
     <td><table width="100%" border="0" cellspacing="0" cellpadding="10">
       <tr>
         <td bgcolor="#FFFFFF">
-          <div align="center"><b>This shows all the users that are online at <?=SYSNAME?> at this moment.<br>(Note: Also users that have crashed will be in this list)</b></div></td>
+          <div align="center"><b><? echo $wiredux_online_users_info ?></b></div></td>
       </tr>
     </table></td>
   </tr>
@@ -25,9 +25,9 @@ function OpenAgent(firstname, lastname)
     <TR>
       <TD width="25" background="images/main/regions_left.gif">&nbsp;</TD>
       <TD width="221" height="40" valign="bottom" background="images/main/regions_middle.jpg">
-	  <b>User Name:</b></TD>
+	  <b><? echo $wiredux_user_name ?>:</b></TD>
       <TD width="178" valign="bottom" background="images/main/regions_middle.jpg">
-	  <b>Region:</b></TD>
+	  <b><? echo $wiredux_region_name ?>:</b></TD>
       <TD width="175" valign="bottom" background="images/main/regions_middle.jpg">
 	  <b>&nbsp;</b></TD>
       <TD width="195" valign="bottom" background="images/main/regions_middle.jpg"><b>Info</b></TD>

@@ -14,6 +14,7 @@ include("settings/json.php");
 include("settings/mysql.php");
 include("check.php");
 include("languages/translator.php");
+include("skins/skins.php");
 
 if ($_GET[page] != '') {
     $_SESSION[page] = $_GET[page];
@@ -108,10 +109,9 @@ window.location.href='index.php?page=home&btn=1&error=$ERROR';
     <head>
         <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <link rel="stylesheet" href="<?= SYSURL ?>/css/style.css" type="text/css" />
-        <link rel="icon" href="<?= SYSURL ?>/images/main/favicon.ico" />
+        <link rel="stylesheet" href="<? echo $skin_css ?>" type="text/css" />
+        <link rel="icon" href="/images/main/favicon.ico" />
         <title>Welcome to <?= SYSNAME ?></title>
-
     </head>
     <body class="wiredux">
         <div id="container">

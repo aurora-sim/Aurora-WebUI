@@ -16,17 +16,17 @@ if($UUID)
 	$recieved = json_decode($do_post_requested);
 	if ($recieved->{'Verified'} == "true") 
 	{
-		$WERROR="Thank you, your account is now active and ready to use.";
+		$WERROR= $wiredux_verified_account;
 		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='confirm'");
 	}
 	else
 	{
-		$WERROR="Internal error, please try again later.";
+		$WERROR=$wiredux_internal_error;
 	}
 }
 else
 {
-	$WERROR="This isnt a valid code or maybe the code was older than 24h";
+	$WERROR=$wiredux_invalid_code;
 }
 ?>
 
@@ -34,7 +34,7 @@ else
             <tr>
               <td valign="top"><table width="50%" border="0" align="center">
                 <tr>
-                  <td><p align="center" class="Stil1">Activate Account</p></td>
+                  <td><p align="center" class="Stil1"><? echo $wiredux_activate_account ?></p></td>
                 </tr>
               </table>
               <br />

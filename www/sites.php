@@ -1,4 +1,5 @@
 <?
+
 /*
  * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
@@ -7,9 +8,7 @@
  *
  */
 
-switch($_SESSION[page])
-
-{
+switch ($_SESSION[page]) {
 
     case '':
 
@@ -53,7 +52,7 @@ switch($_SESSION[page])
 
         return;
 
-	case 'gridstatus':
+    case 'gridstatus':
 
         include("./sites/news/gridnews.php");
 
@@ -105,15 +104,15 @@ switch($_SESSION[page])
 
     case 'make-events':
 
-		include("./sites/make-events.php");
+        include("./sites/make-events.php");
 
-		return;
+        return;
 
     case 'save-events':
 
-		include("./sites/save-events.php");
+        include("./sites/save-events.php");
 
-		return;
+        return;
 
     case 'classifieds':
 
@@ -129,74 +128,74 @@ switch($_SESSION[page])
 
         return;
 
-	// Added Who's Online
+    // Added Who's Online
 
-	case 'online':
+    case 'online':
 
-		include("./sites/whosonline.php");
+        include("./sites/whosonline.php");
 
-		return;
+        return;
 
-	// Added Accounting Tools
+    // Added Accounting Tools
 
-	case 'accounting':
+    case 'accounting':
 
-		include("./sites/accounting.php");
+        include("./sites/accounting.php");
 
-		return;
+        return;
 
-	// Adding Statistics Information
+    // Adding Statistics Information
 
-	case 'stats':
+    case 'stats':
 
-		include("./sites/stats.php");
+        include("./sites/stats.php");
 
-		return;
+        return;
 
-	// Adding Region Tools
+    // Adding Region Tools
 
-	case 'regiontools':
+    case 'regiontools':
 
-		include("./app/management/regiontools.php");
+        include("./app/management/regiontools.php");
 
-		return;
+        return;
 
-	case 'region-generate':
+    case 'region-generate':
 
-		include("./app/management/region-generate.php");
+        include("./app/management/region-generate.php");
 
-		return;
+        return;
 
-	case 'region-overview':
+    case 'region-overview':
 
-		include("./app/management/region-overview.php");
+        include("./app/management/region-overview.php");
 
-		return;
+        return;
 
-	case 'region-services':
+    case 'region-services':
 
-		include("./app/management/region-services.php");
+        include("./app/management/region-services.php");
 
-		return;
+        return;
 
-	// Adding Support
+    // Adding Support
 
-	case 'support':
+    case 'support':
 
-		include("./sites/support.php");
+        include("./sites/support.php");
 
-		return;
+        return;
 
-	case 'login':
+    case 'login':
 
-		include("./sites/login.php");
+        include("./sites/login.php");
 
-		return;
+        return;
 
-	default:
+    default:
 
         include("./sites/sitemodul.php");
 
-		return;
+        return;
 }
 ?>

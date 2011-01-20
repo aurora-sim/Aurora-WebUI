@@ -1,6 +1,6 @@
 <?php
-$wiredux_welcome='salut bienvenue';
-$wiredux_actual_language='Fran�ais';
+$wiredux_welcome='hi welcome';
+$wiredux_actual_language='Dutch';
 $wiredux_grid_status='GRID STATUS';
 $wiredux_total_users='Total Users';
 $wiredux_total_regions='Total Regions';
