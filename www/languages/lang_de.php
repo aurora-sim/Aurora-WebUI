@@ -1,5 +1,6 @@
 <?php
 $wiredux_welcome='Willkommen';
+$wiredux_language_code='de';
 $wiredux_actual_language='Deutsch';
 $wiredux_grid_status='GRID-STATUS';
 $wiredux_total_users='Alle Nutzer';
@@ -11,7 +12,7 @@ $wiredux_last_name='Nachname';
 $wiredux_password='Passwort';
 $wiredux_forgot_password='Passwort vergessen?';
 $wiredux_login='Einloggen';
-$wiredux_confirm='Best&auml;tigen';
+$wiredux_confirm='best&auml;tigen';
 $wiredux_start_region='Startregion';
 $wiredux_address='Addresse';
 $wiredux_zip_code='Postleitzahl';
@@ -47,13 +48,31 @@ $wiredux_change_name='Name &auml;ndern';
 //
 //Menu items
 //
-$wiredux_menu_item_1_name = 'Home';
-$wiredux_menu_item_2_name = 'Edit Account';
-$wiredux_menu_item_3_name = 'Grid Status';
-$wiredux_menu_item_4_name = 'Transaction History';
-$wiredux_menu_item_5_name = 'Region List';
-$wiredux_menu_item_6_name = 'Map';
-$wiredux_menu_item_7_name = 'Register';
-$wiredux_menu_item_8_name = 'Logout';
-$wiredux_menu_item_9_name = 'Login';
+$wiredux_menu_item_1_name = 'Startseite';
+$wiredux_menu_item_2_name = 'Konto bearbeiten';
+$wiredux_menu_item_3_name = 'Grid-Status';
+$wiredux_menu_item_4_name = 'Vorgangs-Historie';
+$wiredux_menu_item_5_name = 'Regionsliste';
+$wiredux_menu_item_6_name = 'Karte';
+$wiredux_menu_item_7_name = 'Registrieren';
+$wiredux_menu_item_8_name = 'Ausloggen';
+$wiredux_menu_item_9_name = 'Einloggen';
+
+//
+// Home Page
+//
+
+$wiredux_home_page='<h2><strong>Willkommen auf der neuen Aurora WiRedux Internetseite!</strong></h2>
+    <p>
+        Dies ist unsere neue virtuelle Welt. Hier kann man Spass haben, Leute treffen, sich unterhalten, spielen, die Welt erkunden, etwas erschaffen und Tr&auml;ume teilen. </br>
+        Die M&ouml;glichkeiten sind grenzenlos in unserer brandneuen 3D Welt. <br />
+        Unsere Welt wird von den Residenten geschaffen, hier kannst Du bauen, was immer Deine Fantasie ist. <br /><br />
+        Melde Dich heute an, entwerfe Dein virtuelles Ich und spiele in unserer Welt. <br />
+        Schliesse Dich uns jetzt and bewege etwas! <br /><br /><br />
+        <u>Mit nur 3 einfachen Schritten geht es los:</u> <br /><br />
+        1.) Ein KOSTENLOSES Konto hier auf unseren Seiten anlegen. <br /><br />
+        2.) Den Viewer herunterladen. Wir empfehlen <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        3.) Pr&uuml;fen, ob unser Grid auf Deinem Viewer gelistet ist. <br /><br /><br />
+        <i>Bitte beachten: Die Aurora-Plattform ist noch in der Alpha-Phase und funktioniert vielleicht nicht immer wie erwartet.</i>
+    </p>';
 ?>

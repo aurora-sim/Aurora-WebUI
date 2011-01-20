@@ -45,6 +45,16 @@ $display_marker="dr";
 //Current skins are 'Default'
 $skin='Default';
 
+
+#################### Languages ########################
+
+$languages=array("en" => "English",
+    "fr" => "French",
+    "de" => "German",
+    "es" => "Spanish",
+    "it" => "Italian",
+    "nl" => "Dutch");
+
 ##################### Database ########################
 define("C_DB_TYPE","mysql");
 //Your Hostname here:
