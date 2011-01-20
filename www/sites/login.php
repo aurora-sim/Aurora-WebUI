@@ -1,4 +1,4 @@
-<div id="content"><h2><?= SYSNAME ?>: Login</h2>
+<div id="content"><h2><?= SYSNAME ?>: <? echo $wiredux_login ?></h2>
   <div id="login">
       <form action="index.php" method="POST" onSubmit="return Form(this)">
         <table>

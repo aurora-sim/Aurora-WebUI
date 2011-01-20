@@ -56,7 +56,7 @@ if ($_POST[action] == "") {
 
     <div id="content"><h2>
 
-        <?= SYSNAME ?>: Register</h2>
+        <?= SYSNAME ?>: <? echo $wiredux_register ?></h2>
 
     <div id="register">
 

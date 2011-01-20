@@ -44,6 +44,8 @@ $wiredux_old_password='Old Password';
 $wiredux_change_email='Change Email';
 $wiredux_old_email='Old Email';
 $wiredux_change_name='Change Name';
+$wiredux_login='Login';
+$wiredux_register='Register';
 
 
 //
