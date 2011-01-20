@@ -42,11 +42,6 @@ if($_SESSION[ADMINUID] == $ADMINCHECK){
 	</td>
   </tr>
   <tr>
-  <td>&nbsp;
-  
-  </td>
-  </tr>
-  <tr>
     <td>
 	
 	<table width="90%" align="center" border="0" class="Stil9">
@@ -59,26 +54,8 @@ if($_SESSION[ADMINUID] == $ADMINCHECK){
 		}?>
 		onclick="document.location.href='index.php?page=settings'"
 		><div align="center">Admin Settings</div></td>
-      </tr>
-    </table>
-		
-	</td>
-  </tr>
-  <tr>
-    <td>
-	
-	<table width="90%" align="center" border="0" class="Stil9">
-      <tr>
-        <td style="cursor:pointer;font-weight:bold;"
-		<? if($_SESSION[page]== 'pagemanager'){
-		echo"background=\"../images/main/menu_selected.jpg\""; 
-		}else {  
-		echo"background=\"../images/main/menu_unselected.jpg\""; 
-		}?>
-		onclick="document.location.href='index.php?page=pagemanager'"
-		><div align="center">Page Manager</div></td>
-      </tr>
-    </table>
+         </tr>
+        </table>
 	
 	</td>
   </tr>

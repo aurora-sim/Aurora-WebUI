@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS `wi_pagemanager`;
+DROP TABLE IF EXISTS `wi_pagemanager`;
 CREATE TABLE `wi_pagemanager` (
   `id` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
