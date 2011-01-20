@@ -4,7 +4,7 @@
         <?
         foreach ($languages as $langCode => $langName) {
             if ($langCode != $wiredux_language_code) {
-                echo '<a href="?lang=' . $langCode . '"><img src="images/flags/flag-' . $langCode . '.png" alt=" ' . $langName . '" title=" ' . $langName . '" /></a>';
+                echo ' <a href="?lang=' . $langCode . '"><img src="images/flags/flag-' . $langCode . '.png" alt=" ' . $langName . '" title=" ' . $langName . '" /></a>';
             }
         } ?>
         <?php echo $wiredux_actual_language; ?>

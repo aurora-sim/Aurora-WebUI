@@ -10,4 +10,4 @@ CREATE TABLE `wi_admin` (
 -- 
 
 INSERT INTO `wi_admin` (`id`, `username`, `password`) VALUES 
-(1, 'admin', '84e78b596fa8e391c49f3c4df7b9c57f'); -- No, we dont know what the default admin password is.  You'll have to change it when you get logged in ;)
+(1, 'admin', '5f05d1b5f5edd01114ab7c0d44084cb1'); -- Password is 'admin'
