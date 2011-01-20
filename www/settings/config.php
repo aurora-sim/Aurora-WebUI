@@ -39,7 +39,7 @@ $display_marker="tl";
 ####################### Skin ##########################
 
 //Current skins are 'Default'
-$skin='Default';
+$skin='default';
 
 
 #################### Languages ########################
