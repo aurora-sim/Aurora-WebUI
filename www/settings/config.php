@@ -11,18 +11,14 @@
 define("SYSNAME","Aurora WiRedux");
 define("SYSURL","");
 define("SYSMAIL","your@email.com");
+define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
+define("WIREDUX_PASSWORD","");
 
 ############ Delete Unconfirmed accounts ################
 // e.g. 24 for 24 hours  leave empty for no timed delete
 $unconfirmed_deltime="24";
 
-###################### Money Settings ####################
-
-// Key of the account that all fees go to:
-$economy_sink_account="00000000-0000-0000-0000-000000000000";
-
-// Key of the account that all purchased currency is debited from:
-$economy_source_account="00000000-0000-0000-0000-000000000000";
+######################## Page Editor #######################
 
 // Sets wich Pageeditor should be used:
 $editor_to_use='standard';
@@ -37,8 +33,8 @@ $ALLOW_ZOOM=TRUE;
 $mapstartX=1000;
 $mapstartY=1000;
 
-//Direction where Info Image has to stay ex.: dr = down right ; dl =down left ; tr = top right ; tl = top left ; c = center 
-$display_marker="dr";
+//Direction where Info Image has to stay ex.: dr = down right ; dl =down left ; tr = top right ; tl = top left ; c = center
+$display_marker="tl";
 
 ####################### Skin ##########################
 
@@ -69,16 +65,12 @@ define("C_DB_PASS","");
 ################ Database Tables #########################
 define("C_ADMIN_TBL","wi_admin");
 define("C_WIUSR_TBL","wi_users");
-define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
-define("WIREDUX_PASSWORD","");
 define("C_WI_APPEARANCE_TBL","wi_appearance");
 define("C_USRBAN_TBL","wi_banned");
 define("C_CODES_TBL","wi_codetable");
 define("C_ADM_TBL","wi_adminsetting");
 define("C_COUNTRY_TBL","wi_country");
 define("C_NAMES_TBL","wi_lastnames");
-define("C_CURRENCY_TBL","wi_economy_money");
-define("C_TRANSACTION_TBL","wi_economy_transactions");
 define("C_INFOWINDOW_TBL","wi_startscreen_infowindow");
 define("C_NEWS_TBL","wi_startscreen_news");
 define("C_PAGE_TBL","wi_pagemanager");

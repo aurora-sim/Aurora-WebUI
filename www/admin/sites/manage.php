@@ -46,7 +46,6 @@ if(($_GET[action2] == 'delete') and ($_GET[quest] == 'yes')) {
 	$DbLink3->query("Delete FROM ".C_GRIDUSER_TBL." where UserID='$_GET[user_id]'");
 	$DbLink3->query("Delete FROM ".C_WIUSR_TBL." WHERE UUID='$_GET[user_id]'");
 	$DbLink3->query("Delete FROM ".C_CODES_TBL." WHERE UUID='$_GET[user_id]'");
-	$DbLink3->query("Delete FROM ".C_TRANSACTION_TBL." WHERE (sourceId='$_GET[user_id]' or destId='$_GET[user_id]')");
 }
 //DELETE USER END
 
