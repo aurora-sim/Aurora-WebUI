@@ -52,16 +52,16 @@ $wiredux_history='Historie';
 //
 //Menu items
 //
-$wiredux_menu_item_1_name = 'Thuis';
-$wiredux_menu_item_2_name = 'Wijzig Profiel';
-$wiredux_menu_item_3_name = 'Nieuws';
-$wiredux_menu_item_4_name = 'Transactie Historie';
-$wiredux_menu_item_5_name = 'Regio Overzicht';
-$wiredux_menu_item_6_name = 'Kaart';
-$wiredux_menu_item_7_name = 'Registreer';
-$wiredux_menu_item_8_name = 'Loguit';
-$wiredux_menu_item_9_name = 'Login';
-$wiredux_menu_item_10_name = 'Wie is Online';
+
+$wiredux_menu_item_home = 'Thuis';
+$wiredux_menu_item_changeaccount = 'Wijzig Profiel';
+$wiredux_menu_item_news = 'Nieuws';
+$wiredux_menu_item_regions = 'Regio Overzicht';
+$wiredux_menu_item_worldmap = 'Kaart';
+$wiredux_menu_item_register = 'Registreer';
+$wiredux_menu_item_logout = 'Loguit';
+$wiredux_menu_item_login = 'Login';
+$wiredux_menu_item_onlineusers = 'Wie is Online';
 
 //
 // Home Page
@@ -80,4 +80,9 @@ Volg ons voorbeeld, en maak het verschil!<br /><br /><br />
 3.) Voeg ons grid toe aan de viewer. <br /><br /><br />
 <i>Hou wel in gedachten dat het Aurora platform nog steeds experimenteel is, en dat sommige dingen (nog) niet zoals verwacht kunnen werken.</i>
 </p>';
+
+//
+// 404 page
+//
+$wiredux_404_text = 'The requested page could not be found! Please try again later.';
 ?>

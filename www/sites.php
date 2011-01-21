@@ -1,113 +1,23 @@
 <?
-
 /*
- * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
+ * Copyright (c) 2007, 2008 Contributors, http://opensimulator.org/
  * See CONTRIBUTORS for a full list of copyright holders.
  *
  * See LICENSE for the full licensing terms of this file.
  *
- */
+*/
 
-switch ($_SESSION[page]) {
+$DbLink = new DB;
 
-    case '':
+$page = $_SESSION[page];
 
-        include("./sites/home.php");
+$DbLink->query("SELECT type, include FROM ".C_SITES_TBL." where pagecase = '".$page."'");
 
-        return;
-
-    case 'home':
-
-        include("./sites/home.php");
-
-        return;
-
-    case 'change':
-
-        include("./sites/changeacc.php");
-
-        return;
-
-    case 'forgotpass':
-
-        include("./sites/forgotpw.php");
-
-        return;
-
-    case 'pwreset':
-
-        include("./sites/pwreset.php");
-
-        return;
-
-    case 'activate':
-
-        include("./sites/activate.php");
-
-        return;
-
-    case 'activatemail':
-
-        include("./sites/activatemail.php");
-
-        return;
-
-    case 'gridstatus':
-
-        include("./sites/news/gridnews.php");
-
-        return;
-
-    case 'gridstatushistory':
-
-        include("./sites/news/newshistory.php");
-
-        return;
-
-    case 'smodul':
-
-        include("./sites/sitemodul.php");
-
-        return;
-
-    case 'create':
-
-        include("./sites/create.php");
-
-        return;
-
-    case 'regions':
-
-        include("./sites/regionlist.php");
-
-        return;
-
-    case 'map':
-
-        include("./sites/map.php");
-
-        return;
-
-    // End Search Additions
-
-    case 'logout':
-
-        include("./sites/logout.php");
-
-        return;
-
-    // Added Who's Online
-
-    case 'online':
-
-        include("./sites/whosonline.php");
-
-        return;
-
-    default:
-
-        include("./sites/sitemodul.php");
-
-        return;
+while(list($type,$include) = $DbLink->next_record())
+{
+	include("./sites/".$type."/".$include);
+	return;
 }
+
+include("./sites/404.php");
 ?>

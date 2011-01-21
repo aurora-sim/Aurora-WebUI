@@ -52,16 +52,15 @@ $wiredux_history='History';
 //
 //Menu items
 //
-$wiredux_menu_item_1_name = 'Home';
-$wiredux_menu_item_2_name = 'Edit Account';
-$wiredux_menu_item_3_name = 'News';
-$wiredux_menu_item_4_name = 'Transaction History';
-$wiredux_menu_item_5_name = 'Region List';
-$wiredux_menu_item_6_name = 'Map';
-$wiredux_menu_item_7_name = 'Register';
-$wiredux_menu_item_8_name = 'Logout';
-$wiredux_menu_item_9_name = 'Login';
-$wiredux_menu_item_10_name = 'Who\'s Online';
+$wiredux_menu_item_home = 'Home';
+$wiredux_menu_item_changeaccount = 'Edit Account';
+$wiredux_menu_item_news = 'News';
+$wiredux_menu_item_regions = 'Region List';
+$wiredux_menu_item_worldmap = 'Map';
+$wiredux_menu_item_register = 'Register';
+$wiredux_menu_item_logout = 'Logout';
+$wiredux_menu_item_login = 'Login';
+$wiredux_menu_item_onlineusers = 'Online Users';
 
 //
 // Home Page
@@ -80,4 +79,9 @@ $wiredux_home_page='<h2><strong>Welcome to the new Aurora WiRedux webpage!</stro
         3.) Be sure to add our grid to your viewer. <br /><br /><br />
         <i>Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</i>
     </p>';
+
+//
+// 404 page
+//
+$wiredux_404_text = 'The requested page could not be found! Please try again later.';
 ?>

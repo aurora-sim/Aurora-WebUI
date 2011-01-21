@@ -52,16 +52,16 @@ $wiredux_history='History';
 //
 //Menu items
 //
-$wiredux_menu_item_1_name = 'Home';
-$wiredux_menu_item_2_name = 'Cambia il tuo Account';
-$wiredux_menu_item_3_name = 'Novita';
-$wiredux_menu_item_4_name = 'Estratto Conto';
-$wiredux_menu_item_5_name = 'Lista Regioni';
-$wiredux_menu_item_6_name = 'Mappa';
-$wiredux_menu_item_7_name = 'Registrati';
-$wiredux_menu_item_8_name = 'Chiudi';
-$wiredux_menu_item_9_name = 'Entra';
-$wiredux_menu_item_10_name = 'Chi e online';
+
+$wiredux_menu_item_home = 'Home';
+$wiredux_menu_item_changeaccount = 'Cambia il tuo Account';
+$wiredux_menu_item_news = 'Novita';
+$wiredux_menu_item_regions = 'Lista Regioni';
+$wiredux_menu_item_worldmap = 'Mappa';
+$wiredux_menu_item_register = 'Registrati';
+$wiredux_menu_item_logout = 'Chiudi';
+$wiredux_menu_item_login = 'Entra';
+$wiredux_menu_item_onlineusers = 'Chi e online';
 
 //
 // Home Page
@@ -80,4 +80,9 @@ $wiredux_home_page='<h2><strong>Benvenuto/a alla HomePage di AuroraWiRedux!</str
         3.) Assicurati di aggiungere la nostra grid al tuo viewer. <br /><br /><br />
         <i>Per favore, tieni presente che la piattaforma di Aurora è ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
     </p>';
+
+//
+// 404 page
+//
+$wiredux_404_text = 'The requested page could not be found! Please try again later.';
 ?>

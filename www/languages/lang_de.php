@@ -52,16 +52,16 @@ $wiredux_history='Historie';
 //
 //Menu items
 //
-$wiredux_menu_item_1_name = 'Startseite';
-$wiredux_menu_item_2_name = 'Konto bearbeiten';
-$wiredux_menu_item_3_name = 'Nachrichten';
-$wiredux_menu_item_4_name = 'Vorgangs-Historie';
-$wiredux_menu_item_5_name = 'Regionsliste';
-$wiredux_menu_item_6_name = 'Karte';
-$wiredux_menu_item_7_name = 'Registrieren';
-$wiredux_menu_item_8_name = 'Ausloggen';
-$wiredux_menu_item_9_name = 'Einloggen';
-$wiredux_menu_item_10_name = 'Nutzer online';
+
+$wiredux_menu_item_home = 'Startseite';
+$wiredux_menu_item_changeaccount = 'Konto bearbeiten';
+$wiredux_menu_item_news = 'Nachrichten';
+$wiredux_menu_item_regions = 'Regionsliste';
+$wiredux_menu_item_worldmap = 'Karte';
+$wiredux_menu_item_register = 'Registrieren';
+$wiredux_menu_item_logout = 'Ausloggen';
+$wiredux_menu_item_login = 'Einloggen';
+$wiredux_menu_item_onlineusers = 'Nutzer online';
 
 //
 // Home Page
@@ -80,4 +80,9 @@ $wiredux_home_page='<h2><strong>Willkommen auf der neuen Aurora WiRedux Internet
         3.) Pr&uuml;fen, ob unser Grid auf Deinem Viewer gelistet ist. <br /><br /><br />
         <i>Bitte beachten: Die Aurora-Plattform ist noch in der Alpha-Phase und funktioniert vielleicht nicht immer wie erwartet.</i>
     </p>';
+
+//
+// 404 page
+//
+$wiredux_404_text = 'Die angeforderte Seite konnte nicht gefunden werden! Bitte sp&auml;ter erneut versuchen.';
 ?>

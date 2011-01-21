@@ -67,6 +67,7 @@ define("C_NAMES_TBL","wi_lastnames");
 define("C_INFOWINDOW_TBL","wi_startscreen_infowindow");
 define("C_NEWS_TBL","wi_startscreen_news");
 define("C_PAGE_TBL","wi_pagemanager");
+define("C_SITES_TBL","wi_sitemanagement");
 // REGION MANAGER
 define("C_MANAGEMENT_PAGE_TBL","wi_management_pagemanager");
 define("C_MAP_REGIONS_TBL", "wi_regions");
