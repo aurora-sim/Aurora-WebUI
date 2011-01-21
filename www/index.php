@@ -26,7 +26,7 @@ if ($_GET[page] != '') {
 }
 
 //LOGIN AUTHENTIFICATION
-if ($_POST[Submit] == "Login") {
+if ($_POST[Submit] == $wiredux_login) {
 
     $found = array();
     $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => md5(WIREDUX_PASSWORD),
@@ -89,20 +89,6 @@ list($USERCOUNT) = $DbLink->next_record();
 
 $DbLink->query("SELECT count(*) FROM " . C_REGIONS_TBL . "");
 list($REGIONSCOUNT) = $DbLink->next_record();
-
-if (($_GET[btn] == "") and ($ERROR == "")) {
-    echo "<script language='javascript'>
-<!--
-window.location.href='index.php?page=home&btn=1';
-// -->
-</script>";
-} else if (($_GET[btn] == "") and ($ERROR != "")) {
-    echo "<script language='javascript'>
-<!--
-window.location.href='index.php?page=home&btn=1&error=$ERROR';
-// -->
-</script>";
-}
 ?>
 <!-- *** END OF removed from home.php and add here *** -->
 
