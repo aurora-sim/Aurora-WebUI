@@ -14,7 +14,7 @@ $GoPage= "index.php?page=regions";
 $AnzeigeStart 		= 0;
 
 // LINK SELECTOR
-$LinkAusgabe="page=$GoPage&";
+$LinkAusgabe="page=index.php?page=regions&";
 
 if($_GET[AStart]){$AStart=$_GET[AStart];};
 

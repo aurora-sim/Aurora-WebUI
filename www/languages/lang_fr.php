@@ -48,6 +48,20 @@ $wiredux_login='Login';
 $wiredux_register='Register';
 $wiredux_news='News';
 $wiredux_history='History';
+$wiredux_see_profile='See Profile';
+$wiredux_user_name='User Name';
+$wiredux_users_found='Users Found';
+$wiredux_user_search='User Search';
+$wiredux_users_profile='\'s Profile';
+$wiredux_no_information_set="No information set";
+$wiredux_about_me="About Me";
+$wiredux_partner="Partner";
+$wiredux_resident_since="Resident since";
+$wiredux_account_info="Account Info";
+$wiredux_resident_since="Resident since";
+$wiredux_region_information="Region Information";
+$wiredux_region_type="Region Type";
+$wiredux_owner="Owner";
 
 //
 //Menu items
@@ -61,6 +75,7 @@ $wiredux_menu_item_register = 'Register';
 $wiredux_menu_item_logout = 'Logout';
 $wiredux_menu_item_login = 'Login';
 $wiredux_menu_item_onlineusers = 'Online Users';
+$wiredux_menu_item_peoplesearch = 'People Search';
 
 //
 // Home Page

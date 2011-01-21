@@ -32,12 +32,11 @@ $regionType = 'Unknown';
 $DbLink->query("SELECT FirstName,LastName FROM ".C_USERS_TBL." where PrincipalID='$owner'");
 list($firstN,$lastN) = $DbLink->next_record();
 ?>
-<title><?=SYSNAME?> Region Information</title>
+<title><?=SYSNAME?> <? echo $wiredux_region_information; ?></title>
 <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td colspan="2" valign="top"><span class="styleTopTitle">
-          <?=SYSNAME?> 
-          Region Information</span></td>
+          <?=SYSNAME?> <? echo $wiredux_region_information; ?></span></td>
   </tr>
   <tr>
     <td colspan="2" valign="top"><hr></td>
@@ -55,23 +54,23 @@ list($firstN,$lastN) = $DbLink->next_record();
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td><span class="styleTitel">Region: <?=$regionName?></span></td>
+        <td><span class="styleTitel"><? echo $wiredux_region_Name; ?>: <?=$regionName?></span></td>
       </tr>
       <tr>
-        <td class="styleText">Region Type: <?=$regionType?></td>
+        <td class="styleText"><? echo $wiredux_region_type; ?>: <?=$regionType?></td>
 
       </tr>
       <tr>
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td class="styleText">Coordinates X: <?=$locX?> Y: <?=$locY?></td>
+        <td class="styleText"><? echo $wiredux_location; ?> X: <?=$locX?> Y: <?=$locY?></td>
       </tr>
       <tr>
         <td class="styleText">&nbsp;</td>
       </tr>
       <tr>
-        <td class="styleText">Owner: <a href="<?=SYSURL?>/app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
+        <td class="styleText"><? echo $wiredux_owner; ?>: <a href="<?=SYSURL?>/app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
       </tr>
       <tr>
         <td>&nbsp;</td>

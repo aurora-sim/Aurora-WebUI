@@ -54,7 +54,7 @@ if ($_SESSION[USERID] == "") {
                         , 'FirstName' => $firstName
                         , 'LastName' => $lastName
                         , 'Password' => $_POST[passold]
-                        , 'NewPassword' => $_POST[passnew]));
+                        , 'NewPassword' => md5(md5($_POST[passnew]))));
 
             $do_post_requested = do_post_request($found);
             $recieved = json_decode($do_post_requested);

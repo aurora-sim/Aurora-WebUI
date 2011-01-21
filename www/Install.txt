@@ -30,15 +30,9 @@ http://yourdomain.com/admin
 Default admin username and password are:
 
 Username: admin
-Password: test 
+Password: admin
 
-Enjoy OpenSimWebInterface-Redux
-
-== Notes about Upgrading your old opensimwi ==
-
-You need to install the new tables wich comes with this version, 
-
-You need also the new pagemanager table instead off sitemanager table
+Enjoy Aurora WiRedux
 
 -----------------------------------------------------------------
 

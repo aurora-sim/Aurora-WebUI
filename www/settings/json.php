@@ -1,6 +1,6 @@
 <?php
 
-include("settings/config.php");
+include("config.php");
 
 function do_post_request($found) {
     $params = array('http' => array(
@@ -17,7 +17,7 @@ function do_post_request($found) {
     ini_set('default_socket_timeout', $old);
     if ($fp) {
         stream_set_timeout($fp, $timeout);
-        stream_set_blocking($fp, 0);
+        stream_set_blocking($fp, 3);
     } else
         //throw new Exception("Problem with " . WIREDUX_SERVICE_URL . ", $php_errormsg");
         return false;

@@ -17,10 +17,6 @@ emailadress ='$_POST[email]'
 WHERE UUID='$_POST[uuid]'");
 
 if($CHECKUSER == ''){
-$DbLink->query("UPDATE ".C_WIUSR_TBL." SET 
-username ='$_POST[accfirst]',
-lastname ='$_POST[acclast]'
-WHERE UUID='$_POST[uuid]'");
 
 $DbLink->query("UPDATE ".C_USERS_TBL." SET 
 FirstName ='$_POST[accfirst]',

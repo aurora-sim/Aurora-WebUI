@@ -240,7 +240,7 @@ list($NAMECHECK1) = $DbLink->next_record();
 $DbLink->query("SELECT LastName FROM ".C_USERS_TBL." WHERE FirstName ='$_SESSION[ACCFIRSTL]' and LastName ='$_SESSION[ACCLAST]'");
 list($NAMECHECK2) = $DbLink->next_record();
 
-$DbLink->query("SELECT emailadress FROM ".C_WIUSR_TBL." WHERE emailadress='$_SESSION[EMAIL]'");
+$DbLink->query("SELECT Email FROM ".C_USERS_TBL." WHERE Email='$_SESSION[EMAIL]'");
 list($EMAILCHECK) = $DbLink->next_record();
 
 if($EMAILCHECK){

@@ -48,11 +48,10 @@ namespace OpenSim.Server.Handlers.Caps
             IConfig handlerConfig = config.Configs["Handlers"];
             if (handlerConfig.GetString("WireduxHandler", "") != Name)
                 return;
-            m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
-
             string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
             if (Password != "")
             {
+                m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
                 //This handler allows sims to post CAPS for their sims on the CAPS server.
                 m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry));
             }
@@ -137,6 +136,10 @@ namespace OpenSim.Server.Handlers.Caps
                     else if (method == "ForgotPassword")
                     {
                         return ForgotPassword(map);
+                    }
+                    else if (method == "GetProfile")
+                    {
+                        return GetProfile(map);
                     }
                 }
             }
@@ -384,10 +387,7 @@ namespace OpenSim.Server.Handlers.Caps
             //Null means it went through without an error
             bool Verified = loginresp == null;
 
-            // we should validate the uuid against the password.. but this didn't work.. 
-            // if ((auths.Authenticate(userID, Password, 100) != string.Empty) && (Verified))
-
-            if (Verified)
+            if ((auths.Authenticate(userID, Password, 100) != string.Empty) && (Verified))
             {
                 auths.SetPassword(userID, newPassword);
                 resp["Verified"] = OSD.FromBoolean(Verified);
@@ -469,6 +469,49 @@ namespace OpenSim.Server.Handlers.Caps
                 }
             }
 
+
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] GetProfile(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            string FirstName = map["FirstName"].AsString();
+            string LastName = map["LastName"].AsString();
+
+            UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, FirstName, LastName);
+            if (account != null)
+            {
+                OSDMap accountMap = new OSDMap();
+                accountMap["Created"] = account.Created;
+                accountMap["PrincipalID"] = account.PrincipalID;
+                TimeSpan diff = DateTime.Now - Util.ToDateTime(account.Created);
+                int years = (int)diff.TotalDays / 356;
+                int days = years > 0 ? (int)diff.TotalDays / years : (int)diff.TotalDays;
+                accountMap["TimeSinceCreated"] = years + " years, " + days + " days";
+                IProfileConnector profileConnector = Aurora.DataManager.DataManager.RequestPlugin<IProfileConnector>();
+                IUserProfileInfo profile = profileConnector.GetUserProfile(account.PrincipalID);
+                if (profile != null)
+                {
+                    resp["profile"] = profile.ToOSD(false);//not trusted, use false
+
+                    if (account.UserFlags == 0)
+                        account.UserFlags = 2; //Set them to no info given
+                    string flags = ((IUserProfileInfo.ProfileFlags)account.UserFlags).ToString();
+                    IUserProfileInfo.ProfileFlags.NoPaymentInfoOnFile.ToString();
+
+                    accountMap["AccountInfo"] = (profile.CustomType != "" ? profile.CustomType :
+                        account.UserFlags == 0 ? "Resident" : "Admin") + "\n" + flags;
+                    UserAccount partnerAccount = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, profile.Partner);
+                    if (partnerAccount != null)
+                        accountMap["Partner"] = partnerAccount.Name;
+                    else
+                        accountMap["Partner"] = "";
+                }
+                resp["account"] = accountMap;
+            }
 
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
