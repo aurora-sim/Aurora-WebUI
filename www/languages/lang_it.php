@@ -27,7 +27,7 @@ $wiredux_location='Posizione';
 $wiredux_info='Informazioni';
 $wiredux_regions_found='Regioni trovate';
 $wiredux_region_list='Lista delle Regioni';
-$wiredux_region_list_page_info='Questa è la lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
+$wiredux_region_list_page_info='Lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
 $wiredux_more_info='Maggiori informazioni';
 $wiredux_user_name='Nome avatar';
 $wiredux_online_users_info='Questi sono tutti gli avatar online in questo momento.';
@@ -53,31 +53,31 @@ $wiredux_history='History';
 //Menu items
 //
 $wiredux_menu_item_1_name = 'Home';
-$wiredux_menu_item_2_name = 'Edit Account';
-$wiredux_menu_item_3_name = 'News';
-$wiredux_menu_item_4_name = 'Transaction History';
-$wiredux_menu_item_5_name = 'Region List';
-$wiredux_menu_item_6_name = 'Map';
-$wiredux_menu_item_7_name = 'Register';
-$wiredux_menu_item_8_name = 'Logout';
-$wiredux_menu_item_9_name = 'Login';
-$wiredux_menu_item_10_name = 'Who\'s Online';
+$wiredux_menu_item_2_name = 'Cambia il tuo Account';
+$wiredux_menu_item_3_name = 'Novita';
+$wiredux_menu_item_4_name = 'Estratto Conto';
+$wiredux_menu_item_5_name = 'Lista Regioni';
+$wiredux_menu_item_6_name = 'Mappa';
+$wiredux_menu_item_7_name = 'Registrati';
+$wiredux_menu_item_8_name = 'Chiudi';
+$wiredux_menu_item_9_name = 'Entra';
+$wiredux_menu_item_10_name = 'Chi e online';
 
 //
 // Home Page
 //
 
-$wiredux_home_page='<h2><strong>Welcome to the new Aurora WiRedux webpage!</strong></h2>
+$wiredux_home_page='<h2><strong>Benvenuto/a alla HomePage di AuroraWiRedux!</strong></h2>
     <p>
-        This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams. <br />
-        Everything is possible in our brand new 3D World. <br />
-        Our World is created by its residents, you can build everything you can imagine here. <br /><br />
-        Create a free account today, build a virtual you and play in our world. <br />
-        Join us now, and make a difference! <br /><br /><br />
+        Questo è il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
+        Ogni cosa è possibile nel nostro nuovo Mondo in 3D. <br />
+        Il nostro Mondo è creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
+        Crea subito un nuovo account, personalizza il tuo avatar e gioca nel nuovo mondo. <br />
+        Entra ora, e fai la differenza! <br /><br /><br />
         <u>There are just 3 steps to get started:</u> <br /><br />
-        1.) Create your FREE Account right here on our pages. <br /><br />
-        2.) Download the viewer. We recommend <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
-        3.) Be sure to add our grid to your viewer. <br /><br /><br />
-        <i>Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</i>
+        1.) Crea il tuo account GRATIS in queste pagine. <br /><br />
+        2.) Scarica il viewer. Ti raccomandiamo <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        3.) Assicurati di aggiungere la nostra grid al tuo viewer. <br /><br /><br />
+        <i>Per favore, tieni presente che la piattaforma di Aurora è ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
     </p>';
 ?>
