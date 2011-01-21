@@ -20,12 +20,6 @@ if($_SESSION[ADMINUID] == $ADMINCHECK){
 <table width="245" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="Stil9">
-	  <? if($CHUSR == $CHWIUSR){?>
-	  <? }else { ?>
-	  <div align="center">
-	  <span class="Stil10" ><a style="color:#FFFFFF" href="index.php?page=updatedb">Update Userdb </a></span>
-	  <br /><br /></div>
-	  <? } ?>
 	<table width="90%" align="center" border="0" class="Stil9">
       <tr>
         <td style="cursor:pointer;font-weight:bold;"
