@@ -29,8 +29,8 @@ if ($whereclause == ' where ')
 $DbLink->query("SELECT COUNT(*) FROM " . C_USERS_TBL . $whereclause);
 list($count) = $DbLink->next_record();
 
-$sitemax = round($count / $ALimit, 0);
-$sitestart = round($AStart / $ALimit, 0) + 1;
+$sitemax = round($count / 10, 0);
+$sitestart = round($AStart / 10, 0) + 1;
 if ($sitemax == 0) {
     $sitemax = 1;
 }

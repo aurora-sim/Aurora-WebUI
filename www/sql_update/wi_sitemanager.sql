@@ -17,7 +17,8 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('login', 'main', 'login.php'),
 ('logout', 'main', 'logout.php'),
 ('onlineusers', 'main', 'onlineusers.php'),
+('peoplesearch', 'main', 'peoplesearch.php'),
 ('register', 'account', 'register.php'),
-('regionlist', 'main', 'regionlist.php')
+('regionlist', 'main', 'regionlist.php'),
 ('resetpass', 'account', 'resetpass.php'),
 ('worldmap', 'main', 'worldmap.php');
