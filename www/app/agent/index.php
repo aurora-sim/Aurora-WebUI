@@ -31,11 +31,11 @@ if ($_GET[first] && $_GET[last]) {
     $partner = $recieved->{'account'}->{'Partner'};
     $date = date("D d M Y - g:i A", $created);
 } ?>
-<title><?= SYSNAME ?> <? echo $userName ?><? echo $wiredux_users_profile; ?></title>
+<title><?= SYSNAME ?> <? echo $wiredux_users_profile; ?> <? echo $userName ?></title>
 <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
         <td colspan="2" valign="top"><span class="styleTopTitle">
-                <? echo $userName ?><? echo $wiredux_users_profile; ?></span></td>
+                <? echo $wiredux_users_profile; ?> <? echo $userName ?></span></td>
     </tr>
     <tr>
         <td colspan="2" valign="top"><hr></td>

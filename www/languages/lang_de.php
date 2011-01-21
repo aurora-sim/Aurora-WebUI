@@ -48,20 +48,19 @@ $wiredux_login='Einloggen';
 $wiredux_register='Registrieren';
 $wiredux_news='Nachrichten';
 $wiredux_history='Historie';
-$wiredux_see_profile='See Profile';
-$wiredux_user_name='User Name';
-$wiredux_users_found='Users Found';
-$wiredux_user_search='User Search';
-$wiredux_users_profile='\'s Profile';
-$wiredux_no_information_set="No information set";
-$wiredux_about_me="About Me";
+$wiredux_see_profile='Profil ansehen';
+$wiredux_user_name='Nutzername';
+$wiredux_users_found='Nutzer gefunden';
+$wiredux_user_search='Nutzersuche';
+$wiredux_users_profile='Profil von';
+$wiredux_no_information_set="Keine Information bestimmt";
+$wiredux_about_me="&Uuml;ber mich";
 $wiredux_partner="Partner";
-$wiredux_resident_since="Resident since";
-$wiredux_account_info="Account Info";
-$wiredux_resident_since="Resident since";
-$wiredux_region_information="Region Information";
-$wiredux_region_type="Region Type";
-$wiredux_owner="Owner";
+$wiredux_resident_since="Bewohner seit";
+$wiredux_account_info="Konteninformation";
+$wiredux_region_information="Regions Information";
+$wiredux_region_type="Regionstyp";
+$wiredux_owner="Eigent&uuml;mer";
 
 //
 //Menu items
@@ -76,7 +75,7 @@ $wiredux_menu_item_register = 'Registrieren';
 $wiredux_menu_item_logout = 'Ausloggen';
 $wiredux_menu_item_login = 'Einloggen';
 $wiredux_menu_item_onlineusers = 'Nutzer online';
-$wiredux_menu_item_peoplesearch = 'People Search';
+$wiredux_menu_item_peoplesearch = 'Personensuche';
 
 //
 // Home Page
