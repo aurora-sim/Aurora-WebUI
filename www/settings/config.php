@@ -31,9 +31,8 @@ $display_marker="tl";
 
 ####################### Skin ##########################
 
-//Current skins are 'Default'
+//Current skins are 'default'
 $skin='default';
-
 
 #################### Languages ########################
 
@@ -42,7 +41,8 @@ $languages=array("en" => "English",
     "de" => "German",
     "es" => "Spanish",
     "it" => "Italian",
-    "nl" => "Dutch");
+    "nl" => "Dutch",
+    "pt" => "Portuguese");
 
 ##################### Database ########################
 define("C_DB_TYPE","mysql");
@@ -69,15 +69,12 @@ define("C_NEWS_TBL","wi_startscreen_news");
 define("C_PAGE_TBL","wi_pagemanager");
 define("C_SITES_TBL","wi_sitemanagement");
 // REGION MANAGER
-define("C_MANAGEMENT_PAGE_TBL","wi_management_pagemanager");
 define("C_MAP_REGIONS_TBL", "wi_regions");
-// OFFLINE IM'S
-define("C_OFFLINE_IM_TBL", "wi_offline_msgs");
 // STATISTICS
 define("C_STATS_REGIONS_TBL", "wi_statistics");
 
 
-//OPENSIM DEFAULT TABLES (NEEDED FOR LOGINSCREEN & MONEY SYSTEM)
+//Aurora tables
 define("C_USERS_TBL","useraccounts");
 define("C_AUTH_TBL","auth");
 define("C_REGIONS_TBL","gridregions");

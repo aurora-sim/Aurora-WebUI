@@ -16,7 +16,7 @@ $wiredux_confirm='Conferma';
 $wiredux_start_region='Regione iniziale';
 $wiredux_address='Indirizzo';
 $wiredux_zip_code='Codice Postale';
-$wiredux_city='Citt√†';
+$wiredux_city='Citt‡';
 $wiredux_country='Paese';
 $wiredux_date_of_birth='Data di nascita';
 $wiredux_email='Email';
@@ -32,9 +32,9 @@ $wiredux_more_info='Maggiori informazioni';
 $wiredux_user_name='Nome avatar';
 $wiredux_online_users_info='Questi sono tutti gli avatar online in questo momento.';
 $wiredux_submit='Invia';
-$wiredux_verified_account='Grazie. La tua password √® ora attiva e puoi usarla.';
+$wiredux_verified_account='Grazie. La tua password Ë ora attiva e puoi usarla.';
 $wiredux_internal_error='Errore interno, prego, riprovare.';
-$wiredux_invalid_code='Il tuo codice non √® valido oppure √® scaduto';
+$wiredux_invalid_code='Il tuo codice non Ë valido oppure Ë scaduto';
 $wiredux_activate_account='Attiva il tuo Account';
 $wiredux_change_account='Cambia il tuo Account';
 $wiredux_change_home_region='Cambia la tua posizione iniziale';
@@ -44,23 +44,23 @@ $wiredux_old_password='Vecchia Password';
 $wiredux_change_email='Cambia Email';
 $wiredux_old_email='Vecchia Email';
 $wiredux_change_name='Cambia il nome';
-$wiredux_login='Login';
-$wiredux_register='Register';
-$wiredux_news='News';
-$wiredux_history='History';
-$wiredux_see_profile='See Profile';
-$wiredux_user_name='User Name';
-$wiredux_users_found='Users Found';
-$wiredux_user_search='User Search';
-$wiredux_users_profile='Profile of';
-$wiredux_no_information_set="No information set";
-$wiredux_about_me="About Me";
+$wiredux_login='Entra';
+$wiredux_register='Registrati';
+$wiredux_news='Novita';
+$wiredux_history='Estratto Conto';
+$wiredux_see_profile='Guarda il Profilo';
+$wiredux_user_name='Nome Utente';
+$wiredux_users_found='Utenti trovati';
+$wiredux_user_search='Cerca un utente';
+$wiredux_users_profile='Profilo di';
+$wiredux_no_information_set="Non ci sono informazioni";
+$wiredux_about_me="Le mie informazioni";
 $wiredux_partner="Partner";
-$wiredux_resident_since="Resident since";
-$wiredux_account_info="Account Info";
-$wiredux_region_information="Region Information";
-$wiredux_region_type="Region Type";
-$wiredux_owner="Owner";
+$wiredux_resident_since="Residente dal";
+$wiredux_account_info="Tipo di account";
+$wiredux_region_information="Informazioni sulla Regione";
+$wiredux_region_type="Tipo di Regione";
+$wiredux_owner="Proprietario";
 
 //
 //Menu items
@@ -75,7 +75,7 @@ $wiredux_menu_item_register = 'Registrati';
 $wiredux_menu_item_logout = 'Chiudi';
 $wiredux_menu_item_login = 'Entra';
 $wiredux_menu_item_onlineusers = 'Chi e online';
-$wiredux_menu_item_peoplesearch = 'People Search';
+$wiredux_menu_item_peoplesearch = 'Ricerca Utenti';
 
 //
 // Home Page
@@ -83,20 +83,20 @@ $wiredux_menu_item_peoplesearch = 'People Search';
 
 $wiredux_home_page='<h2><strong>Benvenuto/a alla HomePage di AuroraWiRedux!</strong></h2>
     <p>
-        Questo √® il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
-        Ogni cosa √® possibile nel nostro nuovo Mondo in 3D. <br />
-        Il nostro Mondo √® creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
+        Questo Ë il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
+        Ogni cosa Ë possibile nel nostro nuovo Mondo in 3D. <br />
+        Il nostro Mondo Ë creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
         Crea subito un nuovo account, personalizza il tuo avatar e gioca nel nuovo mondo. <br />
         Entra ora, e fai la differenza! <br /><br /><br />
         <u>There are just 3 steps to get started:</u> <br /><br />
         1.) Crea il tuo account GRATIS in queste pagine. <br /><br />
         2.) Scarica il viewer. Ti raccomandiamo <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
         3.) Assicurati di aggiungere la nostra grid al tuo viewer. <br /><br /><br />
-        <i>Per favore, tieni presente che la piattaforma di Aurora √® ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
+        <i>Per favore, tieni presente che la piattaforma di Aurora Ë ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
     </p>';
 
 //
 // 404 page
 //
-$wiredux_404_text = 'The requested page could not be found! Please try again later.';
+$wiredux_404_text = 'Non e possibile trovare la pagina richiesta! Si prega di provare piu tardi.';
 ?>
