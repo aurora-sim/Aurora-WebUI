@@ -226,7 +226,7 @@ namespace OpenSim.Server.Handlers.Caps
             UUID secureSessionID;
             UUID userID = UUID.Zero;
 
-            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
             Verified = loginresp == null;
             if (Verified)
@@ -382,7 +382,7 @@ namespace OpenSim.Server.Handlers.Caps
 
             IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
 
-            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", "", "", out secureSessionID);
             OSDMap resp = new OSDMap();
             //Null means it went through without an error
             bool Verified = loginresp == null;
@@ -501,7 +501,7 @@ namespace OpenSim.Server.Handlers.Caps
                         account.UserFlags = 2; //Set them to no info given
                     string flags = ((IUserProfileInfo.ProfileFlags)account.UserFlags).ToString();
                     IUserProfileInfo.ProfileFlags.NoPaymentInfoOnFile.ToString();
-
+                    
                     accountMap["AccountInfo"] = (profile.CustomType != "" ? profile.CustomType :
                         account.UserFlags == 0 ? "Resident" : "Admin") + "\n" + flags;
                     UserAccount partnerAccount = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, profile.Partner);
