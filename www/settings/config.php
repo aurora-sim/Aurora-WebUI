@@ -10,7 +10,7 @@
 ##################### System #########################
 define("SYSNAME","Aurora WiRedux");
 define("SYSURL","");
-define("SYSMAIL","your@email.com");
+define("SYSMAIL","Webmaster <noreply@osgrid.org>");
 define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
 define("WIREDUX_PASSWORD","");
 

@@ -72,7 +72,7 @@ if($UUID)
 		 $body .= "$pass";
 		 $body .= "\n\n";
 		 $body .= "Thank you for using ".SYSNAME."";
-		 $header = 'From: Webmaster <noreply@osgrid.org>' . "\r\n";
+		 $header = "From: " . SYSMAIL . "\r\n";
 		 $mail_status = mail($sendto, $subject, $body, $header);
 		//-----------------------------MAIL END --------------------------------------
 	}
