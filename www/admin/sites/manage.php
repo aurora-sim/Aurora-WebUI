@@ -39,37 +39,33 @@ $Limit = "LIMIT $AStart, $ALimit";
 //DELETE USER START
 if(($_GET[action2] == 'delete') and ($_GET[quest] == 'yes')) {
 	$DbLink3 = new DB;
-	$DbLink3->query("Delete FROM ".C_USERS_TBL." WHERE PrincipalID='$_GET[user_id]'");
-	$DbLink3 = new DB;
-	$DbLink3->query("Delete FROM ".C_AUTH_TBL." where UUID='$_GET[user_id]'");
-	$DbLink3 = new DB;
-	$DbLink3->query("Delete FROM ".C_GRIDUSER_TBL." where UserID='$_GET[user_id]'");
-	$DbLink3->query("Delete FROM ".C_WIUSR_TBL." WHERE UUID='$_GET[user_id]'");
-	$DbLink3->query("Delete FROM ".C_CODES_TBL." WHERE UUID='$_GET[user_id]'");
+	$found = array();
+    $found[0] = json_encode(array('Method' => 'DeleteUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
+                'First' => $_POST[logfirstname], 'Last' => $_POST[loglastname],
+                'Password' => $_POST[logpassword]));
+    $do_post_request = do_post_request($found);
 }
 //DELETE USER END
 
 //BAN USER START
 if(($_GET[action2] == 'ban') and ($_GET[quest] == 'yes')) {
 	$DbLink3 = new DB;
-	$DbLink3->query("SELECT agentIP FROM ".C_WIUSR_TBL." WHERE UUID='$_GET[user_id]'");
-	list($agentIP) = $DbLink3->next_record();
-	$DbLink->query("INSERT INTO ".C_USRBAN_TBL." (UUID,agentIP)	VALUES ('$_GET[user_id]','$agentIP') ");
-	$DbLink3->query("UPDATE ".C_AUTH_TBL." SET passwordHash='' WHERE UUID='$_GET[user_id]'");
-	$DbLink3->query("UPDATE ".C_WIUSR_TBL." SET active='5' WHERE UUID='$_GET[user_id]'");
+	$found = array();
+    $found[0] = json_encode(array('Method' => 'BanUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
+                'First' => $_POST[logfirstname], 'Last' => $_POST[loglastname],
+                'Password' => $_POST[logpassword]));
+    $do_post_request = do_post_request($found);
 }
 //BAN USER END
 
 //UNBAN USER START
 if(($_GET[action2] == 'unban') and ($_GET[quest] == 'yes')) {
 	$DbLink3 = new DB;
-	$DbLink3->query("SELECT passwordHash,active FROM ".C_WIUSR_TBL." WHERE UUID='$_GET[user_id]'");
-	list($passbkp,$active) = $DbLink3->next_record();
-	$DbLink3 = new DB;
-	$DbLink3->query("UPDATE ".C_AUTH_TBL." SET passwordHash='$passbkp' WHERE UUID='$_GET[user_id]'");
-	$DbLink3->query("UPDATE ".C_WIUSR_TBL." SET active='1' WHERE UUID='$_GET[user_id]'");
-	$DbLink3->query("DELETE FROM ".C_USRBAN_TBL." Where UUID='$_GET[user_id]'");
-	
+	$found = array();
+    $found[0] = json_encode(array('Method' => 'UnBanUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
+                'First' => $_POST[logfirstname], 'Last' => $_POST[loglastname],
+                'Password' => $_POST[logpassword]));
+    $do_post_request = do_post_request($found);
 }
 //UNBAN USER END
 
