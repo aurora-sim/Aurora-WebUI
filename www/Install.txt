@@ -18,6 +18,9 @@ Please remember to backup your database regularly.
 	WireduxHandler = WireduxHandler
 	WireduxHandlerPort = 8007
 	WireduxHandlerPassword = ***
+
+In /aurora-sim-Aurora-Sim/bin/AuroraServerConfiguration/Main.ini  <==Grid Mode
+Above WireduxHandlers are already there for Grid Mode.
 	
 * note, I don't know if that is the best place for them.. but it works.. 
 
