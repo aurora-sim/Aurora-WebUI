@@ -346,7 +346,7 @@ if ($_POST[action] == "") {
 
                             <?
                                             require_once('recaptchalib.php');
-                                            $publickey = "6LfWFsESAAAAAI7gPiDQO5pclZlwECn_iB9Qvb9e"; // you got this from the signup page
+                                            $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
                                             echo recaptcha_get_html($publickey);
                             ?>
                                         </center>
@@ -418,7 +418,7 @@ if ($_POST[action] == "") {
                                             $DbLink->query("SELECT agentIP FROM " . C_USRBAN_TBL . " WHERE agentIP='$userIP'");
                                             list($IPCHECK) = $DbLink->next_record();
                                             require_once('recaptchalib.php');
-                                            $privatekey = "6LfWFsESAAAAAFW6eg1EUUWcCfvZUpbh5-q05gMD";
+                                            $privatekey = "6Lf_MQQAAAAAAB2vCZraiD2lGDKCkWfULvhG4szK";
                                             $resp = recaptcha_check_answer($privatekey,
                                                             $_SERVER["REMOTE_ADDR"],
                                                             $_POST["recaptcha_challenge_field"],
@@ -591,11 +591,11 @@ if ($_POST[action] == "") {
 
 																	<table width="50%" border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF">
 																		<tr>
-																			<td bgcolor="#FFFFFF"><div align="center"><strong>Account successfully created </strong></div></td>
+																			<td bgcolor="#000000"><div align="center"><strong>Account successfully created </strong></div></td>
 																		</tr>
 
 																		<tr>
-																			<td bgcolor="#FFFFFF">
+																			<td bgcolor="#000000">
 																				<blockquote>
 																					<p>
 																						<br>
