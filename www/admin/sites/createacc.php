@@ -356,7 +356,7 @@ $DbLink->query("INSERT INTO ".C_AUTH_TBL." 	(UUID,passwordHash,passwordSalt,webL
 	 $body .= "$_SESSION[PASSWD]\n\n";
 	 $body .= "$user\n\n";
 	 $body .= "Thank you for using ".SYSNAME."";
-	 $header = " ";
+	 $header = "From: " . SYSMAIL . "\r\n";
 	 $mail_status = mail($sendto, $subject, $body, $header);
 	//-----------------------------MAIL END --------------------------------------
 }

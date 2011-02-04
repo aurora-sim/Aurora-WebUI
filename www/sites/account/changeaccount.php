@@ -73,7 +73,7 @@ if ($_SESSION[USERID] == "") {
                 $body .= "Your account was successfully changed your password on " . SYSNAME . ".\n";
                 $body .= "\n\n\n";
                 $body .= "Thank you for using " . SYSNAME . "";
-                $header = 'From: Webmaster <noreply@osgrid.org>' . "\r\n";
+                $header = "From: " . SYSMAIL . "\r\n";
                 $mail_status = mail($sendto, $subject, $body, $header);
 //-----------------------------MAIL END --------------------------------------
 
@@ -132,7 +132,7 @@ if ($_SESSION[USERID] == "") {
             $body .= "" . SYSURL . "/index.php?page=activatemail&code=$code";
             $body .= "\n\n\n";
             $body .= "Thank you for using " . SYSNAME . "";
-            $header = 'From: Webmaster <noreply@osgrid.org>' . "\r\n";
+            $header = "From: " . SYSMAIL . "\r\n";
             $mail_status = mail($sendto, $subject, $body, $header);
             //-----------------------------MAIL END --------------------------------------
             $ERRORS2 = "<font color=white><b>An email has been send to confirm the new email</b></font>";
@@ -193,7 +193,7 @@ if ($_SESSION[USERID] == "") {
                 $body .= "Your account login name as changed from " . $firstName . " " . $lastName . " to " . $_POST[nameFirstNew] . " " . $_POST[nameLastNew] . " on " . SYSNAME . ".\n";
                 $body .= "\n\n\n";
                 $body .= "Thank you for using " . SYSNAME . "";
-                $header = 'From: Webmaster <noreply@osgrid.org>' . "\r\n";
+				$header = "From: " . SYSMAIL . "\r\n";
                 $mail_status = mail($sendto, $subject, $body, $header);
                 //-----------------------------MAIL END --------------------------------------
 

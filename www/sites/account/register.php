@@ -60,7 +60,7 @@ if ($_POST[action] == "") {
 
     <div id="register">
 
-        <form ACTION="index.php?page=create" METHOD="POST">
+        <form ACTION="index.php?page=register" METHOD="POST">
 
             <table>
                 <? if ($_SESSION[ERROR]) {
@@ -366,7 +366,8 @@ if ($_POST[action] == "") {
 <?
                                         }
 
-                                        else if ($_POST[action] == "check") {
+                                        else if ($_POST[action] == "check") 
+										{
                                             $_SESSION[ACCFIRST] = $_POST[accountfirst];
                                             $_SESSION[ACCFIRSL] = strtolower($_POST[accountfirst]);
                                             $_SESSION[ACCLAST] = $_POST[accountlast];
@@ -426,212 +427,214 @@ if ($_POST[action] == "") {
                                             if (!$resp->is_valid) {
                                                 $_SESSION[ERROR] = "The reCAPTCHA wasn't entered correctly. Please try it again.";
                                                 echo "<script language='javascript'>
-           <!--
-           window.location.href='index.php?page=create';
-           // -->
-           </script>";
+												   <!--
+												   window.location.href='index.php?page=register';
+												   -->
+												   </script>";
+											}else if ($IPCHECK) {
+												$_SESSION[ERROR] = "This IP adress is banned";
+												echo "<script language='javascript'>
+												<!--
+												window.location.href='index.php?page=register';
+												// -->
+												</script>";
+                                            } else if (($_SESSION[PASSWD] != $_SESSION[PASSWD2]) or ($_SESSION[PASSWD] == '') or ($_SESSION[PASSWD2] == '') or ($_SESSION[EMAIC] == '') or ($_SESSION[EMAIL] == '') or ($_SESSION[CITY] == '') or ($_SESSION[ZIP] == '') or ($_SESSION[ADRESS] == '') or ($_SESSION[NAMEL] == '') or ($_SESSION[NAMEF] == '') or ($_SESSION[ACCFIRST] == '') or ($_SESSION[ACCLAST] == '')) {
 
-                                                if ($IPCHECK) {
-                                                    $_SESSION[ERROR] = "This IP adress is banned";
-                                                    echo "<script language='javascript'>
-			<!--
-				window.location.href='index.php?page=create';
-			// -->
-			</script>";
-                                                } else if (($_SESSION[PASSWD] != $_SESSION[PASSWD2]) or ($_SESSION[PASSWD] == '') or ($_SESSION[PASSWD2] == '') or ($_SESSION[EMAIC] == '') or ($_SESSION[EMAIL] == '') or ($_SESSION[CITY] == '') or ($_SESSION[ZIP] == '') or ($_SESSION[ADRESS] == '') or ($_SESSION[NAMEL] == '') or ($_SESSION[NAMEF] == '') or ($_SESSION[ACCFIRST] == '') or ($_SESSION[ACCLAST] == '')) {
+												echo "GOT HERE";
+												if ($_SESSION[EMAIC] == '') {
+													$_SESSION[ERROR] = "Please confirm your email";
+												}
 
-                                                    if ($_SESSION[EMAIC] == '') {
-                                                        $_SESSION[ERROR] = "Please confirm your email";
-                                                    }
+												if ($_SESSION[PASSWD] != $_SESSION[PASSWD2]) {
+													$_SESSION[ERROR] = "Passwords do not match.";
+												}
 
-                                                    if ($_SESSION[PASSWD] != $_SESSION[PASSWD2]) {
-                                                        $_SESSION[ERROR] = "Passwords do not match.";
-                                                    }
+												if ($_SESSION[PASSWD] == '') {
+													$_SESSION[ERROR] = "Please enter your Password";
+												}
 
-                                                    if ($_SESSION[PASSWD] == '') {
-                                                        $_SESSION[ERROR] = "Please enter your Password";
-                                                    }
+												if ($_SESSION[PASSWD2] == '') {
+													$_SESSION[ERROR] = "Please enter your Password Confirm";
+												}
 
-                                                    if ($_SESSION[PASSWD2] == '') {
-                                                        $_SESSION[ERROR] = "Please enter your Password Confirm";
-                                                    }
+												if ($_SESSION[EMAIL] == '') {
+													$_SESSION[ERROR] = "Please enter your Email address";
+												}
 
-                                                    if ($_SESSION[EMAIL] == '') {
-                                                        $_SESSION[ERROR] = "Please enter your Email address";
-                                                    }
+												if ($_SESSION[CITY] == '') {
+													$_SESSION[ERROR] = "Please enter your City";
+												}
 
-                                                    if ($_SESSION[CITY] == '') {
-                                                        $_SESSION[ERROR] = "Please enter your City";
-                                                    }
+												if ($_SESSION[ZIP] == '') {
+													$_SESSION[ERROR] = "Please enter your ZIP";
+												}
 
-                                                    if ($_SESSION[ZIP] == '') {
-                                                        $_SESSION[ERROR] = "Please enter your ZIP";
-                                                    }
+												if ($_SESSION[ADRESS] == '') {
+													$_SESSION[ERROR] = "Please enter your address";
+												}
 
-                                                    if ($_SESSION[ADRESS] == '') {
-                                                        $_SESSION[ERROR] = "Please enter your address";
-                                                    }
+												if ($_SESSION[NAMEL] == '') {
+													$_SESSION[ERROR] = "Please enter your real last name";
+												}
 
-                                                    if ($_SESSION[NAMEL] == '') {
-                                                        $_SESSION[ERROR] = "Please enter your real last name";
-                                                    }
+												if ($_SESSION[NAMEF] == '') {
+													$_SESSION[ERROR] = "Please enter your real first name";
+												}
 
-                                                    if ($_SESSION[NAMEF] == '') {
-                                                        $_SESSION[ERROR] = "Please enter your real first name";
-                                                    }
+												if ($_SESSION[ACCFIRST] == "") {
+													$_SESSION[ERROR] = "Please enter a first name for your account";
+												}
 
-                                                    if ($_SESSION[ACCFIRST] == "") {
-                                                        $_SESSION[ERROR] = "Please enter a first name for your account";
-                                                    }
+												if ($_SESSION[ACCLAST] == "") {
+													$_SESSION[ERROR] = "Please enter a last name for your account";
+												}
 
-                                                    if ($_SESSION[ACCLAST] == "") {
-                                                        $_SESSION[ERROR] = "Please enter a last name for your account";
-                                                    }
+												echo "<script language='javascript'>
+												  <!--
+														window.location.href='index.php?page=register';
+														// -->
+														</script>";
+											} 
+											else if ($_SESSION[EMAIL] != $_SESSION[EMAIC]) {
+												$_SESSION[ERROR] = "Email confirmation not correct";
+												echo "<script language='javascript'>
 
-                                                    echo "<script language='javascript'>
+												 <!--
+														 window.location.href='index.php?page=register';
+													   // -->
+													   </script>";
+											} else {
+												$passneu = $_SESSION[PASSWD];
+												$passwordHash = md5(md5($passneu) . ":");
 
-      <!--
-			window.location.href='index.php?page=create';
-			// -->
-			</script>";
-                                                } else if ($_SESSION[EMAIL] != $_SESSION[EMAIC]) {
-                                                    $_SESSION[ERROR] = "Email confirmation not correct";
-                                                    echo "<script language='javascript'>
+												$found = array();
+												$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'First' => $_SESSION[ACCFIRST], 'Last' => $_SESSION[ACCLAST]));
+												$do_post_requested = do_post_request($found);
+												$recieved = json_decode($do_post_requested);
 
-         <!--
-				 window.location.href='index.php?page=create';
-			   // -->
-			   </script>";
-                                                } else {
-                                                    $passneu = $_SESSION[PASSWD];
-                                                    $passwordHash = md5(md5($passneu) . ":");
+												// echo '<pre>';
+												// var_dump($recieved);
+												// var_dump($do_post_requested);
+												// echo '</pre>';
 
-                                                    $found = array();
-                                                    $found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'First' => $_SESSION[ACCFIRST], 'Last' => $_SESSION[ACCLAST]));
-                                                    $do_post_requested = do_post_request($found);
-                                                    $recieved = json_decode($do_post_requested);
+												if ($recieved->{'Verified'} != "False") {
+													$_SESSION[ERROR] = "User already exists in Database";
+													echo "<script language='javascript'>
+														<!--
+														window.location.href='index.php?page=register';
+														-->
+														</script>";
+												} else {
 
-                                                    // echo '<pre>';
-                                                    // var_dump($recieved);
-                                                    // var_dump($do_post_requested);
-                                                    // echo '</pre>';
+													// CODE generator
+													function code_gen($cod="") {
+														$cod_l = 10;
+														$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9";
+														$array_b = explode(",", $zeichen);
 
-                                                    if ($recieved->{'Verified'} != "False") {
-                                                        $_SESSION[ERROR] = "User already exists in Database";
-                                                        echo "<script language='javascript'>
-		  			<!--
-						window.location.href='index.php?page=create';
-			      -->
-				    </script>";
-                                                    } else {
+														for ($i = 0; $i < $cod_l; $i++) {
+															srand((double) microtime() * 1000000);
+															$z = rand(0, 35);
+															$cod .= "" . $array_b[$z] . "";
+														}
+														return $cod;
+													}
 
-                                                        // CODE generator
-                                                        function code_gen($cod="") {
-                                                            $cod_l = 10;
-                                                            $zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9";
-                                                            $array_b = explode(",", $zeichen);
+													$code = code_gen();
 
-                                                            for ($i = 0; $i < $cod_l; $i++) {
-                                                                srand((double) microtime() * 1000000);
-                                                                $z = rand(0, 35);
-                                                                $cod .= "" . $array_b[$z] . "";
-                                                            }
-                                                            return $cod;
-                                                        }
+													$found = array();
+													$found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WIREDUX_PASSWORD),
+																'First' => $_SESSION[ACCFIRST], 'Last' => $_SESSION[ACCLAST],
+																'Email' => $_SESSION[EMAIL],
+																'HomeRegion' => $_SESSION[REGIONID],
+																'PasswordHash' => $passneu,
+																'PasswordSalt' => $passwordSalt));
+													$do_post_requested = do_post_request($found);
+											 		$recieved = json_decode($do_post_requested);
 
-                                                        $code = code_gen();
+													// echo '<pre>';
+													// var_dump($recieved);
+													// var_dump($do_post_requested);
+													// echo '</pre>';
 
-                                                        $found = array();
-                                                        $found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WIREDUX_PASSWORD),
-                                                                    'First' => $_SESSION[ACCFIRST], 'Last' => $_SESSION[ACCLAST],
-                                                                    'Email' => $_SESSION[EMAIL],
-                                                                    'HomeRegion' => $_SESSION[REGIONID],
-                                                                    'PasswordHash' => $passneu,
-                                                                    'PasswordSalt' => $passwordSalt));
-                                                        $do_post_requested = do_post_request($found);
-                                                        $recieved = json_decode($do_post_requested);
+													if ($recieved->{'Verified'} == "true") {
 
-                                                        // echo '<pre>';
-                                                        // var_dump($recieved);
-                                                        // var_dump($do_post_requested);
-                                                        // echo '</pre>';
+														//-----------------------------------MAIL--------------------------------------
+														$date_arr = getdate();
+														$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
+														$sendto = $_SESSION[EMAIL];
+														$subject = "Account Activation from " . SYSNAME;
+														$body .= "Your account was successfully created at " . SYSNAME . ".\n";
+														$body .= "Your first name: $_SESSION[ACCFIRST]\n";
+														$body .= "Your last name:  $_SESSION[ACCLAST]\n";
+														$body .= "Your password:  $_SESSION[PASSWD]\n\n";
+														$body .= "In order to login, you need to confirm your email by clicking this link within $deletetime hours:";
+														$body .= "\n";
+														$body .= "" . SYSURL . "/index.php?page=activate&code=$code";
+														$body .= "\n\n\n";
+														$body .= "Thank you for using " . SYSNAME . "";
+														$header = "From: " . SYSMAIL . "\r\n";
+														$mail_status = mail($sendto, $subject, $body, $header);
 
-                                                        if ($recieved->{'Verified'} == "true") {
-                                                            //-----------------------------------MAIL--------------------------------------
-                                                            $date_arr = getdate();
-                                                            $date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
-                                                            $sendto = $_SESSION[EMAIL];
-                                                            $subject = "Account Activation from " . SYSNAME;
-                                                            $body .= "Your account was successfully created at " . SYSNAME . ".\n";
-                                                            $body .= "Your first name: $_SESSION[ACCFIRST]\n";
-                                                            $body .= "Your last name:  $_SESSION[ACCLAST]\n";
-                                                            $body .= "Your password:  $_SESSION[PASSWD]\n\n";
-                                                            $body .= "In order to login, you need to confirm your email by clicking this link within $deletetime hours:";
-                                                            $body .= "\n";
-                                                            $body .= "" . SYSURL . "/index.php?page=activate&code=$code";
-                                                            $body .= "\n\n\n";
-                                                            $body .= "Thank you for using " . SYSNAME . "";
-                                                            $header = 'From: OSGrid Webmaster <noreply@osgrid.org>' . "\r\n";
-                                                            $mail_status = mail($sendto, $subject, $body, $header);
-                                                            //-----------------------------MAIL END --------------------------------------
-                                                            // insert code
-                                                            $UUIDC = $recieved->{'UUID'};
-                                                            $DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','$_SESSION[EMAIL]'," . time() . ")");
-                                                            // insert code end
+														//-----------------------------MAIL END --------------------------------------
+														// insert code
+														$UUIDC = $recieved->{'UUID'};
+														$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','$_SESSION[EMAIL]'," . time() . ")");
+														// insert code end
 ?>
 
-                                                            <table width="100%" height="410" border="0">
-                                                                <tr>
-                                                                    <td valign="top"><br>
-                                                                        <br>
-                                                                        <br>
+														<table width="100%" height="410" border="0">
+															<tr>
+																<td valign="top"><br>
+																	<br>
+																	<br>
 
-                                                                        <table width="50%" border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF">
-                                                                            <tr>
-                                                                                <td bgcolor="#FFFFFF"><div align="center"><strong>Account successfully created </strong></div></td>
-                                                                            </tr>
+																	<table width="50%" border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF">
+																		<tr>
+																			<td bgcolor="#000000"><div align="center"><strong>Account successfully created </strong></div></td>
+																		</tr>
 
-                                                                            <tr>
-                                                                                <td bgcolor="#FFFFFF">
-                                                                                    <blockquote>
-                                                                                        <p>
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            Account successfully created; to login, you need to click on the link which was sent to your email address <br>
-                                                                                            <br>
+																		<tr>
+																			<td bgcolor="#000000">
+																				<blockquote>
+																					<p>
+																						<br>
+																						<br>
+																						Account successfully created; to login, you need to click on the link which was sent to your email address <br>
+																						<br>
 
 <?= SYSNAME ?> First Name: <b><?= $_SESSION[ACCFIRST] ?></b>
-                                                                                            <br>
+																						<br>
 
 <?= SYSNAME ?> Last Name:  <b><?= $_SESSION[ACCLAST] ?></b>
-                                                                                            <br>
-                                                                                										E-mail: <?= $_SESSION[EMAIL] ?>
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            <br>
-                                                                                        </p>
-                                                                                    </blockquote>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
+																						<br>
+																													E-mail: <?= $_SESSION[EMAIL] ?>
+																						<br>
+																						<br>
+																						<br>
+																						<br>
+																					</p>
+																				</blockquote>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+														</table>
 
 <?
-                                                            session_unset();
-                                                            session_destroy();
-                                                        } else {
-                                                            echo "<script language='javascript'>
-            <!--
-						window.alert('Unknown error. Please try again later.');
-						window.location.href='index.php?page=create';
-					   -->
-					  < /script>";
-                                                        }
-                                                    }
-                                                }
-                                            }
+														session_unset();
+														session_destroy();
+													} else {
+														echo "<script language='javascript'>
+															<!--
+															window.alert('Unknown error. Please try again later.');
+															window.location.href='index.php?page=register';
+															-->
+															< /script>";
+													}
+												}
+											}
                                         }
+									
 ?>
