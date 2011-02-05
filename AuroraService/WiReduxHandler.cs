@@ -13,6 +13,7 @@ using OpenSim.Framework;
 using OpenSim.Framework.Servers.HttpServer;
 
 using OpenMetaverse;
+using OpenMetaverse.Imaging;
 using Aurora.DataManager;
 using Aurora.Framework;
 using Aurora.Services.DataService;
@@ -25,9 +26,7 @@ using System.Drawing.Text;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-using OpenMetaverse;
-using OpenMetaverse.Imaging;
-using OpenMetaverse.StructuredData;
+
 
 namespace OpenSim.Server.Handlers.Caps
 {
