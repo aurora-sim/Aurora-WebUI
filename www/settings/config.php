@@ -9,9 +9,10 @@
 
 ##################### System #########################
 define("SYSNAME","Aurora WiRedux");
-define("SYSURL","");
+define("SYSURL","http://localhost");
 define("SYSMAIL","Webmaster <noreply@osgrid.org>");
 define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
+define("WIREDUX_TEXTURE_SERVICE","http://localhost:8002");
 define("WIREDUX_PASSWORD","");
 
 ############ Delete Unconfirmed accounts ################

@@ -13,13 +13,7 @@ Please remember to backup your database regularly.
 5. copy the ./AuroraService/WiReduxHandler.cs to your ~/aurora-sim-Aurora-Sim/OpenSim/Server/Handlers/AuroraService/ directory
 6. Run runprebuild.bat or runprebuild2010.bat
 7. Run compile.bat
-8. Edit your approprate config file and add the following under [Handlers]. For example: ~/aurora-sim-Aurora-Sim/bin/Configuration/Standalone/Standalone.ini
-
-	WireduxHandler = WireduxHandler
-	WireduxHandlerPort = 8007
-	WireduxHandlerPassword = ***
-	
-* note, I don't know if that is the best place for them.. but it works.. 
+8. In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini ensure the password matches the websites /settings/config.php
 
 If you install a new version over your old one, remember to run "Update DB" from the admin menu, 
 it will update the webinterface users table.
@@ -33,6 +27,26 @@ Username: admin
 Password: admin
 
 Enjoy Aurora WiRedux
+
+-----------------------------------------------------------------
+
+== Choose avatar ==
+To choose a avatar on registration you have to make some avatar archives
+
+NOTE: I have only tested this with database archives and not file archives. 
+To save a archive in the database you must give it a name ending with ".database"
+
+Note: When displaying textures from the texture server they will be resized to 128x128 and at the bottom will be writen the grid nickname
+
+1. Dress a avatar up like you want it to look
+2. Take a picture of it and upload this to the grid
+3. in the console of the grid server issue this command 
+save avatar archive <First> <Last> <Filename> <FolderNameToSaveInto> [<SnapshotUUID>] [<Public>]
+example:
+save avatar archive Skidz Tweak EvilOverlord.database "" 00000-0000-0000-0000-00000 1
+
+NOTE: Only pulic ones will be listed on the website
+
 
 -----------------------------------------------------------------
 
