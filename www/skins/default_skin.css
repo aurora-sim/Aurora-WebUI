@@ -349,3 +349,8 @@ td.gridbox_br {
   margin-bottom: 10px;
   color: #000000;
 }
+
+.odd
+{
+	background-color: #222222;
+}
