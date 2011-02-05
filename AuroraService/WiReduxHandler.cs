@@ -20,12 +20,24 @@ using OpenMetaverse.StructuredData;
 
 using System.Collections.Specialized;
 
+using System.Drawing;
+using System.Drawing.Text;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+
+using OpenMetaverse;
+using OpenMetaverse.Imaging;
+using OpenMetaverse.StructuredData;
+
 namespace OpenSim.Server.Handlers.Caps
 {
     public class WireduxHandler : IService
     {
         private static readonly ILog m_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public IHttpServer m_server = null;
+        public IHttpServer m_server2 = null;
+        string m_servernick = "hippogrid";
+        protected IRegistryCore m_registry;
         public string Name
         {
             get { return GetType().Name; }
@@ -46,6 +58,8 @@ namespace OpenSim.Server.Handlers.Caps
         public void PostStart(IConfigSource config, IRegistryCore registry)
         {
             IConfig handlerConfig = config.Configs["Handlers"];
+            m_servernick = config.Configs["GridInfoService"].GetString("gridnick", m_servernick);
+            m_registry = registry;
             if (handlerConfig.GetString("WireduxHandler", "") != Name)
                 return;
             string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
@@ -54,11 +68,115 @@ namespace OpenSim.Server.Handlers.Caps
                 m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
                 //This handler allows sims to post CAPS for their sims on the CAPS server.
                 m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry));
+                m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
+                m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
             }
+            
         }
 
         public void AddNewRegistry(IConfigSource config, IRegistryCore registry)
         {
+        }
+
+        public Hashtable OnHTTPGetTextureImage(Hashtable keysvals)
+        {
+            Hashtable reply = new Hashtable();
+
+            if (keysvals["method"].ToString() != "GridTexture")
+                return reply;
+
+            m_log.Debug("[WIREDUX]: Sending map image jpeg");
+            int statuscode = 200;
+            byte[] jpeg = new byte[0];
+            byte[] myMapImageJPEG;
+            IAssetService m_AssetService = m_registry.RequestModuleInterface<IAssetService>();
+
+            MemoryStream imgstream = new MemoryStream();
+            Bitmap mapTexture = new Bitmap(1, 1);
+            ManagedImage managedImage;
+            Image image = (Image)mapTexture;
+
+            try
+            {
+                // Taking our jpeg2000 data, decoding it, then saving it to a byte array with regular jpeg data
+
+                imgstream = new MemoryStream();
+
+                // non-async because we know we have the asset immediately.
+                AssetBase mapasset = m_AssetService.Get(keysvals["uuid"].ToString());
+
+                // Decode image to System.Drawing.Image
+                if (OpenJPEG.DecodeToImage(mapasset.Data, out managedImage, out image))
+                {
+                    // Save to bitmap
+
+
+                    mapTexture = ResizeBitmap(image, 128,128);
+                    EncoderParameters myEncoderParameters = new EncoderParameters();
+                    myEncoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 75L);
+
+                    // Save bitmap to stream
+                    mapTexture.Save(imgstream, GetEncoderInfo("image/jpeg"), myEncoderParameters);
+
+                    
+
+                    // Write the stream to a byte array for output
+                    jpeg = imgstream.ToArray();
+                    myMapImageJPEG = jpeg;
+                }
+            }
+            catch (Exception)
+            {
+                // Dummy!
+                m_log.Warn("[WORLD MAP]: Unable to generate Map image");
+            }
+            finally
+            {
+                // Reclaim memory, these are unmanaged resources
+                // If we encountered an exception, one or more of these will be null
+                if (mapTexture != null)
+                    mapTexture.Dispose();
+
+                if (image != null)
+                    image.Dispose();
+
+                if (imgstream != null)
+                {
+                    imgstream.Close();
+                    imgstream.Dispose();
+                }
+            }
+
+
+            reply["str_response_string"] = Convert.ToBase64String(jpeg);
+            reply["int_response_code"] = statuscode;
+            reply["content_type"] = "image/jpeg";
+
+            return reply;
+        }
+
+        public Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
+        {
+            Bitmap newsize = new Bitmap(nWidth, nHeight);
+            Graphics temp = Graphics.FromImage(newsize);
+            temp.DrawImage(b, 0, 0, nWidth, nHeight);
+            temp.SmoothingMode = SmoothingMode.AntiAlias;
+            temp.DrawString(m_servernick, new Font("Arial", 8, FontStyle.Regular), new SolidBrush(Color.FromArgb(90, 255, 255, 50)), new Point(2, 115)); 
+            
+            return newsize;
+        }
+
+        // From msdn
+        private static ImageCodecInfo GetEncoderInfo(String mimeType)
+        {
+            ImageCodecInfo[] encoders;
+            encoders = ImageCodecInfo.GetImageEncoders();
+            for (int j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType == mimeType)
+                    return encoders[j];
+            }
+            return null;
         }
     }
 
@@ -74,6 +192,7 @@ namespace OpenSim.Server.Handlers.Caps
         {
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
+            
         }
 
         public override byte[] Handle(string path, Stream requestData,
@@ -141,6 +260,10 @@ namespace OpenSim.Server.Handlers.Caps
                     {
                         return GetProfile(map);
                     }
+                    else if (method == "GetAvatarArchives")
+                    {
+                        return GetAvatarArchives(map);
+                    }
                 }
             }
             catch (Exception)
@@ -184,6 +307,7 @@ namespace OpenSim.Server.Handlers.Caps
             string PasswordSalt = map["PasswordSalt"].AsString();
             string HomeRegion = map["HomeRegion"].AsString();
             string Email = map["Email"].AsString();
+            string AvatarArchive = map["AvatarArchive"].AsString();
 
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
@@ -196,6 +320,7 @@ namespace OpenSim.Server.Handlers.Caps
 
             accountService.CreateUser(FirstName, LastName, PasswordHash, Email);
             UserAccount user = accountService.GetUserAccount(UUID.Zero, FirstName, LastName);
+            
             Verified = user != null;
             UUID userID = UUID.Zero;
 
@@ -203,9 +328,22 @@ namespace OpenSim.Server.Handlers.Caps
             {
                 userID = user.PrincipalID;
                 user.UserLevel = -1;
+                
                 accountService.StoreUserAccount(user);
-            }
 
+                IProfileConnector profileData = DataManager.RequestPlugin<IProfileConnector>();
+                IUserProfileInfo profile = profileData.GetUserProfile(user.PrincipalID);
+                if (profile == null)
+                {
+                    profileData.CreateNewProfile(user.PrincipalID);
+                    profile = profileData.GetUserProfile(user.PrincipalID);
+                }
+                if (AvatarArchive.Length > 0)
+                    profile.AArchiveName = AvatarArchive + ".database";
+                
+                profile.IsNewUser = true;
+                profileData.UpdateUserProfile(profile);
+            }
 
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(Verified);
@@ -517,5 +655,37 @@ namespace OpenSim.Server.Handlers.Caps
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
         }
+
+        byte[] GetAvatarArchives(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            List<AvatarArchive> temp = DataManager.RequestPlugin<IAvatarArchiverConnector>().GetAvatarArchives(true);
+
+            string names = "";
+            string snapshot = "";
+
+            foreach (AvatarArchive a in temp)
+            {
+                names += a.Name + ",";
+                snapshot += a.Snapshot + ",";
+            }
+            if (names.Length > 0)
+            {
+                resp["names"] = names.Substring(0, names.Length - 1);
+                resp["snapshot"] = snapshot.Substring(0, snapshot.Length - 1);
+                resp["Verified"] = OSD.FromBoolean(true);
+            }
+            else
+            {
+                resp["Verified"] = OSD.FromBoolean(false);
+            }
+
+            
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        
     }
 }

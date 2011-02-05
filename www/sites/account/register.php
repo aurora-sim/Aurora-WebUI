@@ -267,76 +267,39 @@ if ($_POST[action] == "") {
                                             <tr>
                                                 <td class="even"> <? echo $wiredux_confirm ?> <? echo $wiredux_email ?>*</td>
                                                 <td class="even">
-                                                    <input id="register_input" name="emaic" type="text" size="40" maxlength="40" ></td>
+                                                    <input id="register_input" name="emaic" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIC] ?>" ></td>
                                             </tr>
 
                 <?
-                                            // commented out because I didn't get this working yet
-                                            // $DbLink = new DB;
-                                            // $DbLink->query("SELECT table_name FROM information_schema.tables WHERE table_schema = '" . C_DB_NAME . "' AND table_name = '" . C_WI_APPEARANCE_TBL . "';");
-                                            // list($found) = $DbLink->next_record();
-                                            // if ($found) {
-                ?>
-                                                <!-- <table width="100%" height="10" border="0" align="center" cellpadding="0" cellspacing="0">
-                                                <tr>
-
-                                                    <table width="90%" border="0" align="center" cellpadding="2" cellspacing="2" bgcolor="#FFFFFF">
-                                                        <tr>
-                                                            <td>
-                                                						  <br>
-                                                						  <br>
-
-                                                              <span class="styleTopTitle">Step Two: First Appearance</span>
-                                                						</td>
-                                                        </tr>
-                                            -->
-                <?
-                                            // $DbLink = new DB;
-                                            // $DbLink->query("SELECT Enabled,Picture,ArchiveName FROM " . C_WI_APPEARANCE_TBL . "");
-                                            // while (list($Enabled, $Picture, $ArchiveName) = $DbLink->next_record()) {
-                                            // if ($Enabled == 'true') {
-                ?>
-                                            <!--
-
-                                            <tr>
-                                                <td width="45%" valign="top">
-                                                    <br>
-                                                    <br>
-
-                                                    <table border="0" align="center" cellpadding="5" cellspacing="0">
-                                                        <tr>
-                                                            <td bgcolor="#FFFFFF">
-                                                										        <a onclick="showdate('<? echo $ArchiveName; ?>')"> <? echo $ArchiveName; ?></a>
-                                                    										</td>
-
-                                                            <td bgcolor="#FFFFFF">
-                                                                <div align="center">
-                                                                    <img src="<? echo $Picture; ?>" onclick="showdate('<? echo $ArchiveName; ?>')" />
-                                                                </div>
-                                                						    				</td>
-                                                								    </tr>
-                                                	     					</table>
-                                                	 		       </td>
-                                                					</tr> -->
-
-                <?
-                                            // }
-                                            // }
-                ?>
-
-                                            <!--
-                                            <tr>
-                                                <td bgcolor="#999999">First Appearance</td>
-                                                    <td bgcolor="#CCCCCC"><input class="box" name="appearance" type="text" size="25" maxlength="15" value="<?= $_SESSION[APPEARANCE] ?>">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                     </tr>
-                                 </table> -->
-
-                <?
-                                            // }
-                ?>
+											$found = array();
+											$found[0] = json_encode(array('Method' => 'GetAvatarArchives', 'WebPassword' => md5(WIREDUX_PASSWORD)));
+											$do_post_requested = do_post_request($found);
+											$recieved = json_decode($do_post_requested);
+											
+											
+											
+											if ($recieved->{'Verified'} == "true") 
+											{
+												$names = explode(",", $recieved->{'names'});
+												$snapshot = explode(",", $recieved->{'snapshot'});
+												$count = count($names);
+												for ($i = 0; $i < $count; $i++) 
+												{
+													?>
+														<tr>
+															<td><? echo $names[$i] ?></td>
+															<td>
+																<input type="radio" id="<? echo $names[$i] ?>" name="AvatarArchive" value="<? echo $names[$i] ?>" <? echo (($_SESSION["AVATARARCHIVE"] == $names[$i]) || (($i == 0) && ($_SESSION["AVATARARCHIVE"] == ""))) ? "checked":""  ?> />
+																<label for="<? echo $names[$i] ?>">																
+																	<img src="<? echo WIREDUX_TEXTURE_SERVICE."/index.php?method=GridTexture&uuid=".$snapshot[$i]; ?>" width="128" height="128" />
+																</label>
+															</td>
+														</tr>
+													<?
+												}
+											}
+											
+											?>
 
                                             <tr>
                                                 <td class="odd">
@@ -371,7 +334,7 @@ if ($_POST[action] == "") {
                                             $_SESSION[ACCFIRST] = $_POST[accountfirst];
                                             $_SESSION[ACCFIRSL] = strtolower($_POST[accountfirst]);
                                             $_SESSION[ACCLAST] = $_POST[accountlast];
-
+											$_SESSION[AVATARARCHIVE] = $_POST[AvatarArchive];
                                             if ($ADRESSCHECK == "1") {
                                                 $_SESSION[NAMEF] = $_POST[firstname];
                                                 $_SESSION[NAMEL] = $_POST[lastname];
@@ -548,7 +511,9 @@ if ($_POST[action] == "") {
 																'Email' => $_SESSION[EMAIL],
 																'HomeRegion' => $_SESSION[REGIONID],
 																'PasswordHash' => $passneu,
-																'PasswordSalt' => $passwordSalt));
+																'PasswordSalt' => $passwordSalt,
+																'AvatarArchive' => $_SESSION[AVATARARCHIVE]
+																));
 													$do_post_requested = do_post_request($found);
 											 		$recieved = json_decode($do_post_requested);
 
