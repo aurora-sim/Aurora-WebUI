@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -127,7 +127,7 @@ namespace OpenSim.Server.Handlers.Caps
             catch (Exception)
             {
                 // Dummy!
-                m_log.Warn("[WORLD MAP]: Unable to generate Map image");
+                m_log.Warn("[WiRedux]: Unable to post image.");
             }
             finally
             {
@@ -262,6 +262,18 @@ namespace OpenSim.Server.Handlers.Caps
                     else if (method == "GetAvatarArchives")
                     {
                         return GetAvatarArchives(map);
+                    }
+                    else if (method == "DeleteUser")
+                    {
+                        return DeleteUser(map);
+                    }
+                    else if (method == "BanUser")
+                    {
+                        return BanUser(map);
+                    }
+                    else if (method == "UnBanUser")
+                    {
+                        return UnBanUser(map);
                     }
                 }
             }
@@ -684,7 +696,71 @@ namespace OpenSim.Server.Handlers.Caps
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
         }
-
         
+        byte[] DeleteUser(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            UUID agentID = map["UserID"].AsUUID();
+            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            
+            if(GetAgent == null)
+            {
+                 resp["Finished"] = OSD.FromBoolean(true);
+                 string xmlString = OSDParser.SerializeJsonString(resp);
+                 UTF8Encoding encoding = new UTF8Encoding();
+                 return encoding.GetBytes(xmlString);
+            }
+            GetAgent.Flags &= ~IAgentFlags.PermBan;
+            DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+        
+        byte[] BanUser(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            UUID agentID = map["UserID"].AsUUID();
+            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            
+            if(GetAgent == null)
+            {
+                 resp["Finished"] = OSD.FromBoolean(true);
+                 string xmlString = OSDParser.SerializeJsonString(resp);
+                 UTF8Encoding encoding = new UTF8Encoding();
+                 return encoding.GetBytes(xmlString);
+            }
+            GetAgent.Flags &= ~IAgentFlags.PermBan;
+            DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+        
+        byte[] UnBanUser(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            UUID agentID = map["UserID"].AsUUID();
+            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            
+            if(GetAgent == null)
+            {
+                 resp["Finished"] = OSD.FromBoolean(true);
+                 string xmlString = OSDParser.SerializeJsonString(resp);
+                 UTF8Encoding encoding = new UTF8Encoding();
+                 return encoding.GetBytes(xmlString);
+            }
+            GetAgent.Flags &= IAgentFlags.PermBan;
+            DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
     }
 }
