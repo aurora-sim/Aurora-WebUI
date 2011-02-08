@@ -1,101 +1,101 @@
 <?php
-$wiredux_welcome='salut bienvenue';
+$wiredux_welcome='Bonjour, bienvenue';
 $wiredux_language_code='fr';
-$wiredux_actual_language='Franï¿½ais';
-$wiredux_grid_status='GRID STATUS';
-$wiredux_total_users='Total Users';
-$wiredux_total_regions='Total Regions';
-$wiredux_unique_visitors='Unique Visitors last 30 days';
-$wiredux_online_now='Online Now';
-$wiredux_first_name='First Name';
-$wiredux_last_name='Last Name';
-$wiredux_password='Password';
-$wiredux_forgot_password='Forgotten Password?';
-$wiredux_login='Login';
-$wiredux_confirm='Confirm';
-$wiredux_start_region='Start Region';
-$wiredux_address='Address';
-$wiredux_zip_code='Zip Code';
-$wiredux_city='City';
-$wiredux_country='Country';
-$wiredux_date_of_birth='Date Of Birth';
-$wiredux_email='Email';
-$wiredux_create_new_account='Create New Account';
-$wiredux_world_map='World Map';
-$wiredux_region_name='Region Name';
-$wiredux_location='Location';
+$wiredux_actual_language='Français';
+$wiredux_grid_status='ETAT DE LA GRILLE';
+$wiredux_total_users='Nombre total d\'utilisateurs';
+$wiredux_total_regions='Nombre total de régions';
+$wiredux_unique_visitors='Visiteur unique (30jours)';
+$wiredux_online_now='En ligne maintenant';
+$wiredux_first_name='Nom';
+$wiredux_last_name='Prénom';
+$wiredux_password='Mot de passe';
+$wiredux_forgot_password='Mot de passe oublié?';
+$wiredux_login='Connection';
+$wiredux_confirm='Confirmer';
+$wiredux_start_region='Région de départ';
+$wiredux_address='Adresse';
+$wiredux_zip_code='Code Zip';
+$wiredux_city='Ville';
+$wiredux_country='Pays';
+$wiredux_date_of_birth='Date d\'anniversaire';
+$wiredux_email='Adresse Email';
+$wiredux_create_new_account='Créer un nouveau compte';
+$wiredux_world_map='Carte du monde';
+$wiredux_region_name='Nom de la région';
+$wiredux_location='Lieu';
 $wiredux_info='Info';
-$wiredux_regions_found='Regions Found';
-$wiredux_region_list='Region List';
-$wiredux_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
-$wiredux_more_info='More Info';
-$wiredux_user_name='User Name';
-$wiredux_online_users_info='This shows all the users that are online at this moment.';
-$wiredux_submit='Submit';
-$wiredux_verified_account='Thank you, your account is now active and ready to use.';
-$wiredux_internal_error='Internal error, please try again later.';
-$wiredux_invalid_code='This isnt a valid code or maybe the code was older than 24h';
-$wiredux_activate_account='Activate Account';
-$wiredux_change_account='Change Account';
-$wiredux_change_home_region='Change Home Region';
-$wiredux_old_region='Old Region';
-$wiredux_change_password='Change Password';
-$wiredux_old_password='Old Password';
-$wiredux_change_email='Change Email';
-$wiredux_old_email='Old Email';
-$wiredux_change_name='Change Name';
-$wiredux_login='Login';
-$wiredux_register='Register';
-$wiredux_news='News';
-$wiredux_history='History';
-$wiredux_see_profile='See Profile';
-$wiredux_user_name='User Name';
-$wiredux_users_found='Users Found';
-$wiredux_user_search='User Search';
-$wiredux_users_profile='Profile of';
-$wiredux_no_information_set="No information set";
-$wiredux_about_me="About Me";
-$wiredux_partner="Partner";
-$wiredux_resident_since="Resident since";
-$wiredux_account_info="Account Info";
-$wiredux_region_information="Region Information";
-$wiredux_region_type="Region Type";
-$wiredux_owner="Owner";
+$wiredux_regions_found='Régions trouvées';
+$wiredux_region_list='Liste des régions';
+$wiredux_region_list_page_info='Ceci est la liste des régions, cliquez sur le nom d\'une région pour obtenir plus d\'informations sur cette région.';
+$wiredux_more_info='Plus d\'info';
+$wiredux_user_name='Nom d\'utilisateur';
+$wiredux_online_users_info='Ceci affiche tous les utilisateurs qui sont en ligne en ce moment.';
+$wiredux_submit='Soumettre';
+$wiredux_verified_account='Merci, votre compte est maintenant prêt à l\'emploi.';
+$wiredux_internal_error='Erreur interne, s\'il vous plaît réessayer à nouveau plus tard.';
+$wiredux_invalid_code='Ce n\'est pas un code valide ou peut-être que le code est de plus de 24h';
+$wiredux_activate_account='Activer le compte';
+$wiredux_change_account='Changer de compte';
+$wiredux_change_home_region='Changer le région d\'accueil';
+$wiredux_old_region='Ancienne Région';
+$wiredux_change_password='Changer le mot de passe';
+$wiredux_old_password='Ancien mot de passe';
+$wiredux_change_email='Changer l\'adresse Email';
+$wiredux_old_email='Ancienne adresse Email';
+$wiredux_change_name='Changer le nom';
+$wiredux_login='Connection';
+$wiredux_register='Enregistrement';
+$wiredux_news='Nouveauté';
+$wiredux_history='Historique';
+$wiredux_see_profile='Voir le profil';
+$wiredux_user_name='Nom d\'utilisateur';
+$wiredux_users_found='Utilisateurs trouvés';
+$wiredux_user_search='Rechercher un utilisateur';
+$wiredux_users_profile='Profil de';
+$wiredux_no_information_set="Aucune information";
+$wiredux_about_me="À propos de moi";
+$wiredux_partner="Partenaire";
+$wiredux_resident_since="Résident depuis";
+$wiredux_account_info="Informations sur le compte";
+$wiredux_region_information="Information sur la région";
+$wiredux_region_type="Type de région";
+$wiredux_owner="Propriétaire";
 
 //
 //Menu items
 //
-$wiredux_menu_item_home = 'Home';
-$wiredux_menu_item_changeaccount = 'Edit Account';
-$wiredux_menu_item_news = 'News';
-$wiredux_menu_item_regions = 'Region List';
-$wiredux_menu_item_worldmap = 'Map';
-$wiredux_menu_item_register = 'Register';
-$wiredux_menu_item_logout = 'Logout';
-$wiredux_menu_item_login = 'Login';
-$wiredux_menu_item_onlineusers = 'Online Users';
-$wiredux_menu_item_peoplesearch = 'People Search';
+$wiredux_menu_item_home = 'Accueil';
+$wiredux_menu_item_changeaccount = 'Modifier le compte';
+$wiredux_menu_item_news = 'Nouveautés';
+$wiredux_menu_item_regions = 'Régions';
+$wiredux_menu_item_worldmap = 'Carte';
+$wiredux_menu_item_register = 'Inscription';
+$wiredux_menu_item_logout = 'Déconnection';
+$wiredux_menu_item_login = 'Connection';
+$wiredux_menu_item_onlineusers = 'Utilisateurs en ligne';
+$wiredux_menu_item_peoplesearch = 'Rechercher des gens';
 
 //
 // Home Page
 //
 
-$wiredux_home_page='<h2><strong>Welcome to the new Aurora WiRedux webpage!</strong></h2>
+$wiredux_home_page='<h2><strong>Bienvenue sur le nouveau site Aurora WiRedux!</strong></h2>
     <p>
-        This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams. <br />
-        Everything is possible in our brand new 3D World. <br />
-        Our World is created by its residents, you can build everything you can imagine here. <br /><br />
-        Create a free account today, build a virtual you and play in our world. <br />
-        Join us now, and make a difference! <br /><br /><br />
-        <u>There are just 3 steps to get started:</u> <br /><br />
-        1.) Create your FREE Account right here on our pages. <br /><br />
-        2.) Download the viewer. We recommend <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
-        3.) Be sure to add our grid to your viewer. <br /><br /><br />
-        <i>Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</i>
+        Ceci est notre nouveau monde virtuel où vous pouvez vous amuser, rencontrer des gens, discuter, jouer, explorer, créer et partager vos rêves. <br />
+        Tout est possible dans notre tout nouveau monde 3D. <br />
+        Notre monde est créé par ses résidents, vous pouvez y construire tout ce que vous pouvez imaginer. <br /><br />
+        Créer un compte gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde. <br />
+        Rejoignez-nous maintenant, et faites la différence! <br /><br /><br />
+        <u>Il ya seulement 3 étapes pour commencer:</u> <br /><br />
+        1.) Créez votre compte GRATUIT sur notre site. <br /><br />
+        2.) Télécharger le spectateur. Nous recommandons <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        3.) N\'oubliez pas d\'ajouter notre grille à votre spectateur. <br /><br /><br />
+        <i>S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.</i>
     </p>';
 
 //
 // 404 page
 //
-$wiredux_404_text = 'The requested page could not be found! Please try again later.';
+$wiredux_404_text = 'La page demandée n\'a pas pu être trouvée! S\'il vous plaît réessayer plus tard.';
 ?>
