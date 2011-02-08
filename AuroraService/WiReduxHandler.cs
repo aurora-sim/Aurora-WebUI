@@ -70,7 +70,7 @@ namespace OpenSim.Server.Handlers.Caps
                 m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
             }
-            
+
         }
 
         public void AddNewRegistry(IConfigSource config, IRegistryCore registry)
@@ -110,14 +110,14 @@ namespace OpenSim.Server.Handlers.Caps
                     // Save to bitmap
 
 
-                    mapTexture = ResizeBitmap(image, 128,128);
+                    mapTexture = ResizeBitmap(image, 128, 128);
                     EncoderParameters myEncoderParameters = new EncoderParameters();
                     myEncoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 75L);
 
                     // Save bitmap to stream
                     mapTexture.Save(imgstream, GetEncoderInfo("image/jpeg"), myEncoderParameters);
 
-                    
+
 
                     // Write the stream to a byte array for output
                     jpeg = imgstream.ToArray();
@@ -160,8 +160,8 @@ namespace OpenSim.Server.Handlers.Caps
             Graphics temp = Graphics.FromImage(newsize);
             temp.DrawImage(b, 0, 0, nWidth, nHeight);
             temp.SmoothingMode = SmoothingMode.AntiAlias;
-            temp.DrawString(m_servernick, new Font("Arial", 8, FontStyle.Regular), new SolidBrush(Color.FromArgb(90, 255, 255, 50)), new Point(2, 115)); 
-            
+            temp.DrawString(m_servernick, new Font("Arial", 8, FontStyle.Regular), new SolidBrush(Color.FromArgb(90, 255, 255, 50)), new Point(2, 115));
+
             return newsize;
         }
 
@@ -191,7 +191,7 @@ namespace OpenSim.Server.Handlers.Caps
         {
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
-            
+
         }
 
         public override byte[] Handle(string path, Stream requestData,
@@ -335,7 +335,7 @@ namespace OpenSim.Server.Handlers.Caps
 
             accountService.CreateUser(FirstName, LastName, PasswordHash, Email);
             UserAccount user = accountService.GetUserAccount(UUID.Zero, FirstName, LastName);
-            
+
             Verified = user != null;
             UUID userID = UUID.Zero;
 
@@ -343,7 +343,7 @@ namespace OpenSim.Server.Handlers.Caps
             {
                 userID = user.PrincipalID;
                 user.UserLevel = -1;
-                
+
                 accountService.StoreUserAccount(user);
 
                 IProfileConnector profileData = DataManager.RequestPlugin<IProfileConnector>();
@@ -355,7 +355,7 @@ namespace OpenSim.Server.Handlers.Caps
                 }
                 if (AvatarArchive.Length > 0)
                     profile.AArchiveName = AvatarArchive + ".database";
-                
+
                 profile.IsNewUser = true;
                 profileData.UpdateUserProfile(profile);
             }
@@ -654,7 +654,7 @@ namespace OpenSim.Server.Handlers.Caps
                         account.UserFlags = 2; //Set them to no info given
                     string flags = ((IUserProfileInfo.ProfileFlags)account.UserFlags).ToString();
                     IUserProfileInfo.ProfileFlags.NoPaymentInfoOnFile.ToString();
-                    
+
                     accountMap["AccountInfo"] = (profile.CustomType != "" ? profile.CustomType :
                         account.UserFlags == 0 ? "Resident" : "Admin") + "\n" + flags;
                     UserAccount partnerAccount = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, profile.Partner);
@@ -695,99 +695,111 @@ namespace OpenSim.Server.Handlers.Caps
                 resp["Verified"] = OSD.FromBoolean(false);
             }
 
-            
+
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
         }
-        
+
         byte[] DeleteUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID agentID = map["UserID"].AsUUID();
             IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
-            
-            if(GetAgent == null)
-            {
-                 resp["Finished"] = OSD.FromBoolean(true);
-                 string xmlString = OSDParser.SerializeJsonString(resp);
-                 UTF8Encoding encoding = new UTF8Encoding();
-                 return encoding.GetBytes(xmlString);
-            }
-            GetAgent.Flags &= ~IAgentFlags.PermBan;
-            DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
-            resp["Finished"] = OSD.FromBoolean(true);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            if (GetAgent == null)
+            {
+                resp["Finished"] = OSD.FromBoolean(true);
+                string xmlString = OSDParser.SerializeJsonString(resp);
+                UTF8Encoding encoding = new UTF8Encoding();
+                return encoding.GetBytes(xmlString);
+            }
+            else
+            {
+                GetAgent.Flags &= ~IAgentFlags.PermBan;
+                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+
+                resp["Finished"] = OSD.FromBoolean(true);
+                string xmlString = OSDParser.SerializeJsonString(resp);
+                UTF8Encoding encoding = new UTF8Encoding();
+                return encoding.GetBytes(xmlString);
+            }
         }
-        
+
         byte[] BanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID agentID = map["UserID"].AsUUID();
             IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
-            
-            if(GetAgent == null)
-            {
-                 resp["Finished"] = OSD.FromBoolean(true);
-                 string xmlString = OSDParser.SerializeJsonString(resp);
-                 UTF8Encoding encoding = new UTF8Encoding();
-                 return encoding.GetBytes(xmlString);
-            }
-            GetAgent.Flags &= ~IAgentFlags.PermBan;
-            DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
-            resp["Finished"] = OSD.FromBoolean(true);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            if (GetAgent == null)
+            {
+                resp["Finished"] = OSD.FromBoolean(true);
+                string xmlString = OSDParser.SerializeJsonString(resp);
+                UTF8Encoding encoding = new UTF8Encoding();
+                return encoding.GetBytes(xmlString);
+            }
+            else
+            {
+                GetAgent.Flags &= ~IAgentFlags.PermBan;
+                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+
+                resp["Finished"] = OSD.FromBoolean(true);
+                string xmlString = OSDParser.SerializeJsonString(resp);
+                UTF8Encoding encoding = new UTF8Encoding();
+                return encoding.GetBytes(xmlString);
+            }
         }
-        
+
         byte[] TempBanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID agentID = map["UserID"].AsUUID();
             IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
-            
-            if(GetAgent == null)
-            {
-                 resp["Finished"] = OSD.FromBoolean(true);
-                 string xmlString = OSDParser.SerializeJsonString(resp);
-                 UTF8Encoding encoding = new UTF8Encoding();
-                 return encoding.GetBytes(xmlString);
-            }
-            GetAgent.Flags &= ~IAgentFlags.TempBan;
-            GetAgent.OtherAgentInformation["TemperaryBanInfo"] = resp["BannedUntil"];
-            DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
-            resp["Finished"] = OSD.FromBoolean(true);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            if (GetAgent == null)
+            {
+                resp["Finished"] = OSD.FromBoolean(true);
+                string xmlString = OSDParser.SerializeJsonString(resp);
+                UTF8Encoding encoding = new UTF8Encoding();
+                return encoding.GetBytes(xmlString);
+            }
+            else
+            {
+                GetAgent.Flags &= ~IAgentFlags.TempBan;
+                GetAgent.OtherAgentInformation["TemperaryBanInfo"] = resp["BannedUntil"];
+                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+
+                resp["Finished"] = OSD.FromBoolean(true);
+                string xmlString = OSDParser.SerializeJsonString(resp);
+                UTF8Encoding encoding = new UTF8Encoding();
+                return encoding.GetBytes(xmlString);
+            }
         }
-        
+
         byte[] UnBanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID agentID = map["UserID"].AsUUID();
             IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
-            
-            if(GetAgent == null)
-            {
-                 resp["Finished"] = OSD.FromBoolean(true);
-                 string xmlString = OSDParser.SerializeJsonString(resp);
-                 UTF8Encoding encoding = new UTF8Encoding();
-                 return encoding.GetBytes(xmlString);
-            }
-            GetAgent.Flags &= IAgentFlags.PermBan;
-            DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
-            resp["Finished"] = OSD.FromBoolean(true);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            if (GetAgent == null)
+            {
+                resp["Finished"] = OSD.FromBoolean(true);
+                string xmlString = OSDParser.SerializeJsonString(resp);
+                UTF8Encoding encoding = new UTF8Encoding();
+                return encoding.GetBytes(xmlString);
+            }
+            else
+            {
+                GetAgent.Flags &= IAgentFlags.PermBan;
+                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+
+                resp["Finished"] = OSD.FromBoolean(true);
+                string xmlString = OSDParser.SerializeJsonString(resp);
+                UTF8Encoding encoding = new UTF8Encoding();
+                return encoding.GetBytes(xmlString);
+            }
         }
     }
 }
