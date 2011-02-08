@@ -271,6 +271,10 @@ namespace OpenSim.Server.Handlers.Caps
                     {
                         return BanUser(map);
                     }
+                    else if (method == "TempBanUser")
+                    {
+                        return TempBanUser(map);
+                    }
                     else if (method == "UnBanUser")
                     {
                         return UnBanUser(map);
@@ -733,6 +737,29 @@ namespace OpenSim.Server.Handlers.Caps
                  return encoding.GetBytes(xmlString);
             }
             GetAgent.Flags &= ~IAgentFlags.PermBan;
+            DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+        
+        byte[] TempBanUser(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            UUID agentID = map["UserID"].AsUUID();
+            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            
+            if(GetAgent == null)
+            {
+                 resp["Finished"] = OSD.FromBoolean(true);
+                 string xmlString = OSDParser.SerializeJsonString(resp);
+                 UTF8Encoding encoding = new UTF8Encoding();
+                 return encoding.GetBytes(xmlString);
+            }
+            GetAgent.Flags &= ~IAgentFlags.TempBan;
+            GetAgent.OtherAgentInformation["TemperaryBanInfo"] = resp["BannedUntil"];
             DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
             resp["Finished"] = OSD.FromBoolean(true);
