@@ -15,6 +15,13 @@ Please remember to backup your database regularly.
 7. Run compile.bat
 8. In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini ensure the password matches the websites /settings/config.php
 
+	WireduxHandler = WireduxHandler
+	WireduxHandlerPort = 8007
+	WireduxHandlerPassword = ***
+
+In /aurora-sim-Aurora-Sim/bin/AuroraServerConfiguration/Main.ini  <==Grid Mode
+Above WireduxHandlers are already there for Grid Mode.
+
 If you install a new version over your old one, remember to run "Update DB" from the admin menu, 
 it will update the webinterface users table.
 
