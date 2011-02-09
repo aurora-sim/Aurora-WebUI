@@ -279,6 +279,10 @@ namespace OpenSim.Server.Handlers.Caps
                     {
                         return UnBanUser(map);
                     }
+                    else if (method == "FindUsers")
+                    {
+                        return FindUsers(map);
+                    }
                 }
             }
             catch (Exception)
@@ -800,6 +804,20 @@ namespace OpenSim.Server.Handlers.Caps
                 UTF8Encoding encoding = new UTF8Encoding();
                 return encoding.GetBytes(xmlString);
             }
+        }
+
+        byte[] FindUsers(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            int start = map["Start"].AsInteger();
+            int end = map["End"].AsInteger();
+            string Query= map["Query"].AsInteger();
+            List<UserAccount> accounts = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccounts(UUID.Zero, Query);
+            
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
         }
     }
 }
