@@ -821,6 +821,7 @@ namespace OpenSim.Server.Handlers.Caps
                   userInfo["PrincipalID"] = acc.PrincipalID;
                   userInfo["UserName"] = acc.Name;
                   userInfo["Created"] = acc.Created;
+                  userInfo["UserFlags"] = acc.UserFlags;
                   users.Add(userInfo);
            }
            resp["Users"] = users;
