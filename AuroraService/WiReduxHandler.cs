@@ -813,6 +813,17 @@ namespace OpenSim.Server.Handlers.Caps
             int end = map["End"].AsInteger();
             string Query= map["Query"].AsInteger();
             List<UserAccount> accounts = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccounts(UUID.Zero, Query);
+
+           OSDArray users = new OSDArray();
+           foreach(UserAccount acc in accounts)
+           {
+                  OSDMap userInfo = new OSDMap();
+                  userInfo["PrincipalID"] = acc.PrincipalID;
+                  userInfo["UserName"] = acc.Name;
+                  userInfo["Created"] = acc.Created;
+                  users.Add(userInfo);
+           }
+           resp["Users"] = users;
             
             resp["Finished"] = OSD.FromBoolean(true);
             string xmlString = OSDParser.SerializeJsonString(resp);
