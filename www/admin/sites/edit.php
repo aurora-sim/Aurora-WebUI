@@ -35,27 +35,14 @@ if($_POST[state]=="set"){
 $DbLink->query("SELECT PrincipalID,FirstName,LastName,Created FROM ".C_USERS_TBL." WHERE PrincipalID='$_POST[uuid]'");
 list($uuid,$username,$lastname,$created) = $DbLink->next_record();
 
-$DbLink->query("SELECT passwordHash FROM ".C_AUTH_TBL." WHERE UUID='$_POST[uuid]'");
-list($password) = $DbLink->next_record();
-
-$DbLink->query("SELECT passwordHash,active FROM ".C_WIUSR_TBL." WHERE UUID='$_POST[uuid]'");
-list($passbkp,$active) = $DbLink->next_record();
-
 if($_POST[active] !=3){
 if($_POST[status]==0){
-$DbLink->query("UPDATE ".C_AUTH_TBL." SET passwordHash='' WHERE UUID='$_POST[uuid]'");
 $DbLink->query("UPDATE ".C_WIUSR_TBL." SET active='$_POST[status]' WHERE UUID='$_POST[uuid]'");
 }else{
-$DbLink->query("UPDATE ".C_AUTH_TBL." SET passwordHash='$passbkp' WHERE UUID='$_POST[uuid]'");
 $DbLink->query("UPDATE ".C_WIUSR_TBL." SET active='$_POST[status]' WHERE UUID='$_POST[uuid]'");
 }
 }else{
 if($_POST[status]==1){
-$DbLink->query("SELECT passwordSalt FROM ".C_WIUSR_TBL." WHERE UUID='$_POST[uuid]'");
-list($passSalt) = $DbLink->next_record();
-
-$DbLink->query("UPDATE ".C_AUTH_TBL." SET passwordHash='$passSalt' WHERE UUID='$_POST[uuid]'");
-$DbLink->query("UPDATE ".C_WIUSR_TBL." SET passwordHash='$passSalt', active='$_POST[status]', passwordSalt='' WHERE UUID='$_POST[uuid]'");
 $DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE UUID='$_POST[uuid]'"); 
 }
 }
