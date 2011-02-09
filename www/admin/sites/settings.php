@@ -53,15 +53,15 @@ if($_POST[Submitnam2]=="Deactivate"){
 $DbLink->query("UPDATE ".C_ADM_TBL." SET lastnames='0'");
 }
 
-$DbLink->query("SELECT griddir,assetdir,userdir,lastnames,region,startregion,adress FROM ".C_ADM_TBL."");
-list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHECK) = $DbLink->next_record();
+$DbLink->query("SELECT lastnames,region,startregion,adress FROM ".C_ADM_TBL."");
+list($LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHECK) = $DbLink->next_record();
 
 ?>
 <table width="100%" height="100%" border="0" align="center">
             <tr>
               <td valign="top"><table width="50%" border="0" align="center">
                 <tr>
-                  <td><p align="center" class="Stil1">Admin Settings </p>                  </td>
+                  <td><p align="center" class="Stil1">Admin Settings</p>                  </td>
                 </tr>
               </table>
 
@@ -115,27 +115,7 @@ list($GRIDSDIR,$ASSETSDIR,$USERSDIR,$LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHE
                   </table></td>
                 </tr>
                 <tr>
-                  <td><span class="Stil4"></span></td>
                   <td>&nbsp;</td>
-                </tr>
-				<form id="form6" name="form6" method="post" action="index.php?page=settings">
-                <tr>
-				  <td bgcolor="#565051"><span class="Stil4">Grid Server Log Directory </span></td>
-                  <td bgcolor="#565051"><input type="text" value="<?=$GRIDSDIR?>" name="griddir"></td>
-                </tr>
-                <tr>
-                  <td bgcolor="#565051"><span class="Stil4">Asset Server Log Directory </span></td>
-                  <td bgcolor="#565051"><input type="text" value="<?=$ASSETSDIR?>" name="assetdir" />
-                  </td>
-                </tr>
-                <tr>
-                  <td bgcolor="#565051"><span class="Stil4">User Server Log Directory </span></td>
-                  <td bgcolor="#565051"><input type="text" value="<?=$USERSDIR?>" name="userdir" />
-                  <input type="submit" name="Submitgau" value="Save" /></td>
-                </tr>
-				</form>
-                <tr>
-                  <td><span class="Stil4"></span></td>
                   <td>&nbsp;</td>
                 </tr>
                 <tr>
