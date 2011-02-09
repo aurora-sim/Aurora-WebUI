@@ -15,32 +15,11 @@ window.location.href=\"index.php?page=home\";
         $AnzeigeStart 		= 0;
         $AnzeigeLimit		= 25;
 
-        if($_POST[firstname]) {
-            $USR_1 = "username LIKE '%$_POST[firstname]%' and";
-        }
-        if($_POST[lastname]) {
-            $USR_2 = "lastname LIKE '%$_POST[lastname]%' and";
-        }
-        if(($_POST[firstname]) or ($_POST[lastname])) {
-            $USR ="WHERE";
-            $USR_3 ="username !=''";
-        }
-
 // LINK SELECTOR
 
-        if($_POST[firstname]) {
-            $Link1.="firstname=$_POST[firstname]&";
+        if($_POST[query]) {
+            $Link2.="query=$_POST[query]&";
         }
-        if($_POST[lastname]) {
-            $Link2.="lastname=$_POST[lastname]&";
-        }
-
-        if($_GET[AStart]) {
-            $AStart=$_GET[AStart];
-        };
-        if($_GET[ALimit]) {
-            $ALimit=$_GET[ALimit];
-        };
 
         if(!$AStart) $AStart = $AnzeigeStart;
         if(!$ALimit) $ALimit = $AnzeigeLimit;
@@ -49,7 +28,6 @@ window.location.href=\"index.php?page=home\";
 
 //DELETE USER START
         if(($_GET[action2] == 'delete') and ($_GET[quest] == 'yes')) {
-            $DbLink3 = new DB;
             $found = array();
             $found[0] = json_encode(array('Method' => 'DeleteUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
                     'UserID' => $_GET[user_id]));
@@ -59,7 +37,6 @@ window.location.href=\"index.php?page=home\";
 
 //BAN USER START
         if(($_GET[action2] == 'ban') and ($_GET[quest] == 'yes')) {
-            $DbLink3 = new DB;
             $found = array();
             $found[0] = json_encode(array('Method' => 'BanUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
                     'UserID' => $_GET[user_id]));
@@ -69,7 +46,6 @@ window.location.href=\"index.php?page=home\";
 
 //UNBAN USER START
         if(($_GET[action2] == 'unban') and ($_GET[quest] == 'yes')) {
-            $DbLink3 = new DB;
             $found = array();
             $found[0] = json_encode(array('Method' => 'UnBanUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
                     'UserID' => $_GET[user_id]));
@@ -164,25 +140,16 @@ window.location.href=\"index.php?page=home\";
 
 
                     <TABLE CELLPADDING="0" CELLSPACING="0" WIDTH="100%" BGCOLOR="#FFFFFF">
-                        <TR>
+          <TR>
                             <TD>
-                                <FONT COLOR="#000000">Firstname</FONT>
+                                <FONT COLOR="#000000">User Name</FONT>
                             </TD>
-                            <TD>
-                                <INPUT TYPE="TEXT" NAME="firstname" SIZE="15" value="<?=$_POST[firstname]?>" STYLE="HEIGHT:20">
-                            </TD>
-                            <TD>
-                                <FONT COLOR="#000000">Lastname</FONT>
-                            </TD>
-                            <TD>
-                                <INPUT TYPE="TEXT" NAME="lastname" SIZE="15" value="<?=$_POST[lastname]?>" STYLE="HEIGHT:20">
-                            </TD>
-                            <TD>&nbsp;</TD>
-                            <TD>&nbsp;</TD>
+                            <TD align="right">
+                                <INPUT TYPE="TEXT" NAME="query" SIZE="50" value="<?=$_POST[query]?>" STYLE="HEIGHT:20">              </TD>
                             <TD>
                                 <INPUT TYPE="Submit" value="Search" STYLE="HEIGHT:20">
-                            </TD>
-                        </TR></TABLE>
+                </TD>
+                      </TR></TABLE>
                 </TD></TR>
         </FORM>
     </TABLE><br>
@@ -199,8 +166,7 @@ window.location.href=\"index.php?page=home\";
                                     <TR>
                                         <TD WIDTH=28></TD>
                                         <TD WIDTH=83><B>EDIT</B></TD>
-                                        <TD WIDTH=241><B>Firstname</B></TD>
-                                        <TD WIDTH=229><B>Lastname</B></TD>
+                                        <TD WIDTH=241><B>User Name</B></TD>
                                         <TD width=170><B>Created</B></TD>
                                         <TD width=124><B>Active</B></TD>
                                         <TD WIDTH=41></TD>
@@ -211,15 +177,21 @@ window.location.href=\"index.php?page=home\";
                     </TABLE>
                     <IMG SRC="../images/icons/dot.gif" WIDTH=1 HEIGHT=2><BR>
                         <?
-                        $DbLink1 = new DB;
-                        $DbLink1->query("SELECT PrincipalID,FirstName,LastName,Created FROM ".C_USERS_TBL." $USR $USR_1 $USR_2 $USR_3 ORDER by created ASC $Limit ");
-                        while(list($user_id,$username,$lastname,$created) = $DbLink1->next_record()) {
+						$DbLink3 = new DB;
+            			$found = array();
+            			$found[0] = json_encode(array('Method' => 'FindUsers', 'WebPassword' => md5(WIREDUX_PASSWORD),
+                    		'UserID' => $_GET[user_id], 'Start' => $AStart, 'End' => $ALimit, 'Query' => $_GET[query]));
+            			$do_post_request = do_post_request($found);
+                        $recieved = json_decode($do_post_request);
+						
+                        //$DbLink1 = new DB;
+                        //$DbLink1->query("SELECT PrincipalID,FirstName,LastName,Created FROM ".C_USERS_TBL." $USR $USR_1 $USR_2 $USR_3 ORDER by created ASC $Limit ");
+                        while(list($userInfo) = $recieved->{'Users'}) {
 
-                            //WRONG, HARD CODE FOR NOW UNTIL WE CHANGE OVER TO JSON PARSING
-                            $active =5;
-                            if($confirm == 'confirm') {
-                                $active=3;
-                            }
+                            $user_id = userInfo->{'PrincipalID'};
+                            $username = userInfo->{'UserName'};
+                            $created = userInfo->{'Created'};
+                            $flags = userInfo->{'UserFlags'};
 
                             $create = date("d.m.Y", $created);
                             ?>
@@ -230,15 +202,14 @@ window.location.href=\"index.php?page=home\";
                                 <A href="index.php?page=edit&userid=<?=$user_id?>">
                                     <FONT COLOR=Blue><B>EDIT</B></FONT></A></TD>
                             <TD WIDTH=243><FONT COLOR=Blue><B><?=$username?></B></FONT></TD>
-                            <TD WIDTH=236><FONT COLOR=#888888><B><?=$lastname?></B></FONT></TD>
                             <TD WIDTH=173><FONT COLOR=#888888><B><?=$create?></B></FONT></TD>
                             <TD width=100><B>
                                             <?
-                                            if($active==1) {
+                                            if(($flags & 7) == 7) {
                                                 echo"<FONT COLOR=#00FF00>Active</FONT>";
-                                            }elseif($active==3) {
+                                            }elseif(($flags & 3) == 3) {
                                                 echo"<FONT COLOR=#FF0000>Not Confirmed</FONT>";
-                                            }elseif($active==5) {
+                                            }elseif(($flags & 5) == 5) {
                                                 echo"<FONT COLOR=#FF0000>Banned</FONT>";
                                             }else {
                                                 echo"<FONT COLOR=#FF0000>Inactive</FONT>";
@@ -246,14 +217,14 @@ window.location.href=\"index.php?page=home\";
                                 </B></TD>
                             <TD width=32>
                                         <? if($active ==5) {?>
-                                <a href="index.php?<?=$GoPage?>&action=unban&unbanusr=<?=$username?>%20<?=$lastname?>&user_id=<?=$user_id?>">
+                                <a href="index.php?<?=$GoPage?>&action=unban&unbanusr=<?=$username?>&user_id=<?=$user_id?>">
                                     <img src="../images/icons/unban.jpg" alt="Unban this User" border="0" /></a>
                                             <? } else { ?>
-                                <a href="index.php?<?=$GoPage?>&action=ban&banusr=<?=$username?>%20<?=$lastname?>&user_id=<?=$user_id?>">
+                                <a href="index.php?<?=$GoPage?>&action=ban&banusr=<?=$username?>&user_id=<?=$user_id?>">
                                     <img src="../images/icons/ban.jpg" alt="Ban this User" border="0" /></a>
                                             <? } ?></TD>
                             <TD WIDTH=39 ALIGN=right>
-                                <a HREF="index.php?<?=$GoPage?>&action=delete&delusr=<?=$username?>%20<?=$lastname?>&user_id=<?=$user_id?>">
+                                <a HREF="index.php?<?=$GoPage?>&action=delete&delusr=<?=$username?>&user_id=<?=$user_id?>">
                                     <img src="../images/icons/btn_del.gif" alt="Delete User" BORDER="0"></a></TD>
                         </TR>
                     </TABLE>
