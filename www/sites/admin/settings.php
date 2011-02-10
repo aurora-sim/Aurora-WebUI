@@ -1,5 +1,5 @@
 <?
-if($_SESSION[ADMINUID] == $ADMINCHECK){
+if($_SESSION[ADMINID]){
 ?>
 <style type="text/css">
 <!--
@@ -51,6 +51,22 @@ $DbLink->query("UPDATE ".C_ADM_TBL." SET lastnames='1'");
 
 if($_POST[Submitnam2]=="Deactivate"){
 $DbLink->query("UPDATE ".C_ADM_TBL." SET lastnames='0'");
+}
+
+if($_POST[allowRegistrationSubmit]=="Activate"){
+$DbLink->query("UPDATE ".C_ADM_TBL." SET allowRegistrations='1'");
+}
+
+if($_POST[allowRegistrationSubmit]=="Deactivate"){
+$DbLink->query("UPDATE ".C_ADM_TBL." SET allowRegistrations='0'");
+}
+
+if($_POST[verifyusersSubmit]=="Activate"){
+$DbLink->query("UPDATE ".C_ADM_TBL." SET verifyUsers='1'");
+}
+
+if($_POST[verifyusersSubmit]=="Deactivate"){
+$DbLink->query("UPDATE ".C_ADM_TBL." SET verifyUsers='0'");
 }
 
 $DbLink->query("SELECT lastnames,region,startregion,adress,allowRegistrations,verifyUsers FROM ".C_ADM_TBL."");
