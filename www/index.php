@@ -56,7 +56,9 @@ if ($_POST[Submit] == $wiredux_admin_login) {
     $recieved = json_decode($do_post_request);
     $UUIDC = $recieved->{'UUID'};
     if ($recieved->{'Verified'} == "true") {
+        //Set both the admin and user ids
         $_SESSION[ADMINID] = $UUIDC;
+        $_SESSION[USERID] = $UUIDC;
     } else {
         echo "<script language='javascript'>
 		<!--
