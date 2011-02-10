@@ -23,4 +23,5 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('resetpass', 'account', 'resetpass.php'),
 ('worldmap', 'main', 'worldmap.php'),
 ('adminhome', 'admin', 'home.php'),
-('adminloginscreen', 'admin', 'loginscreenmanager.php');
+('adminloginscreen', 'admin', 'loginscreenmanager.php'),
+('adminmanage', 'admin', 'manage.php');
