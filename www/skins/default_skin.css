@@ -22,6 +22,15 @@ body.wiredux {
 	text-align: left;
 }
 
+.wiredux #adminnote {
+	width: 1000px;
+        background-color: transparent;
+	margin: 0 auto;
+        text-align: center;
+	border: 0px solid #000000;
+	text-align: left;
+}
+
 .wiredux #header {
   background-image: url("../images/main/header.png");
   background-repeat: repeat-x;

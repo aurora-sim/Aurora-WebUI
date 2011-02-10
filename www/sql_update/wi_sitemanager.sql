@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS `wi_sitemanagement`;
+DROP TABLE IF EXISTS `wi_sitemanagement`;
 CREATE TABLE `wi_sitemanagement` (
   `pagecase` varchar(100) NOT NULL,
   `type` varchar(100) NOT NULL,
@@ -22,4 +22,5 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('regionlist', 'main', 'regionlist.php'),
 ('resetpass', 'account', 'resetpass.php'),
 ('worldmap', 'main', 'worldmap.php'),
-('adminhome', 'admin', 'home.php');
+('adminhome', 'admin', 'home.php'),
+('adminloginscreen', 'admin', 'loginscreenmanager.php');
