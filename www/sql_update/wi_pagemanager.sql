@@ -21,4 +21,5 @@ INSERT INTO `wi_pagemanager` (`id`, `rank`, `active`, `url`, `target`, `display`
 ('wiredux_menu_item_onlineusers', '9', '1', 'index.php?page=onlineusers', '_self', '2'),
 ('wiredux_menu_item_peoplesearch', '10', '1', 'index.php?page=peoplesearch', '_self', '1'),
 ('wiredux_menu_item_adminhome', '11', '1', 'index.php?page=adminhome', '_self', '3'),
-('wiredux_menu_item_adminloginscreen', '11', '1', 'index.php?page=adminloginscreen', '_self', '3');
+('wiredux_menu_item_adminloginscreen', '12', '1', 'index.php?page=adminloginscreen', '_self', '3'),
+('wiredux_menu_item_adminmanage', '13', '1', 'index.php?page=adminmanage', '_self', '3');
