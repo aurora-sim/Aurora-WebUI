@@ -1,16 +1,6 @@
 <?
-if($_SESSION[ADMINUID] == $ADMINCHECK) {
-
-    if($_SESSION[ADMINUID] == "") {
-
-        echo "<script language=\"javascript\">
-<!--
-window.location.href=\"index.php?page=home\";
-// -->
-</script>";
-    } else {
-
-        $GoPage= "page=manage";
+if($_SESSION[ADMINID]) {
+        $GoPage= "page=adminmanage";
 
         $AnzeigeStart 		= 0;
         $AnzeigeLimit		= 25;
@@ -111,7 +101,7 @@ window.location.href=\"index.php?page=home\";
 
                     <?
                     echo "<TABLE CELLPADDING=0 CELLSPACING=0 WIDTH=100%><TR><TD>"
-                            ."<FONT COLOR=#FFFFFF><B>$count Users found</B></FONT></TD><TD ALIGN=right>";
+                            ."<FONT COLOR=#FFFFFF><B>Admin User Management Panel - $count Users found</B></FONT></TD><TD ALIGN=right>";
 
 // ################################## Navigation ###################################### 	
 
@@ -135,28 +125,25 @@ window.location.href=\"index.php?page=home\";
         <FORM ACTION="index.php?<?=$GoPage?>" METHOD="POST">
             <TR>
                 <TD>
-                    <B>Usersearch</B><BR>
+                    <B>User Search</B><BR>
                 </TD></TR><TR><TD BGCOLOR="#FFFFFF">
 
 
                     <TABLE CELLPADDING="0" CELLSPACING="0" WIDTH="100%" BGCOLOR="#FFFFFF">
           <TR>
-                            <TD>
-                                <FONT COLOR="#000000">User Name</FONT>
-                            </TD>
-                            <TD align="right">
-                                <INPUT TYPE="TEXT" NAME="query" SIZE="50" value="<?=$_POST[query]?>" STYLE="HEIGHT:20">              </TD>
-                            <TD>
-                                <INPUT TYPE="Submit" value="Search" STYLE="HEIGHT:20">
+                            <TD width="9%">
+                                <FONT COLOR="#000000">User Name</FONT>                            </TD>
+<TD width="84%" align="right">
+              <INPUT TYPE="TEXT" NAME="query" SIZE="50" value="<?=$_POST[query]?>" STYLE="HEIGHT:20">              </TD>
+<TD width="7%">
+                <INPUT TYPE="Submit" value="Search" STYLE="HEIGHT:20">
                 </TD>
                       </TR></TABLE>
                 </TD></TR>
         </FORM>
-    </TABLE><br>
-
+    </TABLE>
     <TABLE CELLPADDING="5" CELLSPACING="0" border="0" WIDTH="95%" Height="70%" BGCOLOR="#FFFFFF">
-        <TR>
-            <TD VALIGN="top">
+        <TD VALIGN="top">
                 <div style="position:relative;height:100%;">
 
                     <TABLE CELLPADDING=0 CELLSPACING=1 border=0 WIDTH=100% BGCOLOR=#305AB1>
@@ -164,12 +151,12 @@ window.location.href=\"index.php?page=home\";
                             <TD BGCOLOR=#547FDB>
                                 <TABLE CELLPADDING=2 CELLSPACING=0 border=0 WIDTH=100%>
                                     <TR>
-                                        <TD WIDTH=28></TD>
-                                        <TD WIDTH=83><B>EDIT</B></TD>
-                                        <TD WIDTH=241><B>User Name</B></TD>
-                                        <TD width=170><B>Created</B></TD>
-                                        <TD width=124><B>Active</B></TD>
-                                        <TD WIDTH=41></TD>
+                                        <TD WIDTH=36></TD>
+                                        <TD WIDTH=113 align="center"><B>EDIT</B></TD>
+                                        <TD WIDTH=312 align="center"><B>User Name</B></TD>
+                                        <TD width=220 align="center"><B>Created</B></TD>
+                                        <TD width=167 align="center"><B>Active</B></TD>
+                                        <TD WIDTH=47></TD>
                                     </TR>
                                 </TABLE>
                             </TD>
@@ -198,11 +185,11 @@ window.location.href=\"index.php?page=home\";
                     <TABLE WIDTH=100% CELLPADDING=0 CELLSPACING=0 BORDER=0>
                         <TR>
                             <TD width=32><img src="../images/icons/icon_user.gif"></TD>
-                            <TD WIDTH=91>
-                                <A href="index.php?page=edit&userid=<?=$user_id?>">
-                                    <FONT COLOR=Blue><B>EDIT</B></FONT></A></TD>
-                            <TD WIDTH=243><FONT COLOR=Blue><B><?=$username?></B></FONT></TD>
-                            <TD WIDTH=173><FONT COLOR=#888888><B><?=$create?></B></FONT></TD>
+                            <TD width=91 align="center">
+                                <a href="index.php?page=edit&userid=<?=$user_id?>">
+                                    <font color=Blue><B>EDIT</B></FONT></a></TD>
+                          <TD width=243><font color=Blue><B><?=$username?></b></font></TD>
+                            <TD width=173><font color=#888888><B><?=$create?></b></font></TD>
                             <TD width=100><B>
                                             <?
                                             if(($flags & 7) == 7) {
@@ -228,11 +215,8 @@ window.location.href=\"index.php?page=home\";
                                     <img src="../images/icons/btn_del.gif" alt="Delete User" BORDER="0"></a></TD>
                         </TR>
                     </TABLE>
-
-                            <? } ?>
                 </div>
             </TD>
-        </TR>
     </TABLE>
 </CENTER>
     <? }
