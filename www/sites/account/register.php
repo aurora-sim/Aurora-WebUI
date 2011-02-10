@@ -1,7 +1,7 @@
 <?php
 $DbLink = new DB;
-$DbLink->query("SELECT adress,region FROM " . C_ADM_TBL . "");
-list($ADRESSCHECK, $REGIOCHECK) = $DbLink->next_record();
+$DbLink->query("SELECT adress,region,allowRegistrations,verifyUsers FROM " . C_ADM_TBL . "");
+list($ADRESSCHECK, $REGIOCHECK,$ALLOWREGISTRATION,$VERIFYUSERS) = $DbLink->next_record();
 
 //GET IP ADRESS
 if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
@@ -12,6 +12,9 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     $userIP = "This user has no ip";
 }
 //GET IP ADRESS END
+
+if($ALLOWREGISTRATION == '1')
+{
 
 if ($_POST[action] == "") {
     $_SESSION[PASSWD] = "";
@@ -504,6 +507,10 @@ if ($_POST[action] == "") {
 													}
 
 													$code = code_gen();
+													
+													$userLevel = -1;
+													if($VERIFYUSERS == 0)
+													    $userLevel = 0;
 
 													$found = array();
 													$found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WIREDUX_PASSWORD),
@@ -512,7 +519,8 @@ if ($_POST[action] == "") {
 																'HomeRegion' => $_SESSION[REGIONID],
 																'PasswordHash' => $passneu,
 																'PasswordSalt' => $passwordSalt,
-																'AvatarArchive' => $_SESSION[AVATARARCHIVE]
+																'AvatarArchive' => $_SESSION[AVATARARCHIVE],
+																'UserLevel' => $userLevel
 																));
 													$do_post_requested = do_post_request($found);
 											 		$recieved = json_decode($do_post_requested);
@@ -601,5 +609,15 @@ if ($_POST[action] == "") {
 												}
 											}
                                         }
+									}
+									else
+									{
+									echo "<script language='javascript'>
+															<!--
+															window.alert('You cannot register currently, please try again later. Please try again later.');
+															window.location.href='index.php?page=home';
+															-->
+															< /script>";
+}
 									
 ?>
