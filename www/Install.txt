@@ -22,16 +22,19 @@ Please remember to backup your database regularly.
 In /aurora-sim-Aurora-Sim/bin/AuroraServerConfiguration/Main.ini  <==Grid Mode
 Above WireduxHandlers are already there for Grid Mode.
 
-If you install a new version over your old one, remember to run "Update DB" from the admin menu, 
-it will update the webinterface users table.
+-----------------------------------------------------------------
 
-The admin menu is located at:
+== Admin Panel ==
+The Admin Panel is located at:
 http://yourdomain.com/admin
 
-Default admin username and password are:
+To add your user as an Admin Panel User:
 
-Username: admin
-Password: admin
+Open your database with some form of editor and find the 'useraccounts' table.
+Open the user accounts table and find the user that you wish to allow to use the Admin Panel
+In the 'UserFlags' column, add '2048' to the number already there.
+
+The user will now be able to use the Admin Panel as given above
 
 Enjoy Aurora WiRedux
 
