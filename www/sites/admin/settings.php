@@ -53,8 +53,8 @@ if($_POST[Submitnam2]=="Deactivate"){
 $DbLink->query("UPDATE ".C_ADM_TBL." SET lastnames='0'");
 }
 
-$DbLink->query("SELECT lastnames,region,startregion,adress FROM ".C_ADM_TBL."");
-list($LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHECK) = $DbLink->next_record();
+$DbLink->query("SELECT lastnames,region,startregion,adress,allowRegistrations,verifyUsers FROM ".C_ADM_TBL."");
+list($LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHECK,$ALLOWREGISTRATION,$VERIFYUSERS) = $DbLink->next_record();
 
 ?>
 <table width="100%" height="100%" border="0" align="center">
@@ -113,6 +113,32 @@ list($LASTNMS,$REGIOCHECK,$STARTREGION,$ADRESSCHECK) = $DbLink->next_record();
 				  </tr>
 				</form>
                   </table></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+				<form id="form9" name="form9" method="post" action="index.php?page=settings">
+                  <td width="58%" bgcolor="#565051"><span class="Stil4">Allow Registration</span></td>
+                  <td width="42%" bgcolor="#565051">
+				  <? if($ALLOWREGISTRATION==0){?>
+				  <input type="submit" name="allowRegistrationSubmit" value="Activate" />
+				  <? }else{?>
+				  <input type="submit" name="allowRegistrationSubmit" value="Deactivate" />
+				  <? } ?>				  </td>
+				</form>
+                </tr>
+                <tr>
+				<form id="form9" name="form9" method="post" action="index.php?page=settings">
+                  <td width="58%" bgcolor="#565051"><span class="Stil4">Verify Users by Validating their email</span></td>
+                  <td width="42%" bgcolor="#565051">
+				  <? if($VERIFYUSERS==0){?>
+				  <input type="submit" name="verifyusersSubmit" value="Activate" />
+				  <? }else{?>
+				  <input type="submit" name="verifyusersSubmit" value="Deactivate" />
+				  <? } ?>				  </td>
+				</form>
                 </tr>
                 <tr>
                   <td>&nbsp;</td>
