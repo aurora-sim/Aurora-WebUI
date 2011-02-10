@@ -15,7 +15,13 @@
         $Display = 1;
     else
         $Display = 0;
-    $DbLink->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where active='1' and ((display='$Display') or (display='2')) ORDER BY rank ASC ");
+    
+    if($_SESSION[ADMINID])
+        $AdminDisplay = " or (display='3')";
+    else
+        $AdminDisplay = "";
+
+    $DbLink->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where active='1' and ((display='$Display') or (display='2') " . $AdminDisplay . ") ORDER BY rank ASC ");
     $tableWidth = 1000 / $DbLink->num_rows();
     $a = get_defined_vars();
     if($_GET[btn] == "")

@@ -35,7 +35,7 @@ $DbLink->query("SELECT username,password FROM ".C_ADMIN_TBL." WHERE username='$_
 list($adminname,$adminpass) = $DbLink->next_record();
 
 if($adminpass == $passcheck){
-$_SESSION[ADMINUID] = $adminpass;
+$_SESSION[ADMINID] = $adminpass;
 }
 }
 

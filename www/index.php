@@ -46,6 +46,26 @@ if ($_POST[Submit] == $wiredux_login) {
     }
 }
 
+if ($_POST[Submit] == $wiredux_admin_login) {
+
+    $found = array();
+    $found[0] = json_encode(array('Method' => 'AdminLogin', 'WebPassword' => md5(WIREDUX_PASSWORD),
+                'First' => $_POST[logfirstname], 'Last' => $_POST[loglastname],
+                'Password' => $_POST[logpassword]));
+    $do_post_request = do_post_request($found);
+    $recieved = json_decode($do_post_request);
+    $UUIDC = $recieved->{'UUID'};
+    if ($recieved->{'Verified'} == "true") {
+        $_SESSION[ADMINID] = $UUIDC;
+    } else {
+        echo "<script language='javascript'>
+		<!--
+		alert(\"Sorry, no Admin Account matched\");
+		// -->
+		</script>";
+    }
+}
+
 //LOGIN END
 ?>
 

@@ -98,4 +98,10 @@ $wiredux_home_page='<h2><strong>Welcome to the new Aurora WiRedux webpage!</stro
 // 404 page
 //
 $wiredux_404_text = 'The requested page could not be found! Please try again later.';
+
+//
+// Admin parts
+//
+$wiredux_admin_login = "Admin Login";
+$wiredux_menu_item_adminhome = 'Admin Home';
 ?>
