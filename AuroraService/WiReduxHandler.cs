@@ -331,6 +331,7 @@ namespace OpenSim.Server.Handlers.Caps
             string HomeRegion = map["HomeRegion"].AsString();
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
+            string UserLevel= map["UserLevel"].AsString();
 
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
@@ -350,7 +351,7 @@ namespace OpenSim.Server.Handlers.Caps
             if (Verified)
             {
                 userID = user.PrincipalID;
-                user.UserLevel = -1;
+                user.UserLevel = int.Parse(UserLevel);
 
                 accountService.StoreUserAccount(user);
 
