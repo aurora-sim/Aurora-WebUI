@@ -215,6 +215,10 @@ namespace OpenSim.Server.Handlers.Caps
                     {
                         return ProcessLogin(map);
                     }
+                    else if (method == "AdminLogin")
+                    {
+                        return ProcessAdminLogin(map);
+                    }
                     else if (method == "CreateAccount")
                     {
                         return ProcessCreateAccount(map);
@@ -278,6 +282,10 @@ namespace OpenSim.Server.Handlers.Caps
                     else if (method == "UnBanUser")
                     {
                         return UnBanUser(map);
+                    }
+                    else if (method == "FindUsers")
+                    {
+                        return FindUsers(map);
                     }
                 }
             }
@@ -385,6 +393,36 @@ namespace OpenSim.Server.Handlers.Caps
             if (Verified)
             {
                 userID = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, FirstName, LastName).PrincipalID;
+            }
+
+
+            OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromBoolean(Verified);
+            resp["UUID"] = OSD.FromUUID(userID);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        private byte[] ProcessAdminLogin(OSDMap map)
+        {
+            bool Verified = false;
+            string FirstName = map["First"].AsString();
+            string LastName = map["Last"].AsString();
+            string Password = map["Password"].AsString();
+
+            ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
+            UUID secureSessionID;
+            UUID userID = UUID.Zero;
+
+            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", "", "", out secureSessionID);
+            //Null means it went through without an error
+            Verified = loginresp == null;
+            if (Verified)
+            {
+                UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, FirstName, LastName);
+                if((account.UserFlags & 2048) == 2048) //Admin flag
+                    userID = account.PrincipalID;
             }
 
 
@@ -800,6 +838,32 @@ namespace OpenSim.Server.Handlers.Caps
                 UTF8Encoding encoding = new UTF8Encoding();
                 return encoding.GetBytes(xmlString);
             }
+        }
+
+        byte[] FindUsers(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            int start = map["Start"].AsInteger();
+            int end = map["End"].AsInteger();
+            string Query = map["Query"].AsString();
+            List<UserAccount> accounts = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccounts(UUID.Zero, Query);
+
+            OSDArray users = new OSDArray();
+            foreach (UserAccount acc in accounts)
+            {
+                OSDMap userInfo = new OSDMap();
+                userInfo["PrincipalID"] = acc.PrincipalID;
+                userInfo["UserName"] = acc.Name;
+                userInfo["Created"] = acc.Created;
+                userInfo["UserFlags"] = acc.UserFlags;
+                users.Add(userInfo);
+            }
+            resp["Users"] = users;
+
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
         }
     }
 }
