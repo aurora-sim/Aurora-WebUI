@@ -1,5 +1,4 @@
 <?php
-$wiredux_welcome='Willkommen';
 $wiredux_language_code='de';
 $wiredux_actual_language='Deutsch';
 $wiredux_grid_status='GRID-STATUS';
@@ -10,7 +9,7 @@ $wiredux_online_now='Jetzt Online';
 $wiredux_first_name='Vorname';
 $wiredux_last_name='Nachname';
 $wiredux_password='Passwort';
-$wiredux_forgot_password='Passwort vergessen?';
+
 $wiredux_login='Einloggen';
 $wiredux_confirm='best&auml;tigen';
 $wiredux_start_region='Startregion';
@@ -30,6 +29,7 @@ $wiredux_region_list='Regionsliste';
 $wiredux_region_list_page_info='Dies ist die Regionsliste, mehr Informationen &uuml;ber eine Region per Klick of einen Regionsnamen.';
 $wiredux_more_info='Mehr Info';
 $wiredux_user_name='Nutzername';
+$wiredux_online_users='Online Users';
 $wiredux_online_users_info='Zeigt alle Nutzer, die in diesem Moment online sind.';
 $wiredux_submit='Absenden';
 $wiredux_verified_account='Vielen Dank, Ihr Konto ist nun aktiv und bereit zur Nutzung.';
@@ -65,7 +65,6 @@ $wiredux_owner="Eigent&uuml;mer";
 //
 //Menu items
 //
-
 $wiredux_menu_item_home = 'Startseite';
 $wiredux_menu_item_changeaccount = 'Konto bearbeiten';
 $wiredux_menu_item_news = 'Nachrichten';
@@ -80,8 +79,11 @@ $wiredux_menu_item_peoplesearch = 'Personensuche';
 //
 // Home Page
 //
-
-$wiredux_home_page='<h2><strong>Willkommen auf der neuen Aurora WiRedux Internetseite!</strong></h2>
+$webui_home='Home';
+$webui_welcome='Willkommen to the new site';
+$webui_welcome_visitor='Hi Visitor!';
+$webui_welcome_userid='Hi Userid!';
+$webui_home_page='
     <p>
         Dies ist unsere neue virtuelle Welt. Hier kann man Spass haben, Leute treffen, sich unterhalten, spielen, die Welt erkunden, etwas erschaffen und Tr&auml;ume teilen. </br>
         Die M&ouml;glichkeiten sind grenzenlos in unserer brandneuen 3D Welt. <br />
@@ -99,4 +101,17 @@ $wiredux_home_page='<h2><strong>Willkommen auf der neuen Aurora WiRedux Internet
 // 404 page
 //
 $wiredux_404_text = 'Die angeforderte Seite konnte nicht gefunden werden! Bitte sp&auml;ter erneut versuchen.';
+
+//
+// Admin parts
+//
+$wiredux_admin_login = "Admin Login";
+$wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
+$wiredux_menu_item_adminhome = 'Admin Home';
+
+//
+// Forgot Pass Page
+//
+$webui_forgot_password='Passwort vergessen?';
+$webui_forgot_password_info='Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
 ?>

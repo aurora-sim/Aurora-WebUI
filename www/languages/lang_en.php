@@ -1,5 +1,4 @@
 <?php
-$wiredux_welcome='hi welcome';
 $wiredux_language_code='en';
 $wiredux_actual_language='English';
 $wiredux_grid_status='GRID STATUS';
@@ -10,7 +9,7 @@ $wiredux_online_now='Online Now';
 $wiredux_first_name='First Name';
 $wiredux_last_name='Last Name';
 $wiredux_password='Password';
-$wiredux_forgot_password='Forgotten Password?';
+
 $wiredux_login='Login';
 $wiredux_confirm='Confirm';
 $wiredux_start_region='Start Region';
@@ -30,6 +29,7 @@ $wiredux_region_list='Region List';
 $wiredux_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
 $wiredux_more_info='More Info';
 $wiredux_user_name='User Name';
+$wiredux_online_users='Online Users';
 $wiredux_online_users_info='This shows all the users that are online at this moment.';
 $wiredux_submit='Submit';
 $wiredux_verified_account='Thank you, your account is now active and ready to use.';
@@ -79,8 +79,11 @@ $wiredux_menu_item_peoplesearch = 'People Search';
 //
 // Home Page
 //
-
-$wiredux_home_page='<h2><strong>Welcome to the new Aurora WiRedux webpage!</strong></h2>
+$webui_home='Home';
+$webui_welcome='Welcome to the new site';
+$webui_welcome_visitor='Hi Visitor!';
+$webui_welcome_userid='Hi Userid!';
+$webui_home_page='
     <p>
         This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams. <br />
         Everything is possible in our brand new 3D World. <br />
@@ -105,4 +108,10 @@ $wiredux_404_text = 'The requested page could not be found! Please try again lat
 $wiredux_admin_login = "Admin Login";
 $wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
 $wiredux_menu_item_adminhome = 'Admin Home';
+
+//
+// Forgot Pass Page
+//
+$webui_forgot_password='Forgotten Password?';
+$webui_forgot_password_info='Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
 ?>

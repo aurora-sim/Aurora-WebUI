@@ -1,5 +1,4 @@
 <?php
-$wiredux_welcome='Ol&aacute;, Bem Vindo';
 $wiredux_language_code='pt';
 $wiredux_actual_language='Portugu&ecirc;s';
 $wiredux_grid_status='Estado da Rede';
@@ -10,7 +9,7 @@ $wiredux_online_now='Ligados agora';
 $wiredux_first_name='Primeiro Nome';
 $wiredux_last_name='&Uacute;ltimo Nome';
 $wiredux_password='Password';
-$wiredux_forgot_password='Esqueceu a Password?';
+
 $wiredux_login='Login';
 $wiredux_confirm='Confirme';
 $wiredux_start_region='Regi&atilde;o inicial';
@@ -30,6 +29,7 @@ $wiredux_region_list='Lista de Regi&otilde;es';
 $wiredux_region_list_page_info='Esta &eacute; a lista de regi&otilde;es, clique no nome de uma regi&atilde;o para obter mais informa&ccedil;&atilde;o.';
 $wiredux_more_info='Mais Informa&ccedil;&atilde;o';
 $wiredux_user_name='Nome de Utilizador';
+$wiredux_online_users='Online Users';
 $wiredux_online_users_info='Isto mostra todos os utilizadores ligados neste momento.';
 $wiredux_submit='Submeter';
 $wiredux_verified_account='Obrigado, a sua conta est&aacute agora activa  pronta para utilizar.';
@@ -71,21 +71,43 @@ $wiredux_menu_item_logout = 'Logout';
 $wiredux_menu_item_login = 'Login';
 $wiredux_menu_item_onlineusers = 'Utilizadores Ligados';
 $wiredux_menu_item_peoplesearch = 'Busca de Pessoas';
-//// Home Page//
-$wiredux_home_page='<h2><strong>Bem Vindo &agrave; nova pagina WiRedux Aurora </strong></h2>
-    <p>
-	Este &eacute; o nosso novo Mundo Virtual onde se pode divertir, conhecer pessoas, jogar, explorar, criar e partilhar sonhos. <br />
-	Tudo &eacute possivel neste novo Mundo 3D onde tudo &eacute construido pelos seus Residentes.<br>
-	O limite &eacute; a sua Imagina&ccedil;&atilde;o.<br />
-	<br /><br />
-	Abra uma nova conta hoje, construa um Avatar e venha residir no nosso Mundo.
-	Venha fazer a diferenca! <br /><br /><br />
-	<u>S&atilde;o apenas 3 os passos para comecar:</u> <br /><br />
-	1.) Criar uma Conta gratuita aqui nas nossas paginas. <br /><br />
-	2.) Obter um programa de Visualizacao. Recomendamos o <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
-	3.) Adicione os dados da nossa rede a esse programa. <br /><br /><br />
-	<i> Por favor entenda que a plataforma Aurora est&aacute; ainda em fase de desenvolvimento, podendo por isso ocasionalmente n&atilde;o funcionar da forma desejada.</i>
-    </p>';
+
+
+//
+// Home Page
+//
+$webui_home='Home';
+$webui_welcome='Bem Vindo to the new site';
+$webui_welcome_visitor='Hi Visitor!';
+$webui_welcome_userid='Hi Userid!';
+$webui_home_page='
+  <p>
+    	Este &eacute; o nosso novo Mundo Virtual onde se pode divertir, conhecer pessoas, jogar, explorar, criar e partilhar sonhos. <br />
+    	Tudo &eacute possivel neste novo Mundo 3D onde tudo &eacute construido pelos seus Residentes.<br>
+    	O limite &eacute; a sua Imagina&ccedil;&atilde;o.<br />
+    	<br /><br />
+	   Abra uma nova conta hoje, construa um Avatar e venha residir no nosso Mundo.
+     Venha fazer a diferenca! <br /><br /><br />
+	   <u>S&atilde;o apenas 3 os passos para comecar:</u> <br /><br />
+	   1.) Criar uma Conta gratuita aqui nas nossas paginas. <br /><br />
+	   2.) Obter um programa de Visualizacao. Recomendamos o <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+	   3.) Adicione os dados da nossa rede a esse programa. <br /><br /><br />
+	   <i> Por favor entenda que a plataforma Aurora est&aacute; ainda em fase de desenvolvimento, podendo por isso ocasionalmente n&atilde;o funcionar da forma desejada.</i>
+  </p>';
+
 //// 404 page//
 $wiredux_404_text = 'A pagina solicitada n&atilde;o foi encontrada. Por favor tente mais tarde.';
+
+//
+// Admin parts
+//
+$wiredux_admin_login = "Admin Login";
+$wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
+$wiredux_menu_item_adminhome = 'Admin Home';
+
+//
+// Forgot Pass Page
+//
+$webui_forgot_password='Esqueceu a Password?';
+$webui_forgot_password_info='Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
 ?>

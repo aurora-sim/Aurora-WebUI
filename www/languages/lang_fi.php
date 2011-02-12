@@ -1,5 +1,4 @@
 <?php
-$wiredux_welcome='Tervetuloa';
 $wiredux_language_code='fi';
 $wiredux_actual_language='Finnish';
 $wiredux_grid_status='GRID&apos;n Tila';
@@ -10,7 +9,7 @@ $wiredux_online_now='Online tilassa';
 $wiredux_first_name='Etunimi';
 $wiredux_last_name='Sukunimi';
 $wiredux_password='Salasana';
-$wiredux_forgot_password='Unohtuiko salasana?';
+
 $wiredux_login='Kirjaudu sis&auml;&auml;n';
 $wiredux_confirm='Hyv&auml;ksy';
 $wiredux_start_region='Aloita Alueen';
@@ -30,6 +29,7 @@ $wiredux_region_list='Aluelista';
 $wiredux_region_list_page_info='T&auml;m&auml; on aluelista, klikkaa alueen nime&auml; saadaksesi lis&auml;tietoja alueesta.';
 $wiredux_more_info='Lis&auml;tietoja';
 $wiredux_user_name='K&auml;ytt&auml;j&auml;nimi';
+$wiredux_online_users='Online Users';
 $wiredux_online_users_info='K&auml;ytt&auml;j&auml;tiedot.';
 $wiredux_submit='L&auml;het&auml;';
 $wiredux_verified_account='Kiitos, tilisi on nyt aktiivinen ja valmiina k&auml;ytt&ouml;&ouml;n.';
@@ -74,9 +74,29 @@ $wiredux_menu_item_login = 'Kirjaudu sis&auml;&auml;n';
 $wiredux_menu_item_onlineusers = 'Online-tilassa olevat k&auml;ytt&auml;j&auml;t';
 $wiredux_menu_item_peoplesearch = 'Henkil&ouml;haku';
 
-//// Home Page//
-
-$wiredux_home_page='<h2><strong>Tervetuloa Aurora WiRedux sivuille!</strong></h2> <p> Aurora on uusi virtuaali maailma, miss&auml; pid&auml;t hauskaa, tapaat muita ihmisi&auml;, keskustelet, pelaat, teet tutkimusmatkoja, toteutat ja jaat unelmiasi. <br /> Kaikki on mahdollista uudessa Aurora 3D maailmassa. <br /> T&auml;m&auml;n virtuaali maailman luovat asukkaat itse, vain mielikuvitus on rajana. <br /><br /> Luo ilmainen k&auml;ytt&auml;j&auml;tilisi jo t&auml;n&auml;&auml;n, rakenna virtuaalihahmosi ja astu sis&auml;&auml;n Aurora maailmaan. <br /> Tule sin&auml;kin mukaan jo nyt! <br /><br /><br /> <u>Aloittamiseen tarvitset t&auml;yt&auml;&auml; ja huomioida vain 3 kohtaa:</u> <br /><br /> 1.) Luo ILMAINEN tili. <br /><br /> 2.) Lataa selain. Suosittelemme <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br /> 3.) Varmista, ett&auml; Aurora grid-tiedot ovat selaimessasi. <br /><br /><br /> <i>Muistathan, ett&auml; Aurora toimintaohjelma on viel&auml; alpha-versio ja siksi ei v&auml;ltt&auml;m&auml;tt&auml; aina toimi parhaalla mahdollisella tavalla.</i> </p>';
+//
+// Home Page
+//
+$webui_home='Home';
+$webui_welcome='Tervetuloa to the new site';
+$webui_welcome_visitor='Hi Visitor!';
+$webui_welcome_userid='Hi Userid!';
+$webui_home_page='
+<p> Aurora on uusi virtuaali maailma, miss&auml; pid&auml;t hauskaa, tapaat muita ihmisi&auml;, keskustelet, pelaat, teet tutkimusmatkoja, toteutat ja jaat unelmiasi. <br /> Kaikki on mahdollista uudessa Aurora 3D maailmassa. <br /> T&auml;m&auml;n virtuaali maailman luovat asukkaat itse, vain mielikuvitus on rajana. <br /><br /> Luo ilmainen k&auml;ytt&auml;j&auml;tilisi jo t&auml;n&auml;&auml;n, rakenna virtuaalihahmosi ja astu sis&auml;&auml;n Aurora maailmaan. <br /> Tule sin&auml;kin mukaan jo nyt! <br /><br /><br /> <u>Aloittamiseen tarvitset t&auml;yt&auml;&auml; ja huomioida vain 3 kohtaa:</u> <br /><br /> 1.) Luo ILMAINEN tili. <br /><br /> 2.) Lataa selain. Suosittelemme <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br /> 3.) Varmista, ett&auml; Aurora grid-tiedot ovat selaimessasi. <br /><br /><br /> <i>Muistathan, ett&auml; Aurora toimintaohjelma on viel&auml; alpha-versio ja siksi ei v&auml;ltt&auml;m&auml;tt&auml; aina toimi parhaalla mahdollisella tavalla.</i> </p>';
 
 //// 404 page//
-$wiredux_404_text = 'Hakemaasi sivua ei l&ouml;ydy, ole hyv&auml; yrit&auml; my&ouml;hemmin uudelleen.';?>
+$wiredux_404_text = 'Hakemaasi sivua ei l&ouml;ydy, ole hyv&auml; yrit&auml; my&ouml;hemmin uudelleen.';
+
+//
+// Admin parts
+//
+$wiredux_admin_login = "Admin Login";
+$wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
+$wiredux_menu_item_adminhome = 'Admin Home';
+
+//
+// Forgot Pass Page
+//
+$webui_forgot_password='Unohtuiko salasana?';
+$webui_forgot_password_info='Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
+?>

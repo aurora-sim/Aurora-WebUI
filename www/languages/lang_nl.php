@@ -1,5 +1,4 @@
 <?php
-$wiredux_welcome='hallo welkom';
 $wiredux_language_code='nl';
 $wiredux_actual_language='Dutch';
 $wiredux_grid_status='GRID STATUS';
@@ -10,7 +9,7 @@ $wiredux_online_now='Online Nu';
 $wiredux_first_name='Voornaam';
 $wiredux_last_name='Achternaam';
 $wiredux_password='Wachtwoord';
-$wiredux_forgot_password='Wachtwoord vergeten?';
+
 $wiredux_login='Login';
 $wiredux_confirm='Bevestig';
 $wiredux_start_region='Start Regio';
@@ -30,6 +29,7 @@ $wiredux_region_list='Regio Overzicht';
 $wiredux_region_list_page_info='Dit is het regio overzicht. Klik op de regio\'s naam om meer informatie over deze regio te verkrijgen.';
 $wiredux_more_info='Meer Informatie';
 $wiredux_user_name='Gebruikersnaam';
+$wiredux_online_users='Online Users';
 $wiredux_online_users_info='Dit toont alle gebruikers die online zijn op dit moment.';
 $wiredux_submit='Verzend';
 $wiredux_verified_account='Dank u, uw profiel is nu actief en gereed voor gebruik.';
@@ -65,7 +65,6 @@ $wiredux_owner="Owner";
 //
 //Menu items
 //
-
 $wiredux_menu_item_home = 'Thuis';
 $wiredux_menu_item_changeaccount = 'Wijzig Profiel';
 $wiredux_menu_item_news = 'Nieuws';
@@ -80,23 +79,39 @@ $wiredux_menu_item_peoplesearch = 'People Search';
 //
 // Home Page
 //
-
-$wiredux_home_page='<h2><strong>Welkom bij de Aurora WiRedux webpagina!</strong></h2>
-<p>
-Dit is onze nieuwe virtuele wereld, waar je plezier kan hebben, mensen kan ontmoeten, chatten, spelen, onderzoeken en dromen kan delen en bouwen.<br />
-Alles is mogelijk in onze gloednieuwe 3d wereld.<br />
-Onze wereld wordt gemaakt door haar inwoners, en alles wat je maar kan voorstellen kan gebouwd worden.<br /><br />
-Maak vandaag nog een gratis account aan, ontwerp je avatar en ontdek onze wereld.<br />
-Volg ons voorbeeld, en maak het verschil!<br /><br /><br />
-<u>Er zijn slechts 3 stappen nodig om te beginnen:</u> <br /><br />
-1.) Maak een GRATIS account aan, hier op de webpagina. <br /><br />
-2.) Download de viewer. We raden aan om <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> te gebruiken.<br /><br />
-3.) Voeg ons grid toe aan de viewer. <br /><br /><br />
-<i>Hou wel in gedachten dat het Aurora platform nog steeds experimenteel is, en dat sommige dingen (nog) niet zoals verwacht kunnen werken.</i>
-</p>';
+$webui_home='Home';
+$webui_welcome='welkom to the new site';
+$webui_welcome_visitor='Hallo Visitor!';
+$webui_welcome_userid='Hallo Userid!';
+$webui_home_page='
+    <p>
+      Dit is onze nieuwe virtuele wereld, waar je plezier kan hebben, mensen kan ontmoeten, chatten, spelen, onderzoeken en dromen kan delen en bouwen.<br />
+      Alles is mogelijk in onze gloednieuwe 3d wereld.<br />
+      Onze wereld wordt gemaakt door haar inwoners, en alles wat je maar kan voorstellen kan gebouwd worden.<br /><br />
+      Maak vandaag nog een gratis account aan, ontwerp je avatar en ontdek onze wereld.<br />
+      Volg ons voorbeeld, en maak het verschil!<br /><br /><br />
+      <u>Er zijn slechts 3 stappen nodig om te beginnen:</u> <br /><br />
+      1.) Maak een GRATIS account aan, hier op de webpagina. <br /><br />
+      2.) Download de viewer. We raden aan om <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> te gebruiken.<br /><br />
+      3.) Voeg ons grid toe aan de viewer. <br /><br /><br />
+      <i>Hou wel in gedachten dat het Aurora platform nog steeds experimenteel is, en dat sommige dingen (nog) niet zoals verwacht kunnen werken.</i>
+    </p>';
 
 //
 // 404 page
 //
 $wiredux_404_text = 'The requested page could not be found! Please try again later.';
+
+//
+// Admin parts
+//
+$wiredux_admin_login = "Admin Login";
+$wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
+$wiredux_menu_item_adminhome = 'Admin Home';
+
+//
+// Forgot Pass Page
+//
+$webui_forgot_password='Wachtwoord vergeten?';
+$webui_forgot_password_info='Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
 ?>

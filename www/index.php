@@ -130,7 +130,8 @@ list($REGIONSCOUNT) = $DbLink->next_record();
                 <h1><span><? SYSNAME ?> Grid Status</span></h1>
 
                 <div id="gridstatus"><?php include("sites/gridstatus.php"); ?></div>
-                <div id="menubar"><? include("sites/menubar.php"); ?></div>
+                <div id="menubar"><? include("sites/menubar.php"); ?></div>  
+                <div id="date"><?php setlocale (LC_TIME, 'fr_FR','fra'); echo strftime("%A %d %B %Y%T"); ?></div> 
                 <div id="translator"><?php include("languages/translator_page.php"); ?></div>
                 <!-- fin de #header --></div>
 

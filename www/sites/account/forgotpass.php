@@ -103,50 +103,60 @@ if($_POST[Submit]=="Submit")
 			<!--			alert(\"" . $recieved->{'Error'} . "\");			// -->			</script>";		}		else		{			echo "<script language='javascript'>			<!--			alert(\"Unknow error. Please try again later.\");			// -->			</script>";		}	}}
 ?>
 
-<table width="100%" height="425" border="0" align="center">
-<form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
+
+<div id="content">
+
+  <h2><?= SYSNAME ?>: <? echo $webui_forgot_password ?></h2>
+  
+  <div id="forget_pass">
+  
+
+
+	<div id="message">
+		<p><? echo $webui_forgot_password_info ?></p>
+	</div>
+
+  <table>
+    <form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
+      <tr>
+        <td>
+          <table>
             <tr>
-              <td valign="top"><table width="50%" border="0" align="center">
-                <tr>
-                  <td><p align="center" class="Stil1">Forgot Password</p>                  </td>
-                </tr>
-              </table>
-              <br />
-              <table width="79%" height="199" border="0" align="center" cellpadding="5" cellspacing="5" bgcolor="#FFFFFF">
-                <tr>
-                <td valign="top">Forgot your Password? <br>
-                  No problem.  Enter your email address and your password will be sent to you                 <br>
-                  <br>
-                  <br>
-                  <table width="91%" height="59" border="0" align="center" cellpadding="3" cellspacing="3" bgcolor="#FFFFFF">
-                    <tr>
-                      <td width="31%" bgcolor="#CCCCCC"><? echo $wiredux_first_name ?></td>
-                      <td width="69%" bgcolor="#CCCCCC">
-                        <input name="first" type="text" size="40" maxlength="50" value="<?=$_POST[First]?>">
-                      </td>
-                    </tr>
-					<tr>
-                      <td width="31%" bgcolor="#CCCCCC"><? echo $wiredux_last_name ?></td>
-                      <td width="69%" bgcolor="#CCCCCC">
-                        <input name="last" type="text" size="40" maxlength="50" value="<?=$_POST[Last]?>">
-                      </td>
-                    </tr>
-					<tr>
-                      <td width="31%" bgcolor="#CCCCCC"><? echo $wiredux_email ?></td>
-                      <td width="69%" bgcolor="#CCCCCC">
-                        <input name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">                      </td>
-                    </tr>
-                    <tr>
-                      <td bgcolor="#CCCCCC"><? echo $wiredux_confirm ?> <? echo $wiredux_email ?> </td>
-                      <td bgcolor="#CCCCCC"><input name="email2" type="text" size="40" maxlength="50" value="<?=$_POST[email2]?>"></td>
-                    </tr>
-                    <tr>
-                      <td bgcolor="#FFFFFF">&nbsp;</td>
-                      <td bgcolor="#CCCCCC"><input type="submit" name="Submit" value="<? echo $wiredux_submit ?>"></td>
-                    </tr>
-                  </table>
-                </tr>
-              </table></td>
+              <td class="even"><? echo $wiredux_first_name ?>*</td>
+              <td class="even">
+                <input id="forgot_pass_input" name="first" type="text" size="40" maxlength="50" value="<?=$_POST[First]?>">
+              </td>
             </tr>
-	  </form>
-        </table>
+              
+            <tr>
+              <td class="odd"><? echo $wiredux_last_name ?>*</td>
+              <td class="odd">
+                <input id="forgot_pass_input" name="last" type="text" size="40" maxlength="50" value="<?=$_POST[Last]?>">
+              </td>
+            </tr>
+                
+            <tr>
+              <td class="even"><? echo $wiredux_email ?>*</td>
+              <td class="even">
+                <input id="forgot_pass_input" name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">
+              </td>
+            </tr>
+                
+            <tr>
+              <td class="odd"><? echo $wiredux_confirm ?> <? echo $wiredux_email ?>*</td>
+              <td class="odd">
+                <input id="forgot_pass_input" name="email2" type="text" size="40" maxlength="50" value="<?=$_POST[email2]?>">
+              </td>
+            </tr>
+                  
+            <tr>
+              <td class="even"></td>
+              <td class="even"><input id="forgot_pass_bouton" type="submit" name="Submit" value="<? echo $wiredux_submit ?>"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </form>
+  </table>
+  </div>
+</div>

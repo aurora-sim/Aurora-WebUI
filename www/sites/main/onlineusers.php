@@ -2,36 +2,43 @@
 function OpenAgent(firstname, lastname)
 {
 	locate = "<?=SYSURL?>/app/agent/?first="+firstname+"&last="+lastname
-	window.open(locate,'mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,width=800,height=400')
+	window.open(locate,'mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')
 }
 </script>
 
-<DIV style="height:100%">
-<br />
-<table width="80%" border="0" align="center" cellpadding="3" cellspacing="0" bgcolor="#CCCC00">
+<div id="content">
+
+  <h2><?= SYSNAME ?>: <? echo $wiredux_online_users ?></h2>
+  
+  <div id="usersonline">
+  
+<table>
   <tr>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="10">
+    <td>
+      <table>
       <tr>
-        <td bgcolor="#FFFFFF">
-          <div align="center"><b><? echo $wiredux_online_users_info ?></b></div></td>
+        <td>
+          <div id="message">
+            <p><? echo $wiredux_online_users_info ?></p>
+          </div>
+        </td>
       </tr>
     </table></td>
   </tr>
 </table>
-&nbsp;
-<CENTER>
-<TABLE width="80%" border=0 align=center cellpadding="0" cellspacing="0">
-  <TBODY>
+
+
+<table>
+  <tbody>
     <TR>
-      <TD width="25" background="images/main/regions_left.gif">&nbsp;</TD>
-      <TD width="221" height="40" valign="bottom" background="images/main/regions_middle.jpg">
+
+      <TD>
 	  <b><? echo $wiredux_user_name ?>:</b></TD>
-      <TD width="178" valign="bottom" background="images/main/regions_middle.jpg">
+      <TD>
 	  <b><? echo $wiredux_region_name ?>:</b></TD>
-      <TD width="175" valign="bottom" background="images/main/regions_middle.jpg">
-	  <b>&nbsp;</b></TD>
-      <TD width="195" valign="bottom" background="images/main/regions_middle.jpg"><b>Info</b></TD>
-      <TD width="25" background="images/main/regions_right.gif">&nbsp;</TD>
+
+      <TD><b>Info</b></TD>
+
     </TR>
 <?
 	$DbLink = new DB;
@@ -56,29 +63,20 @@ function OpenAgent(firstname, lastname)
 		list($region) = $DbLink3->next_record();
 		if ($region != "")
 		{
-			echo '<TR style="BACKGROUND-COLOR: #e8e0c5">';
-			echo '<TD bgcolor="#FFFFFF">&nbsp;</TD>';
-			echo '<TD><DIV style="COLOR: #000000"><B>'.$username.'</B></DIV></TD>';
-			echo '<TD><DIV style="COLOR: #ff0000"><B>'.$region.'</B></DIV></TD>';
-			echo '<TD><DIV style="COLOR: #339900"><B>&nbsp;</B></DIV></TD>';
-			echo "<TD><DIV style=\"COLOR: #9966ff\"><A style=\"cursor:pointer\" onClick=\"OpenAgent('".$firstname."','".$lastname."')\"><B><u>Click for more Info</u></B></A></DIV></TD>";
-			echo '<TD bgcolor="#FFFFFF">&nbsp;</TD>';
-			echo '</TR>';
+			echo '<tr>';
+			echo '<td class="even"><b>'.$username.'</b></td>';
+			echo '<td class="even"><b>'.$region.'</b></td>';
+			echo "<td class='even'><a onClick=\"OpenAgent('".$firstname."','".$lastname."')\"><b><u>Click for more Info</u></b></a></td>";
+			echo '</tr>';
 		}
 	}
 ?>
-	<TR>
-      <TD height="40" background="images/main/regions_d_left.gif">&nbsp;</TD>
-      <TD background="images/main/regions_d_middle.jpg">&nbsp;</TD>
-      <TD background="images/main/regions_d_middle.jpg">&nbsp;</TD>
-      <TD background="images/main/regions_d_middle.jpg">&nbsp;</TD>
-      <TD background="images/main/regions_d_middle.jpg">&nbsp;</TD>
-      <TD background="images/main/regions_d_right.gif">&nbsp;</TD>
-    </TR>
-    </TBODY>
-  </TABLE>
-</CENTER>
-</DIV>
+
+    </tbody>
+  </table>
+
+</div>
+</div>
 
 <?
 

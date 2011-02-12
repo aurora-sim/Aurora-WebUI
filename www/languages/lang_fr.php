@@ -1,5 +1,4 @@
 <?php
-$wiredux_welcome='Bonjour, bienvenue';
 $wiredux_language_code='fr';
 $wiredux_actual_language='Français';
 $wiredux_grid_status='ETAT DE LA GRILLE';
@@ -10,7 +9,7 @@ $wiredux_online_now='En ligne maintenant';
 $wiredux_first_name='Nom';
 $wiredux_last_name='Prénom';
 $wiredux_password='Mot de passe';
-$wiredux_forgot_password='Mot de passe oublié?';
+
 $wiredux_login='Connection';
 $wiredux_confirm='Confirmer';
 $wiredux_start_region='Région de départ';
@@ -30,7 +29,13 @@ $wiredux_region_list='Liste des régions';
 $wiredux_region_list_page_info='Ceci est la liste des régions, cliquez sur le nom d\'une région pour obtenir plus d\'informations sur cette région.';
 $wiredux_more_info='Plus d\'info';
 $wiredux_user_name='Nom d\'utilisateur';
+
+//
+// Online Users Page
+//
+$wiredux_online_users='Utilisateurs en Ligne';
 $wiredux_online_users_info='Ceci affiche tous les utilisateurs qui sont en ligne en ce moment.';
+
 $wiredux_submit='Soumettre';
 $wiredux_verified_account='Merci, votre compte est maintenant prêt à l\'emploi.';
 $wiredux_internal_error='Erreur interne, s\'il vous plaît réessayer à nouveau plus tard.';
@@ -45,8 +50,8 @@ $wiredux_change_email='Changer l\'adresse Email';
 $wiredux_old_email='Ancienne adresse Email';
 $wiredux_change_name='Changer le nom';
 $wiredux_login='Connection';
-$wiredux_register='Enregistrement';
-$wiredux_news='Nouveauté';
+$wiredux_register='Inscription';
+$wiredux_news='Nouveautés';
 $wiredux_history='Historique';
 $wiredux_see_profile='Voir le profil';
 $wiredux_user_name='Nom d\'utilisateur';
@@ -63,7 +68,7 @@ $wiredux_region_type="Type de région";
 $wiredux_owner="Propriétaire";
 
 //
-//Menu items
+// Menu items
 //
 $wiredux_menu_item_home = 'Accueil';
 $wiredux_menu_item_changeaccount = 'Modifier le compte';
@@ -73,14 +78,17 @@ $wiredux_menu_item_worldmap = 'Carte';
 $wiredux_menu_item_register = 'Inscription';
 $wiredux_menu_item_logout = 'Déconnection';
 $wiredux_menu_item_login = 'Connection';
-$wiredux_menu_item_onlineusers = 'Utilisateurs en ligne';
-$wiredux_menu_item_peoplesearch = 'Rechercher des gens';
+$wiredux_menu_item_onlineusers = 'Utilisateurs';
+$wiredux_menu_item_peoplesearch = 'Rechercher des personnes';
 
 //
 // Home Page
 //
-
-$wiredux_home_page='<h2><strong>Bienvenue sur le nouveau site Aurora WiRedux!</strong></h2>
+$webui_home='Accueil';
+$webui_welcome='Bienvenue sur le nouveau site';
+$webui_welcome_visitor='Bonjour Visiteur!';
+$webui_welcome_userid='Bonjour Userid!';
+$webui_home_page='
     <p>
         Ceci est notre nouveau monde virtuel où vous pouvez vous amuser, rencontrer des gens, discuter, jouer, explorer, créer et partager vos rêves. <br />
         Tout est possible dans notre tout nouveau monde 3D. <br />
@@ -98,4 +106,17 @@ $wiredux_home_page='<h2><strong>Bienvenue sur le nouveau site Aurora WiRedux!</s
 // 404 page
 //
 $wiredux_404_text = 'La page demandée n\'a pas pu être trouvée! S\'il vous plaît réessayer plus tard.';
+
+//
+// Admin parts
+//
+$wiredux_admin_login = "Connection Admin";
+$wiredux_menu_item_adminloginscreen = 'Editer l\'écran de connection';
+$wiredux_menu_item_adminhome = 'Accueil Admin';
+
+//
+// Forgot Pass Page
+//
+$webui_forgot_password='Mot de passe oublié?';
+$webui_forgot_password_info='Vous avez oublié votre mot de passe? Pas de problème! Entrez votre adresse email et votre nouveau mot de passe vous sera envoyé.';      
 ?>

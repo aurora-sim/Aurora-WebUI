@@ -30,21 +30,23 @@ $sitestart=ceil($AStart / 10)+1;
 if($sitemax == 0){$sitemax=1;}
 ?>
 
-<div><h2><?= SYSNAME ?>: <? echo $wiredux_region_list ?> </h2>
-
-<div style="valign:top;">
+<div id="content">
+  <h2><?= SYSNAME ?>: <? echo $wiredux_region_list ?></h2>
+  
+  <div id="regionlist">
 
 	<div id="message">
 		<p><? echo $wiredux_region_list_page_info ?></p>
 	</div>
 
-	<table WIDTH="100%" align="center" CELLPADDING="3" CELLSPACING="0">
+	<table>
 		<tr>
 			<td>
 				<font><b><?=$count?> <? echo $wiredux_regions_found ?></b></font>
 			</td>
-			<td align="right">
-				<table CELLPADDING=1 CELLSPACING=0>
+			<td>
+			<div id="region_navigation">
+				<table>
 					<tr>
 						<td>
 							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=<?=$ALimit?>" target="_self">
@@ -56,7 +58,7 @@ if($sitemax == 0){$sitemax=1;}
 								<img SRC=images/icons/icon_back_one_<? if(0 > ($AStart - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0" />
 							</a>
 						</td>
-						<td WIDTH=100 ALIGN=center>
+						<td>
 							<font>Page <?=$sitestart ?>  of  <?=$sitemax ?></font>
 						</td>
 						<td>
@@ -69,7 +71,7 @@ if($sitemax == 0){$sitemax=1;}
 								<img SRC=images/icons/icon_forward_more_<? if($count <= ($AStart + $ALimit)) echo "off"; else echo "on" ?>.gif WIDTH=15 HEIGHT=15 border="0" />
 							</a>
 						</td>
-						<td WIDTH="10"></td>
+						<td width="10"></td>
 						<td>
 							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=10&amp;" target="_self">
 								<img SRC=images/icons/<? if($ALimit != 10) echo icon_limit_10_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 10" />
@@ -92,10 +94,11 @@ if($sitemax == 0){$sitemax=1;}
 						</td>
 					</tr>
 				</table>
+				</div>
 			</td>
 		</tr>
 	</table>
-	<table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" height="100%" style="float:top">
+	<table>
 		<thead>
 			<tr>
 				<td width="55%">
@@ -114,8 +117,8 @@ if($sitemax == 0){$sitemax=1;}
 		</thead>
 		<tbody>
 			<tr>
-				<td colspan="4" style="overflow:auto">
-					<table WIDTH="100%" align="center" CELLPADDING="3" CELLSPACING="0" height="100%">
+				<td colspan="4">
+					<table>
 						<tbody>
 						<?
 							$w=0;
@@ -123,23 +126,23 @@ if($sitemax == 0){$sitemax=1;}
 							while(list($RegionName,$locX,$locY) = $DbLink->next_record()){
 							$w++;
 						?>
-							<tr class="<? echo ($odd = $w%2 )? "odd":"even" ?>" >
-								<TD width="55%">
-									<DIV><B><?=$RegionName?></B></DIV>
-								</TD>
-								<TD width="15%">
-									<DIV><B><?=$locX/256?></B></DIV>
-								</TD>
-								<TD width="15%">
-									<DIV><B><?=$locY/256?></B></DIV>
-								</TD>
-								<TD width="15%">
-									<DIV style="COLOR: #9966ff">
-										<a style="cursor:pointer" onClick="window.open('<?=SYSURL?>/app/region/?x=<?=$locX?>&y=<?=$locY?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,width=800,height=400')">
+							<tr class="<? echo ($odd = $w%2 )? "even":"odd" ?>" >
+								<td width="55%">
+									<div><b><?=$RegionName?></b></div>
+								</td>
+								<td width="15%">
+									<div><b><?=$locX/256?></b></div>
+								</td>
+								<td width="15%">
+									<div><b><?=$locY/256?></b></div>
+								</td>
+								<td width="15%">
+									<div>
+										<a onClick="window.open('<?=SYSURL?>/app/region/?x=<?=$locX?>&y=<?=$locY?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
 											<b><u><? echo $wiredux_more_info ?></u></b>
 										</a>
-									</DIV>
-								</TD>
+									</div>
+								</td>
 							</tr>
 						<?}?>
 						</tbody>

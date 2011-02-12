@@ -1,4 +1,4 @@
-/* WiRedux Css Level 2.1 v0.2 (14/01/2011) */
+/* WebUI Css Level 2.1 v0.3 (11/02/2011) */
 
 html {width: 100%; height: 100%;}
 
@@ -40,7 +40,7 @@ body.wiredux {
 /* Logo */
 .wiredux #header h1 {
 	margin: 0px;
-  background-image: url("../images/main/aurora-sim_logo_01.jpg");
+  background-image: url("../images/main/aurora-webui_logo_01.jpg");
   background-repeat: no-repeat;
 	height:139px;
 }
@@ -135,11 +135,12 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #content a:active {text-decoration: none}
 #content a:hover {text-decoration: underline;}
 
-#region table {color: #555555;}
-#region td a {color: #555555; text-decoration: none;}
-#region a:visited {text-decoration: none}
-#region a:active {text-decoration: none}
-#region a:hover {text-decoration: underline;}
+#regionlist {width:100%;background-color: transparent;}
+#regionlist table {color: #ffffff; width: 100%;}
+#regionlist td a {color: #aaaa00; text-decoration: none;}
+#regionlist a:visited {text-decoration: none}
+#regionlist a:active {text-decoration: none}
+#regionlist a:hover {text-decoration: underline;}
 
 #register {width:100%;background-color: transparent;}
 #register table {color: #ffffff; width: 100%;}
@@ -155,6 +156,24 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #login a:active {text-decoration: none}
 #login a:hover {text-decoration: underline;}
 
+#forget_pass {width:100%;background-color: transparent;}
+#forget_pass table {color: #ffffff; width: 100%;}
+#forget_pass a {color: #aaaa00; text-decoration: none;}
+#forget_pass a:visited {text-decoration: none}
+#forget_pass a:active {text-decoration: none}
+#forget_pass a:hover {text-decoration: underline;}
+
+#usersonline {width:100%;background-color: transparent;}
+#usersonline table {color: #ffffff; width: 100%;}
+#usersonline a {color: #aaaa00; text-decoration: none;}
+#usersonline a:visited {text-decoration: none}
+#usersonline a:active {text-decoration: none}
+#usersonline a:hover {text-decoration: underline;}
+
+#region_navigation {
+width: 300px;
+float: right;
+}
 
 .even {
   background-color: transparent;
@@ -174,11 +193,13 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 
 /* input & bouton */
 #register_input {width: 99%;}
-#register_bouton {width: 200px; font-size: 1.4em; margin-left: auto; margin-right: auto;}
+#register_bouton {width: 220px; font-size: 1.4em; margin-left: auto; margin-right: auto;}
 
 #login_input {width: 99%;}
-#login_bouton {float:left; width: 100px; font-size: 1.4em;}
+#login_bouton {float:left; width: 120px; font-size: 1.4em;}
 
+#forgot_pass_input {width: 99%;}
+#forgot_pass_bouton {float:left; width: 120px; font-size: 1.4em;}
 
 /* region map */
 #region_map {
@@ -211,7 +232,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 .wiredux #footer {
 	padding: 0 10px;
   background-image: url("../images/main/background_03.png");
-  	background-color: transparent;
+  background-color: transparent;
   background-repeat: repeat;
 	height:35px;
 }
@@ -224,10 +245,38 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
   position: relative;
   float:right;
   margin: 0px;
-  margin-top: -185px;
+  margin-top: -184px;
   margin-right: 3px;
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:3px;
+  padding-bottom:3px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 0.8em;
+  background-image: url("../images/main/background_03.png");
+  background-color: transparent;
+  background-repeat: repeat;
+	height:15px;
+  z-index: 50;
+}
+
+/* Date */
+.wiredux #date {
+  position: relative;
+  float:left;
+  margin: 0px;
+  margin-top: -184px;
+  margin-left: 3px;
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:3px;
+  padding-bottom:3px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  background-image: url("../images/main/background_03.png");
+  background-color: transparent;
+  background-repeat: repeat;
+	height:15px;
   z-index: 50;
 }
 
@@ -357,9 +406,4 @@ td.gridbox_br {
   margin-top: 10px;
   margin-bottom: 10px;
   color: #000000;
-}
-
-.odd
-{
-	background-color: #222222;
 }
