@@ -205,7 +205,7 @@ float: right;
 #region_map {
   margin: 0px;
   padding: 0px;
-  height: 350px;
+  height: 500px;
   background-color: transparent;
   background-image: url("../images/main/background_03.png");
   border:none;

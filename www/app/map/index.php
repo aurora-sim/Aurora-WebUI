@@ -3,7 +3,7 @@ include("../../settings/config.php");
 include("../../settings/mysql.php");
 
 if (($_GET[size]) and ($ALLOW_ZOOM == TRUE)) {
-    if (($_GET[size] == 64) or ($_GET[size] == 128) or ($_GET[size] == 192) or ($_GET[size] == 256) or ($_GET[size] == 32) or ($_GET[size] == 16)) {
+    if (($_GET[size] == 64) or ($_GET[size] == 128) or ($_GET[size] == 192) or ($_GET[size] == 256) or ($_GET[size] == 32) or ($_GET[size] == 16) or ($_GET[size] == 8) or ($_GET[size] == 4)) {
         $size = $_GET[size];
     }
 } else {
@@ -21,10 +21,19 @@ if ($_GET[starty]) {
     $mapY = $mapstartY;
 }
 
-if ($size == 16) {
+if ($size == 4) {
     $minuszoom = 0;
+    $pluszoom = 5;
+    $infosize = 4;
+}
+else if ($size == 8) {
+    $minuszoom = 4;
+    $pluszoom = 16;
+    $infosize = 5;
+} else if ($size == 16) {
+    $minuszoom = 8;
     $pluszoom = 32;
-    $infosize = 10;
+    $infosize = 7;
 } else if ($size == 32) {
     $minuszoom = 16;
     $pluszoom = 64;
