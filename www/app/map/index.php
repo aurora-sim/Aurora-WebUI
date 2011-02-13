@@ -3,39 +3,60 @@ include("../../settings/config.php");
 include("../../settings/mysql.php");
 
 if(($_GET[size])and($ALLOW_ZOOM==TRUE)){
-if(($_GET[size] == 64) or ($_GET[size] == 128) or ($_GET[size] == 192) or ($_GET[size] == 256)){
+if(($_GET[size] == 64) or ($_GET[size] == 128) or ($_GET[size] == 192) or ($_GET[size] == 256) or ($_GET[size] == 32) or ($_GET[size] == 16)){
 $size=$_GET[size];
 }
 }else{
 $size=128; 
 }
+if($_GET[startx])
+{
+    $mapX = $_GET[startx];
+}
+else
+{
+    $mapX = $mapstartX;
+}
+
+if($_GET[starty])
+{
+    $mapY = $_GET[starty];
+}
+else
+{
+    $mapY = $mapstartY;
+}
 
 if($size==64){
-$minuszoom=0; $pluszoom=128; $infosize=10;
+$minuszoom=32; $pluszoom=128; $infosize=10;
 }else if($size==128){
 $minuszoom=64; $pluszoom=192; $infosize=20;
 }else if($size==192){
 $minuszoom=128; $pluszoom=256; $infosize=30;
 }else if($size==256){
 $minuszoom=192; $pluszoom=0; $infosize=40;
+}else if($size==32){
+$minuszoom=16; $pluszoom=64; $infosize=10;
+}else if($size==16){
+$minuszoom=0; $pluszoom=32; $infosize=10;
 }
 ?>
 
 <HEAD><TITLE><?=SYSNAME?> World Map</TITLE>
-<STYLE type=text/css media=all>@import url(map.css);</STYLE>
+<STYLE type="text/css" media=all>@import url(map.css);</STYLE>
 
-<SCRIPT src="prototype.js" type=text/javascript></SCRIPT>
-<SCRIPT src="effects.js" type=text/javascript></SCRIPT>
-<SCRIPT src="mapapi.js" type=text/javascript></SCRIPT>
+<SCRIPT src="prototype.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="effects.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="mapapi.js" type="text/javascript"></SCRIPT>
 
 
-<SCRIPT type=text/javascript>
+<SCRIPT type="text/javascript">
 
 function loadmap() 
 {
   mapInstance = new ZoomSize(<?=$size?>);
-  mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: false, hasPanningControls: true});
-  mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?=$mapstartX?>,<?=$mapstartY?>),1);
+  mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: true, hasPanningControls: true});
+  mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?=$mapX?>,<?=$mapY?>),1);
 <?
 $DbLink = new DB;
 $DbLink->query("SELECT RegionUUID, RegionName,LocX,LocY,SizeX,SizeY,OwnerUUID,Info FROM ".C_REGIONS_TBL." Order by LocX");
@@ -97,7 +118,11 @@ else if($display_marker=="dr")
 }
 
 function setZoom(size) {
-  window.location.href="<?=SYSURL?>/app/map/?size="+size+"";
+
+    var a = mapInstance.getViewportBounds();
+    var x = (a.xMin + a.xMax) / 2;
+    var y = (a.yMin + a.yMax) / 2;
+    window.location.href="<?=SYSURL?>/app/map/?size="+size+"&startx="+x+"&starty="+y;
 }
 
 
