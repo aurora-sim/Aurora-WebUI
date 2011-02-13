@@ -23,7 +23,7 @@ if ($_GET[starty]) {
 
 if ($size == 4) {
     $minuszoom = 0;
-    $pluszoom = 5;
+    $pluszoom = 8;
     $infosize = 4;
 }
 else if ($size == 8) {
