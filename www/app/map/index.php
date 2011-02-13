@@ -2,166 +2,223 @@
 include("../../settings/config.php");
 include("../../settings/mysql.php");
 
-if(($_GET[size])and($ALLOW_ZOOM==TRUE)){
-if(($_GET[size] == 64) or ($_GET[size] == 128) or ($_GET[size] == 192) or ($_GET[size] == 256) or ($_GET[size] == 32) or ($_GET[size] == 16)){
-$size=$_GET[size];
+if (($_GET[size]) and ($ALLOW_ZOOM == TRUE)) {
+    if (($_GET[size] == 64) or ($_GET[size] == 128) or ($_GET[size] == 192) or ($_GET[size] == 256) or ($_GET[size] == 32) or ($_GET[size] == 16)) {
+        $size = $_GET[size];
+    }
+} else {
+    $size = 128;
 }
-}else{
-$size=128; 
-}
-if($_GET[startx])
-{
+if ($_GET[startx]) {
     $mapX = $_GET[startx];
-}
-else
-{
+} else {
     $mapX = $mapstartX;
 }
 
-if($_GET[starty])
-{
+if ($_GET[starty]) {
     $mapY = $_GET[starty];
-}
-else
-{
+} else {
     $mapY = $mapstartY;
 }
 
-if($size==64){
-$minuszoom=32; $pluszoom=128; $infosize=10;
-}else if($size==128){
-$minuszoom=64; $pluszoom=192; $infosize=20;
-}else if($size==192){
-$minuszoom=128; $pluszoom=256; $infosize=30;
-}else if($size==256){
-$minuszoom=192; $pluszoom=0; $infosize=40;
-}else if($size==32){
-$minuszoom=16; $pluszoom=64; $infosize=10;
-}else if($size==16){
-$minuszoom=0; $pluszoom=32; $infosize=10;
+if ($size == 16) {
+    $minuszoom = 0;
+    $pluszoom = 32;
+    $infosize = 10;
+} else if ($size == 32) {
+    $minuszoom = 16;
+    $pluszoom = 64;
+    $infosize = 10;
+} else if ($size == 64) {
+    $minuszoom = 32;
+    $pluszoom = 128;
+    $infosize = 10;
+} else if ($size == 128) {
+    $minuszoom = 64;
+    $pluszoom = 192;
+    $infosize = 20;
+} else if ($size == 192) {
+    $minuszoom = 128;
+    $pluszoom = 256;
+    $infosize = 30;
+} else if ($size == 256) {
+    $minuszoom = 192;
+    $pluszoom = 0;
+    $infosize = 40;
 }
 ?>
 
-<HEAD><TITLE><?=SYSNAME?> World Map</TITLE>
-<STYLE type="text/css" media=all>@import url(map.css);</STYLE>
+<HEAD><TITLE><?= SYSNAME ?> World Map</TITLE>
+    <STYLE type="text/css" media=all>@import url(map.css);</STYLE>
 
-<SCRIPT src="prototype.js" type="text/javascript"></SCRIPT>
-<SCRIPT src="effects.js" type="text/javascript"></SCRIPT>
-<SCRIPT src="mapapi.js" type="text/javascript"></SCRIPT>
+    <SCRIPT src="prototype.js" type="text/javascript"></SCRIPT>
+    <SCRIPT src="effects.js" type="text/javascript"></SCRIPT>
+    <SCRIPT src="mapapi.js" type="text/javascript"></SCRIPT>
 
 
-<SCRIPT type="text/javascript">
+    <SCRIPT type="text/javascript">
 
-function loadmap() 
-{
-  mapInstance = new ZoomSize(<?=$size?>);
-  mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: true, hasPanningControls: true});
-  mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?=$mapX?>,<?=$mapY?>),1);
+        function loadmap()
+        {
+            <? if ($ALLOW_ZOOM == TRUE) { ?>
+            if (window.addEventListener)
+            /** DOMMouseScroll is for mozilla. */
+                window.addEventListener('DOMMouseScroll', wheel, false);
+            /* IE/Opera. */
+            window.onmousewheel = document.onmousewheel = wheel;
+
+            <? } ?>
+
+            mapInstance = new ZoomSize(<?= $size ?>);
+            mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: true, hasPanningControls: true});
+            mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?= $mapX ?>,<?= $mapY ?>),1);
 <?
 $DbLink = new DB;
-$DbLink->query("SELECT RegionUUID, RegionName,LocX,LocY,SizeX,SizeY,OwnerUUID,Info FROM ".C_REGIONS_TBL." Order by LocX");
-while(list($uuid,$regionName,$locX,$locY,$sizeX,$sizeY,$owner,$info) = $DbLink->next_record()){
+$DbLink->query("SELECT RegionUUID, RegionName,LocX,LocY,SizeX,SizeY,OwnerUUID,Info FROM " . C_REGIONS_TBL . " Order by LocX");
+while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $DbLink->next_record()) {
 
-$DbLink1 = new DB;
-$DbLink1->query("SELECT FirstName,LastName FROM ".C_USERS_TBL." where PrincipalID='$owner'");
-list($firstN,$lastN) = $DbLink1->next_record();
+    $DbLink1 = new DB;
+    $DbLink1->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='$owner'");
+    list($firstN, $lastN) = $DbLink1->next_record();
 
-$MarkerCoordX=$locX+0.00;
-$MarkerCoordY=$locY+0.00;
+    $MarkerCoordX = $locX + 0.00;
+    $MarkerCoordY = $locY + 0.00;
 
 
-if($display_marker=="tl")
-{
-	$MarkerCoordX=($MarkerCoordX/256)-0.40;
-	$MarkerCoordY=($MarkerCoordY/256)+0.40;
-}
-else if($display_marker=="tr")
-{
-	$MarkerCoordX=($MarkerCoordX/256)+0.40;
-	$MarkerCoordY=($MarkerCoordY/256)+0.40;
-}
-else if($display_marker=="dl")
-{
-	$MarkerCoordX=($MarkerCoordX/256)-0.40;
-	$MarkerCoordY=($MarkerCoordY/256)-0.40;
-}
-else if($display_marker=="dr")
-{
-	$MarkerCoordX=($MarkerCoordX/256)+0.40;
-	$MarkerCoordY=($MarkerCoordY/256)-0.40;
-}
-        $recieved = json_decode($info);
-        $serverUrl = $recieved->{'serverURI'};
+    if ($display_marker == "tl") {
+        $MarkerCoordX = ($MarkerCoordX / 256) - 0.40;
+        $MarkerCoordY = ($MarkerCoordY / 256) + 0.40;
+    } else if ($display_marker == "tr") {
+        $MarkerCoordX = ($MarkerCoordX / 256) + 0.40;
+        $MarkerCoordY = ($MarkerCoordY / 256) + 0.40;
+    } else if ($display_marker == "dl") {
+        $MarkerCoordX = ($MarkerCoordX / 256) - 0.40;
+        $MarkerCoordY = ($MarkerCoordY / 256) - 0.40;
+    } else if ($display_marker == "dr") {
+        $MarkerCoordX = ($MarkerCoordX / 256) + 0.40;
+        $MarkerCoordY = ($MarkerCoordY / 256) - 0.40;
+    }
+    $recieved = json_decode($info);
+    $serverUrl = $recieved->{'serverURI'};
 
-	$uuid = str_replace('-', '', $uuid);
-	$filename = $serverUrl."/index.php?method=regionImage".$uuid;
-	echo 'var tmp_region_image = new Img("'.$filename.'",'.$size.','.$size.');';
-	
-        $url = "secondlife://".$regionName."/".($sizeX / 2)."/".($sizeY / 2);
+    $uuid = str_replace('-', '', $uuid);
+    $filename = $serverUrl . "/index.php?method=regionImage" . $uuid;
+    echo 'var tmp_region_image = new Img("' . $filename . '",' . $size . ',' . $size . ');';
 
-	?>
-        var region_loc = new Icon(tmp_region_image);
-	var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];
-	var marker = new Marker(all_images, new XYPoint(<?=($locX/256)?>,<?=($locY/256)?>));
-	mapInstance.addMarker(marker);
-	
-	var map_marker_img = new Img("images/info.gif",<?=$infosize?>,<?=$infosize?>);
-	var map_marker_icon = new Icon(map_marker_img);
-        var mapWindow = new MapWindow("Region Name: <?=$regionName?><br><br>Coordinates: <?=$locX/256?>,<?=$locY/256?><br><br>Owner: <?=$firstN?> <?=$lastN?><br><br><a href=<?=$url?>>Teleport</a>",{closeOnMove: true});
-	var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
-	var marker = new Marker(all_images, new XYPoint(<?=$MarkerCoordX?>,<?=$MarkerCoordY?>));
-	mapInstance.addMarker(marker, mapWindow);
+    $url = "secondlife://" . $regionName . "/" . ($sizeX / 2) . "/" . ($sizeY / 2);
+?>
+            var region_loc = new Icon(tmp_region_image);
+            var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];
+            var marker = new Marker(all_images, new XYPoint(<?= ($locX / 256) ?>,<?= ($locY / 256) ?>));
+            mapInstance.addMarker(marker);
+
+            var map_marker_img = new Img("images/info.gif",<?= $infosize ?>,<?= $infosize ?>);
+            var map_marker_icon = new Icon(map_marker_img);
+            var mapWindow = new MapWindow("Region Name: <?= $regionName ?><br><br>Coordinates: <?= $locX / 256 ?>,<?= $locY / 256 ?><br><br>Owner: <?= $firstN ?> <?= $lastN ?><br><br><a href=<?= $url ?>>Teleport</a>",{closeOnMove: true});
+            var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
+            var marker = new Marker(all_images, new XYPoint(<?= $MarkerCoordX ?>,<?= $MarkerCoordY ?>));
+            mapInstance.addMarker(marker, mapWindow);
 <?
 }
 ?>
 
+    }
+
+    function setZoom(size) {
+
+        var a = mapInstance.getViewportBounds();
+        var x = (a.xMin + a.xMax) / 2;
+        var y = (a.yMin + a.yMax) / 2;
+        window.location.href="<?= SYSURL ?>app/map/?size="+size+"&startx="+x+"&starty="+y;
+    }
+
+    function wheel(event){
+        var delta = 0;
+        if (!event) /* For IE. */
+            event = window.event;
+        if (event.wheelDelta) { /* IE/Opera. */
+            delta = event.wheelDelta/120;
+            /** In Opera 9, delta differs in sign as compared to IE.
+             */
+            if (window.opera)
+                delta = -delta;
+        } else if (event.detail) { /** Mozilla case. */
+            /** In Mozilla, sign of delta is different than in IE.
+             * Also, delta is multiple of 3.
+             */
+            delta = -event.detail/3;
+        }
+        /** If delta is nonzero, handle it.
+         * Basically, delta is now positive if wheel was scrolled up,
+         * and negative, if wheel was scrolled down.
+         */
+        if (delta)
+                handle(delta);
+        
+        /** Prevent default actions caused by mouse wheel.
+         * That might be ugly, but we handle scrolls somehow
+         * anyway, so don't bother here..
+         */
+        if (event.preventDefault)
+            event.preventDefault();
+        event.returnValue = false;
+    }
+
+    function handle(delta) {
+                if (delta == 1)
+                {
+                    <? if ($pluszoom != 0) {
+    ?>setZoom(<?echo $pluszoom; ?>);<?
 }
-
-function setZoom(size) {
-
-    var a = mapInstance.getViewportBounds();
-    var x = (a.xMin + a.xMax) / 2;
-    var y = (a.yMin + a.yMax) / 2;
-    window.location.href="<?=SYSURL?>/app/map/?size="+size+"&startx="+x+"&starty="+y;
+?>
+                    }
+                    else
+                    {
+<? if ($minuszoom != 0) {
+    ?>setZoom(<?echo $minuszoom; ?>);<?
 }
+?>
+                    }
+                }
 
+    </SCRIPT>
 
-</SCRIPT>
-
-<META content="MSHTML 6.00.2900.5512" name=GENERATOR></HEAD>
+    <META content="MSHTML 6.00.2900.5512" name=GENERATOR></HEAD>
 <BODY onload=loadmap()>
-<DIV id=map-container style="z-index: 0;"></DIV>
-<DIV id=map-nav>
-<DIV id=map-nav-up style="z-index: 1;"><A href="javascript: mapInstance.panUp();">
-<IMG alt=Up src="images/pan_up.gif"></A></DIV>
-<DIV id=map-nav-down style="z-index: 1;"><A href="javascript: mapInstance.panDown();">
-<IMG alt=Down src="images/pan_down.gif"></A></DIV>
-<DIV id=map-nav-left style="z-index: 1;"><A href="javascript: mapInstance.panLeft();">
-<IMG alt=Left src="images/pan_left.gif"></A></DIV>
-<DIV id=map-nav-right style="z-index: 1;"><A href="javascript: mapInstance.panRight();">
-<IMG alt=Right src="images/pan_right.gif"></A></DIV>
-<DIV id=map-nav-center style="z-index: 1;"><A href="javascript: mapInstance.panOrRecenterToWORLDCoord(new XYPoint(<?=$mapstartX?>,<?=$mapstartY?>), true);">
-<IMG alt=Center src="images/center.gif"></A></DIV>
+    <DIV id=map-container style="z-index: 0;"></DIV>
+    <DIV id=map-nav>
+        <DIV id=map-nav-up style="z-index: 1;"><A href="javascript: mapInstance.panUp();">
+                <IMG alt=Up src="images/pan_up.gif"></A></DIV>
+        <DIV id=map-nav-down style="z-index: 1;"><A href="javascript: mapInstance.panDown();">
+                <IMG alt=Down src="images/pan_down.gif"></A></DIV>
+        <DIV id=map-nav-left style="z-index: 1;"><A href="javascript: mapInstance.panLeft();">
+                <IMG alt=Left src="images/pan_left.gif"></A></DIV>
+        <DIV id=map-nav-right style="z-index: 1;"><A href="javascript: mapInstance.panRight();">
+                <IMG alt=Right src="images/pan_right.gif"></A></DIV>
+        <DIV id=map-nav-center style="z-index: 1;"><A href="javascript: mapInstance.panOrRecenterToWORLDCoord(new XYPoint(<?= $mapstartX ?>,<?= $mapstartY ?>), true);">
+                <IMG alt=Center src="images/center.gif"></A></DIV>
 
-<!-- START ZOOM PANEL-->
-<? if($ALLOW_ZOOM==TRUE){ ?>
-<DIV id=map-zoom-plus>
-<? if($pluszoom==0){?>
-<IMG alt="Zoom In" src="images/zoom_in_grey.gif">
-<? } else{?>
-<A href="javascript: setZoom(<?=$pluszoom?>);">
-<IMG alt="Zoom In" src="images/zoom_in.gif"></A>
+        <!-- START ZOOM PANEL-->
+        <? if ($ALLOW_ZOOM == TRUE) { ?>
+            <DIV id=map-zoom-plus>
+            <? if ($pluszoom == 0) {
+ ?>
+                <IMG alt="Zoom In" src="images/zoom_in_grey.gif">
+            <? } else { ?>
+                <A href="javascript: setZoom(<?= $pluszoom ?>);">
+                    <IMG alt="Zoom In" src="images/zoom_in.gif"></A>
+            <? } ?>
+        </DIV>
+        <DIV id=map-zoom-minus>
+            <? if ($minuszoom == 0) {
+ ?>
+                <IMG alt="Zoom In" src="images/zoom_out_grey.gif">
+<? } else { ?>
+                <A href="javascript: setZoom(<?= $minuszoom ?>);">
+                    <IMG alt="Zoom Out" src="images/zoom_out.gif"></A>
 <? } ?>
-</DIV>
-<DIV id=map-zoom-minus>
-<? if($minuszoom==0){?>
-<IMG alt="Zoom In" src="images/zoom_out_grey.gif">
-<? } else{?>
-<A href="javascript: setZoom(<?=$minuszoom?>);">
-<IMG alt="Zoom Out" src="images/zoom_out.gif"></A>
+        </DIV>
 <? } ?>
-</DIV>
-<? } ?>
-<!-- END ZOOM PANEL-->
-</DIV>
+        <!-- END ZOOM PANEL-->
+    </DIV>
 </BODY>
