@@ -8,14 +8,14 @@ $sizes=array(1 => 4,
     2 => 8,
     3 => 16,
     4 => 32,
-    5 => 64
+    5 => 64,
     6 => 128,
     7 => 256,
     8 => 512);
 
 if($ALLOW_ZOOM == TRUE && $_GET[zoom])
 {
-	foreach ($sizes as $zoomUntested => $sizeUntested) {
+	foreach ($sizes as $zoomUntested => $sizeUntested) 
 	{
 		if($zoomUntested == $_GET[zoom])
 		{
@@ -198,7 +198,7 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
  ?>
                 <IMG alt="Zoom In" src="images/zoom_in_grey.gif">
             <? } else { ?>
-                <A href="javascript: setZoom(<?= $($zoomLevel + 1) ?>);">
+                <A href="javascript: setZoom(<?= ($zoomLevel + 1) ?>);">
                     <IMG alt="Zoom In" src="images/zoom_in.gif"></A>
             <? } ?>
         </DIV>
