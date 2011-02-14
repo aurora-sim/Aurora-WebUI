@@ -224,6 +224,15 @@ namespace OpenSim.Server.Handlers.Caps
 
         private Bitmap CreateZoomLevel(int zoomLevel, int centerX, int centerY)
         {
+            if (!Directory.Exists("MapTiles"))
+                Directory.CreateDirectory("MapTiles");
+
+            string fileName = Path.Combine("MapTiles", "Zoom" + zoomLevel + "X" + centerX + "Y" + centerY + ".jpg");
+            if (File.Exists(fileName))
+            {
+                return (Bitmap)Bitmap.FromFile(fileName);
+            }
+
             List<GridRegion> regions = m_registry.RequestModuleInterface<IGridService>().GetRegionRange(UUID.Zero,
                     (int)(centerX * (int)Constants.RegionSize - (zoomLevel * (int)Constants.RegionSize)),
                     (int)(centerX * (int)Constants.RegionSize + (zoomLevel * (int)Constants.RegionSize)),
@@ -248,7 +257,7 @@ namespace OpenSim.Server.Handlers.Caps
             int zoomScale = (imageSize / zoomLevel);
             Bitmap mapTexture = new Bitmap(imageSize, imageSize);
             Graphics g = Graphics.FromImage(mapTexture);
-            SolidBrush sea = new SolidBrush(Color.DarkBlue);
+            SolidBrush sea = new SolidBrush(Color.FromArgb(29, 71, 95));
             g.FillRectangle(sea, 0, 0, imageSize, imageSize);
 
 
@@ -261,6 +270,8 @@ namespace OpenSim.Server.Handlers.Caps
                 int regionHeight = regions[i].RegionSizeY / Constants.RegionSize;
                 g.DrawImage(bitImages[i], (x * zoomScale) + imageSize / 2, imageSize - ((y * zoomScale) + imageSize / 2), zoomScale * regionWidth, zoomScale * regionHeight); // y origin is top
             }
+
+            mapTexture.Save(fileName, ImageFormat.Jpeg);
 
             return mapTexture;
         }
