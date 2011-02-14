@@ -239,6 +239,7 @@ namespace OpenSim.Server.Handlers.Caps
                     (int)(centerY * (int)Constants.RegionSize - (zoomLevel * (int)Constants.RegionSize)),
                     (int)(centerY * (int)Constants.RegionSize + (zoomLevel * (int)Constants.RegionSize)));
             List<Image> bitImages = new List<Image>();
+            List<FastBitmap> fastbitImages = new List<FastBitmap>();
 
             foreach (GridRegion r in regions)
             {
@@ -249,7 +250,10 @@ namespace OpenSim.Server.Handlers.Caps
                     ManagedImage managedImage;
                     Image image;
                     if (OpenJPEG.DecodeToImage(texAsset.Data, out managedImage, out image))
+                    {
                         bitImages.Add(image);
+                        fastbitImages.Add(new FastBitmap((Bitmap)image));
+                    }
                 }
             }
 
@@ -257,10 +261,14 @@ namespace OpenSim.Server.Handlers.Caps
             int zoomScale = (imageSize / zoomLevel);
             Bitmap mapTexture = new Bitmap(imageSize, imageSize);
             Graphics g = Graphics.FromImage(mapTexture);
-            SolidBrush sea = new SolidBrush(Color.FromArgb(29, 71, 95));
+            Color seaColor = Color.FromArgb(29, 71, 95);
+            SolidBrush sea = new SolidBrush(seaColor);
             g.FillRectangle(sea, 0, 0, imageSize, imageSize);
 
-
+            List<int> xStartPositions = new List<int>(regions.Count);
+            List<int> yStartPositions = new List<int>(regions.Count);
+            List<int> xEndPositions = new List<int>(regions.Count);
+            List<int> yEndPositions = new List<int>(regions.Count);
             for (int i = 0; i < regions.Count; i++)
             {
                 int x = ((regions[i].RegionLocX - (centerX * Constants.RegionSize)) / Constants.RegionSize);
@@ -268,8 +276,46 @@ namespace OpenSim.Server.Handlers.Caps
 
                 int regionWidth = regions[i].RegionSizeX / Constants.RegionSize;
                 int regionHeight = regions[i].RegionSizeY / Constants.RegionSize;
+                xStartPositions[i] = (x * zoomScale) + imageSize / 2;
+                yStartPositions[i] = imageSize - ((y * zoomScale) + imageSize / 2);
+                xEndPositions[i] = ((x * zoomScale) + imageSize / 2) + zoomScale * regionWidth;
+                yEndPositions[i] = (imageSize - (((y * zoomScale) + imageSize / 2) + zoomScale * regionHeight));
+
                 g.DrawImage(bitImages[i], (x * zoomScale) + imageSize / 2, imageSize - ((y * zoomScale) + imageSize / 2), zoomScale * regionWidth, zoomScale * regionHeight); // y origin is top
             }
+
+            /*FastBitmap fastBit = new FastBitmap(mapTexture);
+            fastBit.LockBitmap();
+
+            for(int x = 0; x < 2560; x += Constants.MinRegionSize)
+            {
+                for(int y = 0; y < 2560; y += Constants.MinRegionSize)
+                {
+                    bool found = false;
+                    for(int i = 0; i < regions.Count; i++)
+                    {
+                          if(x > xStartPositions[i] && x < xEndPositions[i] && y > yStartPositions[i] && y < yEndPositions[i])
+                          {
+                                found = true;
+                                for(int iNeedAnotherVariableForThePositionsInsideOfPositions = 0; iNeedAnotherVariableForThePositionsInsideOfPositions < Constants.MinRegionSize; iNeedAnotherVariableForThePositionsInsideOfPositions++)
+                                {
+                                     fastBit.SetPixel(x + iNeedAnotherVariableForThePositionsInsideOfPositions,y + iNeedAnotherVariableForThePositionsInsideOfPositions, fastbitImages[i].GetPixel(x + iNeedAnotherVariableForThePositionsInsideOfPositions,y + iNeedAnotherVariableForThePositionsInsideOfPositions));
+                                }
+                                break;
+                          }
+                    }
+                    if(!found)
+                    {
+                         for(int iNeedAnotherVariableForThePositionsInsideOfPositions = 0; iNeedAnotherVariableForThePositionsInsideOfPositions < Constants.MinRegionSize; iNeedAnotherVariableForThePositionsInsideOfPositions++)
+                         {
+                                 fastBit.SetPixel(x + iNeedAnotherVariableForThePositionsInsideOfPositions,y + iNeedAnotherVariableForThePositionsInsideOfPositions, seaColor);
+                         }
+                    }
+                }
+            }*/
+
+            fastBit.UnlockBitmap();
+            mapTexture = fastBit.Bitmap();
 
             mapTexture.Save(fileName, ImageFormat.Jpeg);
 
