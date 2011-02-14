@@ -2,12 +2,26 @@
 include("../../settings/config.php");
 include("../../settings/mysql.php");
 
-if (($_GET[size]) and ($ALLOW_ZOOM == TRUE)) {
-    if (($_GET[size] == 64) or ($_GET[size] == 128) or ($_GET[size] == 192) or ($_GET[size] == 256) or ($_GET[size] == 32) or ($_GET[size] == 16) or ($_GET[size] == 8) or ($_GET[size] == 4)) {
-        $size = $_GET[size];
-    }
-} else {
-    $size = 128;
+$zoomLevel = 6;
+$maxZoom = 8;
+$sizes=array(1 => 4,
+    2 => 8,
+    3 => 16,
+    4 => 32,
+    5 => 64
+    6 => 128,
+    7 => 256,
+    8 => 512);
+
+if($ALLOW_ZOOM == TRUE && $_GET[zoom])
+{
+	foreach ($sizes as $zoomUntested => $sizeUntested) {
+	{
+		if($zoomUntested == $_GET[zoom])
+		{
+		    $zoomLevel = $sizeUntested;
+		}
+	}
 }
 if ($_GET[startx]) {
     $mapX = $_GET[startx];
@@ -21,40 +35,6 @@ if ($_GET[starty]) {
     $mapY = $mapstartY;
 }
 
-if ($size == 4) {
-    $minuszoom = 0;
-    $pluszoom = 8;
-    $infosize = 4;
-}
-else if ($size == 8) {
-    $minuszoom = 4;
-    $pluszoom = 16;
-    $infosize = 5;
-} else if ($size == 16) {
-    $minuszoom = 8;
-    $pluszoom = 32;
-    $infosize = 7;
-} else if ($size == 32) {
-    $minuszoom = 16;
-    $pluszoom = 64;
-    $infosize = 10;
-} else if ($size == 64) {
-    $minuszoom = 32;
-    $pluszoom = 128;
-    $infosize = 10;
-} else if ($size == 128) {
-    $minuszoom = 64;
-    $pluszoom = 192;
-    $infosize = 20;
-} else if ($size == 192) {
-    $minuszoom = 128;
-    $pluszoom = 256;
-    $infosize = 30;
-} else if ($size == 256) {
-    $minuszoom = 192;
-    $pluszoom = 0;
-    $infosize = 40;
-}
 ?>
 
 <HEAD><TITLE><?= SYSNAME ?> World Map</TITLE>
@@ -69,14 +49,18 @@ else if ($size == 8) {
 
         function loadmap()
         {
-            <? if ($ALLOW_ZOOM == TRUE) { ?>
+            <? if ($ALLOW_ZOOM == TRUE)
+			{
+			?>
             if (window.addEventListener)
             /** DOMMouseScroll is for mozilla. */
                 window.addEventListener('DOMMouseScroll', wheel, false);
             /* IE/Opera. */
             window.onmousewheel = document.onmousewheel = wheel;
 
-            <? } ?>
+            <?
+			} 
+			?>
 
             mapInstance = new ZoomSize(<?= $size ?>);
             mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: true, hasPanningControls: true});
@@ -176,15 +160,15 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
     function handle(delta) {
                 if (delta == 1)
                 {
-                    <? if ($pluszoom != 0) {
-    ?>setZoom(<?echo $pluszoom; ?>);<?
+                    <? if (($zoomLevel + 1) < $maxZoom) {
+    ?>setZoom(<?echo ($zoomLevel + 1); ?>);<?
 }
 ?>
                     }
                     else
                     {
-<? if ($minuszoom != 0) {
-    ?>setZoom(<?echo $minuszoom; ?>);<?
+<? if (($zoomLevel - 1) != 0) {
+    ?>setZoom(<?echo ($zoomLevel - 1); ?>);<?
 }
 ?>
                     }
@@ -210,20 +194,20 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
         <!-- START ZOOM PANEL-->
         <? if ($ALLOW_ZOOM == TRUE) { ?>
             <DIV id=map-zoom-plus>
-            <? if ($pluszoom == 0) {
+            <? if (($zoomLevel + 1) >= $maxZoom) {
  ?>
                 <IMG alt="Zoom In" src="images/zoom_in_grey.gif">
             <? } else { ?>
-                <A href="javascript: setZoom(<?= $pluszoom ?>);">
+                <A href="javascript: setZoom(<?= $($zoomLevel + 1) ?>);">
                     <IMG alt="Zoom In" src="images/zoom_in.gif"></A>
             <? } ?>
         </DIV>
         <DIV id=map-zoom-minus>
-            <? if ($minuszoom == 0) {
+            <? if (($zoomLevel - 1) == 0) {
  ?>
                 <IMG alt="Zoom In" src="images/zoom_out_grey.gif">
 <? } else { ?>
-                <A href="javascript: setZoom(<?= $minuszoom ?>);">
+                <A href="javascript: setZoom(<?= ($zoomLevel - 1) ?>);">
                     <IMG alt="Zoom Out" src="images/zoom_out.gif"></A>
 <? } ?>
         </DIV>
