@@ -259,7 +259,7 @@ namespace OpenSim.Server.Handlers.Caps
 
                 int regionWidth = regions[i].RegionSizeX / Constants.RegionSize;
                 int regionHeight = regions[i].RegionSizeY / Constants.RegionSize;
-                g.DrawImage(bitImages[i], (x * zoomScale * regionWidth) + imageSize / 2, imageSize - ((y * zoomScale * regionHeight) + imageSize / 2), zoomScale, zoomScale); // y origin is top
+                g.DrawImage(bitImages[i], (x * zoomScale) + imageSize / 2, imageSize - ((y * zoomScale) + imageSize / 2), zoomScale * regionWidth, zoomScale * regionHeight); // y origin is top
             }
 
             return mapTexture;
