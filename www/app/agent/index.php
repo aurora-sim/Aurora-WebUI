@@ -24,6 +24,7 @@ if ($_GET[first] && $_GET[last]) {
     $recieved = json_decode($do_post_requested);
 
     $profileTXT = $recieved->{'profile'}->{'AboutText'};
+    $profileImage = $recieved->{'profile'}->{'Image'};
     $created = $recieved->{'account'}->{'Created'};
     $UUID = $recieved->{'account'}->{'PrincipalID'};
     $diff = $recieved->{'account'}->{'TimeSinceCreated'};
@@ -85,20 +86,15 @@ if ($_GET[first] && $_GET[last]) {
                 <br>
             </td>
     </table>
-    <table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <td width="45%" valign="top"><br>
-            <br>
-            <table border="0" align="center" cellpadding="5" cellspacing="0">
-                <tr>
-                    <td bgcolor="#999999"><div align="center">
-                            <table width="256" height="256" border="0" align="center" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td bgcolor="#FFFFFF" background="info.jpg">&nbsp;</td>
-                                </tr>
-                            </table>
-                        </div></td>
-                </tr>
-            </table>
-        </td>
+    <table width="128" height="128" border="0" align="center" cellpadding="0" cellspacing="0">
+        <?
+        if($profileImage == "")
+        {
+            $profileLink = "info.jpg";
+        }
+        else
+            $profileLink = WIREDUX_TEXTURE_SERVICE . "/index.php?method=GridTexture&uuid" . $profileImage;
+        ?>
+        <img src="<? echo $profileLink ?>" width="128" height="128" />
     </table>
 </table>
