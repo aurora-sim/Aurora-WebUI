@@ -25,6 +25,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using GridRegion = OpenSim.Services.Interfaces.GridRegion;
 
 
 
@@ -69,6 +70,7 @@ namespace OpenSim.Server.Handlers.Caps
                 m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry));
                 m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
+                m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
             }
 
         }
@@ -84,7 +86,7 @@ namespace OpenSim.Server.Handlers.Caps
             if (keysvals["method"].ToString() != "GridTexture")
                 return reply;
 
-            m_log.Debug("[WIREDUX]: Sending map image jpeg");
+            m_log.Debug("[WebUI]: Sending image jpeg");
             int statuscode = 200;
             byte[] jpeg = new byte[0];
             byte[] myMapImageJPEG;
@@ -127,7 +129,7 @@ namespace OpenSim.Server.Handlers.Caps
             catch (Exception)
             {
                 // Dummy!
-                m_log.Warn("[WiRedux]: Unable to post image.");
+                m_log.Warn("[WebUI]: Unable to post image.");
             }
             finally
             {
@@ -154,6 +156,60 @@ namespace OpenSim.Server.Handlers.Caps
             return reply;
         }
 
+        public Hashtable OnHTTPGetMapImage(Hashtable keysvals)
+        {
+            Hashtable reply = new Hashtable();
+
+            if (keysvals["method"].ToString() != "MapTexture")
+                return reply;
+
+            int zoom = 20;
+            int x = 0;
+            int y = 0;
+
+            if (keysvals.ContainsKey("zoom"))
+                zoom = int.Parse(keysvals["zoom"].ToString());
+            if (keysvals.ContainsKey("x"))
+                x = int.Parse(keysvals["x"].ToString());
+            if (keysvals.ContainsKey("y"))
+                y = int.Parse(keysvals["y"].ToString());
+
+            m_log.Debug("[WebUI]: Sending map image jpeg");
+            int statuscode = 200;
+            byte[] jpeg = new byte[0];
+            byte[] myMapImageJPEG;
+            IAssetService m_AssetService = m_registry.RequestModuleInterface<IAssetService>();
+
+            MemoryStream imgstream = new MemoryStream();
+            Bitmap mapTexture = CreateZoomLevel(zoom, x, y);
+            EncoderParameters myEncoderParameters = new EncoderParameters();
+            myEncoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 75L);
+
+            // Save bitmap to stream
+            mapTexture.Save(imgstream, GetEncoderInfo("image/jpeg"), myEncoderParameters);
+
+            // Write the stream to a byte array for output
+            jpeg = imgstream.ToArray();
+            myMapImageJPEG = jpeg;
+
+            // Reclaim memory, these are unmanaged resources
+            // If we encountered an exception, one or more of these will be null
+            if (mapTexture != null)
+                mapTexture.Dispose();
+
+            if (imgstream != null)
+            {
+                imgstream.Close();
+                imgstream.Dispose();
+            }
+
+            reply["str_response_string"] = Convert.ToBase64String(jpeg);
+            reply["int_response_code"] = statuscode;
+            reply["content_type"] = "image/jpeg";
+
+            return reply;
+        }
+
         public Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
         {
             Bitmap newsize = new Bitmap(nWidth, nHeight);
@@ -163,6 +219,50 @@ namespace OpenSim.Server.Handlers.Caps
             temp.DrawString(m_servernick, new Font("Arial", 8, FontStyle.Regular), new SolidBrush(Color.FromArgb(90, 255, 255, 50)), new Point(2, 115));
 
             return newsize;
+        }
+
+
+        private Bitmap CreateZoomLevel(int zoomLevel, int centerX, int centerY)
+        {
+            List<GridRegion> regions = m_registry.RequestModuleInterface<IGridService>().GetRegionRange(UUID.Zero,
+                    (int)(centerX * (int)Constants.RegionSize - (zoomLevel * (int)Constants.RegionSize)),
+                    (int)(centerX * (int)Constants.RegionSize + (zoomLevel * (int)Constants.RegionSize)),
+                    (int)(centerY * (int)Constants.RegionSize - (zoomLevel * (int)Constants.RegionSize)),
+                    (int)(centerY * (int)Constants.RegionSize + (zoomLevel * (int)Constants.RegionSize)));
+            List<Image> bitImages = new List<Image>();
+
+            foreach (GridRegion r in regions)
+            {
+                AssetBase texAsset = m_registry.RequestModuleInterface<IAssetService>().Get(r.TerrainImage.ToString());
+
+                if (texAsset != null)
+                {
+                    ManagedImage managedImage;
+                    Image image;
+                    if (OpenJPEG.DecodeToImage(texAsset.Data, out managedImage, out image))
+                        bitImages.Add(image);
+                }
+            }
+
+            int imageSize = 2560;
+            int zoomScale = (imageSize / zoomLevel);
+            Bitmap mapTexture = new Bitmap(imageSize, imageSize);
+            Graphics g = Graphics.FromImage(mapTexture);
+            SolidBrush sea = new SolidBrush(Color.DarkBlue);
+            g.FillRectangle(sea, 0, 0, imageSize, imageSize);
+
+
+            for (int i = 0; i < regions.Count; i++)
+            {
+                int x = ((regions[i].RegionLocX - (centerX * Constants.RegionSize)) / Constants.RegionSize);
+                int y = ((regions[i].RegionLocY - (centerY * Constants.RegionSize)) / Constants.RegionSize);
+
+                int regionWidth = regions[i].RegionSizeX / Constants.RegionSize;
+                int regionHeight = regions[i].RegionSizeY / Constants.RegionSize;
+                g.DrawImage(bitImages[i], (x * zoomScale * regionWidth) + imageSize / 2, imageSize - ((y * zoomScale * regionHeight) + imageSize / 2), zoomScale, zoomScale); // y origin is top
+            }
+
+            return mapTexture;
         }
 
         // From msdn
@@ -331,7 +431,6 @@ namespace OpenSim.Server.Handlers.Caps
             string HomeRegion = map["HomeRegion"].AsString();
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
-            string UserLevel= map["UserLevel"].AsString();
 
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
@@ -351,7 +450,7 @@ namespace OpenSim.Server.Handlers.Caps
             if (Verified)
             {
                 userID = user.PrincipalID;
-                user.UserLevel = int.Parse(UserLevel);
+                user.UserLevel = -1;
 
                 accountService.StoreUserAccount(user);
 
@@ -422,7 +521,7 @@ namespace OpenSim.Server.Handlers.Caps
             if (Verified)
             {
                 UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, FirstName, LastName);
-                if((account.UserFlags & 2048) == 2048) //Admin flag
+                if ((account.UserFlags & 2048) == 2048) //Admin flag
                     userID = account.PrincipalID;
             }
 
