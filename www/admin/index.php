@@ -1,8 +1,11 @@
-<?
-//Redirect to the right place
-echo "<script language=\"javascript\">
+<html>
+<head>
+<? include("../settings/config.php"); ?>
+<script language="javascript">
 <!--
-window.location.href=\"/index.php?page=adminhome\";
+	window.location.href="<?= SYSURL ?>/index.php?page=adminhome";
 // -->
-</script>";
-?>
+</script>
+</head>
+<body></body>
+</html>
