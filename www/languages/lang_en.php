@@ -114,4 +114,10 @@ $wiredux_menu_item_adminhome = 'Admin Home';
 //
 $webui_forgot_password='Forgotten Password?';
 $webui_forgot_password_info='Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
+
+//
+// Date
+//
+$webui_before_date='It is';
+$webui_after_date='at';
 ?>

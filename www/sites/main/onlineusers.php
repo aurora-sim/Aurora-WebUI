@@ -30,16 +30,19 @@ function OpenAgent(firstname, lastname)
 
 <table>
   <tbody>
-    <TR>
-
-      <TD>
-	  <b><? echo $wiredux_user_name ?>:</b></TD>
-      <TD>
-	  <b><? echo $wiredux_region_name ?>:</b></TD>
-
-      <TD><b>Info</b></TD>
-
-    </TR>
+    <tr class="<? echo ($odd = $w%2 )? "even":"odd" ?>" >
+      <td>
+        <b><? echo $wiredux_user_name ?>:</b>
+      </td>
+      
+      <td>
+        <b><? echo $wiredux_region_name ?>:</b>
+      </td>
+      
+      <td>
+        <b>Info</b>
+      </td>
+    </tr>
 <?
 	$DbLink = new DB;
 	$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online = 'True' AND ".

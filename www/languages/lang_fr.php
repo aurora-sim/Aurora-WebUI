@@ -119,4 +119,10 @@ $wiredux_menu_item_adminhome = 'Accueil Admin';
 //
 $webui_forgot_password='Mot de passe oublié?';
 $webui_forgot_password_info='Vous avez oublié votre mot de passe? Pas de problème! Entrez votre adresse email et votre nouveau mot de passe vous sera envoyé.';      
+
+//
+// Date
+//
+$webui_before_date='Nous sommes le';
+$webui_after_date='et il est';
 ?>

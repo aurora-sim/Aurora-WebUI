@@ -117,33 +117,35 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <link rel="stylesheet" href="<? echo $skin_css ?>" type="text/css" />
-        <link rel="icon" href="/images/main/favicon.ico" />
-        <title>Welcome to <?= SYSNAME ?></title>
-    </head>
-    <body class="wiredux">
-        <div id="container">
-            <div id="header">
-                <h1><span><? SYSNAME ?> Grid Status</span></h1>
 
-                <div id="gridstatus"><?php include("sites/gridstatus.php"); ?></div>
-                <div id="menubar"><? include("sites/menubar.php"); ?></div>  
-                <div id="date"><?php setlocale (LC_TIME, 'fr_FR','fra'); echo strftime("%A %d %B %Y%T"); ?></div> 
-                <div id="translator"><?php include("languages/translator_page.php"); ?></div>
-                <!-- fin de #header --></div>
-
-            <div id="MainContainer">
-                <div id="sites"><? include("sites.php"); ?></div>
-                <!-- fin de #mainContent --></div>
-
-            <div id="footer">
-                <h3><span>Aurora-Sim WiRedux Footer</span></h3>
-<?php include("sites/footer.php"); ?>
-
-                <!-- fin de #footer --></div>
-            <!-- fin de #container --></div>
-    </body>
+<head>
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="<? echo $skin_css ?>" type="text/css" />
+    <link rel="icon" href="/images/main/favicon.ico" />
+    <title>Welcome to <?= SYSNAME ?></title>
+</head>
+    
+<body class="webui">
+    <div id="container">
+        <div id="header">
+            <a href="<?= SYSURL ?>"><h1><span><? SYSNAME ?></span></h1></a>                 
+            <div id="gridstatus"><?php include("sites/gridstatus.php"); ?></div>
+            <div id="menubar"><? include("sites/menubar.php"); ?></div>
+            <div id="date">
+                <?php $date = date("d-m-Y"); $heure = date("H:i"); Print("$webui_before_date $date $webui_after_date $heure"); ?>
+            </div>
+            <div id="translator">
+                <?php include("languages/translator_page.php"); ?>
+            </div>
+        </div><!-- fin de #header -->
+        
+        <div id="MainContainer">
+            <div id="sites"><? include("sites.php"); ?></div>
+        </div><!-- fin de #mainContent -->
+        <div id="footer">
+            <?php include("sites/footer.php"); ?>
+        </div><!-- fin de #footer -->
+    </div><!-- fin de #container -->
+</body>
 </html>

@@ -2,7 +2,7 @@
 
 html {width: 100%; height: 100%;}
 
-body.wiredux {
+body.webui {
   margin: 0px;
   margin-top: 30px;
   padding: 0px;
@@ -10,10 +10,10 @@ body.wiredux {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: center;
   color:#ffffff;
-  background: #000000 url('../images/main/background_12.jpg') 50% 0% no-repeat;
+  background: #000000 url('../images/main/background_01.jpg') 50% 0% no-repeat;
 }
 
-.wiredux #container {
+.webui #container {
 	width: 1000px;
   background-color: transparent;
   background-image: url("../images/main/background_03.png");
@@ -22,44 +22,44 @@ body.wiredux {
 	text-align: left;
 }
 
-.wiredux #adminnote {
+.webui #adminnote {
 	width: 1000px;
-        background-color: transparent;
+  background-color: transparent;
 	margin: 0 auto;
-        text-align: center;
+  text-align: center;
 	border: 0px solid #000000;
 	text-align: left;
 }
 
-.wiredux #header {
+.webui #header {
   background-image: url("../images/main/header.png");
   background-repeat: repeat-x;
 	background-color: transparent;
 }
 
 /* Logo */
-.wiredux #header h1 {
+.webui #header h1 {
 	margin: 0px;
-  background-image: url("../images/main/aurora-webui_logo_01.jpg");
-  background-repeat: no-repeat;
 	height:139px;
+  background-image: url("../images/main/aurora-webui-logo.png");
+  background-repeat: no-repeat;
+	background-color: transparent;
 }
 
 /* MenuBar Horizontal */
-.menubar {
+.webui #menubar {
   background-color: transparent;
   background-image: url("../images/main/background_03.png");
 }
 
 /* MainContainer */
-.wiredux #MainContainer {
-	margin: 0px;
+.webui #MainContainer {
 	padding: 0px;
 	background-color: transparent;
 }
 
 /* content*/
-.wiredux #content {
+.webui #content {
   font-size: 0.8em;
   margin: 10px;
   padding: 10px;
@@ -205,7 +205,7 @@ float: right;
 #region_map {
   margin: 0px;
   padding: 0px;
-  height: 500px;
+  height: 350px;
   background-color: transparent;
   background-image: url("../images/main/background_03.png");
   border:none;
@@ -229,7 +229,7 @@ float: right;
 
 
 /* footer */
-.wiredux #footer {
+.webui #footer {
 	padding: 0 10px;
   background-image: url("../images/main/background_03.png");
   background-color: transparent;
@@ -237,11 +237,11 @@ float: right;
 	height:35px;
 }
 
-.wiredux #footer p {margin: 0; padding: 10px 0;}
+.webui #footer p {margin: 0; padding: 10px 0;}
 
 
 /* Translator_Module */
-.wiredux #translator {
+.webui #translator {
   position: relative;
   float:right;
   margin: 0px;
@@ -261,7 +261,7 @@ float: right;
 }
 
 /* Date */
-.wiredux #date {
+.webui #date {
   position: relative;
   float:left;
   margin: 0px;
@@ -281,7 +281,7 @@ float: right;
 }
 
 /* Validator_Module */
-.wiredux #validator {text-align: center;}
+.webui #validator {text-align: center;}
 
 /* gridstatus */
 #gridstatus {
