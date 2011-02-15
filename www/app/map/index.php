@@ -3,6 +3,7 @@ include("../../settings/config.php");
 include("../../settings/mysql.php");
 
 $zoomLevel = 6;
+$zoomSize = 128;
 $maxZoom = 8;
 $sizes=array(1 => 4,
     2 => 8,
@@ -19,10 +20,30 @@ if($ALLOW_ZOOM == TRUE && $_GET[zoom])
 	{
 		if($zoomUntested == $_GET[zoom])
 		{
-		    $zoomLevel = $sizeUntested;
+		    $zoomSize = $sizeUntested;
+		    $zoomLevel = $zoomUntested;
 		}
 	}
 }
+
+if ($zoomLevel == 1) {
+    $infosize = 4;
+} else if ($zoomLevel == 2) {
+    $infosize = 5;
+} else if ($zoomLevel == 3) {
+    $infosize = 7;
+} else if ($zoomLevel == 4) {
+    $infosize = 10;
+} else if ($zoomLevel == 5) {
+    $infosize = 10;
+} else if ($zoomLevel == 6) {
+    $infosize = 20;
+} else if ($zoomLevel == 7) {
+    $infosize = 30;
+} else if ($zoomLevel == 8) {
+    $infosize = 40;
+}
+
 if ($_GET[startx]) {
     $mapX = $_GET[startx];
 } else {
@@ -34,7 +55,6 @@ if ($_GET[starty]) {
 } else {
     $mapY = $mapstartY;
 }
-
 ?>
 
 <HEAD><TITLE><?= SYSNAME ?> World Map</TITLE>
@@ -59,10 +79,10 @@ if ($_GET[starty]) {
             window.onmousewheel = document.onmousewheel = wheel;
 
             <?
-			} 
+			}
 			?>
 
-            mapInstance = new ZoomSize(<?= $size ?>);
+            mapInstance = new ZoomSize(<?= $zoomSize ?>);
             mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: true, hasPanningControls: true});
             mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?= $mapX ?>,<?= $mapY ?>),1);
 <?
@@ -96,7 +116,7 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
 
     $uuid = str_replace('-', '', $uuid);
     $filename = $serverUrl . "/index.php?method=regionImage" . $uuid;
-    echo 'var tmp_region_image = new Img("' . $filename . '",' . $size . ',' . $size . ');';
+    echo 'var tmp_region_image = new Img("' . $filename . '",' . $zoomSize . ',' . $zoomSize . ');';
 
     $url = "secondlife://" . $regionName . "/" . ($sizeX / 2) . "/" . ($sizeY / 2);
 ?>
@@ -122,7 +142,7 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
         var a = mapInstance.getViewportBounds();
         var x = (a.xMin + a.xMax) / 2;
         var y = (a.yMin + a.yMax) / 2;
-        window.location.href="<?= SYSURL ?>app/map/?size="+size+"&startx="+x+"&starty="+y;
+        window.location.href="<?= SYSURL ?>app/map/?zoom="+size+"&startx="+x+"&starty="+y;
     }
 
     function wheel(event){
@@ -160,7 +180,7 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
     function handle(delta) {
                 if (delta == 1)
                 {
-                    <? if (($zoomLevel + 1) < $maxZoom) {
+                    <? if (($zoomLevel) < $maxZoom) {
     ?>setZoom(<?echo ($zoomLevel + 1); ?>);<?
 }
 ?>
@@ -194,7 +214,7 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
         <!-- START ZOOM PANEL-->
         <? if ($ALLOW_ZOOM == TRUE) { ?>
             <DIV id=map-zoom-plus>
-            <? if (($zoomLevel + 1) >= $maxZoom) {
+            <? if (($zoomLevel + 1) > $maxZoom) {
  ?>
                 <IMG alt="Zoom In" src="images/zoom_in_grey.gif">
             <? } else { ?>
