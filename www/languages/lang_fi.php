@@ -9,7 +9,6 @@ $wiredux_online_now='Online tilassa';
 $wiredux_first_name='Etunimi';
 $wiredux_last_name='Sukunimi';
 $wiredux_password='Salasana';
-
 $wiredux_login='Kirjaudu sis&auml;&auml;n';
 $wiredux_confirm='Hyv&auml;ksy';
 $wiredux_start_region='Aloita Alueen';
@@ -20,7 +19,7 @@ $wiredux_country='Maa';
 $wiredux_date_of_birth='Syntym&auml;aika.';
 $wiredux_email='S&auml;hk&ouml;posti';
 $wiredux_create_new_account='Luo uusi k&auml;ytt&auml;j&auml;tili';
-$wiredux_world_map='Maailman kartta';
+
 $wiredux_region_name='Alueen nimi';
 $wiredux_location='Sijainti';
 $wiredux_info='Informaatio';
@@ -103,6 +102,12 @@ $webui_forgot_password_info='Forgot your Password? No problem! Enter your email 
 //
 // Date
 //
-$webui_before_date='We are';
-$webui_after_date='it is';
+$webui_before_date='It is';
+$webui_after_date='at';
+
+//
+// World Map Page
+//
+$webui_world_map='World Map';
+$webui_fullscreen='Full Screen';
 ?>

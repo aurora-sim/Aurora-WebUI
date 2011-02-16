@@ -9,7 +9,6 @@ $wiredux_online_now='Online Now';
 $wiredux_first_name='First Name';
 $wiredux_last_name='Last Name';
 $wiredux_password='Password';
-
 $wiredux_login='Login';
 $wiredux_confirm='Confirm';
 $wiredux_start_region='Start Region';
@@ -20,7 +19,6 @@ $wiredux_country='Country';
 $wiredux_date_of_birth='Date Of Birth';
 $wiredux_email='Email';
 $wiredux_create_new_account='Create New Account';
-$wiredux_world_map='World Map';
 $wiredux_region_name='Region Name';
 $wiredux_location='Location';
 $wiredux_info='Info';
@@ -118,6 +116,12 @@ $webui_forgot_password_info='Forgot your Password? No problem! Enter your email 
 //
 // Date
 //
-$webui_before_date='We are';
-$webui_after_date='it is';
+$webui_before_date='It is';
+$webui_after_date='at';
+
+//
+// World Map Page
+//
+$webui_world_map='World Map';
+$webui_fullscreen='Full Screen';
 ?>

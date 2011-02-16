@@ -81,14 +81,14 @@ list($GRIDSTATUS, $INFOBOX, $BOXCOLOR, $BOX_TITLE, $BOX_INFOTEXT) = $DbLink->nex
 
 // Doing it the same as the Who's Online now part
 $DbLink = new DB;
-$DbLink->query("SELECT UserID FROM " . C_GRIDUSER_TBL . " where Online = 1 AND " .
+$DbLink->query("SELECT UserID FROM " . C_GRIDUSER_TBL . " where Online = 'True' AND " .
         "Login < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND " .
         "Logout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) " .
         "ORDER BY Login DESC");
 while (list($UUID) = $DbLink->next_record()) {
     // Let's get the user info
     $DbLink2 = new DB;
-    $DbLink2->query("SELECT username, lastname from " . C_USERS_TBL . " where UUID = '" . $UUID . "'");
+    $DbLink2->query("SELECT firstname, lastname from " . C_USERS_TBL . " where PrincipalID = '" . $UUID . "'");
     list($firstname, $lastname) = $DbLink2->next_record();
     $DbLink3 = new DB;
     $DbLink3->query("SELECT RegionID from " . C_PRESENCE_TBL . " where UserID = '" . $UUID . "'");
@@ -96,7 +96,7 @@ while (list($UUID) = $DbLink->next_record()) {
     $username = $firstname . " " . $lastname;
     // Let's get the region information
     $DbLink3 = new DB;
-    $DbLink3->query("SELECT regionName from " . C_REGIONS_TBL . " where UUID = '" . $regionUUID . "'");
+    $DbLink3->query("SELECT regionName from " . C_REGIONS_TBL . " where RegionUUID = '" . $regionUUID . "'");
     list($region) = $DbLink3->next_record();
     if ($region != "") {
         $NOWONLINE = $NOWONLINE + 1;
