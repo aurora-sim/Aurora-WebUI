@@ -24,4 +24,6 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('worldmap', 'main', 'worldmap.php'),
 ('adminhome', 'admin', 'home.php'),
 ('adminloginscreen', 'admin', 'loginscreenmanager.php'),
-('adminmanage', 'admin', 'manage.php');
+('adminmanage', 'admin', 'manage.php'),
+('news_add', 'admin', 'news_add.php')
+;

@@ -46,9 +46,7 @@ if($_SESSION[ADMINID]) {
         $DbLink = new DB;
         $DbLink->query("SELECT COUNT(*) FROM ".C_USERS_TBL." ");
         list($count) = $DbLink->next_record();
-
-    }
-    ?>
+?>
 
 <BR><CENTER>
         <?
@@ -164,7 +162,7 @@ if($_SESSION[ADMINID]) {
                     </TABLE>
                     <IMG SRC="../images/icons/dot.gif" WIDTH=1 HEIGHT=2><BR>
                         <?
-						$DbLink3 = new DB;
+						$DbLink3 = new DB; 
             			$found = array();
             			$found[0] = json_encode(array('Method' => 'FindUsers', 'WebPassword' => md5(WIREDUX_PASSWORD),
                     		'UserID' => $_GET[user_id], 'Start' => $AStart, 'End' => $ALimit, 'Query' => $_GET[query]));
@@ -175,12 +173,17 @@ if($_SESSION[ADMINID]) {
                         //$DbLink1->query("SELECT PrincipalID,FirstName,LastName,Created FROM ".C_USERS_TBL." $USR $USR_1 $USR_2 $USR_3 ORDER by created ASC $Limit ");
                         while(list($userInfo) = $recieved->{'Users'}) {
 
-                            $user_id = userInfo->{'PrincipalID'};
-                            $username = userInfo->{'UserName'};
-                            $created = userInfo->{'Created'};
-                            $flags = userInfo->{'UserFlags'};
+							// ------------------------------------
+							// ERRORING HERE user is null right now
+							// Commented out below so it would at least render
+							// ------------------------------------
+							
+                            //$user_id = userInfo->{'PrincipalID'};
+                            //$username = userInfo->{'UserName'};
+                            //$created = userInfo->{'Created'};
+                            //$flags = userInfo->{'UserFlags'};
 
-                            $create = date("d.m.Y", $created);
+                            //$create = date("d.m.Y", $created);
                             ?>
                     <TABLE WIDTH=100% CELLPADDING=0 CELLSPACING=0 BORDER=0>
                         <TR>
@@ -215,6 +218,7 @@ if($_SESSION[ADMINID]) {
                                     <img src="../images/icons/btn_del.gif" alt="Delete User" BORDER="0"></a></TD>
                         </TR>
                     </TABLE>
+					<? } ?>
                 </div>
             </TD>
     </TABLE>
