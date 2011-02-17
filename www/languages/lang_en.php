@@ -107,6 +107,7 @@ $wiredux_404_text = 'The requested page could not be found! Please try again lat
 $wiredux_admin_login = "Admin Login";
 $wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
 $wiredux_menu_item_adminhome = 'Admin Home';
+$wiredux_menu_item_adminmanage = 'Manage';
 
 //
 // Forgot Pass Page

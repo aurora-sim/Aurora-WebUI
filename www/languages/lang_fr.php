@@ -112,6 +112,7 @@ $wiredux_404_text = 'La page demandée n\'a pas pu être trouvée! S\'il vous plaît
 $wiredux_admin_login = "Connection Admin";
 $wiredux_menu_item_adminloginscreen = 'Editer l\'écran de connection';
 $wiredux_menu_item_adminhome = 'Accueil Admin';
+$wiredux_menu_item_adminmanage = 'Manage';
 
 //
 // Forgot Pass Page

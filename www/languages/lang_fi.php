@@ -92,6 +92,7 @@ $wiredux_404_text = 'Hakemaasi sivua ei l&ouml;ydy, ole hyv&auml; yrit&auml; my&
 $wiredux_admin_login = "Admin Login";
 $wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
 $wiredux_menu_item_adminhome = 'Admin Home';
+$wiredux_menu_item_adminmanage = 'Manage';
 
 //
 // Forgot Pass Page
