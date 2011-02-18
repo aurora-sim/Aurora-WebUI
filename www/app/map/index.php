@@ -4,6 +4,7 @@ include("../../settings/mysql.php");
 
 $zoomLevel = 6;
 $zoomSize = 128;
+$antiZoomSize = 128;
 $maxZoom = 8;
 $sizes=array(1 => 4,
     2 => 8,
@@ -22,6 +23,10 @@ if($ALLOW_ZOOM == TRUE && $_GET[zoom])
 		{
 		    $zoomSize = $sizeUntested;
 		    $zoomLevel = $zoomUntested;
+		}
+		if($zoomUntested == 9-$_GET[zoom])
+		{
+		    $antiZoomSize = $sizeUntested;
 		}
 	}
 }
@@ -94,35 +99,36 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
     $DbLink1->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='$owner'");
     list($firstN, $lastN) = $DbLink1->next_record();
 
-    $MarkerCoordX = $locX + 0.00;
-    $MarkerCoordY = $locY + 0.00;
+    $MarkerCoordX = $locX;
+    $MarkerCoordY = $locY;
 
-
+    $regionSizeOffset = ($sizeX / 256) * 0.40;
     if ($display_marker == "tl") {
-        $MarkerCoordX = ($MarkerCoordX / 256) - 0.40;
-        $MarkerCoordY = ($MarkerCoordY / 256) + 0.40;
+        $MarkerCoordX = ($MarkerCoordX / 256) - $regionSizeOffset;
+        $MarkerCoordY = ($MarkerCoordY / 256) + $regionSizeOffset;
     } else if ($display_marker == "tr") {
-        $MarkerCoordX = ($MarkerCoordX / 256) + 0.40;
-        $MarkerCoordY = ($MarkerCoordY / 256) + 0.40;
+        $MarkerCoordX = ($MarkerCoordX / 256) + $regionSizeOffset;
+        $MarkerCoordY = ($MarkerCoordY / 256) + $regionSizeOffset;
     } else if ($display_marker == "dl") {
-        $MarkerCoordX = ($MarkerCoordX / 256) - 0.40;
-        $MarkerCoordY = ($MarkerCoordY / 256) - 0.40;
+        $MarkerCoordX = ($MarkerCoordX / 256) - $regionSizeOffset;
+        $MarkerCoordY = ($MarkerCoordY / 256) - $regionSizeOffset;
     } else if ($display_marker == "dr") {
-        $MarkerCoordX = ($MarkerCoordX / 256) + 0.40;
-        $MarkerCoordY = ($MarkerCoordY / 256) - 0.40;
+        $MarkerCoordX = ($MarkerCoordX / 256) + $regionSizeOffset;
+        $MarkerCoordY = ($MarkerCoordY / 256) - $regionSizeOffset;
     }
     $recieved = json_decode($info);
     $serverUrl = $recieved->{'serverURI'};
 
     $uuid = str_replace('-', '', $uuid);
     $filename = $serverUrl . "/index.php?method=regionImage" . $uuid;
-    echo 'var tmp_region_image = new Img("' . $filename . '",' . $zoomSize . ',' . $zoomSize . ');';
+    $mapTextureURL = WIREDUX_TEXTURE_SERVICE.'/index.php?method=MapTexture&zoom='. $antiZoomSize .'&x=' . $mapX . '&y=' . $mapY;
+    echo 'var tmp_region_image = new Img("' . $filename . '",' . $zoomSize * ($sizeX / 256) . ',' . $zoomSize * ($sizeY / 256) . ');';
 
     $url = "secondlife://" . $regionName . "/" . ($sizeX / 2) . "/" . ($sizeY / 2);
 ?>
             var region_loc = new Icon(tmp_region_image);
             var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];
-            var marker = new Marker(all_images, new XYPoint(<?= ($locX / 256) ?>,<?= ($locY / 256) ?>));
+            var marker = new Marker(all_images, new XYPoint(<?= (($locX / 256)) ?>,<?= (($locY / 256)) ?>));
             mapInstance.addMarker(marker);
 
             var map_marker_img = new Img("images/info.gif",<?= $infosize ?>,<?= $infosize ?>);
