@@ -247,7 +247,7 @@ namespace OpenSim.Server.Handlers.Caps
             }
 
             int imageSize = 2560;
-            int zoomScale = (imageSize / zoomLevel);
+            float zoomScale = (imageSize / zoomLevel);
             Bitmap mapTexture = new Bitmap(imageSize, imageSize);
             Graphics g = Graphics.FromImage(mapTexture);
             Color seaColor = Color.FromArgb(29, 71, 95);
@@ -256,13 +256,13 @@ namespace OpenSim.Server.Handlers.Caps
 
             for (int i = 0; i < regions.Count; i++)
             {
-                int x = ((regions[i].RegionLocX - (centerX * Constants.RegionSize)) / Constants.RegionSize);
-                int y = ((regions[i].RegionLocY - (centerY * Constants.RegionSize)) / Constants.RegionSize);
+                float x = ((regions[i].RegionLocX - (centerX * (float)Constants.RegionSize) + Constants.RegionSize / 2) / (float)Constants.RegionSize);
+                float y = ((regions[i].RegionLocY - (centerY * (float)Constants.RegionSize) + Constants.RegionSize / 2) / (float)Constants.RegionSize);
 
                 int regionWidth = regions[i].RegionSizeX / Constants.RegionSize;
                 int regionHeight = regions[i].RegionSizeY / Constants.RegionSize;
-                int posX = (x * zoomScale) + imageSize;
-                int posY = (y * zoomScale) + imageSize;
+                float posX = (x * zoomScale) + imageSize / 2;
+                float posY = (y * zoomScale) + imageSize / 2;
                 g.DrawImage(bitImages[i], posX, imageSize - posY, zoomScale * regionWidth, zoomScale * regionHeight); // y origin is top
             }
 
