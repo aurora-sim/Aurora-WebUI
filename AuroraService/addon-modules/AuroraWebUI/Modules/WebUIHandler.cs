@@ -46,18 +46,11 @@ namespace OpenSim.Server.Handlers.Caps
         {
         }
 
-        public void PostInitialize(IConfigSource config, IRegistryCore registry)
-        {
-        }
-
         public void Start(IConfigSource config, IRegistryCore registry)
         {
-        }
-
-        public void PostStart(IConfigSource config, IRegistryCore registry)
-        {
             IConfig handlerConfig = config.Configs["Handlers"];
-            m_servernick = config.Configs["GridInfoService"].GetString("gridnick", m_servernick);
+            if (config.Configs["GridInfoService"] != null)
+                m_servernick = config.Configs["GridInfoService"].GetString("gridnick", m_servernick);
             m_registry = registry;
             if (handlerConfig.GetString("WireduxHandler", "") != Name)
                 return;
@@ -71,11 +64,6 @@ namespace OpenSim.Server.Handlers.Caps
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
                 m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
             }
-
-        }
-
-        public void AddNewRegistry(IConfigSource config, IRegistryCore registry)
-        {
         }
 
         public Hashtable OnHTTPGetTextureImage(Hashtable keysvals)
@@ -240,7 +228,8 @@ namespace OpenSim.Server.Handlers.Caps
                     (int)(centerY * (int)Constants.RegionSize - (zoomLevel * (int)Constants.RegionSize)),
                     (int)(centerY * (int)Constants.RegionSize + (zoomLevel * (int)Constants.RegionSize)));
             List<Image> bitImages = new List<Image>();
-            
+            List<FastBitmap> fastbitImages = new List<FastBitmap>();
+
             foreach (GridRegion r in regions)
             {
                 AssetBase texAsset = m_registry.RequestModuleInterface<IAssetService>().Get(r.TerrainImage.ToString());
@@ -252,6 +241,7 @@ namespace OpenSim.Server.Handlers.Caps
                     if (OpenJPEG.DecodeToImage(texAsset.Data, out managedImage, out image))
                     {
                         bitImages.Add(image);
+                        fastbitImages.Add(new FastBitmap((Bitmap)image));
                     }
                 }
             }
@@ -271,7 +261,9 @@ namespace OpenSim.Server.Handlers.Caps
 
                 int regionWidth = regions[i].RegionSizeX / Constants.RegionSize;
                 int regionHeight = regions[i].RegionSizeY / Constants.RegionSize;
-                g.DrawImage(bitImages[i], (x * zoomScale) + imageSize / 2, imageSize - ((y * zoomScale) + imageSize / 2), zoomScale * regionWidth, zoomScale * regionHeight); // y origin is top
+                int posX = (x * zoomScale) + imageSize;
+                int posY = (y * zoomScale) + imageSize;
+                g.DrawImage(bitImages[i], posX, imageSize - posY, zoomScale * regionWidth, zoomScale * regionHeight); // y origin is top
             }
 
             mapTexture.Save(fileName, ImageFormat.Jpeg);
@@ -593,22 +585,22 @@ namespace OpenSim.Server.Handlers.Caps
 
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UUID"].AsUUID());
-            IGridUserService griduserService = m_registry.RequestModuleInterface<IGridUserService>();
+            IAgentInfoService agentService = m_registry.RequestModuleInterface<IAgentInfoService>();
 
-            GridUserInfo userinfo;
+            UserInfo userinfo;
             OSDMap resp = new OSDMap();
 
             bool verified = user != null;
             resp["Verified"] = OSD.FromBoolean(verified);
             if (verified)
             {
-                userinfo = griduserService.GetGridUserInfo(uuid);
+                userinfo = agentService.GetUserInfo(uuid);
                 IGridService gs = m_registry.RequestModuleInterface<IGridService>();
                 Services.Interfaces.GridRegion gr = gs.GetRegionByUUID(UUID.Zero, userinfo.HomeRegionID);
 
                 resp["HomeUUID"] = OSD.FromUUID(userinfo.HomeRegionID);
                 resp["HomeName"] = OSD.FromString(gr.RegionName);
-                resp["Online"] = OSD.FromBoolean(userinfo.Online);
+                resp["Online"] = OSD.FromBoolean(userinfo.IsOnline);
                 resp["Email"] = OSD.FromString(user.Email);
                 resp["FirstName"] = OSD.FromString(user.FirstName);
                 resp["LastName"] = OSD.FromString(user.LastName);
