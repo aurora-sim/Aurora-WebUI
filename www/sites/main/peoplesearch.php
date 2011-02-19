@@ -42,17 +42,13 @@ if ($sitemax == 0) {
     <div id="searchpeople">
         
         <div id="info">
-            <p>
-                <? echo $webui_people_search_info; ?>
-
-            </p>
+            <p><? echo $webui_people_search_info; ?></p>
         </div>
         
         <div id="message">
-                
-                <? echo $wiredux_first_name; ?>: <input id="first" name="first" type="text" size="25" maxlength="15" value="" />
-                <? echo $wiredux_last_name; ?>: <input id="last" name="last" type="text" size="25" maxlength="15" value="" />
-                <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'first=' + document.getElementById('first').value + '&last=' + document.getElementById('last').value)"><? echo $webui_people_search_bouton ?></button>
+            <? echo $wiredux_first_name; ?>: <input id="first" name="first" type="text" size="25" maxlength="15" value="" />
+            <? echo $wiredux_last_name; ?>: <input id="last" name="last" type="text" size="25" maxlength="15" value="" />
+             <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'first=' + document.getElementById('first').value + '&last=' + document.getElementById('last').value)"><? echo $webui_people_search_bouton ?></button>
         </div>
 
         <table>
@@ -157,7 +153,7 @@ if ($sitemax == 0) {
           $w++;
         ?>
 
-        <tr class="<? echo ($odd = $w%2 )? "odd":"even" ?>" >
+        <tr class="<? echo ($odd = $w%2 )? "odd":"even" ?>">
             <td>
                 <div><b><?= $FirstName . " " . $LastName ?></b></div>
             </td>

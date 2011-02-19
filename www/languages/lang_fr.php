@@ -104,14 +104,6 @@ $webui_home_page='
 $wiredux_404_text = 'La page demandée n\'a pas pu être trouvée! S\'il vous plaît réessayer plus tard.';
 
 //
-// Admin parts
-//
-$wiredux_admin_login = "Connection Admin";
-$wiredux_menu_item_adminloginscreen = 'Editer l\'écran de connection';
-$wiredux_menu_item_adminhome = 'Accueil Admin';
-$wiredux_menu_item_adminmanage = 'Manage';
-
-//
 // Forgot Pass Page
 //
 $webui_forgot_password = 'Mot de passe oublié?';
@@ -144,7 +136,49 @@ $webui_change_account = 'Modifier votre Compte';
 $webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte.';
 $webui_change_home_region = 'Changer la région d\'accueil';
 $webui_old_region = 'Ancienne Région';
-$webui_start_region = 'Région de départ';
+$webui_home_region = 'Région de départ';
 $webui_purge_apparence = 'Purger l\'apparence de l\'Avatar';
 $webui_purge_apparence_bouton = 'Purger';
+
+//
+// Admin parts
+//
+$wiredux_admin_login = "Admin Login";
+$wiredux_menu_item_adminloginscreen = 'Editer';
+$wiredux_menu_item_adminhome = 'Admin';
+$wiredux_menu_item_adminmanage = 'Manage';
+
+//
+// Admin Home Page
+//
+$webui_admin_home = 'Accueil Administration';
+$webui_admin_home_info = 'Here you can create users, edit the login screen, and more...';
+$webui_admin_welcome = 'Welcome to the';
+$webui_admin_panel = 'Admin Panel';
+$webui_admin_login = 'Connection Administration';
+
+//
+// Admin Edit LoginScreen Page
+//
+$webui_admin_edit_loginscreen = 'Editer Page de Connection';
+$webui_admin_loginscreen_info = 'Ceci vous permet de changer les informations de votre page de connection.';
+$webui_admin_grid_status = 'Grid Status';
+$webui_admin_windows_status = 'Window Status';
+$webui_admin_windows_color = 'Window Color';
+$webui_admin_windows_title = 'Window Title';
+$webui_admin_windows_message = 'Window Message';
+$webui_admin_windows_settings = 'Save Info Window Settings';
+$webui_admin_create_news = 'Create News item';
+$webui_admin_news_online = 'News currently online';
+$webui_admin_news_title = 'Titre';
+$webui_admin_news_date = 'Date';
+$webui_admin_news_edit = 'Editer';
+$webui_admin_news_delete = 'Effacer';
+
+//
+// Admin Management Panel Page
+//
+$webui_admin_manage = 'Management Panel';
+$webui_admin_manage_user = 'Admin User Management Panel';
+$webui_admin_manage_username = 'User Name';
 ?>

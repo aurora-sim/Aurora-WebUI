@@ -238,7 +238,7 @@ if ($_SESSION[USERID] == "") {
                 </tr>
             
                 <tr>
-                    <td class="even"><? echo $webui_start_region ?>:  </td>
+                    <td class="even"><? echo $webui_home_region ?>:  </td>
                     <td class="even">
                         <select wide="25" name="region">
                             <?

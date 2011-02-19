@@ -184,6 +184,20 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #changeaccount a:active {text-decoration: none}
 #changeaccount a:hover {text-decoration: underline;}
 
+#loginscreen_manager {width:100%;background-color: transparent;}
+#loginscreen_manager table {color: #ffffff; width: 100%;}
+#loginscreen_manager a {color: #aaaa00; text-decoration: none;}
+#loginscreen_manager a:visited {text-decoration: none}
+#loginscreen_manager a:active {text-decoration: none}
+#loginscreen_manager a:hover {text-decoration: underline;}
+
+#managepanel {width:100%;background-color: transparent;}
+#managepanel table {color: #ffffff; width: 100%;}
+#managepanel a {color: #aaaa00; text-decoration: none;}
+#managepanel a:visited {text-decoration: none}
+#managepanel a:active {text-decoration: none}
+#managepanel a:hover {text-decoration: underline;}
+
 
 #region_navigation {
 width: 300px;
