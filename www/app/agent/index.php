@@ -93,7 +93,7 @@ if ($_GET[first] && $_GET[last]) {
             $profileLink = "info.jpg";
         }
         else
-            $profileLink = WIREDUX_TEXTURE_SERVICE . 'index.php?method=GridTexture&uuid=' . $profileImage;
+            $profileLink = WIREDUX_TEXTURE_SERVICE . '/index.php?method=GridTexture&uuid=' . $profileImage;
         ?>
         <img src="<? echo $profileLink ?>" width="128" height="128" />
     </table>
