@@ -14,7 +14,7 @@ $wiredux_confirm='Conferma';
 $wiredux_start_region='Regione iniziale';
 $wiredux_address='Indirizzo';
 $wiredux_zip_code='Codice Postale';
-$wiredux_city='Città';
+$wiredux_city='Cittï¿½';
 $wiredux_country='Paese';
 $wiredux_date_of_birth='Data di nascita';
 $wiredux_email='Email';
@@ -31,9 +31,9 @@ $wiredux_user_name='Nome avatar';
 $wiredux_online_users='Online Users';
 $wiredux_online_users_info='Questi sono tutti gli avatar online in questo momento.';
 $wiredux_submit='Invia';
-$wiredux_verified_account='Grazie. La tua password è ora attiva e puoi usarla.';
+$wiredux_verified_account='Grazie. La tua password ï¿½ ora attiva e puoi usarla.';
 $wiredux_internal_error='Errore interno, prego, riprovare.';
-$wiredux_invalid_code='Il tuo codice non è valido oppure è scaduto';
+$wiredux_invalid_code='Il tuo codice non ï¿½ valido oppure ï¿½ scaduto';
 $wiredux_activate_account='Attiva il tuo Account';
 $wiredux_change_account='Cambia il tuo Account';
 $wiredux_change_home_region='Cambia la tua posizione iniziale';
@@ -84,16 +84,16 @@ $webui_welcome_visitor='Ciao Visitor!';
 $webui_welcome_userid='Ciao Userid!';
 $webui_home_page='
     <p>
-        Questo è il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
-        Ogni cosa è possibile nel nostro nuovo Mondo in 3D. <br />
-        Il nostro Mondo è creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
+        Questo ï¿½ il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
+        Ogni cosa ï¿½ possibile nel nostro nuovo Mondo in 3D. <br />
+        Il nostro Mondo ï¿½ creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
         Crea subito un nuovo account, personalizza il tuo avatar e gioca nel nuovo mondo. <br />
         Entra ora, e fai la differenza! <br /><br /><br />
         <u>There are just 3 steps to get started:</u> <br /><br />
         1.) Crea il tuo account GRATIS in queste pagine. <br /><br />
         2.) Scarica il viewer. Ti raccomandiamo <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
         3.) Assicurati di aggiungere la nostra grid al tuo viewer. <br /><br /><br />
-        <i>Per favore, tieni presente che la piattaforma di Aurora è ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
+        <i>Per favore, tieni presente che la piattaforma di Aurora ï¿½ ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
     </p>';
 
 //
@@ -138,11 +138,11 @@ $webui_user_search='User Search';
 //
 // Change Account Page
 //
-$webui_change_account = 'Edit Account'
+$webui_change_account = 'Edit Account';
 $webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte';
-$webui_change_home_region = 'Changer la région d\'accueil';
-$webui_old_region = 'Ancienne Région';
-$webui_start_region = 'Région de départ';
+$webui_change_home_region = 'Changer la rï¿½gion d\'accueil';
+$webui_old_region = 'Ancienne Rï¿½gion';
+$webui_start_region = 'Rï¿½gion de dï¿½part';
 $webui_purge_apparence = 'Purge Avatar Appearance';
 $webui_purge_apparence_bouton = 'Purge';
 ?>

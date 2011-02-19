@@ -134,7 +134,7 @@ $webui_user_search='User Search';
 //
 // Change Account Page
 //
-$webui_change_account = 'Edit Account'
+$webui_change_account = 'Edit Account';
 $webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte';
 $webui_change_home_region = 'Changer la région d\'accueil';
 $webui_old_region = 'Ancienne Région';
