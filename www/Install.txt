@@ -13,14 +13,24 @@ Please remember to backup your database regularly.
 5. copy the contents of the ./AuroraService/addon-modules/ directory into your ~/Aurora-Sim/addon-modules/ directory
 6. Run runprebuild.bat or runprebuild2010.bat
 7. Run compile.bat
-8. In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini ensure the password matches the websites /settings/config.php
+
+----- For grid mode (running Aurora.Server.exe) -----
+
+8. In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini file, copy the following info and ensure the password matches the websites in /settings/config.php
 
 	WireduxHandler = WireduxHandler
-	WireduxHandlerPort = 8007
 	WireduxHandlerPassword = ***
+	WireduxHandlerPort = 8007
+	WireduxTextureServerPort = 8002
 
-In /aurora-sim-Aurora-Sim/bin/AuroraServerConfiguration/Main.ini  <==Grid Mode
-Above WireduxHandlers are already there for Grid Mode.
+----- For standalone mode (just running Aurora.exe) -----
+
+8. In the Aurora-Sim\bin\Configuration\StandaloneCommon.ini file, copy the following info and ensure the password matches the websites in /settings/config.php
+
+	WireduxHandler = WireduxHandler
+	WireduxHandlerPassword = ***
+	WireduxHandlerPort = 8007
+	WireduxTextureServerPort = 8002
 
 -----------------------------------------------------------------
 
