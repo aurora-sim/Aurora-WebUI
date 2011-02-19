@@ -19,7 +19,7 @@ $wiredux_country='Country';
 $wiredux_date_of_birth='Date Of Birth';
 $wiredux_email='Email';
 $wiredux_create_new_account='Create New Account';
-$wiredux_start_region='Région de départ';
+$wiredux_start_region='Start Region';
 $wiredux_region_name='Region Name';
 $wiredux_location='Location';
 $wiredux_info='Info';
@@ -136,35 +136,35 @@ $webui_users_found='Users Found';
 // Change Account Page
 //
 $webui_change_account = 'Modifier votre Compte';
-$webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte.';
+$webui_change_account_info = 'You can modify your account here.';
 $webui_change_home_region = 'Change Home Region';
 $webui_old_region = 'Old Region';
 $webui_home_region = 'Start Region';
-$webui_purge_apparence = 'Purger l\'apparence de l\'Avatar';
-$webui_purge_apparence_bouton = 'Purger';
+$webui_purge_apparence = 'Purge the appearance of your avatar';
+$webui_purge_apparence_bouton = 'Purge';
 
 //
 // Admin parts
 //
 $wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Editer';
+$wiredux_menu_item_adminloginscreen = 'Edit';
 $wiredux_menu_item_adminhome = 'Admin';
 $wiredux_menu_item_adminmanage = 'Manage';
 
 //
 // Admin Home Page
 //
-$webui_admin_home = 'Accueil Administration';
+$webui_admin_home = 'Administration Home';
 $webui_admin_home_info = 'Here you can create users, edit the login screen, and more...';
 $webui_admin_welcome = 'Welcome to the';
 $webui_admin_panel = 'Admin Panel';
-$webui_admin_login = 'Connection Administration';
+$webui_admin_login = 'Administration Login';
 
 //
 // Admin Edit LoginScreen Page
 //
-$webui_admin_edit_loginscreen = 'Editer Page de Connection';
-$webui_admin_loginscreen_info = 'Ceci vous permet de changer les informations de votre page de connection.';
+$webui_admin_edit_loginscreen = 'Loginscreen manager';
+$webui_admin_loginscreen_info = 'You can edit the information on the loginscreen here.';
 $webui_admin_grid_status = 'Grid Status';
 $webui_admin_windows_status = 'Window Status';
 $webui_admin_windows_color = 'Window Color';
