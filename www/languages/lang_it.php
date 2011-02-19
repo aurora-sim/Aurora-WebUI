@@ -124,6 +124,25 @@ $webui_after_date='at';
 //
 // World Map Page
 //
-$webui_world_map='World Map';
-$webui_fullscreen='Full Screen';
+$webui_world_map = 'World Map';
+$webui_fullscreen = 'Full Screen';
+
+//
+// People Search Page
+//
+$webui_people_search = 'Rechercher';
+$webui_people_search_info = 'Ceci vous permet de rechercher des utilisateurs';
+$webui_users_found='Users Found';
+$webui_user_search='User Search';
+
+//
+// Change Account Page
+//
+$webui_change_account = 'Edit Account'
+$webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte';
+$webui_change_home_region = 'Changer la région d\'accueil';
+$webui_old_region = 'Ancienne Région';
+$webui_start_region = 'Région de départ';
+$webui_purge_apparence = 'Purge Avatar Appearance';
+$webui_purge_apparence_bouton = 'Purge';
 ?>

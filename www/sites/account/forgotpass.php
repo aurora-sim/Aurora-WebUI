@@ -110,9 +110,7 @@ if($_POST[Submit]=="Submit")
   
   <div id="forget_pass">
   
-
-
-	<div id="message">
+	<div id="info">
 		<p><? echo $webui_forgot_password_info ?></p>
 	</div>
 

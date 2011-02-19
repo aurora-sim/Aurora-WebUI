@@ -12,20 +12,9 @@ function OpenAgent(firstname, lastname)
   
   <div id="usersonline">
   
-<table>
-  <tr>
-    <td>
-      <table>
-      <tr>
-        <td>
-          <div id="message">
-            <p><? echo $wiredux_online_users_info ?></p>
-          </div>
-        </td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
+  <div id="info">
+      <p><? echo $wiredux_online_users_info ?></p>
+  </div>
 
 
 <table>

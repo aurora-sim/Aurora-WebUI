@@ -35,7 +35,7 @@ if($sitemax == 0){$sitemax=1;}
   
   <div id="regionlist">
 
-	<div id="message">
+	<div id="info">
 		<p><? echo $wiredux_region_list_page_info ?></p>
 	</div>
 
@@ -71,7 +71,7 @@ if($sitemax == 0){$sitemax=1;}
 								<img SRC=images/icons/icon_forward_more_<? if($count <= ($AStart + $ALimit)) echo "off"; else echo "on" ?>.gif WIDTH=15 HEIGHT=15 border="0" />
 							</a>
 						</td>
-						<td width="10"></td>
+						<td></td>
 						<td>
 							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=10&amp;" target="_self">
 								<img SRC=images/icons/<? if($ALimit != 10) echo icon_limit_10_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 10" />

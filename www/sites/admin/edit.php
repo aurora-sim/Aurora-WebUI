@@ -86,21 +86,21 @@ $active=3;
 -->
 </style>
 
-<table width="100%" height="100%" border="0">
+<table>
   <tr>
     <td><div align="center" class="Stil3"></div></td>
   </tr>
   <tr>
     <td>
-	<table width="600" border="0" align="center" cellpadding="0" cellspacing="15" bgcolor="#FFFFFF">
+	<table>
       <tr>
-        <td><table width="600" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" bgcolor="#999999">
+        <td><table>
 		<form name="form1" method="post" action="index.php?page=edit">
 		<input type="hidden" name="userdata" value="set" />
 		<input type="hidden" name="uuid" value="<?=$uuid?>" />
 		  <tr>
 		    <td class="style2">USERID</td>
-		    <td bgcolor="#CCCCCC">&nbsp;</td>
+		    <td>&nbsp;</td>
 		    </tr>
 		  <tr>
 		    <td colspan="2" bgcolor="#CCCCCC"><?=$uuid?></td>

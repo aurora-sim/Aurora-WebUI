@@ -133,7 +133,7 @@ while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $
 
             var map_marker_img = new Img("images/info.gif",<?= $infosize ?>,<?= $infosize ?>);
             var map_marker_icon = new Icon(map_marker_img);
-            var mapWindow = new MapWindow("Region Name: <?= $regionName ?><br><br>Coordinates: <?= $locX / 256 ?>,<?= $locY / 256 ?><br><br>Owner: <?= $firstN ?> <?= $lastN ?><br><br><a href=<?= $url ?>>Teleport</a>",{closeOnMove: true});
+            var mapWindow = new MapWindow("Region Name: <?= $regionName ?><br><br>Coordinates: <?= $locX / 256 ?>,<?= $locY / 256 ?><br><br>Size: <?= $sizeX ?>,<?= $sizeY ?><br><br>Owner: <?= $firstN ?> <?= $lastN ?><br><br><a href=<?= $url ?>>Teleport</a>",{closeOnMove: true});
             var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
             var marker = new Marker(all_images, new XYPoint(<?= $MarkerCoordX ?>,<?= $MarkerCoordY ?>));
             mapInstance.addMarker(marker, mapWindow);

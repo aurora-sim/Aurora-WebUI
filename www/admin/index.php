@@ -3,7 +3,7 @@
 <? include("../settings/config.php"); ?> 
 <script language="javascript"> 
 <!-- 
-window.location.href="<?= SYSURL ?>/index.php?page=adminhome"; 
+window.location.href="<?= SYSURL ?>index.php?page=adminhome"; 
 // --> 
 </script> 
 </head> 

@@ -41,7 +41,7 @@ $ERROR="Password validation doesnt match";
 }
 -->
 </style>
-<table width="100%" height="100%" border="0" align="center">
+<table>
             <tr>
               <td valign="top"><table width="50%" border="0" align="center">
                 <tr>

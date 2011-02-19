@@ -170,6 +170,21 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #usersonline a:active {text-decoration: none}
 #usersonline a:hover {text-decoration: underline;}
 
+#searchpeople {width:100%;background-color: transparent;}
+#searchpeople table {color: #ffffff; width: 100%;}
+#searchpeople a {color: #aaaa00; text-decoration: none;}
+#searchpeople a:visited {text-decoration: none}
+#searchpeople a:active {text-decoration: none}
+#searchpeople a:hover {text-decoration: underline;}
+
+#changeaccount {width:100%;background-color: transparent;}
+#changeaccount table {color: #ffffff; width: 100%;}
+#changeaccount a {color: #aaaa00; text-decoration: none;}
+#changeaccount a:visited {text-decoration: none}
+#changeaccount a:active {text-decoration: none}
+#changeaccount a:hover {text-decoration: underline;}
+
+
 #region_navigation {
 width: 300px;
 float: right;
@@ -193,13 +208,17 @@ float: right;
 
 /* input & bouton */
 #register_input {width: 99%;}
-#register_bouton {width: 220px; font-size: 1.4em; margin-left: auto; margin-right: auto;}
+#register_bouton {font-size: 1em; margin-left: auto; margin-right: auto;}
 
 #login_input {width: 99%;}
-#login_bouton {float:left; width: 120px; font-size: 1.4em;}
+#login_bouton {font-size: 1em;}
 
 #forgot_pass_input {width: 99%;}
-#forgot_pass_bouton {float:left; width: 120px; font-size: 1.4em;}
+#forgot_pass_bouton {font-size: 1em;}
+
+#search_input {width: 99%;}
+#search_bouton {font-size: 1em;}
+
 
 /* region map */
 #region_map {

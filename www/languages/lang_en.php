@@ -19,7 +19,7 @@ $wiredux_country='Country';
 $wiredux_date_of_birth='Date Of Birth';
 $wiredux_email='Email';
 $wiredux_create_new_account='Create New Account';
-
+$wiredux_start_region='Région de départ';
 $wiredux_region_name='Region Name';
 $wiredux_location='Location';
 $wiredux_info='Info';
@@ -28,13 +28,19 @@ $wiredux_region_list='Region List';
 $wiredux_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
 $wiredux_more_info='More Info';
 $wiredux_user_name='User Name';
+
+//
+// Online Users Page
+//
 $wiredux_online_users='Online Users';
 $wiredux_online_users_info='This shows all the users that are online at this moment.';
+
 $wiredux_submit='Submit';
 $wiredux_verified_account='Thank you, your account is now active and ready to use.';
 $wiredux_internal_error='Internal error, please try again later.';
 $wiredux_invalid_code='This isnt a valid code or maybe the code was older than 24h';
 $wiredux_activate_account='Activate Account';
+
 $wiredux_change_account='Change Account';
 $wiredux_change_home_region='Change Home Region';
 $wiredux_old_region='Old Region';
@@ -49,8 +55,7 @@ $wiredux_news='News';
 $wiredux_history='History';
 $wiredux_see_profile='See Profile';
 $wiredux_user_name='User Name';
-$wiredux_users_found='Users Found';
-$wiredux_user_search='User Search';
+
 $wiredux_users_profile='Profile of';
 $wiredux_no_information_set="No information set";
 $wiredux_about_me="About Me";
@@ -62,26 +67,26 @@ $wiredux_region_type="Region Type";
 $wiredux_owner="Owner";
 
 //
-//Menu items
+// Menu items
 //
 $wiredux_menu_item_home = 'Home';
-$wiredux_menu_item_changeaccount = 'Edit Account';
+$wiredux_menu_item_changeaccount = 'Edit';
 $wiredux_menu_item_news = 'News';
-$wiredux_menu_item_regions = 'Region List';
+$wiredux_menu_item_regions = 'Regions';
 $wiredux_menu_item_worldmap = 'Map';
 $wiredux_menu_item_register = 'Register';
 $wiredux_menu_item_logout = 'Logout';
 $wiredux_menu_item_login = 'Login';
-$wiredux_menu_item_onlineusers = 'Online Users';
-$wiredux_menu_item_peoplesearch = 'People Search';
+$wiredux_menu_item_onlineusers = 'Users';
+$wiredux_menu_item_peoplesearch = 'Search';
 
 //
 // Home Page
 //
-$webui_home='Home';
-$webui_welcome='Welcome to the new site';
-$webui_welcome_visitor='Hi Visitor!';
-$webui_welcome_userid='Hi Userid!';
+$webui_home = 'Home';
+$webui_welcome = 'Welcome to the new site';
+$webui_welcome_visitor = 'Hi Visitor!';
+$webui_welcome_userid = 'Hi Userid!';
 $webui_home_page='
     <p>
         This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams. <br />
@@ -112,18 +117,37 @@ $wiredux_menu_item_adminmanage = 'Manage';
 //
 // Forgot Pass Page
 //
-$webui_forgot_password='Forgotten Password?';
-$webui_forgot_password_info='Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
+$webui_forgot_password = 'Forgotten Password?';
+$webui_forgot_password_info = 'Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
 
 //
 // Date
 //
-$webui_before_date='It is';
-$webui_after_date='at';
+$webui_before_date = 'It is';
+$webui_after_date = 'at';
 
 //
 // World Map Page
 //
-$webui_world_map='World Map';
-$webui_fullscreen='Full Screen';
+$webui_world_map = 'World Map';
+$webui_fullscreen = 'Full Screen';
+
+//
+// People Search Page
+//
+$webui_people_search = 'Rechercher';
+$webui_people_search_info = 'Ceci vous permet de rechercher des utilisateurs';
+$webui_users_found='Users Found';
+$webui_user_search='User Search';
+
+//
+// Change Account Page
+//
+$webui_change_account = 'Edit Account'
+$webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte';
+$webui_change_home_region = 'Changer la région d\'accueil';
+$webui_old_region = 'Ancienne Région';
+$webui_start_region = 'Région de départ';
+$webui_purge_apparence = 'Purge Avatar Appearance';
+$webui_purge_apparence_bouton = 'Purge';
 ?>

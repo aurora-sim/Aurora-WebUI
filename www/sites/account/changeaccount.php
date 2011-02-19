@@ -210,153 +210,204 @@ if ($_SESSION[USERID] == "") {
     }
 ?>
 
-    <table width="100%" height="425" border="0" align="center">
-        <tr>
-            <td valign="top"><table width="50%" border="0" align="center">
-                    <tr>
-                        <td>
-                            <p align="center" class="Stil1"><? echo $wiredux_change_account ?></p>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
-                <? if (($REGIOCHECK == "0") or ($REGIOCHECK == "1")) {
- ?>
-                    <tr>
-                        <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong><? echo $wiredux_change_home_region ?> </strong></div></td>
-                    </tr>
-                    <form name="form1" method="post" action="index.php?page=change">
-                        <tr>
-                            <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_old_region ?>: </td>
-                            <td valign="top" bgcolor="#FFFFFF"><?= $oldregionname ?></td>
-                        </tr>
-                        <tr>
-                            <td width="47%" valign="top" bgcolor="#FFFFFF"><? echo $wiredux_start_region ?>:  </td>
-                            <td width="53%" valign="top" bgcolor="#FFFFFF"><select class="box" wide="25" name="region">
-                                <?
+
+<div id="content">
+  <h2><?= SYSNAME ?>: <? echo $webui_change_account ?></h2>
+  
+  <div id="changeaccount">
+
+        <div id="info">
+            <p><? echo $webui_change_account_info ?></p>
+        </div>
+        
+        <!-- Change Start Region -->         
+        <table>
+            <? if (($REGIOCHECK == "0") or ($REGIOCHECK == "1")) { ?>
+            <tr>
+                <td colspan="2">
+                    <div align="center">
+                        <strong><? echo $webui_change_home_region ?> </strong>
+                    </div>
+                </td>
+            </tr>
+            
+            <form name="form1" method="post" action="index.php?page=change">
+                <tr>
+                    <td class="odd" width="50%"><? echo $webui_old_region ?>: </td>
+                    <td class="odd"><?= $oldregionname ?></td>
+                </tr>
+            
+                <tr>
+                    <td class="even"><? echo $webui_start_region ?>:  </td>
+                    <td class="even">
+                        <select wide="25" name="region">
+                            <?
                                 $DbLink->query("SELECT regionName FROM " . C_REGIONS_TBL . " ORDER BY regionName ASC ");
-                                while (list($NAMERGN) = $DbLink->next_record()) {
-                                ?>
-                                    <option>
-<?= $NAMERGN ?>
-                                </option>
-                                <?
-                                }
-                                ?>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td valign="top" bgcolor="#666666">&nbsp;</td>
-                        <td valign="top" bgcolor="#FFFFFF">
-                            <input type="submit" name="Submit1" value="<? echo $wiredux_submit ?>">
-                        </td>
-                    </tr>
-                </form>
-<? } ?>
-                        </table>
-                        <BR>
-                        <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
-                            <tr>
-                                <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong><? echo $wiredux_change_password ?> </strong></div></td>
-                            </tr>
-                <? if ($ERRORS) { ?>
-                                <tr>
-                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?= $ERRORS ?></div></td>
-                                </tr>
-                <? } ?>
-                            <form name="form1" method="post" action="index.php?page=change">
-                                <tr>
-                                    <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_change_password ?> </td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="password" name="passold"></td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_password ?> </td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="password" name="passnew"></td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_confirm ?> <? echo $wiredux_password ?> </td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="password" name="passvalid"></td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" bgcolor="#666666">&nbsp;</td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit2" value="<? echo $wiredux_submit ?>"></td>
-                                </tr>
-                            </form>
-                        </table>
-                        <BR>
-                        <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
-                            <tr>
-                                <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong><? echo $wiredux_change_email ?> </strong></div></td>
-                            </tr>
-                <? if ($ERRORS2) {
-                ?>
-                                <tr>
-                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?= $ERRORS2 ?></div></td>
-                                </tr>
-                <? } ?>
-                            <form name="form1" method="post" action="index.php?page=change">
-                                <tr>
-                                    <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_old_email ?></td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="text" size="40" value="<?= $oldemail ?>" name="emailold"></td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_email ?></td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="text" size="40" name="emailnew"></td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" bgcolor="#666666">&nbsp;</td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit3" value="<? echo $wiredux_submit ?>"></td>
-                                </tr>
-                            </form>
-                        </table>
-                        <br />            
-                        <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
-                            <tr>
-                                <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong>Purge Avatar Appearance</strong></div></td>
-                            </tr>
-
-                <? if ($ERRORS) {
- ?>
-
-                                <tr>
-                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?= $ERRORS ?></div></td>
-                                </tr>
-
-<? } ?>
-
-                            <form name="form1" method="post" action="index.php?page=accounting">
-                                <tr>
-                                    <td valign="top" align="center" bgcolor="#FFFFFF"><input type="submit" name="purge" value="Purge my Avatar Appearance"></td>
-                                </tr>
-                            </form>
-                        </table>
-                        <BR>
-                        <table width="64%" height="19" border="0" align="center" cellpadding="1" cellspacing="3" bgcolor="#666666">
-                            <tr>
-                                <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><strong><? echo $wiredux_change_name ?> </strong></div></td>
-                            </tr>
-<? if ($ERRORS2) { ?>
-                                <tr>
-                                    <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?= $ERRORS2 ?></div></td>
-                                </tr>
-<? } ?>
-                            <form name="form1" method="post" action="index.php?page=change">
-                                <tr>
-                                    <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_first_name ?></td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="text" size="40" name="nameFirstNew" value ="<? echo $firstName; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" bgcolor="#FFFFFF"><? echo $wiredux_last_name ?></td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="text" size="40" name="nameLastNew" value ="<? echo $lastName; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" bgcolor="#666666">&nbsp;</td>
-                                    <td valign="top" bgcolor="#FFFFFF"><input type="submit" name="Submit4" value="<? echo $wiredux_submit ?>"></td>
-                                </tr>
-                            </form>
-                        </table>
+                                while (list($NAMERGN) = $DbLink->next_record()) { ?>        
+                            <option><?= $NAMERGN ?></option>
+                            <? } ?>
+                        </select>
                     </td>
                 </tr>
-            </table>
+                    
+                <tr>
+                    <td class="odd"></td>
+                
+                    <td class="odd">
+                        <input type="submit" name="Submit1" value="<? echo $wiredux_submit ?>">
+                   </td>
+                </tr>
+            </form>
+            
+            <? } ?>
+        </table>
+              
+        <br />
+        
+        <!-- Change passworld -->      
+        <table>
+            <tr>
+                <td colspan="2">
+                    <div align="center">
+                        <strong><? echo $wiredux_change_password ?> </strong>
+                    </div>
+                </td>
+            </tr>
+                  
+            <? if ($ERRORS) { ?>
+                  
+            <tr>
+                <td colspan="2"><div align="center"><?= $ERRORS ?></div></td>
+            </tr>
+                  
+            <? } ?>
+                  
+            <form name="form1" method="post" action="index.php?page=change">
+                <tr>
+                    <td class="odd" width="50%"><? echo $wiredux_change_password ?> </td>
+                    <td class="odd"><input type="password" name="passold"></td>
+                </tr>
+                
+                <tr>
+                    <td class="even"><? echo $wiredux_password ?> </td>
+                    <td class="even"><input type="password" name="passnew"></td>
+                </tr>
+                
+                <tr>
+                    <td class="odd"<? echo $wiredux_confirm ?> <? echo $wiredux_password ?> </td>
+                    <td class="odd"><input type="password" name="passvalid"></td>
+                </tr>
+                
+                <tr>
+                    <td class="even"></td>
+                    <td class="even"><input type="submit" name="Submit2" value="<? echo $wiredux_submit ?>"></td>
+                </tr>
+            </form>
+        </table>
+        
+        <br />
+        
+        <!-- Change Email --> 
+        <table>
+            <tr>
+                <td colspan="2"><div align="center"><strong><? echo $wiredux_change_email ?> </strong></div></td>
+            </tr>
+                            
+            <? if ($ERRORS2) { ?>
+                            
+            <tr>
+                <td colspan="2"><div align="center"><?= $ERRORS2 ?></div></td>
+            </tr>
+                            
+            <? } ?>
+                            
+            <form name="form1" method="post" action="index.php?page=change">
+                <tr>
+                    <td class="odd" width="50%"><? echo $wiredux_old_email ?></td>
+                    <td class="odd"><input type="text" size="40" value="<?= $oldemail ?>" name="emailold"></td>
+                </tr>
+                
+                
+                <tr>
+                    <td class="even"><? echo $wiredux_email ?></td>
+                    <td class="even"><input type="text" size="40" name="emailnew"></td>
+                </tr>
+                
+                <tr>
+                    <td class="odd"></td>
+                    <td class="odd"><input type="submit" name="Submit3" value="<? echo $wiredux_submit ?>"></td>
+                </tr>
+            </form>
+        </table>
+
+        <br />                                   
+        
+        <!-- Change Name --> 
+        <table>
+            <tr>
+                <td colspan="2">
+                    <div align="center">
+                        <strong><? echo $wiredux_change_name ?> </strong>
+                    </div>
+                </td>
+            </tr>
+                            
+            <? if ($ERRORS2) { ?>
+                            
+            <tr>
+                <td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?= $ERRORS2 ?></div></td>
+            </tr>
+                            
+            <? } ?>
+                            
+            <form name="form1" method="post" action="index.php?page=change">
+                <tr>
+                    <td class="odd" width="50%"><? echo $wiredux_first_name ?></td>
+                    <td class="odd"><input type="text" size="40" name="nameFirstNew" value ="<? echo $firstName; ?>"></td>
+                </tr>
+                                
+                <tr>
+                    <td class="even"><? echo $wiredux_last_name ?></td>
+                    <td class="even"><input type="text" size="40" name="nameLastNew" value ="<? echo $lastName; ?>"></td>
+                </tr>
+                                
+                <tr>
+                    <td class="odd"></td>
+                    <td class="odd"><input type="submit" name="Submit4" value="<? echo $wiredux_submit ?>"></td>
+                </tr>
+            </form>
+        </table>
+
+        <br />
+                       
+        <!-- Purge Avatar Apparence -->         
+        <table>
+            <tr>
+                <td colspan="2">
+                    <div align="center">
+                        <strong><? echo $webui_purge_apparence ?></strong>
+                    </div>
+                </td>
+            </tr>
+                            
+            <? if ($ERRORS) { ?>
+                            
+            <tr>
+                <td colspan="2"><div align="center"><?= $ERRORS ?></div></td>
+            </tr>
+                            
+            <? } ?>
+
+            <form name="form1" method="post" action="index.php?page=accounting">
+                <tr>
+                    <td class="odd">
+                        <div align="center">
+                            <input type="submit" name="purge" value="<? echo $webui_purge_apparence_bouton ?>">
+                        </div>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
+</div>
 <? } ?>
