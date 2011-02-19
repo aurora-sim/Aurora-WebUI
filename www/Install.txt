@@ -10,7 +10,7 @@ Please remember to backup your database regularly.
 2. Edit "./settings/config.php"
 3. Make a backup of your database ;)
 4. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the opensim database)
-5. copy the ./AuroraService/WiReduxHandler.cs to your ~/aurora-sim-Aurora-Sim/OpenSim/Server/Handlers/AuroraService/ directory
+5. copy the contents of the ./AuroraService/addon-modules/ directory into your ~/Aurora-Sim/addon-modules/ directory
 6. Run runprebuild.bat or runprebuild2010.bat
 7. Run compile.bat
 8. In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini ensure the password matches the websites /settings/config.php
