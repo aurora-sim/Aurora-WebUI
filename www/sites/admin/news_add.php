@@ -1,6 +1,5 @@
-<? ////////////////////////////////// ADMIN ///////////////////////////////////////
-
-
+<?
+////////////////////////////////// ADMIN ///////////////////////////////////////
 if($_SESSION[ADMINID]){
 } else {
 echo "<script language=\"javascript\">
@@ -8,15 +7,11 @@ echo "<script language=\"javascript\">
 window.location.href=\"index.php?page=hometest\";
 // -->
 </script>";
-
 }
 
 if($_POST[insert] == '1')
 {
-
 ////////////////////////////////// ADMIN ///////////////////////////////////////
-
-
 	//$date = date("Y-m-d H:i:s");
 	$DbLink = new DB;
 	$DbLink->query("INSERT INTO ".C_NEWS_TBL." SET title='$_POST[title]',message='$_POST[message]',  time=".time());
@@ -28,58 +23,61 @@ window.location.href=\"index.php?page=news\";
 // -->
 </script>";
 }
-
-
-////////////////////////////////// ADMIN END /////////////////////////////////// ?><body>
-<TABLE CELLPADDING="2" CELLSPACING="0" WIDTH=95%>
-	<TR><TD ALIGN="right" bgcolor="#0066FF">
-		<div align="center"><B>Create News </B>        </div></TD>
-	</TR></TABLE><BR>
-
-<?
-
-$DbLink = new DB;
-$DbLink->query("SELECT id,title,message from ".C_NEWS_TBL." WHERE id = '$_GET[editid]'");
-
-	if ($DbLink->num_rows() != 0)
-	{
-		list($id,$title,$message) = $DbLink->next_record(); 
-	}
-	$DbLink->clean_results();
-
-
-$DbLink->close();
-
+////////////////////////////////// ADMIN END /////////////////////////////////// 
 ?>
 
-<FORM name="update" method="post" action="index.php?page=news_add">
-<INPUT type='hidden' name='insert' value='1'>
-<INPUT type='hidden' name='id' value='<?=$id?>'>
-<BR> 
-<FONT COLOR=#666666>
+<body>
 
-<!-- ###################################################################### -->
-<br />
-<table width="90%" align="center" cellpadding="2" cellspacing="3">
-  <tr>
-    <td><font color="#FFFFFF"><b> Title:<br />
-            <input name="title" value="<?=$title?>" style="width:100%" type="text" maxlength="255" />
-    </b></font></td>
-  </tr>
-</table>
-<!-- ###################################################################### -->
-<CENTER>
-<TABLE CELLSPACING=1 CELLPADDING=0 WIDTH=90% HEIGHT=200>
-	<TR><TD BGCOLOR=#FFFFFF>
-<TEXTAREA NAME=message STYLE='WIDTH:100%; HEIGHT:350px'><?=$message?></TEXTAREA><BR>
-	</TD></TR>
-</TABLE>
-<!-- ######################################################################## -->
-<br />
-</CENTER>
-<TABLE CELLPADDING=0 WIDTH=95%><TR><TD ALIGN=right>
-	<INPUT TYPE="submit" VALUE="Create News">
-</TD></TR></TABLE>
+<div id="content">
+  <h2><?= SYSNAME ?>: <? echo $webui_admin_create_news ?></h2>
+    <div id="createnews">
+    <!-- <div id="info"><p><? echo $webui_admin_create_news_info ?></p></div> -->
+        
+    <?
+    $DbLink = new DB;
+    $DbLink->query("SELECT id,title,message from ".C_NEWS_TBL." WHERE id = '$_GET[editid]'");
 
+	  if ($DbLink->num_rows() != 0)
+	  {
+		  list($id,$title,$message) = $DbLink->next_record(); 
+	  }
+	  
+    $DbLink->clean_results();
+    $DbLink->close();
+    ?>
 
+    <form name="update" method="post" action="index.php?page=news_add">
+      <input type='hidden' name='insert' value='1'>
+      <input type='hidden' name='id' value='<?=$id?>'>
 
+      <!-- ###################################################################### -->
+
+      <table>
+        <tr>
+          <td>
+            <? echo $webui_admin_news_title ?>:
+          </td>
+          <td>
+            <input name="title" value="<?=$title?>" size="145" type="text" maxlength="255" />
+          </td>
+        </tr>
+      </table>
+    
+      <!-- ###################################################################### -->
+
+      <table>
+        <tr>
+          <td>
+            <textarea NAME=message STYLE='WIDTH:100%; HEIGHT:350px'><?=$message?></textarea>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ######################################################################## -->
+
+      <div align="center">
+        <input type="submit" name="Submit" value="<? echo $webui_admin_create_news ?>" /> 
+      </div>
+    </form>
+  </div>
+</div>

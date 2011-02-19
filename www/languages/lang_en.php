@@ -19,7 +19,7 @@ $wiredux_country='Country';
 $wiredux_date_of_birth='Date Of Birth';
 $wiredux_email='Email';
 $wiredux_create_new_account='Create New Account';
-$wiredux_start_region='Start Region';
+
 $wiredux_region_name='Region Name';
 $wiredux_location='Location';
 $wiredux_info='Info';
@@ -42,8 +42,6 @@ $wiredux_invalid_code='This isnt a valid code or maybe the code was older than 2
 $wiredux_activate_account='Activate Account';
 
 $wiredux_change_account='Change Account';
-$wiredux_change_home_region='Change Home Region';
-$wiredux_old_region='Old Region';
 $wiredux_change_password='Change Password';
 $wiredux_old_password='Old Password';
 $wiredux_change_email='Change Email';
@@ -96,7 +94,7 @@ $webui_home_page='
         Join us now, and make a difference! <br /><br /><br />
         <u>There are just 3 steps to get started:</u> <br /><br />
         1.) Create your FREE Account right here on our pages. <br /><br />
-        2.) Download the viewer. We recommend <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        2.) Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
         3.) Be sure to add our grid to your viewer. <br /><br /><br />
         <i>Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</i>
     </p>';
@@ -135,7 +133,7 @@ $webui_users_found='Users Found';
 //
 // Change Account Page
 //
-$webui_change_account = 'Modifier votre Compte';
+$webui_change_account = 'Edit Account';
 $webui_change_account_info = 'You can modify your account here.';
 $webui_change_home_region = 'Change Home Region';
 $webui_old_region = 'Old Region';
@@ -184,4 +182,9 @@ $webui_admin_news_delete = 'Delete';
 $webui_admin_manage = 'Management Panel';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
+
+//
+// News Add Page
+//
+$webui_admin_create_news_info = 'This allows you to create a new.';
 ?>

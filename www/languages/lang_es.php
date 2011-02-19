@@ -19,6 +19,7 @@ $wiredux_country='Country';
 $wiredux_date_of_birth='Date Of Birth';
 $wiredux_email='Email';
 $wiredux_create_new_account='Create New Account';
+$wiredux_start_region='Start Region';
 $wiredux_region_name='Region Name';
 $wiredux_location='Location';
 $wiredux_info='Info';
@@ -27,16 +28,20 @@ $wiredux_region_list='Region List';
 $wiredux_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
 $wiredux_more_info='More Info';
 $wiredux_user_name='User Name';
+
+//
+// Online Users Page
+//
 $wiredux_online_users='Online Users';
 $wiredux_online_users_info='This shows all the users that are online at this moment.';
+
 $wiredux_submit='Submit';
 $wiredux_verified_account='Thank you, your account is now active and ready to use.';
 $wiredux_internal_error='Internal error, please try again later.';
 $wiredux_invalid_code='This isnt a valid code or maybe the code was older than 24h';
 $wiredux_activate_account='Activate Account';
+
 $wiredux_change_account='Change Account';
-$wiredux_change_home_region='Change Home Region';
-$wiredux_old_region='Old Region';
 $wiredux_change_password='Change Password';
 $wiredux_old_password='Old Password';
 $wiredux_change_email='Change Email';
@@ -48,8 +53,7 @@ $wiredux_news='News';
 $wiredux_history='History';
 $wiredux_see_profile='See Profile';
 $wiredux_user_name='User Name';
-$wiredux_users_found='Users Found';
-$wiredux_user_search='User Search';
+
 $wiredux_users_profile='Profile of';
 $wiredux_no_information_set="No information set";
 $wiredux_about_me="About Me";
@@ -90,7 +94,7 @@ $webui_home_page='
         Join us now, and make a difference! <br /><br /><br />
         <u>There are just 3 steps to get started:</u> <br /><br />
         1.) Create your FREE Account right here on our pages. <br /><br />
-        2.) Download the viewer. We recommend <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        2.) Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
         3.) Be sure to add our grid to your viewer. <br /><br /><br />
         <i>Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</i>
     </p>';
@@ -99,14 +103,6 @@ $webui_home_page='
 // 404 page
 //
 $wiredux_404_text = 'The requested page could not be found! Please try again later.';
-
-//
-// Admin parts
-//
-$wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
-$wiredux_menu_item_adminhome = 'Admin Home';
-$wiredux_menu_item_adminmanage = 'Manage';
 
 //
 // Forgot Pass Page
@@ -138,35 +134,35 @@ $webui_users_found='Users Found';
 // Change Account Page
 //
 $webui_change_account = 'Edit Account';
-$webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte';
-$webui_change_home_region = 'Changer la région d\'accueil';
-$webui_old_region = 'Ancienne Région';
-$webui_start_region = 'Région de départ';
-$webui_purge_apparence = 'Purge Avatar Appearance';
+$webui_change_account_info = 'You can modify your account here.';
+$webui_change_home_region = 'Change Home Region';
+$webui_old_region = 'Old Region';
+$webui_home_region = 'Start Region';
+$webui_purge_apparence = 'Purge the appearance of your avatar';
 $webui_purge_apparence_bouton = 'Purge';
 
 //
 // Admin parts
 //
 $wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Editer';
+$wiredux_menu_item_adminloginscreen = 'Edit';
 $wiredux_menu_item_adminhome = 'Admin';
 $wiredux_menu_item_adminmanage = 'Manage';
 
 //
 // Admin Home Page
 //
-$webui_admin_home = 'Accueil Administration';
+$webui_admin_home = 'Administration Home';
 $webui_admin_home_info = 'Here you can create users, edit the login screen, and more...';
 $webui_admin_welcome = 'Welcome to the';
 $webui_admin_panel = 'Admin Panel';
-$webui_admin_login = 'Connection Administration';
+$webui_admin_login = 'Administration Login';
 
 //
 // Admin Edit LoginScreen Page
 //
-$webui_admin_edit_loginscreen = 'Editer Page de Connection';
-$webui_admin_loginscreen_info = 'Ceci vous permet de changer les informations de votre page de connection.';
+$webui_admin_edit_loginscreen = 'Loginscreen manager';
+$webui_admin_loginscreen_info = 'You can edit the information on the loginscreen here.';
 $webui_admin_grid_status = 'Grid Status';
 $webui_admin_windows_status = 'Window Status';
 $webui_admin_windows_color = 'Window Color';
@@ -186,4 +182,9 @@ $webui_admin_news_delete = 'Delete';
 $webui_admin_manage = 'Management Panel';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
+
+//
+// News Add Page
+//
+$webui_admin_create_news_info = 'This allows you to create a new.';
 ?>

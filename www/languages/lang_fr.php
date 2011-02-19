@@ -41,6 +41,7 @@ $wiredux_internal_error='Erreur interne, s\'il vous plaît réessayer à nouveau pl
 $wiredux_invalid_code='Ce n\'est pas un code valide ou peut-être que le code est de plus de 24h';
 $wiredux_activate_account='Activer le compte';
 
+$wiredux_change_account='Changer de Compte';
 $wiredux_change_password='Changer le mot de passe';
 $wiredux_old_password='Ancien mot de passe';
 $wiredux_change_email='Changer l\'adresse Email';
@@ -86,15 +87,15 @@ $webui_welcome_visitor = 'Bonjour Visiteur!';
 $webui_welcome_userid = 'Bonjour Userid!';
 $webui_home_page='
     <p>
-        Ceci est notre nouveau monde virtuel où vous pouvez vous amuser, rencontrer des gens, discuter, jouer, explorer, créer et partager vos rêves. <br />
-        Tout est possible dans notre tout nouveau monde 3D. <br />
-        Notre monde est créé par ses résidents, vous pouvez y construire tout ce que vous pouvez imaginer. <br /><br />
-        Créer un compte gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde. <br />
-        Rejoignez-nous maintenant, et faites la différence! <br /><br /><br />
-        <u>Il ya seulement 3 étapes pour commencer:</u> <br /><br />
-        1.) Créez votre compte GRATUIT sur notre site. <br /><br />
-        2.) Télécharger le spectateur. Nous recommandons <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
-        3.) N\'oubliez pas d\'ajouter notre grille à votre spectateur. <br /><br /><br />
+        Ceci est notre nouveau monde virtuel où vous pouvez vous amuser, rencontrer des gens, discuter, jouer, explorer, créer et partager vos rêves.<br />
+        Tout est possible dans notre tout nouveau monde 3D.<br />
+        Notre monde est créé par ses résidents, vous pouvez y construire tout ce que vous pouvez imaginer.<br /><br />
+        Créer un compte gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde.<br />
+        Rejoignez-nous maintenant, et faites la différence!<br /><br /><br />
+        <u>Il ya seulement 3 étapes pour commencer:</u><br /><br />
+        1.) Créez votre compte GRATUIT sur notre site.<br /><br />
+        2.) Télécharger le spectateur. Nous recommandons <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a> <br /><br />
+        3.) N\'oubliez pas d\'ajouter notre grille à votre spectateur.<br /><br /><br />
         <i>S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.</i>
     </p>';
 
@@ -168,7 +169,7 @@ $webui_admin_windows_color = 'Window Color';
 $webui_admin_windows_title = 'Window Title';
 $webui_admin_windows_message = 'Window Message';
 $webui_admin_windows_settings = 'Save Info Window Settings';
-$webui_admin_create_news = 'Create News item';
+$webui_admin_create_news = 'Créer Nouveauté';
 $webui_admin_news_online = 'News currently online';
 $webui_admin_news_title = 'Titre';
 $webui_admin_news_date = 'Date';
@@ -181,4 +182,9 @@ $webui_admin_news_delete = 'Effacer';
 $webui_admin_manage = 'Management Panel';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
+
+//
+// News Add Page
+//
+$webui_admin_create_news_info = 'Ceci vous permet de créer une nouveauté.';
 ?>

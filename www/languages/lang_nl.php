@@ -28,16 +28,20 @@ $wiredux_region_list='Regio Overzicht';
 $wiredux_region_list_page_info='Dit is het regio overzicht. Klik op de regio\'s naam om meer informatie over deze regio te verkrijgen.';
 $wiredux_more_info='Meer Informatie';
 $wiredux_user_name='Gebruikersnaam';
+
+//
+// Online Users Page
+//
 $wiredux_online_users='Online Users';
 $wiredux_online_users_info='Dit toont alle gebruikers die online zijn op dit moment.';
+
 $wiredux_submit='Verzend';
 $wiredux_verified_account='Dank u, uw profiel is nu actief en gereed voor gebruik.';
 $wiredux_internal_error='Interne fout, probeert u het later nog eens.';
 $wiredux_invalid_code='Dit is geen geldige code(is de code ouder dan 24 uur?)';
 $wiredux_activate_account='Activeer Profiel';
+
 $wiredux_change_account='Wijzig Profiel';
-$wiredux_change_home_region='Wijzig Thuis Regio';
-$wiredux_old_region='Oude Regio';
 $wiredux_change_password='Wijzig Wachtwoord';
 $wiredux_old_password='Oud Wachtwoord';
 $wiredux_change_email='Wijzig Email';
@@ -49,8 +53,7 @@ $wiredux_news='Nieuws';
 $wiredux_history='Historie';
 $wiredux_see_profile='See Profile';
 $wiredux_user_name='User Name';
-$wiredux_users_found='Users Found';
-$wiredux_user_search='User Search';
+
 $wiredux_users_profile='Profile of';
 $wiredux_no_information_set="No information set";
 $wiredux_about_me="About Me";
@@ -91,7 +94,7 @@ $webui_home_page='
       Volg ons voorbeeld, en maak het verschil!<br /><br /><br />
       <u>Er zijn slechts 3 stappen nodig om te beginnen:</u> <br /><br />
       1.) Maak een GRATIS account aan, hier op de webpagina. <br /><br />
-      2.) Download de viewer. We raden aan om <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> te gebruiken.<br /><br />
+      2.) Download de viewer. We raden aan om <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> te gebruiken.<br /><br />
       3.) Voeg ons grid toe aan de viewer. <br /><br /><br />
       <i>Hou wel in gedachten dat het Aurora platform nog steeds experimenteel is, en dat sommige dingen (nog) niet zoals verwacht kunnen werken.</i>
     </p>';
@@ -100,14 +103,6 @@ $webui_home_page='
 // 404 page
 //
 $wiredux_404_text = 'The requested page could not be found! Please try again later.';
-
-//
-// Admin parts
-//
-$wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
-$wiredux_menu_item_adminhome = 'Admin Home';
-$wiredux_menu_item_adminmanage = 'Manage';
 
 //
 // Forgot Pass Page
@@ -139,11 +134,11 @@ $webui_users_found='Users Found';
 // Change Account Page
 //
 $webui_change_account = 'Edit Account';
-$webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte';
-$webui_change_home_region = 'Changer la région d\'accueil';
-$webui_old_region = 'Ancienne Région';
-$webui_start_region = 'Région de départ';
-$webui_purge_apparence = 'Purge Avatar Appearance';
+$webui_change_account_info = 'You can modify your account here.';
+$webui_change_home_region = 'Change Home Region';
+$webui_old_region = 'Old Region';
+$webui_home_region = 'Start Region';
+$webui_purge_apparence = 'Purge the appearance of your avatar';
 $webui_purge_apparence_bouton = 'Purge';
 
 //
@@ -187,4 +182,9 @@ $webui_admin_news_delete = 'Delete';
 $webui_admin_manage = 'Management Panel';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
+
+//
+// News Add Page
+//
+$webui_admin_create_news_info = 'This allows you to create a new.';
 ?>

@@ -19,7 +19,7 @@ $wiredux_country='Paese';
 $wiredux_date_of_birth='Data di nascita';
 $wiredux_email='Email';
 $wiredux_create_new_account='Crea un nuovo account';
-
+$wiredux_start_region='Start Region';
 $wiredux_region_name='Nome della Regione';
 $wiredux_location='Posizione';
 $wiredux_info='Informazioni';
@@ -28,16 +28,20 @@ $wiredux_region_list='Lista delle Regioni';
 $wiredux_region_list_page_info='Lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
 $wiredux_more_info='Maggiori informazioni';
 $wiredux_user_name='Nome avatar';
+
+//
+// Online Users Page
+//
 $wiredux_online_users='Online Users';
 $wiredux_online_users_info='Questi sono tutti gli avatar online in questo momento.';
+
 $wiredux_submit='Invia';
 $wiredux_verified_account='Grazie. La tua password è ora attiva e puoi usarla.';
 $wiredux_internal_error='Errore interno, prego, riprovare.';
 $wiredux_invalid_code='Il tuo codice non è valido oppure è scaduto';
 $wiredux_activate_account='Attiva il tuo Account';
-$wiredux_change_account='Cambia il tuo Account';
-$wiredux_change_home_region='Cambia la tua posizione iniziale';
-$wiredux_old_region='Vecchia Regione';
+
+$wiredux_change_account='Change Account';
 $wiredux_change_password='Cambia la Password';
 $wiredux_old_password='Vecchia Password';
 $wiredux_change_email='Cambia Email';
@@ -49,8 +53,7 @@ $wiredux_news='Novita';
 $wiredux_history='Estratto Conto';
 $wiredux_see_profile='Guarda il Profilo';
 $wiredux_user_name='Nome Utente';
-$wiredux_users_found='Utenti trovati';
-$wiredux_user_search='Cerca un utente';
+
 $wiredux_users_profile='Profilo di';
 $wiredux_no_information_set="Non ci sono informazioni";
 $wiredux_about_me="Le mie informazioni";
@@ -62,7 +65,7 @@ $wiredux_region_type="Tipo di Regione";
 $wiredux_owner="Proprietario";
 
 //
-//Menu items
+// Menu items
 //
 $wiredux_menu_item_home = 'Home';
 $wiredux_menu_item_changeaccount = 'Cambia il tuo Account';
@@ -91,7 +94,7 @@ $webui_home_page='
         Entra ora, e fai la differenza! <br /><br /><br />
         <u>There are just 3 steps to get started:</u> <br /><br />
         1.) Crea il tuo account GRATIS in queste pagine. <br /><br />
-        2.) Scarica il viewer. Ti raccomandiamo <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        2.) Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
         3.) Assicurati di aggiungere la nostra grid al tuo viewer. <br /><br /><br />
         <i>Per favore, tieni presente che la piattaforma di Aurora è ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
     </p>';
@@ -100,14 +103,6 @@ $webui_home_page='
 // 404 page
 //
 $wiredux_404_text = 'Non e possibile trovare la pagina richiesta! Si prega di provare piu tardi.';
-
-//
-// Admin parts
-//
-$wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Edit Loginscreen';
-$wiredux_menu_item_adminhome = 'Admin Home';
-$wiredux_menu_item_adminmanage = 'Manage';
 
 //
 // Forgot Pass Page
@@ -138,12 +133,12 @@ $webui_users_found='Users Found';
 //
 // Change Account Page
 //
-$webui_change_account = 'Edit Account'
-$webui_change_account_info = 'Ceci vous permet de changer les informations de votre compte';
-$webui_change_home_region = 'Changer la région d\'accueil';
-$webui_old_region = 'Ancienne Région';
-$webui_start_region = 'Région de départ';
-$webui_purge_apparence = 'Purge Avatar Appearance';
+$webui_change_account = 'Edit Account';
+$webui_change_account_info = 'You can modify your account here.';
+$webui_change_home_region = 'Change Home Region';
+$webui_old_region = 'Old Region';
+$webui_home_region = 'Start Region';
+$webui_purge_apparence = 'Purge the appearance of your avatar';
 $webui_purge_apparence_bouton = 'Purge';
 
 //
@@ -187,4 +182,9 @@ $webui_admin_news_delete = 'Delete';
 $webui_admin_manage = 'Management Panel';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
+
+//
+// News Add Page
+//
+$webui_admin_create_news_info = 'Ceci vous permet de créer une nouveauté.';
 ?>
