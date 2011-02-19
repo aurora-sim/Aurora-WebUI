@@ -70,7 +70,7 @@ list($firstN,$lastN) = $DbLink->next_record();
         <td class="styleText">&nbsp;</td>
       </tr>
       <tr>
-        <td class="styleText"><? echo $wiredux_owner; ?>: <a href="<?=SYSURL?>/app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
+        <td class="styleText"><? echo $wiredux_owner; ?>: <a href="<?=SYSURL?>app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
       </tr>
       <tr>
         <td>&nbsp;</td>
