@@ -1,7 +1,7 @@
 <script>
 function OpenAgent(firstname, lastname)
 {
-	locate = "<?=SYSURL?>app/agent/?first="+firstname+"&last="+lastname
+	locate = "<?=SYSURL?>/app/agent/?first="+firstname+"&last="+lastname
 	window.open(locate,'mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')
 }
 </script>

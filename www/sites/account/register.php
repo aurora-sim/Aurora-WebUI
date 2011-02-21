@@ -201,7 +201,7 @@ if ($_POST[action] == "") {
                 <tr>
                     <td class="even"><? echo $wiredux_date_of_birth ?>*</td>
                     <td bgcolor="#CCCCCC">
-                        <table cellspacing="0" cellpadding="0" border="0">
+                        <table>
 
                             <tr>
                                 <td>
@@ -305,63 +305,64 @@ if ($_POST[action] == "") {
 											?>
 
                                             <tr>
-                                                <td class="odd">
-                                                    <center>
+                                                <td class="odd" width="50%">
+                                                    <div align="center">
                                                         <!-- Choice: red, white, blackglass, clean-->
                                                         <script type="text/javascript">var RecaptchaOptions = {theme : 'blackglass'};</script>
+                                                        <? require_once('recaptchalib.php');
+                                                          $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
+                                                          echo recaptcha_get_html($publickey);
+                                                        ?>
+                                                    </div>
+                                                </td>
+                                                
+                                                <td class="odd">
+                                                  <center>
+                                                    <input type="hidden" name="action" value="check">
+                                                    <input id="register_bouton" name="submit" TYPE="submit" value='<? echo $wiredux_create_new_account ?>'>
+                                                  </center>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            
+                            <? }
+                              else if ($_POST[action] == "check") {
+                                $_SESSION[ACCFIRST] = $_POST[accountfirst];
+                                $_SESSION[ACCFIRSL] = strtolower($_POST[accountfirst]);
+                                $_SESSION[ACCLAST] = $_POST[accountlast];
+											          $_SESSION[AVATARARCHIVE] = $_POST[AvatarArchive];
+                                
+                                if ($ADRESSCHECK == "1") {
+                                  $_SESSION[NAMEF] = $_POST[firstname];
+                                  $_SESSION[NAMEL] = $_POST[lastname];
+                                  $_SESSION[ADRESS] = $_POST[adress];
+                                  $_SESSION[ZIP] = $_POST[zip];
+                                  $_SESSION[CITY] = $_POST[city];
+                                  $_SESSION[COUNTRY] = $_POST[country];
+                                } 
+                                
+                                else {
+                                  $_SESSION[NAMEF] = "none";
+                                  $_SESSION[NAMEL] = "none";
+                                  $_SESSION[ADRESS] = "none";
+                                  $_SESSION[ZIP] = "00000";
+                                  $_SESSION[CITY] = "none";
+                                  $_SESSION[COUNTRY] = "none";
+                                }
 
-                            <?
-                                            require_once('recaptchalib.php');
-                                            $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
-                                            echo recaptcha_get_html($publickey);
-                            ?>
-                                        </center>
-                                    </td>
-
-                                    <td class="odd">
-                                        <center>
-                                            <input type="hidden" name="action" value="check">
-                                            <input id="register_bouton" name="submit" TYPE="submit" value='<? echo $wiredux_create_new_account ?>'>
-                                        </center>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                </div>
-<?
-                                        }
-
-                                        else if ($_POST[action] == "check") 
-										{
-                                            $_SESSION[ACCFIRST] = $_POST[accountfirst];
-                                            $_SESSION[ACCFIRSL] = strtolower($_POST[accountfirst]);
-                                            $_SESSION[ACCLAST] = $_POST[accountlast];
-											$_SESSION[AVATARARCHIVE] = $_POST[AvatarArchive];
-                                            if ($ADRESSCHECK == "1") {
-                                                $_SESSION[NAMEF] = $_POST[firstname];
-                                                $_SESSION[NAMEL] = $_POST[lastname];
-                                                $_SESSION[ADRESS] = $_POST[adress];
-                                                $_SESSION[ZIP] = $_POST[zip];
-                                                $_SESSION[CITY] = $_POST[city];
-                                                $_SESSION[COUNTRY] = $_POST[country];
-                                            } else {
-                                                $_SESSION[NAMEF] = "none";
-                                                $_SESSION[NAMEL] = "none";
-                                                $_SESSION[ADRESS] = "none";
-                                                $_SESSION[ZIP] = "00000";
-                                                $_SESSION[CITY] = "none";
-                                                $_SESSION[COUNTRY] = "none";
-                                            }
-
-                                            if ($REGIOCHECK == "0") {
-                                                $_SESSION[REGIONID] = $_POST[startregion];
-                                            } else {
-                                                $DbLink->query("SELECT startregion FROM " . C_ADM_TBL . "");
-                                                list($adminregion) = $DbLink->next_record();
-
-                                                $_SESSION[REGIONID] = $adminregion;
-                                            }
+                                if ($REGIOCHECK == "0") {
+                                  $_SESSION[REGIONID] = $_POST[startregion];
+                                } 
+                                
+                                else {
+                                  $DbLink->query("SELECT startregion FROM " . C_ADM_TBL . "");
+                                  list($adminregion) = $DbLink->next_record();
+                                  $_SESSION[REGIONID] = $adminregion;
+                                }
 
                                             $_SESSION[EMAIL] = $_POST[email];
                                             $_SESSION[EMAIC] = $_POST[emaic];
@@ -554,13 +555,12 @@ if ($_POST[action] == "") {
 														$UUIDC = $recieved->{'UUID'};
 														$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','$_SESSION[EMAIL]'," . time() . ")");
 														// insert code end
-?>
-
-														<table width="100%" height="410" border="0">
-															<tr>
+                        ?>
+                        
+                        <table width="100%" height="410" border="0">
+												    <tr>
 																<td valign="top"><br>
-																	<br>
-																	<br>
+
 
 																	<table width="50%" border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF">
 																		<tr>

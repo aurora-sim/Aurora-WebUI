@@ -1,16 +1,9 @@
-<style type="text/css">
-    <!--
-    .styleTitel {font-size: 16px; font-weight: bold; color: #105BA7; font-family: Arial, Helvetica, sans-serif;}
-    .styleText {font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #666666;}
-    .styleTopTitle {font-size: 20px; font-weight: bold;	font-family: Arial, Helvetica, sans-serif;}
-    .styleplace {color: #FFFFFF;font-size: 3px;}
-    -->
-</style>
 <?
 include("../../settings/config.php");
 include("../../settings/json.php");
 include("../../settings/mysql.php");
 include("../../languages/translator.php");
+include("../../skins/skins.php");
 
 if ($_GET[first] && $_GET[last]) {
     $userName = $_GET['first'] . ' ' . $_GET['last'];
@@ -32,69 +25,77 @@ if ($_GET[first] && $_GET[last]) {
     $partner = $recieved->{'account'}->{'Partner'};
     $date = date("D d M Y - g:i A", $created);
 } ?>
-<title><?= SYSNAME ?> <? echo $wiredux_users_profile; ?> <? echo $userName ?></title>
-<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-        <td colspan="2" valign="top"><span class="styleTopTitle">
-                <? echo $wiredux_users_profile; ?> <? echo $userName ?></span></td>
-    </tr>
-    <tr>
-        <td colspan="2" valign="top"><hr></td>
-    </tr>
-    <table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr>
-            <td width="55%" valign="top"><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td class="styleText"><? echo $wiredux_resident_since ?>: <?= $date ?> (<?= $diff ?>)</td>
-                    </tr>
-                    <tr>
-                        <td class="styleText"><? echo $wiredux_account_info ?>: <?= $type ?></td>
-                    </tr>
-                    <tr>
-                        <td class="styleText">&nbsp;</td>
-                    </tr>
 
-                    <?
-                    if ($partner != '') {
-                    ?>
-                        <tr>
-                            <td class="styleText"><? echo $wiredux_partner; ?>: <? echo $partner ?></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                    <?
-                    }
-                    ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="<?= SYSURL ?><? echo $skin_css ?>" type="text/css" />
+    <link rel="icon" href="<?= SYSURL ?>images/main/favicon.ico" />
+    <title><?= SYSNAME ?>: <? echo $wiredux_users_profile; ?> <? echo $userName ?></title>
+</head>
 
-                    <tr>
-                        <td><span class="styleText"><u><? echo $wiredux_about_me; ?></u></span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="styleText">
-                                <?
-                                if ($profileTXT != '') {
-                                    echo $profileTXT;
-                                } else {
-                                    echo $wiredux_no_information_set;
-                                }
-                                ?>
-                            </span></td>
-                    </tr>
-                </table>
-                <br>
-                <br>
-            </td>
-    </table>
-    <table width="128" height="128" border="0" align="center" cellpadding="0" cellspacing="0">
-        <?
-        if($profileImage == "")
-        {
-            $profileLink = "info.jpg";
-        }
-        else
-            $profileLink = WIREDUX_TEXTURE_SERVICE . '/index.php?method=GridTexture&uuid=' . $profileImage;
-        ?>
-        <img src="<? echo $profileLink ?>" width="128" height="128" />
-    </table>
-</table>
+<body class="webui">
+
+<div id="content">
+  <h2><?= SYSNAME ?>: <? echo $wiredux_users_profile; ?> <? echo $userName ?></h2>
+  
+  <div id="useragentprofil">
+	<!--  <div id="info"><p><? echo $wiredux_region_list_page_info ?></p></div> -->
+
+  <hr>
+      <table>
+          <tr>
+              <td>
+                  <? echo $wiredux_resident_since ?>: <?= $date ?> (<?= $diff ?>)
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <? echo $wiredux_account_info ?>: <?= $type ?>
+              </td>
+          </tr>         
+          <tr>
+              <td></td>
+          </tr>
+              <? if ($partner != '') { ?>
+          <tr>
+              <td>
+                  <? echo $wiredux_partner; ?>: <? echo $partner ?>
+              </td>
+          </tr>
+          <tr>
+              <td></td>
+          </tr>
+              <? } ?>
+          <tr>
+              <td>
+                  <h2><? echo $wiredux_about_me; ?></h2>
+              </td>
+          </tr>       
+          <tr>
+              <td>
+                <?
+                  if ($profileTXT != '') { echo $profileTXT; }
+                  else { echo $wiredux_no_information_set; }
+                ?>
+              </td>
+          </tr>
+      </table>
+      
+      <div id="profil_picture">
+          <?
+            if($profileImage == "")
+            {
+                $profileLink = "info.jpg";
+            }
+            else
+                $profileLink = WIREDUX_TEXTURE_SERVICE . '/index.php?method=GridTexture&uuid=' . $profileImage;
+          ?>
+          <img src="<? echo $profileLink ?>" alt="<? echo $userName ?>" title="<? echo $userName ?>" />
+      </div>
+  </div>
+  <hr>
+</div>
+</body>
+</html>

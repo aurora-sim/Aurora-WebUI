@@ -1,11 +1,18 @@
 <?php
 $wiredux_language_code='pt';
 $wiredux_actual_language='Portugu&ecirc;s';
-$wiredux_grid_status='Estado da Rede';
-$wiredux_total_users='Total Utilizadores';
-$wiredux_total_regions='Total Regi&otilde;es';
-$wiredux_unique_visitors='Visitantes nos &uacute;ltimos 30 dias';
-$wiredux_online_now='Ligados agora';
+
+//
+// Grid Status Module
+//
+$webui_grid_status='Estado da Rede';
+$webui_grid_status_online = 'ONLINE';
+$webui_grid_status_offline = 'OFFLINE';
+$webui_total_users='Total Utilizadores';
+$webui_total_regions='Total Regi&otilde;es';
+$webui_unique_visitors='Visitantes nos &uacute;ltimos 30 dias';
+$webui_online_now='Ligados agora';
+
 $wiredux_first_name='Primeiro Nome';
 $wiredux_last_name='&Uacute;ltimo Nome';
 $wiredux_password='Password';
@@ -40,20 +47,27 @@ $wiredux_verified_account='Obrigado, a sua conta est&aacute agora activa  pronta
 $wiredux_internal_error='Erro interno, por favor tente mais tarde.';
 $wiredux_invalid_code='Este n&atilde;o &eacute; um c&oacute;digo valido ou &eacute; um c&oacute;digo com mais de 24 horas';
 $wiredux_activate_account='Activar Conta';
-
 $wiredux_change_account='Alterar Conta';
 $wiredux_change_password='Alterar Password';
 $wiredux_old_password='Password anterior';
 $wiredux_change_email='Alterar Email';
 $wiredux_old_email='Email anterior';
+$webui_new_email = 'New Email';
 $wiredux_change_name='Alterar Nome';
 $wiredux_login='Login';
 $wiredux_register='Registar';
-$wiredux_news='Noticias';
-$wiredux_history='Historial';
-$wiredux_see_profile='Ver Profile';
-$wiredux_user_name='Nome de Utilizador';
 
+//
+// News Page
+//
+$webui_news = 'Noticias';
+$webui_history = 'Historial';
+$webui_news_history = 'Noticias Historial';
+
+//
+// User Profil Page
+//
+$wiredux_see_profile='Ver Profile';
 $wiredux_users_profile='Profile de';
 $wiredux_no_information_set="Informa&ccedil;&atilde;o n&atilde;o dispon&iacute;vel";
 $wiredux_about_me="Sobre Mim";
@@ -102,7 +116,9 @@ $webui_home_page='
 //
 // 404 page
 //
-$wiredux_404_text = 'A pagina solicitada n&atilde;o foi encontrada. Por favor tente mais tarde.';
+$webui_404_text = 'A pagina solicitada n&atilde;o foi encontrada. Por favor tente mais tarde.';
+$webui_404_title = 'Error 404';
+$webui_404_gohome = 'Go Home';
 
 //
 // Forgot Pass Page
@@ -115,6 +131,12 @@ $webui_forgot_password_info='Forgot your Password? No problem! Enter your email 
 //
 $webui_before_date='It is';
 $webui_after_date='at';
+
+//
+// Navigation
+//
+$webui_navigation_page = 'Page';
+$webui_navigation_of = 'of';
 
 //
 // World Map Page
@@ -140,6 +162,9 @@ $webui_old_region = 'Old Region';
 $webui_home_region = 'Start Region';
 $webui_purge_apparence = 'Purge the appearance of your avatar';
 $webui_purge_apparence_bouton = 'Purge';
+$webui_old_password = 'Old Password';
+$webui_new_password = 'New Password';
+$webui_confirm_password = 'Confirm Password';
 
 //
 // Admin parts
@@ -161,8 +186,8 @@ $webui_admin_login = 'Connection Administration';
 //
 // Admin Edit LoginScreen Page
 //
-$webui_admin_edit_loginscreen = 'Editer Page de Connection';
-$webui_admin_loginscreen_info = 'Ceci vous permet de changer les informations de votre page de connection.';
+$webui_admin_edit_loginscreen = 'Loginscreen manager';
+$webui_admin_loginscreen_info = 'You can edit the information on the loginscreen here.';
 $webui_admin_grid_status = 'Grid Status';
 $webui_admin_windows_status = 'Window Status';
 $webui_admin_windows_color = 'Window Color';
@@ -180,11 +205,22 @@ $webui_admin_news_delete = 'Delete';
 // Admin Management Panel Page
 //
 $webui_admin_manage = 'Management Panel';
+$webui_admin_manage_info = 'Ceci vous permet d\'administrer les utilisateurs.';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
 
 //
-// News Add Page
+// Add News Page
 //
 $webui_admin_create_news_info = 'This allows you to create a new.';
+
+//
+// Login Screen page
+//
+$webui_login_screen = 'Login Screen';
+$webui_regionbox = 'Region';
+$webui_special_info = 'At this moment we would like to ask you to go to the website and make sure that you have your email registered';
+$webui_special_visit = 'Visit';
+$webui_special_website = 'the website';
+$webui_special_moreinfo = 'for more information';
 ?>

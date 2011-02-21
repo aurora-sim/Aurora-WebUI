@@ -42,7 +42,7 @@ if($sitemax == 0){$sitemax=1;}
 	<table>
 		<tr>
 			<td>
-				<font><b><?=$count?> <? echo $wiredux_regions_found ?></b></font>
+				<font><b><?=$count?> <? echo $wiredux_regions_found; ?></b></font>
 			</td>
 			<td>
 			<div id="region_navigation">
@@ -59,7 +59,7 @@ if($sitemax == 0){$sitemax=1;}
 							</a>
 						</td>
 						<td>
-							<font>Page <?=$sitestart ?>  of  <?=$sitemax ?></font>
+						  	<? echo $webui_navigation_page; ?> <?=$sitestart ?> <? echo $webui_navigation_of; ?> <?=$sitemax ?>
 						</td>
 						<td>
 							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if($count <= ($AStart + $ALimit)) echo 0; else echo $AStart + $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self">

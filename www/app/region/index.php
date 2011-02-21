@@ -1,23 +1,8 @@
-<style type="text/css">
-<!--
-.styleTitel {
-	font-size: 16px;
-	font-weight: bold;
-	color: #105BA7;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-.styleText {font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #666666;}
-.styleTopTitle {
-	font-size: 20px;
-	font-weight: bold;
-	font-family: Arial, Helvetica, sans-serif;
-}
--->
-</style>
 <? 
 include("../../settings/config.php");
 include("../../settings/mysql.php");
+include("../../languages/translator.php");
+include("../../skins/skins.php");
 
 $DbLink = new DB;
 $query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM ".C_REGIONS_TBL." where LocX='".$_GET[x]."' and LocY='".$_GET[y]."'";
@@ -32,64 +17,47 @@ $regionType = 'Unknown';
 $DbLink->query("SELECT FirstName,LastName FROM ".C_USERS_TBL." where PrincipalID='$owner'");
 list($firstN,$lastN) = $DbLink->next_record();
 ?>
-<title><?=SYSNAME?> <? echo $wiredux_region_information; ?></title>
-<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td colspan="2" valign="top"><span class="styleTopTitle">
-          <?=SYSNAME?> <? echo $wiredux_region_information; ?></span></td>
-  </tr>
-  <tr>
-    <td colspan="2" valign="top"><hr></td>
-  </tr>
-  <tr>
-    <td width="55%" valign="top"><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td><span class="styleTitel"><? echo $wiredux_region_Name; ?>: <?=$regionName?></span></td>
-      </tr>
-      <tr>
-        <td class="styleText"><? echo $wiredux_region_type; ?>: <?=$regionType?></td>
 
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td class="styleText"><? echo $wiredux_location; ?> X: <?=$locX?> Y: <?=$locY?></td>
-      </tr>
-      <tr>
-        <td class="styleText">&nbsp;</td>
-      </tr>
-      <tr>
-        <td class="styleText"><? echo $wiredux_owner; ?>: <a href="<?=SYSURL?>app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-    </table>
-    <br>
-    <br></td>
-    <td width="45%" valign="top"><br>
-      <br>
-      <table border="0" align="center" cellpadding="5" cellspacing="0">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="<?= SYSURL ?><? echo $skin_css ?>" type="text/css" />
+    <link rel="icon" href="<?= SYSURL ?>images/main/favicon.ico" />
+    <title><?=SYSNAME?>: <? echo $wiredux_region_information; ?></title>
+</head>
+
+<body class="webui">
+
+<div id="content">
+    <h2><?= SYSNAME ?>: <? echo $wiredux_region_information; ?></h2>
+  
+    <div id="regioninfo">
+	  <!--  <div id="info"><p><? echo $webui_regioninfo ?></p></div> -->
+	  <!--  <h2><? echo $wiredux_region_information; ?>:</h2> -->
+    <hr>
+    <table>
         <tr>
-          <td bgcolor="#999999"><div align="center">
-            <table width="256" height="256" border="0" align="center" cellpadding="0" cellspacing="0">
-              <tr>
-                <td bgcolor="#FFFFFF" background="regionimage.php?x=<?=$locX?>&y=<?=$locY?>">&nbsp;</td>
-              </tr>
-            </table>
-          </div></td>
+            <td><? echo $wiredux_region_name; ?>: <?=$RegionName?></td>
         </tr>
-      </table></td>
-  </tr>
-</table>
+        <tr>
+            <td><? echo $wiredux_region_type; ?>: <?=$regionType?></td>
+        </tr>
+        <tr>
+            <td><? echo $wiredux_location; ?> X: <?=$locX?> Y: <?=$locY?></td>
+        </tr>
+        <tr>
+            <td><? echo $wiredux_owner; ?>: <a href="<?=SYSURL?>/app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
+        </tr>
+    </table>
+
+    <div id="region_picture">
+        <img src="regionimage.php?x=<?=$locX?>&y=<?=$locY?>" alt="<?=$RegionName?>" title="<?=$RegionName?>" />
+    </div>
+
+  </div>
+  <hr>
+</div>
+</body>
+</html>

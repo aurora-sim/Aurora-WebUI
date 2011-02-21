@@ -15,13 +15,19 @@ if($_GET[scr] != "") {
 
 
 <div id="content">
-<h2><?= SYSNAME ?>: <? echo $wiredux_news; ?> </h2>
+
+  <h2><?= SYSNAME ?>: <? echo $webui_news; ?> </h2>
+  
+  <div id="news">
+
+	<!-- <div id="info"><p><? echo $webui_news_info ?></p></div> -->
+
   <table>
     <tr>
-      <td width="33%"><? echo $wiredux_news; ?></td>
+      <td width="33%"><? echo $webui_news; ?></td>
       <td width="33%"></td>
       <td width="34%">
-          <a href="index.php?page=gridstatushistory"><? echo $wiredux_history; ?></a>
+          <a href="index.php?page=newshistory"><? echo $webui_history; ?></a>
       </td>
     </tr>
     <tr>
@@ -32,13 +38,6 @@ if($_GET[scr] != "") {
       <td width="100%" colspan="3"><?=$message?></td>
     </tr>
   </table>
-<?
-}
-?>
+  </div>
+<? } ?>
 </div>
-
-
-
-
-
-

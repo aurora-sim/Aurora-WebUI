@@ -1,11 +1,18 @@
 <?php
 $wiredux_language_code='en';
 $wiredux_actual_language='English';
-$wiredux_grid_status='GRID STATUS';
-$wiredux_total_users='Total Users';
-$wiredux_total_regions='Total Regions';
-$wiredux_unique_visitors='Unique Visitors last 30 days';
-$wiredux_online_now='Online Now';
+
+//
+// Grid Status Module
+//
+$webui_grid_status = 'GRID STATUS';
+$webui_grid_status_online = 'ONLINE';
+$webui_grid_status_offline = 'OFFLINE';
+$webui_total_users = 'Total Users';
+$webui_total_regions = 'Total Regions';
+$webui_unique_visitors = 'Unique Visitors last 30 days';
+$webui_online_now = 'Online Now';
+
 $wiredux_first_name='First Name';
 $wiredux_last_name='Last Name';
 $wiredux_password='Password';
@@ -40,20 +47,27 @@ $wiredux_verified_account='Thank you, your account is now active and ready to us
 $wiredux_internal_error='Internal error, please try again later.';
 $wiredux_invalid_code='This isnt a valid code or maybe the code was older than 24h';
 $wiredux_activate_account='Activate Account';
-
 $wiredux_change_account='Change Account';
 $wiredux_change_password='Change Password';
 $wiredux_old_password='Old Password';
 $wiredux_change_email='Change Email';
 $wiredux_old_email='Old Email';
+$webui_new_email = 'New Email';
 $wiredux_change_name='Change Name';
 $wiredux_login='Login';
 $wiredux_register='Register';
-$wiredux_news='News';
-$wiredux_history='History';
-$wiredux_see_profile='See Profile';
-$wiredux_user_name='User Name';
 
+//
+// News Page
+//
+$webui_news = 'News';
+$webui_history = 'History';
+$webui_news_history = 'News History';
+
+//
+// User Profil Page
+//
+$wiredux_see_profile='See Profile';
 $wiredux_users_profile='Profile of';
 $wiredux_no_information_set="No information set";
 $wiredux_about_me="About Me";
@@ -102,7 +116,9 @@ $webui_home_page='
 //
 // 404 page
 //
-$wiredux_404_text = 'The requested page could not be found! Please try again later.';
+$webui_404_text = 'The requested page could not be found! Please try again later.';
+$webui_404_title = 'Error 404';
+$webui_404_gohome = 'Go Home';
 
 //
 // Forgot Pass Page
@@ -115,6 +131,12 @@ $webui_forgot_password_info = 'Forgot your Password? No problem! Enter your emai
 //
 $webui_before_date = 'It is';
 $webui_after_date = 'at';
+
+//
+// Navigation
+//
+$webui_navigation_page = 'Page';
+$webui_navigation_of = 'of';
 
 //
 // World Map Page
@@ -140,6 +162,9 @@ $webui_old_region = 'Old Region';
 $webui_home_region = 'Start Region';
 $webui_purge_apparence = 'Purge the appearance of your avatar';
 $webui_purge_apparence_bouton = 'Purge';
+$webui_old_password = 'Old Password';
+$webui_new_password = 'New Password';
+$webui_confirm_password = 'Confirm Password';
 
 //
 // Admin parts
@@ -180,11 +205,22 @@ $webui_admin_news_delete = 'Delete';
 // Admin Management Panel Page
 //
 $webui_admin_manage = 'Management Panel';
+$webui_admin_manage_info = 'Ceci vous permet d\'administrer les utilisateurs.';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
 
 //
-// News Add Page
+// Add News Page
 //
 $webui_admin_create_news_info = 'This allows you to create a new.';
+
+//
+// Login Screen page
+//
+$webui_login_screen = 'Login Screen';
+$webui_regionbox = 'Region';
+$webui_special_info = 'At this moment we would like to ask you to go to the website and make sure that you have your email registered';
+$webui_special_visit = 'Visit';
+$webui_special_website = 'the website';
+$webui_special_moreinfo = 'for more information';
 ?>

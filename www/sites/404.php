@@ -1,9 +1,10 @@
-<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td valign="top">   
-	<div style="height:100%;">
-        <? echo $wiredux_404_text ?>
-	</div>
-	</td>
-  </tr>
-</table>
+<div id="content">
+    <h2><?= SYSNAME ?>: <? echo $webui_404_title ?></h2>
+    <div id="alert">
+        <p><? echo $webui_404_text ?></p>
+    </div>
+    <div align="center">
+        <img src="<?= SYSURL ?>images/main/error_404.png" alt="<? echo $webui_404_title ?>" title="<? echo $webui_404_title ?>" /><br />
+        <a href="<?= SYSURL ?>"><? echo $webui_404_gohome ?></a>
+    </div>
+</div>

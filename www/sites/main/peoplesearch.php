@@ -52,6 +52,7 @@ if ($sitemax == 0) {
         </div>
 
         <table>
+        <tr>
             <td colspan="2">
             <!--//START LIMIT AND SEARCH ROW -->
             <table>
@@ -85,7 +86,7 @@ if ($sitemax == 0) {
                                             </td>
 
                                             <td>
-                                                <font>Page <?= $sitestart ?>  of  <?= $sitemax ?></font>
+                                                <? echo $webui_navigation_page; ?> <?=$sitestart ?> <? echo $webui_navigation_of; ?> <?=$sitemax ?>
                                             </td>
 
                                             <td>
@@ -132,7 +133,7 @@ if ($sitemax == 0) {
                 </tr>
             </table>
           <!--//END LIMIT AND SEARCH ROW -->
-        </td>
+        </td></tr>
 
         <tr>
             <td>
@@ -160,7 +161,7 @@ if ($sitemax == 0) {
         
             <td>
                 <div>
-                    <a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>app/agent/?first=<?= $FirstName ?>&last=<?= $LastName ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
+                    <a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>/app/agent/?first=<?= $FirstName ?>&last=<?= $LastName ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
                         <b><u><? echo $wiredux_see_profile ?></u></b>
                     </a>
                 </div>

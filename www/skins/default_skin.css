@@ -1,4 +1,4 @@
-/* WebUI Css Level 2.1 v0.3 (11/02/2011) */
+/* WebUI Css Level 2.1 v0.4 (21/02/2011) */
 
 html {width: 100%; height: 100%;}
 
@@ -60,7 +60,7 @@ body.webui {
 
 /* content*/
 .webui #content {
-  font-size: 0.8em;
+  font-size: 12px;
   margin: 10px;
   padding: 10px;
   border:1px solid #222222;
@@ -110,23 +110,23 @@ h3 {padding-left: 20px; font-size: 14px; color:#ffffff;}
 h4 {padding-left: 20px; font-size: 12px; color:#ffffff;}
 h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 
-.wiredux #header h1 span {display:none;}
-.wiredux #header h2 span {display:none;}
-.wiredux #header h3 span {display:none;}
-.wiredux #header h4 span {display:none;}
-.wiredux #header h5 span {display:none;}
+.webui #header h1 span {display:none;}
+.webui #header h2 span {display:none;}
+.webui #header h3 span {display:none;}
+.webui #header h4 span {display:none;}
+.webui #header h5 span {display:none;}
 
-.wiredux #MainContainer h1 span {display:none;}
-.wiredux #MainContainer h2 span {display:none;}
-.wiredux #MainContainer h3 span {display:none;}
-.wiredux #MainContainer h4 span {display:none;}
-.wiredux #MainContainer h5 span {display:none;}
+.webui #MainContainer h1 span {display:none;}
+.webui #MainContainer h2 span {display:none;}
+.webui #MainContainer h3 span {display:none;}
+.webui #MainContainer h4 span {display:none;}
+.webui #MainContainer h5 span {display:none;}
 
-.wiredux #footer h1 span {display:none;}
-.wiredux #footer h2 span {display:none;}
-.wiredux #footer h3 span {display:none;}
-.wiredux #footer h4 span {display:none;}
-.wiredux #footer h5 span {display:none;}
+.webui #footer h1 span {display:none;}
+.webui #footer h2 span {display:none;}
+.webui #footer h3 span {display:none;}
+.webui #footer h4 span {display:none;}
+.webui #footer h5 span {display:none;}
 
 /* tables setting */
 #content table {font-size: 100%;}
@@ -144,13 +144,15 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 
 #register {width:100%;background-color: transparent;}
 #register table {color: #ffffff; width: 100%;}
-#register td a {color: #aaaa00; text-decoration: none;}
+
+#register a {color: #aaaa00; text-decoration: none;}
 #register a:visited {text-decoration: none}
 #register a:active {text-decoration: none}
 #register a:hover {text-decoration: underline;}
 
 #login {width:100%;background-color: transparent;}
 #login table {color: #ffffff; width: 100%;}
+#login td {width: 50%;}
 #login a {color: #aaaa00; text-decoration: none;}
 #login a:visited {text-decoration: none}
 #login a:active {text-decoration: none}
@@ -158,6 +160,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 
 #forget_pass {width:100%;background-color: transparent;}
 #forget_pass table {color: #ffffff; width: 100%;}
+#forget_pass td {width: 50%;}
 #forget_pass a {color: #aaaa00; text-decoration: none;}
 #forget_pass a:visited {text-decoration: none}
 #forget_pass a:active {text-decoration: none}
@@ -198,6 +201,20 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #managepanel a:active {text-decoration: none}
 #managepanel a:hover {text-decoration: underline;}
 
+#news {width:100%;background-color: transparent;}
+#news table {color: #ffffff; width: 100%;}
+#news td a {color: #aaaa00; text-decoration: none;}
+#news a:visited {text-decoration: none}
+#news a:active {text-decoration: none}
+#news a:hover {text-decoration: underline;}
+
+#newshistory {width:100%;background-color: transparent;}
+#newshistory table {color: #ffffff; width: 100%;}
+#newshistory a {color: #aaaa00; text-decoration: none;}
+#newshistory a:visited {text-decoration: none}
+#newshistory a:active {text-decoration: none}
+#newshistory a:hover {text-decoration: underline;}
+
 #createnews {width:100%;background-color: transparent;}
 #createnews table {color: #ffffff; width: 100%;}
 #createnews a {color: #aaaa00; text-decoration: none;}
@@ -205,10 +222,47 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #createnews a:active {text-decoration: none}
 #createnews a:hover {text-decoration: underline;}
 
+#useragentprofil {min-height:160px; width:100%;background-color: transparent;}
+#useragentprofil table {color: #ffffff; width: 100%;}
+#useragentprofil a {color: #aaaa00; text-decoration: none;}
+#useragentprofil a:visited {text-decoration: none}
+#useragentprofil a:active {text-decoration: none}
+#useragentprofil a:hover {text-decoration: underline;}
+
+#regioninfo {min-height:160px; width:100%;background-color: transparent;}
+#regioninfo table {color: #ffffff; width: 100%;}
+#regioninfo a {color: #aaaa00; text-decoration: none;}
+#regioninfo a:visited {text-decoration: none}
+#regioninfo a:active {text-decoration: none}
+#regioninfo a:hover {text-decoration: underline;}
+
+/* more info profil */
+#profil_picture {
+  float: right;
+  margin-top: -105px;
+}
+
+#profil_picture img {
+  border: 1px solid #FFFFFF;
+  height: 128px;
+  width: 128px;
+}
+
+/* more info region */
+#region_picture {
+  float: right;
+  margin-top: -80px;
+}
+
+#region_picture img {
+  border: 1px solid #FFFFFF;
+  height: 256px;
+  width: 256px;
+}
 
 #region_navigation {
-width: 300px;
-float: right;
+  width: 300px;
+  float: right;
 }
 
 .even {
@@ -229,16 +283,16 @@ float: right;
 
 /* input & bouton */
 #register_input {width: 99%;}
-#register_bouton {font-size: 1em; margin-left: auto; margin-right: auto;}
+#register_bouton {font-size: 14px; margin-left: auto; margin-right: auto;}
 
 #login_input {width: 99%;}
-#login_bouton {font-size: 1em;}
+#login_bouton {font-size: 14px;}
 
 #forgot_pass_input {width: 99%;}
-#forgot_pass_bouton {font-size: 1em;}
+#forgot_pass_bouton {font-size: 14px;}
 
-#search_input {width: 99%;}
-#search_bouton {font-size: 1em;}
+#search_input {width: 99%; font-size: 14px;}
+#search_bouton {font-size: 14px;}
 
 
 /* region map */
@@ -438,7 +492,6 @@ td.gridbox_br {
 }
 
 #download {
-  color:#000000;
   background-color: #99CC99;
   border-top: 2px solid #55CC55;
   border-bottom: 2px solid #55CC55;

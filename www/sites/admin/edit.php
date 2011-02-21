@@ -243,9 +243,8 @@ $active=3;
       <br />
       <br>
       <br>
-      <br></td></tr>
+      <br>
+    </td></tr>
 </table>
 
-<?
-}
-?>
+<? } ?>

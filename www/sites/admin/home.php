@@ -7,7 +7,7 @@ if ($_SESSION[ADMINID]) {
 
   <? echo $webui_welcome_userid; ?>
   
-  <h1><? echo $webui_admin_welcome; ?> <?= SYSNAME ?> <? echo $webui_admin_panel; ?></h1>
+  <h1><? echo $webui_admin_welcome; ?> <? echo $webui_admin_panel; ?> <?= SYSNAME ?></h1>
 
   <div id="info">
       <p><? echo $webui_admin_home_info; ?></p>

@@ -48,7 +48,7 @@ if($_SESSION[ADMINID]) {
         list($count) = $DbLink->next_record();
 ?>
 
- <!-- <BR><CENTER> -->
+ <!-- <br><center> -->
         <?
 // DELETE QUESTION
         if($_GET[action] == 'delete') {
@@ -96,21 +96,31 @@ if($_SESSION[ADMINID]) {
         ?>
 
 <div id="content">
-  <h2><?= SYSNAME ?>: <? echo $webui_admin_manage ?></h2>
+    <h2><?= SYSNAME ?>: <? echo $webui_admin_manage ?></h2>
   
-  <div id="managepanel">
-  
-  
-<table>
-    <tr>
-        <td>
-        <?
-            echo "<TABLE CELLPADDING=0 CELLSPACING=0 WIDTH=100%><TR><TD>"."<FONT COLOR=#FFFFFF><B>Admin User Management Panel - $count Users found</B></FONT></TD><TD ALIGN=right>";
-            
-            // ################################## Navigation ###################################### 	
-        ?>
+    <div id="managepanel">
 
-<div id="region_navigation">
+        <div id="info">
+            <p><? echo $webui_admin_manage_info; ?></p>
+        </div>
+
+        <table>
+        <tr>
+            <td colspan="2">
+            <!--//START LIMIT AND SEARCH ROW -->
+            <table>
+                <tr>
+                    <td>
+
+                    <table>
+                        <tr>
+                            <td>
+                        <font><b><?= $count ?> <? echo $webui_users_found ?></b></font>
+                    </td>
+
+                  <td>                   
+        
+        <div id="region_navigation">
         <table>
             <tr>
                 <td>
@@ -126,7 +136,7 @@ if($_SESSION[ADMINID]) {
                 </td>
                         
                 <td>
-                    <FONT COLOR="#000000"><?=$LANG_ADMPAYMENT8?> <?= round($AStart / $ALimit ,0)+1; ?> <!--von <?= @round($count / $ALimit,0); ?>--></FONT>
+                    <? echo $webui_navigation_page; ?> <?=$LANG_ADMPAYMENT8?> <?= round($AStart / $ALimit ,0)+1; ?> <? echo $webui_navigation_of; ?> <?= @round($count / $ALimit,0); ?>
                 </td>
                         
                 <td>
@@ -166,30 +176,27 @@ if($_SESSION[ADMINID]) {
                         <IMG SRC=images/icons/<? if($ALimit != 100) echo icon_limit_100_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 100">
                     </a>
                 </td>
-
                 <td></td>
             </tr>
         </table>
+      </div>
     </td>
   </tr>
+</table> 
+</td></tr>
 </table>
-
-</div>
+</td></tr>
+</table>
+    
 
 <table>
-    <form ACTION="index.php?<?=$GoPage?>" METHOD="POST">
-        <tr>
-            <td>
-                <p>User Search</p>
-            </td>
-        </tr>
-        
+    <form ACTION="index.php?<?=$GoPage?>" METHOD="POST">       
         <tr>
             <td>
                 <div id="message">
-                    <? echo $webui_admin_manage_username; ?> 
-                    <input TYPE="TEXT" NAME="query" SIZE="50" value="<?=$_POST[query]?>" STYLE="HEIGHT:20">
-                    <input id="search_bouton" TYPE="Submit" value="<? echo $webui_people_search_bouton ?>" STYLE="HEIGHT:20">
+                    <? echo $webui_admin_manage_username; ?>:
+                    <input TYPE="TEXT" NAME="query" SIZE="50" value="<?=$_POST[query]?>">
+                    <input id="search_bouton" TYPE="Submit" value="<? echo $webui_people_search_bouton ?>">
                 </div>       
             </td>
         </tr>
@@ -197,24 +204,19 @@ if($_SESSION[ADMINID]) {
 </table>
 
 <table>
+    <tr>
     <td>
         <div style="position:relative;height:100%;">
-            <table>
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td WIDTH=36></td>
-                                <TD WIDTH=113 align="center"><B>EDIT</B></TD>
-                                <TD WIDTH=312 align="center"><B>User Name</B></TD>
-                                <TD width=220 align="center"><B>Created</B></TD>
-                                <TD width=167 align="center"><B>Active</B></TD>
-                                <TD WIDTH=47></TD>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+              <table>
+                  <tr>
+                  <td WIDTH=36></td>
+                  <TD WIDTH=113 align="center"><B>EDIT</B></TD>
+                  <TD WIDTH=312 align="center"><B>User Name</B></TD>
+                  <TD width=220 align="center"><B>Created</B></TD>
+                  <TD width=167 align="center"><B>Active</B></TD>
+                  <TD WIDTH=47></TD>
+                  </tr>
+              </table>
                     
             <?
     						$DbLink3 = new DB; 
@@ -261,7 +263,8 @@ if($_SESSION[ADMINID]) {
                         <font color=#888888><b><?=$create?></b></font>
                     </td>
                     
-                    <td width=100><b>
+                    <td width=100>
+                    <b>
                       <?
                           if(($flags & 7) == 7) {
                               echo"<FONT COLOR=#00FF00>Active</FONT>";
@@ -275,7 +278,8 @@ if($_SESSION[ADMINID]) {
                           else {
                               echo"<FONT COLOR=#FF0000>Inactive</FONT>";
                               }
-                      ?></b>
+                      ?>
+                    </b>
                     </td>
                     
                     <td width=32>
@@ -298,15 +302,19 @@ if($_SESSION[ADMINID]) {
                         </a>
                     </td>
                 </tr>
-            </table>   
+            </table>
             <? } ?>
         </div>
-    </TD>
+    </td>
+    </tr>
 </table>
 
-</div></div>
+</div>
+</div>
 
-<!-- </CENTER> -->
+
+
+<!-- </center> -->
 
     <? }
 else {
