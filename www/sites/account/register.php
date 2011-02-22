@@ -59,7 +59,7 @@ if ($_POST[action] == "") {
 
     <div id="content"><h2>
 
-        <?= SYSNAME ?>: <? echo $wiredux_register ?></h2>
+        <?= SYSNAME ?>: <? echo $webui_register ?></h2>
 
     <div id="register">
 
@@ -75,14 +75,14 @@ if ($_POST[action] == "") {
 <? } else { ?><? } ?>
 
                 <tr>
-                    <td class="even"><? echo $wiredux_first_name ?>*</td>
+                    <td class="even"><? echo $webui_first_name ?>*</td>
                     <td class="even">
                         <input id="register_input" name="accountfirst" OnBlur="checkFirstName(this.value)" type="text" size="25" maxlength="15" value="<?= $_SESSION[ACCFIRST] ?>">
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="odd"><? echo $wiredux_last_name ?>*</td>
+                    <td class="odd"><? echo $webui_last_name ?>*</td>
                     <td class="odd">
 
                         <?
@@ -114,14 +114,14 @@ if ($_POST[action] == "") {
                 </tr>
 
                 <tr>
-                    <td class="even"><? echo $wiredux_password ?>*</td>
+                    <td class="even"><? echo $webui_password ?>*</td>
                     <td class="even">
                         <input id="register_input" name="wordpass" type="password" size="25" maxlength="15">
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="odd"><? echo $wiredux_confirm ?> <? echo $wiredux_password ?>*</td>
+                    <td class="odd"><? echo $webui_confirm ?> <? echo $webui_password ?>*</td>
                     <td class="odd"><input id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
                     </td>
                 </tr>
@@ -130,7 +130,7 @@ if ($_POST[action] == "") {
 
 
                             <tr>
-                                <td class="even"><? echo $wiredux_start_region ?>*</td>
+                                <td class="even"><? echo $webui_start_region ?>*</td>
                                 <td class="odd">
                                     <select id="register_input" wide="25" name="startregion">
                             <?
@@ -148,42 +148,42 @@ if ($_POST[action] == "") {
 <? } if ($ADRESSCHECK == "1") { ?>
 
                             <tr>
-                                <td class="even"><? echo $wiredux_first_name ?>*</td>
+                                <td class="even"><? echo $webui_first_name ?>*</td>
                                 <td class="even">
                                     <input id="register_input" name="firstname" type="text" size="25" maxlength="15" value="<?= $_SESSION[NAMEF] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="odd"><? echo $wiredux_last_name ?>*</td>
+                                <td class="odd"><? echo $webui_last_name ?>*</td>
                                 <td class="odd">
                                     <input id="register_input" name="lastname" type="text" size="25" maxlength="15" value="<?= $_SESSION[NAMEL] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="even"><? echo $wiredux_address ?>*</td>
+                                <td class="even"><? echo $webui_address ?>*</td>
                                 <td class="even">
                                     <input id="register_input" name="adress" type="text" size="50" maxlength="50" value="<?= $_SESSION[ADRESS] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="odd"><? echo $wiredux_zip_code ?>*</td>
+                                <td class="odd"><? echo $webui_zip_code ?>*</td>
                                 <td class="odd">
                                     <input id="register_input" name="zip" type="text" size="25" maxlength="15" value="<?= $_SESSION[ZIP] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="even"><? echo $wiredux_city ?>*</td>
+                                <td class="even"><? echo $webui_city ?>*</td>
                                 <td class="even">
                                     <input id="register_input" name="city" type="text" size="25" maxlength="15" value="<?= $_SESSION[CITY] ?>">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td class="odd"><? echo $wiredux_country ?>*</td>
+                                <td class="odd"><? echo $webui_country ?>*</td>
                                 <td class="even">
                                     <select wide="25" name="country" value="<?= $_SESSION[COUNTRY] ?>">
                             <?
@@ -199,7 +199,7 @@ if ($_POST[action] == "") {
                 </tr>
 
                 <tr>
-                    <td class="even"><? echo $wiredux_date_of_birth ?>*</td>
+                    <td class="even"><? echo $webui_date_of_birth ?>*</td>
                     <td bgcolor="#CCCCCC">
                         <table>
 
@@ -260,7 +260,7 @@ if ($_POST[action] == "") {
 <? } ?>
 
                                             <tr>
-                                                <td class="odd"> <? echo $wiredux_email ?>*</td>
+                                                <td class="odd"> <? echo $webui_email ?>*</td>
 
                                                 <td class="odd">
                                                     <input id="register_input" name="email" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIL] ?>"></td>
@@ -268,7 +268,7 @@ if ($_POST[action] == "") {
 
 
                                             <tr>
-                                                <td class="even"> <? echo $wiredux_confirm ?> <? echo $wiredux_email ?>*</td>
+                                                <td class="even"> <? echo $webui_confirm ?> <? echo $webui_email ?>*</td>
                                                 <td class="even">
                                                     <input id="register_input" name="emaic" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIC] ?>" ></td>
                                             </tr>
@@ -319,7 +319,7 @@ if ($_POST[action] == "") {
                                                 <td class="odd">
                                                   <center>
                                                     <input type="hidden" name="action" value="check">
-                                                    <input id="register_bouton" name="submit" TYPE="submit" value='<? echo $wiredux_create_new_account ?>'>
+                                                    <input id="register_bouton" name="submit" TYPE="submit" value='<? echo $webui_create_new_account ?>'>
                                                   </center>
                                                 </td>
                                             </tr>
@@ -612,12 +612,11 @@ if ($_POST[action] == "") {
 									}
 									else
 									{
-									echo "<script language='javascript'>
-															<!--
-															window.alert('You cannot register currently, please try again later. Please try again later.');
-															window.location.href='index.php?page=home';
-															-->
-															< /script>";
+                                                                            ?>
+<div id="content"><h2>
+Registrations have been disabled by the site administrators, please try again later.</h2>
+</div>
+                                                                                <?
 }
 									
 ?>

@@ -1,6 +1,6 @@
 <?php
-$wiredux_language_code='it';
-$wiredux_actual_language='Italiano';
+$webui_language_code='it';
+$webui_actual_language='Italiano';
 
 //
 // Grid Status Module
@@ -13,50 +13,50 @@ $webui_total_regions='Regioni Totali';
 $webui_unique_visitors='Visitatori unici negli ultimi 30 giorni';
 $webui_online_now='Online Ora';
 
-$wiredux_first_name='Nome';
-$wiredux_last_name='Cognome';
-$wiredux_password='Password';
-$wiredux_login='Entra';
-$wiredux_confirm='Conferma';
-$wiredux_start_region='Regione iniziale';
-$wiredux_address='Indirizzo';
-$wiredux_zip_code='Codice Postale';
-$wiredux_city='Città';
-$wiredux_country='Paese';
-$wiredux_date_of_birth='Data di nascita';
-$wiredux_email='Email';
-$wiredux_create_new_account='Crea un nuovo account';
-$wiredux_start_region='Start Region';
-$wiredux_region_name='Nome della Regione';
-$wiredux_location='Posizione';
-$wiredux_info='Informazioni';
-$wiredux_regions_found='Regioni trovate';
-$wiredux_region_list='Lista delle Regioni';
-$wiredux_region_list_page_info='Lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
-$wiredux_more_info='Maggiori informazioni';
-$wiredux_user_name='Nome avatar';
+$webui_first_name='Nome';
+$webui_last_name='Cognome';
+$webui_password='Password';
+$webui_login='Entra';
+$webui_confirm='Conferma';
+$webui_start_region='Regione iniziale';
+$webui_address='Indirizzo';
+$webui_zip_code='Codice Postale';
+$webui_city='Cittï¿½';
+$webui_country='Paese';
+$webui_date_of_birth='Data di nascita';
+$webui_email='Email';
+$webui_create_new_account='Crea un nuovo account';
+$webui_start_region='Start Region';
+$webui_region_name='Nome della Regione';
+$webui_location='Posizione';
+$webui_info='Informazioni';
+$webui_regions_found='Regioni trovate';
+$webui_region_list='Lista delle Regioni';
+$webui_region_list_page_info='Lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
+$webui_more_info='Maggiori informazioni';
+$webui_user_name='Nome avatar';
 
 //
 // Online Users Page
 //
-$wiredux_online_users='Online Users';
-$wiredux_online_users_info='Questi sono tutti gli avatar online in questo momento.';
+$webui_online_users='Online Users';
+$webui_online_users_info='Questi sono tutti gli avatar online in questo momento.';
 
-$wiredux_submit='Invia';
-$wiredux_verified_account='Grazie. La tua password è ora attiva e puoi usarla.';
-$wiredux_internal_error='Errore interno, prego, riprovare.';
-$wiredux_invalid_code='Il tuo codice non è valido oppure è scaduto';
-$wiredux_activate_account='Attiva il tuo Account';
+$webui_submit='Invia';
+$webui_verified_account='Grazie. La tua password ï¿½ ora attiva e puoi usarla.';
+$webui_internal_error='Errore interno, prego, riprovare.';
+$webui_invalid_code='Il tuo codice non ï¿½ valido oppure ï¿½ scaduto';
+$webui_activate_account='Attiva il tuo Account';
 
-$wiredux_change_account='Change Account';
-$wiredux_change_password='Cambia la Password';
-$wiredux_old_password='Vecchia Password';
-$wiredux_change_email='Cambia Email';
-$wiredux_old_email='Vecchia Email';
+$webui_change_account='Change Account';
+$webui_change_password='Cambia la Password';
+$webui_old_password='Vecchia Password';
+$webui_change_email='Cambia Email';
+$webui_old_email='Vecchia Email';
 $webui_new_email = 'New Email';
-$wiredux_change_name='Cambia il nome';
-$wiredux_login='Entra';
-$wiredux_register='Registrati';
+$webui_change_name='Cambia il nome';
+$webui_login='Entra';
+$webui_register='Registrati';
 
 //
 // News Page
@@ -68,30 +68,30 @@ $webui_news_history = 'Novita Estratto Conto';
 //
 // User Profil Page
 //
-$wiredux_see_profile='Guarda il Profilo';
-$wiredux_users_profile='Profilo di';
-$wiredux_no_information_set="Non ci sono informazioni";
-$wiredux_about_me="Le mie informazioni";
-$wiredux_partner="Partner";
-$wiredux_resident_since="Residente dal";
-$wiredux_account_info="Tipo di account";
-$wiredux_region_information="Informazioni sulla Regione";
-$wiredux_region_type="Tipo di Regione";
-$wiredux_owner="Proprietario";
+$webui_see_profile='Guarda il Profilo';
+$webui_users_profile='Profilo di';
+$webui_no_information_set="Non ci sono informazioni";
+$webui_about_me="Le mie informazioni";
+$webui_partner="Partner";
+$webui_resident_since="Residente dal";
+$webui_account_info="Tipo di account";
+$webui_region_information="Informazioni sulla Regione";
+$webui_region_type="Tipo di Regione";
+$webui_owner="Proprietario";
 
 //
 // Menu items
 //
-$wiredux_menu_item_home = 'Home';
-$wiredux_menu_item_changeaccount = 'Cambia il tuo Account';
-$wiredux_menu_item_news = 'Novita';
-$wiredux_menu_item_regions = 'Lista Regioni';
-$wiredux_menu_item_worldmap = 'Mappa';
-$wiredux_menu_item_register = 'Registrati';
-$wiredux_menu_item_logout = 'Chiudi';
-$wiredux_menu_item_login = 'Entra';
-$wiredux_menu_item_onlineusers = 'Chi e online';
-$wiredux_menu_item_peoplesearch = 'Ricerca Utenti';
+$webui_menu_item_home = 'Home';
+$webui_menu_item_changeaccount = 'Cambia il tuo Account';
+$webui_menu_item_news = 'Novita';
+$webui_menu_item_regions = 'Lista Regioni';
+$webui_menu_item_worldmap = 'Mappa';
+$webui_menu_item_register = 'Registrati';
+$webui_menu_item_logout = 'Chiudi';
+$webui_menu_item_login = 'Entra';
+$webui_menu_item_onlineusers = 'Chi e online';
+$webui_menu_item_peoplesearch = 'Ricerca Utenti';
 
 //
 // Home Page
@@ -102,16 +102,16 @@ $webui_welcome_visitor='Ciao Visitor!';
 $webui_welcome_userid='Ciao Userid!';
 $webui_home_page='
     <p>
-        Questo è il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
-        Ogni cosa è possibile nel nostro nuovo Mondo in 3D. <br />
-        Il nostro Mondo è creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
+        Questo ï¿½ il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
+        Ogni cosa ï¿½ possibile nel nostro nuovo Mondo in 3D. <br />
+        Il nostro Mondo ï¿½ creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
         Crea subito un nuovo account, personalizza il tuo avatar e gioca nel nuovo mondo. <br />
         Entra ora, e fai la differenza! <br /><br /><br />
         <u>There are just 3 steps to get started:</u> <br /><br />
         1.) Crea il tuo account GRATIS in queste pagine. <br /><br />
         2.) Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
         3.) Assicurati di aggiungere la nostra grid al tuo viewer. <br /><br /><br />
-        <i>Per favore, tieni presente che la piattaforma di Aurora è ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
+        <i>Per favore, tieni presente che la piattaforma di Aurora ï¿½ ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
     </p>';
 
 //
@@ -170,10 +170,11 @@ $webui_confirm_password = 'Confirm Password';
 //
 // Admin parts
 //
-$wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Editer';
-$wiredux_menu_item_adminhome = 'Admin';
-$wiredux_menu_item_adminmanage = 'Manage';
+$webui_admin_login = "Admin Login";
+$webui_menu_item_adminloginscreen = 'Editer';
+$webui_menu_item_adminhome = 'Admin';
+$webui_menu_item_adminmanage = 'Manage';
+$webui_menu_item_adminsettings = 'Admin Settings';
 
 //
 // Admin Home Page

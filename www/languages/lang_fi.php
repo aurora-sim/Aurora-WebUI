@@ -1,6 +1,6 @@
 <?php
-$wiredux_language_code='fi';
-$wiredux_actual_language='Finnish';
+$webui_language_code='fi';
+$webui_actual_language='Finnish';
 
 //
 // Grid Status Module
@@ -13,50 +13,50 @@ $webui_total_regions='Alueita yhteens&auml;';
 $webui_unique_visitors='K&auml;vij&auml;m&auml;&auml;r&auml; viim. 30 p&auml;iv&auml;n aikana';
 $webui_online_now='Online tilassa';
 
-$wiredux_first_name='Etunimi';
-$wiredux_last_name='Sukunimi';
-$wiredux_password='Salasana';
-$wiredux_login='Kirjaudu sis&auml;&auml;n';
-$wiredux_confirm='Hyv&auml;ksy';
-$wiredux_start_region='Aloita Alueen';
-$wiredux_address='Osoite';
-$wiredux_zip_code='Postinumero';
-$wiredux_city='Postitoimipaikka';
-$wiredux_country='Maa';
-$wiredux_date_of_birth='Syntym&auml;aika.';
-$wiredux_email='S&auml;hk&ouml;posti';
-$wiredux_create_new_account='Luo uusi k&auml;ytt&auml;j&auml;tili';
+$webui_first_name='Etunimi';
+$webui_last_name='Sukunimi';
+$webui_password='Salasana';
+$webui_login='Kirjaudu sis&auml;&auml;n';
+$webui_confirm='Hyv&auml;ksy';
+$webui_start_region='Aloita Alueen';
+$webui_address='Osoite';
+$webui_zip_code='Postinumero';
+$webui_city='Postitoimipaikka';
+$webui_country='Maa';
+$webui_date_of_birth='Syntym&auml;aika.';
+$webui_email='S&auml;hk&ouml;posti';
+$webui_create_new_account='Luo uusi k&auml;ytt&auml;j&auml;tili';
 
-$wiredux_region_name='Alueen nimi';
-$wiredux_location='Sijainti';
-$wiredux_info='Informaatio';
-$wiredux_regions_found='Alueita l&ouml;ytyi';
-$wiredux_region_list='Aluelista';
-$wiredux_region_list_page_info='T&auml;m&auml; on aluelista, klikkaa alueen nime&auml; saadaksesi lis&auml;tietoja alueesta.';
-$wiredux_more_info='Lis&auml;tietoja';
-$wiredux_user_name='K&auml;ytt&auml;j&auml;nimi';
+$webui_region_name='Alueen nimi';
+$webui_location='Sijainti';
+$webui_info='Informaatio';
+$webui_regions_found='Alueita l&ouml;ytyi';
+$webui_region_list='Aluelista';
+$webui_region_list_page_info='T&auml;m&auml; on aluelista, klikkaa alueen nime&auml; saadaksesi lis&auml;tietoja alueesta.';
+$webui_more_info='Lis&auml;tietoja';
+$webui_user_name='K&auml;ytt&auml;j&auml;nimi';
 
 //
 // Online Users Page
 //
-$wiredux_online_users='Online Users';
-$wiredux_online_users_info='K&auml;ytt&auml;j&auml;tiedot.';
+$webui_online_users='Online Users';
+$webui_online_users_info='K&auml;ytt&auml;j&auml;tiedot.';
 
-$wiredux_submit='L&auml;het&auml;';
-$wiredux_verified_account='Kiitos, tilisi on nyt aktiivinen ja valmiina k&auml;ytt&ouml;&ouml;n.';
-$wiredux_internal_error='Sis&auml;inen virhe, ole hyv&auml;, yrit&auml; my&ouml;hemmin uudelleen.';
-$wiredux_invalid_code='T&auml;m&auml; ei ole oikea koodi tai ehk&auml; koodi oli yli 24h vanha';
-$wiredux_activate_account='Aktivoi k&auml;ytt&auml;j&auml;tili';
+$webui_submit='L&auml;het&auml;';
+$webui_verified_account='Kiitos, tilisi on nyt aktiivinen ja valmiina k&auml;ytt&ouml;&ouml;n.';
+$webui_internal_error='Sis&auml;inen virhe, ole hyv&auml;, yrit&auml; my&ouml;hemmin uudelleen.';
+$webui_invalid_code='T&auml;m&auml; ei ole oikea koodi tai ehk&auml; koodi oli yli 24h vanha';
+$webui_activate_account='Aktivoi k&auml;ytt&auml;j&auml;tili';
 
-$wiredux_change_account='Vaihda k&auml;ytt&auml;j&auml;tili&auml;';
-$wiredux_change_password='Vaihda salasana';
-$wiredux_old_password='Vanha salasana';
-$wiredux_change_email='Vaihda s&auml;hk&ouml;posti';
-$wiredux_old_email='Vanha s&auml;hk&ouml;posti';
+$webui_change_account='Vaihda k&auml;ytt&auml;j&auml;tili&auml;';
+$webui_change_password='Vaihda salasana';
+$webui_old_password='Vanha salasana';
+$webui_change_email='Vaihda s&auml;hk&ouml;posti';
+$webui_old_email='Vanha s&auml;hk&ouml;posti';
 $webui_new_email = 'New Email';
-$wiredux_change_name='Vaihda nimi';
-$wiredux_login='Kirjaudu sis&auml;&auml;n';
-$wiredux_register='Rekister&ouml;idy';
+$webui_change_name='Vaihda nimi';
+$webui_login='Kirjaudu sis&auml;&auml;n';
+$webui_register='Rekister&ouml;idy';
 
 //
 // News Page
@@ -68,30 +68,30 @@ $webui_news_history = 'News History';
 //
 // User Profil Page
 //
-$wiredux_see_profile='See Profile';
-$wiredux_users_profile='Ei profiilia';
-$wiredux_no_information_set="Ei tietoja";
-$wiredux_about_me="Min&auml;";
-$wiredux_partner="Kumppani";
-$wiredux_resident_since="Asukas";
-$wiredux_account_info="K&auml;ytt&auml;j&auml;tilin tiedot";
-$wiredux_region_information="Alueen tiedot";
-$wiredux_region_type="Alueen tyyppi";
-$wiredux_owner="Omistaja";
+$webui_see_profile='See Profile';
+$webui_users_profile='Ei profiilia';
+$webui_no_information_set="Ei tietoja";
+$webui_about_me="Min&auml;";
+$webui_partner="Kumppani";
+$webui_resident_since="Asukas";
+$webui_account_info="K&auml;ytt&auml;j&auml;tilin tiedot";
+$webui_region_information="Alueen tiedot";
+$webui_region_type="Alueen tyyppi";
+$webui_owner="Omistaja";
 
 //
 // Menu items
 //
-$wiredux_menu_item_home = 'Kotipaikka';
-$wiredux_menu_item_changeaccount = 'Vaihda tili&auml;';
-$wiredux_menu_item_news = 'Uutiset';
-$wiredux_menu_item_regions = ' Alueet';
-$wiredux_menu_item_worldmap = 'Maailman kartta';
-$wiredux_menu_item_register = 'Rekister&ouml;inti';
-$wiredux_menu_item_logout = 'Kirjaudu ulos';
-$wiredux_menu_item_login = 'Kirjaudu sis&auml;&auml;n';
-$wiredux_menu_item_onlineusers = 'Online-tilassa olevat k&auml;ytt&auml;j&auml;t';
-$wiredux_menu_item_peoplesearch = 'Henkil&ouml;haku';
+$webui_menu_item_home = 'Kotipaikka';
+$webui_menu_item_changeaccount = 'Vaihda tili&auml;';
+$webui_menu_item_news = 'Uutiset';
+$webui_menu_item_regions = ' Alueet';
+$webui_menu_item_worldmap = 'Maailman kartta';
+$webui_menu_item_register = 'Rekister&ouml;inti';
+$webui_menu_item_logout = 'Kirjaudu ulos';
+$webui_menu_item_login = 'Kirjaudu sis&auml;&auml;n';
+$webui_menu_item_onlineusers = 'Online-tilassa olevat k&auml;ytt&auml;j&auml;t';
+$webui_menu_item_peoplesearch = 'Henkil&ouml;haku';
 
 //
 // Home Page
@@ -170,10 +170,11 @@ $webui_confirm_password = 'Confirm Password';
 //
 // Admin parts
 //
-$wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Edit';
-$wiredux_menu_item_adminhome = 'Admin';
-$wiredux_menu_item_adminmanage = 'Manage';
+$webui_admin_login = "Admin Login";
+$webui_menu_item_adminloginscreen = 'Edit';
+$webui_menu_item_adminhome = 'Admin';
+$webui_menu_item_adminmanage = 'Manage';
+$webui_menu_item_adminsettings = 'Admin Settings';
 
 //
 // Admin Home Page

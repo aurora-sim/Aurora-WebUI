@@ -7,5 +7,5 @@ if(!empty($lang) && ($lang=='en' || $lang=='fr' || $lang=='es'
   include('lang_'.$lang.'.php');
   setcookie('lang',$lang,time()+3600*25*365,'/');
 }else include('lang_en.php'); //Eng by default
-// echo "wiredux_welcome = $wiredux_welcome";
+// echo "webui_welcome = $webui_welcome";
 ?>

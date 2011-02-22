@@ -1,6 +1,6 @@
 <?php
-$wiredux_language_code='nl';
-$wiredux_actual_language='Dutch';
+$webui_language_code='nl';
+$webui_actual_language='Dutch';
 
 //
 // Grid Status Module
@@ -13,49 +13,49 @@ $webui_total_regions='Totaal Regio\'s';
 $webui_unique_visitors='Unieke Gebruikers in de laatste 30 dagen';
 $webui_online_now='Online Nu';
 
-$wiredux_first_name='Voornaam';
-$wiredux_last_name='Achternaam';
-$wiredux_password='Wachtwoord';
-$wiredux_login='Login';
-$wiredux_confirm='Bevestig';
-$wiredux_start_region='Start Regio';
-$wiredux_address='Adres';
-$wiredux_zip_code='Postcode';
-$wiredux_city='Stad';
-$wiredux_country='Land';
-$wiredux_date_of_birth='Geboortedatum';
-$wiredux_email='Email';
-$wiredux_create_new_account='Registreer nieuw account';
+$webui_first_name='Voornaam';
+$webui_last_name='Achternaam';
+$webui_password='Wachtwoord';
+$webui_login='Login';
+$webui_confirm='Bevestig';
+$webui_start_region='Start Regio';
+$webui_address='Adres';
+$webui_zip_code='Postcode';
+$webui_city='Stad';
+$webui_country='Land';
+$webui_date_of_birth='Geboortedatum';
+$webui_email='Email';
+$webui_create_new_account='Registreer nieuw account';
 
-$wiredux_region_name='Regio naam';
-$wiredux_location='Locatie';
-$wiredux_info='Info';
-$wiredux_regions_found='Regio\'s Gevonden';
-$wiredux_region_list='Regio Overzicht';
-$wiredux_region_list_page_info='Dit is het regio overzicht. Klik op de regio\'s naam om meer informatie over deze regio te verkrijgen.';
-$wiredux_more_info='Meer Informatie';
-$wiredux_user_name='Gebruikersnaam';
+$webui_region_name='Regio naam';
+$webui_location='Locatie';
+$webui_info='Info';
+$webui_regions_found='Regio\'s Gevonden';
+$webui_region_list='Regio Overzicht';
+$webui_region_list_page_info='Dit is het regio overzicht. Klik op de regio\'s naam om meer informatie over deze regio te verkrijgen.';
+$webui_more_info='Meer Informatie';
+$webui_user_name='Gebruikersnaam';
 
 //
 // Online Users Page
 //
-$wiredux_online_users='Online Users';
-$wiredux_online_users_info='Dit toont alle gebruikers die online zijn op dit moment.';
+$webui_online_users='Online Users';
+$webui_online_users_info='Dit toont alle gebruikers die online zijn op dit moment.';
 
-$wiredux_submit='Verzend';
-$wiredux_verified_account='Dank u, uw profiel is nu actief en gereed voor gebruik.';
-$wiredux_internal_error='Interne fout, probeert u het later nog eens.';
-$wiredux_invalid_code='Dit is geen geldige code(is de code ouder dan 24 uur?)';
-$wiredux_activate_account='Activeer Profiel';
-$wiredux_change_account='Wijzig Profiel';
-$wiredux_change_password='Wijzig Wachtwoord';
-$wiredux_old_password='Oud Wachtwoord';
-$wiredux_change_email='Wijzig Email';
-$wiredux_old_email='Oude Email';
+$webui_submit='Verzend';
+$webui_verified_account='Dank u, uw profiel is nu actief en gereed voor gebruik.';
+$webui_internal_error='Interne fout, probeert u het later nog eens.';
+$webui_invalid_code='Dit is geen geldige code(is de code ouder dan 24 uur?)';
+$webui_activate_account='Activeer Profiel';
+$webui_change_account='Wijzig Profiel';
+$webui_change_password='Wijzig Wachtwoord';
+$webui_old_password='Oud Wachtwoord';
+$webui_change_email='Wijzig Email';
+$webui_old_email='Oude Email';
 $webui_new_email = 'New Email';
-$wiredux_change_name='Wijzig Naam';
-$wiredux_login='Login';
-$wiredux_register='Registreer';
+$webui_change_name='Wijzig Naam';
+$webui_login='Login';
+$webui_register='Registreer';
 
 //
 // News Page
@@ -67,30 +67,30 @@ $webui_news_history = 'Nieuws Historie';
 //
 // User Profil Page
 //
-$wiredux_see_profile='See Profile';
-$wiredux_users_profile='Profile of';
-$wiredux_no_information_set="No information set";
-$wiredux_about_me="About Me";
-$wiredux_partner="Partner";
-$wiredux_resident_since="Resident since";
-$wiredux_account_info="Account Info";
-$wiredux_region_information="Region Information";
-$wiredux_region_type="Region Type";
-$wiredux_owner="Owner";
+$webui_see_profile='See Profile';
+$webui_users_profile='Profile of';
+$webui_no_information_set="No information set";
+$webui_about_me="About Me";
+$webui_partner="Partner";
+$webui_resident_since="Resident since";
+$webui_account_info="Account Info";
+$webui_region_information="Region Information";
+$webui_region_type="Region Type";
+$webui_owner="Owner";
 
 //
 //Menu items
 //
-$wiredux_menu_item_home = 'Thuis';
-$wiredux_menu_item_changeaccount = 'Wijzig Profiel';
-$wiredux_menu_item_news = 'Nieuws';
-$wiredux_menu_item_regions = 'Regio Overzicht';
-$wiredux_menu_item_worldmap = 'Kaart';
-$wiredux_menu_item_register = 'Registreer';
-$wiredux_menu_item_logout = 'Loguit';
-$wiredux_menu_item_login = 'Login';
-$wiredux_menu_item_onlineusers = 'Wie is Online';
-$wiredux_menu_item_peoplesearch = 'People Search';
+$webui_menu_item_home = 'Thuis';
+$webui_menu_item_changeaccount = 'Wijzig Profiel';
+$webui_menu_item_news = 'Nieuws';
+$webui_menu_item_regions = 'Regio Overzicht';
+$webui_menu_item_worldmap = 'Kaart';
+$webui_menu_item_register = 'Registreer';
+$webui_menu_item_logout = 'Loguit';
+$webui_menu_item_login = 'Login';
+$webui_menu_item_onlineusers = 'Wie is Online';
+$webui_menu_item_peoplesearch = 'People Search';
 
 //
 // Home Page
@@ -169,10 +169,11 @@ $webui_confirm_password = 'Confirm Password';
 //
 // Admin parts
 //
-$wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Editer';
-$wiredux_menu_item_adminhome = 'Admin';
-$wiredux_menu_item_adminmanage = 'Manage';
+$webui_admin_login = "Admin Login";
+$webui_menu_item_adminloginscreen = 'Editer';
+$webui_menu_item_adminhome = 'Admin';
+$webui_menu_item_adminmanage = 'Manage';
+$webui_menu_item_adminsettings = 'Admin Settings';
 
 //
 // Admin Home Page

@@ -8,12 +8,12 @@ function OpenAgent(firstname, lastname)
 
 <div id="content">
 
-  <h2><?= SYSNAME ?>: <? echo $wiredux_online_users ?></h2>
+  <h2><?= SYSNAME ?>: <? echo $webui_online_users ?></h2>
   
   <div id="usersonline">
   
   <div id="info">
-      <p><? echo $wiredux_online_users_info ?></p>
+      <p><? echo $webui_online_users_info ?></p>
   </div>
 
 
@@ -21,11 +21,11 @@ function OpenAgent(firstname, lastname)
   <tbody>
     <tr class="<? echo ($odd = $w%2 )? "even":"odd" ?>" >
       <td>
-        <b><? echo $wiredux_user_name ?>:</b>
+        <b><? echo $webui_user_name ?>:</b>
       </td>
       
       <td>
-        <b><? echo $wiredux_region_name ?>:</b>
+        <b><? echo $webui_region_name ?>:</b>
       </td>
       
       <td>

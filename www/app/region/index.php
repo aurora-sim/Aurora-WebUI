@@ -25,30 +25,30 @@ list($firstN,$lastN) = $DbLink->next_record();
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <link rel="stylesheet" href="<?= SYSURL ?><? echo $skin_css ?>" type="text/css" />
     <link rel="icon" href="<?= SYSURL ?>images/main/favicon.ico" />
-    <title><?=SYSNAME?>: <? echo $wiredux_region_information; ?></title>
+    <title><?=SYSNAME?>: <? echo $webui_region_information; ?></title>
 </head>
 
 <body class="webui">
 
 <div id="content">
-    <h2><?= SYSNAME ?>: <? echo $wiredux_region_information; ?></h2>
+    <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?></h2>
   
     <div id="regioninfo">
 	  <!--  <div id="info"><p><? echo $webui_regioninfo ?></p></div> -->
-	  <!--  <h2><? echo $wiredux_region_information; ?>:</h2> -->
+	  <!--  <h2><? echo $webui_region_information; ?>:</h2> -->
     <hr>
     <table>
         <tr>
-            <td><? echo $wiredux_region_name; ?>: <?=$RegionName?></td>
+            <td><? echo $webui_region_name; ?>: <?=$RegionName?></td>
         </tr>
         <tr>
-            <td><? echo $wiredux_region_type; ?>: <?=$regionType?></td>
+            <td><? echo $webui_region_type; ?>: <?=$regionType?></td>
         </tr>
         <tr>
-            <td><? echo $wiredux_location; ?> X: <?=$locX?> Y: <?=$locY?></td>
+            <td><? echo $webui_location; ?> X: <?=$locX?> Y: <?=$locY?></td>
         </tr>
         <tr>
-            <td><? echo $wiredux_owner; ?>: <a href="<?=SYSURL?>/app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
+            <td><? echo $webui_owner; ?>: <a href="<?=SYSURL?>/app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
         </tr>
     </table>
 

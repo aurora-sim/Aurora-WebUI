@@ -32,27 +32,27 @@ if ($_GET[first] && $_GET[last]) {
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <link rel="stylesheet" href="<?= SYSURL ?><? echo $skin_css ?>" type="text/css" />
     <link rel="icon" href="<?= SYSURL ?>images/main/favicon.ico" />
-    <title><?= SYSNAME ?>: <? echo $wiredux_users_profile; ?> <? echo $userName ?></title>
+    <title><?= SYSNAME ?>: <? echo $webui_users_profile; ?> <? echo $userName ?></title>
 </head>
 
 <body class="webui">
 
 <div id="content">
-  <h2><?= SYSNAME ?>: <? echo $wiredux_users_profile; ?> <? echo $userName ?></h2>
+  <h2><?= SYSNAME ?>: <? echo $webui_users_profile; ?> <? echo $userName ?></h2>
   
   <div id="useragentprofil">
-	<!--  <div id="info"><p><? echo $wiredux_region_list_page_info ?></p></div> -->
+	<!--  <div id="info"><p><? echo $webui_region_list_page_info ?></p></div> -->
 
   <hr>
       <table>
           <tr>
               <td>
-                  <? echo $wiredux_resident_since ?>: <?= $date ?> (<?= $diff ?>)
+                  <? echo $webui_resident_since ?>: <?= $date ?> (<?= $diff ?>)
               </td>
           </tr>
           <tr>
               <td>
-                  <? echo $wiredux_account_info ?>: <?= $type ?>
+                  <? echo $webui_account_info ?>: <?= $type ?>
               </td>
           </tr>         
           <tr>
@@ -61,7 +61,7 @@ if ($_GET[first] && $_GET[last]) {
               <? if ($partner != '') { ?>
           <tr>
               <td>
-                  <? echo $wiredux_partner; ?>: <? echo $partner ?>
+                  <? echo $webui_partner; ?>: <? echo $partner ?>
               </td>
           </tr>
           <tr>
@@ -70,14 +70,14 @@ if ($_GET[first] && $_GET[last]) {
               <? } ?>
           <tr>
               <td>
-                  <h2><? echo $wiredux_about_me; ?></h2>
+                  <h2><? echo $webui_about_me; ?></h2>
               </td>
           </tr>       
           <tr>
               <td>
                 <?
                   if ($profileTXT != '') { echo $profileTXT; }
-                  else { echo $wiredux_no_information_set; }
+                  else { echo $webui_no_information_set; }
                 ?>
               </td>
           </tr>

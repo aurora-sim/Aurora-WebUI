@@ -26,7 +26,7 @@ if ($_GET[page] != '') {
 }
 
 //LOGIN AUTHENTIFICATION
-if ($_POST[Submit] == $wiredux_login) {
+if ($_POST[Submit] == $webui_login) {
 
     $found = array();
     $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => md5(WIREDUX_PASSWORD),
@@ -46,7 +46,7 @@ if ($_POST[Submit] == $wiredux_login) {
     }
 }
 
-if ($_POST[Submit] == $wiredux_admin_login) {
+if ($_POST[Submit] == $webui_admin_login) {
 
     $found = array();
     $found[0] = json_encode(array('Method' => 'AdminLogin', 'WebPassword' => md5(WIREDUX_PASSWORD),

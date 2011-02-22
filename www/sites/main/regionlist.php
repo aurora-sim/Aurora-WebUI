@@ -31,18 +31,18 @@ if($sitemax == 0){$sitemax=1;}
 ?>
 
 <div id="content">
-  <h2><?= SYSNAME ?>: <? echo $wiredux_region_list ?></h2>
+  <h2><?= SYSNAME ?>: <? echo $webui_region_list ?></h2>
   
   <div id="regionlist">
 
 	<div id="info">
-		<p><? echo $wiredux_region_list_page_info ?></p>
+		<p><? echo $webui_region_list_page_info ?></p>
 	</div>
 
 	<table>
 		<tr>
 			<td>
-				<font><b><?=$count?> <? echo $wiredux_regions_found; ?></b></font>
+				<font><b><?=$count?> <? echo $webui_regions_found; ?></b></font>
 			</td>
 			<td>
 			<div id="region_navigation">
@@ -102,16 +102,16 @@ if($sitemax == 0){$sitemax=1;}
 		<thead>
 			<tr>
 				<td width="55%">
-					<a href="index.php?page=regionlist&order=name"><b><u><? echo $wiredux_region_name ?></u></b></a>
+					<a href="index.php?page=regionlist&order=name"><b><u><? echo $webui_region_name ?></u></b></a>
 				</td>
 				<td width="15%">
-					<a href="index.php?page=regionlist&order=x"><b><u><? echo $wiredux_location ?>: X</u></b></a>
+					<a href="index.php?page=regionlist&order=x"><b><u><? echo $webui_location ?>: X</u></b></a>
 				</td>
 				<td width="15%">
-					<a href="index.php?page=regionlist&order=y"><b><u><? echo $wiredux_location ?>: Y</u></b></a>
+					<a href="index.php?page=regionlist&order=y"><b><u><? echo $webui_location ?>: Y</u></b></a>
 				</td>
 				<td width="15%">
-					<? echo $wiredux_info ?>
+					<? echo $webui_info ?>
 				</td>
 			</tr>
 		</thead>
@@ -139,7 +139,7 @@ if($sitemax == 0){$sitemax=1;}
 								<td width="15%">
 									<div>
 										<a onClick="window.open('<?=SYSURL?>/app/region/?x=<?=$locX?>&y=<?=$locY?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
-											<b><u><? echo $wiredux_more_info ?></u></b>
+											<b><u><? echo $webui_more_info ?></u></b>
 										</a>
 									</div>
 								</td>

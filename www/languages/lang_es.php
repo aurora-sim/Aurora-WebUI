@@ -209,6 +209,7 @@ $webui_admin_manage = 'Management Panel';
 $webui_admin_manage_info = 'Ceci vous permet d\'administrer les utilisateurs.';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
+$webui_menu_item_adminsettings = 'Admin Settings';
 
 //
 // Add News Page

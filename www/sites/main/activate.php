@@ -16,17 +16,17 @@ if($UUID)
 	$recieved = json_decode($do_post_requested);
 	if ($recieved->{'Verified'} == "true") 
 	{
-		$WERROR= $wiredux_verified_account;
+		$WERROR= $webui_verified_account;
 		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='confirm'");
 	}
 	else
 	{
-		$WERROR=$wiredux_internal_error;
+		$WERROR=$webui_internal_error;
 	}
 }
 else
 {
-	$WERROR=$wiredux_invalid_code;
+	$WERROR=$webui_invalid_code;
 }
 ?>
 
@@ -34,7 +34,7 @@ else
             <tr>
               <td valign="top"><table width="50%" border="0" align="center">
                 <tr>
-                  <td><p align="center" class="Stil1"><? echo $wiredux_activate_account ?></p></td>
+                  <td><p align="center" class="Stil1"><? echo $webui_activate_account ?></p></td>
                 </tr>
               </table>
               <br />

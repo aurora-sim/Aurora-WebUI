@@ -25,7 +25,7 @@
     $tableWidth = 1000 / $DbLink->num_rows();
     $a = get_defined_vars();
     if($_GET[btn] == "")
-        $_GET[btn] = "wiredux_menu_item_home";
+        $_GET[btn] = "webui_menu_item_home";
     while (list($siteid, $siteurl, $sitetarget) = $DbLink->next_record()) {
     ?>
         <td>

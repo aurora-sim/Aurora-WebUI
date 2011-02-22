@@ -1,6 +1,6 @@
 <?php
-$wiredux_language_code='en';
-$wiredux_actual_language='English';
+$webui_language_code='en';
+$webui_actual_language='English';
 
 //
 // Grid Status Module
@@ -13,49 +13,49 @@ $webui_total_regions = 'Total Regions';
 $webui_unique_visitors = 'Unique Visitors last 30 days';
 $webui_online_now = 'Online Now';
 
-$wiredux_first_name='First Name';
-$wiredux_last_name='Last Name';
-$wiredux_password='Password';
-$wiredux_login='Login';
-$wiredux_confirm='Confirm';
-$wiredux_start_region='Start Region';
-$wiredux_address='Address';
-$wiredux_zip_code='Zip Code';
-$wiredux_city='City';
-$wiredux_country='Country';
-$wiredux_date_of_birth='Date Of Birth';
-$wiredux_email='Email';
-$wiredux_create_new_account='Create New Account';
+$webui_first_name='First Name';
+$webui_last_name='Last Name';
+$webui_password='Password';
+$webui_login='Login';
+$webui_confirm='Confirm';
+$webui_start_region='Start Region';
+$webui_address='Address';
+$webui_zip_code='Zip Code';
+$webui_city='City';
+$webui_country='Country';
+$webui_date_of_birth='Date Of Birth';
+$webui_email='Email';
+$webui_create_new_account='Create New Account';
 
-$wiredux_region_name='Region Name';
-$wiredux_location='Location';
-$wiredux_info='Info';
-$wiredux_regions_found='Regions Found';
-$wiredux_region_list='Region List';
-$wiredux_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
-$wiredux_more_info='More Info';
-$wiredux_user_name='User Name';
+$webui_region_name='Region Name';
+$webui_location='Location';
+$webui_info='Info';
+$webui_regions_found='Regions Found';
+$webui_region_list='Region List';
+$webui_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
+$webui_more_info='More Info';
+$webui_user_name='User Name';
 
 //
 // Online Users Page
 //
-$wiredux_online_users='Online Users';
-$wiredux_online_users_info='This shows all the users that are online at this moment.';
+$webui_online_users='Online Users';
+$webui_online_users_info='This shows all the users that are online at this moment.';
 
-$wiredux_submit='Submit';
-$wiredux_verified_account='Thank you, your account is now active and ready to use.';
-$wiredux_internal_error='Internal error, please try again later.';
-$wiredux_invalid_code='This isnt a valid code or maybe the code was older than 24h';
-$wiredux_activate_account='Activate Account';
-$wiredux_change_account='Change Account';
-$wiredux_change_password='Change Password';
-$wiredux_old_password='Old Password';
-$wiredux_change_email='Change Email';
-$wiredux_old_email='Old Email';
+$webui_submit='Submit';
+$webui_verified_account='Thank you, your account is now active and ready to use.';
+$webui_internal_error='Internal error, please try again later.';
+$webui_invalid_code='This isnt a valid code or maybe the code was older than 24h';
+$webui_activate_account='Activate Account';
+$webui_change_account='Change Account';
+$webui_change_password='Change Password';
+$webui_old_password='Old Password';
+$webui_change_email='Change Email';
+$webui_old_email='Old Email';
 $webui_new_email = 'New Email';
-$wiredux_change_name='Change Name';
-$wiredux_login='Login';
-$wiredux_register='Register';
+$webui_change_name='Change Name';
+$webui_login='Login';
+$webui_register='Register';
 
 //
 // News Page
@@ -67,30 +67,30 @@ $webui_news_history = 'News History';
 //
 // User Profil Page
 //
-$wiredux_see_profile='See Profile';
-$wiredux_users_profile='Profile of';
-$wiredux_no_information_set="No information set";
-$wiredux_about_me="About Me";
-$wiredux_partner="Partner";
-$wiredux_resident_since="Resident since";
-$wiredux_account_info="Account Info";
-$wiredux_region_information="Region Information";
-$wiredux_region_type="Region Type";
-$wiredux_owner="Owner";
+$webui_see_profile='See Profile';
+$webui_users_profile='Profile of';
+$webui_no_information_set="No information set";
+$webui_about_me="About Me";
+$webui_partner="Partner";
+$webui_resident_since="Resident since";
+$webui_account_info="Account Info";
+$webui_region_information="Region Information";
+$webui_region_type="Region Type";
+$webui_owner="Owner";
 
 //
 // Menu items
 //
-$wiredux_menu_item_home = 'Home';
-$wiredux_menu_item_changeaccount = 'Edit';
-$wiredux_menu_item_news = 'News';
-$wiredux_menu_item_regions = 'Regions';
-$wiredux_menu_item_worldmap = 'Map';
-$wiredux_menu_item_register = 'Register';
-$wiredux_menu_item_logout = 'Logout';
-$wiredux_menu_item_login = 'Login';
-$wiredux_menu_item_onlineusers = 'Users';
-$wiredux_menu_item_peoplesearch = 'Search';
+$webui_menu_item_home = 'Home';
+$webui_menu_item_changeaccount = 'Edit';
+$webui_menu_item_news = 'News';
+$webui_menu_item_regions = 'Regions';
+$webui_menu_item_worldmap = 'Map';
+$webui_menu_item_register = 'Register';
+$webui_menu_item_logout = 'Logout';
+$webui_menu_item_login = 'Login';
+$webui_menu_item_onlineusers = 'Users';
+$webui_menu_item_peoplesearch = 'Search';
 
 //
 // Home Page
@@ -169,10 +169,11 @@ $webui_confirm_password = 'Confirm Password';
 //
 // Admin parts
 //
-$wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Edit';
-$wiredux_menu_item_adminhome = 'Admin';
-$wiredux_menu_item_adminmanage = 'Manage';
+$webui_admin_login = "Admin Login";
+$webui_menu_item_adminloginscreen = 'Edit';
+$webui_menu_item_adminhome = 'Admin';
+$webui_menu_item_adminmanage = 'Manage';
+$webui_menu_item_adminsettings = 'Admin Settings';
 
 //
 // Admin Home Page

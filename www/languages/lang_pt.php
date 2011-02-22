@@ -1,6 +1,6 @@
 <?php
-$wiredux_language_code='pt';
-$wiredux_actual_language='Portugu&ecirc;s';
+$webui_language_code='pt';
+$webui_actual_language='Portugu&ecirc;s';
 
 //
 // Grid Status Module
@@ -13,49 +13,49 @@ $webui_total_regions='Total Regi&otilde;es';
 $webui_unique_visitors='Visitantes nos &uacute;ltimos 30 dias';
 $webui_online_now='Ligados agora';
 
-$wiredux_first_name='Primeiro Nome';
-$wiredux_last_name='&Uacute;ltimo Nome';
-$wiredux_password='Password';
-$wiredux_login='Login';
-$wiredux_confirm='Confirme';
-$wiredux_start_region='Regi&atilde;o inicial';
-$wiredux_address='Endere&ccedil;o';
-$wiredux_zip_code='Codigo Postal';
-$wiredux_city='Cidade';
-$wiredux_country='Pa&iacute;s';
-$wiredux_date_of_birth='Data De Nascimento';
-$wiredux_email='Email';
-$wiredux_create_new_account='Criar Nova Conta';
+$webui_first_name='Primeiro Nome';
+$webui_last_name='&Uacute;ltimo Nome';
+$webui_password='Password';
+$webui_login='Login';
+$webui_confirm='Confirme';
+$webui_start_region='Regi&atilde;o inicial';
+$webui_address='Endere&ccedil;o';
+$webui_zip_code='Codigo Postal';
+$webui_city='Cidade';
+$webui_country='Pa&iacute;s';
+$webui_date_of_birth='Data De Nascimento';
+$webui_email='Email';
+$webui_create_new_account='Criar Nova Conta';
 
-$wiredux_region_name='Nome de Regi&atilde;o';
-$wiredux_location='Localiza&ccedil;&atilde;o';
-$wiredux_info='Informa&ccedil;&atilde;o';
-$wiredux_regions_found='Regi&otilde;es Encontradas';
-$wiredux_region_list='Lista de Regi&otilde;es';
-$wiredux_region_list_page_info='Esta &eacute; a lista de regi&otilde;es, clique no nome de uma regi&atilde;o para obter mais informa&ccedil;&atilde;o.';
-$wiredux_more_info='Mais Informa&ccedil;&atilde;o';
-$wiredux_user_name='Nome de Utilizador';
+$webui_region_name='Nome de Regi&atilde;o';
+$webui_location='Localiza&ccedil;&atilde;o';
+$webui_info='Informa&ccedil;&atilde;o';
+$webui_regions_found='Regi&otilde;es Encontradas';
+$webui_region_list='Lista de Regi&otilde;es';
+$webui_region_list_page_info='Esta &eacute; a lista de regi&otilde;es, clique no nome de uma regi&atilde;o para obter mais informa&ccedil;&atilde;o.';
+$webui_more_info='Mais Informa&ccedil;&atilde;o';
+$webui_user_name='Nome de Utilizador';
 
 //
 // Online Users Page
 //
-$wiredux_online_users='Online Users';
-$wiredux_online_users_info='This shows all the users that are online at this moment.';
+$webui_online_users='Online Users';
+$webui_online_users_info='This shows all the users that are online at this moment.';
 
-$wiredux_submit='Submeter';
-$wiredux_verified_account='Obrigado, a sua conta est&aacute agora activa  pronta para utilizar.';
-$wiredux_internal_error='Erro interno, por favor tente mais tarde.';
-$wiredux_invalid_code='Este n&atilde;o &eacute; um c&oacute;digo valido ou &eacute; um c&oacute;digo com mais de 24 horas';
-$wiredux_activate_account='Activar Conta';
-$wiredux_change_account='Alterar Conta';
-$wiredux_change_password='Alterar Password';
-$wiredux_old_password='Password anterior';
-$wiredux_change_email='Alterar Email';
-$wiredux_old_email='Email anterior';
+$webui_submit='Submeter';
+$webui_verified_account='Obrigado, a sua conta est&aacute agora activa  pronta para utilizar.';
+$webui_internal_error='Erro interno, por favor tente mais tarde.';
+$webui_invalid_code='Este n&atilde;o &eacute; um c&oacute;digo valido ou &eacute; um c&oacute;digo com mais de 24 horas';
+$webui_activate_account='Activar Conta';
+$webui_change_account='Alterar Conta';
+$webui_change_password='Alterar Password';
+$webui_old_password='Password anterior';
+$webui_change_email='Alterar Email';
+$webui_old_email='Email anterior';
 $webui_new_email = 'New Email';
-$wiredux_change_name='Alterar Nome';
-$wiredux_login='Login';
-$wiredux_register='Registar';
+$webui_change_name='Alterar Nome';
+$webui_login='Login';
+$webui_register='Registar';
 
 //
 // News Page
@@ -67,30 +67,30 @@ $webui_news_history = 'Noticias Historial';
 //
 // User Profil Page
 //
-$wiredux_see_profile='Ver Profile';
-$wiredux_users_profile='Profile de';
-$wiredux_no_information_set="Informa&ccedil;&atilde;o n&atilde;o dispon&iacute;vel";
-$wiredux_about_me="Sobre Mim";
-$wiredux_partner="Parceiro/a";
-$wiredux_resident_since="Residente desde";
-$wiredux_account_info="Informa&ccedil;&atilde;o de Conta";
-$wiredux_region_information="Informa&ccedil;&atilde;o de Regi&atilde;o";
-$wiredux_region_type="Tipo de Regi&atilde;o";
-$wiredux_owner="Dono";
+$webui_see_profile='Ver Profile';
+$webui_users_profile='Profile de';
+$webui_no_information_set="Informa&ccedil;&atilde;o n&atilde;o dispon&iacute;vel";
+$webui_about_me="Sobre Mim";
+$webui_partner="Parceiro/a";
+$webui_resident_since="Residente desde";
+$webui_account_info="Informa&ccedil;&atilde;o de Conta";
+$webui_region_information="Informa&ccedil;&atilde;o de Regi&atilde;o";
+$webui_region_type="Tipo de Regi&atilde;o";
+$webui_owner="Dono";
 
 //
 // Menu items
 //
-$wiredux_menu_item_home = 'Home';
-$wiredux_menu_item_changeaccount = 'Editar Conta';
-$wiredux_menu_item_news = 'Noticias';
-$wiredux_menu_item_regions = 'Lista de Regi&otilde;es';
-$wiredux_menu_item_worldmap = 'Mapa';
-$wiredux_menu_item_register = 'Registar';
-$wiredux_menu_item_logout = 'Logout';
-$wiredux_menu_item_login = 'Login';
-$wiredux_menu_item_onlineusers = 'Utilizadores Ligados';
-$wiredux_menu_item_peoplesearch = 'Busca de Pessoas';
+$webui_menu_item_home = 'Home';
+$webui_menu_item_changeaccount = 'Editar Conta';
+$webui_menu_item_news = 'Noticias';
+$webui_menu_item_regions = 'Lista de Regi&otilde;es';
+$webui_menu_item_worldmap = 'Mapa';
+$webui_menu_item_register = 'Registar';
+$webui_menu_item_logout = 'Logout';
+$webui_menu_item_login = 'Login';
+$webui_menu_item_onlineusers = 'Utilizadores Ligados';
+$webui_menu_item_peoplesearch = 'Busca de Pessoas';
 
 //
 // Home Page
@@ -169,10 +169,11 @@ $webui_confirm_password = 'Confirm Password';
 //
 // Admin parts
 //
-$wiredux_admin_login = "Admin Login";
-$wiredux_menu_item_adminloginscreen = 'Editer';
-$wiredux_menu_item_adminhome = 'Admin';
-$wiredux_menu_item_adminmanage = 'Manage';
+$webui_admin_login = "Admin Login";
+$webui_menu_item_adminloginscreen = 'Editer';
+$webui_menu_item_adminhome = 'Admin';
+$webui_menu_item_adminmanage = 'Manage';
+$webui_menu_item_adminsettings = 'Admin Settings';
 
 //
 // Admin Home Page

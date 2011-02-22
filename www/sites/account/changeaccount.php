@@ -254,7 +254,7 @@ if ($_SESSION[USERID] == "") {
                     <td class="odd"></td>
                 
                     <td class="odd">
-                        <input type="submit" name="Submit1" value="<? echo $wiredux_submit ?>">
+                        <input type="submit" name="Submit1" value="<? echo $webui_submit ?>">
                    </td>
                 </tr>
             </form>
@@ -269,7 +269,7 @@ if ($_SESSION[USERID] == "") {
             <tr>
                 <td colspan="2">
                     <div align="center">
-                        <strong><? echo $wiredux_change_password; ?></strong>
+                        <strong><? echo $webui_change_password; ?></strong>
                     </div>
                 </td>
             </tr>
@@ -300,7 +300,7 @@ if ($_SESSION[USERID] == "") {
                 
                 <tr>
                     <td class="even"></td>
-                    <td class="even"><input type="submit" name="Submit2" value="<? echo $wiredux_submit; ?>"></td>
+                    <td class="even"><input type="submit" name="Submit2" value="<? echo $webui_submit; ?>"></td>
                 </tr>
             </form>
         </table>
@@ -310,7 +310,7 @@ if ($_SESSION[USERID] == "") {
         <!-- Change Email --> 
         <table>
             <tr>
-                <td colspan="2"><div align="center"><strong><? echo $wiredux_change_email; ?></strong></div></td>
+                <td colspan="2"><div align="center"><strong><? echo $webui_change_email; ?></strong></div></td>
             </tr>
                             
             <? if ($ERRORS2) { ?>
@@ -323,7 +323,7 @@ if ($_SESSION[USERID] == "") {
                             
             <form name="form1" method="post" action="index.php?page=change">
                 <tr>
-                    <td class="odd" width="50%"><? echo $wiredux_old_email ?>:</td>
+                    <td class="odd" width="50%"><? echo $webui_old_email ?>:</td>
                     <td class="odd"><input type="text" size="40" value="<?= $oldemail ?>" name="emailold"></td>
                 </tr>
                 
@@ -335,7 +335,7 @@ if ($_SESSION[USERID] == "") {
                 
                 <tr>
                     <td class="odd"></td>
-                    <td class="odd"><input type="submit" name="Submit3" value="<? echo $wiredux_submit; ?>"></td>
+                    <td class="odd"><input type="submit" name="Submit3" value="<? echo $webui_submit; ?>"></td>
                 </tr>
             </form>
         </table>
@@ -347,7 +347,7 @@ if ($_SESSION[USERID] == "") {
             <tr>
                 <td colspan="2">
                     <div align="center">
-                        <strong><? echo $wiredux_change_name; ?> </strong>
+                        <strong><? echo $webui_change_name; ?> </strong>
                     </div>
                 </td>
             </tr>
@@ -362,18 +362,18 @@ if ($_SESSION[USERID] == "") {
                             
             <form name="form1" method="post" action="index.php?page=change">
                 <tr>
-                    <td class="odd" width="50%"><? echo $wiredux_first_name; ?>:</td>
+                    <td class="odd" width="50%"><? echo $webui_first_name; ?>:</td>
                     <td class="odd"><input type="text" size="40" name="nameFirstNew" value ="<? echo $firstName; ?>"></td>
                 </tr>
                                 
                 <tr>
-                    <td class="even"><? echo $wiredux_last_name ?>:</td>
+                    <td class="even"><? echo $webui_last_name ?>:</td>
                     <td class="even"><input type="text" size="40" name="nameLastNew" value ="<? echo $lastName; ?>"></td>
                 </tr>
                                 
                 <tr>
                     <td class="odd"></td>
-                    <td class="odd"><input type="submit" name="Submit4" value="<? echo $wiredux_submit; ?>"></td>
+                    <td class="odd"><input type="submit" name="Submit4" value="<? echo $webui_submit; ?>"></td>
                 </tr>
             </form>
         </table>

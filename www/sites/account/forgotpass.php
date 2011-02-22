@@ -120,28 +120,28 @@ if($_POST[Submit]=="Submit")
         <td>
           <table>
             <tr>
-              <td class="even"><? echo $wiredux_first_name ?>*</td>
+              <td class="even"><? echo $webui_first_name ?>*</td>
               <td class="even">
                 <input id="forgot_pass_input" name="first" type="text" size="40" maxlength="50" value="<?=$_POST[First]?>">
               </td>
             </tr>
               
             <tr>
-              <td class="odd"><? echo $wiredux_last_name ?>*</td>
+              <td class="odd"><? echo $webui_last_name ?>*</td>
               <td class="odd">
                 <input id="forgot_pass_input" name="last" type="text" size="40" maxlength="50" value="<?=$_POST[Last]?>">
               </td>
             </tr>
                 
             <tr>
-              <td class="even"><? echo $wiredux_email ?>*</td>
+              <td class="even"><? echo $webui_email ?>*</td>
               <td class="even">
                 <input id="forgot_pass_input" name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">
               </td>
             </tr>
                 
             <tr>
-              <td class="odd"><? echo $wiredux_confirm ?> <? echo $wiredux_email ?>*</td>
+              <td class="odd"><? echo $webui_confirm ?> <? echo $webui_email ?>*</td>
               <td class="odd">
                 <input id="forgot_pass_input" name="email2" type="text" size="40" maxlength="50" value="<?=$_POST[email2]?>">
               </td>
@@ -149,7 +149,7 @@ if($_POST[Submit]=="Submit")
                   
             <tr>
               <td class="even"></td>
-              <td class="even"><input id="forgot_pass_bouton" type="submit" name="Submit" value="<? echo $wiredux_submit ?>"></td>
+              <td class="even"><input id="forgot_pass_bouton" type="submit" name="Submit" value="<? echo $webui_submit ?>"></td>
             </tr>
           </table>
         </td>

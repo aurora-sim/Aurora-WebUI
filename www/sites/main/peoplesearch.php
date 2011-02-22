@@ -46,8 +46,8 @@ if ($sitemax == 0) {
         </div>
         
         <div id="message">
-            <? echo $wiredux_first_name; ?>: <input id="first" name="first" type="text" size="25" maxlength="15" value="" />
-            <? echo $wiredux_last_name; ?>: <input id="last" name="last" type="text" size="25" maxlength="15" value="" />
+            <? echo $webui_first_name; ?>: <input id="first" name="first" type="text" size="25" maxlength="15" value="" />
+            <? echo $webui_last_name; ?>: <input id="last" name="last" type="text" size="25" maxlength="15" value="" />
              <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'first=' + document.getElementById('first').value + '&last=' + document.getElementById('last').value)"><? echo $webui_people_search_bouton ?></button>
         </div>
 
@@ -137,10 +137,10 @@ if ($sitemax == 0) {
 
         <tr>
             <td>
-                <a href="index.php?page=regions&order=name"><b><u><? echo $wiredux_user_name ?></u></b></a>
+                <a href="index.php?page=regions&order=name"><b><u><? echo $webui_user_name ?></u></b></a>
             </td>                
             
-            <td><b><? echo $wiredux_info ?></b></td>
+            <td><b><? echo $webui_info ?></b></td>
         </tr>
             
         <tr>
@@ -162,7 +162,7 @@ if ($sitemax == 0) {
             <td>
                 <div>
                     <a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>/app/agent/?first=<?= $FirstName ?>&last=<?= $LastName ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
-                        <b><u><? echo $wiredux_see_profile ?></u></b>
+                        <b><u><? echo $webui_see_profile ?></u></b>
                     </a>
                 </div>
             </td>
