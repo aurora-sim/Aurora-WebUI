@@ -32,8 +32,8 @@ $display_marker="tl";
 
 ####################### Skin ##########################
 
-//Current skins are 'default'
-$skin='default';
+//Current templates are 'default'
+$template='default';
 
 #################### Languages ########################
 

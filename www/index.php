@@ -17,7 +17,7 @@ include("settings/json.php");
 include("settings/mysql.php");
 include("check.php");
 include("languages/translator.php");
-include("skins/skins.php");
+include("templates/templates.php");
 
 if ($_GET[page] != '') {
     $_SESSION[page] = $_GET[page];
@@ -121,7 +121,7 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 <head>
     <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <link rel="stylesheet" href="<? echo $skin_css ?>" type="text/css" />
+    <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
     <link rel="icon" href="/images/main/favicon.ico" />
     <title>Welcome to <?= SYSNAME ?></title>
 </head>
