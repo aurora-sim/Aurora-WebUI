@@ -222,47 +222,44 @@ if($_SESSION[ADMINID]) {
     						$DbLink3 = new DB; 
                     $found = array();
                 		$found[0] = json_encode(array('Method' => 'FindUsers', 'WebPassword' => md5(WIREDUX_PASSWORD),
-                      		'UserID' => $_GET[user_id], 'Start' => $AStart, 'End' => $ALimit, 'Query' => $_GET[query]));
+                      		'UserID' => $_GET[user_id], 'Start' => $AStart, 'End' => $ALimit, 'Query' => $_POST[query]));
             		    $do_post_request = do_post_request($found);
                     $recieved = json_decode($do_post_request);
-						    
-                    // $DbLink1 = new DB;
+		// $DbLink1 = new DB;
                     // $DbLink1->query("SELECT PrincipalID,FirstName,LastName,Created FROM ".C_USERS_TBL." $USR $USR_1 $USR_2 $USR_3 ORDER by created ASC $Limit ");
-                    while(list($userInfo) = $recieved->{'Users'}) {
-
+                    foreach($recieved->{'Users'} as $userInfo) {
 							      // ------------------------------------
 							      // ERRORING HERE user is null right now
 							      // Commented out below so it would at least render
 							      // ------------------------------------
-							
-                    // $user_id = userInfo->{'PrincipalID'};
-                    // $username = userInfo->{'UserName'};
-                    // $created = userInfo->{'Created'};
-                    // $flags = userInfo->{'UserFlags'};
+                    $user_id = $userInfo->{'PrincipalID'};
+                    $username = $userInfo->{'UserName'};
+                    $created = $userInfo->{'Created'};
+                    $flags = $userInfo->{'UserFlags'};
 
-                    // $create = date("d.m.Y", $created);
+                    $create = date("d.m.Y", $created);
             ?>
-            
+
             <table>
                 <tr>
                     <td width=32>
                         <img src="../images/icons/icon_user.gif">
                     </td>
-                        
+
                     <td width=91 align="center">
-                        <a href="index.php?page=edit&userid=<?=$user_id?>">
-                            <font color=Blue><b>EDIT</b></FONT>
+                        <a href="index.php?page=adminedit&userid=<?=$user_id?>">
+                            <font color=Blue><b>EDIT</b></font>
                         </a>
                     </td>
-                    
+
                     <td width=243>
                         <font color=Blue><b><?=$username?></b></font>
                     </td>
-                    
+
                     <td width=173>
                         <font color=#888888><b><?=$create?></b></font>
                     </td>
-                    
+
                     <td width=100>
                     <b>
                       <?
@@ -281,21 +278,21 @@ if($_SESSION[ADMINID]) {
                       ?>
                     </b>
                     </td>
-                    
+
                     <td width=32>
                         <? if($active ==5) {?>
                         <a href="index.php?<?=$GoPage?>&action=unban&unbanusr=<?=$username?>&user_id=<?=$user_id?>">
                             <img src="../images/icons/unban.jpg" alt="Unban this User" border="0" />
                         </a>
-                                
+
                         <? } else { ?>
-                                
+
                         <a href="index.php?<?=$GoPage?>&action=ban&banusr=<?=$username?>&user_id=<?=$user_id?>">
                             <img src="../images/icons/ban.jpg" alt="Ban this User" border="0" />
                         </a>
                         <? } ?>
                     </td>
-                    
+
                     <td WIDTH=39 ALIGN=right>
                         <a HREF="index.php?<?=$GoPage?>&action=delete&delusr=<?=$username?>&user_id=<?=$user_id?>">
                             <img src="../images/icons/btn_del.gif" alt="Delete User" BORDER="0">

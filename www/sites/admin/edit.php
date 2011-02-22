@@ -1,5 +1,5 @@
 <?
-if($_SESSION[ADMINUID] == $ADMINCHECK){
+if($_SESSION[ADMINID]){
 
 $DbLink = new DB;
 if($_POST[userdata]=="set"){
@@ -54,6 +54,20 @@ window.location.href='index.php?page=edit&userid=".$_POST[uuid]."';
 </script>";
  
 }
+$found = array();
+$found[0] = json_encode(array('Method' => 'GetProfile', 'WebPassword' => md5(WIREDUX_PASSWORD)
+            , 'FirstName' => $_GET['first']
+            , 'LastName' => $_GET['last']));
+$do_post_requested = do_post_request($found);
+$recieved = json_decode($do_post_requested);
+$profileTXT = $recieved->{'profile'}->{'AboutText'};
+$profileImage = $recieved->{'profile'}->{'Image'};
+$created = $recieved->{'account'}->{'Created'};
+$uuid = $recieved->{'account'}->{'PrincipalID'};
+$diff = $recieved->{'account'}->{'TimeSinceCreated'};
+$type = $recieved->{'account'}->{'AccountInfo'};
+$partner = $recieved->{'account'}->{'Partner'};
+$date = date("D d M Y - g:i A", $created);
 
 $DbLink->query("SELECT PrincipalID,FirstName,LastName FROM ".C_USERS_TBL." WHERE PrincipalID='$_GET[userid]'");
 list($uuid,$accfirst,$acclast) = $DbLink->next_record();
