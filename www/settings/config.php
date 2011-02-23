@@ -74,6 +74,7 @@ define("C_SITES_TBL","wi_sitemanagement");
 define("C_MAP_REGIONS_TBL", "wi_regions");
 // STATISTICS
 define("C_STATS_REGIONS_TBL", "wi_statistics");
+define("C_GALLERY_TBL", "wi_gallery");
 
 
 //Aurora tables
