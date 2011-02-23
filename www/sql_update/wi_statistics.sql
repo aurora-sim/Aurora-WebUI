@@ -22,3 +22,12 @@ CREATE TABLE IF NOT EXISTS `wi_statistics` (
   UNIQUE KEY `serverIP` (`serverIP`,`serverPort`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE IF NOT EXISTS `wi_gallery` (
+  `picture` varchar(64) NOT NULL,
+  `picturethumbnail` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `active` int(1) NOT NULL,
+  `rank` int(11) NOT NULL,
+  UNIQUE KEY `serverIP` (`serverIP`,`serverPort`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
