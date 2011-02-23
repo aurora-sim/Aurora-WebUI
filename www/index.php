@@ -85,6 +85,7 @@ $DbLink->query("SELECT UserID FROM " . C_GRIDUSER_TBL . " where Online = 'True' 
         "Login < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND " .
         "Logout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) " .
         "ORDER BY Login DESC");
+$NOWONLINE = 0;
 while (list($UUID) = $DbLink->next_record()) {
     // Let's get the user info
     $DbLink2 = new DB;
