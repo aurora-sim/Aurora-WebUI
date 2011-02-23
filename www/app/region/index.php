@@ -2,7 +2,7 @@
 include("../../settings/config.php");
 include("../../settings/mysql.php");
 include("../../languages/translator.php");
-include("../../skins/skins.php");
+include("../../templates/templates.php");
 
 $DbLink = new DB;
 $query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM ".C_REGIONS_TBL." where LocX='".$_GET[x]."' and LocY='".$_GET[y]."'";
@@ -23,7 +23,7 @@ list($firstN,$lastN) = $DbLink->next_record();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <link rel="stylesheet" href="<?= SYSURL ?><? echo $skin_css ?>" type="text/css" />
+    <link rel="stylesheet" href="<?= SYSURL ?><? echo $template_css ?>" type="text/css" />
     <link rel="icon" href="<?= SYSURL ?>images/main/favicon.ico" />
     <title><?=SYSNAME?>: <? echo $webui_region_information; ?></title>
 </head>
@@ -48,7 +48,7 @@ list($firstN,$lastN) = $DbLink->next_record();
             <td><? echo $webui_location; ?> X: <?=$locX?> Y: <?=$locY?></td>
         </tr>
         <tr>
-            <td><? echo $webui_owner; ?>: <a href="<?=SYSURL?>/app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
+            <td><? echo $webui_owner; ?>: <a href="<?=SYSURL?>app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
         </tr>
     </table>
 

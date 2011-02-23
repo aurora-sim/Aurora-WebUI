@@ -1,3 +1,12 @@
+<div id="content">
+    <h2><?= SYSNAME ?>: <? echo $webui_people_search; ?></h2>
+    
+    <div id="searchpeople">
+        
+        <div id="info">
+            <p><? echo $webui_people_search_info; ?></p>
+        </div>
+
 <p>
 <?
 $DbLink2 = new DB;
@@ -20,3 +29,5 @@ while (list($siteid, $siteurl, $sitetarget) = $DbLink2->next_record())
 	
 ?>
 </p>
+
+</div></div>

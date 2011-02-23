@@ -41,7 +41,7 @@
                 <td class=gridtext vAlign=top noWrap align=right width="1%"><?=$LASTMONTHONLINE?></td>
               </tr>
 			  <tr bgColor=#000000>
-                <td class=gridtext vAlign=top noWrap align=left><strong><? echo $webui_online_now; ?>:</strong></td>
+                <td class=gridtext vAlign=top noWrap align=left><strong><a href="index.php?page=onlineusers"><? echo $webui_online_now; ?></a>:</strong></td>
                 <td class=gridtext vAlign=top noWrap align=right width="1%"><strong><?=$NOWONLINE?></strong></td>
               </tr>
 			  </tbody></table></td>
