@@ -27,4 +27,9 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('adminmanage', 'admin', 'manage.php'),
 ('news_add', 'admin', 'news_add.php'),
 ('adminsettings', 'admin', 'settings.php'),
-('adminedit', 'admin', 'edit.php');
+('adminedit', 'admin', 'edit.php'),
+('account', 'account', 'main.php'),
+('world', 'main', 'worldmain.php'),
+('users', 'main', 'usersmain.php'),
+('help', 'main', 'helpuser.php')
+;

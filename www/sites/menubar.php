@@ -6,9 +6,67 @@
  * See LICENSE for the full licensing terms of this file.
  *
  */
+ 
+ function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display)
+ {
+	$DbLink2 = new DB;
+	$DbLink2->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where parent = '$siteid' and active='1' and ((display='$Display') or (display='2') " . $AdminDisplay . ") ORDER BY rank ASC ");
+	if ($siteurl != "") {
+		if ($sitetarget == '_self') {
+			if ($_GET[btn] == $siteid) 
+			{
+				echo "<li><a href=\"#\"><span>$a[$siteid]</span></a>";
+				if (count($DbLink2) > 0)
+				{
+					echo "<ul class='menu' style='visibility:hidden;'>";
+					while (list($siteid2, $siteurl2, $sitetarget2) = $DbLink2->next_record()) 
+					{
+						WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display);
+					}
+					echo "</ul>";
+				}
+				echo "</li>";
+			} 
+			else 
+			{
+				echo "<li><a href=\"$siteurl&btn=$siteid\"><span>$a[$siteid]</span></a>";
+				if (count($DbLink2) > 0)
+				{
+					echo "<ul class='menu' style='visibility:hidden;'>";
+					while (list($siteid2, $siteurl2, $sitetarget2) = $DbLink2->next_record()) 
+					{
+						WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display);
+					}
+					echo "</ul>";
+				}
+				echo "</li>";
+			}
+		} 
+		else 
+		{
+			echo "<li><a href=\"#\" onclick=\"window.open('$siteurl','mywindow','width=400,height=200')\"><span>$a[$siteid]</span></a>";
+			if (count($DbLink2) > 0)
+			{
+				echo "<ul class='menu' style='visibility:hidden;'>";
+				while (list($siteid2, $siteurl2, $sitetarget2) = $DbLink2->next_record()) 
+				{
+					WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display);
+				}
+				echo "</ul>";
+			}
+			echo "</li>";
+		}
+	} 
+	else 
+	{
+		echo "<li><a href=\index.php?&page=smodul&id=$siteid&btn=$siteid\"><span>$a[$siteid]</span></a></li>";
+	}
+ }
+ 
 ?>
-
-<table width="100%" border="0" style="border-bottom: transparent 1px solid; border-top: transparent 1px solid" align="center" cellpadding="0" cellspacing="0">
+<div id="menu">
+    <ul class="menu">
+    
     <?
     $DbLink = new DB;
     if ($_SESSION[USERID])
@@ -21,42 +79,13 @@
     else
         $AdminDisplay = "";
 
-    $DbLink->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where active='1' and ((display='$Display') or (display='2') " . $AdminDisplay . ") ORDER BY rank ASC ");
-    $tableWidth = 1000 / $DbLink->num_rows();
+    $DbLink->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where parent is null and active='1' and ((display='$Display') or (display='2') " . $AdminDisplay . ") ORDER BY rank ASC ");
+    // $tableWidth = 1000 / $DbLink->num_rows();
     $a = get_defined_vars();
-    if($_GET[btn] == "")
-        $_GET[btn] = "webui_menu_item_home";
-    while (list($siteid, $siteurl, $sitetarget) = $DbLink->next_record()) {
+	while (list($siteid, $siteurl, $sitetarget) = $DbLink->next_record()) 
+	{
+		WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display);
+	}
     ?>
-        <td>
-            <table width="<? echo $tableWidth ?>" border="0" align="center" cellpadding="0" cellspacing="0"
-        <?
-        if ($siteurl != "") {
-            if (($siteurl != "") & ($sitetarget == '_self')) {
-                if ($_GET[btn] == $siteid) {
-                    echo"background=\"images/main/menu_selected.jpg\"";
-                } else {
-                    echo"background=\"images/main/menu_unselected.jpg\"";
-                }
-
-                echo"onclick=\"document.location.href='$siteurl&btn=$siteid'\"";
-            } else {
-                echo"onclick=\"window.open('$siteurl','mywindow','width=400,height=200')\"";
-            }
-        } else {
-            echo"onclick=\"document.location.href='index.php?&page=smodul&id=$siteid&btn=$siteid'\"";
-            if (($_GET[page] == 'smodul') && ($_GET[btn] == $siteid)) {
-                echo"background=\"images/main/menu_selected.jpg\"";
-            } else {
-                echo"background=\"images/main/menu_unselected.jpg\"";
-            }
-        }
-        ?> >
-            <td width="20"></td>
-            <td style="cursor:pointer;font-weight:bold;font-variant: small-caps;font-size: 0.9em;"> <?= ($a[$siteid]); ?></td>
-        </table>
-    </td>
-    <?
-           }
-    ?>
-</table>
+    </ul>
+</div>

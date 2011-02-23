@@ -500,3 +500,50 @@ td.gridbox_br {
   margin-bottom: 10px;
   color: #000000;
 }
+
+/* Pretty Menu */
+
+div#menu {
+  width:100%;
+  height:50px;
+  background-image: url("../images/main/header.png");
+  background-repeat: repeat-x;
+	background-color: transparent;
+  
+}
+.webui ul.menu {
+  padding:10;
+  margin:0;
+  list-style-type:none;
+}
+.webui li {
+  margin-left:5px;
+  float:left; /*pour IE*/
+}
+
+.webui ul.menu li a {
+  display:block;
+  float:left;   
+  /* width:100px; */
+  background-color:#4477ae;
+  background-image: url("../images/main/background_03.png");
+  color:#ffffff;
+  text-decoration:none;
+  text-align:center;
+  padding:5px;
+  border:1px solid;
+  /*pour avoir un effet "outset" avec IE :*/
+  border-color:#DCDCDC #696969 #696969 #DCDCDC;
+}
+
+.webui ul.menu li a:hover {
+  background-color:#4477ae;
+  background-image: none;
+  border-color:#696969 #DCDCDC #DCDCDC #696969;
+}
+
+.webui ul.menu li a:active {
+  background-color:#fff;
+  background-image: none;
+  border-color:#696969 #DCDCDC #DCDCDC #696969;
+}

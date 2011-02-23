@@ -91,6 +91,10 @@ $webui_menu_item_logout = 'Loguit';
 $webui_menu_item_login = 'Login';
 $webui_menu_item_onlineusers = 'Wie is Online';
 $webui_menu_item_peoplesearch = 'People Search';
+$webui_menu_item_users = 'Users';
+$webui_menu_item_world = 'World';
+$webui_menu_item_account = 'Account';
+$webui_menu_item_help = 'Help';
 
 //
 // Home Page

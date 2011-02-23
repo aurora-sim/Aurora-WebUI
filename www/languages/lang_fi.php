@@ -92,6 +92,10 @@ $webui_menu_item_logout = 'Kirjaudu ulos';
 $webui_menu_item_login = 'Kirjaudu sis&auml;&auml;n';
 $webui_menu_item_onlineusers = 'Online-tilassa olevat k&auml;ytt&auml;j&auml;t';
 $webui_menu_item_peoplesearch = 'Henkil&ouml;haku';
+$webui_menu_item_users = 'Users';
+$webui_menu_item_world = 'World';
+$webui_menu_item_account = 'Account';
+$webui_menu_item_help = 'Help';
 
 //
 // Home Page
