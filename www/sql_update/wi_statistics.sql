@@ -29,5 +29,5 @@ CREATE TABLE IF NOT EXISTS `wi_gallery` (
   `description` varchar(255) NOT NULL,
   `active` int(1) NOT NULL,
   `rank` int(11) NOT NULL,
-  UNIQUE KEY `serverIP` (`serverIP`,`serverPort`)
+  UNIQUE KEY `picture`
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
