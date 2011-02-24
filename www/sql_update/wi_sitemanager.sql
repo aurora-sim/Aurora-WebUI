@@ -31,5 +31,6 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('account', 'account', 'main.php'),
 ('world', 'main', 'worldmain.php'),
 ('users', 'main', 'usersmain.php'),
-('help', 'main', 'help.php')
+('help', 'main', 'help.php'),
+('gallery', 'main', 'gallery.php')
 ;

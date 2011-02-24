@@ -93,6 +93,7 @@ $webui_menu_item_login = 'Einloggen';
 $webui_menu_item_onlineusers = 'Nutzer online';
 $webui_menu_item_peoplesearch = 'Personensuche';
 $webui_menu_item_users = 'Users';
+$webui_menu_item_gallery = 'Gallery';
 $webui_menu_item_world = 'World';
 $webui_menu_item_account = 'Account';
 $webui_menu_item_help = 'Help';

@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 3.1.3
 -- http://www.phpmyadmin.net
 --
@@ -25,9 +25,12 @@ CREATE TABLE IF NOT EXISTS `wi_statistics` (
 
 CREATE TABLE IF NOT EXISTS `wi_gallery` (
   `picture` varchar(64) NOT NULL,
-  `picturethumbnail` int(11) NOT NULL,
+  `picturethumbnail` varchar(64) NOT NULL,
   `description` varchar(255) NOT NULL,
   `active` int(1) NOT NULL,
   `rank` int(11) NOT NULL,
   UNIQUE KEY (`picture`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `wi_gallery` (`picture`, `picturethumbnail`, `description`, `active`, `rank`) VALUES
+('login1.jpg', 'image1thumbnail.png', 'Image of our world', '1', '1');
