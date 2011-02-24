@@ -283,6 +283,21 @@ namespace OpenSim.Server.Handlers.Caps
             }
             return null;
         }
+
+        public void AddNewRegistry(IConfigSource config, IRegistryCore registry)
+        {
+
+        }
+
+        public void PostInitialize(IConfigSource config, IRegistryCore registry)
+        {
+
+        }
+
+        public void PostStart(IConfigSource config, IRegistryCore registry)
+        {
+
+        }
     }
 
     public class WireduxHTTPHandler : BaseStreamHandler
@@ -594,7 +609,7 @@ namespace OpenSim.Server.Handlers.Caps
             resp["Verified"] = OSD.FromBoolean(verified);
             if (verified)
             {
-                userinfo = agentService.GetUserInfo(uuid);
+                userinfo = agentService.GetUserInfo(uuid)[0];
                 IGridService gs = m_registry.RequestModuleInterface<IGridService>();
                 Services.Interfaces.GridRegion gr = gs.GetRegionByUUID(UUID.Zero, userinfo.HomeRegionID);
 
