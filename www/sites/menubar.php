@@ -64,8 +64,9 @@
  }
  
 ?>
+
 <div id="menu">
-    <ul>
+    <ul class="menu">
     
     <?
 		$DbLink = new DB;

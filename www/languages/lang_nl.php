@@ -13,6 +13,8 @@ $webui_total_regions='Totaal Regio\'s';
 $webui_unique_visitors='Unieke Gebruikers in de laatste 30 dagen';
 $webui_online_now='Online Nu';
 
+$webui_avatar_first_name = 'Avatar First Name';
+$webui_avatar_last_name = 'Avatar Last Name';
 $webui_first_name='Voornaam';
 $webui_last_name='Achternaam';
 $webui_password='Wachtwoord';

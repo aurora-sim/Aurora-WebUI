@@ -3,12 +3,12 @@
         <form action="index.php" method="POST" onSubmit="return Form(this)">
             <table>
                 <tr>
-                    <td class="even"> <? echo $webui_first_name ?>*</td>
+                    <td class="even"> <? echo $webui_avatar_first_name ?>*</td>
                     <td class="even"><input id="login_input" name="logfirstname" type="text" value="<?= $_POST[logfirstname] ?>" /></td>
                 </tr>
 
                 <tr>
-                    <td class="odd"> <? echo $webui_last_name ?>*</td>
+                    <td class="odd"> <? echo $webui_avatar_last_name ?>*</td>
                     <td class="odd"><input id="login_input" name="loglastname" type="text" value="<?= $_POST[loglastname] ?>" /></td>
                 </tr>
 

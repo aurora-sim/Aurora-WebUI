@@ -3,7 +3,7 @@
 html {width: 100%; height: 100%;}
 
 body.webui {
-  margin: 0px;
+  margin: 10px;
   margin-top: 30px;
   padding: 0px;
   font-size: 100%;
@@ -46,41 +46,79 @@ body.webui {
 	background-color: transparent;
 }
 
-#menu{
-padding:0;
-margin:0;
+/* MenuBar Horizontal */
+.webui #menubar {
+  background-color: transparent;
+  background-image: url("../images/main/background_03.png");
 }
-#menu ul{
-padding:0;
-margin:0;
+
+/* Pretty Menu */
+#menu {
+	z-index:100;
+  width:100%;
+  height:60px;
+  background-image: url("../images/main/header.png");
+  background-repeat: repeat-x;
+	background-color: transparent;
 }
-#menu li{
-position: relative;
-float: left;
-list-style: none;
-margin: 0;
-padding:0;
+
+.menu
+{	
+  position:relative; 
+  margin: auto;
+  padding-top:10px;
 }
-#menu li a{
-width:100px;
-height: 30px;
-display: block;
-text-decoration:none;
-text-align: center;
-line-height: 30px;
-background-color: black;
-color: white;
+
+#menu ul.menu  {
+  list-style-type:none;
 }
-#menu li a:hover{
-background-color: red;
+
+#menu li {
+  position: relative;
+	display: block;
+  
+  float:left; /*pour IE*/
+	list-style: none;
+	text-align: center;
 }
-#menu ul ul{
-position: absolute;
-top: 30px;
-visibility: hidden;
+
+#menu li a {  
+  margin-left:10px;
+  width:100px;
+  height: 30px;
+  display: block;
+  text-decoration:none;
+  text-align: center;
+  line-height: 30px;
+
+  padding:5px;
+	color: #ffffff;
+  background-color:#4477ae;
+  background-image: url("../images/main/background_02.png");
+  color: #ffffff;
+border-bottom: 1px solid #111111;
 }
-#menu ul li:hover ul{
-visibility:visible;
+
+
+#menu li a:hover {
+  background-color:#4477ae;
+  background-image: none;
+}
+
+#menu li a:active {
+  background-color:#ff0000;
+  background-image: none;
+}
+
+#menu ul ul {
+  position: absolute;
+  top: 41px;
+  visibility: hidden;
+  
+}
+  
+#menu ul li:hover ul  {
+  visibility:visible;
 }
 
 /* MainContainer */
@@ -92,7 +130,6 @@ visibility:visible;
 /* content*/
 .webui #content {
   font-size: 12px;
-  margin: 0px;
   padding: 10px;
   border:1px solid #222222;
   background-color: #4477ae;
@@ -277,7 +314,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 /* more info profil */
 #profil_picture {
   float: right;
-  margin-top: -100px;
+  margin-top: -105px;
 }
 
 #profil_picture img {
@@ -289,7 +326,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 /* more info region */
 #region_picture {
   float: right;
-  margin-top: -70px;
+  margin-top: -80px;
 }
 
 #region_picture img {
@@ -367,6 +404,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
   background-color: transparent;
   background-repeat: repeat;
 	height:35px;
+	margin-top: 10px;
 }
 
 .webui #footer p {margin: 0; padding: 10px 0;}
@@ -377,7 +415,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
   position: relative;
   float:right;
   margin: 0px;
-  margin-top: -212px;
+  margin-top: -224px;
   margin-right: 3px;
   padding-left:5px;
   padding-right:5px;
@@ -397,7 +435,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
   position: relative;
   float:left;
   margin: 0px;
-  margin-top: -212px;
+  margin-top: -224px;
   margin-left: 3px;
   padding-left:5px;
   padding-right:5px;
@@ -539,6 +577,3 @@ td.gridbox_br {
   margin-bottom: 10px;
   color: #000000;
 }
-
-
-

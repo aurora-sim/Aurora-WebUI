@@ -64,7 +64,7 @@ $DbLink->close();
 <table width="90%" align="center" cellpadding="2" cellspacing="3" bgcolor="#4DA2E3">
   <tr>
     <td><font color="#FFFFFF"><b> Title:<br />
-            <input name="title" value="<?=$title?>" style="width:100%" type="text" maxlength="255" />
+            <input name="title" value="<?=$title?>" style="width:100%" type="text" maxlength="45" />
     </b></font></td>
   </tr>
 </table>

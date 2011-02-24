@@ -120,14 +120,14 @@ if($_POST[Submit]=="Submit")
         <td>
           <table>
             <tr>
-              <td class="even"><? echo $webui_first_name ?>*</td>
+              <td class="even"><? echo $webui_avatar_first_name ?>*</td>
               <td class="even">
                 <input id="forgot_pass_input" name="first" type="text" size="40" maxlength="50" value="<?=$_POST[First]?>">
               </td>
             </tr>
               
             <tr>
-              <td class="odd"><? echo $webui_last_name ?>*</td>
+              <td class="odd"><? echo $webui_avatar_last_name ?>*</td>
               <td class="odd">
                 <input id="forgot_pass_input" name="last" type="text" size="40" maxlength="50" value="<?=$_POST[Last]?>">
               </td>

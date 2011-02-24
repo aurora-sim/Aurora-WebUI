@@ -100,6 +100,17 @@ $active=3;
 -->
 </style>
 
+
+<div id="content">
+    <h2><?= SYSNAME ?>: <? echo $webui_admin_manage ?></h2>
+  
+    <div id="managepanel">
+
+        <div id="info">
+            <p><? echo $webui_admin_manage_info; ?></p>
+        </div>
+        
+        
 <table>
   <tr>
     <td><div align="center" class="Stil3"></div></td>
@@ -254,11 +265,9 @@ $active=3;
         </tr>
 
     </table>
-      <br />
-      <br>
-      <br>
-      <br>
+
     </td></tr>
 </table>
+</div></div>
 
 <? } ?>

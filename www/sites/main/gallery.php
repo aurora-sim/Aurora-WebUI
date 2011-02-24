@@ -21,7 +21,7 @@
     hs.align = 'center';
     hs.transitions = ['expand', 'crossfade'];
     hs.fadeInOut = true;
-    hs.dimmingOpacity = 0.8;
+    hs.dimmingOpacity = 0.9;
     hs.outlineType = 'glossy-dark';
     hs.wrapperClassName = 'dark';
     hs.captionEval = 'this.thumb.alt';
@@ -53,7 +53,7 @@
 -->
 <div id="content"><h2><?= SYSNAME ?>: <? echo $webui_menu_item_gallery ?></h2>
     <div id="login">
-        <div class="highslide-gallery" style="width: 600px; margin: auto">
+        <div class="highslide-gallery" style="width: 100%; margin: auto">
             <!--
 	4) This is how you mark up the thumbnail images with an anchor tag around it.
 	The anchor's href attribute defines the URL of the full-size image. Given the captionEval

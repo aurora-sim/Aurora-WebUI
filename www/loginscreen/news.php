@@ -20,7 +20,7 @@
           <td class=gridbox_l></td>
           
           <td class=black_content vAlign=top align=left>
-              <strong><?=SYSNAME?> <? echo $wiredux_news; ?>:</strong>
+              <strong><?=SYSNAME?>: <? echo $webui_news; ?></strong>
               <div id=GREX style="MARGIN: 5px 0px 0px">
                   <img height=1 src="images/login_screens/spacer.gif" width=1>
               </div>

@@ -243,21 +243,21 @@ if($_SESSION[ADMINID]) {
             <table>
                 <tr>
                     <td width=32>
-                        <img src="../images/icons/icon_user.gif">
+                        <img src="images/icons/icon_user.gif">
                     </td>
 
                     <td width=91 align="center">
                         <a href="index.php?page=adminedit&userid=<?=$user_id?>">
-                            <font color=Blue><b>EDIT</b></font>
+                            <b>EDIT</b>
                         </a>
                     </td>
 
                     <td width=243>
-                        <font color=Blue><b><?=$username?></b></font>
+                        <b><?=$username?></b>
                     </td>
 
                     <td width=173>
-                        <font color=#888888><b><?=$create?></b></font>
+                        <b><?=$create?></b>
                     </td>
 
                     <td width=100>
@@ -282,20 +282,20 @@ if($_SESSION[ADMINID]) {
                     <td width=32>
                         <? if($active ==5) {?>
                         <a href="index.php?<?=$GoPage?>&action=unban&unbanusr=<?=$username?>&user_id=<?=$user_id?>">
-                            <img src="../images/icons/unban.jpg" alt="Unban this User" border="0" />
+                            <img src="images/icons/unban.jpg" alt="Unban this User" border="0" />
                         </a>
 
                         <? } else { ?>
 
                         <a href="index.php?<?=$GoPage?>&action=ban&banusr=<?=$username?>&user_id=<?=$user_id?>">
-                            <img src="../images/icons/ban.jpg" alt="Ban this User" border="0" />
+                            <img src="images/icons/ban.jpg" alt="Ban this User" border="0" />
                         </a>
                         <? } ?>
                     </td>
 
                     <td WIDTH=39 ALIGN=right>
                         <a HREF="index.php?<?=$GoPage?>&action=delete&delusr=<?=$username?>&user_id=<?=$user_id?>">
-                            <img src="../images/icons/btn_del.gif" alt="Delete User" BORDER="0">
+                            <img src="images/icons/btn_del.gif" alt="Delete User" BORDER="0">
                         </a>
                     </td>
                 </tr>

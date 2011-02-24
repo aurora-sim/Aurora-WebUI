@@ -127,7 +127,7 @@ list($REGIONSCOUNT) = $DbLink->next_record();
     <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
     <link rel="icon" href="/images/main/favicon.ico" />
     <title>Welcome to <?= SYSNAME ?></title>
-	<script src="js/global.js" type="text/javascript"></script>
+    <script src="js/global.js" type="text/javascript"></script>
 </head>
     
 <body class="webui">

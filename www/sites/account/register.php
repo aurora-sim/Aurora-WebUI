@@ -75,14 +75,14 @@ if ($_POST[action] == "") {
 <? } else { ?><? } ?>
 
                 <tr>
-                    <td class="even"><? echo $webui_first_name ?>*</td>
+                    <td class="even"><? echo $webui_avatar_first_name ?>*</td>
                     <td class="even">
                         <input id="register_input" name="accountfirst" OnBlur="checkFirstName(this.value)" type="text" size="25" maxlength="15" value="<?= $_SESSION[ACCFIRST] ?>">
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="odd"><? echo $webui_last_name ?>*</td>
+                    <td class="odd"><? echo $webui_avatar_last_name ?>*</td>
                     <td class="odd">
 
                         <?
@@ -200,7 +200,7 @@ if ($_POST[action] == "") {
 
                 <tr>
                     <td class="even"><? echo $webui_date_of_birth ?>*</td>
-                    <td bgcolor="#CCCCCC">
+                    <td class="even">
                         <table>
 
                             <tr>

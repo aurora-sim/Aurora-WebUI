@@ -55,10 +55,10 @@ window.location.href=\"index.php?page=news\";
       <table>
         <tr>
           <td>
-            <? echo $webui_admin_news_title ?>:
+            <? echo $webui_admin_news_title; ?>:
           </td>
           <td>
-            <input name="title" value="<?=$title?>" size="145" type="text" maxlength="255" />
+            <input name="title" value="<?=$title?>" size="136" type="text" maxlength="255" />
           </td>
         </tr>
       </table>
@@ -76,7 +76,7 @@ window.location.href=\"index.php?page=news\";
       <!-- ######################################################################## -->
 
       <div align="center">
-        <input type="submit" name="Submit" value="<? echo $webui_admin_create_news ?>" /> 
+        <input type="submit" name="Submit" value="<? echo $webui_admin_create_news; ?>" /> 
       </div>
     </form>
   </div>
