@@ -3,7 +3,9 @@
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
         ob_start("ob_gzhandler"); else ob_start();
 session_start();
-
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?
 /*
  * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
@@ -116,7 +118,7 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 <!-- *** END OF removed from home.php and add here *** -->
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>

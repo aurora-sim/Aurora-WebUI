@@ -7,7 +7,7 @@
  *
  */
  
- function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display)
+ function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display, $AdminDisplay)
  {
 	$DbLink2 = new DB;
 	$DbLink2->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where parent = '$siteid' and active='1' and ((display='$Display') or (display='2') " . $AdminDisplay . ") ORDER BY rank ASC ");
@@ -16,12 +16,12 @@
 			if ($_GET[btn] == $siteid) 
 			{
 				echo "<li><a href=\"#\"><span>$a[$siteid]</span></a>";
-				if (count($DbLink2) > 0)
+				if ($DbLink2->num_rows() > 0)
 				{
 					echo "<ul>";
 					while (list($siteid2, $siteurl2, $sitetarget2) = $DbLink2->next_record()) 
 					{
-						WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display);
+						WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display, $AdminDisplay);
 					}
 					echo "</ul>";
 				}
@@ -30,12 +30,12 @@
 			else 
 			{
 				echo "<li><a href=\"$siteurl&btn=$siteid\"><span>$a[$siteid]</span></a>";
-				if (count($DbLink2) > 0)
+				if ($DbLink2->num_rows() > 0)
 				{
 					echo "<ul>";
 					while (list($siteid2, $siteurl2, $sitetarget2) = $DbLink2->next_record()) 
 					{
-						WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display);
+						WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display, $AdminDisplay);
 					}
 					echo "</ul>";
 				}
@@ -45,12 +45,12 @@
 		else 
 		{
 			echo "<li><a href=\"#\" onclick=\"window.open('$siteurl','mywindow','width=400,height=200')\"><span>$a[$siteid]</span></a>";
-			if (count($DbLink2) > 0)
+			if ($DbLink2->num_rows() > 0)
 			{
 				echo "<ul>";
 				while (list($siteid2, $siteurl2, $sitetarget2) = $DbLink2->next_record()) 
 				{
-					WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display);
+					WriteMenu($siteid2, $siteurl2, $sitetarget2, $a, $Display, $AdminDisplay);
 				}
 				echo "</ul>";
 			}
@@ -84,7 +84,7 @@
 		$a = get_defined_vars();
 		while (list($siteid, $siteurl, $sitetarget) = $DbLink->next_record()) 
 		{
-			WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display);
+			WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display, $AdminDisplay);
 		}
     ?>
     </ul>

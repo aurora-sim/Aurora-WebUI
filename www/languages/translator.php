@@ -1,4 +1,3 @@
-<!-- Test Translation  -->
 <?php
 if(!empty($_COOKIE['lang']))$lang=$_COOKIE['lang'];
 if(!empty($_GET['lang']))$lang=$_GET['lang'];
