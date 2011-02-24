@@ -19,6 +19,10 @@ define("WIREDUX_PASSWORD","");
 // e.g. 24 for 24 hours  leave empty for no timed delete
 $unconfirmed_deltime="24";
 
+################### Help support area #####################
+$support_emails_to="robert.skidmore@gmail.com";
+$support_emails_subject="WebUI Support:";
+
 ################### GridMap Settings  #####################
 //Allowing Zoom on your Map
 $ALLOW_ZOOM=TRUE;
