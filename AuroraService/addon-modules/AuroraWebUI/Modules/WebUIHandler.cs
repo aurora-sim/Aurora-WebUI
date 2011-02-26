@@ -408,6 +408,18 @@ namespace OpenSim.Server.Handlers.Caps
                     {
                         return FindUsers(map);
                     }
+                    else if (method == "GetAbuseReports")
+                    {
+                        return GetAbuseReports(map);
+                    }
+                    else if (method == "AbuseReportSaveNotes")
+                    {
+                        return AbuseReportSaveNotes(map);
+                    }
+                    else if (method == "AbuseReportMarkComlete")
+                    {
+                        return AbuseReportMarkComlete(map);
+                    }
                 }
             }
             catch (Exception)
@@ -981,6 +993,49 @@ namespace OpenSim.Server.Handlers.Caps
             }
             resp["Users"] = users;
 
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] GetAbuseReports(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
+
+            List<AbuseReport> lar = ar.GetAbuseReports(map["start"].AsInteger(), map["count"].AsInteger(), map["filter"].AsString());
+            OSDArray returnvalue = new OSDArray();
+            foreach (AbuseReport tar in lar)
+            {
+                returnvalue.Add(tar.ToOSD());
+            }
+            resp["abusereports"] = returnvalue;
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] AbuseReportMarkComlete(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
+            AbuseReport tar = ar.GetAbuseReport(map["Number"].AsInteger(), map["WebPassword"].AsString());
+            tar.Active = false;
+            ar.UpdateAbuseReport(tar, map["WebPassword"].AsString());
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] AbuseReportSaveNotes(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
+            AbuseReport tar = ar.GetAbuseReport(map["Number"].AsInteger(), map["WebPassword"].AsString());
+            tar.Notes = map["Notes"].ToString();
+            ar.UpdateAbuseReport(tar, map["WebPassword"].AsString());
             resp["Finished"] = OSD.FromBoolean(true);
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
