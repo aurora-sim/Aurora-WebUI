@@ -4,7 +4,7 @@
         <p><? echo $webui_404_text ?></p>
     </div>
     <div align="center">
-        <img src="<?= SYSURL ?>images/main/error_404.png" alt="<? echo $webui_404_title ?>" title="<? echo $webui_404_title ?>" /><br />
+        <img src="<?= SYSURL ?><?=$notfound_image?>" alt="<? echo $webui_404_title ?>" title="<? echo $webui_404_title ?>" /><br />
         <a href="<?= SYSURL ?>"><? echo $webui_404_gohome ?></a>
     </div>
 </div>

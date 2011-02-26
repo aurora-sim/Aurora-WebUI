@@ -1,6 +1,6 @@
 <!-- Test Translation  -->
 <div id="Translator_Module">
-    <div class="textcolorwhite">
+    <div class="translatorcolor">
         <?php echo $webui_actual_language; ?>
         <?
         foreach ($languages as $langCode => $langName) {

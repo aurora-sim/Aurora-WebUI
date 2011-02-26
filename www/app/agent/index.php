@@ -31,7 +31,7 @@ if ($_GET[first] && $_GET[last]) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <link rel="stylesheet" href="<?= SYSURL ?><? echo $template_css ?>" type="text/css" />
-    <link rel="icon" href="<?= SYSURL ?>images/main/favicon.ico" />
+    <link rel="icon" href="<?= SYSURL ?><?=$favicon_image?>" />
     <title><?= SYSNAME ?>: <? echo $webui_users_profile; ?> <? echo $userName ?></title>
 </head>
 
