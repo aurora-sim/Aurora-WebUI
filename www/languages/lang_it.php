@@ -23,7 +23,7 @@ $webui_confirm='Conferma';
 $webui_start_region='Regione iniziale';
 $webui_address='Indirizzo';
 $webui_zip_code='Codice Postale';
-$webui_city='Citt�';
+$webui_city='Città';
 $webui_country='Paese';
 $webui_date_of_birth='Data di nascita';
 $webui_email='Email';
@@ -45,9 +45,9 @@ $webui_online_users='Online Users';
 $webui_online_users_info='Questi sono tutti gli avatar online in questo momento.';
 
 $webui_submit='Invia';
-$webui_verified_account='Grazie. La tua password � ora attiva e puoi usarla.';
+$webui_verified_account='Grazie. La tua password è ora attiva e puoi usarla.';
 $webui_internal_error='Errore interno, prego, riprovare.';
-$webui_invalid_code='Il tuo codice non � valido oppure � scaduto';
+$webui_invalid_code='Il tuo codice non è valido oppure è scaduto';
 $webui_activate_account='Attiva il tuo Account';
 
 $webui_change_account='Change Account';
@@ -109,16 +109,16 @@ $webui_welcome_visitor='Ciao Visitor!';
 $webui_welcome_userid='Ciao Userid!';
 $webui_home_page='
     <p>
-        Questo � il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
-        Ogni cosa � possibile nel nostro nuovo Mondo in 3D. <br />
-        Il nostro Mondo � creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
+        Questo è il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
+        Ogni cosa è possibile nel nostro nuovo Mondo in 3D. <br />
+        Il nostro Mondo è creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
         Crea subito un nuovo account, personalizza il tuo avatar e gioca nel nuovo mondo. <br />
         Entra ora, e fai la differenza! <br /><br /><br />
         <u>There are just 3 steps to get started:</u> <br /><br />
         1.) Crea il tuo account GRATIS in queste pagine. <br /><br />
-        2.) Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        2.) Scarica il viewer. Ti raccomandiamo <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
         3.) Assicurati di aggiungere la nostra grid al tuo viewer. <br /><br /><br />
-        <i>Per favore, tieni presente che la piattaforma di Aurora � ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
+        <i>Per favore, tieni presente che la piattaforma di Aurora è ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
     </p>';
 
 //
