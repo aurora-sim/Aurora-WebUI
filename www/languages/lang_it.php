@@ -219,6 +219,25 @@ $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
 
 //
+// Admin Settings Page
+//
+$webui_admin_settings = 'Admin Settings';
+$webui_admin_settings_info = 'Ceci vous permet des réglages administrateur.';
+$webui_admin_settings_changeable = 'Start Region changeable at';
+$webui_admin_settings_startregion = 'Start Region';
+$webui_admin_settings_require = 'Require address for account creation?';
+$webui_admin_settings_allow = 'Allow Registration';
+$webui_admin_settings_verify = 'Verify Users by Validating their email';
+$webui_admin_settings_activate = 'Activate Lastnames';
+$webui_admin_settings_addlastname = 'Add last name';
+$webui_admin_settings_deslastname = 'Deactivate last name';
+$webui_admin_settings_realastname = 'Reactivate last name';
+$webui_admin_settings_delete = 'Delete last name';
+$webui_admin_settings_save_bouton = 'Save';
+$webui_admin_settings_activate_bouton = 'Activate';
+$webui_admin_settings_desactivate = 'Desactivate';
+
+//
 // Add News Page
 //
 $webui_admin_create_news_info = 'This allows you to create a new.';

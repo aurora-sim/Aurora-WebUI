@@ -184,7 +184,7 @@ if ($_POST[action] == "") {
 
                             <tr>
                                 <td class="odd"><? echo $webui_country ?>*</td>
-                                <td class="even">
+                                <td class="odd">
                                     <select wide="25" name="country" value="<?= $_SESSION[COUNTRY] ?>">
                             <?
                             $DbLink->query("SELECT name FROM " . C_COUNTRY_TBL . " ORDER BY name ASC ");

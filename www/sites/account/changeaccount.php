@@ -362,12 +362,12 @@ if ($_SESSION[USERID] == "") {
                             
             <form name="form1" method="post" action="index.php?page=change">
                 <tr>
-                    <td class="odd" width="50%"><? echo $webui_first_name; ?>:</td>
+                    <td class="odd" width="50%"><? echo $webui_avatar_first_name; ?>:</td>
                     <td class="odd"><input type="text" size="40" name="nameFirstNew" value ="<? echo $firstName; ?>"></td>
                 </tr>
                                 
                 <tr>
-                    <td class="even"><? echo $webui_last_name ?>:</td>
+                    <td class="even"><? echo $webui_avatar_last_name; ?>:</td>
                     <td class="even"><input type="text" size="40" name="nameLastNew" value ="<? echo $lastName; ?>"></td>
                 </tr>
                                 
