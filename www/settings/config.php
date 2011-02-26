@@ -48,7 +48,8 @@ $languages=array("en" => "English",
     "it" => "Italian",
     "nl" => "Dutch",
     "pt" => "Portuguese",
-    "fi" => "Finnish");
+    "fi" => "Finnish",
+    "gr" => "Greek");
 
 ##################### Database ########################
 define("C_DB_TYPE","mysql");
