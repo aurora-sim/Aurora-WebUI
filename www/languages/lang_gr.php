@@ -174,7 +174,8 @@
     $webui_menu_item_adminhome = 'Διοικητικές';
     $webui_menu_item_adminmanage = 'Διαχείριση';
     $webui_menu_item_adminsettings = 'Διοικητικές Ρυθμίσεις';
-     
+    $webui_menu_item_adminsupport = "Support";
+
     //
     // Admin Home Page
     //
