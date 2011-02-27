@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 $webui_language_code='en';
 $webui_actual_language='English';
 
@@ -223,7 +223,7 @@ $webui_admin_manage_username = 'User Name';
 // Admin Settings Page
 //
 $webui_admin_settings = 'Admin Settings';
-$webui_admin_settings_info = 'Ceci vous permet des réglages administrateur.';
+$webui_admin_settings_info = 'This allows you to administrator.';
 $webui_admin_settings_changeable = 'Start Region changeable at';
 $webui_admin_settings_startregion = 'Start Region';
 $webui_admin_settings_require = 'Require address for account creation?';

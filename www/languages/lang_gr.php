@@ -1,4 +1,4 @@
-﻿    <?php
+    <?php
     $webui_language_code='gr';
     $webui_actual_language='Greek';
      
@@ -10,9 +10,12 @@
     $webui_grid_status_offline = 'αποσυνδεθεί';
     $webui_total_users = 'Σύνολο Χρηστών';
     $webui_total_regions = 'Σύνολο Περιφέρειες';
-    $webui_unique_visitors = 'Μοναδικοί επισκέπτες τις τελευταίες 30 ημέρες';
+    $webui_unique_visitors = 'χρηστών σε 30 μέρες';
     $webui_online_now = 'Διαθέσιμα Τώρα';
      
+    
+    $webui_avatar_first_name = 'Avatar Όνομα';
+    $webui_avatar_last_name = 'Avatar Επώνυμο';
     $webui_first_name='Όνομα';
     $webui_last_name='Επώνυμο';
     $webui_password='Κωδικός πρόσβασης';
@@ -81,21 +84,26 @@
     //
     // Menu items
     //
-    $webui_menu_item_home = 'Αρχική Σελίδα';
-    $webui_menu_item_changeaccount = 'Επεξεργασία';
-    $webui_menu_item_news = 'Ειδήσεις';
-    $webui_menu_item_regions = 'Περιφέρειες';
-    $webui_menu_item_worldmap = 'Χάρτης';
-    $webui_menu_item_register = 'Εγγραφή';
-    $webui_menu_item_logout = 'Αποσύνδεση';
-    $webui_menu_item_login = 'Είσοδος';
-    $webui_menu_item_onlineusers = 'Χρήστες';
-    $webui_menu_item_peoplesearch = 'Αναζήτηση';
+   $webui_menu_item_home = 'σπίτι';
+$webui_menu_item_changeaccount = 'Επεξεργασία';
+$webui_menu_item_news = 'Ειδήσεις';
+$webui_menu_item_regions = 'Περιφέρειες';
+$webui_menu_item_worldmap = 'Χάρτης';
+$webui_menu_item_register = 'Εγγραφή';
+$webui_menu_item_logout = 'Αποσύνδεσηt';
+$webui_menu_item_login = 'Είσοδος';
+$webui_menu_item_onlineusers = 'Χρήστες';
+$webui_menu_item_peoplesearch = 'Αναζήτηση';
+$webui_menu_item_users = 'χρήστες';
+$webui_menu_item_gallery = 'Gallery';
+$webui_menu_item_world = 'κόσμο';
+$webui_menu_item_account = 'εγγραφή';
+$webui_menu_item_help = 'βοήθεια';
      
     //
     // Home Page
     //
-    $webui_home = 'Αρχική Σελίδα';
+    $webui_home = 'σπίτι';
     $webui_welcome = 'Καλώς ήλθατε στο νέο δικτυακό τόπο';
     $webui_welcome_visitor = 'Γεια σου επισκέπτη!';
     $webui_welcome_userid = 'Γεια ταυτότητας χρήστη!';
@@ -174,8 +182,7 @@
     $webui_menu_item_adminhome = 'Διοικητικές';
     $webui_menu_item_adminmanage = 'Διαχείριση';
     $webui_menu_item_adminsettings = 'Διοικητικές Ρυθμίσεις';
-    $webui_menu_item_adminsupport = "Support";
-
+     
     //
     // Admin Home Page
     //

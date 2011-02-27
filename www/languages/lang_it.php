@@ -1,7 +1,7 @@
-﻿﻿<?php
+﻿<?php
 $webui_language_code='it';
 $webui_actual_language='Italiano';
-
+ 
 //
 // Grid Status Module
 //
@@ -155,7 +155,7 @@ $webui_fullscreen = 'Pieno schermo';
 //
 // People Search Page
 //
-$webui_people_search='Ricerca utenti
+$webui_people_search='Ricerca utenti';
 $webui_people_search_info = 'Qui puoi ricercare tra gli utenti iscritti';
 $webui_people_search_bouton = 'Cerca';
 $webui_users_found='Utenti trovati';
@@ -217,16 +217,16 @@ $webui_admin_news_delete = 'Cancella';
 $webui_admin_manage = 'Pannello di controllo';
 $webui_admin_manage_info = 'Da qui puoi amministrare gli utenti.';
 $webui_admin_manage_user = 'Pannello di controllo amministrazione utenti';
-$webui_admin_manage_username = 'Nome dell'avatar';
+$webui_admin_manage_username = 'Nome dell\'avatar';
 
 //
 // Admin Settings Page
 //
 $webui_admin_settings = 'Settaggi amministratore';
-$webui_admin_settings_info = 'Da qui puoi modificare i settaggi per l'Amministratore.';
+$webui_admin_settings_info = 'Da qui puoi modificare i settaggi per l\'Amministratore.';
 $webui_admin_settings_changeable = 'La Regione iniziale è modificabile da';
 $webui_admin_settings_startregion = 'Regione iniziale';
-$webui_admin_settings_require = 'Richiedi l'indirizzo per la creazione di un nuovo utente?';
+$webui_admin_settings_require = 'Richiedi l\'indirizzo per la creazione di un nuovo utente?';
 $webui_admin_settings_allow = 'Permetti la registrazione';
 $webui_admin_settings_verify = 'Verifica utenti tramite email';
 $webui_admin_settings_activate = 'Attiva i cognomi';
