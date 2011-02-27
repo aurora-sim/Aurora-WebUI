@@ -62,9 +62,17 @@ if ($_SESSION[ADMINID]) {
     if ($_POST[verifyusersSubmit] == "Deactivate") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET verifyUsers='0'");
     }
+	
+	if ($_POST[Submitage] == "Activate") {
+        $DbLink->query("UPDATE " . C_ADM_TBL . " SET ForceAge='1'");
+    }
 
-    $DbLink->query("SELECT lastnames,region,startregion,adress,allowRegistrations,verifyUsers FROM " . C_ADM_TBL . "");
-    list($LASTNMS, $REGIOCHECK, $STARTREGION, $ADRESSCHECK, $ALLOWREGISTRATION, $VERIFYUSERS) = $DbLink->next_record();
+    if ($_POST[Submitage] == "Deactivate") {
+        $DbLink->query("UPDATE " . C_ADM_TBL . " SET ForceAge='0'");
+    }
+
+    $DbLink->query("SELECT lastnames,region,startregion,adress,allowRegistrations,verifyUsers,ForceAge FROM " . C_ADM_TBL . "");
+    list($LASTNMS, $REGIOCHECK, $STARTREGION, $ADRESSCHECK, $ALLOWREGISTRATION, $VERIFYUSERS, $FORCEAGE) = $DbLink->next_record();
 ?>
 
 <div id="content">
@@ -223,6 +231,19 @@ if ($_SESSION[ADMINID]) {
                   </select>
                           
                   <input type="submit" name="Submit5" value="Save" />
+              </td>
+            </tr>
+        </form>
+		
+		<form id="form6" name="form6" method="post" action="index.php?page=adminsettings">
+            <tr>
+              <td class="even"><span class="Stil4">Restrict age to 18 or older</span></td>
+              <td class="even">
+                  <? if ($FORCEAGE == 0) { ?>
+                  <input type="submit" name="Submitage" value="Activate" />
+                  <? } else { ?>
+                  <input type="submit" name="Submitage" value="Deactivate" />
+                  <? } ?>
               </td>
             </tr>
         </form>

@@ -18,6 +18,23 @@ function validate(form)
 				}
 			}
 		}
+		if (form.elements[i].attributes["minlength"])
+		{
+			if (new String(form.elements[i].value).length < parseInt(form.elements[i].attributes["minlength"].value))
+			{
+				formproblem(form.elements[i], " reuires at least " + form.elements[i].attributes["minlength"].value + " charaters.");
+				return false;
+			}
+		}
+		if (form.elements[i].attributes["compare"])
+		{
+			if (form.elements[i].value != document.getElementsByName(form.elements[i].attributes["compare"].value)[0].value)
+			{
+				formproblem(form.elements[i], " does not match.");
+				return false;
+			}
+		}
+		if (form.elements[i].attributes["label"]) removeClass(document.getElementById(form.elements[i].attributes["label"].value), "error");
 	}
 	return true;
 }
@@ -27,13 +44,35 @@ function formproblem(el, message)
 	if (el.attributes["label"])
 	{
 		document.getElementById(el.attributes["label"].value).className = "error";
-	}
-	if (document.getElementById("error_message"))
-	{
-		document.getElementById("error_message").innerText = el.name + message;
+		if (document.getElementById("error_message"))
+		{
+			document.getElementById("error_message").innerText = document.getElementById(el.attributes["label"].value).innerText + message;
+			document.getElementById("error_message").scrollIntoView(true);
+		}
+		else
+			alert(document.getElementById(el.attributes["label"].value).innerText + message);
 	}
 	else
 	{
-		alert(el.name + message);
+		if (document.getElementById("error_message"))
+		{
+			document.getElementById("error_message").innerText = el.name + message;
+			document.getElementById("error_message").scrollIntoView(true);
+		}
+		else
+			alert(el.name + message);
+	}
+}
+
+function hasClass(ele,cls) {
+	return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+function addClass(ele,cls) {
+	if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+}
+function removeClass(ele,cls) {
+	if (hasClass(ele,cls)) {
+		var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+		ele.className=ele.className.replace(reg,' ');
 	}
 }

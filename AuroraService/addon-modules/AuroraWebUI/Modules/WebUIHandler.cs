@@ -465,6 +465,8 @@ namespace OpenSim.Server.Handlers.Caps
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
 
+  
+
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             if (accountService == null)
@@ -482,9 +484,21 @@ namespace OpenSim.Server.Handlers.Caps
 
             if (Verified)
             {
+                // could not find a way to save this data here.
+                DateTime RLDOB = map["RLDOB"].AsDate();
+                string RLFirstName = map["RLFisrtName"].AsString();
+                string RLLastName = map["RLLastName"].AsString();
+                string RLAdress = map["RLAdress"].AsString();
+                string RLCity = map["RLCity"].AsString();
+                string RLZip = map["RLZip"].AsString();
+                string RLCountry = map["RLCountry"].AsString();
+                string RLIP = map["RLIP"].AsString();
+                // could not find a way to save this data here.
+
+
                 userID = user.PrincipalID;
                 user.UserLevel = -1;
-
+                
                 accountService.StoreUserAccount(user);
 
                 IProfileConnector profileData = DataManager.RequestPlugin<IProfileConnector>();
