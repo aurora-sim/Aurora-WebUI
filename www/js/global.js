@@ -11,10 +11,18 @@ function validate(form)
 		{
 			if (form.elements[i].attributes["require"].value == "true")
 			{
-				if (form.elements[i].value == "")
+				if (form.elements[i].type == "checkbox")
+				{
+					if (!form.elements[i].checked)
+					{
+						formproblem(form.elements[i], " is required");
+						return false;
+					}
+				}
+				else if (form.elements[i].value == "")
 				{
 					formproblem(form.elements[i], " is required");
-					return false;
+					
 				}
 			}
 		}

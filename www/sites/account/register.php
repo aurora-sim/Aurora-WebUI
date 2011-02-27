@@ -240,7 +240,7 @@ function displayDefaultAvatars()
 				<? displayDefaultAvatars(); ?>
 <? if( file_exists( $_SERVER{'DOCUMENT_ROOT'} . "/TOS.txt"))  { ?>
 				<tr>
-					<td valign="top" class="odd"><input type="checkbox" name="agree" id="agree" value="1" /><label for="agree"><?=$site_terms_of_service_agree?></label>
+					<td valign="top" class="odd"><input label="agree_label" require="true" type="checkbox" name="Agree_with_TOS" id="agree" value="1" /><label for="agree"><span id="agree_label"><?=$site_terms_of_service_agree?></span></label>
 					<td class="odd"><div style="width:450px;height:300px;overflow:auto;"><pre><? include("tos.txt"); ?></pre></div></td>
 				</tr>
 <? } ?>
