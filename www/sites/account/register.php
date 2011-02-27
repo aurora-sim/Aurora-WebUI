@@ -140,7 +140,7 @@ function displayDefaultAvatars()
         <form ACTION="index.php?page=register" METHOD="POST" onsubmit="if (!validate(this)) return false;">
             <table width="100%">
 				<tr><td width="50%"></td><td width="50%"></td></tr>
-                <tr><td width="50%" class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
+                <tr><td class="error" colspan="2" align="center" id="error_message"><img src="images/login_screens/spacer.gif" width="1" height="18" /><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
                 <tr>
                     <td class="even"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span></td>
                     <td class="even">
