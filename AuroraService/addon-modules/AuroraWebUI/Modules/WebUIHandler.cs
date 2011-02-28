@@ -629,8 +629,7 @@ namespace OpenSim.Services
                 resp["HomeName"] = OSD.FromString(gr.RegionName);
                 resp["Online"] = OSD.FromBoolean(userinfo.IsOnline);
                 resp["Email"] = OSD.FromString(user.Email);
-                resp["FirstName"] = OSD.FromString(user.FirstName);
-                resp["LastName"] = OSD.FromString(user.LastName);
+                resp["Name"] = OSD.FromString(user.Name);
             }
 
             string xmlString = OSDParser.SerializeJsonString(resp);
@@ -692,19 +691,17 @@ namespace OpenSim.Services
 
         byte[] ChangePassword(OSDMap map)
         {
-            string Name = map["Name"].AsString();
             string Password = map["Password"].AsString();
             string newPassword = map["NewPassword"].AsString();
 
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             UUID secureSessionID;
-            UUID userID = UUID.Zero;
-            userID = map["UUID"].AsUUID();
+            UUID userID = map["UUID"].AsUUID();
 
 
             IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
 
-            LoginResponse loginresp = loginService.VerifyClient(Name, Password, UUID.Zero, false, "", "", "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient(userID, Password, UUID.Zero, false, "", "", "", out secureSessionID);
             OSDMap resp = new OSDMap();
             //Null means it went through without an error
             bool Verified = loginresp == null;
