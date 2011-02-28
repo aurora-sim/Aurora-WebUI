@@ -81,7 +81,7 @@ if ($_SESSION[ADMINID]) {
   <div id="adminsettings">
   
   <div id="info">
-      <p><? echo $webui_admin_home_info; ?></p>
+      <p><? echo $webui_admin_settings_info; ?></p>
   </div>
 
 
@@ -89,18 +89,18 @@ if ($_SESSION[ADMINID]) {
       <form id="form41" name="form41" method="post" action="index.php?page=adminsettings">
           <tr>
               <td class="odd" width="50%">
-                  <span class="Stil4">Start Region changeable at:</span>
-                      <select class="box" wide="25" name="regtyp">
+                  <? echo $webui_admin_settings_changeable; ?>: 
+                      <select wide="25" name="regtyp">
                         <?
-                            echo "<option value='0' " . ($REGIOCHECK == '0' ? 'selected' : '') . ">Create/Edit Account</option>
-                                  <option value='1' " . ($REGIOCHECK == '1' ? 'selected' : '') . ">Edit Account</option>
-                                  <option value='2' " . ($REGIOCHECK == '2' ? 'selected' : '') . ">Admin only</option>";
+                            echo "<option value='0' " . ($REGIOCHECK == '0' ? 'selected' : '') . ">$webui_admin_settings_create_select</option>
+                                  <option value='1' " . ($REGIOCHECK == '1' ? 'selected' : '') . ">$webui_admin_settings_edit_select</option>
+                                  <option value='2' " . ($REGIOCHECK == '2' ? 'selected' : '') . ">$webui_admin_settings_adminonly_select</option>";
                         ?>
                       </select>
               </td>
                       
               <td class="odd" width="50%">
-                  <span class="Stil4">Startregion:</span>
+                  <? echo $webui_admin_settings_startregion; ?>: 
                       <select class="box" wide="25" name="region">
                         <?
                             $DbLink->query("SELECT RegionName FROM " . C_REGIONS_TBL . " ORDER BY RegionName ASC ");
@@ -115,18 +115,18 @@ if ($_SESSION[ADMINID]) {
                       
           <tr>
               <td class="even">
-                  <span class="Stil4">Require address for account creation?</span>
+                  <? echo $webui_admin_settings_require; ?>: 
                       <select class="box" wide="25" name="adressset" >
                         <?
-                            echo "<option value='0' " . ($ADRESSCHECK == '0' ? 'selected' : '') . ">NO</option>
-                                  <option value='1' " . ($ADRESSCHECK == '1' ? 'selected' : '') . ">YES</option>";
+                            echo "<option value='0' " . ($ADRESSCHECK == '0' ? 'selected' : '') . ">$webui_admin_settings_yes_select</option>
+                                  <option value='1' " . ($ADRESSCHECK == '1' ? 'selected' : '') . ">$webui_admin_settings_no_select</option>";
                        ?>
                       </select>
               </td>
                               
               <td class="even">
                   <div align="center">
-                      <input type="submit" name="Submitreg" value="Save" />
+                      <input type="submit" name="Submitreg" value="<? echo $webui_admin_settings_save_bouton; ?>" />
                   </div>
              </td>
           </tr>
@@ -134,12 +134,14 @@ if ($_SESSION[ADMINID]) {
 
         <form id="form9" name="form9" method="post" action="index.php?page=adminsettings">
             <tr>
-              <td class="odd"><span class="Stil4">Allow Registration</span></td>
+              <td class="odd">
+                  <? echo $webui_admin_settings_allow; ?>
+              </td>
               <td class="odd">
                   <? if ($ALLOWREGISTRATION == 0) { ?>
-                  <input type="submit" name="allowRegistrationSubmit" value="Activate" />
+                  <input type="submit" name="allowRegistrationSubmit" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
                   <? } else { ?>
-                  <input type="submit" name="allowRegistrationSubmit" value="Deactivate" />
+                  <input type="submit" name="allowRegistrationSubmit" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
                   <? } ?>
               </td>
             </tr>
@@ -147,12 +149,14 @@ if ($_SESSION[ADMINID]) {
         
         <form id="form9" name="form9" method="post" action="index.php?page=adminsettings">
             <tr>
-              <td class="even"><span class="Stil4">Verify Users by Validating their email</span></td>
+              <td class="even">
+                  <? echo $webui_admin_settings_verify; ?>
+              </td>
               <td class="even">
                   <? if ($VERIFYUSERS == 0) { ?>
-                  <input type="submit" name="verifyusersSubmit" value="Activate" />
+                  <input type="submit" name="verifyusersSubmit" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
                   <? } else { ?>
-                  <input type="submit" name="verifyusersSubmit" value="Deactivate" />
+                  <input type="submit" name="verifyusersSubmit" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
                   <? } ?>
               </td>
             </tr>
@@ -160,12 +164,14 @@ if ($_SESSION[ADMINID]) {
         
         <form id="form9" name="form9" method="post" action="index.php?page=adminsettings">
             <tr>
-              <td class="odd"><span class="Stil4">Activate Lastnames </span></td>
+              <td class="odd">
+                  <? echo $webui_admin_settings_activate; ?>
+              </td>
               <td class="odd">
                   <? if ($LASTNMS == 0) { ?>
-                  <input type="submit" name="Submitnam2" value="Activate" />
+                  <input type="submit" name="Submitnam2" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
                   <? } else { ?>
-                  <input type="submit" name="Submitnam2" value="Deactivate" />
+                  <input type="submit" name="Submitnam2" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
                   <? } ?>
               </td>
             </tr>
@@ -173,17 +179,21 @@ if ($_SESSION[ADMINID]) {
         
         <form id="form2" name="form2" method="post" action="index.php?page=adminsettings">
             <tr>
-              <td class="even"><span class="Stil4">Add last name </span></td>
+              <td class="even">
+                  <? echo $webui_admin_settings_addlastname; ?>
+              </td>
               <td class="even">
                   <input type="text" name="lastname" />
-                  <input type="submit" name="Submit2" value="Save" />
+                  <input type="submit" name="Submit2" value="<? echo $webui_admin_settings_save_bouton; ?>" />
               </td>
             </tr>
         </form>
               
         <form id="form3" name="form3" method="post" action="index.php?page=adminsettings">
             <tr>
-              <td class="odd"><span class="Stil4">Deactivate last name </span></td>
+              <td class="odd">
+                  <? echo $webui_admin_settings_deslastname; ?>
+              </td>
               <td class="odd">
                   <select class="box" wide="25" name="deactivelast">
                       <?
@@ -194,14 +204,16 @@ if ($_SESSION[ADMINID]) {
                       <option><?= $NAMEDB ?></option><? } ?>
                   </select>
                           
-                  <input type="submit" name="Submit3" value="Save" />
+                  <input type="submit" name="Submit3" value="<? echo $webui_admin_settings_save_bouton; ?>" />
               </td>
             </tr>
         </form>
               
         <form id="form4" name="form4" method="post" action="index.php?page=adminsettings">
             <tr>
-              <td class="even"><span class="Stil4">Reactivate last name </span></td>
+              <td class="even">
+                  <? echo $webui_admin_settings_realastname; ?>
+              </td>
               <td class="even">
                   <select class="box" wide="25" name="activatelast">
                       <?
@@ -212,14 +224,16 @@ if ($_SESSION[ADMINID]) {
                       <option><?= $NAMEDB ?></option><? } ?>
                   </select>
                           
-                  <input type="submit" name="Submit4" value="Save" />
+                  <input type="submit" name="Submit4" value="<? echo $webui_admin_settings_save_bouton; ?>" />
               </td>
             </tr>
         </form>
               
         <form id="form5" name="form5" method="post" action="index.php?page=adminsettings">
             <tr>
-              <td class="odd"><span class="Stil4">Delete last name </span></td>
+              <td class="odd">
+                  <? echo $webui_admin_settings_delete; ?>
+              </td>
               <td class="odd">
                   <select class="box" wide="25" name="delname">
                       <?
@@ -230,7 +244,7 @@ if ($_SESSION[ADMINID]) {
                       <option><?= $NAMEDB ?></option><? } ?>
                   </select>
                           
-                  <input type="submit" name="Submit5" value="Save" />
+                  <input type="submit" name="Submit5" value="<? echo $webui_admin_settings_save_bouton; ?>" />
               </td>
             </tr>
         </form>

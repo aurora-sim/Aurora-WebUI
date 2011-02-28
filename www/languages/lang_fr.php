@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $webui_language_code='fr';
 $webui_actual_language='Français';
 
@@ -177,7 +177,7 @@ $webui_confirm_password = 'Confirmer le mot de passe';
 //
 // Admin parts
 //
-$webui_admin_login = "Connection Administration";
+
 $webui_menu_item_adminloginscreen = 'Editer';
 $webui_menu_item_adminhome = 'Admin';
 $webui_menu_item_adminmanage = 'Manage';
@@ -191,7 +191,7 @@ $webui_admin_home = 'Accueil Administration';
 $webui_admin_home_info = 'Ici, vous pouvez créer des utilisateurs, modifier l\'écran de connexion, et plus...';
 $webui_admin_welcome = 'Bienvenue sur le';
 $webui_admin_panel = 'Panneau d\'administration';
-$webui_admin_login = 'Connection Administration';
+$webui_admin_login = "Connection Administration";
 
 //
 // Admin Edit LoginScreen Page
@@ -219,34 +219,73 @@ $webui_admin_manage_info = 'Ceci vous permet d\'administrer les utilisateurs.';
 $webui_admin_manage_user = 'Panneau d\'administration Gestion des utilisateurs';
 $webui_admin_manage_username = 'Nom d\'utilisateur';
 
+$webui_admin_manage_user = 'Utilisateur';
+$webui_admin_manage_edit = 'Editer';
+$webui_admin_manage_created = 'Créé';
+$webui_admin_manage_active = 'Actif';
+$webui_admin_manage_inactive = 'Inactif';
+$webui_admin_manage_banned = 'Banni';
+$webui_admin_manage_notconf = 'Non confirmé';
+$webui_admin_manage_userban = 'Dannir cet utilisateur';
+$webui_admin_manage_userunban = 'Débannir cet utilisateur';
+$webui_admin_manage_userdelete = 'Effacer cet utilisateur';
+
+//
+// Admin Edit Management Panel Page
+//
+$webui_admin_edit_manage = 'Editer panneau d\'administration';
+$webui_admin_edit_manage_info = 'Ceci vous permet d\'éditer le panneau d\'administrations des utilisateurs.';
+$webui_admin_edit_manage_userid = 'USERID (UUID)';
+$webui_admin_edit_manage_avatar_firstname = 'Nom de l\'Avatar';
+$webui_admin_edit_manage_avatar_lastname = 'Prénom de l\'Avatar';
+$webui_admin_edit_manage_real_firstname = 'Nom réel';
+$webui_admin_edit_manage_real_lastname = 'Prénom réel';
+$webui_admin_edit_manage_real_street = 'Rue';
+$webui_admin_edit_manage_real_city = 'Ville';
+$webui_admin_edit_manage_real_zip = 'Zip';
+$webui_admin_edit_manage_real_country = 'Pays';
+$webui_admin_edit_manage_real_email = 'Adresse Email';
+$webui_admin_edit_manage_savechanges = 'Sauver les Changements';
+$webui_admin_edit_manage_savestatus = 'Sauver le Status';
+$webui_admin_edit_manage_currentstatus = 'Status actuel';
+$webui_admin_edit_manage_setstatus = 'Fixer le Status';
+$webui_admin_edit_manage_active = 'Activer';
+$webui_admin_edit_manage_inactive = 'Désactiver';
+$webui_admin_edit_manage_notconf = 'Non Confirmé';
+
 //
 // Admin Settings Page
 //
-$webui_admin_settings = 'Admin Settings';
+$webui_admin_settings = 'Paramètres administrateur';
 $webui_admin_settings_info = 'Ceci vous permet des réglages administrateur.';
-$webui_admin_settings_changeable = 'Start Region changeable at';
-$webui_admin_settings_startregion = 'Startregion';
-$webui_admin_settings_require = 'Require address for account creation?';
-$webui_admin_settings_allow = 'Allow Registration';
-$webui_admin_settings_verify = 'Verify Users by Validating their email';
-$webui_admin_settings_activate = 'Activate Lastnames';
-$webui_admin_settings_addlastname = 'Add last name';
-$webui_admin_settings_deslastname = 'Deactivate last name';
-$webui_admin_settings_realastname = 'Reactivate last name';
-$webui_admin_settings_delete = 'Delete last name';
-$webui_admin_settings_save_bouton = 'Save';
-$webui_admin_settings_activate_bouton = 'Activate';
-$webui_admin_settings_desactivate = 'Desactivate';
+$webui_admin_settings_changeable = 'Région de départ modifiable à';
+$webui_admin_settings_startregion = 'Région de départ';
+$webui_admin_settings_require = 'Exiger l\'adresse pour la création de compte';
+$webui_admin_settings_allow = 'Permettre l\'inscription';
+$webui_admin_settings_verify = 'Validation Email';
+$webui_admin_settings_activate = 'Activer le nom de l\'avatar';
+$webui_admin_settings_addlastname = 'Ajouter un nom d\'avatar';
+$webui_admin_settings_deslastname = 'Désactiver le nom de l\'avatar';
+$webui_admin_settings_realastname = 'Réactiver le nom de l\'avatar';
+$webui_admin_settings_delete = 'Effacer le nom de l\'avatar';
+$webui_admin_settings_save_bouton = 'Sauver';
+$webui_admin_settings_activate_bouton = 'Activer';
+$webui_admin_settings_desactivate_bouton = 'Désactiver';
+$webui_admin_settings_create_select = 'Créer/Editer le compte';
+$webui_admin_settings_edit_select = 'Editer le compte';
+$webui_admin_settings_adminonly_select = 'Adminsitrateur uniquement';
+$webui_admin_settings_yes_select = 'Oui';
+$webui_admin_settings_no_select = 'Non';
 
 //
 // Add News Page
 //
-$webui_admin_create_news_info = 'This allows you to create a new.';
+$webui_admin_create_news_info = 'Cela vous permet de créer une nouvauté.';
 
 //
 // Login Screen page
 //
-$webui_login_screen = 'Login Screen';
+$webui_login_screen = 'Ecran de connexion';
 $webui_regionbox = 'Région';
 $webui_special_info = 'En ce moment, nous voudrions vous demander d\'aller sur le site afin de vous assurer que vous avez enregistré votre e-mail.';
 $webui_special_visit = 'Visitez';

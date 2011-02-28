@@ -1,7 +1,7 @@
 ﻿<?php
 $webui_language_code='it';
 $webui_actual_language='Italiano';
- 
+
 //
 // Grid Status Module
 //
@@ -219,6 +219,40 @@ $webui_admin_manage = 'Pannello di controllo';
 $webui_admin_manage_info = 'Da qui puoi amministrare gli utenti.';
 $webui_admin_manage_user = 'Pannello di controllo amministrazione utenti';
 $webui_admin_manage_username = 'Nome dell\'avatar';
+
+$webui_admin_manage_user = 'User';
+$webui_admin_manage_edit = 'Editer';
+$webui_admin_manage_created = 'Created';
+$webui_admin_manage_active = 'Active';
+$webui_admin_manage_inactive = 'Inactive';
+$webui_admin_manage_banned = 'Banned';
+$webui_admin_manage_notconf = 'Not Confirmed';
+$webui_admin_manage_userban = 'Ban this User';
+$webui_admin_manage_userunban = 'Unban this User';
+$webui_admin_manage_userdelete = 'Delete this User';
+
+//
+// Admin Edit Management Panel Page
+//
+$webui_admin_edit_manage = 'Edit Management Panel';
+$webui_admin_edit_manage_info = 'Ceci vous permet d\'éditer le panneau d\'administrations des utilisateurs.';
+$webui_admin_edit_manage_userid = 'USERID (UUID)';
+$webui_admin_edit_manage_avatar_firstname = 'Avatar first name';
+$webui_admin_edit_manage_avatar_lastname = 'Avatar last name';
+$webui_admin_edit_manage_real_firstname = 'Real first name';
+$webui_admin_edit_manage_real_lastname = 'Real last name';
+$webui_admin_edit_manage_real_street = 'Street';
+$webui_admin_edit_manage_real_city = 'City';
+$webui_admin_edit_manage_real_zip = 'Zip';
+$webui_admin_edit_manage_real_country = 'Country';
+$webui_admin_edit_manage_real_email = 'Email';
+$webui_admin_edit_manage_savechanges = 'Save Changes';
+$webui_admin_edit_manage_savestatus = 'Save Status';
+$webui_admin_edit_manage_currentstatus = 'Current Status';
+$webui_admin_edit_manage_setstatus = 'Set Status';
+$webui_admin_edit_manage_active = 'Active';
+$webui_admin_edit_manage_inactive = 'Inactive';
+$webui_admin_edit_manage_notconf = 'Not Confirmed';
 
 //
 // Admin Settings Page

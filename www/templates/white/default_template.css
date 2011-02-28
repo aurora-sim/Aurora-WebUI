@@ -3,34 +3,13 @@
 html {width: 100%; height: 100%;}
 
 body.webui {
-  margin: 10px;
-  margin-top: 30px;
+  margin: 0px;
   padding: 0px;
   font-size: 100%;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: center;
   color:#000000;
-  background: #FFFFFF url('background_01.jpg') 50% 0% no-repeat;
-}
-
-.webui #container {
-	width: 900px;
-        height: 100%;
-        background-color: transparent;
-        background-image: url("background_03.png");
-	margin: 0 auto;
-	border: 0px solid #000000;
-	text-align: left;
-}
-
-.webui #container2 {
-	width: 860px;
-        background-color: transparent;
-        background-image: url("background_03.png");
-	margin: 0 auto;
-        padding-top:0px;
-	border: 0px solid #000000;
-	text-align: left;
+  background: #ffffff url("fade_stripe_01.png") 50% 0% repeat-x; /* d1d1d1 */
 }
 
 .webui #adminnote {
@@ -42,17 +21,70 @@ body.webui {
 	text-align: left;
 }
 
-.webui #header {
-  background-image: url("header.png");
-  /*background-repeat: repeat-x;*/
-	background-color: transparent;
+/* Translator and date Container */
+.webui #topcontainer {
+	width: 925px;
+  margin-top: -14px;
+  margin-left: auto;
+  margin-right: auto;
+  color:#000000;
+  z-index: 50;
 }
 
-.webui #headerimages {
-  background-image: url("header.png");
-  /*background-repeat: repeat-x;*/
-	background-color: transparent;
+/* Translator_Module */
+.webui #translator {
+  position: relative;
+  float:right;
+  margin: 0px;
+  margin-top: 0px;
+  margin-right: 3px;
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:3px;
+  padding-bottom:3px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  background-image: url("background_06.png");
+  background-color: transparent;
+  background-repeat: repeat;
+	height: 15px;
 }
+
+/* Date Module*/
+.webui #date {
+  position: relative;
+  float:left;
+  margin: 0px;
+  margin-top: 0px;
+  margin-left: 3px;
+  padding-left:5px;
+  padding-right:5px;
+  padding-top:3px;
+  padding-bottom:3px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  background-image: url("background_06.png");
+  background-color: transparent;
+  background-repeat: repeat;
+	height: 15px;
+}
+
+.webui #container {
+	width: 900px;
+  background-image: url("background_04.png");
+  background-color: transparent;
+  background-repeat: repeat;
+  margin-top: 27px;
+  margin-left: auto;
+  margin-right: auto;
+	border: 0px solid #000000;
+	text-align: left;
+	padding: 10px;
+}
+
+.webui #header {color:#ffffff;}
+
+.webui #headerimages {;}
 
 /* Logo */
 .webui #headerimages h1 {
@@ -60,29 +92,22 @@ body.webui {
 	height:139px;
   background-image: url("aurora-webui-logo.png");
   background-repeat: no-repeat;
-	background-color: transparent;
+	background-color: #222222;
 }
 
 /* MenuBar Horizontal */
-.webui #menubar {
-  background-color: transparent;
-  background-image: url("background_03.png");
-}
+.webui #menubar {;}
 
 /* Pretty Menu */
 #menu {
 	z-index:100;
   width:100%;
   height:60px;
-  background-image: url("header.png");
-  background-repeat: repeat-x;
-	background-color: transparent;
 }
 
 .menu
 {	
   position:relative; 
-  margin: auto;
   padding-top:10px;
 }
 
@@ -93,7 +118,6 @@ body.webui {
 #menu li {
   position: relative;
 	display: block;
-  
   float:left; /*pour IE*/
 	list-style: none;
 	text-align: center;
@@ -107,19 +131,14 @@ body.webui {
   text-decoration:none;
   text-align: center;
   line-height: 30px;
-
   padding:5px;
 	color: #000000;
-  background-color:#4477ae;
-  background-image: url("background_02.png");
-  color: #000000;
-border-bottom: 1px solid #111111;
+	background-color: #d1d1d1;
+	border-bottom: 1px solid #f1f1f1;
 }
 
-
 #menu li a:hover {
-  background-color:#4477ae;
-  background-image: none;
+  background-color: #e5e5e5;
 }
 
 #menu li a:active {
@@ -131,30 +150,22 @@ border-bottom: 1px solid #111111;
   position: absolute;
   top: 41px;
   visibility: hidden;
-  
 }
   
 #menu ul li:hover ul  {
   visibility:visible;
 }
 
-/* MainContainer */
-.webui #MainContainer {
-	padding: 0px;
-	background-color: transparent;
-}
-
 /* content*/
 .webui #content {
   font-size: 12px;
   padding: 10px;
-  border:1px solid #222222;
-  background-color: #4477ae;
-  background-image: url("background_03.png");
+	background-color: #ffffff;
   text-align:left;
-  border: 0px solid #fff;
-  color: #000000;
 }
+
+/* MainContainer */
+.webui #MainContainer {;}
 
 /* from sitemodul.php */
 #scr {
@@ -171,16 +182,16 @@ border-bottom: 1px solid #111111;
 
 /* grid status module */
 .textcolorwhite {color: #f1f1f1;}
-.translatorcolor {color: #000000;}
+.translatorcolor {color: #ffffff;}
 .textcolorgreen {color:#12d212;}
 .textcolorred {color:#ea0202;}
 
 .placeholder{font-size: 3px}
 .box {font-size: 12px;height: 20px; width:60px;}
 .box1 {font-size: 12px;height: 20px;width: 60px;}
-.boxspace {font-size: 1px; color: #000000;}
+.boxspace {font-size: 1px; color: #ffffff;}
 .style1 {color: #fff}
-.style2 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; }
+.style2 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #ffffff; }
 .Stil9 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
 
 
@@ -223,14 +234,14 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 #content a:hover {text-decoration: underline;}
 
 #regionlist {width:100%;background-color: transparent;}
-#regionlist table {color: #000000; width: 100%;}
+#regionlist table {color: #ffffff; width: 100%;}
 #regionlist td a {color: #aaaa00; text-decoration: none;}
 #regionlist a:visited {text-decoration: none}
 #regionlist a:active {text-decoration: none}
 #regionlist a:hover {text-decoration: underline;}
 
 #register {width:100%;background-color: transparent;}
-#register table {color: #000000; width: 100%;}
+#register table {color: #ffffff; width: 100%;}
 
 #register a {color: #aaaa00; text-decoration: none;}
 #register a:visited {text-decoration: none}
@@ -238,7 +249,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 #register a:hover {text-decoration: underline;}
 
 #login {width:100%;background-color: transparent;}
-#login table {color: #000000; width: 100%;}
+#login table {color: #ffffff; width: 100%;}
 #login td {width: 50%;}
 #login a {color: #aaaa00; text-decoration: none;}
 #login a:visited {text-decoration: none}
@@ -246,7 +257,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 #login a:hover {text-decoration: underline;}
 
 #forget_pass {width:100%;background-color: transparent;}
-#forget_pass table {color: #000000; width: 100%;}
+#forget_pass table {color: #ffffff; width: 100%;}
 #forget_pass td {width: 50%;}
 #forget_pass a {color: #aaaa00; text-decoration: none;}
 #forget_pass a:visited {text-decoration: none}
@@ -254,77 +265,77 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 #forget_pass a:hover {text-decoration: underline;}
 
 #usersonline {width:100%;background-color: transparent;}
-#usersonline table {color: #000000; width: 100%;}
+#usersonline table {color: #ffffff; width: 100%;}
 #usersonline a {color: #aaaa00; text-decoration: none;}
 #usersonline a:visited {text-decoration: none}
 #usersonline a:active {text-decoration: none}
 #usersonline a:hover {text-decoration: underline;}
 
 #searchpeople {width:100%;background-color: transparent;}
-#searchpeople table {color: #000000; width: 100%;}
+#searchpeople table {color: #ffffff; width: 100%;}
 #searchpeople a {color: #aaaa00; text-decoration: none;}
 #searchpeople a:visited {text-decoration: none}
 #searchpeople a:active {text-decoration: none}
 #searchpeople a:hover {text-decoration: underline;}
 
 #changeaccount {width:100%;background-color: transparent;}
-#changeaccount table {color: #000000; width: 100%;}
+#changeaccount table {color: #ffffff; width: 100%;}
 #changeaccount a {color: #aaaa00; text-decoration: none;}
 #changeaccount a:visited {text-decoration: none}
 #changeaccount a:active {text-decoration: none}
 #changeaccount a:hover {text-decoration: underline;}
 
 #loginscreen_manager {width:100%;background-color: transparent;}
-#loginscreen_manager table {color: #000000; width: 100%;}
+#loginscreen_manager table {color: #ffffff; width: 100%;}
 #loginscreen_manager a {color: #aaaa00; text-decoration: none;}
 #loginscreen_manager a:visited {text-decoration: none}
 #loginscreen_manager a:active {text-decoration: none}
 #loginscreen_manager a:hover {text-decoration: underline;}
 
 #managepanel {width:100%;background-color: transparent;}
-#managepanel table {color: #000000; width: 100%;}
+#managepanel table {color: #ffffff; width: 100%;}
 #managepanel a {color: #aaaa00; text-decoration: none;}
 #managepanel a:visited {text-decoration: none}
 #managepanel a:active {text-decoration: none}
 #managepanel a:hover {text-decoration: underline;}
 
 #news {width:100%;background-color: transparent;}
-#news table {color: #000000; width: 100%;}
+#news table {color: #ffffff; width: 100%;}
 #news td a {color: #aaaa00; text-decoration: none;}
 #news a:visited {text-decoration: none}
 #news a:active {text-decoration: none}
 #news a:hover {text-decoration: underline;}
 
 #newshistory {width:100%;background-color: transparent;}
-#newshistory table {color: #000000; width: 100%;}
+#newshistory table {color: #ffffff; width: 100%;}
 #newshistory a {color: #aaaa00; text-decoration: none;}
 #newshistory a:visited {text-decoration: none}
 #newshistory a:active {text-decoration: none}
 #newshistory a:hover {text-decoration: underline;}
 
 #createnews {width:100%;background-color: transparent;}
-#createnews table {color: #000000; width: 100%;}
+#createnews table {color: #ffffff; width: 100%;}
 #createnews a {color: #aaaa00; text-decoration: none;}
 #createnews a:visited {text-decoration: none}
 #createnews a:active {text-decoration: none}
 #createnews a:hover {text-decoration: underline;}
 
 #useragentprofil {min-height:160px; width:100%;background-color: transparent;}
-#useragentprofil table {color: #000000; width: 100%;}
+#useragentprofil table {color: #ffffff; width: 100%;}
 #useragentprofil a {color: #aaaa00; text-decoration: none;}
 #useragentprofil a:visited {text-decoration: none}
 #useragentprofil a:active {text-decoration: none}
 #useragentprofil a:hover {text-decoration: underline;}
 
 #regioninfo {min-height:160px; width:100%;background-color: transparent;}
-#regioninfo table {color: #000000; width: 100%;}
+#regioninfo table {color: #ffffff; width: 100%;}
 #regioninfo a {color: #aaaa00; text-decoration: none;}
 #regioninfo a:visited {text-decoration: none}
 #regioninfo a:active {text-decoration: none}
 #regioninfo a:hover {text-decoration: underline;}
 
 #adminsettings {width:100%;background-color: transparent;}
-#adminsettings table {color: #000000; width: 100%;}
+#adminsettings table {color: #ffffff; width: 100%;}
 #adminsettings a {color: #aaaa00; text-decoration: none;}
 #adminsettings a:visited {text-decoration: none}
 #adminsettings a:active {text-decoration: none}
@@ -337,7 +348,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 }
 
 #profil_picture img {
-  border: 1px solid #000000;
+  border: 1px solid #FFFFFF;
   height: 128px;
   width: 128px;
 }
@@ -349,7 +360,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 }
 
 #region_picture img {
-  border: 1px solid #000000;
+  border: 1px solid #FFFFFF;
   height: 256px;
   width: 256px;
 }
@@ -418,56 +429,12 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 
 /* footer */
 .webui #footer {
-	padding: 0 10px;
-  background-image: url("background_03.png");
-  background-color: transparent;
-  background-repeat: repeat;
-	height:35px;
+	padding:  5px 5px 0px 5px;
 	margin-top: 10px;
+	height:35px;
 }
 
 .webui #footer p {margin: 0; padding: 10px 0;}
-
-
-/* Translator_Module */
-.webui #translator {
-  position: relative;
-  float:right;
-  margin: 0px;
-  margin-top: -224px;
-  margin-right: 3px;
-  padding-left:5px;
-  padding-right:5px;
-  padding-top:3px;
-  padding-bottom:3px;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 0.8em;
-  background-image: url("background_03.png");
-  background-color: transparent;
-  background-repeat: repeat;
-	height:15px;
-  z-index: 50;
-}
-
-/* Date */
-.webui #date {
-  position: relative;
-  float:left;
-  margin: 0px;
-  margin-top: -224px;
-  margin-left: 3px;
-  padding-left:5px;
-  padding-right:5px;
-  padding-top:3px;
-  padding-bottom:3px;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 0.8em;
-  background-image: url("background_03.png");
-  background-color: transparent;
-  background-repeat: repeat;
-	height:15px;
-  z-index: 50;
-}
 
 /* Validator_Module */
 .webui #validator {text-align: center;}
@@ -476,8 +443,8 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 #gridstatus {
   position: relative;
   float:right;
-  margin-top: -60px;
-  margin-right: 8px;
+  margin-top: -57.5px;
+  margin-right: 12px;
   border:none;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size:1em;
@@ -485,16 +452,17 @@ h5 {padding-left: 20px; font-size: 10px; color:#000000;}
 }
 
 #gridstatus table td {padding:0px;}
-#gridstatus table {border-spacing: 0px;border-collapse:collapse;}
+#gridstatus table {border-spacing: 0px; border-collapse:collapse;}
+#gridstatus td .linegrey {height:1px; background-color: #444444;}
 
 .online {font-weight: bold; color: #00ff00; text-align:right;}
 .offline {font-weight: bold; color: #ff0000;}
-.gridtext {font-size: 80%;padding-right: 3px; padding-left: 3px; padding-bottom: 2px; padding-top: 2px; color: #ffffff;}
-.gridtext a {color: #ffffff;}
+.gridtext {font-size: 80%;padding-right: 3px; padding-left: 3px; padding-bottom: 2px; padding-top: 2px;}
+.gridtext a {color: #aaaa00;}
 
 td.gridbox_t {
 	background-position: left top;
-  background-image: url(../images/login_screens/icons/grey.gif);
+  background-image: url(../../images/login_screens/icons/grey.gif);
   background-repeat: repeat-x;
   HEIGHT: 5px;
   background-color: #000000;
@@ -502,7 +470,7 @@ td.gridbox_t {
 
 td.gridbox_r {
 	background-position: right top;
-  background-image: url(../images/login_screens/icons/grey.gif);
+  background-image: url(../../images/login_screens/icons/grey.gif);
   width: 5px;
   background-repeat: repeat-y;
   background-color: #000000;
@@ -510,7 +478,7 @@ td.gridbox_r {
 
 td.gridbox_b {
 	background-position: left bottom;
-  background-image: url(../images/login_screens/icons/grey.gif);
+  background-image: url(../../images/login_screens/icons/grey.gif);
   background-repeat: repeat-x;
   HEIGHT: 5px;
   background-color: #000000;
@@ -518,7 +486,7 @@ td.gridbox_b {
 
 td.gridbox_l {
 	background-position: left top;
-  background-image: url(../images/login_screens/icons/grey.gif);
+  background-image: url(../../images/login_screens/icons/grey.gif);
   width: 5px;
   background-repeat: repeat-y;
   background-color: #000000;
@@ -526,7 +494,7 @@ td.gridbox_l {
 
 td.gridbox_tl {
 	background-position: left top;
-  background-image: url(../images/login_screens/icons/gridbox_tl.png);
+  background-image: url(../../images/login_screens/icons/gridbox_tl.png);
   width: 5px;
   background-repeat: no-repeat;
   height: 5px;
@@ -534,7 +502,7 @@ td.gridbox_tl {
 
 td.gridbox_tr {
 	background-position: right top;
-  background-image: url(../images/login_screens/icons/gridbox_tr.png);
+  background-image: url(../../images/login_screens/icons/gridbox_tr.png);
   width: 5px;
   background-repeat: no-repeat;
   height: 5px;
@@ -542,7 +510,7 @@ td.gridbox_tr {
 
 td.gridbox_bl {
 	background-position: left bottom;
-  background-image: url(../images/login_screens/icons/gridbox_bl.png);
+  background-image: url(../../images/login_screens/icons/gridbox_bl.png);
   width: 5px;
   background-repeat: no-repeat;
   height: 5px;
@@ -550,7 +518,7 @@ td.gridbox_bl {
 
 td.gridbox_br {
 	background-position: right bottom;
-  background-image: url(../images/login_screens/icons/gridbox_br.png);
+  background-image: url(../../images/login_screens/icons/gridbox_br.png);
   width: 5px;
   background-repeat: no-repeat;
   height: 5px;

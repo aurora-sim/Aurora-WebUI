@@ -206,15 +206,15 @@ if($_SESSION[ADMINID]) {
 <table>
     <tr>
     <td>
-        <div style="position:relative;height:100%;">
+        <div>
               <table>
                   <tr>
                   <td WIDTH=36></td>
-                  <TD WIDTH=113 align="center"><B>EDIT</B></TD>
-                  <TD WIDTH=312 align="center"><B>User Name</B></TD>
-                  <TD width=220 align="center"><B>Created</B></TD>
-                  <TD width=167 align="center"><B>Active</B></TD>
-                  <TD WIDTH=47></TD>
+                  <td WIDTH=113 align="center"><b><? echo $webui_admin_manage_edit; ?></b></td>
+                  <td WIDTH=312 align="center"><b><? echo $webui_admin_manage_username; ?></b></td>
+                  <td width=220 align="center"><b><? echo $webui_admin_manage_created; ?></b></td>
+                  <td width=167 align="center"><b><? echo $webui_admin_manage_active; ?></b></td>
+                  <td WIDTH=47></td>
                   </tr>
               </table>
                     
@@ -235,14 +235,14 @@ if($_SESSION[ADMINID]) {
             ?>
 
             <table>
-                <tr>
-                    <td width=32>
-                        <img src="images/icons/icon_user.gif">
+                <tr class="<? echo ($odd = $w%2 )? "even":"odd" ?>" >
+                    <td width=21 align=center>
+                        <img src="images/icons/icon_user.png" alt="<? echo $webui_admin_manage_user; ?>" title="<? echo $webui_admin_manage_user; ?>">
                     </td>
 
                     <td width=91 align="center">
                         <a href="index.php?page=adminedit&userid=<?=$user_id?>">
-                            <b>EDIT</b>
+                            <b><? echo $webui_admin_manage_edit; ?></b>
                         </a>
                     </td>
 
@@ -258,38 +258,38 @@ if($_SESSION[ADMINID]) {
                     <b>
                       <?
                           if(($flags & 7) == 7) {
-                              echo"<FONT COLOR=#00FF00>Active</FONT>";
+                              echo"<FONT COLOR=#00FF00><? echo $webui_admin_manage_active; ?></FONT>";
                               }
                           elseif(($flags & 3) == 3) {
-                              echo"<FONT COLOR=#FF0000>Not Confirmed</FONT>";
+                              echo"<FONT COLOR=#FF0000><? echo $webui_admin_manage_notconf; ?></FONT>";
                               }
                          elseif(($flags & 5) == 5) {
-                              echo"<FONT COLOR=#FF0000>Banned</FONT>";
+                              echo"<FONT COLOR=#FF0000><? echo $webui_admin_manage_banned; ?></FONT>";
                               }
                           else {
-                              echo"<FONT COLOR=#FF0000>Inactive</FONT>";
+                              echo"<FONT COLOR=#FF0000><? echo $webui_admin_manage_inactive; ?></FONT>";
                               }
                       ?>
                     </b>
                     </td>
 
-                    <td width=32>
+                    <td width=21 align=center>
                         <? if($active ==5) {?>
                         <a href="index.php?<?=$GoPage?>&action=unban&unbanusr=<?=$username?>&user_id=<?=$user_id?>">
-                            <img src="images/icons/unban.jpg" alt="Unban this User" border="0" />
+                            <img src="images/icons/unban.png" alt="<? echo $webui_admin_manage_userunban; ?>" title="<? echo $webui_admin_manage_userunban; ?>">
                         </a>
 
                         <? } else { ?>
 
                         <a href="index.php?<?=$GoPage?>&action=ban&banusr=<?=$username?>&user_id=<?=$user_id?>">
-                            <img src="images/icons/ban.jpg" alt="Ban this User" border="0" />
+                            <img src="images/icons/ban.png" alt="<? echo $webui_admin_manage_userban; ?>" title="<? echo $webui_admin_manage_userban; ?>">
                         </a>
                         <? } ?>
                     </td>
 
-                    <td WIDTH=39 ALIGN=right>
+                    <td width=21 align=center>
                         <a HREF="index.php?<?=$GoPage?>&action=delete&delusr=<?=$username?>&user_id=<?=$user_id?>">
-                            <img src="images/icons/btn_del.gif" alt="Delete User" BORDER="0">
+                            <img src="images/icons/btn_del.png" alt="<? echo $webui_admin_manage_userdelete; ?>" title="<? echo $webui_admin_manage_userdelete; ?>">
                         </a>
                     </td>
                 </tr>
