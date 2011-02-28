@@ -19,8 +19,7 @@ if ($_SESSION[USERID] == "") {
         $oldregionid = $recieved->{'HomeUUID'};
         $oldregionname = $recieved->{'HomeName'};
         $oldemail = $recieved->{'Email'};
-        $firstName = $recieved->{'FirstName'};
-        $lastName = $recieved->{'LastName'};
+        $Name = $recieved->{'Name'};
     }
 
     // echo '<pre>';
@@ -51,8 +50,6 @@ if ($_SESSION[USERID] == "") {
             $found = array();
             $found[0] = json_encode(array('Method' => 'ChangePassword', 'WebPassword' => md5(WIREDUX_PASSWORD)
                         , 'UUID' => $_SESSION[USERID]
-                        , 'FirstName' => $firstName
-                        , 'LastName' => $lastName
                         , 'Password' => $_POST[passold]
                         , 'NewPassword' => md5(md5($_POST[passnew]))));
 
@@ -161,8 +158,7 @@ if ($_SESSION[USERID] == "") {
     if ($_POST[Submit4] == "Save") {
         $found = array();
         $found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD),
-                    'First' => $_SESSION[ACCFIRST]
-                    , 'Last' => $_SESSION[ACCLAST]));
+                    'Name' => $_POST[nameNew]));
         $do_post_requested = do_post_request($found);
         $recieved = json_decode($do_post_requested);
 
@@ -173,8 +169,7 @@ if ($_SESSION[USERID] == "") {
             $found = array();
             $found[0] = json_encode(array('Method' => 'ChangeName', 'WebPassword' => md5(WIREDUX_PASSWORD)
                         , 'UUID' => $_SESSION[USERID]
-                        , 'FirstName' => $_POST[nameFirstNew]
-                        , 'LastName' => $_POST[nameLastNew]));
+                        , 'Name' => $_POST[nameNew]));
 
             $do_post_requested = do_post_request($found);
             $recieved = json_decode($do_post_requested);
@@ -190,7 +185,7 @@ if ($_SESSION[USERID] == "") {
                 $date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
                 $sendto = $oldemail;
                 $subject = "Username changed on " . SYSNAME;
-                $body .= "Your account login name as changed from " . $firstName . " " . $lastName . " to " . $_POST[nameFirstNew] . " " . $_POST[nameLastNew] . " on " . SYSNAME . ".\n";
+                $body .= "Your account login name as changed from " . $Name . " to " . $_POST[nameNew] . " on " . SYSNAME . ".\n";
                 $body .= "\n\n\n";
                 $body .= "Thank you for using " . SYSNAME . "";
 				$header = "From: " . SYSMAIL . "\r\n";
@@ -264,7 +259,7 @@ if ($_SESSION[USERID] == "") {
               
         <br />
         
-        <!-- Change passworld -->      
+        <!-- Change password -->      
         <table>
             <tr>
                 <td colspan="2">
@@ -362,13 +357,8 @@ if ($_SESSION[USERID] == "") {
                             
             <form name="form1" method="post" action="index.php?page=change">
                 <tr>
-                    <td class="odd" width="50%"><? echo $webui_avatar_first_name; ?>:</td>
-                    <td class="odd"><input type="text" size="40" name="nameFirstNew" value ="<? echo $firstName; ?>"></td>
-                </tr>
-                                
-                <tr>
-                    <td class="even"><? echo $webui_avatar_last_name; ?>:</td>
-                    <td class="even"><input type="text" size="40" name="nameLastNew" value ="<? echo $lastName; ?>"></td>
+                    <td class="odd" width="50%"><? echo $webui_avatar_name; ?>:</td>
+                    <td class="odd"><input type="text" size="40" name="nameNew" value ="<? echo $Name; ?>"></td>
                 </tr>
                                 
                 <tr>
@@ -380,7 +370,7 @@ if ($_SESSION[USERID] == "") {
 
         <br />
                        
-        <!-- Purge Avatar Apparence -->         
+        <!-- Purge Avatar Appearance -->
         <table>
             <tr>
                 <td colspan="2">

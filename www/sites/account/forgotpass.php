@@ -61,8 +61,7 @@ if($_POST[Submit]=="Submit")
 {
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'ConfirmUserEmailName', 'WebPassword' => md5(WIREDUX_PASSWORD)
-		, 'FirstName' => $_POST[first]
-		, 'LastName' => $_POST[last]
+		, 'Name' => $_POST[name]
 		, 'Email' => $_POST[email]));
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
@@ -120,16 +119,9 @@ if($_POST[Submit]=="Submit")
         <td>
           <table>
             <tr>
-              <td class="even"><? echo $webui_avatar_first_name ?>*</td>
+              <td class="even"><? echo $webui_avatar_name ?>*</td>
               <td class="even">
-                <input id="forgot_pass_input" name="first" type="text" size="40" maxlength="50" value="<?=$_POST[First]?>">
-              </td>
-            </tr>
-              
-            <tr>
-              <td class="odd"><? echo $webui_avatar_last_name ?>*</td>
-              <td class="odd">
-                <input id="forgot_pass_input" name="last" type="text" size="40" maxlength="50" value="<?=$_POST[Last]?>">
+                <input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?=$_POST[name]?>">
               </td>
             </tr>
                 

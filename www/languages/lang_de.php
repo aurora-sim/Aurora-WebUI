@@ -15,6 +15,7 @@ $webui_online_now = 'Online Now';
 
 $webui_avatar_first_name = 'Avatar First Name';
 $webui_avatar_last_name = 'Avatar Last Name';
+$webui_avatar_name = 'Avatar Name';
 $webui_first_name='Vorname';
 $webui_last_name='Nachname';
 $webui_password='Passwort';
@@ -222,7 +223,7 @@ $webui_admin_manage_username = 'User Name';
 // Admin Settings Page
 //
 $webui_admin_settings = 'Admin Settings';
-$webui_admin_settings_info = 'Ceci vous permet des réglages administrateur.';
+$webui_admin_settings_info = 'Ceci vous permet des rï¿½glages administrateur.';
 $webui_admin_settings_changeable = 'Start Region changeable at';
 $webui_admin_settings_startregion = 'Start Region';
 $webui_admin_settings_require = 'Require address for account creation?';

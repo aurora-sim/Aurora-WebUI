@@ -15,13 +15,8 @@ $ALimit = $AStart + 10;
 $Limit = "LIMIT $AStart, $ALimit";
 
 $whereclause = ' where ';
-if ($_GET[first] != '') {
-    $whereclause = $whereclause . 'FirstName like \'' . $_GET[first] . '%\' ';
-}
-if ($_GET[last] != '') {
-    if ($whereclause != ' where ')//Add 'and' if necessary
-        $whereclause = $whereclause . ' and ';
-    $whereclause = $whereclause . 'LastName like \'' . $_GET[last] . '%\'';
+if ($_GET[name] != '') {
+    $whereclause = $whereclause . 'Name like \'' . $_GET[name] . '%\' ';
 }
 if ($whereclause == ' where ')
     $whereclause = '';
@@ -46,9 +41,8 @@ if ($sitemax == 0) {
         </div>
         
         <div id="message">
-            <? echo $webui_first_name; ?>: <input id="first" name="first" type="text" size="25" maxlength="15" value="" />
-            <? echo $webui_last_name; ?>: <input id="last" name="last" type="text" size="25" maxlength="15" value="" />
-             <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'first=' + document.getElementById('first').value + '&last=' + document.getElementById('last').value)"><? echo $webui_people_search_bouton ?></button>
+            <? echo $webui_avatar_name; ?>: <input id="name" name="name" type="text" size="25" maxlength="15" value="" />
+            <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'first=' + document.getElementById('first').value)"><? echo $webui_people_search_bouton ?></button>
         </div>
 
         <table>
@@ -149,19 +143,19 @@ if ($sitemax == 0) {
 
         <?
           $w = 0;
-          $DbLink->query("SELECT FirstName, LastName FROM " . C_USERS_TBL . $whereclause . " " . $Limit);
-          while (list($FirstName, $LastName) = $DbLink->next_record()) {
+          $DbLink->query("SELECT Name FROM " . C_USERS_TBL . $whereclause . " " . $Limit);
+          while (list($Name) = $DbLink->next_record()) {
           $w++;
         ?>
 
         <tr class="<? echo ($odd = $w%2 )? "odd":"even" ?>">
             <td>
-                <div><b><?= $FirstName . " " . $LastName ?></b></div>
+                <div><b><?= $Name ?></b></div>
             </td>
         
             <td>
                 <div>
-                    <a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>app/agent/?first=<?= $FirstName ?>&last=<?= $LastName ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
+                    <a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>app/agent/?name=<?= $Name ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
                         <b><u><? echo $webui_see_profile ?></u></b>
                     </a>
                 </div>

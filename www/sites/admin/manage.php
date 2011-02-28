@@ -225,14 +225,8 @@ if($_SESSION[ADMINID]) {
                       		'UserID' => $_GET[user_id], 'Start' => $AStart, 'End' => $ALimit, 'Query' => $_POST[query]));
             		    $do_post_request = do_post_request($found);
                     $recieved = json_decode($do_post_request);
-		// $DbLink1 = new DB;
-                    // $DbLink1->query("SELECT PrincipalID,FirstName,LastName,Created FROM ".C_USERS_TBL." $USR $USR_1 $USR_2 $USR_3 ORDER by created ASC $Limit ");
-                    foreach($recieved->{'Users'} as $userInfo) {
-							      // ------------------------------------
-							      // ERRORING HERE user is null right now
-							      // Commented out below so it would at least render
-							      // ------------------------------------
-                    $user_id = $userInfo->{'PrincipalID'};
+		    foreach($recieved->{'Users'} as $userInfo) {
+		    $user_id = $userInfo->{'PrincipalID'};
                     $username = $userInfo->{'UserName'};
                     $created = $userInfo->{'Created'};
                     $flags = $userInfo->{'UserFlags'};

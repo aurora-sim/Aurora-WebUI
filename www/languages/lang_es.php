@@ -15,6 +15,7 @@ $webui_online_now = 'Online Now';
 
 $webui_avatar_first_name = 'Avatar First Name';
 $webui_avatar_last_name = 'Avatar Last Name';
+$webui_avatar_name = 'Avatar Name';
 $webui_first_name='First Name';
 $webui_last_name='Last Name';
 $webui_password='Password';
@@ -104,7 +105,7 @@ $webui_menu_item_help = 'Help';
 // Home Page
 //
 $webui_home = 'Home';
-$webui_welcome='Hola recepción to the new site';
+$webui_welcome='Hola recepciï¿½n to the new site';
 $webui_welcome_visitor = 'Hi Visitor!';
 $webui_welcome_userid = 'Hi Userid!';
 $webui_home_page='
@@ -222,7 +223,7 @@ $webui_admin_manage_username = 'User Name';
 // Admin Settings Page
 //
 $webui_admin_settings = 'Admin Settings';
-$webui_admin_settings_info = 'Ceci vous permet des réglages administrateur.';
+$webui_admin_settings_info = 'Ceci vous permet des rï¿½glages administrateur.';
 $webui_admin_settings_changeable = 'Start Region changeable at';
 $webui_admin_settings_startregion = 'Start Region';
 $webui_admin_settings_require = 'Require address for account creation?';

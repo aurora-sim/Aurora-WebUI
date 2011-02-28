@@ -33,7 +33,7 @@ if ($_POST[Submit] == $webui_login) {
 
     $found = array();
     $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => md5(WIREDUX_PASSWORD),
-                'First' => $_POST[logfirstname], 'Last' => $_POST[loglastname],
+                'Name' => $_POST[logname],
                 'Password' => $_POST[logpassword]));
     $do_post_request = do_post_request($found);
     $recieved = json_decode($do_post_request);
@@ -53,7 +53,7 @@ if ($_POST[Submit] == $webui_admin_login) {
 
     $found = array();
     $found[0] = json_encode(array('Method' => 'AdminLogin', 'WebPassword' => md5(WIREDUX_PASSWORD),
-                'First' => $_POST[logfirstname], 'Last' => $_POST[loglastname],
+                'Name' => $_POST[logname],
                 'Password' => $_POST[logpassword]));
     $do_post_request = do_post_request($found);
     $recieved = json_decode($do_post_request);

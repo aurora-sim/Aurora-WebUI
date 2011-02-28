@@ -15,6 +15,7 @@ $webui_online_now='Online Nu';
 
 $webui_avatar_first_name = 'Avatar First Name';
 $webui_avatar_last_name = 'Avatar Last Name';
+$webui_avatar_name = 'Avatar Name';
 $webui_first_name='Voornaam';
 $webui_last_name='Achternaam';
 $webui_password='Wachtwoord';

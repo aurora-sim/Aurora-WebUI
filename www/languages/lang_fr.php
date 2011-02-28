@@ -15,6 +15,7 @@ $webui_online_now = 'En ligne maintenant';
 
 $webui_avatar_first_name = 'Nom de l\'Avatar';
 $webui_avatar_last_name = 'Prénom de l\'Avatar';
+$webui_avatar_name = 'Avatar Name';
 $webui_first_name='Nom';
 $webui_last_name='Prénom';
 $webui_password='Mot de passe';

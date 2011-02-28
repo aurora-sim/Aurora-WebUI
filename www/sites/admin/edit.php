@@ -3,7 +3,7 @@ if($_SESSION[ADMINID]){
 
 $DbLink = new DB;
 if($_POST[userdata]=="set"){
-$DbLink->query("SELECT PrincipalID FROM ".C_USERS_TBL." WHERE FirstName='$_POST[accfirst]' and LastName='$_POST[acclast]'");
+$DbLink->query("SELECT PrincipalID FROM ".C_USERS_TBL." WHERE Name='$_POST[name]'");
 list($CHECKUSER) = $DbLink->next_record();
 
 $DbLink->query("UPDATE ".C_WIUSR_TBL." SET 
@@ -19,8 +19,7 @@ WHERE UUID='$_POST[uuid]'");
 if($CHECKUSER == ''){
 
 $DbLink->query("UPDATE ".C_USERS_TBL." SET 
-FirstName ='$_POST[accfirst]',
-LastName ='$_POST[acclast]'
+Name ='$_POST[name]'
 WHERE PrincipalID='$_POST[uuid]'");
 }
 
@@ -32,8 +31,8 @@ window.location.href='index.php?page=edit&userid=".$_POST[uuid]."';
 }
 
 if($_POST[state]=="set"){
-$DbLink->query("SELECT PrincipalID,FirstName,LastName,Created FROM ".C_USERS_TBL." WHERE PrincipalID='$_POST[uuid]'");
-list($uuid,$username,$lastname,$created) = $DbLink->next_record();
+$DbLink->query("SELECT PrincipalID,Created FROM ".C_USERS_TBL." WHERE PrincipalID='$_POST[uuid]'");
+list($uuid,$created) = $DbLink->next_record();
 
 if($_POST[active] !=3){
 if($_POST[status]==0){
@@ -56,8 +55,7 @@ window.location.href='index.php?page=edit&userid=".$_POST[uuid]."';
 }
 $found = array();
 $found[0] = json_encode(array('Method' => 'GetProfile', 'WebPassword' => md5(WIREDUX_PASSWORD)
-            , 'FirstName' => $_GET['first']
-            , 'LastName' => $_GET['last']));
+            , 'Name' => $_GET['name']));
 $do_post_requested = do_post_request($found);
 $recieved = json_decode($do_post_requested);
 $profileTXT = $recieved->{'profile'}->{'AboutText'};
@@ -69,8 +67,8 @@ $type = $recieved->{'account'}->{'AccountInfo'};
 $partner = $recieved->{'account'}->{'Partner'};
 $date = date("D d M Y - g:i A", $created);
 
-$DbLink->query("SELECT PrincipalID,FirstName,LastName FROM ".C_USERS_TBL." WHERE PrincipalID='$_GET[userid]'");
-list($uuid,$accfirst,$acclast) = $DbLink->next_record();
+$DbLink->query("SELECT PrincipalID,Name FROM ".C_USERS_TBL." WHERE PrincipalID='$_GET[userid]'");
+list($uuid,$accName) = $DbLink->next_record();
 
 $DbLink->query("SELECT realname1,realname2,adress1,zip1,city1,country1,emailadress FROM ".C_WIUSR_TBL." WHERE UUID='$_GET[userid]'");
 list($firstnm,$lastnm,$street,$zip,$city,$country,$email) = $DbLink->next_record();
@@ -139,9 +137,8 @@ $active=3;
 		    </tr>
 		  <tr>
 		    <td bgcolor="#CCCCCC" class="style2">
-			<input style="width:70%" name="accfirst" type="text" id="accfirst" value="<?=$accfirst?>" />			</td>
-		    <td bgcolor="#CCCCCC" class="style2">
-			<input style="width:70%" name="acclast" type="text" id="acclast" value="<?=$acclast?>" />			</td>
+			<input style="width:70%" name="accName" type="text" id="accfirst" value="<?=$accName?>" />
+                    </td>
 		    </tr>
 		  <tr>
 		    <td bgcolor="#CCCCCC" class="style2">&nbsp;</td>

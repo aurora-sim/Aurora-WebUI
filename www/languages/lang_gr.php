@@ -15,6 +15,7 @@
      
     $webui_first_name='Όνομα';
     $webui_last_name='Επώνυμο';
+    $webui_avatar_name = 'Avatar Name';
     $webui_password='Κωδικός πρόσβασης';
     $webui_login='Είσοδος';
     $webui_confirm='Επιβεβαίωση';

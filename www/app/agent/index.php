@@ -5,13 +5,12 @@ include("../../settings/mysql.php");
 include("../../languages/translator.php");
 include("../../templates/templates.php");
 
-if ($_GET[first] && $_GET[last]) {
-    $userName = $_GET['first'] . ' ' . $_GET['last'];
+if ($_GET[name]) {
+    $userName = $_GET['name'];
 
     $found = array();
     $found[0] = json_encode(array('Method' => 'GetProfile', 'WebPassword' => md5(WIREDUX_PASSWORD)
-                , 'FirstName' => $_GET['first']
-                , 'LastName' => $_GET['last']));
+                , 'Name' => $_GET['name']));
 
     $do_post_requested = do_post_request($found);
     $recieved = json_decode($do_post_requested);
@@ -95,7 +94,6 @@ if ($_GET[first] && $_GET[last]) {
           <img src="<? echo $profileLink ?>" alt="<? echo $userName ?>" title="<? echo $userName ?>" />
       </div>
   </div>
-  <hr>
 </div>
 </body>
 </html>
