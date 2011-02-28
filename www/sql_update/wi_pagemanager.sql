@@ -17,6 +17,7 @@ INSERT INTO `wi_pagemanager` (`id`, `rank`, `active`, `url`, `target`, `display`
 ('webui_menu_item_adminmanage', 2.1, '1', 'index.php?page=adminmanage', '_self', '3', 'webui_menu_item_adminhome'),
 ('webui_menu_item_adminsettings', 2.2, '1', 'index.php?page=adminsettings', '_self', '3', 'webui_menu_item_adminhome'),
 ('webui_menu_item_adminloginscreen', 2.3, '1', 'index.php?page=adminloginscreen', '_self', '3', 'webui_menu_item_adminhome'),
+('webui_menu_item_adminsupport', 2.4, '1', 'index.php?page=adminsupport', '_self', '3', 'webui_menu_item_adminhome'),
 
 ('webui_menu_item_account', 3.0, '1', 'index.php?page=account', '_self', '1', null),
 ('webui_menu_item_changeaccount', 3.1, '1', 'index.php?page=changeaccount', '_self', '1', 'webui_menu_item_account'),
@@ -25,7 +26,7 @@ INSERT INTO `wi_pagemanager` (`id`, `rank`, `active`, `url`, `target`, `display`
 ('webui_menu_item_news', 4.1, '1', 'index.php?page=news', '_self', '2', 'webui_menu_item_world'),
 ('webui_menu_item_regions', 4.2, '1', 'index.php?page=regionlist', '_self', '2','webui_menu_item_world'),
 ('webui_menu_item_worldmap', 4.3, '1', 'index.php?page=worldmap', '_self', '2', 'webui_menu_item_world'),
-('webui_menu_item_gallery', 4.3, '1', 'index.php?page=gallery', '_self', '2', 'webui_menu_item_gallery'),
+('webui_menu_item_gallery', 4.4, '1', 'index.php?page=gallery', '_self', '2', 'webui_menu_item_world'),
 
 ('webui_menu_item_users', 5.0, '1', 'index.php?page=users', '_self', '1', null),
 ('webui_menu_item_peoplesearch', 5.1, '1', 'index.php?page=peoplesearch', '_self', '1', 'webui_menu_item_users'),

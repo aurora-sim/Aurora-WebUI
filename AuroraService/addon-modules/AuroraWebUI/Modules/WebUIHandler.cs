@@ -397,6 +397,18 @@ namespace OpenSim.Services
                     {
                         return FindUsers(map);
                     }
+                    else if (method == "GetAbuseReports")
+                    {
+                        return GetAbuseReports(map);
+                    }
+                    else if (method == "AbuseReportSaveNotes")
+                    {
+                        return AbuseReportSaveNotes(map);
+                    }
+                    else if (method == "AbuseReportMarkComlete")
+                    {
+                        return AbuseReportMarkComlete(map);
+                    }
                 }
             }
             catch (Exception)
@@ -441,6 +453,8 @@ namespace OpenSim.Services
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
 
+  
+
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             if (accountService == null)
@@ -458,9 +472,21 @@ namespace OpenSim.Services
 
             if (Verified)
             {
+                // could not find a way to save this data here.
+                DateTime RLDOB = map["RLDOB"].AsDate();
+                string RLFirstName = map["RLFisrtName"].AsString();
+                string RLLastName = map["RLLastName"].AsString();
+                string RLAdress = map["RLAdress"].AsString();
+                string RLCity = map["RLCity"].AsString();
+                string RLZip = map["RLZip"].AsString();
+                string RLCountry = map["RLCountry"].AsString();
+                string RLIP = map["RLIP"].AsString();
+                // could not find a way to save this data here.
+
+
                 userID = user.PrincipalID;
                 user.UserLevel = -1;
-
+                
                 accountService.StoreUserAccount(user);
 
                 IProfileConnector profileData = DataManager.RequestPlugin<IProfileConnector>();
@@ -960,6 +986,49 @@ namespace OpenSim.Services
             }
             resp["Users"] = users;
 
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] GetAbuseReports(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
+
+            List<AbuseReport> lar = ar.GetAbuseReports(map["start"].AsInteger(), map["count"].AsInteger(), map["filter"].AsString());
+            OSDArray returnvalue = new OSDArray();
+            foreach (AbuseReport tar in lar)
+            {
+                returnvalue.Add(tar.ToOSD());
+            }
+            resp["abusereports"] = returnvalue;
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] AbuseReportMarkComlete(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
+            AbuseReport tar = ar.GetAbuseReport(map["Number"].AsInteger(), map["WebPassword"].AsString());
+            tar.Active = false;
+            ar.UpdateAbuseReport(tar, map["WebPassword"].AsString());
+            resp["Finished"] = OSD.FromBoolean(true);
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] AbuseReportSaveNotes(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
+            AbuseReport tar = ar.GetAbuseReport(map["Number"].AsInteger(), map["WebPassword"].AsString());
+            tar.Notes = map["Notes"].ToString();
+            ar.UpdateAbuseReport(tar, map["WebPassword"].AsString());
             resp["Finished"] = OSD.FromBoolean(true);
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $webui_language_code='en';
 $webui_actual_language='English';
 
@@ -183,6 +183,7 @@ $webui_menu_item_adminloginscreen = 'Edit';
 $webui_menu_item_adminhome = 'Admin';
 $webui_menu_item_adminmanage = 'Manage';
 $webui_menu_item_adminsettings = 'Admin Settings';
+$webui_menu_item_adminsupport = "Support";
 
 //
 // Admin Home Page

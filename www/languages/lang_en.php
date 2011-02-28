@@ -183,6 +183,7 @@ $webui_menu_item_adminloginscreen = 'Edit';
 $webui_menu_item_adminhome = 'Admin';
 $webui_menu_item_adminmanage = 'Manage';
 $webui_menu_item_adminsettings = 'Admin Settings';
+$webui_menu_item_adminsupport = "Support";
 
 //
 // Admin Home Page
@@ -223,7 +224,7 @@ $webui_admin_manage_username = 'User Name';
 // Admin Settings Page
 //
 $webui_admin_settings = 'Admin Settings';
-$webui_admin_settings_info = 'Ceci vous permet des r�glages administrateur.';
+$webui_admin_settings_info = 'This allows you to administrator.';
 $webui_admin_settings_changeable = 'Start Region changeable at';
 $webui_admin_settings_startregion = 'Start Region';
 $webui_admin_settings_require = 'Require address for account creation?';
