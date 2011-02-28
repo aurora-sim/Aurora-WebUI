@@ -28,7 +28,7 @@ using System.Drawing.Imaging;
 using GridRegion = OpenSim.Services.Interfaces.GridRegion;
 using BitmapProcessing;
 
-namespace OpenSim.Server.Handlers.Caps
+namespace OpenSim.Services
 {
     public class WireduxHandler : IService
     {
@@ -64,6 +64,10 @@ namespace OpenSim.Server.Handlers.Caps
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
                 m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
             }
+        }
+
+        public void FinishedStartup()
+        {
         }
 
         public Hashtable OnHTTPGetTextureImage(Hashtable keysvals)
@@ -157,9 +161,9 @@ namespace OpenSim.Server.Handlers.Caps
             if (keysvals.ContainsKey("zoom"))
                 zoom = int.Parse(keysvals["zoom"].ToString());
             if (keysvals.ContainsKey("x"))
-                x = int.Parse(keysvals["x"].ToString());
+                x = (int)float.Parse(keysvals["x"].ToString());
             if (keysvals.ContainsKey("y"))
-                y = int.Parse(keysvals["y"].ToString());
+                y = (int)float.Parse(keysvals["y"].ToString());
 
             m_log.Debug("[WebUI]: Sending map image jpeg");
             int statuscode = 200;
@@ -282,21 +286,6 @@ namespace OpenSim.Server.Handlers.Caps
                     return encoders[j];
             }
             return null;
-        }
-
-        public void AddNewRegistry(IConfigSource config, IRegistryCore registry)
-        {
-
-        }
-
-        public void PostInitialize(IConfigSource config, IRegistryCore registry)
-        {
-
-        }
-
-        public void PostStart(IConfigSource config, IRegistryCore registry)
-        {
-
         }
     }
 
@@ -432,7 +421,7 @@ namespace OpenSim.Server.Handlers.Caps
         private byte[] CheckIfUserExists(OSDMap map)
         {
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
-            UserAccount user = accountService.GetUserAccount(UUID.Zero, map["First"].AsString(), map["Last"].AsString());
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, map["Name"].AsString());
 
             bool Verified = user != null;
             OSDMap resp = new OSDMap();
@@ -445,8 +434,7 @@ namespace OpenSim.Server.Handlers.Caps
         private byte[] ProcessCreateAccount(OSDMap map)
         {
             bool Verified = false;
-            string FirstName = map["First"].AsString();
-            string LastName = map["Last"].AsString();
+            string Name = map["Name"].AsString();
             string PasswordHash = map["PasswordHash"].AsString();
             string PasswordSalt = map["PasswordSalt"].AsString();
             string HomeRegion = map["HomeRegion"].AsString();
@@ -462,8 +450,8 @@ namespace OpenSim.Server.Handlers.Caps
                 PasswordHash = "$1$" + Util.Md5Hash(PasswordHash);
             PasswordHash = PasswordHash.Remove(0, 3); //remove $1$
 
-            accountService.CreateUser(FirstName, LastName, PasswordHash, Email);
-            UserAccount user = accountService.GetUserAccount(UUID.Zero, FirstName, LastName);
+            accountService.CreateUser(Name, PasswordHash, Email);
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, Name);
 
             Verified = user != null;
             UUID userID = UUID.Zero;
@@ -500,20 +488,19 @@ namespace OpenSim.Server.Handlers.Caps
         private byte[] ProcessLogin(OSDMap map)
         {
             bool Verified = false;
-            string FirstName = map["First"].AsString();
-            string LastName = map["Last"].AsString();
+            string Name = map["Name"].AsString();
             string Password = map["Password"].AsString();
 
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             UUID secureSessionID;
             UUID userID = UUID.Zero;
 
-            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", "", "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient(Name, Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
             Verified = loginresp == null;
             if (Verified)
             {
-                userID = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, FirstName, LastName).PrincipalID;
+                userID = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name).PrincipalID;
             }
 
 
@@ -528,20 +515,19 @@ namespace OpenSim.Server.Handlers.Caps
         private byte[] ProcessAdminLogin(OSDMap map)
         {
             bool Verified = false;
-            string FirstName = map["First"].AsString();
-            string LastName = map["Last"].AsString();
+            string Name = map["Name"].AsString();
             string Password = map["Password"].AsString();
 
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             UUID secureSessionID;
             UUID userID = UUID.Zero;
 
-            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", "", "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient(Name, Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
             Verified = loginresp == null;
             if (Verified)
             {
-                UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, FirstName, LastName);
+                UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name);
                 if ((account.UserFlags & 2048) == 2048) //Admin flag
                     userID = account.PrincipalID;
             }
@@ -609,7 +595,7 @@ namespace OpenSim.Server.Handlers.Caps
             resp["Verified"] = OSD.FromBoolean(verified);
             if (verified)
             {
-                userinfo = agentService.GetUserInfo(uuid)[0];
+                userinfo = agentService.GetUserInfo(uuid);
                 IGridService gs = m_registry.RequestModuleInterface<IGridService>();
                 Services.Interfaces.GridRegion gr = gs.GetRegionByUUID(UUID.Zero, userinfo.HomeRegionID);
 
@@ -669,8 +655,7 @@ namespace OpenSim.Server.Handlers.Caps
             resp["Verified"] = OSD.FromBoolean(verified);
             if (verified)
             {
-                user.FirstName = map["FirstName"].AsString();
-                user.LastName = map["LastName"].AsString();
+                user.Name = map["Name"].AsString();
                 accountService.StoreUserAccount(user);
             }
 
@@ -681,8 +666,7 @@ namespace OpenSim.Server.Handlers.Caps
 
         byte[] ChangePassword(OSDMap map)
         {
-            string FirstName = map["FirstName"].AsString();
-            string LastName = map["LastName"].AsString();
+            string Name = map["Name"].AsString();
             string Password = map["Password"].AsString();
             string newPassword = map["NewPassword"].AsString();
 
@@ -694,7 +678,7 @@ namespace OpenSim.Server.Handlers.Caps
 
             IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
 
-            LoginResponse loginresp = loginService.VerifyClient(FirstName, LastName, Password, UUID.Zero, false, "", "", "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient(Name, Password, UUID.Zero, false, "", "", "", out secureSessionID);
             OSDMap resp = new OSDMap();
             //Null means it went through without an error
             bool Verified = loginresp == null;
@@ -743,42 +727,38 @@ namespace OpenSim.Server.Handlers.Caps
 
         byte[] ConfirmUserEmailName(OSDMap map)
         {
-            string FirstName = map["FirstName"].AsString();
-            string LastName = map["LastName"].AsString();
+            string Name = map["Name"].AsString();
             string Email = map["Email"].AsString();
 
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(false);
             resp["Error"] = OSD.FromString("");
-            if ((FirstName.Length > 0) & (LastName.Length > 0))
-            {
-                IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
-                UserAccount user = accountService.GetUserAccount(UUID.Zero, FirstName, LastName);
-                bool verified = user != null;
+            IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount user = accountService.GetUserAccount(UUID.Zero, Name);
+            bool verified = user != null;
 
-                if (verified)
+            if (verified)
+            {
+                if (user.UserLevel >= 0)
                 {
-                    if (user.UserLevel >= 0)
+                    resp["UUID"] = OSD.FromUUID(user.PrincipalID);
+                    if (user.Email.ToLower() == Email.ToLower())
                     {
-                        resp["UUID"] = OSD.FromUUID(user.PrincipalID);
-                        if (user.Email.ToLower() == Email.ToLower())
-                        {
-                            resp["Verified"] = OSD.FromBoolean(true);
-                        }
-                        else
-                        {
-                            resp["Error"] = OSD.FromString("Email does not match the user name.");
-                        }
+                        resp["Verified"] = OSD.FromBoolean(true);
                     }
                     else
                     {
-                        resp["Error"] = OSD.FromString("This account is disabled.");
+                        resp["Error"] = OSD.FromString("Email does not match the user name.");
                     }
                 }
                 else
                 {
-                    resp["Error"] = OSD.FromString("No such user.");
+                    resp["Error"] = OSD.FromString("This account is disabled.");
                 }
+            }
+            else
+            {
+                resp["Error"] = OSD.FromString("No such user.");
             }
 
 
@@ -790,10 +770,9 @@ namespace OpenSim.Server.Handlers.Caps
         byte[] GetProfile(OSDMap map)
         {
             OSDMap resp = new OSDMap();
-            string FirstName = map["FirstName"].AsString();
-            string LastName = map["LastName"].AsString();
+            string Name = map["Name"].AsString();
 
-            UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, FirstName, LastName);
+            UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name);
             if (account != null)
             {
                 OSDMap accountMap = new OSDMap();
