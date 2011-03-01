@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /app/
+Disallow: /images/
+Disallow: /javascripts/
+Disallow: /languages/
+Disallow: /loginscreen/
+Disallow: /quickmap/
+Disallow: /settings/
+Disallow: /sites/
+Disallow: /sql_update/
+Disallow: /templates/
