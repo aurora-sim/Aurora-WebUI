@@ -34,7 +34,7 @@ function OpenAgent(firstname, lastname)
     </tr>
 <?
 	$DbLink = new DB;
-	$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online != 'False' AND ".
+	$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online != '0' AND ".
 					"Login < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND ".
 					"Logout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) ".
 					"ORDER BY Login DESC");
@@ -73,7 +73,7 @@ function OpenAgent(firstname, lastname)
 <?
 
 
-$DbLink->query("SELECT count(*) FROM ".C_GRIDUSER_TBL." where Online != 'False' and 
+$DbLink->query("SELECT count(*) FROM ".C_GRIDUSER_TBL." where Online != '0' and 
 Login > (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now()) - 86400)))");
 list($NOWONLINE) = $DbLink->next_record();
 ?>
