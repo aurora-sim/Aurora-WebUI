@@ -84,7 +84,7 @@ list($GRIDSTATUS, $INFOBOX, $BOXCOLOR, $BOX_TITLE, $BOX_INFOTEXT) = $DbLink->nex
 
 // Doing it the same as the Who's Online now part
 $DbLink = new DB;
-$DbLink->query("SELECT UserID FROM " . C_GRIDUSER_TBL . " where Online = 'True' AND " .
+$DbLink->query("SELECT UserID FROM " . C_GRIDUSER_TBL . " where Online != '0' AND " .
         "Login < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND " .
         "Logout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) " .
         "ORDER BY Login DESC");
