@@ -1,6 +1,11 @@
 function bgImgRotate() 
 { 
-	var images = Array( "images/login_screens/login1.jpg", "images/login_screens/login2.jpg", "images/login_screens/login3.jpg", "images/login_screens/login4.jpg"); 
+	var images = Array(
+  "images/login1.jpg",
+  "images/login2.jpg",
+  "images/login3.jpg",
+  "images/login4.jpg");
+  
 	var myDate = new Date();
 	var hour = myDate.getHours(); 
 	// var index = Math.floor(hour/8); 

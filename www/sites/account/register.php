@@ -138,9 +138,8 @@ function displayDefaultAvatars()
     <div id="content"><h2><?= SYSNAME ?>: <? echo $webui_register ?></h2>
     <div id="register">
         <form ACTION="index.php?page=register" METHOD="POST" onsubmit="if (!validate(this)) return false;">
-            <table width="100%">
-				<tr><td width="50%"></td><td width="50%"></td></tr>
-                <tr><td class="error" colspan="2" align="center" id="error_message"><img src="images/login_screens/spacer.gif" width="1" height="18" /><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
+            <table>
+                <tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
                 <tr>
                     <td class="even"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span></td>
                     <td class="even">
@@ -168,9 +167,9 @@ function displayDefaultAvatars()
                 </tr>
 <? if ($REGIOCHECK == "0") { ?>
                 <tr>
-					<td class="even"><span id="startregion_label"><? echo $webui_start_region ?>*</span></td>
+                    <td class="even"><span id="startregion_label"><? echo $webui_start_region ?>*</span></td>
                     <td class="even">
-						<? displayRegions();	?>
+                        <? displayRegions();	?>
                     </td>
                 </tr>
 <? } if ($ADRESSCHECK == "1") { ?>
@@ -228,43 +227,52 @@ function displayDefaultAvatars()
                 </tr>
 <? } ?>
 				<tr>
-					<td class="even"><span id="email_label"><? echo $webui_email ?>*</span></td>
-					<td class="even">
+					<td class="odd"><span id="email_label"><? echo $webui_email ?>*</span></td>
+					<td class="odd">
 						<input compare="emaic" require="true" label="email_label" id="register_input" name="email" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIL] ?>"></td>
 				</tr>
 				<tr>
-					<td class="odd"><span id="emaic_label"><? echo $webui_confirm ?> <? echo $webui_email ?>*</span></td>
-					<td class="odd">
+					<td class="even"><span id="emaic_label"><? echo $webui_confirm ?> <? echo $webui_email ?>*</span></td>
+					<td class="even">
 						<input require="true" label="emaic_label" id="register_input" name="emaic" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIC] ?>" ></td>
 				</tr>
-				<? displayDefaultAvatars(); ?>
-<? if( file_exists( $_SERVER{'DOCUMENT_ROOT'} . "/TOS.txt"))  { ?>
-				<tr>
-					<td valign="top" class="odd"><input label="agree_label" require="true" type="checkbox" name="Agree_with_TOS" id="agree" value="1" /><label for="agree"><span id="agree_label"><?=$site_terms_of_service_agree?></span></label>
-					<td class="odd"><div style="width:450px;height:300px;overflow:auto;"><pre><? include("tos.txt"); ?></pre></div></td>
-				</tr>
-<? } ?>
-				<tr>
-					<td class="even" colspan="2">
-						<center>
-							<!-- Choice: red, white, blackglass, clean-->
-							<script type="text/javascript">var RecaptchaOptions = {theme : 'blackglass'};</script>
-							<? require_once('recaptchalib.php');
-							  $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
-							  echo recaptcha_get_html($publickey);
-							?>
-						</center>
-					</td>
-				</tr>
-				<tr>
-					<td class="odd" colspan="2">
-						<center>
-							<input type="hidden" name="action" value="check">
-							<input id="register_bouton" name="submit" TYPE="submit" value='<? echo $webui_create_new_account ?>'>
-						</center>
-					</td>
-				</tr>
-			</table>
+				
+        <? displayDefaultAvatars(); ?>
+        <? if( file_exists( $_SERVER{'DOCUMENT_ROOT'} . "/TOS.txt"))  { ?>
+				
+        <tr>
+					<td valign="top" class="odd"><input label="agree_label" require="true" type="checkbox" name="Agree_with_TOS" id="agree" value="1" />
+            <label for="agree"><span id="agree_label"><?=$site_terms_of_service_agree?></span></label>
+          </td>
+					<td class="odd">
+            <div style="width:450px;height:300px;overflow:auto;">
+              <pre><? include("tos.txt"); ?></pre>
+            </div>
+          </td>
+        </tr>
+        
+        <? } ?>
+				
+                                            <tr>
+                                                <td class="odd" width="50%">
+                                                    <div align="center">
+                                                        <!-- Choice: red, white, blackglass, clean-->
+                                                        <script type="text/javascript">var RecaptchaOptions = {theme : 'blackglass'};</script>
+                                                        <? require_once('recaptchalib.php');
+                                                          $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
+                                                          echo recaptcha_get_html($publickey);
+                                                        ?>
+                                                    </div>
+                                                </td>
+                                                
+                                                <td class="odd">
+                                                  <center>
+                                                    <input type="hidden" name="action" value="check">
+                                                    <input id="register_bouton" name="submit" TYPE="submit" value='<? echo $webui_create_new_account ?>'>
+                                                  </center>
+                                                </td>
+                                            </tr>
+                                        </table>
 		</form>
 	</div>
 </div>

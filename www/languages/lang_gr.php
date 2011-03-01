@@ -12,7 +12,9 @@ $webui_total_users = 'Σύνολο Χρηστών';
 $webui_total_regions = 'Σύνολο Περιφέρειες';
 $webui_unique_visitors = 'Μοναδικοί επισκέπτες τις τελευταίες 30 ημέρες';
 $webui_online_now = 'Διαθέσιμα Τώρα';
-     
+
+$webui_avatar_first_name = 'Avatar Όνομα';
+$webui_avatar_last_name = 'Avatar Επώνυμο';
 $webui_first_name='Όνομα';
 $webui_last_name='Επώνυμο';
 $webui_password='Κωδικός πρόσβασης';
@@ -91,6 +93,12 @@ $webui_menu_item_logout = 'Αποσύνδεση';
 $webui_menu_item_login = 'Είσοδος';
 $webui_menu_item_onlineusers = 'Χρήστες';
 $webui_menu_item_peoplesearch = 'Αναζήτηση';
+$webui_menu_item_users = 'Users';
+$webui_menu_item_gallery = 'Gallery';
+$webui_menu_item_world = 'World';
+$webui_menu_item_account = 'Account';
+$webui_menu_item_help = 'Help';
+$webui_menu_item_chat = 'Chat';
      
 //
 // Home Page
@@ -283,4 +291,28 @@ $webui_special_info = 'Αυτή τη στιγμή θα θέλαμε να σας 
 $webui_special_visit = 'Επίσκεψη';
 $webui_special_website = 'την ιστοσελίδα';
 $webui_special_moreinfo = 'για περισσότερες πληροφορίες';
+
+//
+// Gallery Page
+//
+$webui_gallery = 'Album photo';
+$webui_gallery_info = 'Ceci vous permet d\'avoir un aperçu en image des différentes régions de la grille';
+
+//
+// Support Page
+//
+$webui_support = 'Support';
+$webui_support_info = 'This allows you to Support';
+
+//
+// Help Page
+//
+$webui_help = 'Help';
+$webui_help_info = 'This allows you to Help';
+
+//
+// Chat Page
+//
+$webui_chat = 'Salle de Chat IRC';
+$webui_chat_info = 'This allows you to Live Chat Support.';
 ?>

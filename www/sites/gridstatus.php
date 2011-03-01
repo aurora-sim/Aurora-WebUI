@@ -25,7 +25,7 @@
               </tbody>
             </table>
             
-            <div id=grey style="MARGIN: 1px 0px 0px"><img height=1 src="images/login_screens/spacer.gif" width=1></div>
+            <div class="linegrey"><img src="images/login_screens/spacer.gif" ></div>
             <table cellSpacing=0 cellPadding=0>
               <tbody>
               <tr bgColor=#151515>

@@ -8,7 +8,7 @@ BODY {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 62.5%; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; PADDING-TOP: 0px; FONT-FAMILY: verdana, helvetica, sans-serif; BACKGROUND-COLOR: #000000
 }
 #GREX {
-	BACKGROUND-IMAGE: url(../images/login_screens/icons/grey_dot.png); MARGIN: 0px; BACKGROUND-REPEAT: repeat-x
+	BACKGROUND-IMAGE: url(../images/icons/grey_dot.png); MARGIN: 0px; BACKGROUND-REPEAT: repeat-x
 }
 #topright {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; Z-INDEX: 30; RIGHT: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #cccccc; PADDING-TOP: 0px; POSITION: absolute; TOP: 45px
@@ -26,13 +26,24 @@ A:hover {
 	COLOR: #ff7900; TEXT-DECORATION: underline
 }
 #top_image {
-	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; Z-INDEX: 1; LEFT: 20px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; POSITION: absolute; TOP: 35px
+	PADDING-RIGHT: 0px; 
+  PADDING-LEFT: 0px; 
+  Z-INDEX: 1; LEFT: 20px; 
+  PADDING-BOTTOM: 0px; 
+  MARGIN: 0px; 
+  PADDING-TOP: 0px; 
+  POSITION: absolute; 
+  TOP: 35px
 }
 #bottom_left {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; Z-INDEX: 1; LEFT: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; POSITION: absolute; BOTTOM: 145px
 }
-IMG#mainImage {
-	LEFT: 0px; WIDTH: 100%; POSITION: fixed; TOP: 50px; HEIGHT: 75%
+img#mainImage {
+left: 0px; 
+width: 100%;
+position: fixed;
+top: 50px;
+height: 75%;
 }
 
 
@@ -55,28 +66,28 @@ IMG#mainImage {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; BORDER-TOP-STYLE: none; PADDING-TOP: 0px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-COLLAPSE: collapse; HEIGHT: 77px; BORDER-BOTTOM-STYLE: none
 }
 TD.gridbox_t {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/grey.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 5px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/grey.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 5px; BACKGROUND-COLOR: #000000
 }
 TD.gridbox_r {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/grey.gif); WIDTH: 5px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/grey.gif); WIDTH: 5px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.gridbox_b {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/grey.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 5px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/grey.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 5px; BACKGROUND-COLOR: #000000
 }
 TD.gridbox_l {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/grey.gif); WIDTH: 5px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/grey.gif); WIDTH: 5px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.gridbox_tl {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/gridbox_tl.png); WIDTH: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 5px
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/gridbox_tl.png); WIDTH: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 5px
 }
 TD.gridbox_tr {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/gridbox_tr.png); WIDTH: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 5px
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/gridbox_tr.png); WIDTH: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 5px
 }
 TD.gridbox_bl {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/gridbox_bl.png); WIDTH: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 5px
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/gridbox_bl.png); WIDTH: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 5px
 }
 TD.gridbox_br {
-	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/gridbox_br.png); WIDTH: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 5px
+	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../images/icons/gridbox_br.png); WIDTH: 5px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 5px
 }
 
 
@@ -92,100 +103,100 @@ TD.gridbox_br {
 	FONT-SIZE: 1.2em; COLOR: #ccc; BACKGROUND-COLOR: #000
 }
 TD.boxwhite_t {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxwhite_t.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 11px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxwhite_t.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 11px; BACKGROUND-COLOR: #000000
 }
 TD.boxwhite_r {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxwhite_r.png); WIDTH: 11px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/boxwhite_r.png); WIDTH: 11px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.boxwhite_b {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxwhite_b.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 11px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/boxwhite_b.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 11px; BACKGROUND-COLOR: #000000
 }
 TD.boxwhite_l {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxwhite_l.png); WIDTH: 11px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxwhite_l.png); WIDTH: 11px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.boxwhite_tl {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxwhite_tl.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxwhite_tl.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
 }
 TD.boxwhite_tr {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxwhite_tr.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/boxwhite_tr.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
 }
 TD.boxwhite_bl {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxwhite_bl.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/boxwhite_bl.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
 }
 TD.boxwhite_br {
-	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxwhite_br.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
+	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../images/icons/boxwhite_br.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
 }
 TD.boxgreen_t {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxgreen_t.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 11px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxgreen_t.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 11px; BACKGROUND-COLOR: #000000
 }
 TD.boxgreen_r {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxgreen_r.png); WIDTH: 11px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/boxgreen_r.png); WIDTH: 11px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.boxgreen_b {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxgreen_b.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 11px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/boxgreen_b.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 11px; BACKGROUND-COLOR: #000000
 }
 TD.boxgreen_l {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxgreen_l.png); WIDTH: 11px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxgreen_l.png); WIDTH: 11px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.boxgreen_tl {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxgreen_tl.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxgreen_tl.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
 }
 TD.boxgreen_tr {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxgreen_tr.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/boxgreen_tr.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
 }
 TD.boxgreen_bl {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxgreen_bl.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/boxgreen_bl.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
 }
 TD.boxgreen_br {
-	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxgreen_br.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
+	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../images/icons/boxgreen_br.png); WIDTH: 11px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 11px
 }
 TD.boxyellow_t {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxyellow_t.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxyellow_t.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px; BACKGROUND-COLOR: #000000
 }
 TD.boxyellow_r {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxyellow_r.png); WIDTH: 9px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/boxyellow_r.png); WIDTH: 9px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.boxyellow_b {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxyellow_b.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/boxyellow_b.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px; BACKGROUND-COLOR: #000000
 }
 TD.boxyellow_l {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxyellow_l.png); WIDTH: 9px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxyellow_l.png); WIDTH: 9px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.boxyellow_tl {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxyellow_tl.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxyellow_tl.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
 }
 TD.boxyellow_tr {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxyellow_tr.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/boxyellow_tr.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
 }
 TD.boxyellow_bl {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxyellow_bl.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/boxyellow_bl.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
 }
 TD.boxyellow_br {
-	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxyellow_br.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
+	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../images/icons/boxyellow_br.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
 }
 TD.boxred_t {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxred_t.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/icons/boxred_t.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px; BACKGROUND-COLOR: #000000
 }
 TD.boxred_r {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxred_r.png); WIDTH: 9px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/boxred_r.png); WIDTH: 9px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.boxred_b {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxred_b.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/boxred_b.png); BACKGROUND-REPEAT: repeat-x; HEIGHT: 9px; BACKGROUND-COLOR: #000000
 }
 TD.boxred_l {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxred_l.png); WIDTH: 9px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxred_l.png); WIDTH: 9px; BACKGROUND-REPEAT: repeat-y; BACKGROUND-COLOR: #000000
 }
 TD.boxred_tl {
-	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxred_tl.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/icons/boxred_tl.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
 }
 TD.boxred_tr {
-	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxred_tr.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
+	BACKGROUND-POSITION: right top; BACKGROUND-IMAGE: url(../images/icons/boxred_tr.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
 }
 TD.boxred_bl {
-	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxred_bl.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/icons/boxred_bl.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
 }
 TD.boxred_br {
-	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../../images/login_screens/icons/boxred_br.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
+	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../images/icons/boxred_br.png); WIDTH: 9px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 9px
 }
 
 <!--  REGION BOX -->

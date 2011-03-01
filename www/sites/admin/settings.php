@@ -6,11 +6,11 @@ if ($_SESSION[ADMINID]) {
 <?
     $DbLink = new DB;
 
-    if ($_POST[Submitreg] == "Save") {
+    if ($_POST[Submitreg] == "$webui_admin_settings_save_bouton") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET adress='$_POST[adressset]',region='$_POST[regtyp]',startregion='$_POST[region]'");
     }
 
-    if ($_POST[Submit2] == "Save") {
+    if ($_POST[Submit2] == "$webui_admin_settings_save_bouton") {
         if ($_POST[lastname] != "") {
             $DbLink->query("SELECT name FROM " . C_NAMES_TBL . " Where name='$_POST[lastname]'");
             list($checkname) = $DbLink->next_record();
@@ -23,15 +23,15 @@ if ($_SESSION[ADMINID]) {
         }
     }
 
-    if ($_POST[Submit3] == "Save") {
+    if ($_POST[Submit3] == "$webui_admin_settings_save_bouton") {
         $DbLink->query("UPDATE " . C_NAMES_TBL . " SET active='0' WHERE name='$_POST[deactivelast]'");
     }
 
-    if ($_POST[Submit4] == "Save") {
+    if ($_POST[Submit4] == "$webui_admin_settings_save_bouton") {
         $DbLink->query("UPDATE " . C_NAMES_TBL . " SET active='1' WHERE name='$_POST[activatelast]'");
     }
 
-    if ($_POST[Submit5] == "Save") {
+    if ($_POST[Submit5] == "$webui_admin_settings_save_bouton") {
         $DbLink->query("DELETE FROM " . C_NAMES_TBL . " WHERE name='$_POST[delname]'");
     }
 
@@ -39,27 +39,27 @@ if ($_SESSION[ADMINID]) {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET griddir='$_POST[griddir]',assetdir='$_POST[assetdir]',userdir='$_POST[userdir]'");
     }
 
-    if ($_POST[Submitnam2] == "Activate") {
+    if ($_POST[Submitnam2] == "$webui_admin_settings_activate_bouton") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET lastnames='1'");
     }
 
-    if ($_POST[Submitnam2] == "Deactivate") {
+    if ($_POST[Submitnam2] == "$webui_admin_settings_desactivate_bouton") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET lastnames='0'");
     }
 
-    if ($_POST[allowRegistrationSubmit] == "Activate") {
+    if ($_POST[allowRegistrationSubmit] == "$webui_admin_settings_activate_bouton") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET allowRegistrations='1'");
     }
 
-    if ($_POST[allowRegistrationSubmit] == "Deactivate") {
+    if ($_POST[allowRegistrationSubmit] == "$webui_admin_settings_desactivate_bouton") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET allowRegistrations='0'");
     }
 
-    if ($_POST[verifyusersSubmit] == "Activate") {
+    if ($_POST[verifyusersSubmit] == "$webui_admin_settings_activate_bouton") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET verifyUsers='1'");
     }
 
-    if ($_POST[verifyusersSubmit] == "Deactivate") {
+    if ($_POST[verifyusersSubmit] == "$webui_admin_settings_desactivate_bouton") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET verifyUsers='0'");
     }
 	
@@ -248,18 +248,20 @@ if ($_SESSION[ADMINID]) {
               </td>
             </tr>
         </form>
-		
-		<form id="form6" name="form6" method="post" action="index.php?page=adminsettings">
-            <tr>
-              <td class="even"><span class="Stil4">Restrict age to 18 or older</span></td>
-              <td class="even">
-                  <? if ($FORCEAGE == 0) { ?>
-                  <input type="submit" name="Submitage" value="Activate" />
-                  <? } else { ?>
-                  <input type="submit" name="Submitage" value="Deactivate" />
-                  <? } ?>
-              </td>
-            </tr>
+        
+        <form id="form6" name="form6" method="post" action="index.php?page=adminsettings">
+          <tr> 
+            <td class="even">
+              <span class="Stil4">Restrict age to 18 or older</span>
+            </td>
+                
+            <td class="even"><? if ($FORCEAGE == 0) { ?>
+                <input type="submit" name="Submitage" value="Activate" />
+                <? } else { ?>
+                <input type="submit" name="Submitage" value="Deactivate" />
+                <? } ?>
+            </td>
+          </tr>
         </form>
     </table>
   </div>

@@ -99,6 +99,7 @@ $webui_menu_item_gallery = 'Gallery';
 $webui_menu_item_world = 'Monde';
 $webui_menu_item_account = 'Compte';
 $webui_menu_item_help = 'Aide';
+$webui_menu_item_chat = 'Chat';
 
 //
 // Home Page
@@ -291,4 +292,28 @@ $webui_special_info = 'En ce moment, nous voudrions vous demander d\'aller sur l
 $webui_special_visit = 'Visitez';
 $webui_special_website = 'le site';
 $webui_special_moreinfo = 'pour plus d\'informations';
+
+//
+// Gallery Page
+//
+$webui_gallery = 'Album photo';
+$webui_gallery_info = 'Ceci vous permet d\'avoir un aperçu en image des différentes régions de la grille';
+
+//
+// Support Page
+//
+$webui_support = 'Support';
+$webui_support_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
+
+//
+// Help Page
+//
+$webui_help = 'Aide';
+$webui_help_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
+
+//
+// Chat Page
+//
+$webui_chat = 'Live Chat Support IRC';
+$webui_chat_info = 'Ceci vous permet d\'obtenir une aide en directe grace à notre Salle de Chat IRC.';
 ?>

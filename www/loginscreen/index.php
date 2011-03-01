@@ -60,14 +60,14 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 		
 ?>
 
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<link href="../loginscreen/css/style.css" type="text/css" rel="stylesheet">
-<script src="../loginscreen/javascript/resize.js" type="text/javascript"></script>
-<script src="../loginscreen/javascript/imageswitch.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?= SYSURL ?>loginscreen/css/style.css" type="text/css" rel="stylesheet">
+<script src="<?= SYSURL ?>loginscreen/javascript/resize.js" type="text/javascript"></script>
+<script src="<?= SYSURL ?>loginscreen/javascript/imageswitch.js" type="text/javascript"></script>
 
 <? include("../languages/translator.php"); ?>
 <title><?=SYSNAME?>: <? echo $webui_login_screen ?></title>
@@ -79,30 +79,30 @@ bgImgRotate();
 </SCRIPT>
 
 </head>
-
+    
 <body class="webui">
 
 <div id=top_image>
-    <img src="<?=SYSURL?>images/login_screens/logo.png" alt="<?=SYSNAME?>" title="<?=SYSNAME?>" />
+    <img src="<?= SYSURL ?>loginscreen/images/logo.png" alt="<?=SYSNAME?>" title="<?=SYSNAME?>" />
 </div>
 
 <div id=bottom_left>
     <?
-      include("../loginscreen/special.php");
+      include("modules/special.php");
     ?>
     
     <div id=regionbox>
         <? 
-          include("../loginscreen/region_box.php"); 
+          include("modules/region_box.php"); 
         ?>
     </div>
 </div>
 
-<img id=mainImage src="../images/login_screens/spacer.gif" alt="" title="">
+<img id=mainImage src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt="" title="" />
 
 <div id=bottom>
     <div id=news>
-      <? include("../loginscreen/news.php"); ?>
+      <? include("modules/news.php"); ?>
     </div>
 </div>
 
@@ -111,7 +111,7 @@ bgImgRotate();
     <br />
     <br />
     <div id=gridstatus>
-      <? include("../loginscreen/gridstatus.php"); ?>
+      <? include("modules/gridstatus.php"); ?>
     </div>
     
     <br />
@@ -119,13 +119,13 @@ bgImgRotate();
     <div id=Infobox>
       <? 
         if(($INFOBOX=="1")&&($BOXCOLOR=="white")){
-        include("../loginscreen/box_white.php"); 
+        include("modules/box_white.php"); 
         }else if(($INFOBOX=="1")&&($BOXCOLOR=="green")){
-        include("../loginscreen/box_green.php"); 
+        include("modules/box_green.php"); 
         }else if(($INFOBOX=="1")&&($BOXCOLOR=="yellow")){
-        include("../loginscreen/box_yellow.php"); 
+        include("modules/box_yellow.php"); 
         }else if(($INFOBOX=="1")&&($BOXCOLOR=="red")){
-        include("../loginscreen/box_red.php"); }
+        include("modules/box_red.php"); }
       ?>
     </div>
 </div>

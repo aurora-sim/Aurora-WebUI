@@ -100,6 +100,7 @@ $webui_menu_item_gallery = 'Galleria';
 $webui_menu_item_world = 'Mondo';
 $webui_menu_item_account = 'Account';
 $webui_menu_item_help = 'Aiuto';
+$webui_menu_item_chat = 'Chat';
 
 //
 // Home Page
@@ -178,7 +179,7 @@ $webui_confirm_password = 'Conferma Password';
 //
 // Admin parts
 //
-$webui_admin_login = "Login amministratore";
+$webui_admin_login = "Login Aministratore";
 $webui_menu_item_adminloginscreen = 'Modifica';
 $webui_menu_item_adminhome = 'Amministratore';
 $webui_menu_item_adminmanage = 'Manager';
@@ -286,5 +287,28 @@ $webui_regionbox = 'Regione';
 $webui_special_info = 'Ti preghiamo di assicurarti che tu abbia un account valido registrato sul nostro sito';
 $webui_special_visit = 'Visita';
 $webui_special_website = 'il sito web';
-$webui_special_moreinfo = 'Per maggiori informazioni';
+
+//
+// Gallery Page
+//
+$webui_gallery = 'Album photo';
+$webui_gallery_info = 'Ceci vous permet d\'avoir un aperçu en image des différentes régions de la grille';
+
+//
+// Support Page
+//
+$webui_support = 'Support';
+$webui_support_info = 'This allows you to Support';
+
+//
+// Help Page
+//
+$webui_help = 'Help';
+$webui_help_info = 'This allows you to Help';
+
+//
+// Chat Page
+//
+$webui_chat = 'Salle de Chat IRC';
+$webui_chat_info = 'This allows you to Live Chat Support.';
 ?>

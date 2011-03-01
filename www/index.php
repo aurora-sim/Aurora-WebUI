@@ -121,46 +121,45 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
-        <link rel="icon" href="<?=$favicon_image?>" />
-        <title>Welcome to <?= SYSNAME ?></title>
-        <script src="js/global.js" type="text/javascript"></script>
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
+    <link rel="icon" href="<?=$favicon_image?>" />
+    <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
+    <script src="javascripts/global.js" type="text/javascript"></script>
+</head>
 
-    <body class="webui">
+<body class="webui">
     
-    <div id="topcontainer">
-        <div id="date">
-            <?php $date = date("d-m-Y");
-              $heure = date("H:i");
-              Print("$webui_before_date $date $webui_after_date $heure");
-            ?>
-        </div>
+<div id="topcontainer">
+   <div id="date">
+        <?php $date = date("d-m-Y");
+          $heure = date("H:i");
+           Print("$webui_before_date $date $webui_after_date $heure");
+        ?>
+    </div>
         
-        <div id="translator"><?php include("languages/translator_page.php"); ?></div>
-    </div><!-- fin de #topcontainer -->
+    <div id="translator"><?php include("languages/translator_page.php"); ?></div>
+</div><!-- fin de #topcontainer -->
         
-    <div id="container">
-        <div id="headerimages">
-            <a href="<?= SYSURL ?>"><h1><span><? SYSNAME ?></span></h1></a>
-        </div>
-            
-        <div id="header">
-            <div id="gridstatus"><?php include("sites/gridstatus.php"); ?></div>
-            <div id="menubar"><? include("sites/menubar.php"); ?></div>
-        </div><!-- fin de #header -->
+<div id="container">
+    <div id="headerimages">
+        <a href="<?= SYSURL ?>"><h1><span><? SYSNAME ?></span></h1></a>
+    </div>
+           
+    <div id="header">
+        <div id="gridstatus"><?php include("sites/gridstatus.php"); ?></div>
+        <div id="menubar"><? include("sites/menubar.php"); ?></div>
+    </div><!-- fin de #header -->
 
-        <div id="MainContainer">
-            <div id="sites"><? include("sites.php"); ?></div>
-        </div><!-- fin de #mainContent -->
+    <div id="MainContainer">
+        <div id="sites"><? include("sites.php"); ?></div>
+    </div><!-- fin de #mainContent -->
+</div><!-- fin de #container -->
         
-        </div><!-- fin de #container -->
-        
-        <div id="footer">
-            <?php include("sites/footer.php"); ?>
-        </div><!-- fin de #footer -->
-        
+<div id="footer">
+    <?php include("sites/footer.php"); ?>
+</div><!-- fin de #footer -->    
+
 </body>
 </html>

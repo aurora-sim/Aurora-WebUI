@@ -40,7 +40,14 @@ else
 	}
 </script>
 <div id="content">
-	<h2><?= SYSNAME ?>: <? echo $webui_menu_item_adminsupport ?></h2>
+    <h2><?= SYSNAME ?>: <? echo $webui_support; ?></h2>
+    
+    <div id="support">
+        
+        <div id="info">
+            <p><? echo $webui_support_info; ?></p>
+        </div>
+        
 	<?=$_POST["method"]?>
 	<table width="100%">
 		<tr>
@@ -105,7 +112,7 @@ else
 		</tr>
 		<?}	?>
 	</table>
-</div>
+</div></div>
 
 <?
 }
