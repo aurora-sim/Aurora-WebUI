@@ -20,7 +20,7 @@ define("WIREDUX_PASSWORD","");
 $unconfirmed_deltime="24";
 
 ################### Help support area #####################
-$support_emails_to="robert.skidmore@gmail.com";
+$support_emails_to="noreply@osgrid.org";
 $support_emails_subject="WebUI Support:";
 
 ################### GridMap Settings  #####################
