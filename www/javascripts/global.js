@@ -22,7 +22,7 @@ function validate(form)
 				else if (form.elements[i].value == "")
 				{
 					formproblem(form.elements[i], " is required");
-					
+					return false;
 				}
 			}
 		}
