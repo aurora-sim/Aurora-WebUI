@@ -4,8 +4,8 @@
             <table>
 				<tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
                 <tr>
-                    <td class="even"><span id="logname_label"><? echo $webui_user_name ?>*</span></td>
-                    <td class="even"><input require="true" label="logname_label" id="login_input" name="logname" type="text" value="<?= $_POST[logname] ?>" /></td>
+                    <td class="odd"><span id="logname_label"><? echo $webui_user_name ?>*</span></td>
+                    <td class="odd"><input require="true" label="logname_label" id="login_input" name="logname" type="text" value="<?= $_POST[logname] ?>" /></td>
                 </tr>
                 <tr>
                     <td class="even"><span id="password_label"><? echo $webui_password ?>*</span></td>
