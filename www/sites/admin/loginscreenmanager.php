@@ -39,7 +39,7 @@ list($gridstatus, $boxstatus, $boxcolor, $infotitle, $infomessage) = $DbLink->ne
     </div>
         
     <table>
-        <form action="index.php?page=loginscreen" method="post">
+        <form action="index.php?page=adminloginscreen" method="post">
             <input type="hidden" name="infobox" value="save" />
             
             <tr>
