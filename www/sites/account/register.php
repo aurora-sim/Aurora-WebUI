@@ -336,8 +336,6 @@ function displayDefaultAvatars()
 		}
 	}
 	
-	$DbLink->query("SELECT agentIP FROM " . C_USRBAN_TBL . " WHERE agentIP='$userIP'");
-	list($IPCHECK) = $DbLink->next_record();
 	require_once('recaptchalib.php');
 	$privatekey = "6Lf_MQQAAAAAAB2vCZraiD2lGDKCkWfULvhG4szK";
 	$resp = recaptcha_check_answer($privatekey,
@@ -352,13 +350,6 @@ function displayDefaultAvatars()
 		   window.location.href='index.php?page=register';
 		   -->
 		   </script>";
-	}else if ($IPCHECK) {
-		$_SESSION[ERROR] = "This IP adress is banned";
-		echo "<script language='javascript'>
-		<!--
-		window.location.href='index.php?page=register';
-		// -->
-		</script>";
 	} else if (($_SESSION[PASSWD] != $_SESSION[PASSWD2]) or ($_SESSION[PASSWD] == '') or ($_SESSION[PASSWD2] == '') or ($_SESSION[EMAIC] == '') or ($_SESSION[EMAIL] == '') or ($_SESSION[CITY] == '') or ($_SESSION[ZIP] == '') or ($_SESSION[ADRESS] == '') or ($_SESSION[NAMEL] == '') or ($_SESSION[NAMEF] == '') or ($_SESSION[ACCFIRST] == '') or ($_SESSION[ACCLAST] == '')) {
 
 		if ($_SESSION[EMAIC] == '') {
@@ -428,7 +419,7 @@ function displayDefaultAvatars()
 		$passwordHash = md5(md5($passneu) . ":");
 
 		$found = array();
-		$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'First' => $_SESSION[ACCFIRST], 'Last' => $_SESSION[ACCLAST]));
+		$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'Name' => $_SESSION[ACCFIRST].$_SESSION[ACCLAST]));
 		$do_post_requested = do_post_request($found);
 		$recieved = json_decode($do_post_requested);
 
@@ -468,7 +459,7 @@ function displayDefaultAvatars()
 
 			$found = array();
 			$found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WIREDUX_PASSWORD),
-						'First' => $_SESSION[ACCFIRST], 'Last' => $_SESSION[ACCLAST],
+						'Name' => $_SESSION[ACCFIRST].$_SESSION[ACCLAST],
 						'Email' => $_SESSION[EMAIL],
 						'HomeRegion' => $_SESSION[REGIONID],
 						'PasswordHash' => $passneu,
