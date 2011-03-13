@@ -106,7 +106,7 @@ $webui_menu_item_chat = 'Chat';
 // Home Page
 //
 $webui_home = 'Home';
-$webui_welcome = 'Welcome to the new site';
+$webui_welcome = 'Welcome to';
 $webui_welcome_visitor = 'Hi Visitor!';
 $webui_welcome_userid = 'Hi Userid!';
 $webui_home_page='
@@ -158,7 +158,7 @@ $webui_fullscreen = 'Full Screen';
 // People Search Page
 //
 $webui_people_search='Users Search';
-$webui_people_search_info = 'Ceci vous permet de rechercher des utilisateurs parmis les registred users';
+$webui_people_search_info = 'Search for a registered user';
 $webui_people_search_bouton = 'Search';
 $webui_users_found='Users Found';
 
@@ -217,7 +217,7 @@ $webui_admin_news_delete = 'Delete';
 // Admin Management Panel Page
 //
 $webui_admin_manage = 'Management Panel';
-$webui_admin_manage_info = 'Ceci vous permet d\'administrer les utilisateurs.';
+$webui_admin_manage_info = 'Manage your users here';
 $webui_admin_manage_user = 'Admin User Management Panel';
 $webui_admin_manage_username = 'User Name';
 
@@ -236,7 +236,7 @@ $webui_admin_manage_userdelete = 'Delete this User';
 // Admin Edit Management Panel Page
 //
 $webui_admin_edit_manage = 'Edit Management Panel';
-$webui_admin_edit_manage_info = 'Ceci vous permet d\'éditer le panneau d\'administrations des utilisateurs.';
+$webui_admin_edit_manage_info = 'Administer your managers here';
 $webui_admin_edit_manage_userid = 'USERID (UUID)';
 $webui_admin_edit_manage_avatar_firstname = 'Avatar first name';
 $webui_admin_edit_manage_avatar_lastname = 'Avatar last name';
@@ -259,7 +259,7 @@ $webui_admin_edit_manage_notconf = 'Not Confirmed';
 // Admin Settings Page
 //
 $webui_admin_settings = 'Administrator Settings';
-$webui_admin_settings_info = 'Ceci vous permet des réglages administrateur.';
+$webui_admin_settings_info = 'Here you can change the registration page default settings';
 $webui_admin_settings_changeable = 'Start Region changeable at';
 $webui_admin_settings_startregion = 'Start Region';
 $webui_admin_settings_require = 'Require address for account creation';
@@ -289,7 +289,7 @@ $webui_admin_create_news_info = 'This allows you to create a new.';
 //
 $webui_login_screen = 'Login Screen';
 $webui_regionbox = 'Region';
-$webui_special_info = 'At this moment we would like to ask you to go to the website and make sure that you have your email registered';
+$webui_special_info = 'Nothing to report at this time.';
 $webui_special_visit = 'Visit';
 $webui_special_website = 'the website';
 $webui_special_moreinfo = 'for more information';
