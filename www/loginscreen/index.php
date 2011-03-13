@@ -26,7 +26,7 @@ $DbLink = new DB;
 $DbLink->query("SELECT UserID FROM ".C_USERINFO_TBL." where IsOnline = 1 AND ".
 				"LastLogin < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND ".
 				"LastLogout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) ".
-				"ORDER BY Login DESC");
+				"ORDER BY LastLogin DESC");
 $NOWONLINE = 0;
 while(list($UUID) = $DbLink->next_record())
 {
