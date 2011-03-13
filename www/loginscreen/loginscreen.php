@@ -23,7 +23,7 @@ $GRIDSTATUS = $recieved->{'Online'};
 
 // Doing it the same as the Who's Online now part
 $DbLink = new DB;
-$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online = 1 AND ". 
+$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online != '0' AND ". 
 				"Login < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND ".
 				"Logout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) ".
 				"ORDER BY Login DESC");
@@ -33,10 +33,10 @@ while(list($UUID) = $DbLink->next_record())
 	// Let's get the user info
 	$DbLink3 = new DB;
 	$DbLink3->query("SELECT RegionID from ".C_PRESENCE_TBL." where UserID = '".$UUID."'");
-	list($RegionUUID) = $DbLink3->next_record();
+	list($regionUUID) = $DbLink3->next_record();
 
 	$DbLink2 = new DB;
-	$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where UUID = '".$UUID."'");
+	$DbLink2->query("SELECT firstname, lastname from ".C_USERS_TBL." where PrincipalID = '".$UUID."'");
 	list($firstname, $lastname) = $DbLink2->next_record();
 	$username = $firstname." ".$lastname;
 	// Let's get the region information
