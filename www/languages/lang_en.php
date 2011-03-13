@@ -111,9 +111,16 @@ $webui_welcome_visitor = 'Hi Visitor!';
 $webui_welcome_userid = '';
 $webui_home_page='
     <p>
-        A new virtual world brought to you by <a href="http://pleiades.ca/">Pleiades.ca</a>.<br />
-		To begin, <a href="http://www.astragrid.com/index.php?page=register">create a free account</a>, then download and install the <a href="http://astraviewer.com/">Astra Viewer</a> virtual world browser software.<br />
-        <i>Astra Grid is powered by <a href="http://aurora-sim.org/">Aurora-Sim</a>.</i>
+        This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams. <br />
+        Everything is possible in our brand new 3D World. <br />
+        Our World is created by its residents, you can build everything you can imagine here. <br /><br />
+        Create a free account today, build a virtual you and play in our world. <br />
+        Join us now, and make a difference! <br /><br /><br />
+        <u>There are just 3 steps to get started:</u> <br /><br />
+        1.) Create your FREE Account right here on our pages. <br /><br />
+        2.) Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        3.) Be sure to add our grid to your viewer. <br /><br /><br />
+        <i>Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</i>
     </p>';
 
 //
@@ -282,7 +289,7 @@ $webui_admin_create_news_info = 'This allows you to create a new.';
 //
 $webui_login_screen = 'Login Screen';
 $webui_regionbox = 'Region';
-$webui_special_info = 'Nothing to report at this time.';
+$webui_special_info = 'At this moment we would like to ask you to go to the website and make sure that you have your email registered';
 $webui_special_visit = 'Visit';
 $webui_special_website = 'the website';
 $webui_special_moreinfo = 'for more information';
