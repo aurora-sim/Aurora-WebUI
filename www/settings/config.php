@@ -86,9 +86,8 @@ define("C_GALLERY_TBL", "wi_gallery");
 define("C_USERS_TBL","useraccounts");
 define("C_AUTH_TBL","auth");
 define("C_REGIONS_TBL","gridregions");
-define("C_GRIDUSER_TBL","griduser");
 define("C_APPEARANCE_TBL", "avatar");
-define("C_PRESENCE_TBL", "Presence");
+define("C_USERINFO_TBL", "userinfo");
 define("C_PROFILE_TBL", "profilegeneral");
 
 //other

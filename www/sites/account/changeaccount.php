@@ -34,7 +34,7 @@ if ($_SESSION[USERID] == "") {
             $DbLink->query("SELECT uuid FROM " . C_REGIONS_TBL . " WHERE regionName='$startregion' ");
             list($homeid) = $DbLink->next_record();
 
-            $DbLink->query("UPDATE " . C_GRIDUSER_TBL . " SET HomeRegionID ='$homeid' WHERE UserID='$_SESSION[USERID]' ");
+            $DbLink->query("UPDATE " . C_USERINFO_TBL . " SET HomeRegionID ='$homeid' WHERE UserID='$_SESSION[USERID]' ");
             echo
             "<script language='javascript'>
 			<!--

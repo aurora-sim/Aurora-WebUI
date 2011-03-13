@@ -23,20 +23,20 @@ $GRIDSTATUS = $recieved->{'Online'};
 
 // Doing it the same as the Who's Online now part
 $DbLink = new DB;
-$DbLink->query("SELECT UserID FROM ".C_GRIDUSER_TBL." where Online != '0' AND ". 
-				"Login < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND ".
-				"Logout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) ".
-				"ORDER BY Login DESC");
+$DbLink->query("SELECT UserID FROM ".C_USERINFO_TBL." where IsOnline = '1' AND ".
+				"LastLogin < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND ".
+				"LastLogout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) ".
+				"ORDER BY LastLogin DESC");
 $NOWONLINE = 0;
 while(list($UUID) = $DbLink->next_record())
 {
 	// Let's get the user info
 	$DbLink3 = new DB;
-	$DbLink3->query("SELECT RegionID from ".C_PRESENCE_TBL." where UserID = '".$UUID."'");
+	$DbLink3->query("SELECT CurrentRegionID from ".C_USERINFO_TBL." where UserID = '".$UUID."'");
 	list($regionUUID) = $DbLink3->next_record();
 
 	$DbLink2 = new DB;
-	$DbLink2->query("SELECT firstname, lastname from ".C_USERS_TBL." where PrincipalID = '".$UUID."'");
+	$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where PrincipalID = '".$UUID."'");
 	list($firstname, $lastname) = $DbLink2->next_record();
 	$username = $firstname." ".$lastname;
 	// Let's get the region information
@@ -49,7 +49,7 @@ while(list($UUID) = $DbLink->next_record())
 	}
 }
 
-$DbLink->query("SELECT count(*) FROM ".C_GRIDUSER_TBL." where Login > UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now()) - 2419200))");
+$DbLink->query("SELECT count(*) FROM ".C_USERINFO_TBL." where LastLogin > UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now()) - 2419200))");
 list($LASTMONTHONLINE) = $DbLink->next_record();
  
 $DbLink->query("SELECT count(*) FROM ".C_USERS_TBL."");
@@ -61,9 +61,9 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <TITLE><?=SYSNAME?> Login</TITLE>
-<LINK href="loginscreen/style.css" type=text/css rel=stylesheet>
-<SCRIPT src="loginscreen/resize.js" type=text/javascript></SCRIPT>
-<SCRIPT src="loginscreen/imageswitch.js" type=text/javascript></SCRIPT>
+<LINK href="loginscreen/style.css" type="text/css rel=stylesheet">
+<SCRIPT src="loginscreen/resize.js" type="text/javascript"></SCRIPT>
+<SCRIPT src="loginscreen/imageswitch.js" type="text/javascript"></SCRIPT>
 
 <SCRIPT>
 $(document).ready(function(){
@@ -86,7 +86,7 @@ include("loginscreen/region_box.php");
 </DIV>
 </DIV>
 
-<IMG id=mainImage src="images/login_screens/spacer.gif"> 
+<IMG id=mainImage src="images/login_screens/spacer.gif">
 <DIV id=bottom>
 <DIV id=news>
 <? include("loginscreen/news.php"); ?>
