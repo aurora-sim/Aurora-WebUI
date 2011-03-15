@@ -5,9 +5,9 @@
                 <TABLE cellSpacing=0 cellPadding=0 width=300 border=0>
                     <TBODY>
                         <TR>
-                            <TD class=gridbox_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-                            <TD class=gridbox_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-                            <TD class=gridbox_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+                          <TD class=gridbox_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+                          <TD class=gridbox_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+                          <TD class=gridbox_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
                         </TR>
                         <TR>
                             <TD class=gridbox_l></TD>
@@ -55,9 +55,9 @@
                             <TD class=gridbox_r></TD>
                         </TR>
                         <TR>
-                            <TD class=gridbox_bl></TD>
-                            <TD class=gridbox_b></TD>
-                            <TD class=gridbox_br></TD>
+                          <TD class=gridbox_bl></TD>
+                          <TD class=gridbox_b></TD>
+                          <TD class=gridbox_br></TD>
                         </TR>
                     </TBODY>
                 </TABLE>

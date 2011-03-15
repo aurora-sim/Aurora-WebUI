@@ -28,25 +28,26 @@ $DbLink->query("SELECT UserID FROM ".C_USERINFO_TBL." where IsOnline = 1 AND ".
 				"LastLogout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) ".
 				"ORDER BY LastLogin DESC");
 $NOWONLINE = 0;
+
 while(list($UUID) = $DbLink->next_record())
 {
-	// Let's get the user info
-	$DbLink3 = new DB;
-	$DbLink3->query("SELECT CurrentRegionID from ".C_USERINFO_TBL." where UserID = '".$UUID."'");
-	list($RegionUUID) = $DbLink3->next_record();
+// Let's get the user info
+$DbLink3 = new DB;
+$DbLink3->query("SELECT CurrentRegionID from ".C_USERINFO_TBL." where UserID = '".$UUID."'");
+list($RegionUUID) = $DbLink3->next_record();
 
-	$DbLink2 = new DB;
-	$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where PrincipalID = '".$UUID."'");
-	list($firstname, $lastname) = $DbLink2->next_record();
-	$username = $firstname." ".$lastname;
-	// Let's get the region information
-	$DbLink3 = new DB;
-	$DbLink3->query("SELECT RegionName from ".C_REGIONS_TBL." where RegionUUID = '".$RegionUUID."'");
-	list($region) = $DbLink3->next_record();
-	if ($region != "")
-	{
-	$NOWONLINE = $NOWONLINE + 1;
-	}
+$DbLink2 = new DB;
+$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where PrincipalID = '".$UUID."'");
+list($firstname, $lastname) = $DbLink2->next_record();
+$username = $firstname." ".$lastname;
+// Let's get the region information
+$DbLink3 = new DB;
+$DbLink3->query("SELECT RegionName from ".C_REGIONS_TBL." where RegionUUID = '".$RegionUUID."'");
+list($region) = $DbLink3->next_record();
+if ($region != "")
+{
+$NOWONLINE = $NOWONLINE + 1;
+}
 }
 
 $DbLink->query("SELECT count(*) FROM ".C_USERINFO_TBL." where LastLogin > UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now()) - 2419200))");
@@ -65,9 +66,9 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="<?= SYSURL ?>loginscreen/css/style.css" type="text/css" rel="stylesheet">
-<script src="<?= SYSURL ?>loginscreen/javascript/resize.js" type="text/javascript"></script>
-<script src="<?= SYSURL ?>loginscreen/javascript/imageswitch.js" type="text/javascript"></script>
+<link href="<?= SYSURL ?>loginscreen/templates/default_template.css" type="text/css" rel="stylesheet">
+<script src="<?= SYSURL ?>loginscreen/javascripts/resize.js" type="text/javascript"></script>
+<script src="<?= SYSURL ?>loginscreen/javascripts/imageswitch.js" type="text/javascript"></script>
 
 <? include("../languages/translator.php"); ?>
 <title><?=SYSNAME?>: <? echo $webui_login_screen ?></title>
