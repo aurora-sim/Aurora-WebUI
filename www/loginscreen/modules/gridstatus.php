@@ -46,7 +46,7 @@
                                             <TD class=gridtext vAlign=top noWrap align=right width="1%"><?= $LASTMONTHONLINE ?></TD>
                                         </TR>
                                         <TR bgColor=#000000>
-                                            <TD class=gridtext vAlign=top noWrap align=left><STRONG><a href="index.php?page=onlineusers"><? echo $webui_online_now; ?></a>:</STRONG></TD>
+                                            <TD class=gridtext vAlign=top noWrap align=left><STRONG><a href="<?= SYSURL ?>index.php?page=onlineusers" target="_blank"><? echo $webui_online_now; ?></a>:</STRONG></TD>
                                             <TD class=gridtext vAlign=top noWrap align=right width="1%"><STRONG><?= $NOWONLINE ?></STRONG></TD>
                                         </TR>
                                     </TBODY>
