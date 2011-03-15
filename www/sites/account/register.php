@@ -419,7 +419,7 @@ function displayDefaultAvatars()
 		$passwordHash = md5(md5($passneu) . ":");
 
 		$found = array();
-		$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'Name' => $_SESSION[ACCFIRST].$_SESSION[ACCLAST]));
+		$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'Name' => $_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST]));
 		$do_post_requested = do_post_request($found);
 		$recieved = json_decode($do_post_requested);
 
@@ -459,7 +459,7 @@ function displayDefaultAvatars()
 
 			$found = array();
 			$found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WIREDUX_PASSWORD),
-						'Name' => $_SESSION[ACCFIRST].$_SESSION[ACCLAST],
+						'Name' => $_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST],
 						'Email' => $_SESSION[EMAIL],
 						'HomeRegion' => $_SESSION[REGIONID],
 						'PasswordHash' => $passneu,
