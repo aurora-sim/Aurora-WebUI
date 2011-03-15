@@ -98,7 +98,7 @@ $NOWONLINE = 0;
 while (list($UUID) = $DbLink->next_record()) {
     // Let's get the user info
     $DbLink2 = new DB;
-    $DbLink2->query("SELECT firstname, lastname from " . C_USERS_TBL . " where PrincipalID = '" . $UUID . "'");
+    $DbLink2->query("SELECT Firstname, Lastname from " . C_USERS_TBL . " where PrincipalID = '" . $UUID . "'");
     list($firstname, $lastname) = $DbLink2->next_record();
     $DbLink3 = new DB;
     $DbLink3->query("SELECT CurrentRegionID from " . C_USERINFO_TBL . " where UserID = '" . $UUID . "'");
@@ -106,7 +106,7 @@ while (list($UUID) = $DbLink->next_record()) {
     $username = $firstname . " " . $lastname;
     // Let's get the region information
     $DbLink3 = new DB;
-    $DbLink3->query("SELECT regionName from " . C_REGIONS_TBL . " where RegionUUID = '" . $regionUUID . "'");
+    $DbLink3->query("SELECT RegionName from " . C_REGIONS_TBL . " where RegionUUID = '" . $RegionUUID . "'");
     list($region) = $DbLink3->next_record();
     if ($region != "") {
         $NOWONLINE = $NOWONLINE + 1;
