@@ -36,7 +36,7 @@ while(list($UUID) = $DbLink->next_record())
 	list($RegionUUID) = $DbLink3->next_record();
 
 	$DbLink2 = new DB;
-	$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where UUID = '".$UUID."'");
+	$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where PrincipalID = '".$UUID."'");
 	list($firstname, $lastname) = $DbLink2->next_record();
 	$username = $firstname." ".$lastname;
 	// Let's get the region information
