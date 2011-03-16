@@ -20,7 +20,8 @@ if ($_GET[delete] == 1) {
 }
 
 if ($_POST[infobox] == "save") {
-    $DbLink->query("UPDATE " . C_INFOWINDOW_TBL . " SET gridstatus='$_POST[gridstatus]',active='$_POST[boxstatus]',color='$_POST[boxcolor]',title='$_POST[infotitle]',message='$_POST[infomessage]'");
+    $message = str_replace("'", "\'", "$_POST[infomessage]");
+    $DbLink->query("UPDATE " . C_INFOWINDOW_TBL . " SET gridstatus='$_POST[gridstatus]',active='$_POST[boxstatus]',color='$_POST[boxcolor]',title='$_POST[infotitle]',message='$message'");
 }
 
 $DbLink->query("SELECT gridstatus,active,color,title,message  FROM " . C_INFOWINDOW_TBL . " ");
