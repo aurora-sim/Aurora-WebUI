@@ -1,19 +1,9 @@
-<? include("languages/translator.php"); ?>
-
 <table cellSpacing=0 cellPadding=0 width="100%" border=0 valign="top">
   <tbody>
       <tr>
-          <td class=gridbox_tl>
-              <img height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5>
-          </td>
-          
-          <td class=gridbox_t>
-              <img height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5>
-          </td>
-          
-          <td class=gridbox_tr>
-              <img height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5>
-          </td>
+        <TD class=gridbox_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+        <TD class=gridbox_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+        <TD class=gridbox_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
       </tr>
       
       <tr>
@@ -56,9 +46,9 @@
       </tr>
       
       <tr>
-          <td class=gridbox_bl></td>
-          <td class=gridbox_b></td>
-          <td class=gridbox_br></td>
+        <TD class=gridbox_bl></TD>
+        <TD class=gridbox_b></TD>
+        <TD class=gridbox_br></TD>
       </tr>
   </tbody>
 </table>

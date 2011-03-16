@@ -16,7 +16,7 @@
 			       <center>
                 <p><? echo $webui_special_info; ?></p>
                 <p><? echo $webui_special_visit; ?>
-                <a target="_blank" href =<?=SYSURL?>>
+                <a href =<?=SYSURL?> target="_blank">
                 <? echo $webui_special_website; ?></a> 
                 <? echo $webui_special_moreinfo; ?></p>
             </center>
@@ -25,15 +25,9 @@
           <TD class=gridbox_r></TD>
         </TR>
         <TR>
-          <TD class=gridbox_bl>
-            <IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5>
-          </TD>
-          <TD class=gridbox_b>
-            <span class="gridbox_br"><img height="5" src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width="5" /></span>
-          </TD>
-          <TD class=gridbox_br>
-            <IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5>
-          </TD>
+          <TD class=gridbox_bl></TD>
+          <TD class=gridbox_b></TD>
+          <TD class=gridbox_br></TD>
         </TR>
         </TBODY>
       </TABLE>

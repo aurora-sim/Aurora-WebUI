@@ -5,9 +5,9 @@
                 <TABLE cellSpacing=0 cellPadding=0 width=300 border=0>
                     <TBODY>
                         <TR>
-                            <TD class=gridbox_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-                            <TD class=gridbox_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-                            <TD class=gridbox_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+                          <TD class=gridbox_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+                          <TD class=gridbox_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+                          <TD class=gridbox_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
                         </TR>
                         <TR>
                             <TD class=gridbox_l></TD>
@@ -46,7 +46,7 @@
                                             <TD class=gridtext vAlign=top noWrap align=right width="1%"><?= $LASTMONTHONLINE ?></TD>
                                         </TR>
                                         <TR bgColor=#000000>
-                                            <TD class=gridtext vAlign=top noWrap align=left><STRONG><a href="index.php?page=onlineusers"><? echo $webui_online_now; ?></a>:</STRONG></TD>
+                                            <TD class=gridtext vAlign=top noWrap align=left><STRONG><a href="<?= SYSURL ?>index.php?page=onlineusers" target="_blank"><? echo $webui_online_now; ?></a>:</STRONG></TD>
                                             <TD class=gridtext vAlign=top noWrap align=right width="1%"><STRONG><?= $NOWONLINE ?></STRONG></TD>
                                         </TR>
                                     </TBODY>
@@ -55,9 +55,9 @@
                             <TD class=gridbox_r></TD>
                         </TR>
                         <TR>
-                            <TD class=gridbox_bl></TD>
-                            <TD class=gridbox_b></TD>
-                            <TD class=gridbox_br></TD>
+                          <TD class=gridbox_bl></TD>
+                          <TD class=gridbox_b></TD>
+                          <TD class=gridbox_br></TD>
                         </TR>
                     </TBODY>
                 </TABLE>
