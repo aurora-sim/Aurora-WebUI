@@ -16,6 +16,16 @@ if($regionType == '')
 $regionType = 'Unknown';
 $DbLink->query("SELECT FirstName,LastName FROM ".C_USERS_TBL." where PrincipalID='$owner'");
 list($firstN,$lastN) = $DbLink->next_record();
+
+$DbLink->query("SELECT RegionUUID, Info FROM ".C_REGIONS_TBL." where locX='".($locX*256)."' and locY='".($locY*256)."'");
+list($UUID,$Info) = $DbLink->next_record();
+$recieved = json_decode($Info);
+$serverIP = $recieved->{'serverIP'};
+$serverHttpPort = $recieved->{'serverHttpPort'};
+
+$SERVER ="http://$serverIP:$serverHttpPort";
+$UUID = str_replace("-", "", $UUID);
+$source = $SERVER."/index.php?method=regionImage".$UUID."";
 ?>
 
 
@@ -28,16 +38,18 @@ list($firstN,$lastN) = $DbLink->next_record();
     <title><?=SYSNAME?>: <? echo $webui_region_information; ?></title>
 </head>
 
-<body class="webui">
-
+<body class="webui_pop">
 <div id="content">
-    <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?></h2>
+    <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?> &rsaquo; <span><?=$RegionName?></span></h2>
   
     <div id="regioninfo">
 	  <!--  <div id="info"><p><? echo $webui_regioninfo ?></p></div> -->
 	  <!--  <h2><? echo $webui_region_information; ?>:</h2> -->
-    <hr>
+    
     <table>
+    	<tr>
+        	<td><img src="<? echo $source; ?>" alt="<?=$RegionName?>" title="<?=$RegionName?>" width="128" height="128" /></td>
+        </tr>
         <tr>
             <td><? echo $webui_region_name; ?>: <?=$RegionName?></td>
         </tr>
@@ -51,13 +63,79 @@ list($firstN,$lastN) = $DbLink->next_record();
             <td><? echo $webui_owner; ?>: <a href="<?=SYSURL?>app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
         </tr>
     </table>
-
-    <div id="region_picture">
-        <img src="regionimage.php?x=<?=$locX?>&y=<?=$locY?>" alt="<?=$RegionName?>" title="<?=$RegionName?>" />
-    </div>
+    <?
+	/*+++ PRINT NEIGHBORS +++*/
+	// Array of 8 locations to search for
+	$locarr['RegionName1']="(LocX='".($locX - 1)*256 ."' and LocY='".($locY - 1)*256 ."')";
+	$locarr['RegionName2']="(LocX='".$locX * 256 ."' and LocY='".($locY - 1)*256 ."')";
+	$locarr['RegionName3']="(LocX='".($locX + 1)*256 ."' and LocY='".($locY - 1)*256 ."')";
+	$locarr['RegionName4']="(LocX='".($locX - 1)*256 ."' and LocY='".$locY *256 ."')";
+	/* This region would go here */
+	$locarr['RegionName6']="(LocX='".($locX + 1)*256 ."' and LocY='".$locY *256 ."')";
+	$locarr['RegionName7']="(LocX='".($locX - 1)*256 ."' and LocY='".($locY + 1)*256 ."')";
+	$locarr['RegionName8']="(LocX='".$locX * 256 ."' and LocY='".($locY + 1)*256 ."')";
+	$locarr['RegionName9']="(LocX='".($locX + 1)*256 ."' and LocY='".($locY + 1)*256 ."')";
+	
+	$DbLink->query("SELECT RegionName,LocX,LocY FROM ".C_REGIONS_TBL." where ".implode(" or ",$locarr));
+	while(list($RegionNameX,$locX1,$locY1) = $DbLink->next_record()){
+		
+		switch($locX1/256){
+			case $locX: //same col
+				$regN = 5;
+				switch(	$locY1/256 ) {
+					case $locY - 1: //down one
+					$regN = 8;
+					break;
+					case $locY + 1: //up one
+					$regN = 2;
+					break;
+				}
+				break;
+			case $locX - 1: //one left
+				$regN = 4;
+				switch(	$locY1/256 ) {
+					case $locY - 1: //down one
+					$regN = 7;
+					break;
+					case $locY + 1: //up one
+					$regN = 1;
+					break;
+				}
+				break;
+			default: // one right
+				$regN = 6;
+				switch(	$locY1/256 ) {
+					case $locY - 1: //down one
+					$regN = 9;
+					break;
+					case $locY + 1: //up one
+					$regN = 3;
+					break;
+				}
+				break;
+		}
+		${"RegionName".$regN} = "<a href='?x=".$locX1."&y=".$locY1."'>".$RegionNameX."</a>";
+	}
+	?>
+	<table id="regionMap" cellpadding="0" cellspacing="4">
+        <tr>
+            <td <?php echo ($RegionName1 ? ">".$RegionName1 : "class='nosim'>")?></td>
+            <td <?php echo ($RegionName2 ? ">".$RegionName2 : "class='nosim'>")?></td>
+            <td <?php echo ($RegionName3 ? ">".$RegionName3 : "class='nosim'>")?></td>
+        </tr>
+        <tr>
+            <td <?php echo ($RegionName4 ? ">".$RegionName4 : "class='nosim'>")?></td>
+            <td class='thissim'><?=$RegionName?></td>
+            <td <?php echo ($RegionName6 ? ">".$RegionName6 : "class='nosim'>")?></td>
+        </tr>
+        <tr>
+            <td <?php echo ($RegionName7 ? ">".$RegionName7 : "class='nosim'>")?></td>
+            <td <?php echo ($RegionName8 ? ">".$RegionName8 : "class='nosim'>")?></td>
+            <td <?php echo ($RegionName9 ? ">".$RegionName9 : "class='nosim'>")?></td>
+        </tr>
+    </table>
 
   </div>
-  <hr>
 </div>
 </body>
 </html>
