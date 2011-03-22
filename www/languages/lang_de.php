@@ -35,7 +35,7 @@ $webui_location='Position';
 $webui_info='Info';
 $webui_regions_found='Regionen gefunden';
 $webui_region_list='Regionsliste';
-$webui_region_list_page_info='Dies ist die Regionsliste, mehr Informationen &uuml;ber eine Region per Klick of einen Regionsnamen.';
+$webui_region_list_page_info='Dies ist die Regionsliste. Mehr Informationen &uuml;ber eine Region per Klick of \''.$webui_more_info.'\'.';
 $webui_more_info='Mehr Info';
 $webui_user_name='Nutzername';
 
@@ -106,11 +106,12 @@ $webui_menu_item_chat = 'Chat';
 // Home Page
 //
 $webui_home='Home';
-$webui_welcome='Willkommen to the new site';
+$webui_welcome='Willkommen auf der Webseite';
 $webui_welcome_visitor='Hi Visitor!';
 $webui_welcome_userid='Hi Userid!';
 $webui_home_page='
-    <p>
+   <p style="height:100%; overflow:auto;">
+     <img src="../templates/astragrid/astragrid_promo.jpg" alt="AstraGrid Preview Image" id="preview_image"><br>
         Dies ist unsere neue virtuelle Welt. Hier kann man Spass haben, Leute treffen, sich unterhalten, spielen, die Welt erkunden, etwas erschaffen und Tr&auml;ume teilen. </br>
         Die M&ouml;glichkeiten sind grenzenlos in unserer brandneuen 3D Welt.<br />
         Unsere Welt wird von den Residenten geschaffen, hier kannst Du bauen, was immer Deine Fantasie ist.<br /><br />
@@ -118,7 +119,7 @@ $webui_home_page='
         Schliesse Dich uns jetzt and bewege etwas!<br /><br /><br />
         <u>Mit nur 3 einfachen Schritten geht es los:</u> <br /><br />
         1.) Ein KOSTENLOSES Konto hier auf unseren Seiten anlegen.<br /><br />
-        2.) Den Viewer herunterladen. Wir empfehlen <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
+        2.) Den Viewer herunterladen. Wir empfehlen <a href="http://astraviewer.com/" target="_blank">Astra Viewer</a>.<br /><br />
         3.) Pr&uuml;fen, ob unser Grid auf Deinem Viewer gelistet ist. <br /><br /><br />
         <i>Bitte beachten: Die Aurora-Plattform ist noch in der Alpha-Phase und funktioniert vielleicht nicht immer wie erwartet.</i>
     </p>';

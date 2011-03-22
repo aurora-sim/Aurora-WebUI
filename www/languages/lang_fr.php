@@ -109,7 +109,8 @@ $webui_welcome = 'Bienvenue sur le nouveau site';
 $webui_welcome_visitor = 'Bonjour Visiteur!';
 $webui_welcome_userid = 'Bonjour Userid!';
 $webui_home_page='
-    <p>
+    <p style="height:100%; overflow:auto;">
+     <img src="../templates/astragrid/astragrid_promo.jpg" alt="AstraGrid Preview Image" id="preview_image"><br>
         Ceci est notre nouveau monde virtuel où vous pouvez vous amuser, rencontrer des gens, discuter, jouer, explorer, créer et partager vos rêves.<br />
         Tout est possible dans notre tout nouveau monde 3D.<br />
         Notre monde est créé par ses résidents, vous pouvez y construire tout ce que vous pouvez imaginer.<br /><br />
@@ -117,7 +118,7 @@ $webui_home_page='
         Rejoignez-nous maintenant, et faites la différence!<br /><br /><br />
         <u>Il ya seulement 3 étapes pour commencer:</u><br /><br />
         1.) Créez votre compte GRATUIT sur notre site.<br /><br />
-        2.) Télécharger le spectateur. Nous recommandons <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a> <br /><br />
+        2.) Télécharger le spectateur. Nous recommandons <a href="http://astraviewer.com/" target="_blank">Astra Viewer</a>.<br /><br />
         3.) N\'oubliez pas d\'ajouter notre grille à votre spectateur.<br /><br /><br />
         <i>S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.</i>
     </p>';

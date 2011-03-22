@@ -35,7 +35,7 @@ $webui_location='Location';
 $webui_info='Info';
 $webui_regions_found='Regions Found';
 $webui_region_list='Region List';
-$webui_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
+$webui_region_list_page_info='This is the regions list.  Click \''.$webui_more_info.'\' to get more information about that region.';
 $webui_more_info='More Info';
 $webui_user_name='User Name';
 
@@ -110,17 +110,12 @@ $webui_welcome = 'Welcome to';
 $webui_welcome_visitor = 'Hi Visitor!';
 $webui_welcome_userid = '';
 $webui_home_page='
-    <p>
-        This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams. <br />
-        Everything is possible in our brand new 3D World. <br />
-        Our World is created by its residents, you can build everything you can imagine here. <br /><br />
-        Create a free account today, build a virtual you and play in our world. <br />
-        Join us now, and make a difference! <br /><br /><br />
-        <u>There are just 3 steps to get started:</u> <br /><br />
-        1.) Create your FREE Account right here on our pages. <br /><br />
-        2.) Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
-        3.) Be sure to add our grid to your viewer. <br /><br /><br />
-        <i>Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</i>
+	 <p style="height:100%; overflow:auto;">
+     <img src="../templates/astragrid/astragrid_promo.jpg" alt="AstraGrid Preview Image" id="preview_image"><br><br>
+      <span style="font-size:120%; font-weight:bold;">A new virtual world brought to you by <a href="http://pleiades.ca/">Pleiades.ca</a>.</span><br /><br />
+		To begin, <a href="http://www.astragrid.com/index.php?page=register">create a free account</a>, then download and install the <a href="http://astraviewer.com/">Astra Viewer</a> virtual world browser software.<br />
+        <br><br>
+		<i>Astra Grid is powered by <a href="http://aurora-sim.org/">Aurora-Sim</a>.</i>
     </p>';
 
 //
@@ -272,10 +267,10 @@ $webui_admin_settings_realastname = 'Reactivate last name';
 $webui_admin_settings_delete = 'Delete last name';
 $webui_admin_settings_save_bouton = 'Save';
 $webui_admin_settings_activate_bouton = 'Activate';
-$webui_admin_settings_desactivate_bouton = 'Desactivate';
+$webui_admin_settings_desactivate_bouton = 'Deactivate';
 $webui_admin_settings_create_select = 'Create/Edit account';
 $webui_admin_settings_edit_select = 'Edit account';
-$webui_admin_settings_adminonly_select = 'Adminsitrator only';
+$webui_admin_settings_adminonly_select = 'Administrator only';
 $webui_admin_settings_yes_select = 'Yes';
 $webui_admin_settings_no_select = 'No';
 
@@ -289,7 +284,7 @@ $webui_admin_create_news_info = 'This allows you to create a new.';
 //
 $webui_login_screen = 'Login Screen';
 $webui_regionbox = 'Region';
-$webui_special_info = 'At this moment we would like to ask you to go to the website and make sure that you have your email registered';
+$webui_special_info = 'Nothing to report at this time.';
 $webui_special_visit = 'Visit';
 $webui_special_website = 'the website';
 $webui_special_moreinfo = 'for more information';
@@ -297,24 +292,24 @@ $webui_special_moreinfo = 'for more information';
 //
 // Gallery Page
 //
-$webui_gallery = 'Album photo';
-$webui_gallery_info = 'Ceci vous permet d\'avoir un aperçu en image des différentes régions de la grille';
+$webui_gallery = 'Photo Gallery';
+$webui_gallery_info = 'Take a look at some of the places you can find on AstraGrid.';
 
 //
 // Support Page
 //
 $webui_support = 'Support';
-$webui_support_info = 'This allows you to Support';
+$webui_support_info = 'Get help related to AstraGrid.';
 
 //
 // Help Page
 //
 $webui_help = 'Help';
-$webui_help_info = 'This allows you to Help';
+$webui_help_info = 'Get help related to AstraGrid.';
 
 //
 // Chat Page
 //
-$webui_chat = 'Salle de Chat IRC';
-$webui_chat_info = 'This allows you to Live Chat Support.';
+$webui_chat = 'Live Chat Support';
+$webui_chat_info = 'Get help by asking in a live IRC channel.';
 ?>
