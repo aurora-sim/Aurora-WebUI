@@ -65,8 +65,8 @@
  
 ?>
 
-<div id="menu">
-    <ul class="menu">
+<!--<div id="menu">-->
+    <ul> <!--class="menu"-->
     
     <?
 		$DbLink = new DB;
@@ -89,4 +89,4 @@
 		}
     ?>
     </ul>
-</div>
+<!--</div>-->
