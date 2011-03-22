@@ -5,8 +5,8 @@ if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
     ob_start();
 session_start();
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<?
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<!--<?
 /*
  * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
@@ -72,11 +72,7 @@ if ($_POST[Submit] == $webui_admin_login) {
 }
 
 //LOGIN END
-?>
 
-
-<!-- *** removed from home.php and add here *** -->
-<?
 $DbLink = new DB;
 
 $DbLink->query("SELECT gridstatus,active,color,title,message  FROM ".C_INFOWINDOW_TBL." ");
@@ -121,51 +117,60 @@ list($USERCOUNT) = $DbLink->next_record();
 
 $DbLink->query("SELECT count(*) FROM " . C_REGIONS_TBL . "");
 list($REGIONSCOUNT) = $DbLink->next_record();
-?>
-<!-- *** END OF removed from home.php and add here *** -->
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+?>-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><?= SYSNAME ?></title>
     <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
-    <link rel="icon" href="<?=$favicon_image?>" />
-    <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
-    <script src="javascripts/global.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="<?=$favicon_image?>" />
+	<script src="javascripts/global.js" type="text/javascript"></script>
 </head>
 
 <body class="webui">
     
-<div id="topcontainer">
-   <div id="date">
-        <?php $date = date("d-m-Y");
-          $heure = date("H:i");
-           Print("$webui_before_date $date $webui_after_date $heure");
-        ?>
-    </div>
+    <div id="bgbody">
         
-    <div id="translator"><?php include("languages/translator_page.php"); ?></div>
-</div><!-- fin de #topcontainer -->
-        
-<div id="container">
-    <div id="headerimages">
-        <a href="<?= SYSURL ?>"><h1><span><? SYSNAME ?></span></h1></a>
-    </div>
-           
-    <div id="header">
-        <div id="gridstatus"><?php include("sites/gridstatus.php"); ?></div>
-        <div id="menubar"><? include("sites/menubar.php"); ?></div>
-    </div><!-- fin de #header -->
+        <div id="main">
+			
+            <div id="header">
+            	<div id="topcontainer">
+            		<div id="translator"><?php include("languages/translator_page.php"); ?></div>
+            	</div> <!--fin de #topcontainer -->
+                <span style="position:absolute; left:20px; top: 50px;">
+                    
+                   <a href="<?= SYSURL ?>"><img class="giant" src="<? echo $images_path;?>astragrid_logo.png" border="0" alt="<?= SYSNAME ?>" /></a>
+                
+                </span>
+               
+                <div style="position:absolute; right:100px; top:25px; width:auto; height:auto; ">
+                
+                        <?php include("sites/gridstatus.php"); ?>
+                
+                </div>
+                
+                
+                <div id="navigation">
+                
+                    <? include("sites/menubar.php"); ?>
+                
+                </div>
+            
+            </div> <!-- end #header -->
+            
+            <div id="container">
+            
+            <? include("sites.php"); ?>
+            
+            </div><!--end #container-->
+            
+            <div id="endpage"><span></span></div>
+            
+            <div id="footer">
 
-    <div id="MainContainer">
-        <div id="sites"><? include("sites.php"); ?></div>
-    </div><!-- fin de #mainContent -->
-</div><!-- fin de #container -->
-        
-<div id="footer">
-    <?php include("sites/footer.php"); ?>
-</div><!-- fin de #footer -->    
-
+            <?php include("sites/footer.php"); ?>
+            
+            </div><!-- fin de #footer -->    
+        </div><!-- end #main -->
+    </div><!-- end #bgbody -->
 </body>
 </html>
