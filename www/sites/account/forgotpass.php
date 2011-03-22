@@ -5,49 +5,49 @@ function Form(theForm)
 
   if (theForm.email.value == "")
   {
-    alert("Please enter your \"e-mail adress\" ");
+    alert("Please enter your e-mail address.");
     theForm.email.focus();
     return (false);
   }
 
   if(theForm.email.value.indexOf('@') == -1)
   {
-       alert("No valid e-mail adress!");
+       alert("Not a valid e-mail address!");
        theForm.email.focus();
        return (false);
   }
   
   if(theForm.email.value.indexOf('.') == -1)
   {
-       alert("No valid e-mail adress!");
+       alert("Not a valid e-mail address!");
        theForm.email.focus();
        return (false);
   }
   
     if (theForm.email2.value == "")
   {
-    alert("Please confirm your \"e-mail adress\" ");
+    alert("Please confirm your e-mail address.");
     theForm.email2.focus();
     return (false);
   }
 
   if(theForm.email2.value.indexOf('@') == -1)
   {
-       alert("No valid e-mail adress!");
+       alert("Not a valid e-mail address!");
        theForm.email2.focus();
        return (false);
   }
   
   if(theForm.email2.value.indexOf('.') == -1)
   {
-       alert("No valid e-mail adress!");
+       alert("Not a valid e-mail address!");
        theForm.email2.focus();
        return (false);
   }
   
       if (theForm.email2.value != theForm.email.value)
   {
-    alert("e-mail confirmation doesnt match with e-mail adress");
+    alert("E-mail confirmation does not match with e-mail address.");
     theForm.email2.focus();
     return (false);
   }
@@ -85,14 +85,6 @@ if($_POST[Submit]=="Submit")
 		 $header = "From: " . SYSMAIL . "\r\n";
 		 $mail_status = mail($sendto, $subject, $body, $header);
 		//-----------------------------MAIL END --------------------------------------
-		
-		
-		echo "<script language='javascript'>
-		<!--
-			window.alert('Check your email.');
-			window.location.href='/index.php?page=login&btn=9';
-		// -->
-		</script>";
 	}
 	else
 	{
@@ -106,15 +98,13 @@ if($_POST[Submit]=="Submit")
 <div id="content">
 
   <h2><?= SYSNAME ?>: <? echo $webui_forgot_password ?></h2>
-  
-  <div id="forget_pass">
-  
-	<div id="info">
+  <div id="info">
 		<p><? echo $webui_forgot_password_info ?></p>
 	</div>
-
-  <table>
-    <form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
+    
+  <div id="forget_pass">
+  <form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
+    <table>
       <tr>
         <td>
           <table>
@@ -140,13 +130,12 @@ if($_POST[Submit]=="Submit")
             </tr>
                   
             <tr>
-              <td class="even"></td>
-              <td class="even"><input id="forgot_pass_bouton" type="submit" name="Submit" value="<? echo $webui_submit ?>"></td>
+              <td class="even" colspan="2"><button id="forgot_pass_bouton" type="submit" name="Submit"><? echo $webui_submit ?></button><!--<input id="forgot_pass_bouton" type="submit" name="Submit" value="<? //echo $webui_submit ?>">--></td>
             </tr>
           </table>
         </td>
       </tr>
-    </form>
-  </table>
+    </table>
+  </form>
   </div>
 </div>
