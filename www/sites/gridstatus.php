@@ -6,9 +6,9 @@
       <table>
         <tbody>
         <tr>
-          <td class=gridbox_tl><img height=5 width=5 src="images/login_screens/spacer.gif" alt="WiRedux-Spacer" /></td>
-          <td class=gridbox_t><img height=5 width=5 src="images/login_screens/spacer.gif" alt="WiRedux-Spacer" /></td>
-          <td class=gridbox_tr><img height=5 width=5 src="images/login_screens/spacer.gif" alt="WiRedux-Spacer" /></td></tr>
+          <td class=gridbox_tl><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td>
+          <td class=gridbox_t><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td>
+          <td class=gridbox_tr><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td></tr>
         <tr>
           <td class=gridbox_l></td>
           <td class=black_content>
@@ -52,6 +52,5 @@
           <td class=gridbox_br></td></tr></tbody></table></td></tr></tbody></table>
 
 
-<!-- END OFF GRID STATUS MODULE -->
+</div><!-- end #gridstatus -->
 
-</div>

@@ -135,42 +135,32 @@ function displayDefaultAvatars()
 }
 	
 ?>
-    <div id="content"><h2><?= SYSNAME ?>: <? echo $webui_register ?></h2>
+    <div id="content"><center><h2><?= SYSNAME ?>: <? echo $webui_register ?></h2></center>
     <div id="register">
         <form ACTION="index.php?page=register" METHOD="POST" onsubmit="if (!validate(this)) return false;">
             <table>
-                <tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
+                <tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];?><?=$_GET[ERROR]?></td></tr>
                 <tr>
-                    <td class="even"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span></td>
+                    <td class="even"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span><input minlength="3" id="register_input" require="true" label="accountfirst_label" name="accountfirst" type="text" size="25" maxlength="15" value="<?= $_SESSION[ACCFIRST] ?>"></td>
                     <td class="even">
-                        <input minlength="3" id="register_input" require="true" label="accountfirst_label" name="accountfirst" type="text" size="25" maxlength="15" value="<?= $_SESSION[ACCFIRST] ?>">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="odd"><span id="accountlast_label"><? echo $webui_avatar_last_name ?>*</span></td>
-                    <td class="odd">
-						<?=printLastNames()?>
+                        <span id="accountlast_label"><? echo $webui_avatar_last_name ?>*</span><? printLastNames()?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="even"><span id="wordpass_label"><? echo $webui_password ?>*</span></td>
-                    <td class="even">
-                        <input minlength="6" compare="wordpass2" require="true" label="wordpass_label" id="register_input" name="wordpass" type="password" size="25" maxlength="15">
+                    <td class="odd"><span id="wordpass_label"><? echo $webui_password ?>*</span><input minlength="6" compare="wordpass2" require="true" label="wordpass_label" id="register_input" name="wordpass" type="password" size="25" maxlength="15">
                     </td>
+                    <td class="odd"><span id="wordpass2_label"><? echo $webui_confirm ?> <? echo $webui_password ?>*</span><input minlength="6" require="true" label="wordpass2_label" id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
+                        </td>
                 </tr>
-
-                <tr>
-                    <td class="odd"><span id="wordpass2_label"><? echo $webui_confirm ?> <? echo $webui_password ?>*</span></td>
-                    <td class="odd"><input minlength="6" require="true" label="wordpass2_label" id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
-                    </td>
-                </tr>
+				<tr>
+					<td class="even"><span id="email_label"><? echo $webui_email ?>*</span><input compare="emaic" require="true" label="email_label" id="register_input" name="email" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIL] ?>"></td>
+					<td class="even"><span id="emaic_label"><? echo $webui_confirm ?> <? echo $webui_email ?>*</span><input require="true" label="emaic_label" id="register_input" name="emaic" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIC] ?>" ></td>
+				</tr>
 <? if ($REGIOCHECK == "0") { ?>
                 <tr>
-                    <td class="even"><span id="startregion_label"><? echo $webui_start_region ?>*</span></td>
-                    <td class="even">
-                        <? displayRegions();	?>
-                    </td>
+                    <td class="even" colspan="2"><span id="startregion_label"><? echo $webui_start_region ?>*</span><? displayRegions(); ?></td>
+                    
                 </tr>
 <? } if ($ADRESSCHECK == "1") { ?>
 				<tr>
@@ -226,16 +216,6 @@ function displayDefaultAvatars()
                     </td>
                 </tr>
 <? } ?>
-				<tr>
-					<td class="odd"><span id="email_label"><? echo $webui_email ?>*</span></td>
-					<td class="odd">
-						<input compare="emaic" require="true" label="email_label" id="register_input" name="email" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIL] ?>"></td>
-				</tr>
-				<tr>
-					<td class="even"><span id="emaic_label"><? echo $webui_confirm ?> <? echo $webui_email ?>*</span></td>
-					<td class="even">
-						<input require="true" label="emaic_label" id="register_input" name="emaic" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIC] ?>" ></td>
-				</tr>
 				
         <? displayDefaultAvatars(); ?>
         <? if( file_exists( $_SERVER{'DOCUMENT_ROOT'} . "/TOS.txt"))  { ?>
@@ -254,21 +234,23 @@ function displayDefaultAvatars()
         <? } ?>
 				
                                             <tr>
-                                                <td class="odd" width="50%">
-                                                    <div align="center">
+                                                <td class="odd" width="100%" colspan="2">
+                                                    <div align="center" style="margin:15px;">
                                                         <!-- Choice: red, white, blackglass, clean-->
-                                                        <script type="text/javascript">var RecaptchaOptions = {theme : 'blackglass'};</script>
+                                                        <script type="text/javascript">var RecaptchaOptions = {theme : 'white'};</script>
                                                         <? require_once('recaptchalib.php');
                                                           $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
                                                           echo recaptcha_get_html($publickey);
                                                         ?>
                                                     </div>
                                                 </td>
-                                                
-                                                <td class="odd">
+                                                </tr>
+                                                <tr>
+                                                <td class="odd" colspan="2">
                                                   <center>
                                                     <input type="hidden" name="action" value="check">
-                                                    <input id="register_bouton" name="submit" TYPE="submit" value='<? echo $webui_create_new_account ?>'>
+                                                    <button id="register_bouton" name="submit" type="submit"><? echo $webui_create_new_account ?></button>
+                                                    <!--<input id="register_bouton" name="submit" TYPE="submit" value='<? //echo $webui_create_new_account ?>'>-->
                                                   </center>
                                                 </td>
                                             </tr>
@@ -532,19 +514,8 @@ function displayDefaultAvatars()
 				$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','$_SESSION[EMAIL]'," . time() . ")");
 				// insert code end
 ?>
+<div id="content"><center><h2>Account successfully created!</h2></center>
 
-<table width="100%" height="410" border="0">
-			<tr>
-						<td valign="top"><br>
-
-
-							<table width="50%" border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF">
-								<tr>
-									<td bgcolor="#000000"><div align="center"><strong>Account successfully created </strong></div></td>
-								</tr>
-
-								<tr>
-									<td bgcolor="#000000">
 										<blockquote>
 											<p>
 												<br>
@@ -564,12 +535,7 @@ function displayDefaultAvatars()
 												<br>
 											</p>
 										</blockquote>
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
+									</div>
 
 <?
 				session_unset();
