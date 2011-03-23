@@ -35,7 +35,7 @@ $webui_location='Position';
 $webui_info='Info';
 $webui_regions_found='Regionen gefunden';
 $webui_region_list='Regionsliste';
-$webui_region_list_page_info='Dies ist die Regionsliste, mehr Informationen &uuml;ber eine Region per Klick of einen Regionsnamen.';
+$webui_region_list_page_info='Dies ist die Regionsliste. Mehr Informationen &uuml;ber eine Region per Klick of \''.$webui_more_info.'\'.';
 $webui_more_info='Mehr Info';
 $webui_user_name='Nutzername';
 
@@ -106,7 +106,7 @@ $webui_menu_item_chat = 'Chat';
 // Home Page
 //
 $webui_home='Home';
-$webui_welcome='Willkommen to the new site';
+$webui_welcome='Willkommen auf der Webseite';
 $webui_welcome_visitor='Hi Visitor!';
 $webui_welcome_userid='Hi Userid!';
 $webui_home_page='

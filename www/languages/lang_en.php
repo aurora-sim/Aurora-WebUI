@@ -35,7 +35,7 @@ $webui_location='Location';
 $webui_info='Info';
 $webui_regions_found='Regions Found';
 $webui_region_list='Region List';
-$webui_region_list_page_info='This is the regions list, click on a region\'s name to get more information about that region.';
+$webui_region_list_page_info='This is the regions list.  Click \''.$webui_more_info.'\' to get more information about that region.';
 $webui_more_info='More Info';
 $webui_user_name='User Name';
 
@@ -272,10 +272,10 @@ $webui_admin_settings_realastname = 'Reactivate last name';
 $webui_admin_settings_delete = 'Delete last name';
 $webui_admin_settings_save_bouton = 'Save';
 $webui_admin_settings_activate_bouton = 'Activate';
-$webui_admin_settings_desactivate_bouton = 'Desactivate';
+$webui_admin_settings_desactivate_bouton = 'Deactivate';
 $webui_admin_settings_create_select = 'Create/Edit account';
 $webui_admin_settings_edit_select = 'Edit account';
-$webui_admin_settings_adminonly_select = 'Adminsitrator only';
+$webui_admin_settings_adminonly_select = 'Administrator only';
 $webui_admin_settings_yes_select = 'Yes';
 $webui_admin_settings_no_select = 'No';
 
@@ -289,7 +289,7 @@ $webui_admin_create_news_info = 'This allows you to create a new.';
 //
 $webui_login_screen = 'Login Screen';
 $webui_regionbox = 'Region';
-$webui_special_info = 'At this moment we would like to ask you to go to the website and make sure that you have your email registered';
+$webui_special_info = 'Nothing to report at this time.';
 $webui_special_visit = 'Visit';
 $webui_special_website = 'the website';
 $webui_special_moreinfo = 'for more information';
@@ -297,8 +297,8 @@ $webui_special_moreinfo = 'for more information';
 //
 // Gallery Page
 //
-$webui_gallery = 'Album photo';
-$webui_gallery_info = 'Ceci vous permet d\'avoir un aperçu en image des différentes régions de la grille';
+$webui_gallery = 'Photo Gallery';
+$webui_gallery_info = 'Take a look at some of the places you can find in the grid.';
 
 //
 // Support Page
@@ -315,6 +315,6 @@ $webui_help_info = 'This allows you to Help';
 //
 // Chat Page
 //
-$webui_chat = 'Salle de Chat IRC';
-$webui_chat_info = 'This allows you to Live Chat Support.';
+$webui_chat = 'Live Chat Support';
+$webui_chat_info = 'Get help by asking in a live IRC channel.';
 ?>

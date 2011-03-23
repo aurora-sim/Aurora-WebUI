@@ -18,9 +18,10 @@ function do_post_request($found) {
     if ($fp) {
         stream_set_timeout($fp, $timeout);
         stream_set_blocking($fp, 3);
-    } else
+    } else{
         //throw new Exception("Problem with " . WIREDUX_SERVICE_URL . ", $php_errormsg");
         return false;
+	}
     $response = @stream_get_contents($fp);
     if ($response === false) {
         //throw new Exception("Problem reading data from " . WIREDUX_SERVICE_URL . ", $php_errormsg");

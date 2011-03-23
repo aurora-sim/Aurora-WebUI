@@ -94,15 +94,14 @@ $source = $SERVER."/index.php?method=regionImage".$UUID."";
     <title><?=SYSNAME?>: <? echo $webui_region_information; ?></title>
 </head>
 
-<body class="webui">
-
+<body class="webui_pop">
 <div id="content">
-    <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?></h2>
+    <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?> &rsaquo; <span><?=$RegionName?></span></h2>
   
     <div id="regioninfo">
 	  <!--  <div id="info"><p><? echo $webui_regioninfo ?></p></div> -->
 	  <!--  <h2><? echo $webui_region_information; ?>:</h2> -->
-    <hr>
+    
           
 	<div id="regionMap">
 	<table cellpadding="0" cellspacing="4">
@@ -130,6 +129,9 @@ $source = $SERVER."/index.php?method=regionImage".$UUID."";
    
    <div id="regiondetails">
     <table>
+    	<tr>
+        	<td><img src="<? echo $source; ?>" alt="<?=$RegionName?>" title="<?=$RegionName?>" width="128" height="128" /></td>
+        </tr>
         <tr>
             <td><? echo $webui_region_name; ?>: <?=$RegionName?></td>
         </tr>
@@ -145,7 +147,6 @@ $source = $SERVER."/index.php?method=regionImage".$UUID."";
     </table>
     </div>
   </div>
-  <hr>
 </div>
 </body>
 </html>

@@ -36,7 +36,7 @@ if ($_SESSION[ADMINID]) {
 
   <? } else { ?>
 	<div id="content">  
-		<h2><?= SYSNAME ?>: <? echo $webui_admin_login ?></h2>      
+		<center><h2><?= SYSNAME ?>: <? echo $webui_admin_login ?></h2></center>
 		<div id="login">        
 			<form action="index.php" method="POST" onsubmit="if (!validate(this)) return false;">
 				<table>
@@ -50,8 +50,10 @@ if ($_SESSION[ADMINID]) {
 						<td class="even"><input require="true" label="password_label" id="login_input" type="password" name="logpassword" /></td>
 					</tr>
 					<tr>
-						<td class="odd"><a href="index.php?page=forgotpass"><? echo $webui_forgot_password ?></a></td>
-						<td class="odd"><input id="login_bouton" type="submit" name="Submit" value="<? echo $webui_admin_login ?>" /></td>
+						<td class="odd" colspan="2"><button id="login_bouton" type="submit" name="Submit"><? echo $webui_admin_login ?></button><!--<input id="login_bouton" type="submit" name="Submit" value="<? //echo $webui_admin_login ?>" />--></td>
+					</tr>
+					<tr>
+						<td class="odd" colspan="2"><a href="index.php?page=forgotpass"><? echo $webui_forgot_password ?></a></td>
 					</tr>
 				</table>
 			</form>

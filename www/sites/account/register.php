@@ -135,11 +135,11 @@ function displayDefaultAvatars()
 }
 	
 ?>
-    <div id="content"><h2><?= SYSNAME ?>: <? echo $webui_register ?></h2>
+    <div id="content"><center><h2><?= SYSNAME ?>: <? echo $webui_register ?></h2></center>
     <div id="register">
         <form ACTION="index.php?page=register" METHOD="POST" onsubmit="if (!validate(this)) return false;">
             <table>
-                <tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
+                <tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];?><?=$_GET[ERROR]?></td></tr>
                 <tr>
                     <td class="even"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span></td>
                     <td class="even">
@@ -254,21 +254,23 @@ function displayDefaultAvatars()
         <? } ?>
 				
                                             <tr>
-                                                <td class="odd" width="50%">
-                                                    <div align="center">
+                                                <td class="odd" width="100%" colspan="2">
+                                                    <div align="center" style="margin:15px;">
                                                         <!-- Choice: red, white, blackglass, clean-->
-                                                        <script type="text/javascript">var RecaptchaOptions = {theme : 'blackglass'};</script>
+                                                        <script type="text/javascript">var RecaptchaOptions = {theme : 'white'};</script>
                                                         <? require_once('recaptchalib.php');
                                                           $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
                                                           echo recaptcha_get_html($publickey);
                                                         ?>
                                                     </div>
                                                 </td>
-                                                
-                                                <td class="odd">
+                                                </tr>
+                                                <tr>
+                                                <td class="odd" colspan="2">
                                                   <center>
                                                     <input type="hidden" name="action" value="check">
-                                                    <input id="register_bouton" name="submit" TYPE="submit" value='<? echo $webui_create_new_account ?>'>
+                                                    <button id="register_bouton" name="submit" type="submit"><? echo $webui_create_new_account ?></button>
+                                                    <!--<input id="register_bouton" name="submit" TYPE="submit" value='<? //echo $webui_create_new_account ?>'>-->
                                                   </center>
                                                 </td>
                                             </tr>
@@ -532,19 +534,8 @@ function displayDefaultAvatars()
 				$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','".cleanQuery($_SESSION[EMAIL])."'," . time() . ")");
 				// insert code end
 ?>
+<div id="content"><center><h2>Account successfully created!</h2></center>
 
-<table width="100%" height="410" border="0">
-			<tr>
-						<td valign="top"><br>
-
-
-							<table width="50%" border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF">
-								<tr>
-									<td bgcolor="#000000"><div align="center"><strong>Account successfully created </strong></div></td>
-								</tr>
-
-								<tr>
-									<td bgcolor="#000000">
 										<blockquote>
 											<p>
 												<br>
@@ -564,12 +555,7 @@ function displayDefaultAvatars()
 												<br>
 											</p>
 										</blockquote>
-									</td>
-								</tr>
-							</table>
-						</td>
-					</tr>
-				</table>
+									</div>
 
 <?
 				session_unset();

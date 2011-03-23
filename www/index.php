@@ -5,7 +5,7 @@ if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
     ob_start();
 session_start();
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
 <?
 /*
  * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
@@ -72,11 +72,7 @@ if ($_POST[Submit] == $webui_admin_login) {
 }
 
 //LOGIN END
-?>
 
-
-<!-- *** removed from home.php and add here *** -->
-<?
 $DbLink = new DB;
 
 $DbLink->query("SELECT gridstatus,active,color,title,message  FROM ".C_INFOWINDOW_TBL." ");
@@ -126,15 +122,10 @@ list($USERCOUNT) = $DbLink->next_record();
 $DbLink->query("SELECT count(*) FROM ".C_REGIONS_TBL."");
 list($REGIONSCOUNT) = $DbLink->next_record();
 ?>
-<!-- *** END OF removed from home.php and add here *** -->
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
-    <link rel="icon" href="<?=$favicon_image?>" />
+    <link rel="shortcut icon" href="<?=$favicon_image?>" />
     <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
     <script src="javascripts/global.js" type="text/javascript"></script>
 </head>
