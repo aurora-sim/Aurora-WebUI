@@ -38,6 +38,9 @@ $webui_region_list='Liste des régions';
 $webui_region_list_page_info='Ceci est la liste des régions, cliquez sur le nom d\'une région pour obtenir plus d\'informations sur cette région.';
 $webui_more_info='Plus d\'info';
 $webui_user_name='Nom d\'utilisateur';
+$webui_successfully = 'Compte créé avec succès!';
+$webui_successfully_info = 'Compte créé avec succès; pour vous connecter, vous devez cliquer sur le lien qui a été envoyé à votre adresse e-mail.';
+$webui_registrations_disabled = 'Les inscriptions ont été désactivées par les administrateurs du site, s\'il vous plaît essayer à nouveau plus tard.';
 
 //
 // Online Users Page
@@ -66,6 +69,8 @@ $webui_register='Inscription';
 $webui_news='Nouveautés';
 $webui_history='Historique';
 $webui_news_history = 'Historique des Nouveautés';
+$webui_no_news = 'Pas de nouveautés';
+
 
 //
 // User Profil Page
@@ -76,6 +81,7 @@ $webui_no_information_set="Aucune information";
 $webui_about_me="À propos de moi";
 $webui_partner="Partenaire";
 $webui_resident_since="Résident depuis";
+$webui_resident_age="Age du résident";
 $webui_account_info="Informations sur le compte";
 $webui_region_information="Information sur la région";
 $webui_region_type="Type de région";
@@ -316,4 +322,32 @@ $webui_help_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
 //
 $webui_chat = 'Live Chat Support IRC';
 $webui_chat_info = 'Ceci vous permet d\'obtenir une aide en directe grace à notre Salle de Chat IRC.';
+
+//
+// Pagination Tooltips
+//
+$webui_pagination_tooltips_back_begin = 'Retour au début.';
+$webui_pagination_tooltips_back_page = 'Retour à la page.';
+$webui_pagination_tooltips_forward_page = 'Avancer d\'une page.';
+$webui_pagination_tooltips_last_page = 'Aller à la dernière page.';
+$webui_pagination_tooltips_show10 = 'Afficher 10 résultats par page.';
+$webui_pagination_tooltips_show25 = 'Afficher 25 résultats par page.';
+$webui_pagination_tooltips_show50 = 'Afficher 50 résultats par page.';
+$webui_pagination_tooltips_show100 = 'Afficher 100 résultats par page.';
+$webui_pagination_tooltips_limit10 = 'Limite 10';
+$webui_pagination_tooltips_limit25 = 'Limite 25';
+$webui_pagination_tooltips_limit50 = 'Limite 50';
+$webui_pagination_tooltips_limit100 = 'Limite 100';
+$webui_pagination_tooltips_sortn = 'Trier par Nom';
+$webui_pagination_tooltips_sortx = 'Trier par Grille X';
+$webui_pagination_tooltips_sortn = 'Trier par Grille Y';
+
+//
+// SlideShow Comments
+//
+$webui_slideshow_comment01 = 'Petit Commentaire 01.';
+$webui_slideshow_comment02 = 'Petit Commentaire 02.';
+$webui_slideshow_comment03 = 'Petit Commentaire 03.';
+$webui_slideshow_comment04 = 'Petit Commentaire 04.';
+$webui_slideshow_comment05 = 'Petit Commentaire 05.';
 ?>

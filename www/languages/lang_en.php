@@ -38,6 +38,9 @@ $webui_region_list='Region List';
 $webui_region_list_page_info='This is the regions list.  Click \''.$webui_more_info.'\' to get more information about that region.';
 $webui_more_info='More Info';
 $webui_user_name='User Name';
+$webui_successfully = 'Account successfully created!';
+$webui_successfully_info = 'Account successfully created; to login, you need to click on the link which was sent to your email address';
+$webui_registrations_disabled = 'Registrations have been disabled by the site administrators, please try again later.';
 
 //
 // Online Users Page
@@ -66,6 +69,7 @@ $webui_register='Register';
 $webui_news = 'News';
 $webui_history = 'History';
 $webui_news_history = 'News History';
+$webui_no_news = 'No news';
 
 //
 // User Profil Page
@@ -76,6 +80,7 @@ $webui_no_information_set="No information set";
 $webui_about_me="About Me";
 $webui_partner="Partner";
 $webui_resident_since="Resident since";
+$webui_resident_age="Age of resident";
 $webui_account_info="Account Info";
 $webui_region_information="Region Information";
 $webui_region_type="Region Type";
@@ -317,4 +322,32 @@ $webui_help_info = 'This allows you to Help';
 //
 $webui_chat = 'Live Chat Support';
 $webui_chat_info = 'Get help by asking in a live IRC channel.';
+
+//
+// Pagination Tooltips
+//
+$webui_pagination_tooltips_back_begin = 'Go back to the beginning.';
+$webui_pagination_tooltips_back_page = 'Go back one page.';
+$webui_pagination_tooltips_forward_page = 'Go forward one page.';
+$webui_pagination_tooltips_last_page = 'Go to the last page.';
+$webui_pagination_tooltips_show10 = 'Show 10 Results per page.';
+$webui_pagination_tooltips_show25 = 'Show 25 Results per page.';
+$webui_pagination_tooltips_show50 = 'Show 50 Results per page.';
+$webui_pagination_tooltips_show100 = 'Show 100 Results per page.';
+$webui_pagination_tooltips_limit10 = 'Limit 10';
+$webui_pagination_tooltips_limit25 = 'Limit 25';
+$webui_pagination_tooltips_limit50 = 'Limit 50';
+$webui_pagination_tooltips_limit100 = 'Limit 100';
+$webui_pagination_tooltips_sortn = 'Sort by Name';
+$webui_pagination_tooltips_sortx = 'Sort by Grid X';
+$webui_pagination_tooltips_sortn = 'Sort by Grid Y';
+
+//
+// SlideShow Comments
+//
+$webui_slideshow_comment01 = 'Little comment 01.';
+$webui_slideshow_comment02 = 'Little comment 02.';
+$webui_slideshow_comment03 = 'Little comment 03.';
+$webui_slideshow_comment04 = 'Little comment 04.';
+$webui_slideshow_comment05 = 'Little comment 05.';
 ?>

@@ -1,7 +1,7 @@
 ﻿<?php
 $webui_language_code='gr';
 $webui_actual_language='Greek';
-     
+
 //
 // Grid Status Module
 //
@@ -15,6 +15,7 @@ $webui_online_now = 'Διαθέσιμα Τώρα';
 
 $webui_avatar_first_name = 'Avatar Όνομα';
 $webui_avatar_last_name = 'Avatar Επώνυμο';
+$webui_avatar_name = 'Avatar Name';
 $webui_first_name='Όνομα';
 $webui_last_name='Επώνυμο';
 $webui_password='Κωδικός πρόσβασης';
@@ -28,7 +29,7 @@ $webui_country='Χώρα';
 $webui_date_of_birth='Ημερομηνία Γέννησης';
 $webui_email='Email';
 $webui_create_new_account='Δημιουργία νέου λογαριασμού';
-     
+$webui_start_region='Regione iniziale'; 
 $webui_region_name='Όνομα Περιοχής';
 $webui_location='Τοποθεσία';
 $webui_info='Πληροφορίες';
@@ -37,6 +38,9 @@ $webui_region_list='Περιοχή Κατάλογος';
 $webui_region_list_page_info='Αυτή είναι η λίστα περιφέρειες, κάντε κλικ σε μια περιοχή \'s το όνομα για να πάρετε περισσότερες πληροφορίες για αυτή την περιοχή.';
 $webui_more_info='Περισσότερες Πληροφορίες';
 $webui_user_name='Όνομα Χρήστη';
+$webui_successfully = 'Account successfully created!';
+$webui_successfully_info = 'Account successfully created; to login, you need to click on the link which was sent to your email address';
+$webui_registrations_disabled = 'Registrations have been disabled by the site administrators, please try again later.';
      
 //
 // Online Users Page
@@ -65,6 +69,7 @@ $webui_register='Εγγραφή';
 $webui_news = 'Ειδήσεις';
 $webui_history = 'Ιστορία';
 $webui_news_history = 'Νέα Ιστορία';
+$webui_no_news = 'No news';
      
 //
 // User Profil Page
@@ -75,6 +80,7 @@ $webui_no_information_set="Δεν σύνολο πληροφοριών";
 $webui_about_me="Σχετικά με μένα";
 $webui_partner="Εταίρος";
 $webui_resident_since="Κάτοικος δεδομένου";
+$webui_resident_age="Age of resident";
 $webui_account_info="Πληροφορίες λογαριασμού";
 $webui_region_information="Περιοχή Πληροφοριών";
 $webui_region_type="Τύπος περιοχής";
@@ -315,4 +321,32 @@ $webui_help_info = 'This allows you to Help';
 //
 $webui_chat = 'Salle de Chat IRC';
 $webui_chat_info = 'This allows you to Live Chat Support.';
+
+//
+// Pagination Tooltips
+//
+$webui_pagination_tooltips_back_begin = 'Go back to the beginning.';
+$webui_pagination_tooltips_back_page = 'Go back one page.';
+$webui_pagination_tooltips_forward_page = 'Go forward one page.';
+$webui_pagination_tooltips_last_page = 'Go to the last page.';
+$webui_pagination_tooltips_show10 = 'Show 10 Results per page.';
+$webui_pagination_tooltips_show25 = 'Show 25 Results per page.';
+$webui_pagination_tooltips_show50 = 'Show 50 Results per page.';
+$webui_pagination_tooltips_show100 = 'Show 100 Results per page.';
+$webui_pagination_tooltips_limit10 = 'Limit 10';
+$webui_pagination_tooltips_limit25 = 'Limit 25';
+$webui_pagination_tooltips_limit50 = 'Limit 50';
+$webui_pagination_tooltips_limit100 = 'Limit 100';
+$webui_pagination_tooltips_sortn = 'Sort by Name';
+$webui_pagination_tooltips_sortx = 'Sort by Grid X';
+$webui_pagination_tooltips_sortn = 'Sort by Grid Y';
+
+//
+// SlideShow Comments
+//
+$webui_slideshow_comment01 = 'Little comment 01.';
+$webui_slideshow_comment02 = 'Little comment 02.';
+$webui_slideshow_comment03 = 'Little comment 03.';
+$webui_slideshow_comment04 = 'Little comment 04.';
+$webui_slideshow_comment05 = 'Little comment 05.';
 ?>

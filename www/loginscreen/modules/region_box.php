@@ -17,10 +17,10 @@ $ORDERBY=" ORDER by locY ASC";
     <TD vAlign=top align=right>
       <TABLE width=100% height="100" border=0 cellPadding=0 cellSpacing=0>
         <TBODY>
-        <TR>
-          <TD class=gridbox_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-          <TD class=gridbox_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-          <TD class=gridbox_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+        <TR>          
+          <td class=gridbox_tl><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=gridbox_t><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=gridbox_tr><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
         </TR>
         <TR>
           <TD class=gridbox_l></TD>
@@ -61,7 +61,7 @@ $ORDERBY=" ORDER by locY ASC";
 			
 			  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
           <TBODY>
-          <TR <? if($w==2){$w=0; echo"class=odd";}else{echo"class=even";}?>>
+          <TR <? if($w==2){$w=0; echo"class=even";}else{echo"class=odd";}?>>
             <TD width="55%" align=left vAlign=top noWrap class=regiontext>
 				      <a style="cursor:pointer" onclick="document.location.href='secondlife://<?=$regionName?>/128/128/50'">
   				    <u><?=$regionName?></u></font>

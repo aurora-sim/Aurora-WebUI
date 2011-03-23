@@ -12,10 +12,8 @@
                     <td class="even"><input require="true" label="password_label" id="login_input" type="password" name="logpassword" /></td>
                 </tr>
                 <tr>
-                    <td class="odd" colspan="2"><button id="login_bouton" type="submit" name="Submit"><? echo $webui_login ?></button><!--<input id="login_bouton" type="submit" name="Submit" value="<? //echo $webui_login ?>" />--></td>
-                </tr>
-                <tr>
-                    <td class="even" colspan="2"><a href="index.php?page=forgotpass"><? echo $webui_forgot_password ?></a></td>
+                    <td class="odd"><a href="index.php?page=forgotpass"><? echo $webui_forgot_password ?></a></td>                
+                    <td class="odd"><button id="Submit" type="Submit" name="Submit" value="<? echo $webui_login ?>"><? echo $webui_login; ?></button></td>
                 </tr>
             </table>
         </form>

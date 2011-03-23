@@ -49,12 +49,12 @@ if($sitemax == 0){$sitemax=1;}
 				<table>
 					<tr>
 						<td>
-							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=<?=$ALimit?>" target="_self" title="Go back to the beginning.">
+							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=<?=$ALimit?>" target="_self" title="<? echo $webui_pagination_tooltips_back_begin; ?>">
 								<img SRC=images/icons/icon_back_more_<? if(0 > ($AStart - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0" />
 							</a>
 						</td>
 						<td>
-							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if(0 > ($AStart - $ALimit)) echo 0; else echo $AStart - $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self"  title="Go back one page.">
+							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if(0 > ($AStart - $ALimit)) echo 0; else echo $AStart - $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self"  title="<? echo $webui_pagination_tooltips_back_page; ?>">
 								<img SRC=images/icons/icon_back_one_<? if(0 > ($AStart - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0" />
 							</a>
 						</td>
@@ -62,34 +62,34 @@ if($sitemax == 0){$sitemax=1;}
 						  	<? echo $webui_navigation_page; ?> <?=$sitestart ?> <? echo $webui_navigation_of; ?> <?=$sitemax ?>
 						</td>
 						<td>
-							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if($count <= ($AStart + $ALimit)) echo 0; else echo $AStart + $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self" title="Go forward one page.">
+							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if($count <= ($AStart + $ALimit)) echo 0; else echo $AStart + $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self" title="<? echo $webui_pagination_tooltips_forward_page; ?>">
 								<img SRC=images/icons/icon_forward_one_<? if($count <= ($AStart + $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0" />
 							</a>
 						</td>
 						<td>
-							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if(0 > ($count <= ($AStart + $ALimit))) echo 0; else echo ($sitemax - 1) * $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self"  title="Go to the last page.">
+							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if(0 > ($count <= ($AStart + $ALimit))) echo 0; else echo ($sitemax - 1) * $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self"  title="<? echo $webui_pagination_tooltips_last_page; ?>">
 								<img SRC=images/icons/icon_forward_more_<? if($count <= ($AStart + $ALimit)) echo "off"; else echo "on" ?>.gif WIDTH=15 HEIGHT=15 border="0" />
 							</a>
 						</td>
 						<td></td>
 						<td>
-							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=10&amp;" target="_self" title="Show 10 Results per page.">
-								<img SRC=images/icons/<? if($ALimit != 10) echo icon_limit_10_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 10" />
+							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=10&amp;" target="_self" title="<? echo $webui_pagination_tooltips_show10; ?>">
+								<img SRC=images/icons/<? if($ALimit != 10) echo icon_limit_10_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="<? echo $webui_pagination_tooltips_limit10; ?>" />
 							</a>
 						</td>
 						<td>
-							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=25&amp;" target="_self" title="Show 25 Results per page.">
-								<img SRC=images/icons/<? if($ALimit != 25) echo icon_limit_25_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 25" />
+							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=25&amp;" target="_self" title="<? echo $webui_pagination_tooltips_show25; ?>">
+								<img SRC=images/icons/<? if($ALimit != 25) echo icon_limit_25_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="<? echo $webui_pagination_tooltips_limit25; ?>" />
 							</a>
 						</td>
 						<td>
-							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=50&amp;" target="_self" title="Show 50 Results per page.">
-								<img SRC=images/icons/<? if($ALimit != 50) echo icon_limit_50_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 50" />
+							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=50&amp;" target="_self" title="<? echo $webui_pagination_tooltips_show50; ?>">
+								<img SRC=images/icons/<? if($ALimit != 50) echo icon_limit_50_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="<? echo $webui_pagination_tooltips_limit50; ?>" />
 							</a>
 						</td>
 						<td>
-							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=100&amp;" target="_self" title="Show 100 Results per page.">
-								<img SRC=images/icons/<? if($ALimit != 100) echo icon_limit_100_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 100" />
+							<a href="<?=$GoPage?>&<?=$Link1?>AStart=0&amp;ALimit=100&amp;" target="_self" title="<? echo $webui_pagination_tooltips_show100; ?>">
+								<img SRC=images/icons/<? if($ALimit != 100) echo icon_limit_100_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="<? echo $webui_pagination_tooltips_limit100; ?>" />
 							</a>
 						</td>
 					</tr>
@@ -102,13 +102,13 @@ if($sitemax == 0){$sitemax=1;}
 		<thead>
 			<tr>
 				<td width="55%">
-					<a href="index.php?page=regionlist&order=name" title="Sort by Name"><b><u><? echo $webui_region_name ?></u></b></a>
+					<a href="index.php?page=regionlist&order=name" title="<? echo $webui_pagination_tooltips_sortn; ?>"><b><u><? echo $webui_region_name; ?></u></b></a>
 				</td>
 				<td width="15%">
-					<a href="index.php?page=regionlist&order=x" title="Sort by Grid X"><b><u><? echo $webui_location ?>: X</u></b></a>
+					<a href="index.php?page=regionlist&order=x" title="<? echo $webui_pagination_tooltips_sortx; ?>"><b><u><? echo $webui_location; ?>: X</u></b></a>
 				</td>
 				<td width="15%">
-					<a href="index.php?page=regionlist&order=y" title="Sort by Grid Y"><b><u><? echo $webui_location ?>: Y</u></b></a>
+					<a href="index.php?page=regionlist&order=y" title="<? echo $webui_pagination_tooltips_sorty; ?>"><b><u><? echo $webui_location; ?>: Y</u></b></a>
 				</td>
 				<td width="15%">
 					<? echo $webui_info ?>

@@ -4,10 +4,10 @@
     <TD vAlign=top align=right>
       <TABLE cellSpacing=0 cellPadding=0 width=300 border=0>
         <TBODY>
-        <TR>
-          <TD class=boxyellow_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-          <TD class=boxyellow_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-          <TD class=boxyellow_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD></TR>
+        <TR>          
+          <td class=boxyellow_tl><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=boxyellow_t><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=boxyellow_tr><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
         <TR>
           <TD class=boxyellow_l></TD>
           <TD class=black_content><IMG src="<?= SYSURL ?>loginscreen/images/icons/alert.png" align=absMiddle> <STRONG><?=$BOX_TITLE?></STRONG> 

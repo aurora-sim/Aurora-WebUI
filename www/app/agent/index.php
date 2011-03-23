@@ -46,7 +46,7 @@ if ($_GET[name]) {
       <table>
           <tr>
               <td>
-                  <? echo $webui_resident_since ?>: <?= $date ?> (<?= $diff ?>)
+                  <? echo $webui_resident_since ?>: <?= $date ?> <br /> <? echo $webui_resident_age ?>: (<?= $diff ?>)
               </td>
           </tr>
           <tr>

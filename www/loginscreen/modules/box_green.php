@@ -5,9 +5,9 @@
       <TABLE cellSpacing=0 cellPadding=0 width=300 border=0>
         <TBODY>
         <TR>
-          <TD class=boxgreen_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-          <TD class=boxgreen_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-          <TD class=boxgreen_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD></TR>
+          <td class=boxgreen_tl><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=boxgreen_t><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=boxgreen_tr><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
         <TR>
           <TD class=boxgreen_l></TD>
           <TD class=black_content><IMG src="<?= SYSURL ?>loginscreen/images/icons/alert.png" align=absMiddle>&nbsp;<STRONG><?=$BOX_TITLE?></STRONG> 

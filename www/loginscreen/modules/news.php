@@ -1,9 +1,9 @@
 <table cellSpacing=0 cellPadding=0 width="100%" border=0 valign="top">
   <tbody>
       <tr>
-        <TD class=gridbox_tl><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-        <TD class=gridbox_t><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
-        <TD class=gridbox_tr><IMG height=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=5></TD>
+          <td class=gridbox_tl><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=gridbox_t><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=gridbox_tr><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
       </tr>
       
       <tr>
@@ -26,7 +26,7 @@
                         {
                     ?>
                   
-                  <tr <? if(($w % 2)){echo"class=odd";}else{echo"class=even";}?>>
+                  <tr <? if(($w % 2)){echo"class=even";}else{echo"class=odd";}?>>
                       <td class=boxtext vAlign=top>
                           <a href="<?=SYSURL?>index.php?page=news&scr=<?=$ID?>" target="_blank"><?=$NEWS?></a>
                       </td>
@@ -40,9 +40,9 @@
                   {
                       ?>
 
-                  <tr <? if(($w % 2)){echo"class=odd";}else{echo"class=even";}?>>
+                  <tr <? if(($w % 2)){echo"class=even";}else{echo"class=odd";}?>>
                       <td class=boxnotext vAlign=top>
-                          no news
+                         <? echo $webui_no_news; ?>
                       </td>
 
                       <td class=boxnotext vAlign=top noWrap width="1%">

@@ -135,19 +135,19 @@ function displayDefaultAvatars()
 }
 	
 ?>
-    <div id="content"><h2><?= SYSNAME ?>: <? echo $webui_register ?></h2>
+    <div id="content"><h2><?= SYSNAME ?>: <? echo $webui_register; ?></h2>
     <div id="register">
         <form ACTION="index.php?page=register" METHOD="POST" onsubmit="if (!validate(this)) return false;">
             <table>
                 <tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];?><?=$_GET[ERROR]?></td></tr>
                 <tr>
-                    <td class="even"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span></td>
+                    <td class="even" width="50%"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span></td>
                     <td class="even">
                         <input minlength="3" id="register_input" require="true" label="accountfirst_label" name="accountfirst" type="text" size="25" maxlength="15" value="<?= $_SESSION[ACCFIRST] ?>">
                     </td>
                 </tr>
                 <tr>
-                    <td class="odd"><span id="accountlast_label"><? echo $webui_avatar_last_name ?>*</span></td>
+                    <td class="odd"><span id="accountlast_label"><? echo $webui_avatar_last_name; ?>*</span></td>
                     <td class="odd">
 						<?=printLastNames()?>
                     </td>
@@ -241,7 +241,7 @@ function displayDefaultAvatars()
         <? if( file_exists( $_SERVER{'DOCUMENT_ROOT'} . "/TOS.txt"))  { ?>
 				
         <tr>
-					<td valign="top" class="odd"><input label="agree_label" require="true" type="checkbox" name="Agree_with_TOS" id="agree" value="1" />
+					<td class="odd"><input label="agree_label" require="true" type="checkbox" name="Agree_with_TOS" id="agree" value="1" />
             <label for="agree"><span id="agree_label"><?=$site_terms_of_service_agree?></span></label>
           </td>
 					<td class="odd">
@@ -253,27 +253,27 @@ function displayDefaultAvatars()
         
         <? } ?>
 				
-                                            <tr>
-                                                <td class="odd" width="100%" colspan="2">
-                                                    <div align="center" style="margin:15px;">
-                                                        <? echo "<script type=\"text/javascript\">var RecaptchaOptions = {theme : '".$template_captcha_color."'};</script>"; ?>
-                                                        <? require_once('recaptchalib.php');
-                                                          $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
-                                                          echo recaptcha_get_html($publickey);
-                                                        ?>
-                                                    </div>
-                                                </td>
-                                                </tr>
-                                                <tr>
-                                                <td class="even" colspan="2">
-                                                  <center>
-                                                    <input type="hidden" name="action" value="check">
-                                                    <button id="register_bouton" name="submit" type="submit"><? echo $webui_create_new_account ?></button>
-                                                    <!--<input id="register_bouton" name="submit" TYPE="submit" value='<? //echo $webui_create_new_account ?>'>-->
-                                                  </center>
-                                                </td>
-                                            </tr>
-                                        </table>
+        <tr>
+          <td class="even">
+            <div class="center">
+              <? 
+                echo "<script type=\"text/javascript\">var RecaptchaOptions = {theme : '".$template_captcha_color."'};</script>"; ?>
+                <? require_once('recaptchalib.php');
+                $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
+                echo recaptcha_get_html($publickey);
+              ?>
+            </div>
+          </td>
+
+          <td class="even">
+            <div class="center">
+              <input type="hidden" name="action" value="check">
+              <button id="register_bouton" name="submit" type="submit"><? echo $webui_create_new_account ?></button>
+              <!--<input id="register_bouton" name="submit" TYPE="submit" value='<? //echo $webui_create_new_account ?>'>-->
+            </div>
+          </td>
+        </tr>
+      </table>
 		</form>
 	</div>
 </div>
@@ -533,51 +533,41 @@ function displayDefaultAvatars()
 				$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','".cleanQuery($_SESSION[EMAIL])."'," . time() . ")");
 				// insert code end
 ?>
-<div id="content"><center><h2>Account successfully created!</h2></center>
-
-										<blockquote>
-											<p>
-												<br>
-												<br>
-												Account successfully created; to login, you need to click on the link which was sent to your email address <br>
-												<br>
-
-<?= SYSNAME ?> First Name: <b><?= $_SESSION[ACCFIRST] ?></b>
-												<br>
-
-<?= SYSNAME ?> Last Name:  <b><?= $_SESSION[ACCLAST] ?></b>
-												<br>
-																			E-mail: <?= $_SESSION[EMAIL] ?>
-												<br>
-												<br>
-												<br>
-												<br>
-											</p>
-										</blockquote>
-									</div>
+<div id="content">
+<h2><? echo $webui_successfully; ?></h2>
+  <div id="info">
+  	<p><? echo $webui_successfully_info; ?></p><br />
+    <p><?= SYSNAME ?> First Name: <b><?= $_SESSION[ACCFIRST] ?></b></p><br />
+    <p><?= SYSNAME ?> Last Name:  <b><?= $_SESSION[ACCLAST] ?></b></p><br />
+    <p><?= SYSNAME ?> E-mail: <?= $_SESSION[EMAIL] ?></b></p><br />
+	</div>
+</div>
 
 <?
-				session_unset();
-				session_destroy();
-			} else {
-				echo "<script language='javascript'>
-					<!--
-					window.alert('Unknown error. Please try again later.');
-					window.location.href='index.php?page=register';
-					-->
+  session_unset();
+	session_destroy();
+	 }
+   
+   else {
+    echo "<script language='javascript'>
+		      <!--
+		      window.alert('Unknown error. Please try again later.');
+		      window.location.href='index.php?page=register';
+		      -->
 					< /script>";
-			}
-		}
-	}
-}
-}
-else
-{
-									?>
-<div id="content"><h2>
-Registrations have been disabled by the site administrators, please try again later.</h2>
-</div>
-										<?
+			  }
+      }
+    }
+  }
 }
 
-?>
+else { ?>
+
+<div id="content">
+<h2><? echo $webui_successfully; ?></h2>
+  <div id="alert">
+    <? echo $webui_registrations_disabled; ?>
+  </div>
+</div>
+
+<? } ?>
