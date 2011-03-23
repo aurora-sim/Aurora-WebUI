@@ -1,40 +1,16 @@
 function bgImgRotate() 
 { 
-	var images = Array(
+	var images = new Array(
   "images/login1.jpg",
   "images/login2.jpg",
   "images/login3.jpg",
   "images/login4.jpg");
-  
-	var myDate = new Date();
-	var hour = myDate.getHours(); 
-	// var index = Math.floor(hour/8); 
-	var index; 
-	if (hour < 5) 
-	{ 
-		index = 3; 
-	} 
-	else if (hour < 10) 
-	{ 
-		index = 0; 
-	} 
-	else if (hour < 18) 
-	{ 
-		index = 1; 
-	} 
-	else if (hour < 21) 
-	{ 
-		index = 2; 
-	} 
-	else if (hour < 24) 
-	{ 
-		index = 3; 
-	} 
-	else 
-	{ 
-		index = 1; 
-	}
-	document.getElementById('mainImage').src = images[index]; 
+	
+var l = images.length;
+
+var rnd_no = Math.floor(l*Math.random());
+
+	document.getElementById('mainImage').src = images[rnd_no]; 
 } 
 
 function closeSurvey(div_id)
