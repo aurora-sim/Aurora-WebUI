@@ -209,3 +209,13 @@ TD.boxred_br {
 .regiontext {
 	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
 }
+
+.even {
+  background-color: transparent;
+  background-image: url("../../../templates/default/background_03.png");
+}
+
+.odd {
+  background-color: transparent;
+  background-image: url("../../../templates/default/background_02.png");
+}

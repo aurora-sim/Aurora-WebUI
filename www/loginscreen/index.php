@@ -9,6 +9,7 @@
 include("../settings/config.php");
 include("../settings/mysql.php");
 include("../settings/json.php");
+include("templates/templates.php");
 
 $DbLink = new DB;
 
@@ -66,7 +67,7 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="<?= SYSURL ?>loginscreen/templates/default_template.css" type="text/css" rel="stylesheet">
+<link href="<?= SYSURL ?><?=$template_css?>" type="text/css" rel="stylesheet">
 <script src="<?= SYSURL ?>loginscreen/javascripts/resize.js" type="text/javascript"></script>
 <script src="<?= SYSURL ?>loginscreen/javascripts/imageswitch.js" type="text/javascript"></script>
 

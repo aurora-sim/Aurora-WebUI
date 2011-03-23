@@ -33,19 +33,19 @@
 
                                     <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
                                         <TBODY>
-                                            <TR bgColor=#151515>
+                                            <TR class=odd>
                                                 <TD class=gridtext vAlign=top noWrap align=left><? echo $webui_total_users ?>:</TD>
                                                 <TD class=gridtext vAlign=top noWrap align=right width="1%"><?= $USERCOUNT ?></TD>
                                             </TR>
-                                            <TR bgColor=#000000>
+                                            <TR class=even>
                                                 <TD class=gridtext vAlign=top noWrap align=left><? echo $webui_total_regions; ?>:</TD>
                                                 <TD class=gridtext vAlign=top noWrap align=right width="1%"><?= $REGIONSCOUNT ?></TD>
                                             </TR>
-                                            <TR bgColor=#151515>
+                                            <TR class=odd>
                                                 <TD class=gridtext vAlign=top noWrap align=left><? echo $webui_unique_visitors; ?>:</TD>
                                                 <TD class=gridtext vAlign=top noWrap align=right width="1%"><?= $LASTMONTHONLINE ?></TD>
                                             </TR>
-                                            <TR bgColor=#000000>
+                                            <TR class=even>
                                                 <TD class=gridtext vAlign=top noWrap align=left><STRONG><a href="<?= SYSURL ?>index.php?page=onlineusers" target="_blank"><? echo $webui_online_now; ?></a>:</STRONG></TD>
                                                 <TD class=gridtext vAlign=top noWrap align=right width="1%"><STRONG><?= $NOWONLINE ?></STRONG></TD>
                                             </TR>

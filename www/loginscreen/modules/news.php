@@ -18,27 +18,40 @@
               <table class=newslist cellSpacing=0 cellPadding=0>
                   <tbody>
                   <?
-                    $w=0;
                     //NEWS SYSTEM
                     $DbLink->query("SELECT id,title,time FROM ".C_NEWS_TBL." order by time DESC LIMIT 4");
-                    while(list($ID,$NEWS,$TIME) = $DbLink->next_record()){
-                    $w++;
-                  ?>
+                    for($w = 0; $w < 4; $w++)
+                    {
+                        if(list($ID,$NEWS,$TIME) = $DbLink->next_record())
+                        {
+                    ?>
                   
-                  <tr <? if($w==2){ $w=0; echo"bgColor=#000000";}else{echo"bgColor=#151515";}?>>
+                  <tr <? if(($w % 2)){echo"class=odd";}else{echo"class=even";}?>>
                       <td class=boxtext vAlign=top>
                           <a href="<?=SYSURL?>index.php?page=news&scr=<?=$ID?>" target="_blank"><?=$NEWS?></a>
                       </td>
                       
                       <td class=boxtext vAlign=top noWrap width="1%">
-                          <? $TIMES=date("D d M g:i A",$TIME); ?>
-                      </td>
-                      
-                      <td class=boxtext vAlign=top noWrap width="1%">
-                          <?=$TIMES?>
+                          <?=date("D d M g:i A",$TIME)?>
                       </td>
                   </tr>
-                  <? } ?>
+                  <? }
+                  else
+                  {
+                      ?>
+
+                  <tr <? if(($w % 2)){echo"class=odd";}else{echo"class=even";}?>>
+                      <td class=boxtext vAlign=top>
+                          <span style="color:<? if(($w % 2)){echo"#000000";}else{echo"#151515";}?>">no news</span>
+                      </td>
+
+                      <td class=boxtext vAlign=top noWrap width="1%">
+                          
+                      </td>
+                  </tr>
+                  <?
+                  }
+                  } ?>
                   </tbody>
               </table>
           </td>

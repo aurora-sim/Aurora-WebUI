@@ -61,7 +61,7 @@ $ORDERBY=" ORDER by locY ASC";
 			
 			  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
           <TBODY>
-          <TR <? if($w==2){$w=0; echo"bgColor=#000000";}else{echo"bgColor=#151515";}?>>
+          <TR <? if($w==2){$w=0; echo"class=odd";}else{echo"class=even";}?>>
             <TD width="55%" align=left vAlign=top noWrap class=regiontext>
 				      <a style="cursor:pointer" onclick="document.location.href='secondlife://<?=$regionName?>/128/128/50'">
   				    <font color="#cccccc"><u><?=$regionName?></u></font></a>
