@@ -256,8 +256,7 @@ function displayDefaultAvatars()
                                             <tr>
                                                 <td class="odd" width="100%" colspan="2">
                                                     <div align="center" style="margin:15px;">
-                                                        <!-- Choice: red, white, blackglass, clean-->
-                                                        <script type="text/javascript">var RecaptchaOptions = {theme : 'white'};</script>
+                                                        <? echo "<script type=\"text/javascript\">var RecaptchaOptions = {theme : '".$template_captcha_color."'};</script>"; ?>
                                                         <? require_once('recaptchalib.php');
                                                           $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
                                                           echo recaptcha_get_html($publickey);
