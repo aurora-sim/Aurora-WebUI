@@ -365,13 +365,6 @@ box-shadow:0px 3px 20px #605a57;}
 #news a:active {text-decoration: none}
 #news a:hover {text-decoration: underline;}
 
-#newshistory {width:100%;background-color: transparent;}
-#newshistory table {color: #000000; width: 100%;}
-#newshistory a {color: #000000; text-decoration: none;}
-#newshistory a:visited {text-decoration: none}
-#newshistory a:active {text-decoration: none}
-#newshistory a:hover {text-decoration: underline;}
-
 #createnews {width:100%;background-color: transparent;}
 #createnews table {color: #000000; width: 100%;}
 #createnews a {color: #000000; text-decoration: none;}

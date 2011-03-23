@@ -135,7 +135,7 @@ function displayDefaultAvatars()
 }
 	
 ?>
-    <div id="content"><center><h2><?= SYSNAME ?>: <? echo $webui_register ?></h2></center>
+    <div id="content"><h2><?= SYSNAME ?>: <? echo $webui_register ?></h2>
     <div id="register">
         <form ACTION="index.php?page=register" METHOD="POST" onsubmit="if (!validate(this)) return false;">
             <table>
@@ -265,7 +265,7 @@ function displayDefaultAvatars()
                                                 </td>
                                                 </tr>
                                                 <tr>
-                                                <td class="odd" colspan="2">
+                                                <td class="even" colspan="2">
                                                   <center>
                                                     <input type="hidden" name="action" value="check">
                                                     <button id="register_bouton" name="submit" type="submit"><? echo $webui_create_new_account ?></button>

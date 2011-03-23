@@ -124,22 +124,22 @@ if($_POST[Submit]=="Submit")
             </tr>
                 
             <tr>
-              <td class="even"><? echo $webui_email ?>*</td>
-              <td class="even">
+              <td class="odd"><? echo $webui_email ?>*</td>
+              <td class="odd">
                 <input id="forgot_pass_input" name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">
               </td>
             </tr>
                 
             <tr>
-              <td class="odd"><? echo $webui_confirm ?> <? echo $webui_email ?>*</td>
-              <td class="odd">
+              <td class="even"><? echo $webui_confirm ?> <? echo $webui_email ?>*</td>
+              <td class="even">
                 <input id="forgot_pass_input" name="email2" type="text" size="40" maxlength="50" value="<?=$_POST[email2]?>">
               </td>
             </tr>
                   
             <tr>
-              <td class="even"></td>
-              <td class="even"><input id="forgot_pass_bouton" type="submit" name="Submit" value="<? echo $webui_submit ?>"></td>
+              <td class="odd"></td>
+              <td class="odd"><input id="forgot_pass_bouton" type="submit" name="Submit" value="<? echo $webui_submit ?>"></td>
             </tr>
           </table>
         </td>

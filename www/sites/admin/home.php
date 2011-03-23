@@ -53,7 +53,7 @@ if ($_SESSION[ADMINID]) {
 						<td class="odd" colspan="2"><button id="login_bouton" type="submit" name="Submit"><? echo $webui_admin_login ?></button><!--<input id="login_bouton" type="submit" name="Submit" value="<? //echo $webui_admin_login ?>" />--></td>
 					</tr>
 					<tr>
-						<td class="odd" colspan="2"><a href="index.php?page=forgotpass"><? echo $webui_forgot_password ?></a></td>
+						<td class="even" colspan="2"><a href="index.php?page=forgotpass"><? echo $webui_forgot_password ?></a></td>
 					</tr>
 				</table>
 			</form>

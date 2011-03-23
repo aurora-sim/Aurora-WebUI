@@ -31,7 +31,7 @@ if($sitemax == 0){$sitemax=1;}
 ?>
 
 <div id="content">
-  <h2><?= SYSNAME ?>: <? echo $webui_region_list ?></h2>
+    <h2><?= SYSNAME ?>: <? echo $webui_region_list ?></h2>
   
   <div id="regionlist">
 

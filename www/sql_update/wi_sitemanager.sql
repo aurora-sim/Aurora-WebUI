@@ -12,7 +12,6 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('changeaccount', 'account', 'changeaccount.php'),
 ('forgotpass', 'account', 'forgotpass.php'),
 ('news', 'news', 'news.php'),
-('newshistory', 'news', 'newshistory.php'),
 ('home', 'main', 'home.php'),
 ('login', 'main', 'login.php'),
 ('logout', 'main', 'logout.php'),
