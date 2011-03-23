@@ -15,6 +15,10 @@ define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
 define("WIREDUX_TEXTURE_SERVICE","http://localhost:8002");
 define("WIREDUX_PASSWORD","");
 
+################### Loginscreen ################
+// Should the pictures on the loginscreen be random or by time?
+$picturesByTime = false
+
 ############ Delete Unconfirmed accounts ################
 // e.g. 24 for 24 hours  leave empty for no timed delete
 $unconfirmed_deltime="24";
