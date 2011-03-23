@@ -89,35 +89,44 @@ bgImgRotate();
 </div>
 
 <div id=bottom_left>
+    <? if($showSpecialReport) { ?>
     <?
       include("modules/special.php");
     ?>
-    
+    <? } ?>
+
+    <? if($showRegionsPanel) { ?>
     <div id=regionbox>
         <? 
           include("modules/region_box.php"); 
         ?>
     </div>
+    <? } ?>
 </div>
 
 <img id=mainImage src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt="" title="" />
 
+<? if($showNewsBar) { ?>
 <div id=bottom>
     <div id=news>
       <? include("modules/news.php"); ?>
     </div>
 </div>
+<? } ?>
 
 <div id=topright>
     <br />
     <br />
     <br />
+    <? if($showGridStatus) { ?>
     <div id=gridstatus>
       <? include("modules/gridstatus.php"); ?>
     </div>
+    <? } ?>
     
     <br />
     
+    <? if($showAlertPanel) { ?>
     <div id=Infobox>
       <? 
         if(($INFOBOX=="1")&&($BOXCOLOR=="white")){
@@ -130,6 +139,7 @@ bgImgRotate();
         include("modules/box_red.php"); }
       ?>
     </div>
+    <? } ?>
 </div>
 </body>
 </html>

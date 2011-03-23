@@ -17,7 +17,17 @@ define("WIREDUX_PASSWORD","");
 
 ################### Loginscreen ################
 // Should the pictures on the loginscreen be random or by time?
-$picturesByTime = false
+$picturesByTime = false;
+// Show the bar at the bottom that has the latest grid news?
+$showNewsBar = true;
+// Show the panel that has a list of all regions in the grid?
+$showRegionsPanel = true;
+// Show the panel that shows the grid status?
+$showGridStatus = true;
+// Show the panel that shows grid alerts?
+$showAlertPanel = true;
+// Show the panel that shows special reports?
+$showSpecialReport = true;
 
 ############ Delete Unconfirmed accounts ################
 // e.g. 24 for 24 hours  leave empty for no timed delete
