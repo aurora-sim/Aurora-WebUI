@@ -6,9 +6,10 @@
       <table>
         <tbody>
         <tr>
-          <td class=gridbox_tl><img height=5 width=5 src="images/login_screens/spacer.gif" alt="WiRedux-Spacer" /></td>
-          <td class=gridbox_t><img height=5 width=5 src="images/login_screens/spacer.gif" alt="WiRedux-Spacer" /></td>
-          <td class=gridbox_tr><img height=5 width=5 src="images/login_screens/spacer.gif" alt="WiRedux-Spacer" /></td></tr>
+          <td class=gridbox_tl><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td>
+          <td class=gridbox_t><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td>
+          <td class=gridbox_tr><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td></tr>          
+        </tr>
         <tr>
           <td class=gridbox_l></td>
           <td class=black_content>
@@ -16,16 +17,18 @@
               <tbody>
               <tr bgColor=#000000>
                 <td class=gridtext align=left><strong><? echo $webui_grid_status; ?>:</strong></td>
-                <td class=gridtext align=right>
-                  <? if($GRIDSTATUS == '1'){?><span class=online><? echo $webui_grid_status_online; ?></span>
-                  <? }else {?><span class=offline><? echo $webui_grid_status_offline; ?></span>
-                  <? } ?>
-                </td>
+                  <td class=gridtext align=right>
+                   <? if($GRIDSTATUS == 1){ ?>
+                   <span class=online><? echo $webui_grid_status_online; ?></span>
+                    <? } else { ?>
+                    <span class=offline><? echo $webui_grid_status_offline; ?></span>
+                    <? } ?>
+                 </td>
               </tr>
               </tbody>
             </table>
             
-            <div class="linegrey"><img src="images/login_screens/spacer.gif" ></div>
+            <div class="linegrey"></div>
             <table cellSpacing=0 cellPadding=0>
               <tbody>
               <tr bgColor=#151515>
@@ -49,9 +52,12 @@
         <tr>
           <td class=gridbox_bl></td>
           <td class=gridbox_b></td>
-          <td class=gridbox_br></td></tr></tbody></table></td></tr></tbody></table>
-
-
-<!-- END OFF GRID STATUS MODULE -->
-
-</div>
+          <td class=gridbox_br></td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+</tbody>
+</table>
+</div><!-- end #gridstatus -->
