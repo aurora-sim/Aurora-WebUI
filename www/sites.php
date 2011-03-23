@@ -7,6 +7,9 @@
  *
 */
 
+include("../../settings/config.php");
+include("../../settings/mysql.php");
+include("../../settings/json.php");
 $DbLink = new DB;
 
 $page = $_SESSION[page];

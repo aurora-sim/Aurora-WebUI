@@ -30,6 +30,8 @@ function do_post_request($found) {
 
 function cleanQuery($string)
 {
+  $link = mysql_connect(C_DB_HOST, C_DB_USER, C_DB_PASS)
+    OR die(mysql_error());
   if(get_magic_quotes_gpc())  // prevents duplicate backslashes
   {
     $string = stripslashes($string);

@@ -1,6 +1,7 @@
 <?
 include("../../settings/config.php");
 include("../../settings/mysql.php");
+include("../../settings/json.php");
 
 $zoomLevel = 6;
 $zoomSize = 128;

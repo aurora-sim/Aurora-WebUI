@@ -1,4 +1,7 @@
 <?
+include("../../settings/config.php");
+include("../../settings/mysql.php");
+include("../../settings/json.php");
 /*
  * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
