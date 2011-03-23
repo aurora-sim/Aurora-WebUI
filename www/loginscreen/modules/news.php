@@ -27,7 +27,7 @@
                   
                   <tr <? if($w==2){ $w=0; echo"bgColor=#000000";}else{echo"bgColor=#151515";}?>>
                       <td class=boxtext vAlign=top>
-                          <a href="<?=SYSURL?>index.php?page=gridstatus&scr=<?=$ID?>" target="_blank"><?=$NEWS?></a>
+                          <a href="<?=SYSURL?>index.php?page=news&scr=<?=$ID?>" target="_blank"><?=$NEWS?></a>
                       </td>
                       
                       <td class=boxtext vAlign=top noWrap width="1%">

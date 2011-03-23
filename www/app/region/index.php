@@ -142,13 +142,7 @@ while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
                                 <td><? echo $webui_location; ?> X: <?= $locX ?> Y: <?= $locY ?></td>
                             </tr>
                             <tr>
-                                <td><? echo $webui_owner; ?>: <a href="<?= SYSURL ?>app/agent/?first=<?= $firstN ?>&last=<?= $lastN ?>"><?= $firstN ?> <?= $lastN ?></a></td>
                                 <td><? echo $webui_owner; ?>: <a href="<?= SYSURL ?>app/agent/?name=<?= $firstN ?> <?= $lastN ?>"><?= $firstN ?> <?= $lastN ?></a></td>
                             </tr>
                         </table>
-
-                        <div id="region_picture">
-                            <img src="regionimage.php?x=<?= $locX ?>&y=<?= $locY ?>" alt="<?= $RegionName ?>" title="<?= $RegionName ?>" />
-                        </div>
-
                     </div>

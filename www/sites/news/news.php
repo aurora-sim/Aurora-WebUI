@@ -7,8 +7,12 @@
         <table>
             <table>
                 <?
+                $query = "";
+                if($_GET[scr] != "") {
+                    $query = " where id='".cleanQuery($_GET[scr])."'";
+                }
                 $DbLink = new DB;
-                $DbLink->query("SELECT id,title,message,time from " . C_NEWS_TBL . " ORDER BY time DESC");
+                $DbLink->query("SELECT id,title,message,time from " . C_NEWS_TBL . $query . " ORDER BY time DESC");
                 $count = 0;
 
                 while (list($id, $title, $message, $time) = $DbLink->next_record()) {
@@ -23,7 +27,7 @@
 
                     <tr>
                         <td width="100"><b><?= $TIMES ?></b></td>
-                        <td><b><?= $title ?></b></td>
+                        <td><b> <a href="<?=SYSURL?>index.php?page=news&scr=<?=$id?>" target="_blank"><?=$title?></a></b></td>
                     </tr>
 
                     <tr>
