@@ -12,6 +12,7 @@ body.webui {
   background: #000000 url("background_01.jpg") 50% 0% repeat-x;
 }
 
+
 .webui #adminnote {
 	width: 900px;
   background-color: transparent;
@@ -323,14 +324,14 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #createnews a:hover {text-decoration: underline;}
 
 #useragentprofil {min-height:160px; width:100%;background-color: transparent;}
-#useragentprofil table {color: #ffffff; width: 100%;}
+#useragentprofil table {color: #ffffff; width: 50%;}
 #useragentprofil a {color: #aaaa00; text-decoration: none;}
 #useragentprofil a:visited {text-decoration: none}
 #useragentprofil a:active {text-decoration: none}
 #useragentprofil a:hover {text-decoration: underline;}
 
 #regioninfo {min-height:283px; width:100%;background-color: transparent;}
-#regioninfo table {color: #ffffff; width: 100%;}
+#regioninfo table {color: #ffffff; width:100%}
 #regioninfo a {color: #aaaa00; text-decoration: none;}
 #regioninfo a:visited {text-decoration: none}
 #regioninfo a:active {text-decoration: none}
@@ -378,15 +379,28 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 
 /* more info region */
 #region_picture {
-  float: right;
-  margin-top: -65px;
+  float: left;
+  margin-top: 5px;
 }
 
 #region_picture img {
   border: 1px solid #FFFFFF;
-  height: 256px;
-  width: 256px;
+  height: 128px;
+  width: 128px;
 }
+
+#regionMap {float:right; padding:0; margin:0}
+#regionMap table {display:inline-block;}
+#regionMap td {padding:0; margin:0;}
+#regionMap tr {padding:0; margin:0}
+#regionMap tr td {height:65px; width:65px; font-size:9px; line-height:10px; text-align:center; padding:2px; background:#FFF;}
+#regionMap .nosim { background:transparent; border: 1px dashed #999999;}
+#regionMap .thissim {background:#AE3D1B; color:#FFF; font-weight:bold;}
+
+#regiondetails {
+position: absolute;
+float:left; padding:0; margin:0;
+margin-top: 140px;}
 
 #region_navigation {
   width: 300px;
