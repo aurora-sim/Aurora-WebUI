@@ -8,7 +8,7 @@
         <tr>
           <td class=gridbox_tl><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td>
           <td class=gridbox_t><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td>
-          <td class=gridbox_tr><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td></tr>          
+          <td class=gridbox_tr><img height=5 width=5 src="images/login_screens/spacer.gif" alt="" /></td>          
         </tr>
         <tr>
           <td class=gridbox_l></td>
