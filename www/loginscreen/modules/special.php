@@ -12,7 +12,7 @@
         <TR>
           <TD class=gridbox_l></TD>
           <TD class=black_content>
-			    <div style=" border:hidden; color:#ffffff; padding:0px; width:300px; height:100px; overflow:auto; ">
+			    <div id="special">
 			       <center>
                 <p><? echo $webui_special_info; ?></p>
                 <p><? echo $webui_special_visit; ?>

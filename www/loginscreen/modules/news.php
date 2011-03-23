@@ -41,11 +41,11 @@
                       ?>
 
                   <tr <? if(($w % 2)){echo"class=odd";}else{echo"class=even";}?>>
-                      <td class=boxtext vAlign=top>
-                          <span style="color:<? if(($w % 2)){echo"#000000";}else{echo"#151515";}?>">no news</span>
+                      <td class=boxnotext vAlign=top>
+                          no news
                       </td>
 
-                      <td class=boxtext vAlign=top noWrap width="1%">
+                      <td class=boxnotext vAlign=top noWrap width="1%">
                           
                       </td>
                   </tr>

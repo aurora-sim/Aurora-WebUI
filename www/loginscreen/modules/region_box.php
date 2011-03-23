@@ -64,7 +64,7 @@ $ORDERBY=" ORDER by locY ASC";
           <TR <? if($w==2){$w=0; echo"class=odd";}else{echo"class=even";}?>>
             <TD width="55%" align=left vAlign=top noWrap class=regiontext>
 				      <a style="cursor:pointer" onclick="document.location.href='secondlife://<?=$regionName?>/128/128/50'">
-  				    <font color="#cccccc"><u><?=$regionName?></u></font></a>
+  				    <u><?=$regionName?></u></font>
 	   			  </TD>
             <TD width="20%" align=left vAlign=top noWrap class=regiontext><div align="left"><?=$locX/256?></div></TD>
             <TD width="20%" align=left vAlign=top noWrap class=regiontext><div align="left"><?=$locY/256?></div></TD>
