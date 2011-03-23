@@ -33,16 +33,16 @@ while(list($UUID) = $DbLink->next_record())
 {
 // Let's get the user info
 $DbLink3 = new DB;
-$DbLink3->query("SELECT CurrentRegionID from ".C_USERINFO_TBL." where UserID = '".$UUID."'");
+$DbLink3->query("SELECT CurrentRegionID from ".C_USERINFO_TBL." where UserID = '".cleanQuery($UUID)."'");
 list($RegionUUID) = $DbLink3->next_record();
 
 $DbLink2 = new DB;
-$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where PrincipalID = '".$UUID."'");
+$DbLink2->query("SELECT FirstName, LastName from ".C_USERS_TBL." where PrincipalID = '".cleanQuery($UUID)."'");
 list($firstname, $lastname) = $DbLink2->next_record();
 $username = $firstname." ".$lastname;
 // Let's get the region information
 $DbLink3 = new DB;
-$DbLink3->query("SELECT RegionName from ".C_REGIONS_TBL." where RegionUUID = '".$RegionUUID."'");
+$DbLink3->query("SELECT RegionName from ".C_REGIONS_TBL." where RegionUUID = '".cleanQuery($RegionUUID)."'");
 list($region) = $DbLink3->next_record();
 if ($region != "")
 {

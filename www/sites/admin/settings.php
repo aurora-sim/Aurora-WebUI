@@ -7,36 +7,36 @@ if ($_SESSION[ADMINID]) {
     $DbLink = new DB;
 
     if ($_POST[Submitreg] == "$webui_admin_settings_save_bouton") {
-        $DbLink->query("UPDATE " . C_ADM_TBL . " SET adress='$_POST[adressset]',region='$_POST[regtyp]',startregion='$_POST[region]'");
+        $DbLink->query("UPDATE " . C_ADM_TBL . " SET adress='".cleanQuery($_POST[adressset])."',region='".cleanQuery($_POST[regtyp])."',startregion='".cleanQuery($_POST[region])."'");
     }
 
     if ($_POST[Submit2] == "$webui_admin_settings_save_bouton") {
         if ($_POST[lastname] != "") {
-            $DbLink->query("SELECT name FROM " . C_NAMES_TBL . " Where name='$_POST[lastname]'");
+            $DbLink->query("SELECT name FROM " . C_NAMES_TBL . " Where name='".cleanQuery($_POST[lastname])."'");
             list($checkname) = $DbLink->next_record();
 
             if ($checkname) {
                 
             } else {
-                $DbLink->query("INSERT INTO " . C_NAMES_TBL . " (name,active)VALUES('$_POST[lastname]','1')");
+                $DbLink->query("INSERT INTO " . C_NAMES_TBL . " (name,active)VALUES('".cleanQuery($_POST[lastname])."','1')");
             }
         }
     }
 
     if ($_POST[Submit3] == "$webui_admin_settings_save_bouton") {
-        $DbLink->query("UPDATE " . C_NAMES_TBL . " SET active='0' WHERE name='$_POST[deactivelast]'");
+        $DbLink->query("UPDATE " . C_NAMES_TBL . " SET active='0' WHERE name='".cleanQuery($_POST[deactivelast])."'");
     }
 
     if ($_POST[Submit4] == "$webui_admin_settings_save_bouton") {
-        $DbLink->query("UPDATE " . C_NAMES_TBL . " SET active='1' WHERE name='$_POST[activatelast]'");
+        $DbLink->query("UPDATE " . C_NAMES_TBL . " SET active='1' WHERE name='".cleanQuery($_POST[activatelast])."'");
     }
 
     if ($_POST[Submit5] == "$webui_admin_settings_save_bouton") {
-        $DbLink->query("DELETE FROM " . C_NAMES_TBL . " WHERE name='$_POST[delname]'");
+        $DbLink->query("DELETE FROM " . C_NAMES_TBL . " WHERE name='".cleanQuery($_POST[delname])."'");
     }
 
     if ($_POST[Submitgau] == "Save") {
-        $DbLink->query("UPDATE " . C_ADM_TBL . " SET griddir='$_POST[griddir]',assetdir='$_POST[assetdir]',userdir='$_POST[userdir]'");
+        $DbLink->query("UPDATE " . C_ADM_TBL . " SET griddir='".cleanQuery($_POST[griddir])."',assetdir='".cleanQuery($_POST[assetdir])."',userdir='".cleanQuery($_POST[userdir])."'");
     }
 
     if ($_POST[Submitnam2] == "$webui_admin_settings_activate_bouton") {

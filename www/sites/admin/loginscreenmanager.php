@@ -16,12 +16,12 @@ window.location.href=\"index.php?page=home\";
 $DbLink = new DB;
 
 if ($_GET[delete] == 1) {
-    $DbLink->query("DELETE from " . C_NEWS_TBL . " WHERE (id = '$_GET[id]')");
+    $DbLink->query("DELETE from " . C_NEWS_TBL . " WHERE (id = '".cleanQuery($_GET[id])."')");
 }
 
 if ($_POST[infobox] == "save") {
     $message = str_replace("'", "\'", "$_POST[infomessage]");
-    $DbLink->query("UPDATE " . C_INFOWINDOW_TBL . " SET gridstatus='$_POST[gridstatus]',active='$_POST[boxstatus]',color='$_POST[boxcolor]',title='$_POST[infotitle]',message='$message'");
+    $DbLink->query("UPDATE " . C_INFOWINDOW_TBL . " SET gridstatus='".cleanQuery($_POST[gridstatus])."',active='".cleanQuery($_POST[boxstatus])."',color='".cleanQuery($_POST[boxcolor])."',title='".cleanQuery($_POST[infotitle])."',message='".cleanQuery($message)."'");
 }
 
 $DbLink->query("SELECT gridstatus,active,color,title,message  FROM " . C_INFOWINDOW_TBL . " ");

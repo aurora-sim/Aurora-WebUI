@@ -5,7 +5,7 @@ include("../../languages/translator.php");
 include("../../templates/templates.php");
 
 $DbLink = new DB;
-$query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM ".C_REGIONS_TBL." where LocX='".$_GET[x]."' and LocY='".$_GET[y]."'";
+$query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM ".C_REGIONS_TBL." where LocX='".cleanQuery($_GET[x])."' and LocY='".cleanQuery($_GET[y])."'";
 $DbLink->query($query);
 list($RegionName,$locX,$locY,$owner, $info) = $DbLink->next_record();
 $locX = $locX/256;
@@ -14,7 +14,7 @@ $recieved = json_decode($info);
 $regionType = $recieved->{'regionType'};
 if($regionType == '')
 $regionType = 'Unknown';
-$DbLink->query("SELECT FirstName,LastName FROM ".C_USERS_TBL." where PrincipalID='$owner'");
+$DbLink->query("SELECT FirstName,LastName FROM ".C_USERS_TBL." where PrincipalID='".cleanQuery($owner)."'");
 list($firstN,$lastN) = $DbLink->next_record();
 ?>
 

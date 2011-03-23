@@ -16,7 +16,7 @@ window.location.href=\"index.php?page=home\";
 if($_POST[update] == '1'){
 echo"lala";
 $DbLink = new DB;
-$DbLink->query("UPDATE ".C_NEWS_TBL." SET title='$_POST[title]',message='$_POST[message]' WHERE id='$_POST[id]'");
+$DbLink->query("UPDATE ".C_NEWS_TBL." SET title='".cleanQuery($_POST[title])."',message='".cleanQuery($_POST[message])."' WHERE id='".cleanQuery($_POST[id])."'");
 $DbLink->close();
 
 echo "<script language=\"javascript\">
@@ -35,7 +35,7 @@ window.location.href=\"index.php?page=loginscreen\";
 <?
 
 $DbLink = new DB;
-$DbLink->query("SELECT id,title,message from ".C_NEWS_TBL." WHERE id = '$_GET[editid]'");
+$DbLink->query("SELECT id,title,message from ".C_NEWS_TBL." WHERE id = '".cleanQuery($_GET[editid])."'");
 
 	if ($DbLink->num_rows() != 0)
 	{

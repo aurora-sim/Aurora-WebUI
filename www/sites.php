@@ -11,7 +11,7 @@ $DbLink = new DB;
 
 $page = $_SESSION[page];
 
-$DbLink->query("SELECT type, include FROM ".C_SITES_TBL." where pagecase = '".$page."'");
+$DbLink->query("SELECT type, include FROM ".C_SITES_TBL." where pagecase = '".cleanQuery($page)."'");
 
 while(list($type,$include) = $DbLink->next_record())
 {

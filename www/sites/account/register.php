@@ -419,7 +419,7 @@ function displayDefaultAvatars()
 		$passwordHash = md5(md5($passneu) . ":");
 
 		$found = array();
-		$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'Name' => $_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST]));
+		$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'Name' => cleanQuery($_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST])));
 		$do_post_requested = do_post_request($found);
 		$recieved = json_decode($do_post_requested);
 
@@ -459,21 +459,21 @@ function displayDefaultAvatars()
 
 			$found = array();
 			$found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WIREDUX_PASSWORD),
-						'Name' => $_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST],
-						'Email' => $_SESSION[EMAIL],
-						'HomeRegion' => $_SESSION[REGIONID],
-						'PasswordHash' => $passneu,
-						'PasswordSalt' => $passwordSalt,
-						'AvatarArchive' => $_SESSION[AVATARARCHIVE],
-						'UserLevel' => $userLevel,
-						'RLFisrtName' => $_SESSION[NAMEF],
-						'RLLastName' => $_SESSION[NAMEL],
-						'RLAdress' => $_SESSION[ADRESS],
-						'RLCity' => $_SESSION[CITY],
-						'RLZip' => $_SESSION[ZIP],
-						'RLCountry' => $_SESSION[COUNTRY],
-						'RLDOB' => $tag . "/" . $monat . "/" . $jahr,
-						'RLIP' => $userIP
+						'Name' => cleanQuery($_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST]),
+						'Email' => cleanQuery($_SESSION[EMAIL]),
+						'HomeRegion' => cleanQuery($_SESSION[REGIONID]),
+						'PasswordHash' => cleanQuery($passneu),
+						'PasswordSalt' => cleanQuery($passwordSalt),
+						'AvatarArchive' => cleanQuery($_SESSION[AVATARARCHIVE]),
+						'UserLevel' => cleanQuery($userLevel),
+						'RLFisrtName' => cleanQuery($_SESSION[NAMEF]),
+						'RLLastName' => cleanQuery($_SESSION[NAMEL]),
+						'RLAdress' => cleanQuery($_SESSION[ADRESS]),
+						'RLCity' => cleanQuery($_SESSION[CITY]),
+						'RLZip' => cleanQuery($_SESSION[ZIP]),
+						'RLCountry' => cleanQuery($_SESSION[COUNTRY]),
+						'RLDOB' => cleanQuery($tag . "/" . $monat . "/" . $jahr),
+						'RLIP' => cleanQuery($userIP)
 						));
 						
 						
@@ -499,13 +499,13 @@ function displayDefaultAvatars()
 				dob, 
 				ip_address
 				) VALUES (
-				'".$recieved->{'UUID'}."', 
-				'$_SESSION[NAMEF]', 
-				'$_SESSION[NAMEL]', 
-				'$_SESSION[ADRESS]', 
-				'$_SESSION[CITY]', 
-				'$_SESSION[ZIP]', 
-				'$_SESSION[COUNTRY]', 
+				'".cleanQuery($recieved->{'UUID'})."',
+				'".cleanQuery($_SESSION[NAMEF])."',
+				'".cleanQuery($_SESSION[NAMEL])."',
+				'".cleanQuery($_SESSION[ADRESS])."',
+				'".cleanQuery($_SESSION[CITY])."',
+				'".cleanQuery($_SESSION[ZIP])."',
+				'".cleanQuery($_SESSION[COUNTRY])."',
 				'".$jahr."/".$tag."/".$monat."', 
 				'$userIP');");
 			
@@ -529,7 +529,7 @@ function displayDefaultAvatars()
 				//-----------------------------MAIL END --------------------------------------
 				// insert code
 				$UUIDC = $recieved->{'UUID'};
-				$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','$_SESSION[EMAIL]'," . time() . ")");
+				$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','".cleanQuery($_SESSION[EMAIL])."'," . time() . ")");
 				// insert code end
 ?>
 

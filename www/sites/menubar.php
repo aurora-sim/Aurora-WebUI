@@ -10,7 +10,7 @@
  function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display, $AdminDisplay)
  {
 	$DbLink2 = new DB;
-	$DbLink2->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where parent = '$siteid' and active='1' and ((display='$Display') or (display='2') " . $AdminDisplay . ") ORDER BY rank ASC ");
+	$DbLink2->query("SELECT id,url,target FROM " . C_PAGE_TBL . " Where parent = '".cleanQuery($siteid)."' and active='1' and ((display='$Display') or (display='2') " . $AdminDisplay . ") ORDER BY rank ASC ");
 	if ($siteurl != "") {
 		if ($sitetarget == '_self') {
 			if ($_GET[btn] == $siteid) 

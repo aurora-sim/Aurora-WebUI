@@ -12,7 +12,7 @@ if ($_SESSION[USERID] == "") {
     list($REGIOCHECK) = $DbLink->next_record();
 
     $found = array();
-    $found[0] = json_encode(array('Method' => 'GetGridUserInfo', 'WebPassword' => md5(WIREDUX_PASSWORD), 'UUID' => $_SESSION[USERID]));
+    $found[0] = json_encode(array('Method' => 'GetGridUserInfo', 'WebPassword' => md5(WIREDUX_PASSWORD), 'UUID' => cleanQuery($_SESSION[USERID])));
     $do_post_requested = do_post_request($found);
     $recieved = json_decode($do_post_requested);
     if ($recieved->{'Verified'} == "true") {
@@ -31,10 +31,10 @@ if ($_SESSION[USERID] == "") {
         if ($_POST[Submit1] == "Save") {
             $startregion = $_POST[region];
 
-            $DbLink->query("SELECT uuid FROM " . C_REGIONS_TBL . " WHERE regionName='$startregion' ");
+            $DbLink->query("SELECT uuid FROM " . C_REGIONS_TBL . " WHERE regionName='".cleanQuery($startregion)."' ");
             list($homeid) = $DbLink->next_record();
 
-            $DbLink->query("UPDATE " . C_USERINFO_TBL . " SET HomeRegionID ='$homeid' WHERE UserID='$_SESSION[USERID]' ");
+            $DbLink->query("UPDATE " . C_USERINFO_TBL . " SET HomeRegionID ='".cleanQuery($homeid)."' WHERE UserID='".cleanQuery($_SESSION[USERID])."' ");
             echo
             "<script language='javascript'>
 			<!--
@@ -49,9 +49,9 @@ if ($_SESSION[USERID] == "") {
 
             $found = array();
             $found[0] = json_encode(array('Method' => 'ChangePassword', 'WebPassword' => md5(WIREDUX_PASSWORD)
-                        , 'UUID' => $_SESSION[USERID]
-                        , 'Password' => $_POST[passold]
-                        , 'NewPassword' => md5(md5($_POST[passnew]))));
+                        , 'UUID' => cleanQuery($_SESSION[USERID])
+                        , 'Password' => cleanQuery($_POST[passold])
+                        , 'NewPassword' => cleanQuery(md5(md5($_POST[passnew])))));
 
             $do_post_requested = do_post_request($found);
             $recieved = json_decode($do_post_requested);
@@ -117,7 +117,7 @@ if ($_SESSION[USERID] == "") {
 
             $UUID = $_SESSION[USERID];
 
-            $DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUID','confirm','$_POST[emailnew]'," . time() . ")");
+            $DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUID','confirm','".cleanQuery($_POST[emailnew])."'," . time() . ")");
 
             //-----------------------------------MAIL--------------------------------------
             $date_arr = getdate();
@@ -139,12 +139,12 @@ if ($_SESSION[USERID] == "") {
     }
 
     if ($_POST[purge]) {
-        $query = "SELECT COUNT(*) FROM " . C_APPEARANCE_TBL . " WHERE PrincipalID ='" . $_SESSION[USERID] . "'";
+        $query = "SELECT COUNT(*) FROM " . C_APPEARANCE_TBL . " WHERE PrincipalID ='" . cleanQuery($_SESSION[USERID]) . "'";
         $DbLink->query($query);
         list($numrows) = $DbLink->next_record();
 
         if ($numrows > 0) {
-            $remove = "DELETE FROM " . C_APPEARANCE_TBL . " WHERE PrincipalID ='" . $_SESSION[USERID] . "'";
+            $remove = "DELETE FROM " . C_APPEARANCE_TBL . " WHERE PrincipalID ='" . cleanQuery($_SESSION[USERID]) . "'";
 
             $DbLink = new DB;
             $DbLink->query($remove);
@@ -158,7 +158,7 @@ if ($_SESSION[USERID] == "") {
     if ($_POST[Submit4] == "Save") {
         $found = array();
         $found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD),
-                    'Name' => $_POST[nameNew]));
+                    'Name' => cleanQuery($_POST[nameNew])));
         $do_post_requested = do_post_request($found);
         $recieved = json_decode($do_post_requested);
 
@@ -168,8 +168,8 @@ if ($_SESSION[USERID] == "") {
         } else {
             $found = array();
             $found[0] = json_encode(array('Method' => 'ChangeName', 'WebPassword' => md5(WIREDUX_PASSWORD)
-                        , 'UUID' => $_SESSION[USERID]
-                        , 'Name' => $_POST[nameNew]));
+                        , 'UUID' => cleanQuery($_SESSION[USERID])
+                        , 'Name' => cleanQuery($_POST[nameNew])));
 
             $do_post_requested = do_post_request($found);
             $recieved = json_decode($do_post_requested);

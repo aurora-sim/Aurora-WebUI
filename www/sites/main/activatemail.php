@@ -2,7 +2,7 @@
 if($_GET[code]){
 $DbLink = new DB;
 
-$DbLink->query("SELECT UUID, email FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='confirm'");
+$DbLink->query("SELECT UUID, email FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='confirm'");
 list($UUID, $EMAIL) = $DbLink->next_record();
 }
 
@@ -10,15 +10,15 @@ if($UUID)
 {	
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'SaveEmail', 'WebPassword' => md5(WIREDUX_PASSWORD)
-		, 'UUID' => $_SESSION[USERID]
-		, 'Email' => $EMAIL));
+		, 'UUID' => cleanQuery($_SESSION[USERID])
+		, 'Email' => cleanQuery($EMAIL)));
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
 	
 	if ($recieved->{'Verified'} == "true") 
 	{
 		$WERROR="Thank you, your email address was changed";		
-		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='confirm'");
+		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='confirm'");
 	}
 }
 else

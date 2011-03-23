@@ -96,7 +96,7 @@ $DbLink->query("SELECT RegionUUID, RegionName,LocX,LocY,SizeX,SizeY,OwnerUUID,In
 while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $DbLink->next_record()) {
 
     $DbLink1 = new DB;
-    $DbLink1->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='$owner'");
+    $DbLink1->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='".cleanQuery($owner)."'");
     list($firstN, $lastN) = $DbLink1->next_record();
 
     $MarkerCoordX = $locX;

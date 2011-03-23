@@ -61,8 +61,8 @@ if($_POST[Submit]=="Submit")
 {
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'ConfirmUserEmailName', 'WebPassword' => md5(WIREDUX_PASSWORD)
-		, 'Name' => $_POST[name]
-		, 'Email' => $_POST[email]));
+		, 'Name' => cleanQuery($_POST[name])
+		, 'Email' => cleanQuery($_POST[email])));
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
 	

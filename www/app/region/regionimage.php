@@ -5,7 +5,7 @@ include("../../settings/mysql.php");
 if($_GET[x] && $_GET[y])
 {
 	$DbLink = new DB;
-	$DbLink->query("SELECT uuid,serverIP,serverHttpPort FROM ".C_REGIONS_TBL." where locX='$_GET[x]' and locY='$_GET[y]'");
+	$DbLink->query("SELECT uuid,serverIP,serverHttpPort FROM ".C_REGIONS_TBL." where locX='".cleanQuery($_GET[x])."' and locY='".cleanQuery($_GET[y])."'");
 	list($UUID,$serverIP,$serverHttpPort) = $DbLink->next_record();
 }
 $SERVER ="http://$serverIP:$serverHttpPort";

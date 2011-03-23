@@ -17,8 +17,8 @@ $DbLink->query("SELECT UUID FROM ".C_CODES_TBL." where (time + $deletetime) < ".
 while(list($REGUUID) = $DbLink->next_record()){
 
 $DbLink1 = new DB;
-$DbLink1->query("DELETE FROM ".C_USERS_TBL." where PrincipalID='$REGUUID'");
-$DbLink1->query("DELETE FROM ".C_CODES_TBL." where UUID='$REGUUID'");	
+$DbLink1->query("DELETE FROM ".C_USERS_TBL." where PrincipalID='".cleanQuery($REGUUID)."'");
+$DbLink1->query("DELETE FROM ".C_CODES_TBL." where UUID='".cleanQuery($REGUUID)."'");
 
 }
 }

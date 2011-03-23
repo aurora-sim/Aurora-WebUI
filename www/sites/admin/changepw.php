@@ -2,7 +2,7 @@
 if($_SESSION[ADMINUID]){
 
 $DbLink = new DB;
-$DbLink->query("SELECT id,username,password FROM ".C_ADMIN_TBL." WHERE password='$_SESSION[ADMINUID]'");
+$DbLink->query("SELECT id,username,password FROM ".C_ADMIN_TBL." WHERE password='".cleanQuery($_SESSION[ADMINUID])."'");
 list($adminid,$username,$adminpass) = $DbLink->next_record();
 
 if($_POST[check]=="change"){
@@ -11,7 +11,7 @@ $password = md5(md5($_POST[passnew]) . ":" );
 $passwold = md5(md5($_POST[passold]) . ":" );
 
 if($adminpass==$passwold){
-$DbLink->query("UPDATE ".C_ADMIN_TBL." SET username='$_POST[usernamenew]',password='$password' WHERE id='$adminid'");
+$DbLink->query("UPDATE ".C_ADMIN_TBL." SET username='".cleanQuery($_POST[usernamenew])."',password='".cleanQuery($password)."' WHERE id='".cleanQuery($adminid)."'");
 
 session_unset();
 session_destroy();

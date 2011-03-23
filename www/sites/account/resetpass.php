@@ -3,7 +3,7 @@
 if($_GET[code]){
 $DbLink = new DB;
 
-$DbLink->query("SELECT UUID,email FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='pwreset'");
+$DbLink->query("SELECT UUID,email FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='pwreset'");
 list($UUID,$email) = $DbLink->next_record();
 }
 
@@ -47,8 +47,8 @@ if($UUID)
 
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'ForgotPassword', 'WebPassword' => md5(WIREDUX_PASSWORD)
-		, 'UUID' => $UUID
-		, 'Password' => $pass));
+		, 'UUID' => cleanQuery($UUID)
+		, 'Password' => cleanQuery($pass)));
 		
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
@@ -60,7 +60,7 @@ if($UUID)
 	
 	if ($recieved->{'Verified'} == "true") 
 	{	
-		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='$_GET[code]' and info='pwreset'");
+		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='pwreset'");
 		//-----------------------------------MAIL--------------------------------------
 		 $date_arr = getdate();
 		 $date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";

@@ -10,8 +10,8 @@ else
 	{
 		$found = array(); 
 		$found[0] = json_encode(array('Method' => 'AbuseReportSaveNotes', 'WebPassword' => md5(WIREDUX_PASSWORD),
-			'Number' => $_POST["Number"], 
-			'Notes' => $_POST["Notes"]
+			'Number' => cleanQuery($_POST["Number"]),
+			'Notes' => cleanQuery($_POST["Notes"])
 		));
 		do_post_request($found);
 	}
@@ -19,7 +19,7 @@ else
 	{
 		$found = array(); 
 		$found[0] = json_encode(array('Method' => 'AbuseReportMarkComlete', 'WebPassword' => md5(WIREDUX_PASSWORD),
-			'Number' => $_POST["Number"]
+			'Number' => cleanQuery($_POST["Number"])
 		));
 		do_post_request($found);
 	}

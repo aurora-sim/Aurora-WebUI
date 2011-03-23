@@ -20,7 +20,7 @@ if($_POST[insert] == '1')
 
 	//$date = date("Y-m-d H:i:s");
 	$DbLink = new DB;
-	$DbLink->query("INSERT INTO ".C_NEWS_TBL." SET title='$_POST[title]',message='$_POST[message]',  time=".time());
+	$DbLink->query("INSERT INTO ".C_NEWS_TBL." SET title='".cleanQuery($_POST[title])."',message='".cleanQuery($_POST[message])."',  time=".time());
 	$DbLink->close();
 
 	echo "<script language=\"javascript\">
@@ -40,7 +40,7 @@ window.location.href=\"index.php?page=loginscreen\";
 <?
 
 $DbLink = new DB;
-$DbLink->query("SELECT id,title,message from ".C_NEWS_TBL." WHERE id = '$_GET[editid]'");
+$DbLink->query("SELECT id,title,message from ".C_NEWS_TBL." WHERE id = '".cleanQuery($_GET[editid])."'");
 
 	if ($DbLink->num_rows() != 0)
 	{
