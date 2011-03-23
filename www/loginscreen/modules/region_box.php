@@ -1,5 +1,5 @@
 <?
-include("languages/translator.php");
+include("../languages/translator.php");
 
 if($_GET[regio]==""){
 $ORDERBY=" ORDER by regionName ASC";
