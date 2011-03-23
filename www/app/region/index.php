@@ -140,7 +140,7 @@ $source = $SERVER."/index.php?method=regionImage".$UUID."";
             <td><? echo $webui_location; ?> X: <?=$locX?> Y: <?=$locY?></td>
         </tr>
         <tr>
-            <td><? echo $webui_owner; ?>: <a href="<?=SYSURL?>app/agent/?first=<?=$firstN?>&last=<?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
+            <td><? echo $webui_owner; ?>: <a href="<?=SYSURL?>app/agent/?name=<?=$firstN?> <?=$lastN?>"><?=$firstN?> <?=$lastN?></a></td>
         </tr>
     </table>
     </div>

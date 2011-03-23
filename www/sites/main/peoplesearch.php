@@ -3,7 +3,7 @@ $AnzeigeStart = 0;
 
 // LINK SELECTOR
 $PageLink = "index.php?page=peoplesearch&btn=$_GET[btn]&";
-$LinkAusgabe = $PageLink . "first=$_GET[first]&last=$_GET[last]&";
+$LinkAusgabe = $PageLink . "first=$_GET[first] $_GET[last]&";
 
 if ($_GET[AStart]) {
     $AStart = $_GET[AStart];
