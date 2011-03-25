@@ -131,28 +131,26 @@ list($REGIONSCOUNT) = $DbLink->next_record();
 </head>
 
 <body class="webui">
-    
+
 <div id="topcontainer">
    <div id="date">
         <?php $date = date("d-m-Y");
           $heure = date("H:i");
            Print("$webui_before_date $date $webui_after_date $heure");
         ?>
-    </div>
-        
+    </div>       
     <div id="translator"><?php include("languages/translator_page.php"); ?></div>
 </div><!-- fin de #topcontainer -->
         
 <div id="container">
-    <div id="headerimages">
-        <a href="<?= SYSURL ?>"><h1><span><? SYSNAME ?></span></h1></a>
-    </div>
-           
     <div id="header">
+        <div id="headerimages">
+            <a href="<?= SYSURL ?>"><h1><span><? SYSNAME ?></span></h1></a>
+        </div>
         <div id="gridstatus"><?php include("sites/gridstatus.php"); ?></div>
         <div id="menubar"><? include("sites/menubar.php"); ?></div>
     </div><!-- fin de #header -->
-
+      
     <div id="MainContainer">
         <div id="sites"><? include("sites.php"); ?></div>
     </div><!-- fin de #mainContent -->

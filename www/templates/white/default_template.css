@@ -407,6 +407,8 @@ margin-top: 140px;}
   background-image: url("background_02.png");
 }
 
+.center {text-align: center; margin: 0 auto; width:300px;}
+
 .error {
   background-color: transparent;
   /* background-image: url("background_03.png"); */
@@ -416,6 +418,8 @@ margin-top: 140px;}
 /* input & bouton */
 #register_input {width: 99%;}
 #register_bouton {font-size: 14px; margin-left: auto; margin-right: auto;}
+
+#birthday_input {width: 33%;}
 
 #login_input {width: 99%;}
 #login_bouton {font-size: 14px;}
@@ -453,6 +457,50 @@ margin-top: 140px;}
   border-bottom-style: none;
 }
 
+/* Frontend SlideShow */
+.clear {
+  clear:both
+}
+
+#gallery_slideshow {
+	position:absolute;
+	margin-left: 700px;;
+	top: 430px;
+	height:169px;
+}
+
+#gallery_slideshow a {
+	float:left;
+	position:absolute;
+}
+	
+#gallery_slideshow a img {
+	border:none;
+}
+	
+#gallery_slideshow a.show {
+	z-index:500
+}
+
+#gallery_slideshow .caption {
+	z-index:600; 
+	background-color:#000; 
+	color:#ffffff; 
+	height:45px; 
+	width:100%; 
+	position:absolute;
+	bottom:0;
+}
+
+#gallery_slideshow .caption .content {
+	margin:5px
+}
+
+#gallery_slideshow .caption .content h3 {
+	margin:0;
+	padding:0;
+	color:#1DCCEF;
+}
 
 /* footer */
 .webui #footer {

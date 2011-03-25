@@ -67,7 +67,6 @@
 
 <div id="menu">
     <ul class="menu">
-    
     <?
 		$DbLink = new DB;
 		if ($_SESSION[USERID])

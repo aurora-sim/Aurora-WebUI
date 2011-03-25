@@ -26,7 +26,7 @@ function printLastNames()
 	$DbLink->query("SELECT lastnames FROM " . C_ADM_TBL . "");
 	list($LASTNAMESC) = $DbLink->next_record();
 	if ($LASTNAMESC == "1") {
-		echo "<select class=\"box\" wide=\"25\" name=\"accountlast\">";
+		echo "<select id=\"register_input\" wide=\"25\" name=\"accountlast\">";
 		$DbLink->query("SELECT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
 		while (list($NAMEDB) = $DbLink->next_record()) {
 			echo "<option>$NAMEDB</option>";
@@ -51,7 +51,7 @@ function displayRegions()
 function displayCountry()
 {
 	$DbLink = new DB;
-	echo "<select require=\"true\" label=\"country_label\" wide=\"25\" name=\"country\" value=\"$_SESSION[COUNTRY]\">";
+	echo "<select require=\"true\" label=\"country_label\" id=\"register_input\" wide=\"25\" name=\"country\" value=\"$_SESSION[COUNTRY]\">";
 	$DbLink->query("SELECT name FROM " . C_COUNTRY_TBL . " ORDER BY name ASC ");
 	echo "<option></option>";
 	while (list($COUNTRYDB) = $DbLink->next_record()) {
@@ -60,15 +60,23 @@ function displayCountry()
 	echo "</select>";
 }
 
+
+
+
+
+
+
+
+
+
 function displayDOB()
-{
-	
+{	
 	echo "<table><tr><td>";
 	 
 	if ($status == 1 and $monat == '')
-		echo "<select label=\"dob_label\" require=\"true\" name='tag' class='red'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='tag' class='red'>"; 
 	else
-		echo "<select label=\"dob_label\" require=\"true\" name='tag' class='black'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='tag' class='black'>"; 
 	echo "<option></option>";
 	for ($i = 1; $i <= 31; $i++) 
 	{
@@ -80,9 +88,9 @@ function displayDOB()
 	echo "</select>";
 
 	if ($status == 1 and $monat == '')
-		echo "<select label=\"dob_label\" require=\"true\" name='monat' class='red'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='monat' class='red'>"; 
 	else
-		echo "<select label=\"dob_label\" require=\"true\" name='monat' class='black'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='monat' class='black'>"; 
 	echo "<option></option>";
 	for ($i = 1; $i <= 12; $i++) 
 	{
@@ -93,9 +101,9 @@ function displayDOB()
 	}
 	echo "</select>";
 	if ($status == 1 and $jahr == '')
-		echo "<select label=\"dob_label\" require=\"true\" name='jahr' class='red'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='jahr' class='red'>"; 
 	else
-		echo "<select label=\"dob_label\" require=\"true\" name='jahr' class='black'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='jahr' class='black'>"; 
 	echo "<option></option>";
 	$jetzt = getdate();
 	$jahr1 = $jetzt["year"];
@@ -149,7 +157,7 @@ function displayDefaultAvatars()
                 <tr>
                     <td class="odd"><span id="accountlast_label"><? echo $webui_avatar_last_name; ?>*</span></td>
                     <td class="odd">
-						<?=printLastNames()?>
+                      <?=printLastNames()?>
                     </td>
                 </tr>
 
@@ -165,14 +173,17 @@ function displayDefaultAvatars()
                     <td class="odd"><input minlength="6" require="true" label="wordpass2_label" id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
                     </td>
                 </tr>
-<? if ($REGIOCHECK == "0") { ?>
+                
+                <? if ($REGIOCHECK == "0") { ?>
+                
                 <tr>
                     <td class="even"><span id="startregion_label"><? echo $webui_start_region ?>*</span></td>
                     <td class="even">
                         <? displayRegions();	?>
                     </td>
                 </tr>
-<? } if ($ADRESSCHECK == "1") { ?>
+                
+                <? } if ($ADRESSCHECK == "1") { ?>
 				<tr>
 					<td class="odd"><span id="firstname_label"><? echo $webui_first_name ?>*</span></td>
 					<td class="odd">
@@ -218,14 +229,18 @@ function displayDefaultAvatars()
                         <? displayDOB(); ?>
                     </td>
                 </tr>
-<? }else if ($FORCEAGE == "1"){ ?>
+                
+                <? }else if ($FORCEAGE == "1"){ ?>
+                
                 <tr>
                     <td class="odd"><span id="dob_label"><? echo $webui_date_of_birth ?>*</span></td>
                     <td class="odd">
                         <? displayDOB(); ?>
                     </td>
                 </tr>
-<? } ?>
+                
+                <? } ?>
+                
 				<tr>
 					<td class="odd"><span id="email_label"><? echo $webui_email ?>*</span></td>
 					<td class="odd">

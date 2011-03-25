@@ -1,7 +1,7 @@
 <div id="content">
     <h2><?= SYSNAME ?>: <? echo $webui_news; ?></h2>
     <div id="news">
-        <div id="info" align="center">
+        <div id="info">
             <p><strong><? echo $webui_news; ?></strong></p>
         </div>
         <table>

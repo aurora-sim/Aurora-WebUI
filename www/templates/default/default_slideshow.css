@@ -1,0 +1,45 @@
+/* WebUI Css Level 2.1 v0.4 (21/02/2011) */
+
+.clear {
+  clear:both
+}
+
+#gallery_slideshow {
+	position:absolute;
+	margin-left: 700px;;
+	top: 430px;
+	height:169px;
+}
+
+#gallery_slideshow a {
+	float:left;
+	position:absolute;
+}
+	
+#gallery_slideshow a img {
+	border:none;
+}
+	
+#gallery_slideshow a.show {
+	z-index:500
+}
+
+#gallery_slideshow .caption {
+	z-index:600; 
+	background-color:#000; 
+	color:#ffffff; 
+	height:45px; 
+	width:100%; 
+	position:absolute;
+	bottom:0;
+}
+
+#gallery_slideshow .caption .content {
+	margin:5px
+}
+
+#gallery_slideshow .caption .content h3 {
+	margin:0;
+	padding:0;
+	color:#1DCCEF;
+}
