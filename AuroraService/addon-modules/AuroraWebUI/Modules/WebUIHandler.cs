@@ -80,7 +80,6 @@ namespace OpenSim.Services
             m_log.Debug("[WebUI]: Sending image jpeg");
             int statuscode = 200;
             byte[] jpeg = new byte[0];
-            byte[] myMapImageJPEG;
             IAssetService m_AssetService = m_registry.RequestModuleInterface<IAssetService>();
 
             MemoryStream imgstream = new MemoryStream();
@@ -114,7 +113,6 @@ namespace OpenSim.Services
 
                     // Write the stream to a byte array for output
                     jpeg = imgstream.ToArray();
-                    myMapImageJPEG = jpeg;
                 }
             }
             catch (Exception)
@@ -168,9 +166,7 @@ namespace OpenSim.Services
             m_log.Debug("[WebUI]: Sending map image jpeg");
             int statuscode = 200;
             byte[] jpeg = new byte[0];
-            byte[] myMapImageJPEG;
-            IAssetService m_AssetService = m_registry.RequestModuleInterface<IAssetService>();
-
+            
             MemoryStream imgstream = new MemoryStream();
             Bitmap mapTexture = CreateZoomLevel(zoom, x, y);
             EncoderParameters myEncoderParameters = new EncoderParameters();
@@ -181,7 +177,6 @@ namespace OpenSim.Services
 
             // Write the stream to a byte array for output
             jpeg = imgstream.ToArray();
-            myMapImageJPEG = jpeg;
 
             // Reclaim memory, these are unmanaged resources
             // If we encountered an exception, one or more of these will be null
@@ -448,14 +443,13 @@ namespace OpenSim.Services
             bool Verified = false;
             string Name = map["Name"].AsString();
             string PasswordHash = map["PasswordHash"].AsString();
-            string PasswordSalt = map["PasswordSalt"].AsString();
+            //string PasswordSalt = map["PasswordSalt"].AsString();
             string HomeRegion = map["HomeRegion"].AsString();
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
 
   
 
-            ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             if (accountService == null)
                 return null;
@@ -466,6 +460,13 @@ namespace OpenSim.Services
 
             accountService.CreateUser(Name, PasswordHash, Email);
             UserAccount user = accountService.GetUserAccount(UUID.Zero, Name);
+            IAgentInfoService agentInfoService = m_registry.RequestModuleInterface<IAgentInfoService> ();
+            IGridService gridService = m_registry.RequestModuleInterface<IGridService> ();
+            if (agentInfoService != null && gridService != null)
+            {
+                GridRegion r = gridService.GetRegionByName (UUID.Zero, HomeRegion);
+                agentInfoService.SetHomePosition (user.PrincipalID.ToString (), r.RegionID, new Vector3 (r.RegionSizeX / 2, r.RegionSizeY / 2, 20), Vector3.Zero);
+            }
 
             Verified = user != null;
             UUID userID = UUID.Zero;
@@ -473,14 +474,14 @@ namespace OpenSim.Services
             if (Verified)
             {
                 // could not find a way to save this data here.
-                DateTime RLDOB = map["RLDOB"].AsDate();
+                /*DateTime RLDOB = map["RLDOB"].AsDate();
                 string RLFirstName = map["RLFisrtName"].AsString();
                 string RLLastName = map["RLLastName"].AsString();
                 string RLAdress = map["RLAdress"].AsString();
                 string RLCity = map["RLCity"].AsString();
                 string RLZip = map["RLZip"].AsString();
                 string RLCountry = map["RLCountry"].AsString();
-                string RLIP = map["RLIP"].AsString();
+                string RLIP = map["RLIP"].AsString();*/
                 // could not find a way to save this data here.
 
 
@@ -644,8 +645,6 @@ namespace OpenSim.Services
         /// <returns>Verified</returns>
         byte[] SaveEmail(OSDMap map)
         {
-            string uuid = String.Empty;
-            uuid = map["UUID"].AsString();
             string email = map["Email"].AsString();
 
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
@@ -972,8 +971,9 @@ namespace OpenSim.Services
             List<UserAccount> accounts = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccounts(UUID.Zero, Query);
 
             OSDArray users = new OSDArray();
-            foreach (UserAccount acc in accounts)
+            for(int i = start; i < end && i < accounts.Count; i++)
             {
+                UserAccount acc = accounts[i];
                 OSDMap userInfo = new OSDMap();
                 userInfo["PrincipalID"] = acc.PrincipalID;
                 userInfo["UserName"] = acc.Name;
