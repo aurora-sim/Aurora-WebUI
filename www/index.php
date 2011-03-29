@@ -98,7 +98,7 @@ if ($_POST[Submit] == $webui_admin_login) {
     <?php if($showScrollingText)
     { ?>
     <div id="scrollingAlertText">
-        <marquee bgcolor="transparent" direction="right" scrollamount="2"><?php echo $scrollingTextMessage; ?></marquee>
+        <marquee direction="right" scrollamount="2"><?php echo $scrollingTextMessage; ?></marquee>
     </div>
     <?php } ?>
     <?php if($showWelcomeMessage)
