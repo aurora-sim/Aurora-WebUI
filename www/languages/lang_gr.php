@@ -112,6 +112,7 @@ $webui_menu_item_chat = 'Chat';
 $webui_home = 'Αρχική Σελίδα';
 $webui_welcome = 'Καλώς ήλθατε στο νέο δικτυακό τόπο';
 $webui_welcome_visitor = 'Γεια σου επισκέπτη!';
+$webui_welcome_back = 'Welcome back';
 $webui_welcome_userid = 'Γεια ταυτότητας χρήστη!';
 $webui_home_page='
     <p>

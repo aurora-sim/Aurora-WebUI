@@ -23,35 +23,64 @@ body.webui {
 
 /* Translator and date Container */
 .webui #topcontainer {
-	width: 925px;
-  margin-top: -14px;
+  position: relative;
+  width: 920px;
+  margin-top: -50px;
   margin-left: auto;
   margin-right: auto;
+  padding:0px;
+  background-image: url("background_06.png");
+  background-color: transparent;
+  background-repeat: repeat;
   color:#000000;
   z-index: 50;
+  height: 45px;
 }
 
 /* Translator_Module */
 .webui #translator {
-  position: relative;
-  float:right;
-  margin: 0px;
-  margin-top: 0px;
-  margin-right: 3px;
-  padding-left:5px;
-  padding-right:5px;
-  padding-top:3px;
-  padding-bottom:3px;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 0.8em;
-  background-image: url("background_06.png");
-  background-color: transparent;
-  background-repeat: repeat;
-	height: 15px;
+    position: relative;
+    width: 30%;
+    float:left;
+    margin: auto;
+    padding:0px;
+    padding-top:25px;
+    padding-bottom:3px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    height: 15px;
+}
+
+/* Translator_Module */
+.webui #welcomeText {
+    position: relative;
+    width: 33%;
+    float:right;
+    margin: auto;
+    padding:0px;
+    padding-top:25px;
+    padding-bottom:3px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 0.7em;
+    height: 15px;
+}
+
+/* Scrolling Text Module*/
+.webui #scrollingAlertText {
+    position: relative;
+    width: 33%;
+    height: 15px;
+    float:left;
+    margin: auto;
+    padding:0px;
+    padding-top:25px;
+    padding-bottom:3px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
 }
 
 /* Date Module*/
-.webui #date {
+/*.webui #date {
   position: relative;
   float:left;
   margin: 0px;
@@ -63,20 +92,17 @@ body.webui {
   padding-bottom:3px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 0.8em;
-  background-image: url("background_06.png");
-  background-color: transparent;
-  background-repeat: repeat;
 	height: 15px;
-}
+}*/
 
 .webui #container {
 	width: 900px;
-  background-image: url("background_04.png");
-  background-color: transparent;
-  background-repeat: repeat;
-  margin-top: 27px;
-  margin-left: auto;
-  margin-right: auto;
+    background-image: url("background_04.png");
+    background-color: transparent;
+    background-repeat: repeat;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 	border: 0px solid #000000;
 	text-align: left;
 	padding: 10px;
@@ -90,9 +116,9 @@ body.webui {
 .webui #headerimages h1 {
 	margin: 0px;
 	height:139px;
-  background-image: url("aurora-webui-logo.png");
-  background-repeat: no-repeat;
-	background-color: #222222;
+    background-image: url("aurora-webui-logo.png");
+    background-repeat: no-repeat;
+	background-color: #777777;
 }
 
 /* MenuBar Horizontal */
@@ -118,22 +144,22 @@ body.webui {
 #menu li {
   position: relative;
 	display: block;
-  float:left; /*pour IE*/
+    float:left; /*for IE*/
 	list-style: none;
 	text-align: center;
 }
 
 #menu li a {  
-  margin-left:10px;
-  width:100px;
-  height: 30px;
-  display: block;
-  text-decoration:none;
-  text-align: center;
-  line-height: 30px;
-  padding:5px;
+    margin-left:0px;
+    width:100px;
+    height: 30px;
+    display: block;
+    text-decoration:none;
+    text-align: center;
+    line-height: 30px;
+    padding:5px;
 	color: #000000;
-	background-color: #d1d1d1;
+	background-color: #d0d0d0;
 	border-bottom: 1px solid #f1f1f1;
 }
 
@@ -142,7 +168,7 @@ body.webui {
 }
 
 #menu li a:active {
-  background-color:#ff0000;
+  background-color:#fff000;
   background-image: none;
 }
 
@@ -163,11 +189,26 @@ body.webui {
 	background-color: #ffffff;
   text-align:left;
 }
+/* home content*/
+.webui #home_content {
+    width:75%;
+    font-size: 12px;
+	background-color: #ffffff;
+    text-align:left;
+}
+
+#gallery_slideshow {
+    width:25%;
+	position:absolute;
+	margin-left: 700px;
+	top: 275px;
+	height:169px;
+}
 
 /* MainContainer */
 .webui #MainContainer {;}
 
-/* from sitemodul.php */
+/* from sitemodule.php */
 #scr {
   position:absolute;
   width:100%;
@@ -462,13 +503,6 @@ margin-top: 140px;}
   clear:both
 }
 
-#gallery_slideshow {
-	position:absolute;
-	margin-left: 700px;;
-	top: 430px;
-	height:169px;
-}
-
 #gallery_slideshow a {
 	float:left;
 	position:absolute;
@@ -644,3 +678,54 @@ td.gridbox_br {
 {
 	display:none; 
 }
+
+#sddm
+{	margin: 0;
+	padding: 0;
+	z-index: 30}
+
+#sddm li
+{	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font: bold 11px arial}
+
+#sddm li a
+{	display: block;
+	margin: 0 1px 0 0;
+	padding: 4px 10px;
+	width: 60px;
+	background: #5970B2;
+	color: #FFF;
+	text-align: center;
+	text-decoration: none}
+
+#sddm li a:hover
+{	background: #49A3FF}
+
+#sddm div
+{	position: absolute;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	background: #EAEBD8;
+	border: 1px solid #5970B2}
+
+	#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: auto;
+		white-space: nowrap;
+		text-align: left;
+		text-decoration: none;
+		background: #EAEBD8;
+		color: #2875DE;
+		font: 11px arial}
+
+	#sddm div a:hover
+	{	background: #49A3FF;
+		color: #FFF
+    }

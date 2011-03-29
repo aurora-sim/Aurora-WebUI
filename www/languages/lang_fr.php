@@ -112,7 +112,8 @@ $webui_menu_item_chat = 'Chat';
 //
 $webui_home = 'Accueil';
 $webui_welcome = 'Bienvenue sur le nouveau site';
-$webui_welcome_visitor = 'Bonjour Visiteur!';
+$webui_welcome_visitor = 'Visiteur';
+$webui_welcome_back = 'Welcome back';
 $webui_welcome_userid = 'Bonjour Userid!';
 $webui_home_page='
     <p>

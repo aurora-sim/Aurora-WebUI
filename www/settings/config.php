@@ -29,6 +29,14 @@ $showAlertPanel = true;
 // Show the panel that shows special reports?
 $showSpecialReport = true;
 
+################### Main Site #######################
+//Should we show any scrolling text at the top of the page?
+$showScrollingText = true;
+//What message should be displayed in the scrolling text?
+$scrollingTextMessage = "Welcome!         Welcome!          Welcome!";
+//Should we show the welcome message at the top of the page?
+$showWelcomeMessage = true;
+
 ############ Delete Unconfirmed accounts ################
 // e.g. 24 for 24 hours  leave empty for no timed delete
 $unconfirmed_deltime="24";
