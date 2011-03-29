@@ -136,6 +136,12 @@ $webui_404_title = 'Error 404';
 $webui_404_gohome = 'Go Home';
 
 //
+// Maintenance page
+//
+$webui_maint_title = 'Error';
+$webui_maint_text = 'The site is currently undergoing maintenance, please try again later.';
+
+//
 // Forgot Pass Page
 //
 $webui_forgot_password='Wachtwoord vergeten?';

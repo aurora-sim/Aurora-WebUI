@@ -134,6 +134,12 @@ $webui_home_page='
 $webui_404_text = 'Η σελίδα που ζητήσατε δεν βρέθηκε! Παρακαλώ δοκιμάστε ξανά αργότερα.';
 $webui_404_title = 'Σφάλμα 404';
 $webui_404_gohome = 'Αρχική Σελίδα';
+
+//
+// Maintenance page
+//
+$webui_maint_title = 'Error';
+$webui_maint_text = 'The site is currently undergoing maintenance, please try again later.';
  
 //
 // Forgot Pass Page

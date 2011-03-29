@@ -4,6 +4,7 @@ if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
     ob_start("ob_gzhandler"); else
     ob_start();
 session_start();
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
 <?
@@ -72,7 +73,6 @@ if ($_POST[Submit] == $webui_admin_login) {
 		</script>";
     }
 }
-
 //LOGIN END
 ?>
 <head>
@@ -85,6 +85,14 @@ if ($_POST[Submit] == $webui_admin_login) {
 </head>
 
 <body class="webui">
+<?
+    //If we are supposed to only display the maintenance page currently, do so now
+    if($displayMaintenancePage)
+    {
+        include("sites/Maintenance.php");
+        return;
+    }
+?>
 <div id="topcontainer">
     <!--<div id="date">
         <?php /*$date = date("d-m-Y");

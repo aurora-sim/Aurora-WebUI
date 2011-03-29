@@ -15,6 +15,9 @@ define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
 define("WIREDUX_TEXTURE_SERVICE","http://localhost:8002");
 define("WIREDUX_PASSWORD","");
 
+//Should we display a 'Maintenance' page currently that blocks all access to the website (until disabled here)?
+$displayMaintenancePage = false;
+
 ################### Loginscreen ################
 // Should the pictures on the loginscreen be random or by time?
 $picturesByTime = false;
