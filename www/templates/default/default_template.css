@@ -327,14 +327,14 @@ h5 {font-size: 10px; color:#ffffff;}
 #regionlist a:active {text-decoration: none}
 #regionlist a:hover {text-decoration: underline;}
 
-#register  {width:100%;background-color: #222;margin-top:60px;}
+#register  {width:100%;background-color: #222;margin-top:70px;}
 #register table {color: #ffffff; width: 100%;}
 #register a {color: #aaaa00; text-decoration: none;}
 #register a:visited {text-decoration: none}
 #register a:active {text-decoration: none}
 #register a:hover {text-decoration: underline;}
 
-#login {width:100%;background-color: #222;margin-top:60px;}
+#login {width:100%;background-color: #222;margin-top:70px;}
 #login table {color: #ffffff; width: 100%;}
 #login td {width: 50%;}
 #login a {color: #aaaa00; text-decoration: none;}
