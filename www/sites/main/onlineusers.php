@@ -7,15 +7,11 @@ function OpenAgent(firstname, lastname)
 </script>
 
 <div id="content">
-
-  <h2><?= SYSNAME ?>: <? echo $webui_online_users ?></h2>
-  
+  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderCenter"></div>
+  <div id="ContentHeaderRight"><h5><? echo $webui_online_users; ?></h5></div>
   <div id="usersonline">
-  
-  <div id="info">
-      <p><? echo $webui_online_users_info ?></p>
-  </div>
-
+  <div id="info"><p><? echo $webui_online_users_info ?></p></div>
 
 <table>
   <tbody>

@@ -31,14 +31,11 @@ if($sitemax == 0){$sitemax=1;}
 ?>
 
 <div id="content">
-    <h2><?= SYSNAME ?>: <? echo $webui_region_list ?></h2>
-  
+  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderCenter"></div>
+  <div id="ContentHeaderRight"><h5><? echo $webui_region_list; ?></h5></div>
   <div id="regionlist">
-
-	<div id="info">
-		<p><? echo $webui_region_list_page_info ?></p>
-	</div>
-
+	<div id="info"><p><? echo $webui_region_list_page_info ?></p></div>
 	<table>
 		<tr>
 			<td>

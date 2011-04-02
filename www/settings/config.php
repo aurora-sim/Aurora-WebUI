@@ -18,6 +18,34 @@ define("WIREDUX_PASSWORD","");
 //Should we display a 'Maintenance' page currently that blocks all access to the website (until disabled here)?
 $displayMaintenancePage = false;
 
+// Should we display Top Panel Slider and 'options' 
+$displayTopPanelSlider = true;
+$displayTemplateSelector = true;
+$displayStyleSwitcher = true;
+$displayStyleSizer = true;
+$displayFontSizer = true;
+
+// Choose your transition type
+// blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY
+// scrollUp, scrollDown, scrollLeft, scrollRight, scrollHorz, scrollVert, shuffle
+// slideX, slideY, toss, turnUp, turnDown, turnLeft, turnRight, uncover, wipe, zoom
+// http://jquery.malsup.com/cycle/
+$displaySlideShow = true;
+$SlideShowStyle = "scrollRight";
+$SlideShowSpeed = 1000;
+$SlideShowTimeout = 5000;
+$SlideShowSync = 0;             // 1 or 0
+// $SlideShowPrev = '#prev2';
+// $SlideShowNext = '#next2';
+$SlideShowPause = 0;            // 1 or 0
+$SlideShowRandom = 0;           // 1 or 0
+$SlideShowPager = "";           // #nav
+$SlideShowEaseing = "";         // bounceout
+$SlideShowDelay = -1000;            // -5000
+
+// Should we display Rounded Corners
+$showRoundedCorner = true;
+
 ################### Loginscreen ################
 // Should the pictures on the loginscreen be random or by time?
 $picturesByTime = false;
@@ -61,11 +89,12 @@ $display_marker="tl";
 
 ####################### Skin ##########################
 
-//Current templates are 'default' and 'white'
+//Current templates are 'default', 'white' and 'astra'
 $template='default';
 
 #################### Languages ########################
 
+// TODO $displayLanguageSelector = true;
 $languages=array("en" => "English",
     "fr" => "French",
     "de" => "German",

@@ -1,17 +1,17 @@
-/* WebUI Css Level 2.1 v0.4 (21/02/2011) */
+/* WebUI Css Level 2.1 v0.5 (01/04/2011) */
 
 html {width: 100%; height: 100%;}
 
 body.webui {
-  margin: 10px;
+  margin: 0px;
+  margin-top: -18px;
   padding: 0px;
   font-size: 100%;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: center;
-  color:#ffffff;
+  color:#eee;
   background: #000000 url("background_01.jpg") 50% 0% repeat-x;
 }
-
 
 .webui #adminnote {
 	width: 900px;
@@ -25,17 +25,15 @@ body.webui {
 /* Translator and date Container */
 .webui #topcontainer {
 	width: 925px;
-  margin-top: -14px;
   margin-left: auto;
   margin-right: auto;
-  color:#ffffff;
   z-index: 50;
 }
 
 /* Translator_Module */
 .webui #translator {
   position: relative;
-  float:right;
+  float:left;
   margin: 0px;
   margin-top: 0px;
   margin-right: 3px;
@@ -49,7 +47,7 @@ body.webui {
   background-color: transparent;
   background-repeat: repeat;
 	height: 15px;
-
+	
 }
 
 /* Date Module*/
@@ -71,6 +69,43 @@ body.webui {
 	height: 15px;
 }
 
+/* Welcome Text Module */
+.webui #welcomeText {
+  position: relative;
+  float:right;
+  margin: auto;
+  margin-top: 0px;
+  padding: 3px;
+  padding-bottom:3px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:0.8em;
+  height: 15px;
+  background-image: url("background_06.png");
+}
+
+/* Scrolling Text Module */
+div.horizontal_scroller, div.vertical_scroller {
+  position:relative;
+	height: 15.5px;
+	width: 90%;
+	display:block;
+	overflow:hidden;
+  float:left;
+  margin-top: 0px;		
+}
+
+div.scrollingtext{
+  position:absolute;
+	white-space:nowrap;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  z-index:99;
+  color:#ebed5e;
+  padding: 3px;
+  padding-bottom:3px;
+}
+
+/* The Container */
 .webui #container {
 	width: 900px;
   background-image: url("background_06.png");
@@ -103,13 +138,19 @@ body.webui {
 /* Pretty Menu */
 #menu {
 	z-index:100;
-  width:100%;
-  height:60px;
+background-color: #1a1a1a;
+height:60px;
+width: 100%;
+padding-top:30px;
+margin-bottom:-10px;
+
 }
 
-.menu
-{	
-  position:relative; 
+.menu {
+  background-color: #000;
+  height:50px;
+  width:890px;	
+  position:relative;
   margin: auto;
   padding-top:10px;
 }
@@ -118,17 +159,17 @@ body.webui {
   list-style-type:none;
 }
 
-#menu li {
+#menu li {z-index:100;
   position: relative;
 	display: block;
   float:left; /*pour IE*/
 	list-style: none;
-	text-align: center;
+	text-align: center;margin:0 auto;
 }
 
 #menu li a {  
   margin-left:10px;
-  width:100px;
+  width:105px;
   height: 30px;
   display: block;
   text-decoration:none;
@@ -136,12 +177,16 @@ body.webui {
   line-height: 30px;
   padding:5px;
 	color: #ffffff;
-	background-color: #000000;
-	border-bottom: 1px solid #222222;
+	background-color: #111;  
+	border-bottom: 1px solid #000;
+
 }
 
 #menu li a:hover {
-  background-color: #111111;
+
+  background-color: #222;
+  background-repeat: repeat;
+  	
 }
 
 #menu li a:active {
@@ -163,8 +208,47 @@ body.webui {
 .webui #content {
   font-size: 12px;
   padding: 10px;
+	background-color: #1a1a1a;
+  text-align:left;
+  color:#eee;
+}
+
+/* home content*/
+#home_content_left {
+  font-size: 12px;
+  padding: 10px;
 	background-color: #000000;
   text-align:left;
+  width:70%;
+
+}
+
+.webui #home_content_right {
+  float:right;
+  width: 270px;
+  height: 132px;
+  margin-top: -219px;
+  margin-right: 20px;
+  
+}
+
+/* Slide Show */
+.slideshow {
+  z-index:200;
+  position: relative;
+  float:left;
+  margin-top: 0px;
+  margin-left:0px;
+  width: 270px;
+  height: 132px;
+}
+
+.slideshow img {
+  padding: 0px; 
+  border: 10px solid #000;
+  background-color: #000;
+  width: 250px;
+  height: 110px;
 }
 
 /* MainContainer */
@@ -205,11 +289,11 @@ a:hover {text-decoration: none;}
 img {border: 0px;}
 table {font-size: 100%; border:0px;}
 
-h1 {padding-left: 20px; font-size: 24px; color:#ffffff;}
-h2 {padding-left: 20px; font-size: 18px; color:#ffffff;}
-h3 {padding-left: 20px; font-size: 14px; color:#ffffff;}
-h4 {padding-left: 20px; font-size: 12px; color:#ffffff;}
-h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
+h1 {font-size: 24px; color:#ffffff;}
+h2 {font-size: 18px; color:#ffffff;}
+h3 {font-size: 14px; color:#ffffff;}
+h4 {font-size: 12px; color:#ffffff;}
+h5 {font-size: 10px; color:#ffffff;}
 
 .webui #header h1 span {display:none;}
 .webui #header h2 span {display:none;}
@@ -236,22 +320,21 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #content a:active {text-decoration: none}
 #content a:hover {text-decoration: underline;}
 
-#regionlist {width:100%;background-color: transparent;}
+#regionlist {width:100%;background-color: transparent;margin-top:60px;}
 #regionlist table {color: #ffffff; width: 100%;}
 #regionlist td a {color: #aaaa00; text-decoration: none;}
 #regionlist a:visited {text-decoration: none}
 #regionlist a:active {text-decoration: none}
 #regionlist a:hover {text-decoration: underline;}
 
-#register {width:100%;background-color: transparent;}
+#register  {width:100%;background-color: #222;margin-top:60px;}
 #register table {color: #ffffff; width: 100%;}
-
 #register a {color: #aaaa00; text-decoration: none;}
 #register a:visited {text-decoration: none}
 #register a:active {text-decoration: none}
 #register a:hover {text-decoration: underline;}
 
-#login {width:100%;background-color: transparent;}
+#login {width:100%;background-color: #222;margin-top:60px;}
 #login table {color: #ffffff; width: 100%;}
 #login td {width: 50%;}
 #login a {color: #aaaa00; text-decoration: none;}
@@ -259,7 +342,7 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #login a:active {text-decoration: none}
 #login a:hover {text-decoration: underline;}
 
-#forget_pass {width:100%;background-color: transparent;}
+#forget_pass {width:100%;background-color: #222;margin-top:60px;}
 #forget_pass table {color: #ffffff; width: 100%;}
 #forget_pass td {width: 50%;}
 #forget_pass a {color: #aaaa00; text-decoration: none;}
@@ -267,96 +350,103 @@ h5 {padding-left: 20px; font-size: 10px; color:#ffffff;}
 #forget_pass a:active {text-decoration: none}
 #forget_pass a:hover {text-decoration: underline;}
 
-#usersonline {width:100%;background-color: transparent;}
+#usersonline {width:100%;background-color: transparent;margin-top:60px;}
 #usersonline table {color: #ffffff; width: 100%;}
 #usersonline a {color: #aaaa00; text-decoration: none;}
 #usersonline a:visited {text-decoration: none}
 #usersonline a:active {text-decoration: none}
 #usersonline a:hover {text-decoration: underline;}
 
-#searchpeople {width:100%;background-color: transparent;}
+#searchpeople {width:100%;background-color: transparent;margin-top:60px;}
 #searchpeople table {color: #ffffff; width: 100%;}
 #searchpeople a {color: #aaaa00; text-decoration: none;}
 #searchpeople a:visited {text-decoration: none}
 #searchpeople a:active {text-decoration: none}
 #searchpeople a:hover {text-decoration: underline;}
 
-#changeaccount {width:100%;background-color: transparent;}
+#changeaccount {width:100%;background-color: transparent;margin-top:60px;}
 #changeaccount table {color: #ffffff; width: 100%;}
 #changeaccount a {color: #aaaa00; text-decoration: none;}
 #changeaccount a:visited {text-decoration: none}
 #changeaccount a:active {text-decoration: none}
 #changeaccount a:hover {text-decoration: underline;}
 
-#loginscreen_manager {width:100%;background-color: transparent;}
+#loginscreen_manager {width:100%;background-color: transparent;margin-top:60px;}
 #loginscreen_manager table {color: #ffffff; width: 100%;}
 #loginscreen_manager a {color: #aaaa00; text-decoration: none;}
 #loginscreen_manager a:visited {text-decoration: none}
 #loginscreen_manager a:active {text-decoration: none}
 #loginscreen_manager a:hover {text-decoration: underline;}
 
-#managepanel {width:100%;background-color: transparent;}
+#managepanel {width:100%;background-color: transparent;margin-top:60px;}
 #managepanel table {color: #ffffff; width: 100%;}
 #managepanel a {color: #aaaa00; text-decoration: none;}
 #managepanel a:visited {text-decoration: none}
 #managepanel a:active {text-decoration: none}
 #managepanel a:hover {text-decoration: underline;}
 
-#news {width:100%;background-color: transparent;}
+#news {width:100%;background-color: transparent;margin-top:60px;}
 #news table {color: #ffffff; width: 100%;}
 #news td a {color: #aaaa00; text-decoration: none;}
 #news a:visited {text-decoration: none}
 #news a:active {text-decoration: none}
 #news a:hover {text-decoration: underline;}
 
-#createnews {width:100%;background-color: transparent;}
+#createnews {width:100%;background-color: transparent;margin-top:60px;}
 #createnews table {color: #ffffff; width: 100%;}
 #createnews a {color: #aaaa00; text-decoration: none;}
 #createnews a:visited {text-decoration: none}
 #createnews a:active {text-decoration: none}
 #createnews a:hover {text-decoration: underline;}
 
-#useragentprofil {min-height:160px; width:100%;background-color: transparent;}
+#useragentprofil {min-height:160px; width:100%;background-color: transparent;margin-top:60px;}
 #useragentprofil table {color: #ffffff; width: 50%;}
 #useragentprofil a {color: #aaaa00; text-decoration: none;}
 #useragentprofil a:visited {text-decoration: none}
 #useragentprofil a:active {text-decoration: none}
 #useragentprofil a:hover {text-decoration: underline;}
 
-#regioninfo {min-height:283px; width:100%;background-color: transparent;}
+#regioninfo {min-height:283px; width:100%;background-color: transparent;margin-top:60px;}
 #regioninfo table {color: #ffffff; width:100%}
 #regioninfo a {color: #aaaa00; text-decoration: none;}
 #regioninfo a:visited {text-decoration: none}
 #regioninfo a:active {text-decoration: none}
 #regioninfo a:hover {text-decoration: underline;}
 
-#adminsettings {width:100%;background-color: transparent;}
+#adminsettings {width:100%;background-color: transparent;margin-top:60px;}
 #adminsettings table {color: #ffffff; width: 100%;}
 #adminsettings a {color: #aaaa00; text-decoration: none;}
 #adminsettings a:visited {text-decoration: none}
 #adminsettings a:active {text-decoration: none}
 #adminsettings a:hover {text-decoration: underline;}
 
-#support {width:100%;background-color: transparent;}
+#support {width:100%;background-color: transparent;margin-top:60px;}
 #support table {color: #ffffff; width: 100%;}
 #support a {color: #aaaa00; text-decoration: none;}
 #support a:visited {text-decoration: none}
 #support a:active {text-decoration: none}
 #support a:hover {text-decoration: underline;}
 
-#help {width:100%;background-color: transparent;}
+#help {width:100%;background-color: transparent;margin-top:60px;}
 #help table {color: #ffffff; width: 100%;}
 #help a {color: #aaaa00; text-decoration: none;}
 #help a:visited {text-decoration: none}
 #help a:active {text-decoration: none}
 #help a:hover {text-decoration: underline;}
 
-#chat {width:100%;background-color: transparent;}
+#chat {width:100%;background-color: transparent;margin-top:60px;}
 #chat table {color: #ffffff; width: 100%;}
 #chat a {color: #aaaa00; text-decoration: none;}
 #chat a:visited {text-decoration: none}
 #chat a:active {text-decoration: none}
 #chat a:hover {text-decoration: underline;}
+
+#gallery {width:100%;background-color: transparent;margin-top:60px;}
+#gallery table {color: #ffffff; width: 100%;}
+#gallery a {color: #aaaa00; text-decoration: none;}
+#gallery a:visited {text-decoration: none}
+#gallery a:active {text-decoration: none}
+#gallery a:hover {text-decoration: underline;}
 
 /* more info profil */
 #profil_picture {
@@ -419,28 +509,28 @@ margin-top: 140px;}
 }
 
 /* input & bouton */
-#register_input {width: 100%;}
+#register_input {width: 98%;}
 #register_bouton {font-size: 14px; margin-left: auto; margin-right: auto;}
 
 #birthday_input {width: 33%;}
 
-#login_input {width: 100%;}
+#login_input {width: 98%;}
 #login_bouton {font-size: 14px;}
 
-#forgot_pass_input {width: 100%;}
+#forgot_pass_input {width: 98%;}
 #forgot_pass_bouton {font-size: 14px;}
 
 #search_input {width: 100%; font-size: 14px;}
 #search_bouton {font-size: 14px;}
 
-
 /* region map */
 #region_map {
+  width:100%;
+  margin-top:60px;
   margin: 0px;
   padding: 0px;
   height: 350px;
   background-color: transparent;
-  background-image: url("background_03.png");
   border:none;
 }
 
@@ -467,9 +557,10 @@ margin-top: 140px;}
 
 #gallery_slideshow {
 	position:absolute;
-	margin-left: 700px;;
-	top: 430px;
-	height:169px;
+	height:240px;
+	width:30%;
+	margin-left: 550px;
+	margin-top: -320px;
 }
 
 #gallery_slideshow a {
@@ -478,7 +569,9 @@ margin-top: 140px;}
 }
 	
 #gallery_slideshow a img {
-	border:none;
+	border:none;	
+  height:240px;
+  width:320px;
 }
 	
 #gallery_slideshow a.show {
@@ -647,3 +740,209 @@ td.gridbox_br {
 {
 	display:none; 
 }
+
+/* Top Panel Slider */
+a:focus {
+	outline: none;
+}
+
+#panel {
+	background: #000;
+	height: 34px;
+	display: none;
+}
+.slide {
+	margin: 0px;
+	padding: 0px;
+	border-top: solid 1px #000000;
+	background: url(slide.png) no-repeat center top;
+}
+
+.btn-slide {
+	background: url(arrow.png) no-repeat right -61px;
+	text-align: center;
+	width: 100px;
+	height: 16px;
+	padding: 0px 5px 0 0;
+	margin: 0 auto;
+	display: block;
+	font: bold 0.6em Verdana, Helvetica, sans-serif;
+	color: #999;
+	text-decoration: none;
+	z-index: 100;
+}
+.active {
+	background-position: right 4px;
+}
+
+#panelcontent {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+  font-size: 12px;
+  background-color: #333;
+  background-image: url("background_03.png");
+}
+
+/* StyleSwitch */
+#switchers {
+  position: relative;
+  width: 600px;
+  margin: 0 auto;
+  color:#ffffff;
+  font-size: 0.8em; 
+  font-family: verdana, helvetica, sans-serif;
+  text-align: center;
+  background-color: #222;
+  background-image: url("background_03.png");
+}
+
+.template1 {
+  background-color: #aa0001;
+  margin:0px;
+  padding:0px;
+  height:18px;
+  width:18px;
+  border:1px solid #000;
+}
+
+.template2 {
+  background-color: #00aa01;
+  margin:0px;
+  padding:0px;
+  height:18px;
+  width:18px;
+  border:1px solid #000;
+}
+
+.template3 {
+  background-color: #0100aa;
+  margin:0px;
+  padding:0px;
+  height:18px;
+  width:18px;
+}
+
+a.link1 {color:#aa0001;}
+a.link2 {color:#00aa01;}
+a.link3 {color:#0100aa;}
+
+
+/* Makes it pretty */
+#options table {
+  width: 100%;
+  border: solid 0px #222;
+  border-collapse: separate;
+  border-spacing: 3px ;
+}
+
+#options th {
+  border: solid 0px #000;
+  background-color: #C8D1D1;
+  font-weight: bold;
+  padding: 3px;
+  text-align: left;
+}
+
+#options td {
+  background-color: #000;
+  padding: 3px;
+  border: 1px solid #111;
+}
+
+/* jQuery */
+div.section { clear: left; }
+
+div.demo, div.inner { color: #000; text-align: center; font-family: verdana, arial, sans-serif;}
+
+div.annonce1, div.annonce2, div.annonce3
+{ color: #111; text-align: center; font-family: verdana, arial, sans-serif;}
+div#annonce1 {
+float: left;
+width: 233px;
+padding: 20px;
+margin: 10px;
+background: #111;
+font-size: 12px;
+}
+div#annonce2 {
+float: left;
+width: 233px;
+padding: 20px;
+margin: 10px;
+background: #111;
+font-size: 12px;
+}
+
+div#annonce3 {
+float: left;
+width: 233px;
+padding: 20px;
+margin: 10px;
+background: #111;
+font-size: 12px;
+}
+
+div#annonce4 {
+float: left;
+width: 819px;
+padding: 20px;
+margin: 10px;
+background: #000;
+font-size: 12px;
+}
+
+div#annonce10 {
+float: left;
+
+padding: 20px;
+margin: 10px;
+background: #fff;
+font-size: 12px;
+}
+
+
+div.inner { margin: 0; background: #ffc; padding: 10px; border:0; } /* zoom:1; */
+div.outer { float: left; margin: 15px; background: #c82; padding: 8px; width: 22em }
+div.fun   { margin: 2px; }
+
+div#ContentHeaderLeft {
+margin: 10px;
+width: 273px;
+background-color: transparent;
+float: left;
+}
+
+div#ContentHeaderCenter {
+margin: 10px;
+width: 272px;
+background-color: transparent;
+float: left;
+font-weight: bold;
+margin-top:25px;
+}
+
+div#ContentHeaderRight {
+margin: 10px;
+width: 275px;
+background-color: transparent;
+float: left;
+text-align:right;
+}
+
+#abs { position: absolute; width: 200px; background: #ffa; padding: 5px; margin: 8px; top: 0; right: 0; text-align: center }
+ 
+/* fixed height/width testing */
+#box  { background-color: #6af; padding: 15px; text-align: center; margin: 25px }
+#box1 {;}                                       /* fluid (zoom:1 for layout) */
+#box2 { height: 150px;  }                              /* fixed height */
+#box3 { width:  300px; margin:auto }                   /* fixed width */
+#box4 { height: 150px; width: 300px; margin:auto }     /* fixed height and width */
+ 
+div.plain  { background-color: #6af; text-align: center; }
+b { color: #f44 }
+#twitter { float:right; right: 20px; }
+#twitter a { text-decoration: none; font-family: arial; vertical-align: top }
+#twitter img { border: none; float: left }
+ 
+div.desc { margin: 10px }

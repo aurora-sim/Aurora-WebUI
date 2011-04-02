@@ -111,23 +111,30 @@ $webui_menu_item_chat = 'Chat';
 // Home Page
 //
 $webui_home = 'Accueil';
-$webui_welcome = 'Bienvenue sur le nouveau site';
+$webui_welcome = 'Bienvenue sur';
 $webui_welcome_visitor = 'Visiteur';
-$webui_welcome_back = 'Welcome back';
+$webui_welcome_back = 'Bonjour';
 $webui_welcome_userid = 'Bonjour Userid!';
-$webui_home_page='
-    <p>
-        Ceci est notre nouveau monde virtuel où vous pouvez vous amuser, rencontrer des gens, discuter, jouer, explorer, créer et partager vos rêves.<br />
-        Tout est possible dans notre tout nouveau monde 3D.<br />
-        Notre monde est créé par ses résidents, vous pouvez y construire tout ce que vous pouvez imaginer.<br /><br />
-        Créer un compte gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde.<br />
-        Rejoignez-nous maintenant, et faites la différence!<br /><br /><br />
-        <u>Il ya seulement 3 étapes pour commencer:</u><br /><br />
-        1.) Créez votre compte GRATUIT sur notre site.<br /><br />
-        2.) Télécharger le spectateur. Nous recommandons <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a> <br /><br />
-        3.) N\'oubliez pas d\'ajouter notre grille à votre spectateur.<br /><br /><br />
-        <i>S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.</i>
-    </p>';
+$webui_home_page='<p>
+    <div id="annonce1"><h3>Etape 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Créez votre compte</a> gratuit sur notre site.</div>
+	<div id="annonce2"><h3>Etape 2</h3>Télécharger le spectateur. Nous recommandons <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a> </div>
+    <div id="annonce3"><h3>Etape 3</h3>N\'oubliez pas d\'ajouter notre grille à votre spectateur.</div>
+		
+	<div id="annonce4"><h3>Bienvenue</h3> 
+    <p>Ceci est notre nouveau monde virtuel où vous pouvez vous amuser, rencontrer des gens, discuter, jouer, explorer, créer et partager vos rêves.</p>
+    <p>Tout est possible dans notre tout nouveau monde 3D.</p>
+    <p>Notre monde est créé par ses résidents, vous pouvez y construire tout ce que vous pouvez imaginer.</p>
+    <p><a href="index.php?page=register&btn=webui_menu_item_register">Créer un compte</a> gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde.</p>
+    <p>Rejoignez-nous maintenant, et faites la différence!</p></div>
+
+    <div id="annonce3"><h3>Info 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Créez votre compte</a> gratuit sur notre site.</div>
+	<div id="annonce2"><h3>Info 2</h3>Télécharger le spectateur. Nous recommandons <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a> </div>
+    <div id="annonce1"><h3>Info 3</h3>N\'oubliez pas d\'ajouter notre grille à votre spectateur.</div><br />
+
+		<div id="annonce4"><h3>Info 1</h3>S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.</div>
+		
+    </p><div class="annonce10"><i>Aurora-Team</i></div>
+	';
 
 //
 // 404 page

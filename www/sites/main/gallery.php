@@ -50,8 +50,10 @@
 
 <!-- 3) Put the thumbnails inside a div for styling -->
 
-<div id="content">
-    <h2><?= SYSNAME ?>: <? echo $webui_gallery ?></h2>
+<div id="content">   
+    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderCenter"></div>
+    <div id="ContentHeaderRight"><h5><? echo $webui_gallery; ?></h5></div>
     <div id="gallery">
         <div id="info"><p><? echo $webui_gallery_info; ?></p></div>
         <div class="highslide-gallery" style="width: 100%; margin: auto" align="center">

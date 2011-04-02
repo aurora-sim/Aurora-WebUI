@@ -1,0 +1,18 @@
+/* Style de l'entête */
+#header h1 {font-size: 2.4em;}
+#header h2 {font-size: 2.2em;}
+#header h3 {font-size: 2em;}
+#header h4 {font-size: 1.8em;}
+#header h5 {font-size: 1.6em;}
+#header p {font-size: 1em;}
+
+#content h1 {font-size: 2em;}
+#content h2 {font-size: 1.8em;}
+#content h3 {font-size: 1.6em;}
+#content h4 {font-size: 1.4em;}
+#content h5 {font-size: 1.2em;}
+#content {font-size: 1em;}
+
+/* Style du pied de page */
+#footer {font-size: 0.6em;}
+#footer a {;}

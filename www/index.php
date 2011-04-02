@@ -80,63 +80,112 @@ if ($_POST[Submit] == $webui_admin_login) {
     <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
     <link rel="shortcut icon" href="<?=$favicon_image?>" />
     <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
+    
     <script src="javascripts/global.js" type="text/javascript"></script>
     <script src="javascripts/droppanel/dropdown.js" type="text/javascript"></script>
-</head>
+    
+    <script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>
+    
+    <script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script> 
+    <script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
+ 
 
+    <?php if($showRoundedCorner)
+    { ?>
+    
+    
+
+<script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
+<script type="text/javascript">
+// http://jquery.malsup.com/corner/
+// test auto-ready logic - call corner before DOM is ready
+    $('#annonce1, #annonce2, #annonce3, #annonce4, #annonce10').corner();
+    
+    $('#ContentHeaderLeft, #ContentHeaderCenter, #ContentHeaderRight').corner("5px");
+    $(function(){
+		$('#dynCorner').click(function() {
+			$('#dynamic').corner();
+		});
+		$('#dynUncorner').click(function() {
+			$('#dynamic').uncorner();
+		});
+	
+        $('div.inner').wrap('<div class="outer"></div>');
+        $('pre').wrap("<code></code>");
+ 
+        $('div.inner').each(function() {
+            var t = $('p', this).text();
+            eval(t);
+        });
+ 
+        // fixed/fluid tests
+        $("div.box, div.plain").corner();
+        $("#abs").corner("cc:#08e");
+	
+		$('#container, #region_map').corner();
+		$('#login, #register, #forget_pass').corner("5px");
+		$('.menu').corner();
+		$('.chat').corner();
+    });
+</script>
+   <?php } ?>
+</head>
+    
 <body class="webui">
-<?
-    //If we are supposed to only display the maintenance page currently, do so now
-    if($displayMaintenancePage)
-    {
-        include("sites/Maintenance.php");
-        return;
-    }
-?>
+  
+<div class="absolute">
+  <!-- Top Panel Slider -->
+  <? if($displayTopPanelSlider) {include("sites/modules/slidepanel.php");} ?>
+</div>
+
+<div class="maintenance">
+  <!-- If we are supposed to only display the maintenance page currently, do so now -->
+  <? if($displayMaintenancePage) {include("sites/Maintenance.php"); return;} ?>
+
+  <!--[if lt IE 8]>
+    <div id="alert"><p>Hummm, You should upgrade your copy of Internet Explorer.</p></div>
+  <![endif]-->
+</div>
+
 <div id="topcontainer">
     <!--<div id="date">
-        <?php /*$date = date("d-m-Y");
+     <?php /*$date = date("d-m-Y");
     $heure = date("H:i");
     Print("$webui_before_date $date $webui_after_date $heure");*/
-    ?>
-    </div>-->
+    ?> -->
+    <!-- </div>-->
     <div id="translator">
         <?php include("languages/translator_page.php"); ?>
     </div>
-    <?php if($showScrollingText)
-    { ?>
-    <div id="scrollingAlertText">
-        <marquee direction="right" scrollamount="2"><?php echo $scrollingTextMessage; ?></marquee>
-    </div>
-    <?php } ?>
+
     <?php if($showWelcomeMessage)
     { ?>
     <div id="welcomeText">
         <?php
-               if($_SESSION[NAME] != "")
-    {
-        echo $webui_welcome_back." ";
-        echo $_SESSION[NAME];
-    }
-    else
-    {
-        echo $webui_welcome." ";
-        echo SYSNAME." ";
-        echo $webui_welcome_visitor;
-    }
-        ?>
+          if($_SESSION[NAME] != "") {
+            echo $webui_welcome_back." ";
+            echo $_SESSION[NAME];
+          }
+          
+          else {
+            echo $webui_welcome." ";
+            echo SYSNAME." ";
+            echo $webui_welcome_visitor;
+          } ?>
     </div>
     <?php } ?>
-</div><!-- fin de #topcontainer -->
-<!--[if lt IE 8]>
-<div id="alert">You should upgrade your copy of Internet Explorer to get the best experience.</div>
-<![endif]-->
+
+</div><!-- fin de #topcontainer <div id="menubar"><? // include("sites/modules/marquee.php"); ?></div> -->
+
 <div id="container">
     <div id="header">
         <div id="headerimages">
             <a href="<?= SYSURL ?>"><h1><span><? SYSNAME ?></span></h1></a>
         </div>
+        <!-- <div id="gridstatus"><? //php include("sites/gridstatus.php"); ?></div> -->
         <div id="menubar"><? include("sites/menubar.php"); ?></div>
+        <div id="home_content_right"><? include("sites/modules/slideshow.php"); ?></div>
     </div><!-- fin de #header -->
 
     <div id="MainContainer">

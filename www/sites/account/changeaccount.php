@@ -207,8 +207,9 @@ if ($_SESSION[USERID] == "") {
 
 
 <div id="content">
-  <h2><?= SYSNAME ?>: <? echo $webui_change_account ?></h2>
-  
+    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderCenter"></div>
+    <div id="ContentHeaderRight"><h5><? echo $webui_change_account; ?></h5></div> 
   <div id="changeaccount">
 
         <div id="info">

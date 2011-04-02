@@ -32,14 +32,11 @@ if ($sitemax == 0) {
 ?>
 
 <div id="content">
-    <h2><?= SYSNAME ?>: <? echo $webui_people_search; ?></h2>
-    
+    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderCenter"></div>
+    <div id="ContentHeaderRight"><h5><? echo $webui_people_search; ?></h5></div>
     <div id="searchpeople">
-        
-        <div id="info">
-            <p><? echo $webui_people_search_info; ?></p>
-        </div>
-        
+        <div id="info"><p><? echo $webui_people_search_info; ?></p></div>
         <div id="message">
             <? echo $webui_avatar_name; ?>: <input id="name" name="name" type="text" size="25" maxlength="15" value="" />
             <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'first=' + document.getElementById('first').value)"><? echo $webui_people_search_bouton ?></button>

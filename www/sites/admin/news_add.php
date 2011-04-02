@@ -29,7 +29,10 @@ window.location.href=\"index.php?page=news\";
 <body>
 
 <div id="content">
-  <h2><?= SYSNAME ?>: <? echo $webui_admin_create_news ?></h2>
+    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderCenter"></div>
+    <div id="ContentHeaderRight"><h5><? echo $webui_admin_create_news; ?></h5></div>
+
     <div id="createnews">
     <!-- <div id="info"><p><? echo $webui_admin_create_news_info ?></p></div> -->
         

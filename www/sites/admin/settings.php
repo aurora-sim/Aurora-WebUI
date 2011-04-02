@@ -76,15 +76,12 @@ if ($_SESSION[ADMINID]) {
 ?>
 
 <div id="content">
-  <h2><?= SYSNAME ?>: <? echo $webui_admin_settings; ?></h2>
-  
+  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderCenter"></div>
+  <div id="ContentHeaderRight"><h5><? echo $webui_admin_settings; ?></h5></div>
   <div id="adminsettings">
+  <div id="info"><p><? echo $webui_admin_settings_info; ?></p></div>
   
-  <div id="info">
-      <p><? echo $webui_admin_settings_info; ?></p>
-  </div>
-
-
   <table>
       <form id="form41" name="form41" method="post" action="index.php?page=adminsettings">
           <tr>

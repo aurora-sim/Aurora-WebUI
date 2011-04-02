@@ -104,13 +104,11 @@ if($_POST[Submit]=="Submit")
 
 
 <div id="content">
-
-  <h2><?= SYSNAME ?>: <? echo $webui_forgot_password ?></h2>
-  <div id="info">
-		<p><? echo $webui_forgot_password_info ?></p>
-	</div>
-    
+  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderCenter"></div>
+  <div id="ContentHeaderRight"><h5><? echo $webui_forgot_password; ?></h5></div> 
   <div id="forget_pass">
+  <div id="info"><p><? echo $webui_forgot_password_info ?></p></div>
   <form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
     <table>
       <tr>

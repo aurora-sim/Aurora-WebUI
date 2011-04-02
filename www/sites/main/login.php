@@ -1,4 +1,7 @@
-<div id="content"><h2><?= SYSNAME ?>: <? echo $webui_login ?></h2>
+<div id="content">
+    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderCenter"></div>
+    <div id="ContentHeaderRight"><h5><? echo $webui_login; ?></h5></div>
     <div id="login">
         <form action="index.php" method="POST" onsubmit="if (!validate(this)) return false;">
             <table>

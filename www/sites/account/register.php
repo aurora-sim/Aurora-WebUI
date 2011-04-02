@@ -143,7 +143,12 @@ function displayDefaultAvatars()
 }
 	
 ?>
-    <div id="content"><h2><?= SYSNAME ?>: <? echo $webui_register; ?></h2>
+    <div id="content">
+    
+    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderCenter"></div>
+    <div id="ContentHeaderRight"><h5><? echo $webui_register; ?></h5></div>
+      
     <div id="register">
         <form ACTION="index.php?page=register" METHOD="POST" onsubmit="if (!validate(this)) return false;">
             <table>

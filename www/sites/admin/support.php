@@ -40,14 +40,12 @@ else
 	}
 </script>
 <div id="content">
-    <h2><?= SYSNAME ?>: <? echo $webui_support; ?></h2>
-    
-    <div id="support">
-        
-        <div id="info">
-            <p><? echo $webui_support_info; ?></p>
-        </div>
-        
+  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderCenter"></div>
+  <div id="ContentHeaderRight"><h5><? echo $webui_support; ?></h5></div> 
+  <div id="support">
+  <div id="info"><p><? echo $webui_support_info; ?></p></div>
+       
 	<?=$_POST["method"]?>
 	<table width="100%">
 		<tr>
@@ -114,6 +112,4 @@ else
 	</table>
 </div></div>
 
-<?
-}
-?>
+<? } ?>
