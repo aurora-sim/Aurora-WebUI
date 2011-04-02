@@ -15,7 +15,7 @@ $webui_online_now='Online Ora';
 
 $webui_avatar_first_name = 'Nome Avatar';
 $webui_avatar_last_name = 'Cognome Avatar';
-$webui_avatar_name = 'Avatar Name';
+$webui_avatar_name = 'Nome Avatar';
 $webui_first_name='Nome';
 $webui_last_name='Cognome';
 $webui_password='Password';
@@ -38,9 +38,9 @@ $webui_region_list='Lista delle Regioni';
 $webui_region_list_page_info='Lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
 $webui_more_info='Maggiori informazioni';
 $webui_user_name='Nome avatar';
-$webui_successfully = 'Account successfully created!';
-$webui_successfully_info = 'Account successfully created; to login, you need to click on the link which was sent to your email address';
-$webui_registrations_disabled = 'Registrations have been disabled by the site administrators, please try again later.';
+$webui_successfully = 'Il tuo account e stato creato con successo!';
+$webui_successfully_info = 'Hai creato il tuo Account; per verificare il tuo account devi confermare il link che ti abbiamo inviato sulla tua casella email';
+$webui_registrations_disabled = 'La registrazione di nuovi utenti è momentaneamente sospesa. Si prega di provare piu tardi.';
 
 //
 // Online Users Page
@@ -81,7 +81,7 @@ $webui_no_information_set="Non ci sono informazioni";
 $webui_about_me="Le mie informazioni";
 $webui_partner="Partner";
 $webui_resident_since="Residente dal";
-$webui_resident_age="Age of resident";
+$webui_resident_age="Eta del residente";
 $webui_account_info="Tipo di account";
 $webui_region_information="Informazioni sulla Regione";
 $webui_region_type="Tipo di Regione";
@@ -113,7 +113,7 @@ $webui_menu_item_chat = 'Chat';
 $webui_home='Home';
 $webui_welcome='Benvenuto al';
 $webui_welcome_visitor='Ospite';
-$webui_welcome_back = 'Welcome back';
+$webui_welcome_back = 'Bentornato';
 $webui_welcome_userid='Ciao Utente!';
 $webui_home_page='
     <p>
@@ -139,8 +139,8 @@ $webui_404_gohome = 'Torna alla Home';
 //
 // Maintenance page
 //
-$webui_maint_title = 'Error';
-$webui_maint_text = 'The site is currently undergoing maintenance, please try again later.';
+$webui_maint_title = 'Errore';
+$webui_maint_text = 'Questo sito e momentaneamente in manutenzione. Si prega di provare piu tardi.';
 
 //
 // Forgot Pass Page
@@ -233,39 +233,39 @@ $webui_admin_manage_info = 'Da qui puoi amministrare gli utenti.';
 $webui_admin_manage_user = 'Pannello di controllo amministrazione utenti';
 $webui_admin_manage_username = 'Nome dell\'avatar';
 
-$webui_admin_manage_user = 'User';
-$webui_admin_manage_edit = 'Editer';
-$webui_admin_manage_created = 'Created';
-$webui_admin_manage_active = 'Active';
-$webui_admin_manage_inactive = 'Inactive';
-$webui_admin_manage_banned = 'Banned';
-$webui_admin_manage_notconf = 'Not Confirmed';
-$webui_admin_manage_userban = 'Ban this User';
-$webui_admin_manage_userunban = 'Unban this User';
-$webui_admin_manage_userdelete = 'Delete this User';
+$webui_admin_manage_user = 'Utente';
+$webui_admin_manage_edit = 'Modifica';
+$webui_admin_manage_created = 'Creato';
+$webui_admin_manage_active = 'Attivo';
+$webui_admin_manage_inactive = 'Inattivo';
+$webui_admin_manage_banned = 'Bannato';
+$webui_admin_manage_notconf = 'Non confermato';
+$webui_admin_manage_userban = 'Banna questo utente';
+$webui_admin_manage_userunban = 'Unbanna questo utente';
+$webui_admin_manage_userdelete = 'Cancella questo Utente';
 
 //
 // Admin Edit Management Panel Page
 //
-$webui_admin_edit_manage = 'Edit Management Panel';
-$webui_admin_edit_manage_info = 'Ceci vous permet d\'éditer le panneau d\'administrations des utilisateurs.';
+$webui_admin_edit_manage = 'modifica il pannello di controllo';
+$webui_admin_edit_manage_info = 'Qui puoi cambiare il pannello di controllo degli utenti.';
 $webui_admin_edit_manage_userid = 'USERID (UUID)';
-$webui_admin_edit_manage_avatar_firstname = 'Avatar first name';
-$webui_admin_edit_manage_avatar_lastname = 'Avatar last name';
-$webui_admin_edit_manage_real_firstname = 'Real first name';
-$webui_admin_edit_manage_real_lastname = 'Real last name';
-$webui_admin_edit_manage_real_street = 'Street';
-$webui_admin_edit_manage_real_city = 'City';
-$webui_admin_edit_manage_real_zip = 'Zip';
-$webui_admin_edit_manage_real_country = 'Country';
+$webui_admin_edit_manage_avatar_firstname = 'Nome Avatar';
+$webui_admin_edit_manage_avatar_lastname = 'Cognome Avatar';
+$webui_admin_edit_manage_real_firstname = 'Nome';
+$webui_admin_edit_manage_real_lastname = 'Cognome';
+$webui_admin_edit_manage_real_street = 'Viat';
+$webui_admin_edit_manage_real_city = 'Città';
+$webui_admin_edit_manage_real_zip = 'Cap';
+$webui_admin_edit_manage_real_country = 'Paese';
 $webui_admin_edit_manage_real_email = 'Email';
-$webui_admin_edit_manage_savechanges = 'Save Changes';
-$webui_admin_edit_manage_savestatus = 'Save Status';
-$webui_admin_edit_manage_currentstatus = 'Current Status';
+$webui_admin_edit_manage_savechanges = 'Salva i cambiamenti';
+$webui_admin_edit_manage_savestatus = 'Salva lo Status';
+$webui_admin_edit_manage_currentstatus = 'Status attuale';
 $webui_admin_edit_manage_setstatus = 'Set Status';
-$webui_admin_edit_manage_active = 'Active';
-$webui_admin_edit_manage_inactive = 'Inactive';
-$webui_admin_edit_manage_notconf = 'Not Confirmed';
+$webui_admin_edit_manage_active = 'Attivo';
+$webui_admin_edit_manage_inactive = 'Inattivo';
+$webui_admin_edit_manage_notconf = 'Non Confermato';
 
 //
 // Admin Settings Page
@@ -304,44 +304,44 @@ $webui_special_website = 'il sito web';
 // Gallery Page
 //
 $webui_gallery = 'Album photo';
-$webui_gallery_info = 'Ceci vous permet d\'avoir un aperçu en image des différentes régions de la grille';
+$webui_gallery_info = 'Questa e una serie di immagini della grid';
 
 //
 // Support Page
 //
-$webui_support = 'Support';
-$webui_support_info = 'This allows you to Support';
+$webui_support = 'Supporto';
+$webui_support_info = 'Da qui puoi dare supporto agli utenti';
 
 //
 // Help Page
 //
-$webui_help = 'Help';
-$webui_help_info = 'This allows you to Help';
+$webui_help = 'Aiuto';
+$webui_help_info = 'Da qui puoi dare aiuto agli utenti';
 
 //
 // Chat Page
 //
-$webui_chat = 'Salle de Chat IRC';
-$webui_chat_info = 'This allows you to Live Chat Support.';
+$webui_chat = 'IRC Chat room';
+$webui_chat_info = 'Live Support Chat.';
 
 //
 // Pagination Tooltips
 //
-$webui_pagination_tooltips_back_begin = 'Go back to the beginning.';
-$webui_pagination_tooltips_back_page = 'Go back one page.';
-$webui_pagination_tooltips_forward_page = 'Go forward one page.';
-$webui_pagination_tooltips_last_page = 'Go to the last page.';
-$webui_pagination_tooltips_show10 = 'Show 10 Results per page.';
-$webui_pagination_tooltips_show25 = 'Show 25 Results per page.';
-$webui_pagination_tooltips_show50 = 'Show 50 Results per page.';
-$webui_pagination_tooltips_show100 = 'Show 100 Results per page.';
-$webui_pagination_tooltips_limit10 = 'Limit 10';
-$webui_pagination_tooltips_limit25 = 'Limit 25';
-$webui_pagination_tooltips_limit50 = 'Limit 50';
-$webui_pagination_tooltips_limit100 = 'Limit 100';
-$webui_pagination_tooltips_sortn = 'Sort by Name';
-$webui_pagination_tooltips_sortx = 'Sort by Grid X';
-$webui_pagination_tooltips_sortn = 'Sort by Grid Y';
+$webui_pagination_tooltips_back_begin = 'Torna all inizio.';
+$webui_pagination_tooltips_back_page = 'Pagina precedente.';
+$webui_pagination_tooltips_forward_page = 'Pagina successiva';
+$webui_pagination_tooltips_last_page = 'Ultima pagina.';
+$webui_pagination_tooltips_show10 = 'Mostra 10 risultati per pagina.';
+$webui_pagination_tooltips_show25 = 'Mostra 25 risultati per pagina.';
+$webui_pagination_tooltips_show50 = 'Mostra 50 risultati per pagina.';
+$webui_pagination_tooltips_show100 = 'Mostra 100 risultati per pagina.';
+$webui_pagination_tooltips_limit10 = 'Limite di 10';
+$webui_pagination_tooltips_limit25 = 'Limite di 25';
+$webui_pagination_tooltips_limit50 = 'Limite di 50';
+$webui_pagination_tooltips_limit100 = 'Limite di 100';
+$webui_pagination_tooltips_sortn = 'Ordine Alfabetico';
+$webui_pagination_tooltips_sortx = 'Ordine secondo coordinata X';
+$webui_pagination_tooltips_sortn = 'Ordine secondo coordinata Y';
 
 //
 // SlideShow Comments
