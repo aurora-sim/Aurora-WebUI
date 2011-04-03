@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $webui_language_code='it';
 $webui_actual_language='Italiano';
 
@@ -29,16 +29,20 @@ $webui_country='Paese';
 $webui_date_of_birth='Data di nascita';
 $webui_email='Email';
 $webui_create_new_account='Crea un nuovo account';
-$webui_start_region='Regione iniziale';
+
+
 $webui_region_name='Nome della Regione';
 $webui_location='Posizione';
 $webui_info='Informazioni';
 $webui_regions_found='Regioni trovate';
 $webui_region_list='Lista delle Regioni';
+
 $webui_region_list_page_info='Lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
 $webui_more_info='Maggiori informazioni';
 $webui_user_name='Nome avatar';
 $webui_successfully = 'Il tuo account e stato creato con successo!';
+
+
 $webui_successfully_info = 'Hai creato il tuo Account; per verificare il tuo account devi confermare il link che ti abbiamo inviato sulla tua casella email';
 $webui_registrations_disabled = 'La registrazione di nuovi utenti è momentaneamente sospesa. Si prega di provare piu tardi.';
 
@@ -51,6 +55,7 @@ $webui_online_users_info='Questi sono tutti gli avatar online in questo momento.
 $webui_submit='Invia';
 $webui_verified_account='Grazie. La tua password è ora attiva e puoi usarla.';
 $webui_internal_error='Errore interno, prego, riprovare.';
+
 $webui_invalid_code='Il tuo codice non è valido oppure è scaduto';
 $webui_activate_account='Attiva il tuo Account';
 
@@ -107,6 +112,7 @@ $webui_menu_item_account = 'Account';
 $webui_menu_item_help = 'Aiuto';
 $webui_menu_item_chat = 'Chat';
 
+
 //
 // Home Page
 //
@@ -117,21 +123,31 @@ $webui_welcome_back = 'Bentornato';
 $webui_welcome_userid='Ciao Utente!';
 $webui_home_page='
     <p>
-        Questo è il nostro Nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni. <br />
-        Ogni cosa è possibile nel nostro nuovo Mondo in 3D. <br />
-        Il nostro Mondo è creato dai propri residenti, puoi costruire ogni cosa tu possa immaginare. <br /><br />
-        Crea subito un nuovo account, personalizza il tuo avatar e gioca nel nuovo mondo. <br />
-        Entra ora, e fai la differenza! <br /><br /><br />
-        <u>There are just 3 steps to get started:</u> <br /><br />
-        1.) Crea il tuo account GRATIS in queste pagine. <br /><br />
-        2.) Scarica il viewer. Ti raccomandiamo <a href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
-        3.) Assicurati di aggiungere la nostra grid al tuo viewer. <br /><br /><br />
-        <i>Per favore, tieni presente che la piattaforma di Aurora è ancora in una fase preliminare e qualcosa potrebbe funzionare in modo inaspettato.</i>
+        <div id="annonce1"><h3>Fase 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account GRATUITO</a> in questa pagina.</div>
+		<div id="annonce2"><h3>Fase 2</h3>Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
+		<div id="annonce3"><h3>Fase 3</h3>Aggiungi la nostra grid al tuo viewer.</div>
+		
+		<div id="annonce4"><h3>Benvenuto</h3> 
+		<p>Questo e il nostro nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni.</p>
+		<p>Ogni cosa e possibile nel bnostro nuovo Mondo Virtuale.</p>
+		<p>Il nostro Mondo e creato dai suoi residenti, qui puoi costruire qualsiasi cosa tu possa immaginare.</p>
+		<p><a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account gratuito adesso</a> costruisci il tuo avatar ed inizia a giocare.</p>
+		<p>Entra ora, e fai la differenza !</p></div>
+
+		<div id="annonce1"><h3>Info 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account GRATUITO</a> da questa pagina.</div>
+ 
+        <div id="annonce2"><h3>Info 2</h3>Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
+		<div id="annonce3"><h3>Info 3</h3>Aggiungi la nostra grid al tuo viewer.</div>
+
+		<div id="annonce4"><h3>Info 1</h3>Ti preghimao di considerare che la piattaforma di Aurora e ancora in una fase sperimentale e quindi alcune cose potrebbero funzionare in modo inaspettato.</div>
+		
+		</p><div class="annonce10"><i>Aurora-Team</i></div>
     </p>';
 
 //
 // 404 page
 //
+
 $webui_404_text = 'Non e possibile trovare la pagina richiesta! Si prega di provare piu tardi.';
 $webui_404_title = 'Errore 404';
 $webui_404_gohome = 'Torna alla Home';
@@ -140,12 +156,14 @@ $webui_404_gohome = 'Torna alla Home';
 // Maintenance page
 //
 $webui_maint_title = 'Errore';
+
 $webui_maint_text = 'Questo sito e momentaneamente in manutenzione. Si prega di provare piu tardi.';
 
 //
 // Forgot Pass Page
 //
 $webui_forgot_password='Password dimenticata?';
+
 $webui_forgot_password_info='Password dimenticata? Nessun problema! Scrivi qui la tua email e ti manderemo una nuova password.';      
 
 //
@@ -271,6 +289,7 @@ $webui_admin_edit_manage_notconf = 'Non Confermato';
 // Admin Settings Page
 //
 $webui_admin_settings = 'Settaggi amministratore';
+
 $webui_admin_settings_info = 'Da qui puoi modificare i settaggi per l\'Amministratore.';
 $webui_admin_settings_changeable = 'La Regione iniziale è modificabile da';
 $webui_admin_settings_startregion = 'Regione iniziale';
@@ -285,6 +304,11 @@ $webui_admin_settings_delete = 'Cancella il cognome';
 $webui_admin_settings_save_bouton = 'Salva';
 $webui_admin_settings_activate_bouton = 'Attiva';
 $webui_admin_settings_desactivate = 'Disattiva';
+$webui_admin_settings_create_select = 'Crea/Modifica account';
+$webui_admin_settings_edit_select = 'Modifica account';
+$webui_admin_settings_adminonly_select = 'Solo Admin';
+$webui_admin_settings_yes_select = 'Si';
+$webui_admin_settings_no_select = 'No';
 
 //
 // Add News Page
@@ -297,13 +321,15 @@ $webui_admin_create_news_info = 'Qui puoi creare una nuova news.';
 $webui_login_screen = 'Login Screen';
 $webui_regionbox = 'Regione';
 $webui_special_info = 'Ti preghiamo di assicurarti che tu abbia un account valido registrato sul nostro sito';
+
 $webui_special_visit = 'Visita';
 $webui_special_website = 'il sito web';
-
+$webui_special_moreinfo = 'per maggiori informazioni';
 //
 // Gallery Page
 //
 $webui_gallery = 'Album photo';
+
 $webui_gallery_info = 'Questa e una serie di immagini della grid';
 
 //
@@ -322,6 +348,7 @@ $webui_help_info = 'Da qui puoi dare aiuto agli utenti';
 // Chat Page
 //
 $webui_chat = 'IRC Chat room';
+
 $webui_chat_info = 'Live Support Chat.';
 
 //
