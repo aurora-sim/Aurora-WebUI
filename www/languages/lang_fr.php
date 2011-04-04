@@ -127,13 +127,13 @@ $webui_home_page='<p>
     <p><a href="index.php?page=register&btn=webui_menu_item_register">Créer un compte</a> gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde.</p>
     <p>Rejoignez-nous maintenant, et faites la différence!</p></div>
 
-    <div id="annonce3"><h3>Info 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Créez votre compte</a> gratuit sur notre site.</div>
-	<div id="annonce2"><h3>Info 2</h3>Télécharger le spectateur. Nous recommandons <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a> </div>
-    <div id="annonce1"><h3>Info 3</h3>N\'oubliez pas d\'ajouter notre grille à votre spectateur.</div><br />
+    <div id="annonce5"><h3>Info 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Créez votre compte</a> gratuit sur notre site.</div>
+	<div id="annonce6"><h3>Info 2</h3>Télécharger le spectateur. Nous recommandons <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a> </div>
+    <div id="annonce7"><h3>Info 3</h3>N\'oubliez pas d\'ajouter notre grille à votre spectateur.</div><br />
 
-		<div id="annonce4"><h3>Info 1</h3>S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.</div>
+	<div id="annonce10">S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.</div>
 		
-    </p><div class="annonce10"><i>Aurora-Team</i></div>
+    </p><div class="team"><i>Aurora-Team</i></div>
 	';
 
 //

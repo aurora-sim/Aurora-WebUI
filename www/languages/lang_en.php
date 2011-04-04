@@ -117,9 +117,9 @@ $webui_welcome_visitor = 'Visitor';
 $webui_welcome_userid = '';
 $webui_home_page='
 	<p>
-		<div id="annonce1"><h3>Etape 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Create your FREE Account</a> right here on our pages.</div>
-		<div id="annonce2"><h3>Etape 2</h3>Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
-		<div id="annonce3"><h3>Etape 3</h3>Be sure to add our grid to your viewer.</div>
+		<div id="annonce1"><h3>Step 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Create your FREE Account</a> right here on our pages.</div>
+		<div id="annonce2"><h3>Step 2</h3>Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
+		<div id="annonce3"><h3>Step 3</h3>Be sure to add our grid to your viewer.</div>
 		
 		<div id="annonce4"><h3>Welcome</h3> 
 		<p>This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams.</p>
@@ -128,13 +128,13 @@ $webui_home_page='
 		<p><a href="index.php?page=register&btn=webui_menu_item_register">Create a free account today</a> build a virtual you and play in our world.</p>
 		<p>Join us now, and make a difference! !</p></div>
 
-		<div id="annonce1"><h3>Info 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Create your FREE Account</a> right here on our pages.</div>
-		<div id="annonce2"><h3>Info 2</h3>Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
-		<div id="annonce3"><h3>Info 3</h3>Be sure to add our grid to your viewer.</div>
+		<div id="annonce5"><h3>Info 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Create your FREE Account</a> right here on our pages.</div>
+		<div id="annonce6"><h3>Info 2</h3>Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
+		<div id="annonce7"><h3>Info 3</h3>Be sure to add our grid to your viewer.</div>
 
-		<div id="annonce4"><h3>Info 1</h3>Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</div>
+		<div id="annonce10">Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.</div>
 		
-		</p><div class="annonce10"><i>Aurora-Team</i></div>
+		</p><div class="team"><i>Aurora-Team</i></div>
 	</p>';
 
 //

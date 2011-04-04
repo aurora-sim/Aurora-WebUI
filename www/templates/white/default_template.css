@@ -10,7 +10,7 @@ body.webui {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: center;
   color:#111;
-  background: #ddd url("background_01_off.jpg") 50% 0% repeat-x;
+  background: #fff url("background_01_off.jpg") 50% 0% repeat-x;
 }
 
 .webui #adminnote {
@@ -62,11 +62,13 @@ body.webui {
   padding-top:3px;
   padding-bottom:3px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  text-align:center;
   font-size: 0.8em;
-  background-image: url("background_06.png");
+  background-image: url("background_06xxx.png");
   background-color: transparent;
   background-repeat: repeat;
 	height: 15px;
+	width:255px;
 }
 
 /* Welcome Text Module */
@@ -85,9 +87,10 @@ body.webui {
 
 /* Scrolling Text Module */
 div.horizontal_scroller, div.vertical_scroller {
-  position:relative;
-	height: 15.5px;
-	width: 90%;
+  position:absolute;
+	height: 16px;
+	width: 270px;
+	margin-left: 330px;
 	display:block;
 	overflow:hidden;
   float:left;
@@ -108,7 +111,7 @@ div.scrollingtext{
 /* The Container */
 .webui #container {
 	width: 900px;
-  background-color: #aaa;
+  background-color: #ddd;
   background-repeat: repeat;
   margin-top: 27px;
   margin-left: auto;
@@ -118,17 +121,49 @@ div.scrollingtext{
 	padding: 10px;
 }
 
-.webui #header {color:#111;}
 
+.webui #header {color:#ffffff;}
 .webui #headerimages {;}
-
 /* Logo */
+
 .webui #headerimages h1 {
+  color:#ffffff;
 	margin: 0px;
 	height:139px;
-  background-image: url("aurora-webui-logo.png");
-  background-repeat: no-repeat;
-	background-color: transparent;
+}
+
+#headerimages {
+margin: 0px;
+	padding: 0;
+	text-indent: -9999px;
+	height: 139px;
+	position: relative;
+	background: url(header.png) no-repeat;
+}
+
+#headerimages a {
+  width: 900px;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 534px;
+	height: 139px;
+	display: block;
+	border: 0;
+	background: transparent;
+	overflow: hidden;
+}
+
+#headerimages .fake-hover {
+	margin: 0;
+	padding: 0;
+	width: 534px;
+	height: 139px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(header.png) no-repeat 0 -150px;
 }
 
 /* MenuBar Horizontal */
@@ -137,7 +172,7 @@ div.scrollingtext{
 /* Pretty Menu */
 #menu {
 	z-index:100;
-background-color: #f1f1f1;
+background-color: #f9f9f9;
 height:60px;
 width: 100%;
 padding-top:30px;
@@ -146,7 +181,7 @@ margin-bottom:-10px;
 }
 
 .menu {
-  background-color: #fff;
+  background-color: #f1f1f1;
   height:50px;
   width:890px;	
   position:relative;
@@ -204,7 +239,7 @@ margin-bottom:-10px;
 .webui #content {
   font-size: 12px;
   padding: 10px;
-	background-color: #f1f1f1;
+	background-color: #fff;
   text-align:left;
   color:#111;
 }
@@ -233,7 +268,7 @@ margin-bottom:-10px;
   z-index:200;
   position: relative;
   float:left;
-  margin-top: 0px;
+  margin-top: 80px;
   margin-left:0px;
   width: 270px;
   height: 132px;
@@ -851,22 +886,30 @@ div.section { clear: left; }
 
 div.demo, div.inner { color: #000; text-align: center; font-family: verdana, arial, sans-serif;}
 
-div.annonce1, div.annonce2, div.annonce3
-{ color: #111; text-align: center; font-family: verdana, arial, sans-serif;}
+div.annonce1, div.annonce2, div.annonce3, div.annonce4, div.annonce5, 
+div.annonce6, div.annonce7, div.annonce10, team {
+color: #111; 
+text-align: center; 
+font-family: verdana, arial, sans-serif;
+}
+
 div#annonce1 {
 float: left;
 width: 233px;
 padding: 20px;
+padding-top:10px;
 margin: 10px;
-background: #fff;
+background: #f1f1f1;
 font-size: 12px;
 }
+
 div#annonce2 {
 float: left;
 width: 233px;
 padding: 20px;
+padding-top:10px;
 margin: 10px;
-background: #fff;
+background: #f1f1f1;
 font-size: 12px;
 }
 
@@ -874,8 +917,9 @@ div#annonce3 {
 float: left;
 width: 233px;
 padding: 20px;
+padding-top:10px;
 margin: 10px;
-background: #fff;
+background: #f1f1f1;
 font-size: 12px;
 }
 
@@ -884,19 +928,53 @@ float: left;
 width: 819px;
 padding: 20px;
 margin: 10px;
-background: #fff;
+background: #f1f1f1;
+font-size: 12px;
+}
+
+div#annonce5 {
+float: left;
+width: 233px;
+padding: 20px;
+padding-top:10px;
+margin: 10px;
+background: #f1f1f1;
+font-size: 12px;
+}
+
+div#annonce6 {
+float: left;
+width: 233px;
+padding: 20px;
+padding-top:10px;
+margin: 10px;
+background: #f1f1f1;
+font-size: 12px;
+}
+
+div#annonce7 {
+float: left;
+width: 233px;
+padding: 20px;
+padding-top:10px;
+margin: 10px;
+background: #f1f1f1;
 font-size: 12px;
 }
 
 div#annonce10 {
 float: left;
-
 padding: 20px;
 margin: 10px;
-background: #fff;
+background: #f5f5f5;
 font-size: 12px;
+width: 819px;
 }
 
+div.team {
+margin-top: 10px;
+text-align: center;
+}
 
 div.inner { margin: 0; background: #ffc; padding: 10px; border:0; } /* zoom:1; */
 div.outer { float: left; margin: 15px; background: #c82; padding: 8px; width: 22em }

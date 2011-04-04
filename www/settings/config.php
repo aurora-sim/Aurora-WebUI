@@ -15,9 +15,15 @@ define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
 define("WIREDUX_TEXTURE_SERVICE","http://localhost:8002");
 define("WIREDUX_PASSWORD","");
 
-//Should we display a 'Maintenance' page currently that blocks all access to the website (until disabled here)?
+// Should we display a 'Maintenance' page currently that blocks all access to the website
+// (until disabled here)?
 $displayMaintenancePage = false;
 
+################### Logo Light Effect ###################
+// Should we display nice logo effect! 
+$displayLogoEffect = true;
+
+################### Slide Show ###################
 // Should we display Top Panel Slider and 'options' 
 $displayTopPanelSlider = true;
 $displayTemplateSelector = true;
@@ -31,7 +37,7 @@ $displayFontSizer = true;
 // slideX, slideY, toss, turnUp, turnDown, turnLeft, turnRight, uncover, wipe, zoom
 // http://jquery.malsup.com/cycle/
 $displaySlideShow = true;
-$SlideShowStyle = "scrollRight";
+$SlideShowStyle = "wipe";
 $SlideShowSpeed = 1000;
 $SlideShowTimeout = 5000;
 $SlideShowSync = 0;             // 1 or 0
@@ -41,12 +47,9 @@ $SlideShowPause = 0;            // 1 or 0
 $SlideShowRandom = 0;           // 1 or 0
 $SlideShowPager = "";           // #nav
 $SlideShowEaseing = "";         // bounceout
-$SlideShowDelay = -1000;            // -5000
+$SlideShowDelay = -1000;        // -5000
 
-// Should we display Rounded Corners
-$showRoundedCorner = true;
-
-################### Loginscreen ################
+################### Loginscreen ###################
 // Should the pictures on the loginscreen be random or by time?
 $picturesByTime = false;
 // Show the bar at the bottom that has the latest grid news?
@@ -61,11 +64,11 @@ $showAlertPanel = true;
 $showSpecialReport = true;
 
 ################### Main Site #######################
-//Should we show any scrolling text at the top of the page?
+// Should we show any scrolling text at the top of the page?
 $showScrollingText = true;
-//What message should be displayed in the scrolling text?
-$scrollingTextMessage = "Welcome!         Welcome!          Welcome!";
-//Should we show the welcome message at the top of the page?
+// What message should be displayed in the scrolling text?
+$scrollingTextMessage = "Welcome!         Bienvenue!          Hola!";
+// Should we show the welcome message at the top of the page?
 $showWelcomeMessage = true;
 
 ############ Delete Unconfirmed accounts ################
@@ -77,23 +80,72 @@ $support_emails_to="noreply@osgrid.org";
 $support_emails_subject="WebUI Support:";
 
 ################### GridMap Settings  #####################
-//Allowing Zoom on your Map
+// Allowing Zoom on your Map
 $ALLOW_ZOOM=TRUE;
 
-//Default StartPoint for Map
+// Default StartPoint for Map
 $mapstartX=1000;
 $mapstartY=1000;
 
-//Direction where Info Image has to stay ex.: dr = down right ; dl =down left ; tr = top right ; tl = top left ; c = center
+// Direction where Info Image has to stay 
+// ex.: dr = down right ; dl =down left ; tr = top right ; tl = top left ; c = center
 $display_marker="tl";
 
-####################### Skin ##########################
+####################### Templates ##########################
+// Current templates are 'default', 'white' and 'astra'
+$template = 'default';
 
-//Current templates are 'default', 'white' and 'astra'
-$template='default';
+################### Rounded Corner #########################
+// Should we display Rounded Corners
+$showRoundedCorner = true;
+
+##################### Mega DropDown Menu #########################
+// Should we display Mega DropDown Menu
+// eg : http://your.site.com/webui/sites/menus/megamenu/demos/
+$displayMegaMenu    = true;
+// 1.2 or 1.3.2 for differents effects
+$MegaMenuVersion    = "1.2";
+// Effects Presets
+$MegaMenuPreset     = "2";      // (1 to 9)
+$MegaMenuRowItems   = "1";      // 1 to 4
+$MegaMenuSpeed      = "fast";   // slow, fast
+$MegaMenuEffect     = "slide";  // fade, slide
+$MegaMenuEvent      = "hover";  // hover, clic
+// Skins Presets
+// basic, black, grey, blue, orange, red, green, light-blue, white (or custom).
+// WARNING! Styles 'basic' requiere MegaMenuPreset setup to 1
+$MegaMenuSkin       = "black";
+
+// Background Color Animation
+############### Background Color Animation #################
+// Should we display Background Color Animation 
+$displayBackgroundColorAnimation = true;
+
+$BackgroundColorHoverStep1 = "#860d08";
+$BackgroundColorEndStep1 = "#111";
+
+$BackgroundColorHoverStep2 = "#0d5f29";
+$BackgroundColorEndStep2 = "#111";
+
+$BackgroundColorHoverStep3 = "#726ea9";
+$BackgroundColorEndStep3 = "#111";
+
+$BackgroundColorHoverStep4 = "#111";
+$BackgroundColorEndStep4 = "#000";
+
+$BackgroundColorHoverStep5 = "#b2902d";
+$BackgroundColorEndStep5 = "#111";
+
+$BackgroundColorHoverStep6 = "#116e84";
+$BackgroundColorEndStep6 = "#111";
+
+$BackgroundColorHoverStep7 = "#871464";
+$BackgroundColorEndStep7 = "#111";
+
+$BackgroundColorHoverStep10 = "#111";
+$BackgroundColorEndStep10 = "#000";
 
 #################### Languages ########################
-
 // TODO $displayLanguageSelector = true;
 $languages=array("en" => "English",
     "fr" => "French",
@@ -107,13 +159,13 @@ $languages=array("en" => "English",
 
 ##################### Database ########################
 define("C_DB_TYPE","mysql");
-//Your Hostname here:
+// Your Hostname here:
 define("C_DB_HOST","localhost");
-//Your Databasename here:
+// Your Databasename here:
 define("C_DB_NAME","aurora");
-//Your Username from Database here:
+// Your Username from Database here:
 define("C_DB_USER","root");
-//Your Database Password here:
+// Your Database Password here:
 define("C_DB_PASS","");
 
 ################ Database Tables #########################
@@ -129,14 +181,15 @@ define("C_INFOWINDOW_TBL","wi_startscreen_infowindow");
 define("C_NEWS_TBL","wi_startscreen_news");
 define("C_PAGE_TBL","wi_pagemanager");
 define("C_SITES_TBL","wi_sitemanagement");
+
 // REGION MANAGER
 define("C_MAP_REGIONS_TBL", "wi_regions");
+
 // STATISTICS
 define("C_STATS_REGIONS_TBL", "wi_statistics");
 define("C_GALLERY_TBL", "wi_gallery");
 
-
-//Aurora tables
+// Aurora tables
 define("C_USERS_TBL","useraccounts");
 define("C_AUTH_TBL","auth");
 define("C_REGIONS_TBL","gridregions");
@@ -144,6 +197,6 @@ define("C_APPEARANCE_TBL", "avatar");
 define("C_USERINFO_TBL", "userinfo");
 define("C_PROFILE_TBL", "profilegeneral");
 
-//other
+// other
 define("C_USERS_RL_TBL", "useraccounts_rl");
 ?>
