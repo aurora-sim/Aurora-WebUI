@@ -125,7 +125,7 @@ $webui_home_page='
     <p>
         <div id="annonce1"><h3>Fase 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account GRATUITO</a> in questa pagina.</div>
 		<div id="annonce2"><h3>Fase 2</h3>Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
-		<div id="annonce3"><h3>Fase 3</h3>Aggiungi la nostra grid al tuo viewer.</div>
+		<div id="annonce3"><h3>Fase 3</h3>Assicurati di aggiungere la nostra grid al tuo viewer.</div>
 		
 		<div id="annonce4"><h3>Benvenuto</h3> 
 		<p>Questo e il nostro nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni.</p>
@@ -137,7 +137,7 @@ $webui_home_page='
 		<div id="annonce1"><h3>Info 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account GRATUITO</a> da questa pagina.</div>
  
         <div id="annonce2"><h3>Info 2</h3>Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
-		<div id="annonce3"><h3>Info 3</h3>Aggiungi la nostra grid al tuo viewer.</div>
+		<div id="annonce3"><h3>Info 3</h3>Assicurati di aggiungere la nostra grid al tuo viewer.</div>
 
 		<div id="annonce4"><h3>Info 1</h3>Ti preghimao di considerare che la piattaforma di Aurora e ancora in una fase sperimentale e quindi alcune cose potrebbero funzionare in modo inaspettato.</div>
 		
