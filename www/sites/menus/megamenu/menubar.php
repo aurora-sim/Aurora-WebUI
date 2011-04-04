@@ -64,7 +64,18 @@ function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display, $AdminDisplay)
  }
 ?>
 
+<?php if($template == 'default')  { ?>
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_default.css" rel="stylesheet" type="text/css" />
+<?php } ?>
+
+<?php if($template == 'white')  { ?>
+<link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_white.css" rel="stylesheet" type="text/css" />
+<?php } ?>
+
+<?php if($template == 'astra')  { ?>
+<link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_astra.css" rel="stylesheet" type="text/css" />
+<?php } ?>
+
 <script type='text/javascript' src='<?= SYSURL ?>sites/menus/megamenu/javascripts/jquery.hoverIntent.minified.js'></script>
 
 <?php if($MegaMenuVersion == '1.2')  { ?>
