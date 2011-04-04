@@ -27,7 +27,7 @@ CREATE TABLE `wi_adminsetting` (
   `verifyUsers` varchar(10) NOT NULL,
   `ForceAge` int NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM  AUTO_INCREMENT=2 ;
+) AUTO_INCREMENT=2 ;
 
 INSERT INTO `wi_adminsetting` (`id`, `startregion`, `userdir`, `griddir`, `assetdir`, `lastnames`, `adress`, `region`, `allowRegistrations`, `verifyUsers`, `ForceAge`) VALUES 
 (1, '', '', '', '', '0', '0', '0','1','1',0);
@@ -39,7 +39,7 @@ CREATE TABLE `wi_appearance` (
   `Picture` varchar(32) NOT NULL,
   `ArchiveName` varchar(32) NOT NULL,
   PRIMARY KEY  (`ArchiveName`)
-) TYPE=MyISAM;
+);
 
 -- wi_banned
 DROP TABLE IF EXISTS `wi_banned`;
@@ -47,7 +47,7 @@ CREATE TABLE `wi_banned` (
   `UUID` varchar(36) NOT NULL,
   `agentIP` varchar(255) NOT NULL,
   `time` varchar(255) NOT NULL
-) TYPE=MyISAM;
+);
 
 -- wi_codetable
 DROP TABLE IF EXISTS `wi_codetable`;
@@ -57,13 +57,13 @@ CREATE TABLE `wi_codetable` (
   `info` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `time` varchar(255) NOT NULL
-) TYPE=MyISAM;
+);
 
 -- wi_country
 DROP TABLE IF EXISTS `wi_country`;
 CREATE TABLE `wi_country` (
   `name` varchar(100) NOT NULL
-) TYPE=MyISAM;
+);
 
 INSERT INTO `wi_country` (`name`) VALUES 
 ('Albania'),
@@ -267,7 +267,7 @@ DROP TABLE IF EXISTS `wi_lastnames`;
 CREATE TABLE `wi_lastnames` (
   `name` varchar(255) NOT NULL,
   `active` varchar(255) NOT NULL default '1'
-) TYPE=MyISAM;
+);
 
 INSERT INTO `wi_lastnames` (`name`, `active`) VALUES 
 ('Binder', '1'),
@@ -326,7 +326,7 @@ CREATE TABLE `wi_pagemanager` (
   `display` varchar(255) NOT NULL,
   `parent` varchar(255),
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM  AUTO_INCREMENT=9 ;
+)AUTO_INCREMENT=9 ;
 
 INSERT INTO `wi_pagemanager` (`id`, `rank`, `active`, `url`, `target`, `display`, `parent`) VALUES
 ('webui_menu_item_home', 1.0, '1', 'index.php?page=home', '_self', '2', null),
@@ -367,7 +367,7 @@ CREATE TABLE IF NOT EXISTS `wi_regions` (
   `lastcheck` int(10) NOT NULL,
   `failcounter` int(11) NOT NULL,
   UNIQUE KEY `serverURI` (`serverIP`,`regionMapTexture`)
-) TYPE=MyISAM;
+);
 
 -- wi_sitemanagement
 DROP TABLE IF EXISTS `wi_sitemanagement`;
@@ -415,7 +415,7 @@ CREATE TABLE `wi_startscreen_infowindow` (
   `color` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `message` text NOT NULL
-) TYPE=MyISAM;
+);
 
 INSERT INTO `wi_startscreen_infowindow` (`gridstatus`, `active`, `color`, `title`, `message`) VALUES
 ('1', '1', 'yellow', 'Info system Works very well ;-)', 'Today we''ve built a new loginscreen info system and it works very well. You can now see Info windows on the startup screen.');
@@ -428,7 +428,7 @@ CREATE TABLE `wi_startscreen_news` (
   `message` text NOT NULL,
   `time` int(10) unsigned NOT NULL default '0',
   KEY `id` (`id`)
-) TYPE=MyISAM  AUTO_INCREMENT=2 ;
+) AUTO_INCREMENT=2 ;
 
 INSERT INTO `wi_startscreen_news` (`id`, `title`, `message`, `time`) VALUES
 (1, '[COMPLETE] The new loginscreen is done and works fine so far', '<P>We built a new loginscreen which will inform you about Grid updates or changes. Also you can now see how many users and regions are online, and more.  Also, you may from time to time see an infowindow, which informs you about important news.  Have Fun !</P>', 1211321439);
@@ -495,4 +495,4 @@ CREATE TABLE `wi_users` (
   `active` varchar(255) NOT NULL default '1',
   PRIMARY KEY  (`UUID`),
   UNIQUE KEY `usernames` (`username`,`lastname`)
-) TYPE=MyISAM;
+);
