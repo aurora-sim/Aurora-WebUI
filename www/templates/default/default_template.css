@@ -62,11 +62,13 @@ body.webui {
   padding-top:3px;
   padding-bottom:3px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  text-align:center;
   font-size: 0.8em;
-  background-image: url("background_06.png");
+  background-image: url("background_06xxx.png");
   background-color: transparent;
   background-repeat: repeat;
 	height: 15px;
+	width:255px;
 }
 
 /* Welcome Text Module */
@@ -85,9 +87,10 @@ body.webui {
 
 /* Scrolling Text Module */
 div.horizontal_scroller, div.vertical_scroller {
-  position:relative;
-	height: 15.5px;
-	width: 90%;
+  position:absolute;
+	height: 16px;
+	width: 270px;
+	margin-left: 330px;
 	display:block;
 	overflow:hidden;
   float:left;
@@ -119,17 +122,51 @@ div.scrollingtext{
 	padding: 10px;
 }
 
+
 .webui #header {color:#ffffff;}
-
 .webui #headerimages {;}
-
 /* Logo */
+
 .webui #headerimages h1 {
+  color:#ffffff;
 	margin: 0px;
 	height:139px;
-  background-image: url("aurora-webui-logo.png");
-  background-repeat: no-repeat;
-	background-color: transparent;
+
+}
+
+
+#headerimages {
+margin: 0px;
+	padding: 0;
+	text-indent: -9999px;
+	height: 139px;
+	position: relative;
+	background: url(header.png) no-repeat;
+}
+
+#headerimages a {
+  width: 900px;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 534px;
+	height: 139px;
+	display: block;
+	border: 0;
+	background: transparent;
+	overflow: hidden;
+}
+
+#headerimages .fake-hover {
+	margin: 0;
+	padding: 0;
+	width: 534px;
+	height: 139px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(header.png) no-repeat 0 -150px;
 }
 
 /* MenuBar Horizontal */
@@ -141,9 +178,9 @@ div.scrollingtext{
 background-color: #1a1a1a;
 height:60px;
 width: 100%;
-padding-top:30px;
+padding-top:0px;
 margin-bottom:-10px;
-
+text-indent: 0px;
 }
 
 .menu {
@@ -183,10 +220,8 @@ margin-bottom:-10px;
 }
 
 #menu li a:hover {
-
   background-color: #222;
   background-repeat: repeat;
-  	
 }
 
 #menu li a:active {
@@ -237,7 +272,7 @@ margin-bottom:-10px;
   z-index:200;
   position: relative;
   float:left;
-  margin-top: 0px;
+  margin-top: 80px;
   margin-left:0px;
   width: 270px;
   height: 132px;
@@ -855,20 +890,28 @@ div.section { clear: left; }
 
 div.demo, div.inner { color: #000; text-align: center; font-family: verdana, arial, sans-serif;}
 
-div.annonce1, div.annonce2, div.annonce3
-{ color: #111; text-align: center; font-family: verdana, arial, sans-serif;}
+div.annonce1, div.annonce2, div.annonce3, div.annonce4, div.annonce5, 
+div.annonce6, div.annonce7, div.annonce10, team {
+color: #111; 
+text-align: center; 
+font-family: verdana, arial, sans-serif;
+}
+
 div#annonce1 {
 float: left;
 width: 233px;
 padding: 20px;
+padding-top:10px;
 margin: 10px;
 background: #111;
 font-size: 12px;
 }
+
 div#annonce2 {
 float: left;
 width: 233px;
 padding: 20px;
+padding-top:10px;
 margin: 10px;
 background: #111;
 font-size: 12px;
@@ -878,6 +921,7 @@ div#annonce3 {
 float: left;
 width: 233px;
 padding: 20px;
+padding-top:10px;
 margin: 10px;
 background: #111;
 font-size: 12px;
@@ -892,15 +936,49 @@ background: #000;
 font-size: 12px;
 }
 
-div#annonce10 {
+div#annonce5 {
 float: left;
-
+width: 233px;
 padding: 20px;
+padding-top:10px;
 margin: 10px;
-background: #fff;
+background: #111;
 font-size: 12px;
 }
 
+div#annonce6 {
+float: left;
+width: 233px;
+padding: 20px;
+padding-top:10px;
+margin: 10px;
+background: #111;
+font-size: 12px;
+}
+
+div#annonce7 {
+float: left;
+width: 233px;
+padding: 20px;
+padding-top:10px;
+margin: 10px;
+background: #111;
+font-size: 12px;
+}
+
+div#annonce10 {
+float: left;
+padding: 20px;
+margin: 10px;
+background: #000;
+font-size: 12px;
+width: 819px;
+}
+
+div.team {
+margin-top: 10px;
+text-align: center;
+}
 
 div.inner { margin: 0; background: #ffc; padding: 10px; border:0; } /* zoom:1; */
 div.outer { float: left; margin: 15px; background: #c82; padding: 8px; width: 22em }
@@ -940,7 +1018,7 @@ text-align:right;
 #box4 { height: 150px; width: 300px; margin:auto }     /* fixed height and width */
  
 div.plain  { background-color: #6af; text-align: center; }
-b { color: #f44 }
+
 #twitter { float:right; right: 20px; }
 #twitter a { text-decoration: none; font-family: arial; vertical-align: top }
 #twitter img { border: none; float: left }

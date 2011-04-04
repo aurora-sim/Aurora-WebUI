@@ -75,32 +75,51 @@ if ($_POST[Submit] == $webui_admin_login) {
 }
 //LOGIN END
 ?>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
-    <link rel="shortcut icon" href="<?=$favicon_image?>" />
-    <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
+  <link rel="shortcut icon" href="<?=$favicon_image?>" />
+  <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
     
-    <script src="javascripts/global.js" type="text/javascript"></script>
-    <script src="javascripts/droppanel/dropdown.js" type="text/javascript"></script>
+  <script src="javascripts/global.js" type="text/javascript"></script>
+  <script src="javascripts/droppanel/dropdown.js" type="text/javascript"></script>
     
-    <script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
-    <script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>
+  <script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+  <script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>
     
-    <script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script> 
-    <script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
+  <script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script> 
+  <script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
  
 
-    <?php if($showRoundedCorner)
-    { ?>
-    
-    
+<?php if($displayLogoEffect) { ?>
+<script type="text/javascript">
+//<![CDATA[ 
+var Header = {
+	// Let's write in JSON to make it more modular
+	addFade : function(selector){
+		$("<span class=\"fake-hover\"></span>").css("display", "none").prependTo($(selector)); 
+		// Safari dislikes hide() for some reason
+		$(selector+" a").bind("mouseenter",function(){
+			$(selector+" .fake-hover").fadeIn("slow");
+		});
+		$(selector+" a").bind("mouseleave",function(){
+			$(selector+" .fake-hover").fadeOut("slow");
+		});
+	}
+};
+$(function(){Header.addFade("#headerimages");});
+//]]>
+<?php } ?>
+</script>
 
+
+<?php if($showRoundedCorner)  { ?>
 <script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
 <script type="text/javascript">
 // http://jquery.malsup.com/corner/
-// test auto-ready logic - call corner before DOM is ready
-    $('#annonce1, #annonce2, #annonce3, #annonce4, #annonce10').corner();
+// Add more class here ...
+    $('#annonce1, #annonce2, #annonce3, #annonce4, #annonce5, #annonce6, #annonce7, #annonce10').corner();
     
     $('#ContentHeaderLeft, #ContentHeaderCenter, #ContentHeaderRight').corner("5px");
     $(function(){
@@ -129,7 +148,64 @@ if ($_POST[Submit] == $webui_admin_login) {
 		$('.chat').corner();
     });
 </script>
-   <?php } ?>
+<?php } ?>
+
+
+<?php if($displayBackgroundColorAnimation)  { ?>
+<!-- include Google's AJAX API loader -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#annonce1").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
+  });
+                
+	$("#annonce2").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
+  });
+
+	$("#annonce3").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
+  });
+                
+	$("#annonce4").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep4 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep4 ?>'}, 800);
+  });
+
+	$("#annonce5").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep5 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep5 ?>'}, 800);
+  });
+
+	$("#annonce6").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep6 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep6 ?>'}, 800);
+  });
+
+	$("#annonce7").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep7 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep7 ?>'}, 800);
+  });
+
+	$("#annonce10").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep10 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep10 ?>'}, 800);
+  });
+}); 
+</script>
+<?php } ?>
 </head>
     
 <body class="webui">
@@ -159,8 +235,19 @@ if ($_POST[Submit] == $webui_admin_login) {
         <?php include("languages/translator_page.php"); ?>
     </div>
 
-    <?php if($showWelcomeMessage)
-    { ?>
+
+<?php if($showScrollingText) { ?>
+  <div class="horizontal_scroller" id="scrollercontrol">
+    <div class="scrollingtext">
+      <?php echo $scrollingTextMessage; ?>
+    </div>
+  </div>
+<?php } ?>
+
+
+
+
+    <?php if($showWelcomeMessage) { ?>
     <div id="welcomeText">
         <?php
           if($_SESSION[NAME] != "") {
@@ -178,14 +265,22 @@ if ($_POST[Submit] == $webui_admin_login) {
 
 </div><!-- fin de #topcontainer <div id="menubar"><? // include("sites/modules/marquee.php"); ?></div> -->
 
+
+
+
+
 <div id="container">
     <div id="header">
         <div id="headerimages">
-            <a href="<?= SYSURL ?>"><h1><span><? SYSNAME ?></span></h1></a>
+            <a href="<?= SYSURL ?>"><h1 id=""><? SYSNAME ?></h1></a>
         </div>
         <!-- <div id="gridstatus"><? //php include("sites/gridstatus.php"); ?></div> -->
-        <div id="menubar"><? include("sites/menubar.php"); ?></div>
         <div id="home_content_right"><? include("sites/modules/slideshow.php"); ?></div>
+
+        <!-- <div id="menubar"><? // include("sites/menubar.php"); ?></div> -->
+        <?php if($displayMegaMenu) { ?>
+          <div id="menubar"><? include("sites/menus/megamenu/menubar.php"); ?></div>
+        <?php } ?>
     </div><!-- fin de #header -->
 
     <div id="MainContainer">
