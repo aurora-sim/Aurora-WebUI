@@ -2,7 +2,6 @@
 if ($_SESSION[ADMINID]) {
 ?>
 
-
 <?
     $DbLink = new DB;
 

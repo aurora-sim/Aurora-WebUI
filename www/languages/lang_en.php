@@ -199,12 +199,14 @@ $webui_confirm_password = 'Confirm Password';
 //
 // Admin parts
 //
-$webui_admin_login = "Admin Login";
-$webui_menu_item_adminloginscreen = 'Edit';
+$webui_admin_login = 'Admin Login';
+$webui_menu_item_adminloginscreen = 'Editer';
 $webui_menu_item_adminhome = 'Admin';
 $webui_menu_item_adminmanage = 'Manage';
-$webui_menu_item_adminsettings = 'Admin Settings';
-$webui_menu_item_adminsupport = "Support";
+$webui_menu_item_adminsettings = 'Settings';
+$webui_menu_item_adminmodules = 'Modules';
+$webui_menu_item_adminoptions = 'Options';
+$webui_menu_item_adminsupport = 'Support';
 
 //
 // Admin Home Page
@@ -298,6 +300,96 @@ $webui_admin_settings_edit_select = 'Edit account';
 $webui_admin_settings_adminonly_select = 'Administrator only';
 $webui_admin_settings_yes_select = 'Yes';
 $webui_admin_settings_no_select = 'No';
+
+//
+// Admin Styles Options Page
+//
+$webui_admin_options = 'Admin Modules and Options';
+$webui_admin_options_info = 'This allows you to activate/deactivate certain modules and options.';
+$webui_admin_options_TopPanelSlider = 'Activate the Top Panel Slider';
+$webui_admin_options_TopPanelSlider_active = 'Top Panel Slider activated';
+$webui_admin_options_TopPanelSlider_desactive = 'Top Panel Slider deactivated';
+$webui_admin_options_TemplateSelector = 'Activate the Template Selector';
+$webui_admin_options_TemplateSelector_active = 'Template Selector activated';
+$webui_admin_options_TemplateSelector_desactive = 'Template Selector deactivated';
+$webui_admin_options_StyleSwitcher = 'Activate the Style Switcher';
+$webui_admin_options_StyleSwitcher_active = 'Style Switcher activated';
+$webui_admin_options_StyleSwitcher_desactive = 'Style Switcher deactivated';
+$webui_admin_options_StyleSizer = 'Activate the Style Sizer';
+$webui_admin_options_StyleSizer_active = 'Style Sizer activated';
+$webui_admin_options_StyleSizer_desactive = 'Style Sizer deactivated';
+$webui_admin_options_FontSizer = 'Activate the Font Sizer';
+$webui_admin_options_FontSizer_active = 'Font Sizer activated';
+$webui_admin_options_FontSizer_desactive = 'Font Sizer deactivated';
+$webui_admin_options_LanguageSelector = 'Activate the Language Selector';
+$webui_admin_options_LanguageSelector_active = 'Language Selector activated';
+$webui_admin_options_LanguageSelector_desactive = 'Language Selector deactivated';
+$webui_admin_options_ScrollingText = 'Activate the Scrolling Text';
+$webui_admin_options_ScrollingText_active = 'Scrolling Text activated';
+$webui_admin_options_ScrollingText_desactive = 'Scrolling Text deactivated';
+$webui_admin_options_WelcomeMessage = 'Activate the Welcome Message';
+$webui_admin_options_WelcomeMessage_active = 'Welcome Message activated';
+$webui_admin_options_WelcomeMessage_desactive = 'Welcome Message deactivated';
+$webui_admin_options_MegaMenu = 'Activate the Mega Menu';
+$webui_admin_options_MegaMenu_active = 'Mega Menu activated';
+$webui_admin_options_MegaMenu_desactive = 'Mega Menu deactivated';
+$webui_admin_options_Logo = 'Activate the Logo';
+$webui_admin_options_Logo_active = 'Logo activated';
+$webui_admin_options_Logo_desactive = 'Logo deactivated';
+$webui_admin_options_LogoEffect = 'Activate the Logo Effect';
+$webui_admin_options_LogoEffect_active = 'Logo Effect activated';
+$webui_admin_options_LogoEffect_desactive = 'Logo Effect deactivated';
+$webui_admin_options_SlideShow = 'Activate the Slide Show';
+$webui_admin_options_SlideShow_active = 'Slide Show activated';
+$webui_admin_options_SlideShow_desactive = 'Slide Show deactivated';
+$webui_admin_options_Date = 'Activate the Date';
+$webui_admin_options_Date_active = 'Date activated';
+$webui_admin_options_Date_desactive = 'Date deactivated';
+$webui_admin_options_Time = 'Activate the Time';
+$webui_admin_options_Time_active = 'Time activated';
+$webui_admin_options_Time_desactive = 'Time deactivated';
+$webui_admin_options_RoundedCorner = 'Activate the Rounded Corner';
+$webui_admin_options_RoundedCorner_active = 'Rounded Corner activated';
+$webui_admin_options_RoundedCorner_desactive = 'Rounded Corner deactivated';
+$webui_admin_options_PageLoadTime = 'Activate the Page Load Time';
+$webui_admin_options_PageLoadTime_active = 'Page Load Time activated';
+$webui_admin_options_PageLoadTime_desactive = 'Page Load Time deactivated';
+$webui_admin_options_W3c = 'Activate the W3c';
+$webui_admin_options_W3c_active = 'W3c activated';
+$webui_admin_options_W3c_desactive = 'W3c deactivated';
+$webui_admin_options_Rss = 'Activate the Rss';
+$webui_admin_options_Rss_active = 'Rss activated';
+$webui_admin_options_Rss_desactive = 'Rss deactivted';
+
+// Admin Styles Background Color Animation
+$webui_admin_options_BackgroundColorAnimation = 'Activate the Background Color Animation';
+$webui_admin_options_BackgroundColorAnimation_active = 'Background Color Animation activated';
+$webui_admin_options_BackgroundColorAnimation_desactive = 'Background Color Animation deactivated';
+$webui_admin_options_BackgroundColorAnimation_info = 'This allows the administrator to change the color of the animations';
+$webui_admin_options_active = 'activated';
+$webui_admin_options_desactive = 'deactivated';
+$webui_admin_options_send = 'Send';
+$webui_admin_options_modify = 'Modify';
+$webui_admin_BackgroundColorAnimation_HoverStep1 = 'Color Hover Step 1';
+$webui_admin_BackgroundColorAnimation_EndStep1 = 'Color End Step 1';
+$webui_admin_BackgroundColorAnimation_HoverStep2 = 'Color Hover Step 2';
+$webui_admin_BackgroundColorAnimation_EndStep2 = 'Color End Step 2';
+$webui_admin_BackgroundColorAnimation_HoverStep3 = 'Color Hover Step 3';
+$webui_admin_BackgroundColorAnimation_EndStep3 = 'Color End Step 3';
+$webui_admin_BackgroundColorAnimation_HoverStep4 = 'Color Hover Step 4';
+$webui_admin_BackgroundColorAnimation_EndStep4 = 'Color End Step 4';
+$webui_admin_BackgroundColorAnimation_HoverStep5 = 'Color Hover Step 5';
+$webui_admin_BackgroundColorAnimation_EndStep5 = 'Color End Step 5';
+$webui_admin_BackgroundColorAnimation_HoverStep6 = 'Color Hover Step 6';
+$webui_admin_BackgroundColorAnimation_EndStep6 = 'Color End Step 6';
+$webui_admin_BackgroundColorAnimation_HoverStep7 = 'Color Hover Step 7';
+$webui_admin_BackgroundColorAnimation_EndStep7 = 'Color End Step 7';
+$webui_admin_BackgroundColorAnimation_HoverStep8 = 'Color Hover Step 8';
+$webui_admin_BackgroundColorAnimation_EndStep8 = 'Color End Step 8';
+$webui_admin_BackgroundColorAnimation_HoverStep9 = 'Color Hover Step 9';
+$webui_admin_BackgroundColorAnimation_EndStep9 = 'Color End Step 9';
+$webui_admin_BackgroundColorAnimation_HoverStep10 = 'Color Hover Step 10';
+$webui_admin_BackgroundColorAnimation_EndStep10 = 'Color End Step 10';
 
 //
 // Add News Page

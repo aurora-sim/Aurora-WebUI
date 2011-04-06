@@ -12,6 +12,54 @@
 --
 
 -- --------------------------------------------------------
+
+-- Create Tables wi_adminmodules --
+DROP TABLE IF EXISTS `wi_adminmodules`;
+CREATE TABLE `wi_adminmodules` (
+  `id` int(11) NOT NULL auto_increment,
+  `displayTopPanelSlider` varchar(10) NOT NULL,
+  `displayTemplateSelector` varchar(10) NOT NULL,
+  `displayStyleSwitcher` varchar(10) NOT NULL,
+  `displayStyleSizer` varchar(10) NOT NULL,
+  `displayFontSizer` varchar(10) NOT NULL,
+  `displayLanguageSelector` varchar(10) NOT NULL,
+  `displayScrollingText` varchar(10) NOT NULL,
+  `displayWelcomeMessage` varchar(10) NOT NULL,
+  `displayLogo` varchar(10) NOT NULL,
+  `displayLogoEffect` varchar(10) NOT NULL,
+  `displaySlideShow` varchar(10) NOT NULL,
+  `displayMegaMenu` varchar(10) NOT NULL,
+  `displayDate` varchar(10) NOT NULL,
+  `displayTime` varchar(10) NOT NULL,
+  `displayRoundedCorner` varchar(10) NOT NULL,
+  `displayBackgroundColorAnimation` varchar(10) NOT NULL,
+  `displayPageLoadTime` varchar(10) NOT NULL,
+  `displayW3c` varchar(10) NOT NULL,
+  `displayRss` varchar(10) NOT NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM  AUTO_INCREMENT=16 ;
+
+INSERT INTO `wi_adminmodules` (`id`, `displayTopPanelSlider`, 
+                                     `displayTemplateSelector`, 
+                                     `displayStyleSwitcher`,
+                                     `displayStyleSizer`,
+                                     `displayFontSizer`,
+                                     `displayLanguageSelector`,
+                                     `displayScrollingText`,
+                                     `displayWelcomeMessage`,
+                                     `displayLogo`,
+                                     `displayLogoEffect`,
+                                     `displaySlideShow`,
+                                     `displayMegaMenu`,
+                                     `displayDate`,
+                                     `displayTime`,
+                                     `displayRoundedCorner`,
+                                     `displayBackgroundColorAnimation`,
+                                     `displayPageLoadTime`,
+                                     `displayW3c`,
+                                     `displayRss`) VALUES 
+(1, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1');
+
 -- wi_adminsetting
 DROP TABLE IF EXISTS `wi_adminsetting`;
 CREATE TABLE `wi_adminsetting` (
@@ -329,8 +377,9 @@ INSERT INTO `wi_pagemanager` (`id`, `rank`, `active`, `url`, `target`, `display`
 ('webui_menu_item_adminhome', 2.0, '1', 'index.php?page=adminhome', '_self', '3', null),
 ('webui_menu_item_adminmanage', 2.1, '1', 'index.php?page=adminmanage', '_self', '3', 'webui_menu_item_adminhome'),
 ('webui_menu_item_adminsettings', 2.2, '1', 'index.php?page=adminsettings', '_self', '3', 'webui_menu_item_adminhome'),
-('webui_menu_item_adminloginscreen', 2.3, '1', 'index.php?page=adminloginscreen', '_self', '3', 'webui_menu_item_adminhome'),
-('webui_menu_item_adminsupport', 2.4, '1', 'index.php?page=adminsupport', '_self', '3', 'webui_menu_item_adminhome'),
+('webui_menu_item_adminmodules', 2.3, '1', 'index.php?page=adminmodules', '_self', '3', 'webui_menu_item_adminhome'),
+('webui_menu_item_adminloginscreen', 2.4, '1', 'index.php?page=adminloginscreen', '_self', '3', 'webui_menu_item_adminhome'),
+('webui_menu_item_adminsupport', 2.5, '1', 'index.php?page=adminsupport', '_self', '3', 'webui_menu_item_adminhome'),
 
 ('webui_menu_item_account', 3.0, '1', 'index.php?page=account', '_self', '1', null),
 ('webui_menu_item_changeaccount', 3.1, '1', 'index.php?page=changeaccount', '_self', '1', 'webui_menu_item_account'),
@@ -392,6 +441,7 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('adminmanage', 'admin', 'manage.php'),
 ('news_add', 'admin', 'news_add.php'),
 ('adminsettings', 'admin', 'settings.php'),
+('adminmodules', 'admin', 'modules.php'),
 ('adminedit', 'admin', 'edit.php'),
 ('account', 'account', 'main.php'),
 ('world', 'main', 'worldmain.php'),
@@ -446,11 +496,11 @@ CREATE TABLE IF NOT EXISTS `wi_gallery` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `wi_gallery` (`picture`, `picturethumbnail`, `description`, `active`, `rank`) VALUES
-('login1.jpg', 'image1thumbnail.jpg', 'Image of our world', '1', '1'),
-('login2.jpg', 'image2thumbnail.jpg', 'Image of our world', '1', '1'),
-('login3.jpg', 'image3thumbnail.jpg', 'Image of our world', '1', '1'),
-('login4.jpg', 'image4thumbnail.jpg', 'Image of our world', '1', '1'),
-('login5.jpg', 'image5thumbnail.jpg', 'Image of our world', '1', '1');
+('login1.jpg', 'image1thumbnail.jpg', 'Image 1 of our world', '1', '1'),
+('login2.jpg', 'image2thumbnail.jpg', 'Image 2 of our world', '1', '1'),
+('login3.jpg', 'image3thumbnail.jpg', 'Image 3 of our world', '1', '1'),
+('login4.jpg', 'image4thumbnail.jpg', 'Image 4 of our world', '1', '1'),
+('login5.jpg', 'image5thumbnail.jpg', 'Image 5 of our world', '1', '1');
 
 -- useraccounts_rl
 CREATE TABLE IF NOT EXISTS `useraccounts_rl` (

@@ -31,7 +31,7 @@ window.location.href=\"index.php?page=loginscreen\";
 }
 
 
-////////////////////////////////// ADMIN END /////////////////////////////////// ?><body>
+////////////////////////////////// ADMIN END /////////////////////////////////// ?>
 <TABLE CELLPADDING="2" CELLSPACING="0" WIDTH=95%>
 	<TR><TD ALIGN="right" bgcolor="#0066FF">
 		<div align="center"><B>Create News </B>        </div></TD>

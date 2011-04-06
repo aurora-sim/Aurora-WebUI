@@ -26,14 +26,14 @@ window.location.href=\"index.php?page=loginscreen\";
 </script>";
 }
 
-////////////////////////////////// ADMIN END /////////////////////////////////// ?><body>
+////////////////////////////////// ADMIN END /////////////////////////////////// ?>
+
 <TABLE CELLPADDING="2" CELLSPACING="0" WIDTH=95%>
 	<TR><TD ALIGN="right" bgcolor="#0066FF">
 		<div align="center"><B>Edit News</B></div></TD>
 	</TR></TABLE><BR>
 
 <?
-
 $DbLink = new DB;
 $DbLink->query("SELECT id,title,message from ".C_NEWS_TBL." WHERE id = '".cleanQuery($_GET[editid])."'");
 
@@ -42,10 +42,7 @@ $DbLink->query("SELECT id,title,message from ".C_NEWS_TBL." WHERE id = '".cleanQ
 		list($id,$title,$message) = $DbLink->next_record();
 	}
 	$DbLink->clean_results();
-
-
 $DbLink->close();
-
 ?>
 
 <FORM name="update" method="post" action="index.php?page=news_edit">
