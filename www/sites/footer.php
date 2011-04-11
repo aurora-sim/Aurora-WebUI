@@ -9,3 +9,4 @@
       <img src="<?=$images_path?>valid-css.png" alt="Valid CSS!" /></a>
   <?php } ?>
 </div>
+

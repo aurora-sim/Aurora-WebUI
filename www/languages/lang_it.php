@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $webui_language_code='it';
 $webui_actual_language='Italiano';
 
@@ -122,27 +122,13 @@ $webui_welcome_visitor='Ospite';
 $webui_welcome_back = 'Bentornato';
 $webui_welcome_userid='Ciao Utente!';
 $webui_home_page='
-    <p>
-        <div id="annonce1"><h3>Fase 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account GRATUITO</a> in questa pagina.</div>
-		<div id="annonce2"><h3>Fase 2</h3>Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
-		<div id="annonce3"><h3>Fase 3</h3>Assicurati di aggiungere la nostra grid al tuo viewer.</div>
-		
-		<div id="annonce4"><h3>Benvenuto</h3> 
 		<p>Questo e il nostro nuovo Mondo Virtuale dove puoi divertirti, incontrare persone, chattare, giocare, esplorare, creare e condividere i tuoi sogni.</p>
 		<p>Ogni cosa e possibile nel bnostro nuovo Mondo Virtuale.</p>
 		<p>Il nostro Mondo e creato dai suoi residenti, qui puoi costruire qualsiasi cosa tu possa immaginare.</p>
 		<p><a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account gratuito adesso</a> costruisci il tuo avatar ed inizia a giocare.</p>
-		<p>Entra ora, e fai la differenza !</p></div>
+		<p>Entra ora, e fai la differenza !</p>';
 
-		<div id="annonce1"><h3>Info 1</h3><a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account GRATUITO</a> da questa pagina.</div>
- 
-        <div id="annonce2"><h3>Info 2</h3>Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a></div>
-		<div id="annonce3"><h3>Info 3</h3>Assicurati di aggiungere la nostra grid al tuo viewer.</div>
-
-		<div id="annonce4"><h3>Info 1</h3>Ti preghimao di considerare che la piattaforma di Aurora e ancora in una fase sperimentale e quindi alcune cose potrebbero funzionare in modo inaspettato.</div>
-		
-		</p><div class="annonce10"><i>Aurora-Team</i></div>
-    </p>';
+$webui_home_page_warning = 'Ti preghimao di considerare che la piattaforma di Aurora e ancora in una fase sperimentale e quindi alcune cose potrebbero funzionare in modo inaspettato.';
 
 //
 // 404 page
@@ -433,8 +419,28 @@ $webui_support_info = 'Da qui puoi dare supporto agli utenti';
 //
 // Help Page
 //
-$webui_help = 'Aiuto';
-$webui_help_info = 'Da qui puoi dare aiuto agli utenti';
+$webui_help = 'Help';
+$webui_help_info = 'This allows you to Help';
+
+$webui_help_step1_title = 'Step 1';
+$webui_help_step2_title = 'Step  2';
+$webui_help_step3_title = 'Step  3';
+$webui_help_step1 = '<a href="index.php?page=register&btn=webui_menu_item_register">Crea il tuo account GRATUITO</a> in questa pagina.';
+$webui_help_step2 = 'Scarica il viewer. Ti raccomandiamo <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a>.';
+$webui_help_step3 = 'Assicurati di aggiungere la nostra grid al tuo viewer.';
+		
+$webui_help_title_comment01 = 'Help 1';
+$webui_help_title_comment02 = 'Help 02';
+$webui_help_title_comment03 = 'Help 03';
+$webui_help_title_comment04 = 'Help 04';
+$webui_help_title_comment05 = 'Help 05';
+$webui_help_title_comment06 = 'Help 06';
+$webui_help_comment01 = 'Help about le Viewer.';
+$webui_help_comment02 = 'Help about le Server.';
+$webui_help_comment03 = 'Help about ...';
+$webui_help_comment04 = 'Help about ...';
+$webui_help_comment05 = 'Help about ...';
+$webui_help_comment06 = 'Help about ...';
 
 //
 // Chat Page
@@ -465,9 +471,32 @@ $webui_pagination_tooltips_sortn = 'Ordine secondo coordinata Y';
 //
 // SlideShow Comments
 //
-$webui_slideshow_comment01 = 'Little comment 01.';
-$webui_slideshow_comment02 = 'Little comment 02.';
-$webui_slideshow_comment03 = 'Little comment 03.';
-$webui_slideshow_comment04 = 'Little comment 04.';
-$webui_slideshow_comment05 = 'Little comment 05.';
+$webui_slideshow_title_comment01 = 'Aide 01';
+$webui_slideshow_title_comment02 = 'Aide 02';
+$webui_slideshow_title_comment03 = 'Aide 03';
+$webui_slideshow_title_comment04 = 'Aide 04';
+$webui_slideshow_title_comment05 = 'Aide 05';
+$webui_slideshow_title_comment06 = 'Aide 06';
+$webui_slideshow_comment01 = 'Aide concernant le Viewer.';
+$webui_slideshow_comment02 = 'Aide Concernant le Server.';
+$webui_slideshow_comment03 = 'Aide concernant autre chose.';
+$webui_slideshow_comment04 = 'Aide concernant 04.';
+$webui_slideshow_comment05 = 'Aide concernant 05.';
+$webui_slideshow_comment06 = 'Aide concernant 06.';
+
+//
+// Infos Comments
+//
+$webui_infos_comment01_title = 'Info 1';
+$webui_infos_comment02_title = 'Info 2';
+$webui_infos_comment03_title = 'Info 3';
+$webui_infos_comment04_title = 'Info 4';
+$webui_infos_comment05_title = 'Info 5';
+$webui_infos_comment06_title = 'Info 6';
+$webui_infos_comment01 = 'Info concernant ...';
+$webui_infos_comment02 = 'Info concernant ...';
+$webui_infos_comment03 = 'Info concernant ...';
+$webui_infos_comment04 = 'Info concernant ...';
+$webui_infos_comment05 = 'Info concernant ...';
+$webui_infos_comment06 = 'Info concernant ...';
 ?>

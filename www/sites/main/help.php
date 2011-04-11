@@ -4,7 +4,7 @@
   <div id="ContentHeaderRight"><h5><? echo $webui_help; ?></h5></div>
   <div id="help">
   <div id="info"><p><? echo $webui_help_info; ?></p></div>
-  <? include("sites/modules/annonces.php"); ?>
+  <? include("sites/modules/annonces123.php"); ?>
 <p>
 <?
   $DbLink2 = new DB;

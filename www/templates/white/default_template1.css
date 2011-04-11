@@ -1,15 +1,16 @@
-/* WebUI Css Level 2.1 v0.6 (08/04/2011) */
+/* WebUI Css Level 2.1 v0.5 (01/04/2011) */
 
 html {width: 100%; height: 100%;}
 
 body.webui {
   margin: 0px;
+  margin-top: -18px;
   padding: 0px;
   font-size: 100%;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-align: center;
-  color:#eee;
-  background: #000000 url("background_01.jpg") fixed 50% 0% repeat-x;
+  color:#111;
+  background: #fff url("background_01_off.jpg") 50% 0% repeat-x;
 }
 
 .webui #adminnote {
@@ -21,11 +22,9 @@ body.webui {
 	text-align: left;
 }
 
-.webui #absolute {;}
-
 /* Translator and date Container */
 .webui #topcontainer {
-	width: 920px;
+	width: 925px;
   margin-left: auto;
   margin-right: auto;
   z-index: 50;
@@ -104,7 +103,7 @@ div.scrollingtext{
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 0.8em;
   z-index:99;
-  color:#ebed5e;
+  color:#111;
   padding: 3px;
   padding-bottom:3px;
 }
@@ -112,15 +111,16 @@ div.scrollingtext{
 /* The Container */
 .webui #container {
 	width: 900px;
-  background-image: url("background_06.png");
-  background-color: transparent;
+  background-color: #ddd;
   background-repeat: repeat;
-  margin-top: 10px;
+  margin-top: 27px;
+  margin-left: auto;
+  margin-right: auto;
 	border: 0px solid #000000;
 	text-align: left;
 	padding: 10px;
-	float: left;
 }
+
 
 .webui #header {color:#ffffff;}
 .webui #headerimages {;}
@@ -130,9 +130,7 @@ div.scrollingtext{
   color:#ffffff;
 	margin: 0px;
 	height:139px;
-
 }
-
 
 #headerimages {
 margin: 0px;
@@ -174,16 +172,16 @@ margin: 0px;
 /* Pretty Menu */
 #menu {
 	z-index:100;
-background-color: #1a1a1a;
+background-color: #f9f9f9;
 height:60px;
 width: 100%;
-padding-top:0px;
+padding-top:30px;
 margin-bottom:-10px;
-text-indent: 0px;
+
 }
 
 .menu {
-  background-color: #000;
+  background-color: #f1f1f1;
   height:50px;
   width:890px;	
   position:relative;
@@ -212,18 +210,18 @@ text-indent: 0px;
   text-align: center;
   line-height: 30px;
   padding:5px;
-	color: #ffffff;
-	background-color: #111;  
-	border-bottom: 1px solid #000;
+	color: #111;
+	background-color: #fff;
+  border-bottom: 1px solid #fff;
 }
 
 #menu li a:hover {
-  background-color: #222;
-  background-repeat: repeat;
+  background-color: #f9f9f9;
+  background-repeat: repeat;  	
 }
 
 #menu li a:active {
-  background-color:#ff0000;
+  background-color:#ffffff;
   background-image: none;
 }
 
@@ -239,43 +237,14 @@ text-indent: 0px;
 
 /* content*/
 .webui #content {
-  float:left;
-  width: 880px;
-  margin: 0 auto;
   font-size: 12px;
   padding: 10px;
-	background-color: #1a1a1a;
-  background-image: url("shadow_01.png");
-  background-repeat: repeat-x;
+	background-color: #fff;
   text-align:left;
-  color:#eee; 
+  color:#111;
 }
 
-div#ContentHeaderLeft {
-margin: 10px;
-width: 30%;
-background-color: transparent;
-float: left;
-}
-
-div#ContentHeaderCenter {
-margin: 10px;
-width: 30%;
-background-color: transparent;
-float: left;
-font-weight: bold;
-margin-top:25px;
-}
-
-div#ContentHeaderRight {
-margin: 10px;
-width: 30%;
-background-color: transparent;
-float: left;
-text-align:right;
-}
-
-/* home content */
+/* home content*/
 #home_content_left {
   font-size: 12px;
   padding: 10px;
@@ -306,9 +275,9 @@ text-align:right;
 }
 
 .slideshow img {
-  padding: 0px; 
-  border: 10px solid #000;
-  background-color: #000;
+  padding: 10px; 
+  border: 1px solid #999;
+  background-color: #ccc;
   width: 250px;
   height: 110px;
 }
@@ -351,11 +320,11 @@ a:hover {text-decoration: none;}
 img {border: 0px;}
 table {font-size: 100%; border:0px;}
 
-h1 {font-size: 24px; color:#ffffff;}
-h2 {font-size: 18px; color:#ffffff;}
-h3 {font-size: 14px; color:#ffffff;}
-h4 {font-size: 12px; color:#ffffff;}
-h5 {font-size: 10px; color:#ffffff;}
+h1 {font-size: 24px; color:#111111;}
+h2 {font-size: 18px; color:#111111;}
+h3 {font-size: 14px; color:#111111;}
+h4 {font-size: 12px; color:#111111;}
+h5 {font-size: 10px; color:#111111;}
 
 .webui #header h1 span {display:none;}
 .webui #header h2 span {display:none;}
@@ -377,35 +346,35 @@ h5 {font-size: 10px; color:#ffffff;}
 
 /* tables setting */
 #content table {font-size: 100%;}
-#content a {color: #3688b8; text-decoration: none;}
+#content a {color: #aaaa00; text-decoration: none;}
 #content a:visited {text-decoration: none}
 #content a:active {text-decoration: none}
 #content a:hover {text-decoration: underline;}
 
 #regionlist {width:100%;background-color: transparent;margin-top:60px;}
-#regionlist table {color: #ffffff; width: 100%;}
+#regionlist table {color: #111; width: 100%;}
 #regionlist td a {color: #aaaa00; text-decoration: none;}
 #regionlist a:visited {text-decoration: none}
 #regionlist a:active {text-decoration: none}
 #regionlist a:hover {text-decoration: underline;}
 
-#register  {width:100%;background-color: #222;margin-top:70px;}
-#register table {color: #ffffff; width: 100%;}
+#register  {width:100%;background-color: #ddd;margin-top:70px;}
+#register table {color: #111; width: 100%;}
 #register a {color: #aaaa00; text-decoration: none;}
 #register a:visited {text-decoration: none}
 #register a:active {text-decoration: none}
 #register a:hover {text-decoration: underline;}
 
-#login {width:100%;background-color: #222;margin-top:70px;}
-#login table {color: #ffffff; width: 100%;}
+#login {width:100%;background-color: #ddd;margin-top:70px;}
+#login table {color: #111; width: 100%;}
 #login td {width: 50%;}
 #login a {color: #aaaa00; text-decoration: none;}
 #login a:visited {text-decoration: none}
 #login a:active {text-decoration: none}
 #login a:hover {text-decoration: underline;}
 
-#forget_pass {width:100%;background-color: #222;margin-top:60px;}
-#forget_pass table {color: #ffffff; width: 100%;}
+#forget_pass {width:100%;background-color: #ddd;margin-top:60px;}
+#forget_pass table {color: #111; width: 100%;}
 #forget_pass td {width: 50%;}
 #forget_pass a {color: #aaaa00; text-decoration: none;}
 #forget_pass a:visited {text-decoration: none}
@@ -413,149 +382,116 @@ h5 {font-size: 10px; color:#ffffff;}
 #forget_pass a:hover {text-decoration: underline;}
 
 #usersonline {width:100%;background-color: transparent;margin-top:60px;}
-#usersonline table {color: #ffffff; width: 100%;}
+#usersonline table {color: #111; width: 100%;}
 #usersonline a {color: #aaaa00; text-decoration: none;}
 #usersonline a:visited {text-decoration: none}
 #usersonline a:active {text-decoration: none}
 #usersonline a:hover {text-decoration: underline;}
 
 #searchpeople {width:100%;background-color: transparent;margin-top:60px;}
-#searchpeople table {color: #ffffff; width: 100%;}
+#searchpeople table {color: #111; width: 100%;}
 #searchpeople a {color: #aaaa00; text-decoration: none;}
 #searchpeople a:visited {text-decoration: none}
 #searchpeople a:active {text-decoration: none}
 #searchpeople a:hover {text-decoration: underline;}
 
 #changeaccount {width:100%;background-color: transparent;margin-top:60px;}
-#changeaccount table {color: #ffffff; width: 100%;}
+#changeaccount table {color: #111; width: 100%;}
 #changeaccount a {color: #aaaa00; text-decoration: none;}
 #changeaccount a:visited {text-decoration: none}
 #changeaccount a:active {text-decoration: none}
 #changeaccount a:hover {text-decoration: underline;}
 
 #loginscreen_manager {width:100%;background-color: transparent;margin-top:60px;}
-#loginscreen_manager table {color: #ffffff; width: 100%;}
+#loginscreen_manager table {color: #111; width: 100%;}
 #loginscreen_manager a {color: #aaaa00; text-decoration: none;}
 #loginscreen_manager a:visited {text-decoration: none}
 #loginscreen_manager a:active {text-decoration: none}
 #loginscreen_manager a:hover {text-decoration: underline;}
 
 #managepanel {width:100%;background-color: transparent;margin-top:60px;}
-#managepanel table {color: #ffffff; width: 100%;}
+#managepanel table {color: #111; width: 100%;}
 #managepanel a {color: #aaaa00; text-decoration: none;}
 #managepanel a:visited {text-decoration: none}
 #managepanel a:active {text-decoration: none}
 #managepanel a:hover {text-decoration: underline;}
 
 #news {width:100%;background-color: transparent;margin-top:60px;}
-#news table {color: #ffffff; width: 100%;}
+#news table {color: #111; width: 100%;}
 #news td a {color: #aaaa00; text-decoration: none;}
 #news a:visited {text-decoration: none}
 #news a:active {text-decoration: none}
 #news a:hover {text-decoration: underline;}
 
 #createnews {width:100%;background-color: transparent;margin-top:60px;}
-#createnews table {color: #ffffff; width: 100%;}
+#createnews table {color: #111; width: 100%;}
 #createnews a {color: #aaaa00; text-decoration: none;}
 #createnews a:visited {text-decoration: none}
 #createnews a:active {text-decoration: none}
 #createnews a:hover {text-decoration: underline;}
 
+#useragentprofil {min-height:160px; width:100%;background-color: transparent;margin-top:60px;}
+#useragentprofil table {color: #111; width: 50%;}
+#useragentprofil a {color: #aaaa00; text-decoration: none;}
+#useragentprofil a:visited {text-decoration: none}
+#useragentprofil a:active {text-decoration: none}
+#useragentprofil a:hover {text-decoration: underline;}
+
+#regioninfo {min-height:283px; width:100%;background-color: transparent;margin-top:60px;}
+#regioninfo table {color: #111; width:100%}
+#regioninfo a {color: #aaaa00; text-decoration: none;}
+#regioninfo a:visited {text-decoration: none}
+#regioninfo a:active {text-decoration: none}
+#regioninfo a:hover {text-decoration: underline;}
+
 #adminsettings {width:100%;background-color: transparent;margin-top:60px;}
-#adminsettings table {color: #ffffff; width: 100%;}
+#adminsettings table {color: #111; width: 100%;}
 #adminsettings a {color: #aaaa00; text-decoration: none;}
 #adminsettings a:visited {text-decoration: none}
 #adminsettings a:active {text-decoration: none}
 #adminsettings a:hover {text-decoration: underline;}
 
 #support {width:100%;background-color: transparent;margin-top:60px;}
-#support table {color: #ffffff; width: 100%;}
+#support table {color: #111; width: 100%;}
 #support a {color: #aaaa00; text-decoration: none;}
 #support a:visited {text-decoration: none}
 #support a:active {text-decoration: none}
 #support a:hover {text-decoration: underline;}
 
 #help {width:100%;background-color: transparent;margin-top:60px;}
-#help table {color: #ffffff; width: 100%;}
+#help table {color: #111; width: 100%;}
 #help a {color: #aaaa00; text-decoration: none;}
 #help a:visited {text-decoration: none}
 #help a:active {text-decoration: none}
 #help a:hover {text-decoration: underline;}
 
 #chat {width:100%;background-color: transparent;margin-top:60px;}
-#chat table {color: #ffffff; width: 100%;}
+#chat table {color: #111; width: 100%;}
 #chat a {color: #aaaa00; text-decoration: none;}
 #chat a:visited {text-decoration: none}
 #chat a:active {text-decoration: none}
 #chat a:hover {text-decoration: underline;}
 
 #gallery {width:100%;background-color: transparent;margin-top:60px;}
-#gallery table {color: #ffffff; width: 100%;}
+#gallery table {color: #111; width: 100%;}
 #gallery a {color: #aaaa00; text-decoration: none;}
 #gallery a:visited {text-decoration: none}
 #gallery a:active {text-decoration: none}
 #gallery a:hover {text-decoration: underline;}
 
-/* content popup */
-.webui #container_popup {
-	width: 760px;
-  background-image: url("background_06.png");
-  background-color: transparent;
-  background-repeat: repeat;
-  margin: 0 auto;
-  margin-top: 10px;
-	border: 0px solid #000000;
-	text-align: left;
-	padding: 10px;
-}
-
-.webui #content_popup {
-  width: 740px;
-  margin: 0 auto;
-  font-size: 12px;
-  padding: 10px;
-	background-color: #1a1a1a;
-  background-image: url("shadow_01.png");
-  background-repeat: repeat-x;
-  text-align:left;
-  color:#eee; 
-}
-
 /* more info profil */
-#useragentprofil {min-height:225px; width:100%;background-color: transparent;margin-top:20px;}
-#useragentprofil table {color: #ffffff; width: 50%;}
-#useragentprofil a {color: #aaaa00; text-decoration: none;}
-#useragentprofil a:visited {text-decoration: none}
-#useragentprofil a:active {text-decoration: none}
-#useragentprofil a:hover {text-decoration: underline;}
-
 #profil_picture {
   float: right;
-  margin-top: -120px;
+  margin-top: -125px;
 }
 
 #profil_picture img {
   border: 1px solid #FFFFFF;
-  height: 200px;
-  width: 200px;
+  height: 128px;
+  width: 128px;
 }
 
 /* more info region */
-#regioninfo {min-height:283px; width:100%;background-color: transparent;margin-top:20px;}
-#regioninfo table {color: #ffffff; width:230px;}
-#regioninfo a {color: #aaaa00; text-decoration: none;}
-#regioninfo a:visited {text-decoration: none}
-#regioninfo a:active {text-decoration: none}
-#regioninfo a:hover {text-decoration: underline;}
-
-#regionMap {float:right; padding:0; margin:0}
-#regionMap table {display:inline-block;}
-#regionMap td {padding:0; margin:0;}
-#regionMap tr {padding:0; margin:0}
-#regionMap tr td {height:65px; width:65px; font-size:9px; line-height:10px; text-align:center; padding:2px; background:#FFF;}
-#regionMap .nosim { background:#444; border: 1px dashed #999999;}
-#regionMap .thissim {background:#AE3D1B; color:#FFF; font-weight:bold;}
-
 #region_picture {
   float: left;
   margin-top: 5px;
@@ -563,18 +499,22 @@ h5 {font-size: 10px; color:#ffffff;}
 
 #region_picture img {
   border: 1px solid #FFFFFF;
-  height: 220px;
-  width: 220px;
+  height: 128px;
+  width: 128px;
 }
 
+#regionMap {float:right; padding:0; margin:0}
+#regionMap table {display:inline-block;}
+#regionMap td {padding:0; margin:0;}
+#regionMap tr {padding:0; margin:0}
+#regionMap tr td {height:65px; width:65px; font-size:9px; line-height:10px; text-align:center; padding:2px; background:#FFF;}
+#regionMap .nosim { background:transparent; border: 1px dashed #999999;}
+#regionMap .thissim {background:#AE3D1B; color:#FFF; font-weight:bold;}
+
 #regiondetails {
-  position: absolute;
-  float:left; 
-  padding:0px;
-  padding-left: 230px;
-  margin:0px;
-  margin-top: 0px;
-}
+position: absolute;
+float:left; padding:0; margin:0;
+margin-top: 140px;}
 
 #region_navigation {
   width: 300px;
@@ -583,12 +523,12 @@ h5 {font-size: 10px; color:#ffffff;}
 
 .even {
   background-color: transparent;
-  background-image: url("background_03.png");
+  background-image: url("background_01.png");
 }
 
 .odd {
   background-color: transparent;
-  background-image: url("background_02.png");
+  background-image: url("background_04.png");
 }
 
 .center {text-align: center; margin: 0 auto; width:300px;}
@@ -684,36 +624,19 @@ h5 {font-size: 10px; color:#ffffff;}
 }
 
 #gallery_slideshow .caption .content h3 {
-	margin:0px;
-	padding:0px;
+	margin:0;
+	padding:0;
 	color:#1DCCEF;
 }
 
 /* footer */
 .webui #footer {
-  float: left;
-width: 100%;
+	padding:  5px 5px 0px 5px;
+	margin-top: 10px;
 	height:35px;
-		margin:10px;
 }
 
-.webui #footer p {margin: 10px; padding: 10px;}
-
-div.team {
-float: left;
-width: 100%;
-font-size: 12px;
-text-align: center;
-}
-
-div.pagemloadtime {
-  float: left;
-  width: 100%;
-	padding-bottom:10px;
-  font-size: 12px;
-  text-align: center;
-  color: #555555;
-}
+.webui #footer p {margin: 0; padding: 10px 0;}
 
 /* Validator_Module */
 .webui #validator {text-align: center;}
@@ -875,7 +798,7 @@ a:focus {
 	margin: 0 auto;
 	display: block;
 	font: bold 0.6em Verdana, Helvetica, sans-serif;
-	color: #999;
+	color: #111;
 	text-decoration: none;
 	z-index: 100;
 }
@@ -895,10 +818,10 @@ a:focus {
 /* StyleSwitch */
 #switchers {
   position: relative;
-  width: 607px;
+  width: 600px;
   margin: 0 auto;
   color:#ffffff;
-  font-size: 12px; 
+  font-size: 0.8em; 
   font-family: verdana, helvetica, sans-serif;
   text-align: center;
   background-color: #222;
@@ -941,20 +864,20 @@ a.link3 {color:#0100aa;}
   width: 100%;
   border: solid 0px #222;
   border-collapse: separate;
-  border-spacing: 2px ;
+  border-spacing: 3px ;
 }
 
 #options th {
   border: solid 0px #000;
   background-color: #C8D1D1;
   font-weight: bold;
-  padding: 2px;
+  padding: 3px;
   text-align: left;
 }
 
 #options td {
   background-color: #000;
-  padding: 2px;
+  padding: 3px;
   border: 1px solid #111;
 }
 
@@ -970,87 +893,116 @@ text-align: center;
 font-family: verdana, arial, sans-serif;
 }
 
-div#annonce1, div#info1, div#step1, div#aide1 {
+div#annonce1 {
 float: left;
-width: 26%;
+width: 233px;
 padding: 20px;
 padding-top:10px;
 margin: 10px;
-background: #111;
+background: #f1f1f1;
 font-size: 12px;
 }
 
-div#annonce2, div#info2, div#step2, div#aide2 {
+div#annonce2 {
 float: left;
-width: 26%;
+width: 233px;
 padding: 20px;
 padding-top:10px;
 margin: 10px;
-background: #111;
+background: #f1f1f1;
 font-size: 12px;
 }
 
-div#annonce3, div#info3, div#step3, div#aide3 {
+div#annonce3 {
 float: left;
-width: 26%;
+width: 233px;
 padding: 20px;
 padding-top:10px;
 margin: 10px;
-background: #111;
+background: #f1f1f1;
 font-size: 12px;
 }
 
 div#annonce4 {
 float: left;
-width: 26%;
+width: 819px;
 padding: 20px;
-padding-top:10px;
 margin: 10px;
-background: #111;
+background: #f1f1f1;
 font-size: 12px;
 }
 
 div#annonce5 {
 float: left;
-width: 26%;
+width: 233px;
 padding: 20px;
 padding-top:10px;
 margin: 10px;
-background: #111;
+background: #f1f1f1;
 font-size: 12px;
 }
 
 div#annonce6 {
 float: left;
-width: 26%;
+width: 233px;
 padding: 20px;
 padding-top:10px;
 margin: 10px;
-background: #111;
+background: #f1f1f1;
 font-size: 12px;
 }
 
 div#annonce7 {
 float: left;
-width: 92%;
+width: 233px;
 padding: 20px;
+padding-top:10px;
 margin: 10px;
-background: #000;
+background: #f1f1f1;
 font-size: 12px;
 }
 
 div#annonce10 {
 float: left;
-width: 92%;
 padding: 20px;
 margin: 10px;
-background: #000;
+background: #f5f5f5;
 font-size: 12px;
+width: 819px;
+}
+
+div.team {
+margin-top: 10px;
+text-align: center;
 }
 
 div.inner { margin: 0; background: #ffc; padding: 10px; border:0; } /* zoom:1; */
 div.outer { float: left; margin: 15px; background: #c82; padding: 8px; width: 22em }
 div.fun   { margin: 2px; }
+
+div#ContentHeaderLeft {
+margin: 10px;
+width: 273px;
+background-color: transparent;
+float: left;
+}
+
+div#ContentHeaderCenter {
+margin: 10px;
+width: 272px;
+background-color: transparent;
+float: left;
+font-weight: bold;
+margin-top:25px;
+}
+
+div#ContentHeaderRight {
+margin: 10px;
+width: 275px;
+background-color: transparent;
+float: left;
+text-align:right;
+}
 
 #abs { position: absolute; width: 200px; background: #ffa; padding: 5px; margin: 8px; top: 0; right: 0; text-align: center }
  

@@ -107,8 +107,9 @@ margin: 0;
 }
 #mega-menu-1 li .sub-container.non-mega li a {
 padding: 7px 5px 7px 22px;
+font-weight: bold; 
 }
 #mega-menu-1 li .sub-container.non-mega li a:hover {
-color: #a32403; 
+color: #3688b8; 
 background: #111;
 }

@@ -1,10 +1,17 @@
-    
-<div class="section">
-  <div id="annonce5"><h3>Annonce 05</h3> <p><? echo $webui_slideshow_comment01; ?></p></div>
-  <div id="annonce6"><h3>Annonce 06</h3> <p><? echo $webui_slideshow_comment01; ?></p></div>
-  <div id="annonce7"><h3>Annonce 07</h3> <p><? echo $webui_slideshow_comment01; ?></p></div>
+<div id="annonce1">
+  <h3><p><? echo $webui_help_title_comment01; ?></p></h3> 
+  <p><? echo $webui_help_comment01; ?></p>
 </div>
-
+  
+<div id="annonce2"><h3>
+  <p><? echo $webui_help_title_comment02; ?></p></h3>
+  <p><? echo $webui_help_comment02; ?></p>
+</div>
+  
+<div id="annonce3"><h3>
+  <p><? echo $webui_help_title_comment03; ?></p></h3>
+   <p><? echo $webui_help_comment03; ?></p>
+</div>
 
 
 

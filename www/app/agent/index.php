@@ -35,8 +35,8 @@ if ($_GET[name]) {
 </head>
 
 <body class="webui">
-
-<div id="content">
+<div id="container_popup">
+<div id="content_popup">
   <h2><?= SYSNAME ?>: <? echo $webui_users_profile; ?> <? echo $userName ?></h2>
   
   <div id="useragentprofil">
@@ -94,6 +94,6 @@ if ($_GET[name]) {
           <img src="<? echo $profileLink ?>" alt="<? echo $userName ?>" title="<? echo $userName ?>" />
       </div>
   </div>
-</div>
+</div>  </div>
 </body>
 </html>

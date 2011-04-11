@@ -89,60 +89,68 @@ while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="<?= SYSURL ?><? echo $template_css ?>" type="text/css" />
-        <link rel="icon" href="<?= SYSURL ?><?= $favicon_image ?>" />
-        <title><?= SYSNAME ?>: <? echo $webui_region_information; ?></title>
-    </head>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="<?= SYSURL ?><? echo $template_css ?>" type="text/css" />
+  <link rel="icon" href="<?= SYSURL ?><?= $favicon_image ?>" />
+  <title><?= SYSNAME ?>: <? echo $webui_region_information; ?></title>
+</head>
 
-    <body class="webui">
+<body class="webui">
+<div id="container_popup">
+<div id="content_popup">
+  <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?></h2>
+  
+  <div id="regioninfo">
+  <!--  <div id="info"><p><? // echo $webui_regioninfo ?></p></div> -->
+  <!--  <h2><? // echo $webui_region_information; ?>:</h2> -->
 
-        <div id="content">
-            <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?></h2>
+    <hr>
+    <div id="regionMap">
+      <table cellpadding="0" cellspacing="4">
+        <tr>
+          <td <?php echo ($RegionName1 ? ">" . $RegionName1 : "class='nosim'>") ?></td>
+          <td <?php echo ($RegionName2 ? ">" . $RegionName2 : "class='nosim'>") ?></td>
+          <td <?php echo ($RegionName3 ? ">" . $RegionName3 : "class='nosim'>") ?></td>
+        </tr>
+      
+        <tr>
+          <td <?php echo ($RegionName4 ? ">" . $RegionName4 : "class='nosim'>") ?></td>
+          <td class='thissim'><?= $RegionName ?></td>
+          <td <?php echo ($RegionName6 ? ">" . $RegionName6 : "class='nosim'>") ?></td>
+        </tr>
+      
+        <tr>
+          <td <?php echo ($RegionName7 ? ">" . $RegionName7 : "class='nosim'>") ?></td>
+          <td <?php echo ($RegionName8 ? ">" . $RegionName8 : "class='nosim'>") ?></td>
+          <td <?php echo ($RegionName9 ? ">" . $RegionName9 : "class='nosim'>") ?></td>
+        </tr>
+      </table>
+    </div>
 
-            <div id="regioninfo">
-                  <!--  <div id="info"><p><? echo $webui_regioninfo ?></p></div> -->
-                  <!--  <h2><? echo $webui_region_information; ?>:</h2> -->
-                <hr>
+    <div id="region_picture">
+      <img src="<? echo $source; ?>" alt="<?= $RegionName ?>" title="<?= $RegionName ?>" />
+    </div>
 
-                    <div id="regionMap">
-                        <table cellpadding="0" cellspacing="4">
-                            <tr>
-                                <td <?php echo ($RegionName1 ? ">" . $RegionName1 : "class='nosim'>") ?></td>
-                                <td <?php echo ($RegionName2 ? ">" . $RegionName2 : "class='nosim'>") ?></td>
-                                <td <?php echo ($RegionName3 ? ">" . $RegionName3 : "class='nosim'>") ?></td>
-                            </tr>
-                            <tr>
-                                <td <?php echo ($RegionName4 ? ">" . $RegionName4 : "class='nosim'>") ?></td>
-                                <td class='thissim'><?= $RegionName ?></td>
-                                <td <?php echo ($RegionName6 ? ">" . $RegionName6 : "class='nosim'>") ?></td>
-                            </tr>
-                            <tr>
-                                <td <?php echo ($RegionName7 ? ">" . $RegionName7 : "class='nosim'>") ?></td>
-                                <td <?php echo ($RegionName8 ? ">" . $RegionName8 : "class='nosim'>") ?></td>
-                                <td <?php echo ($RegionName9 ? ">" . $RegionName9 : "class='nosim'>") ?></td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div id="region_picture">
-                        <img src="<? echo $source; ?>" alt="<?= $RegionName ?>" title="<?= $RegionName ?>" />
-                    </div>
-
-                    <div id="regiondetails">
-                        <table>
-                            <tr>
-                                <td><? echo $webui_region_name; ?>: <?= $RegionName ?></td>
-                            </tr>
-                            <tr>
-                                <td><? echo $webui_region_type; ?>: <?= $regionType ?></td>
-                            </tr>
-                            <tr>
-                                <td><? echo $webui_location; ?> X: <?= $locX ?> Y: <?= $locY ?></td>
-                            </tr>
-                            <tr>
-                                <td><? echo $webui_owner; ?>: <a href="<?= SYSURL ?>app/agent/?name=<?= $firstN ?> <?= $lastN ?>"><?= $firstN ?> <?= $lastN ?></a></td>
-                            </tr>
-                        </table>
-                    </div>
+    <div id="regiondetails">
+      <table>
+        <tr>
+          <td><? echo $webui_region_name; ?>: <?= $RegionName ?></td>
+        </tr>
+      
+        <tr>
+          <td><? echo $webui_region_type; ?>: <?= $regionType ?></td>
+        </tr>
+      
+        <tr>
+          <td><? echo $webui_location; ?> X: <?= $locX ?> Y: <?= $locY ?></td>
+        </tr>
+      
+        <tr>
+          <td><? echo $webui_owner; ?>: <a href="<?= SYSURL ?>app/agent/?name=<?= $firstN ?> <?= $lastN ?>"><?= $firstN ?> <?= $lastN ?></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

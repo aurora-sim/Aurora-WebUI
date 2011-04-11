@@ -67,7 +67,7 @@ $showSpecialReport = true;
 
 ################### Main Site #######################
 // Should we show any scrolling text at the top of the page?
-// $showScrollingText = true;
+// $displayScrollingText = true;
 // What message should be displayed in the scrolling text?
 $scrollingTextMessage = "Welcome!         Bienvenue!          Hola!";
 // Should we show the welcome message at the top of the page?
@@ -91,7 +91,13 @@ $support_emails_subject="WebUI Support:";
 
 ################### GridMap Settings  #####################
 // Allowing Zoom on your Map
-$ALLOW_ZOOM=TRUE;
+$ALLOW_ZOOM = true;
+
+// Zoom Level
+// (1 => 4, 2 => 8, 3 => 16, 4 => 32, 5 => 64, 6 => 128, 7 => 256, 8 => 512
+$zoomLevel = 5;
+$zoomSize = 64;
+$antiZoomSize = 64;
 
 // Default StartPoint for Map
 $mapstartX=1000;
@@ -99,7 +105,7 @@ $mapstartY=1000;
 
 // Direction where Info Image has to stay 
 // ex.: dr = down right ; dl =down left ; tr = top right ; tl = top left ; c = center
-$display_marker="tl";
+$display_marker="tr";
 
 ####################### Templates ##########################
 // Current templates are 'default', 'white' and 'astra'
@@ -156,6 +162,7 @@ $BackgroundColorHoverStep10 = "#111";
 $BackgroundColorEndStep10 = "#000";
 
 #################### Languages ########################
+// TODO $displayLanguageSelector = true;
 $languages=array("en" => "English",
     "fr" => "French",
     "de" => "German",
@@ -212,4 +219,5 @@ define("C_USERS_RL_TBL", "useraccounts_rl");
 // Options
 define("C_ADMINMODULES_TBL", "wi_adminmodules");
 define("C_ADMINOPTIONS_TBL", "wi_adminoptions");
+define("C_ADMINBGCOLORANIM_TBL", "wi_adminbgcoloranim");
 ?>

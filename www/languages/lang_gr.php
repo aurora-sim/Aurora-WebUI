@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $webui_language_code='gr';
 $webui_actual_language='Greek';
 
@@ -114,20 +114,16 @@ $webui_welcome = 'Καλώς ήλθατε στο';
 $webui_welcome_visitor = 'Γεια σου επισκέπτη!';
 $webui_welcome_back = 'Welcome back';
 $webui_welcome_userid = 'Γεια ταυτότητας χρήστη!';
-$webui_home_page='
-    <p>
+$webui_home_page='<p>
         Αυτό είναι το νέο μας Virtual World, όπου μπορείτε να διασκεδάσετε, να πληρούν τους ανθρώπους, chat, να παίξετε, να εξερευνήσουν, να δημιουργήσουν και να μοιραστούν τα όνειρά σας. <br />
         Όλα είναι πιθανά σε νέα μας 3D World. <br />
         Ο κόσμος μας έχει δημιουργηθεί από τους κατοίκους της, μπορείτε να δημιουργήσετε ό, τι μπορείτε να φανταστείτε εδώ. <br /><br />
         Δημιουργήστε έναν δωρεάν λογαριασμό σήμερα, να χτίσουν μια εικονική σας και να παίξετε στον κόσμο μας. <br />
         Ελάτε μαζί μας τώρα, και να κάνει τη διαφορά! <br /><br /><br />
-        <u>Υπάρχουν μόνο 3 βήματα για να ξεκινήσετε:</u> <br /><br />
-        1.) Δημιουργία δωρεάν λογαριασμού σας εδώ στις σελίδες μας. <br /><br />
-        2.) Κατεβάστε το θεατή. Συστήνουμε <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua </a> <br /><br />
-        3.) Να είστε βέβαιος να προσθέσει στο δίκτυο μας να θεατή σας. <br /><br /><br />
-        <i>Παρακαλούμε να λάβετε υπόψη σας ότι η πλατφόρμα Aurora είναι ακόμα σε έκδοση alpha και έτσι δεν μπορεί πάντα να λειτουργούν όπως αναμένεται.</i>
     </p>';
-     
+
+$webui_home_page_warning = 'Παρακαλούμε να λάβετε υπόψη σας ότι η πλατφόρμα Aurora είναι ακόμα σε έκδοση alpha και έτσι δεν μπορεί πάντα να λειτουργούν όπως αναμένεται.';
+	
 //
 // 404 page
 //
@@ -415,6 +411,26 @@ $webui_support_info = 'This allows you to Support';
 $webui_help = 'Help';
 $webui_help_info = 'This allows you to Help';
 
+$webui_help_step1_title = 'Step 1';
+$webui_help_step2_title = 'Step  2';
+$webui_help_step3_title = 'Step  3';
+$webui_help_step1 = 'Δημιουργία δωρεάν λογαριασμού σας εδώ στις σελίδες μας.';
+$webui_help_step2 = 'Κατεβάστε το θεατή. Συστήνουμε <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a>.';
+$webui_help_step3 = 'Να είστε βέβαιος να προσθέσει στο δίκτυο μας να θεατή σας.';
+		
+$webui_help_title_comment01 = 'Help 1';
+$webui_help_title_comment02 = 'Help 02';
+$webui_help_title_comment03 = 'Help 03';
+$webui_help_title_comment04 = 'Help 04';
+$webui_help_title_comment05 = 'Help 05';
+$webui_help_title_comment06 = 'Help 06';
+$webui_help_comment01 = 'Help about le Viewer.';
+$webui_help_comment02 = 'Help about le Server.';
+$webui_help_comment03 = 'Help about ...';
+$webui_help_comment04 = 'Help about ...';
+$webui_help_comment05 = 'Help about ...';
+$webui_help_comment06 = 'Help about ...';
+
 //
 // Chat Page
 //
@@ -443,9 +459,32 @@ $webui_pagination_tooltips_sortn = 'Sort by Grid Y';
 //
 // SlideShow Comments
 //
-$webui_slideshow_comment01 = 'Little comment 01.';
-$webui_slideshow_comment02 = 'Little comment 02.';
-$webui_slideshow_comment03 = 'Little comment 03.';
-$webui_slideshow_comment04 = 'Little comment 04.';
-$webui_slideshow_comment05 = 'Little comment 05.';
+$webui_slideshow_title_comment01 = 'Aide 01';
+$webui_slideshow_title_comment02 = 'Aide 02';
+$webui_slideshow_title_comment03 = 'Aide 03';
+$webui_slideshow_title_comment04 = 'Aide 04';
+$webui_slideshow_title_comment05 = 'Aide 05';
+$webui_slideshow_title_comment06 = 'Aide 06';
+$webui_slideshow_comment01 = 'Aide concernant le Viewer.';
+$webui_slideshow_comment02 = 'Aide Concernant le Server.';
+$webui_slideshow_comment03 = 'Aide concernant autre chose.';
+$webui_slideshow_comment04 = 'Aide concernant 04.';
+$webui_slideshow_comment05 = 'Aide concernant 05.';
+$webui_slideshow_comment06 = 'Aide concernant 06.';
+
+//
+// Infos Comments
+//
+$webui_infos_comment01_title = 'Info 1';
+$webui_infos_comment02_title = 'Info 2';
+$webui_infos_comment03_title = 'Info 3';
+$webui_infos_comment04_title = 'Info 4';
+$webui_infos_comment05_title = 'Info 5';
+$webui_infos_comment06_title = 'Info 6';
+$webui_infos_comment01 = 'Info concernant ...';
+$webui_infos_comment02 = 'Info concernant ...';
+$webui_infos_comment03 = 'Info concernant ...';
+$webui_infos_comment04 = 'Info concernant ...';
+$webui_infos_comment05 = 'Info concernant ...';
+$webui_infos_comment06 = 'Info concernant ...';
 ?>

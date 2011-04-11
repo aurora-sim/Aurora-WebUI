@@ -23,6 +23,8 @@ session_start();
  *
  */
 
+include("settings/configperso.php");
+
 include("settings/config.php");
 include("settings/json.php");
 include("settings/mysql.php");
@@ -261,6 +263,9 @@ $(function(){Header.addFade("#headerimages");});
 // http://jquery.malsup.com/corner/
 // Add more class here ...
     $('#annonce1, #annonce2, #annonce3, #annonce4, #annonce5, #annonce6, #annonce7, #annonce10').corner();
+    $('#info1, #info2, #info3, #info4, #info5, #info6, #info7, #info10').corner();
+    $('#aide1, #aide2, #aide3, #aide4, #aide5, #aide6, #aide7, #aide10').corner();
+    $('#step1, #step2, #step3').corner();
     
     $('#ContentHeaderLeft, #ContentHeaderCenter, #ContentHeaderRight').corner("5px");
     $(function(){
@@ -270,7 +275,6 @@ $(function(){Header.addFade("#headerimages");});
 		$('#dynUncorner').click(function() {
 			$('#dynamic').uncorner();
 		});
-	
         $('div.inner').wrap('<div class="outer"></div>');
         $('pre').wrap("<code></code>");
  
@@ -344,14 +348,81 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep10 ?>'}, 800);
   });
+
+
+  $("#step1").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
+  });
+                
+	$("#step2").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
+  });
+
+	$("#step3").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
+  });
+   
+
+  $("#info1").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
+  });
+                
+	$("#info2").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
+  });
+
+	$("#info3").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
+  });
+                
+	$("#aide1").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep4 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep4 ?>'}, 800);
+  });
+
+	$("#aide2").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep5 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep5 ?>'}, 800);
+  });
+
+	$("#aide3").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep6 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep6 ?>'}, 800);
+  });
+
 }); 
 </script>
 <?php } ?>
 
+<script src="javascripts/jquery/jquery.cookie.js" type="text/javascript"></script>
+<script src="javascripts/jquery/jquery.fontscale.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+	$("#up").fontscale("p","up",{unit:"px",increment:1});
+	$("#down").fontscale("p","down",{unit:"px",increment:1});
+	$("#reset").fontscale("p","reset");
+});
+</script>
+			
 </head>
     
 <body class="webui">
-  
+
 <div class="absolute">
   <!-- Top Panel Slider -->
   <? if($displayTopPanelSlider) {include("sites/modules/slidepanel.php");} ?>
@@ -405,8 +476,6 @@ $(document).ready(function(){
   </div>
 <?php } ?>
 
-</div>
-
 <div id="container">
     <div id="header">
         <div id="headerimages">
@@ -426,6 +495,11 @@ $(document).ready(function(){
     </div><!-- fin de #mainContent -->
 </div><!-- fin de #container -->
 
+<div id="footer">
+<?php include("sites/footer.php"); ?> 
+</div><!-- fin de #footer -->
+
+<div class="pagemloadtime">
 <?php
 // Page Load Time 
 $time = microtime(); 
@@ -434,13 +508,12 @@ $time = $time[1] + $time[0];
 $finish = $time; 
 $totaltime = ($finish - $start);
 if($displayPageLoadTime) {
-  printf ("<br /><font color=#555555 size=1> This page took %f seconds to load.</font><br />", $totaltime);
+  printf ('This page took %f seconds to load.', $totaltime);
 } 
 ?>
+</div>
 
-<div id="footer">
-    <?php include("sites/footer.php"); ?>
-</div><!-- fin de #footer -->
 
+</div>
 </body>
 </html>

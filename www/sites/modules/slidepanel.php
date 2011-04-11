@@ -2,10 +2,7 @@
 <div id="switchers">
 <table id="options">
   <tr>
-
-<? if($displayTemplateSelector) { ?>
-
-
+    <? if($displayTemplateSelector) { ?>
     <td>Templates : </td>
     <td>
       <form method="post" action="">
@@ -19,7 +16,7 @@
       </form>
     </td> <? } ?>
 
-<? if($displayStyleSwitcher) { ?>
+    <? if($displayStyleSwitcher) { ?>
     <td>Styles : </td>
     <td>
       <a href="<?php echo $actuel; ?>?style=style1">
@@ -37,22 +34,61 @@
       </a>
     </td> <? } ?>
 
-<? if($displayStyleSizer) { ?>   
+    <? if($displayStyleSizer) { ?>   
     <td>Size : </td>
-    <td><a href="templates/default/resizesite.php?s=small">S</a></td>
-    <td><a href="templates/default/resizesite.php?s=medium">M</a></td>
-    <td><a href="templates/default/resizesite.php?s=large">L</a></td>
+    <td><button id="s">S</button></td>
+    <td><button id="m">M</button></td>
+    <td><button id="l">L</button></td>
     <? } ?>
 
-<? if($displayFontSizer) { ?>   
-    <td>Font : </td>
-    <td><a href="templates/default/resizefont.php?f=font12">S</a></td>
-    <td><a href="templates/default/resizefont.php?f=font14">M</a></td>
-    <td><a href="templates/default/resizefont.php?f=font18">L</a></td>
+    <script>
+      $("#s").click(function(){
+        $("#topcontainer").animate({ 
+        width: "870px"}, 500 ); 
+        $("#container").animate({ 
+        width: "850px"}, 500 );
+        $("#content").animate({ 
+        width: "830px"}, 500 ); 
+      });
+       
+      $("#m").click(function(){
+        $("#topcontainer").animate({ 
+        width: "920px"}, 500 ); 
+        $("#container").animate({ 
+        width: "900px"}, 500 );
+        $("#content").animate({ 
+        width: "880px"}, 500 ); 
+      });
+
+      $("#l").click(function(){
+        $("#topcontainer").animate({ 
+        width: "970px"}, 500 ); 
+        $("#container").animate({ 
+        width: "950px"}, 500 );
+        $("#content").animate({ 
+        width: "930px"}, 500 ); 
+      }); 
+    </script>
+    
+    <? if($displayFontSizer) { ?>   
+    <td>Font : </td>   
+    <td><button id="down">-</button></td>
+    <td><button id="reset">R</button></td>
+    <td><button id="up">+</button></td>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+	$("#up").fontscale("p","up",{unit:"px",increment:1});
+	$("#down").fontscale("p","down",{unit:"px",increment:1});
+	$("#reset").fontscale("p","reset");
+});
+</script>
+
     <? } ?>
+
   </tr>
 </table>
 </div>
 </div>
 
-<p class="slide"><a href="#" class="btn-slide">Options</a></p>
+<div class="slide"><a href="#" class="btn-slide">Options</a></div>

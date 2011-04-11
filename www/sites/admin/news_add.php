@@ -34,7 +34,7 @@ window.location.href=\"index.php?page=news\";
     <div id="ContentHeaderRight"><h5><? echo $webui_admin_create_news; ?></h5></div>
 
     <div id="createnews">
-    <!-- <div id="info"><p><? echo $webui_admin_create_news_info ?></p></div> -->
+    <!-- <div id="info"><p><? // echo $webui_admin_create_news_info ?></p></div> -->
         
     <?
     $DbLink = new DB;
@@ -61,7 +61,7 @@ window.location.href=\"index.php?page=news\";
             <? echo $webui_admin_news_title; ?>:
           </td>
           <td>
-            <input name="title" value="<?=$title?>" size="136" type="text" maxlength="255" />
+            <input name="title" value="<?=$title?>" size="135" type="text" maxlength="255" />
           </td>
         </tr>
       </table>
