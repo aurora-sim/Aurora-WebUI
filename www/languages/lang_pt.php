@@ -94,9 +94,11 @@ $webui_menu_item_changeaccount = 'Editar Conta';
 $webui_menu_item_news = 'Noticias';
 $webui_menu_item_regions = 'Lista de Regi&otilde;es';
 $webui_menu_item_worldmap = 'Mapa';
+$webui_menu_item_quickmap = 'QuickMap';
 $webui_menu_item_register = 'Registar';
 $webui_menu_item_logout = 'Logout';
 $webui_menu_item_login = 'Login';
+$webui_menu_item_forgotpass = 'Forgotten Password?';
 $webui_menu_item_onlineusers = 'Utilizadores Ligados';
 $webui_menu_item_peoplesearch = 'Busca de Pessoas';
 $webui_menu_item_users = 'Users';
@@ -114,13 +116,12 @@ $webui_welcome='Bem Vindo to';
 $webui_welcome_visitor='Visitor';
 $webui_welcome_back = 'Welcome back';
 $webui_welcome_userid='Hi Userid!';
-$webui_home_page='<p>
-        Este &eacute; o nosso novo Mundo Virtual onde se pode divertir, conhecer pessoas, jogar, explorar, criar e partilhar sonhos.<br />
-      	Tudo &eacute possivel neste novo Mundo 3D onde tudo &eacute construido pelos seus Residentes.<br>
-    	O limite &eacute; a sua Imagina&ccedil;&atilde;o.<br /><br /><br />    	  
-  	    Abra uma nova conta hoje, construa um Avatar e venha residir no nosso Mundo.
-        Venha fazer a diferenca!<br /><br /><br />
-    </p>';
+$webui_home_page='
+        <p>Este &eacute; o nosso novo Mundo Virtual onde se pode divertir, conhecer pessoas, jogar, explorar, criar e partilhar sonhos.</p>
+      	<p>Tudo &eacute possivel neste novo Mundo 3D onde tudo &eacute construido pelos seus Residentes.</p>
+    	<p>O limite &eacute; a sua Imagina&ccedil;&atilde;o.</p>   	  
+  	    <p>Abra uma nova conta hoje, construa um Avatar e venha residir no nosso Mundo.</p>
+        <p>Venha fazer a diferenca!</p>';
 
 $webui_home_page_warning = 'Por favor entenda que a plataforma Aurora est&aacute; ainda em fase de desenvolvimento, podendo por isso ocasionalmente n&atilde;o funcionar da forma desejada.';
 
@@ -416,7 +417,7 @@ $webui_help_step2_title = 'Step  2';
 $webui_help_step3_title = 'Step  3';
 $webui_help_step1 = 'Criar uma Conta gratuita aqui nas nossas paginas.';
 $webui_help_step2 = 'Obter um programa de Visualizacao. Recomendamos o <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a>.';
-$webui_help_step3 = 'BAdicione os dados da nossa rede a esse programa.';
+$webui_help_step3 = 'Badicione os dados da nossa rede a esse programa.';
 
 $webui_help_title_comment01 = 'Help 1';
 $webui_help_title_comment02 = 'Help 02';

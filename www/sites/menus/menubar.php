@@ -1,4 +1,4 @@
-?php
+<?php
 /*
  * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
@@ -64,65 +64,6 @@
  }
  
 ?>
-
-
-
-
-
-<link href="<?= SYSURL ?>sites/menus/css/defaultmegamenu.css" rel="stylesheet" type="text/css" />
-
-<script type='text/javascript' src='<?= SYSURL ?>sites/menus/js/jquery.hoverIntent.minified.js'></script>
-<script type='text/javascript' src='<?= SYSURL ?>sites/menus/js/jquery.dcmegamenu.1.2.js'></script>
-
-<script type="text/javascript">
-$(document).ready(function($){
-	$('#mega-menu-1').dcMegaMenu({
-		rowItems: '3',
-		speed: 'fast',
-		effect: 'fade'
-	});
-	$('#mega-menu-2').dcMegaMenu({
-		rowItems: '1',
-		speed: 'fast',
-		effect: 'fade'
-	});
-	$('#mega-menu-3').dcMegaMenu({
-		rowItems: '2',
-		speed: 'fast',
-		effect: 'fade'
-	});
-	$('#mega-menu-4').dcMegaMenu({
-		rowItems: '3',
-		speed: 'fast',
-		effect: 'fade'
-	});
-	$('#mega-menu-5').dcMegaMenu({
-		rowItems: '4',
-		speed: 'fast',
-		effect: 'fade'
-	});
-	$('#mega-menu-6').dcMegaMenu({
-		rowItems: '3',
-		speed: 'slow',
-		effect: 'slide'
-	});
-	$('#mega-menu-7').dcMegaMenu({
-		rowItems: '3',
-		speed: 'fast',
-		effect: 'slide'
-	});
-	$('#mega-menu-8').dcMegaMenu({
-		rowItems: '3',
-		speed: 'fast',
-		effect: 'fade'
-	});
-	$('#mega-menu-9').dcMegaMenu({
-		rowItems: '3',
-		speed: 'fast',
-		effect: 'fade'
-	});
-});
-</script>
 
 <div id="menu">
     <ul class="menu">

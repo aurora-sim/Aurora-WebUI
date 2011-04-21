@@ -1,9 +1,0 @@
-/* site size */
-div#sizing {
-  width: 950px;
-  position:relative;
-  margin: 0 auto;
-}
-
-#menu {width: 930px;}
-#menu li {width: 220px;}

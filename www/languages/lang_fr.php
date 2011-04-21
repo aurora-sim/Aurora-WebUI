@@ -95,9 +95,11 @@ $webui_menu_item_changeaccount = 'Modifier';
 $webui_menu_item_news = 'Nouveautés';
 $webui_menu_item_regions = 'Régions';
 $webui_menu_item_worldmap = 'Carte';
+$webui_menu_item_quickmap = 'QuickMap';
 $webui_menu_item_register = 'Inscription';
 $webui_menu_item_logout = 'Quitter';
 $webui_menu_item_login = 'Connection';
+$webui_menu_item_forgotpass = 'Mot de passe oublié?';
 $webui_menu_item_onlineusers = 'Utilisateurs';
 $webui_menu_item_peoplesearch = 'Rechercher';
 $webui_menu_item_users = 'Utilisateurs';
@@ -120,7 +122,7 @@ $webui_home_page='
     <p>Tout est possible dans notre tout nouveau monde 3D.</p>
     <p>Notre monde est créé par ses résidents, vous pouvez y construire tout ce que vous pouvez imaginer.</p>
     <p><a href="index.php?page=register&btn=webui_menu_item_register">Créer un compte</a> gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde.</p>
-    <p>Rejoignez-nous maintenant, et faites la différence!s</p>';
+    <p>Rejoignez-nous maintenant, et faites la différence!</p>';
 
 $webui_home_page_warning = 'S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.';
 
@@ -415,8 +417,8 @@ $webui_help_step1_title = 'Etape 1';
 $webui_help_step2_title = 'Etape 2';
 $webui_help_step3_title = 'Etape 3';
 $webui_help_step1 = '<a href="index.php?page=register&btn=webui_menu_item_register">Créez votre compte</a> gratuit sur notre site dés aujourd\'hui!';
-$webui_help_step2 = 'Télécharger le spectateur <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a>.';
-$webui_help_step3 = 'N\'oubliez pas d\'ajouter notre grille à votre spectateur';
+$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Télécharger le Chat</a> (Client) Imprudence / Kokua.';
+$webui_help_step3 = '<a href="index.php?page=help&btn=webui_menu_item_help">Ajouter notre grille</a> à votre Chat (Client) préféré.';
 
 $webui_help_title_comment01 = 'Aide 01';
 $webui_help_title_comment02 = 'Aide 02';
@@ -488,4 +490,9 @@ $webui_infos_comment04 = 'Info concernant ...';
 $webui_infos_comment05 = 'Info concernant ...';
 $webui_infos_comment06 = 'Info concernant ...';
 
+//
+// Page Load Time
+//
+$this_page_took = 'Cette page a pris';
+$seconds_to_load = 'secondes pour charger';
 ?>

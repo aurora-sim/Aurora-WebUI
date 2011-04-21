@@ -46,7 +46,7 @@ In the 'UserFlags' column, add '2048' to the number already there.
 
 The user will now be able to use the Admin Panel as given above
 
-Enjoy Aurora WiRedux
+Enjoy Aurora WebUI
 
 -----------------------------------------------------------------
 

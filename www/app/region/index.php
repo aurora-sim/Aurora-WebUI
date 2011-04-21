@@ -85,6 +85,48 @@ while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
     }
     ${"RegionName" . $regN} = "<a href='?x=" . $locX1 . "&y=" . $locY1 . "'>" . $RegionNameX . "</a>";
 }
+
+  $DbLink->query("SELECT id,
+                         displayTopPanelSlider, 
+                         displayTemplateSelector,
+                         displayStyleSwitcher,
+                         displayStyleSizer,
+                         displayFontSizer,
+                         displayLanguageSelector,
+                         displayScrollingText,
+                         displayWelcomeMessage,
+                         displayLogo,
+                         displayLogoEffect,
+                         displaySlideShow,
+                         displayMegaMenu,
+                         displayDate,
+                         displayTime,
+                         displayRoundedCorner,
+                         displayBackgroundColorAnimation,
+                         displayPageLoadTime,
+                         displayW3c,
+                         displayRss FROM ".C_ADMINMODULES_TBL." ");
+                     
+  list($id,
+       $displayTopPanelSlider,
+       $displayTemplateSelector, 
+       $displayStyleSwitcher,
+       $displayStyleSizer,
+       $displayFontSizer,
+       $displayLanguageSelector,
+       $displayScrollingText,
+       $displayWelcomeMessage,
+       $displayLogo,
+       $displayLogoEffect,
+       $displaySlideShow,
+       $displayMegaMenu,
+       $displayDate,
+       $displayTime,
+       $displayRoundedCorner,
+       $displayBackgroundColorAnimation,
+       $displayPageLoadTime,
+       $displayW3c,
+       $displayRss) = $DbLink->next_record();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -94,6 +136,17 @@ while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
   <link rel="stylesheet" href="<?= SYSURL ?><? echo $template_css ?>" type="text/css" />
   <link rel="icon" href="<?= SYSURL ?><?= $favicon_image ?>" />
   <title><?= SYSNAME ?>: <? echo $webui_region_information; ?></title>
+
+<?php if($displayRoundedCorner)  { ?>
+<script src="<?= SYSURL ?>javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
+<script type="text/javascript">
+	  $("#regionMap .nosim, #regionMap .thissim, #regionMap tr td").corner("10px");
+	  $("#region_picture").corner("15px");
+		$("#container_popup, #content_popup").corner();
+</script>
+<?php } ?>
+
 </head>
 
 <body class="webui">

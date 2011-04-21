@@ -96,9 +96,9 @@ if($_SESSION[ADMINID]) {
         ?>
 
 <div id="content">
-    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderLeft"><h5><p><?= SYSNAME ?></p></h5></div>
     <div id="ContentHeaderCenter"></div>
-    <div id="ContentHeaderRight"><h5><? echo $webui_admin_manage; ?></h5></div>
+    <div id="ContentHeaderRight"><h5><p><? echo $webui_admin_manage; ?></p></h5></div>
       
     <div id="managepanel">
 
@@ -117,7 +117,7 @@ if($_SESSION[ADMINID]) {
                     <table>
                         <tr>
                             <td>
-                        <font><b><?= $count ?> <? echo $webui_users_found ?></b></font>
+                        <font><p><?= $count ?> <? echo $webui_users_found ?></p></font>
                     </td>
 
                   <td>                   
@@ -127,29 +127,29 @@ if($_SESSION[ADMINID]) {
             <tr>
                 <td>
                     <a href="index.php?<?=$GoPage?>&<?=$Link1?><?=$Link2?>AStart=0&amp;ALimit=<?=$ALimit?>" target="_self">
-                        <IMG SRC=images/icons/icon_back_more_<? if(0 > ($AStart - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0">
+                        <img SRC=images/icons/icon_back_more_<? if(0 > ($AStart - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0">
                     </a>
                 </td>
                         
                 <td>
                     <a href="index.php?<?=$GoPage?>&<?=$Link1?><?=$Link2?>AStart=<? if(0 > ($AStart - $ALimit)) echo 0; else echo $AStart - $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self">
-                        <IMG SRC=images/icons/icon_back_one_<? if(0 > ($AStart - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0">
+                        <img SRC=images/icons/icon_back_one_<? if(0 > ($AStart - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0">
                     </a>
                 </td>
                         
                 <td>
-                    <? echo $webui_navigation_page; ?> <?=$LANG_ADMPAYMENT8?> <?= round($AStart / $ALimit ,0)+1; ?> <? echo $webui_navigation_of; ?> <?= @round($count / $ALimit,0); ?>
+                    <p><? echo $webui_navigation_page; ?> <?=$LANG_ADMPAYMENT8?> <?= round($AStart / $ALimit ,0)+1; ?> <? echo $webui_navigation_of; ?> <?= @round($count / $ALimit,0); ?></p>
                 </td>
                         
                 <td>
                     <a href="index.php?<?=$GoPage?>&<?=$Link1?><?=$Link2?>AStart=<? if($count <= ($AStart + $ALimit)) echo 0; else echo $AStart + $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self">
-                        <IMG SRC=images/icons/icon_forward_one_<? if($count <= ($AStart + $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0">
+                        <img SRC=images/icons/icon_forward_one_<? if($count <= ($AStart + $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0">
                     </a>
                 </td>
                         
                 <td>
                     <a href="index.php?<?=$GoPage?>&<?=$Link1?><?=$Link2?>AStart=<? if(0 > ($count - $ALimit)) echo 0; else echo $count - $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self">
-                        <IMG SRC=images/icons/icon_forward_more_<? if(0 > ($count - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0">
+                        <img SRC=images/icons/icon_forward_more_<? if(0 > ($count - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0">
                     </a>
                 </td>
                         
@@ -157,25 +157,25 @@ if($_SESSION[ADMINID]) {
                         
                 <td>
                     <a href="index.php?<?=$GoPage?>&<?=$Link1?><?=$Link2?>AStart=0&ALimit=10" target="_self">
-                        <IMG SRC=images/icons/<? if($ALimit != 10) echo icon_limit_10_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 10">
+                        <img SRC=images/icons/<? if($ALimit != 10) echo icon_limit_10_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 10">
                     </a>
                 </td>
                         
                 <td>
                     <a href="index.php?<?=$GoPage?>&<?=$Link1?><?=$Link2?>AStart=0&ALimit=25" target="_self">
-                        <IMG SRC=images/icons/<? if($ALimit != 25) echo icon_limit_25_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 25">
+                        <img SRC=images/icons/<? if($ALimit != 25) echo icon_limit_25_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 25">
                     </a>
                 </td>
                 
                 <td>
                     <a href="index.php?<?=$GoPage?>&<?=$Link1?><?=$Link2?>AStart=0&ALimit=50" target="_self">
-                        <IMG SRC=images/icons/<? if($ALimit != 50) echo icon_limit_50_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 50">
+                        <img SRC=images/icons/<? if($ALimit != 50) echo icon_limit_50_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 50">
                     </a>
                 </td>
                     
                 <td>
                     <a href="index.php?<?=$GoPage?>&<?=$Link1?><?=$Link2?>AStart=0&ALimit=100" target="_self">
-                        <IMG SRC=images/icons/<? if($ALimit != 100) echo icon_limit_100_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 100">
+                        <img SRC=images/icons/<? if($ALimit != 100) echo icon_limit_100_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 100">
                     </a>
                 </td>
                 <td></td>
@@ -198,7 +198,7 @@ if($_SESSION[ADMINID]) {
                 <div id="message">
                     <? echo $webui_admin_manage_username; ?>:
                     <input TYPE="TEXT" NAME="query" SIZE="50" value="<?=$_POST[query]?>">
-                    <input id="search_bouton" TYPE="Submit" value="<? echo $webui_people_search_bouton ?>">
+                    <button id="search_bouton" TYPE="Submit" value="<? echo $webui_people_search_bouton ?>"><? echo $webui_people_search_bouton ?></button>
                 </div>       
             </td>
         </tr>
@@ -211,12 +211,12 @@ if($_SESSION[ADMINID]) {
         <div>
               <table>
                   <tr>
-                  <td WIDTH=36></td>
-                  <td WIDTH=113 align="center"><b><? echo $webui_admin_manage_edit; ?></b></td>
-                  <td WIDTH=312 align="center"><b><? echo $webui_admin_manage_username; ?></b></td>
-                  <td width=220 align="center"><b><? echo $webui_admin_manage_created; ?></b></td>
-                  <td width=167 align="center"><b><? echo $webui_admin_manage_active; ?></b></td>
-                  <td WIDTH=47></td>
+                  <td width=36></td>
+                  <td width=113 align="center"><p><? echo $webui_admin_manage_edit; ?></p></td>
+                  <td width=312 align="center"><p><? echo $webui_admin_manage_username; ?></p></td>
+                  <td width=220 align="center"><p><? echo $webui_admin_manage_created; ?></p></td>
+                  <td width=167 align="center"><p><? echo $webui_admin_manage_active; ?></p></td>
+                  <td width=47></td>
                   </tr>
               </table>
                     

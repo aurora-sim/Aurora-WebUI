@@ -95,9 +95,11 @@ $webui_menu_item_changeaccount = 'Konto bearbeiten';
 $webui_menu_item_news = 'Nachrichten';
 $webui_menu_item_regions = 'Regionsliste';
 $webui_menu_item_worldmap = 'Karte';
+$webui_menu_item_quickmap = 'QuickMap';
 $webui_menu_item_register = 'Registrieren';
 $webui_menu_item_logout = 'Ausloggen';
 $webui_menu_item_login = 'Einloggen';
+$webui_menu_item_forgotpass = 'Forgotten Password?';
 $webui_menu_item_onlineusers = 'Nutzer online';
 $webui_menu_item_peoplesearch = 'Personensuche';
 $webui_menu_item_users = 'Users';
@@ -116,13 +118,11 @@ $webui_welcome_visitor='Visitor!';
 $webui_welcome_back = 'Welcome back';
 $webui_welcome_userid='Hi Userid!';
 $webui_home_page='
-    <p>
-        Dies ist unsere neue virtuelle Welt. Hier kann man Spass haben, Leute treffen, sich unterhalten, spielen, die Welt erkunden, etwas erschaffen und Tr&auml;ume teilen. </br>
-        Die M&ouml;glichkeiten sind grenzenlos in unserer brandneuen 3D Welt.<br />
-        Unsere Welt wird von den Residenten geschaffen, hier kannst Du bauen, was immer Deine Fantasie ist.<br /><br />
-        Melde Dich heute an, entwerfe Dein virtuelles Ich und spiele in unserer Welt.<br />
-        Schliesse Dich uns jetzt and bewege etwas!<br /><br /><br />
-    </p>';
+        <p>Dies ist unsere neue virtuelle Welt. Hier kann man Spass haben, Leute treffen, sich unterhalten, spielen, die Welt erkunden, etwas erschaffen und Tr&auml;ume teilen.</p>
+        <p>Die M&ouml;glichkeiten sind grenzenlos in unserer brandneuen 3D Welt.</p>
+        <p>Unsere Welt wird von den Residenten geschaffen, hier kannst Du bauen, was immer Deine Fantasie ist.</p>
+        <p>Melde Dich heute an, entwerfe Dein virtuelles Ich und spiele in unserer Welt.</p>
+        <p>Schliesse Dich uns jetzt and bewege etwas!</p>';
 
 $webui_home_page_warning = 'Bitte beachten: Die Aurora-Plattform ist noch in der Alpha-Phase und funktioniert vielleicht nicht immer wie erwartet.';
 
@@ -420,7 +420,7 @@ $webui_help_step3_title = 'Step  3';
 $webui_help_step1 = 'Ein KOSTENLOSES Konto hier auf unseren Seiten anlegen.';
 $webui_help_step2 = 'Den Viewer herunterladen. Wir empfehlen <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a>.';
 $webui_help_step3 = 'Pr&uuml;fen, ob unser Grid auf Deinem Viewer gelistet ist.';
-		
+
 $webui_help_title_comment01 = 'Help 1';
 $webui_help_title_comment02 = 'Help 02';
 $webui_help_title_comment03 = 'Help 03';

@@ -31,15 +31,15 @@ if($sitemax == 0){$sitemax=1;}
 ?>
 
 <div id="content">
-  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderLeft"><h5><p><?= SYSNAME ?></p></h5></div>
   <div id="ContentHeaderCenter"></div>
-  <div id="ContentHeaderRight"><h5><? echo $webui_region_list; ?></h5></div>
+  <div id="ContentHeaderRight"><h5><p><? echo $webui_region_list; ?></p></h5></div>
   <div id="regionlist">
 	<div id="info"><p><? echo $webui_region_list_page_info ?></p></div>
 	<table>
 		<tr>
 			<td>
-				<font><b><?=$count?> <? echo $webui_regions_found; ?></b></font>
+				<p><?=$count?> <? echo $webui_regions_found; ?><p>
 			</td>
 			<td>
 			<div id="region_navigation">
@@ -56,7 +56,7 @@ if($sitemax == 0){$sitemax=1;}
 							</a>
 						</td>
 						<td>
-						  	<? echo $webui_navigation_page; ?> <?=$sitestart ?> <? echo $webui_navigation_of; ?> <?=$sitemax ?>
+						  	<p><? echo $webui_navigation_page; ?> <?=$sitestart ?> <? echo $webui_navigation_of; ?> <?=$sitemax ?></p>
 						</td>
 						<td>
 							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if($count <= ($AStart + $ALimit)) echo 0; else echo $AStart + $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self" title="<? echo $webui_pagination_tooltips_forward_page; ?>">
@@ -99,16 +99,16 @@ if($sitemax == 0){$sitemax=1;}
 		<thead>
 			<tr>
 				<td width="55%">
-					<a href="index.php?page=regionlist&order=name" title="<? echo $webui_pagination_tooltips_sortn; ?>"><b><u><? echo $webui_region_name; ?></u></b></a>
+					<a href="index.php?page=regionlist&order=name" title="<? echo $webui_pagination_tooltips_sortn; ?>"><p><? echo $webui_region_name; ?></p></a>
 				</td>
 				<td width="15%">
-					<a href="index.php?page=regionlist&order=x" title="<? echo $webui_pagination_tooltips_sortx; ?>"><b><u><? echo $webui_location; ?>: X</u></b></a>
+					<a href="index.php?page=regionlist&order=x" title="<? echo $webui_pagination_tooltips_sortx; ?>"><p><? echo $webui_location; ?>: X</p></a>
 				</td>
 				<td width="15%">
-					<a href="index.php?page=regionlist&order=y" title="<? echo $webui_pagination_tooltips_sorty; ?>"><b><u><? echo $webui_location; ?>: Y</u></b></a>
+					<a href="index.php?page=regionlist&order=y" title="<? echo $webui_pagination_tooltips_sorty; ?>"><p><? echo $webui_location; ?>: Y</p></a>
 				</td>
 				<td width="15%">
-					<? echo $webui_info ?>
+					<p><? echo $webui_info ?></p>
 				</td>
 			</tr>
 		</thead>
@@ -125,18 +125,18 @@ if($sitemax == 0){$sitemax=1;}
 						?>
 							<tr class="<? echo ($odd = $w%2 )? "even":"odd" ?>" >
 								<td width="55%">
-									<div><b><?=$RegionName?></b></div>
+									<div><p><?=$RegionName?></p></div>
 								</td>
 								<td width="15%">
-									<div><b><?=$locX/256?></b></div>
+									<div><p><?=$locX/256?></p></div>
 								</td>
 								<td width="15%">
-									<div><b><?=$locY/256?></b></div>
+									<div><p><?=$locY/256?></p></div>
 								</td>
 								<td width="15%">
 									<div>
 										<a onClick="window.open('<?=SYSURL?>app/region/?x=<?=$locX?>&y=<?=$locY?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
-											<b><u><? echo $webui_more_info ?></u></b>
+											<p><? echo $webui_more_info ?></p>
 										</a>
 									</div>
 								</td>

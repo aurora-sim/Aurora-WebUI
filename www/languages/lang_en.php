@@ -94,9 +94,11 @@ $webui_menu_item_changeaccount = 'Edit';
 $webui_menu_item_news = 'News';
 $webui_menu_item_regions = 'Regions';
 $webui_menu_item_worldmap = 'Map';
+$webui_menu_item_quickmap = 'QuickMap';
 $webui_menu_item_register = 'Register';
 $webui_menu_item_logout = 'Logout';
 $webui_menu_item_login = 'Login';
+$webui_menu_item_forgotpass = 'Forgotten Password?';
 $webui_menu_item_onlineusers = 'Users';
 $webui_menu_item_peoplesearch = 'Search';
 $webui_menu_item_users = 'Users';
@@ -120,7 +122,7 @@ $webui_home_page='
 		<p>Everything is possible in our brand new 3D World.</p>
 		<p>Our World is created by its residents, you can build everything you can imagine here.</p>
 		<p><a href="index.php?page=register&btn=webui_menu_item_register">Create a free account today</a> build a virtual you and play in our world.</p>
-		<p>Join us now, and make a difference! !</p>';
+		<p>Join us now, and make a difference!</p>';
 
 $webui_home_page_warning = 'Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.';
 
@@ -291,72 +293,72 @@ $webui_admin_settings_no_select = 'No';
 //
 // Admin Styles Options Page
 //
-$webui_admin_options = 'Admin Modules and Options';
-$webui_admin_options_info = 'This allows you to activate/deactivate certain modules and options.';
-$webui_admin_options_TopPanelSlider = 'Activate the Top Panel Slider';
-$webui_admin_options_TopPanelSlider_active = 'Top Panel Slider activated';
-$webui_admin_options_TopPanelSlider_desactive = 'Top Panel Slider deactivated';
-$webui_admin_options_TemplateSelector = 'Activate the Template Selector';
-$webui_admin_options_TemplateSelector_active = 'Template Selector activated';
-$webui_admin_options_TemplateSelector_desactive = 'Template Selector deactivated';
-$webui_admin_options_StyleSwitcher = 'Activate the Style Switcher';
-$webui_admin_options_StyleSwitcher_active = 'Style Switcher activated';
-$webui_admin_options_StyleSwitcher_desactive = 'Style Switcher deactivated';
-$webui_admin_options_StyleSizer = 'Activate the Style Sizer';
-$webui_admin_options_StyleSizer_active = 'Style Sizer activated';
-$webui_admin_options_StyleSizer_desactive = 'Style Sizer deactivated';
-$webui_admin_options_FontSizer = 'Activate the Font Sizer';
-$webui_admin_options_FontSizer_active = 'Font Sizer activated';
-$webui_admin_options_FontSizer_desactive = 'Font Sizer deactivated';
-$webui_admin_options_LanguageSelector = 'Activate the Language Selector';
-$webui_admin_options_LanguageSelector_active = 'Language Selector activated';
-$webui_admin_options_LanguageSelector_desactive = 'Language Selector deactivated';
-$webui_admin_options_ScrollingText = 'Activate the Scrolling Text';
-$webui_admin_options_ScrollingText_active = 'Scrolling Text activated';
-$webui_admin_options_ScrollingText_desactive = 'Scrolling Text deactivated';
-$webui_admin_options_WelcomeMessage = 'Activate the Welcome Message';
-$webui_admin_options_WelcomeMessage_active = 'Welcome Message activated';
-$webui_admin_options_WelcomeMessage_desactive = 'Welcome Message deactivated';
-$webui_admin_options_MegaMenu = 'Activate the Mega Menu';
-$webui_admin_options_MegaMenu_active = 'Mega Menu activated';
-$webui_admin_options_MegaMenu_desactive = 'Mega Menu deactivated';
-$webui_admin_options_Logo = 'Activate the Logo';
-$webui_admin_options_Logo_active = 'Logo activated';
-$webui_admin_options_Logo_desactive = 'Logo deactivated';
-$webui_admin_options_LogoEffect = 'Activate the Logo Effect';
-$webui_admin_options_LogoEffect_active = 'Logo Effect activated';
-$webui_admin_options_LogoEffect_desactive = 'Logo Effect deactivated';
-$webui_admin_options_SlideShow = 'Activate the Slide Show';
-$webui_admin_options_SlideShow_active = 'Slide Show activated';
-$webui_admin_options_SlideShow_desactive = 'Slide Show deactivated';
-$webui_admin_options_Date = 'Activate the Date';
-$webui_admin_options_Date_active = 'Date activated';
-$webui_admin_options_Date_desactive = 'Date deactivated';
-$webui_admin_options_Time = 'Activate the Time';
-$webui_admin_options_Time_active = 'Time activated';
-$webui_admin_options_Time_desactive = 'Time deactivated';
-$webui_admin_options_RoundedCorner = 'Activate the Rounded Corner';
-$webui_admin_options_RoundedCorner_active = 'Rounded Corner activated';
-$webui_admin_options_RoundedCorner_desactive = 'Rounded Corner deactivated';
-$webui_admin_options_PageLoadTime = 'Activate the Page Load Time';
-$webui_admin_options_PageLoadTime_active = 'Page Load Time activated';
-$webui_admin_options_PageLoadTime_desactive = 'Page Load Time deactivated';
-$webui_admin_options_W3c = 'Activate the W3c';
-$webui_admin_options_W3c_active = 'W3c activated';
-$webui_admin_options_W3c_desactive = 'W3c deactivated';
-$webui_admin_options_Rss = 'Activate the Rss';
-$webui_admin_options_Rss_active = 'Rss activated';
-$webui_admin_options_Rss_desactive = 'Rss deactivted';
+$webui_admin_options = 'Admin Modules et Options';
+$webui_admin_options_info = 'Ceci vous permet d\'activer/désactiver les différents modules et leurs options.';
+$webui_admin_options_TopPanelSlider = 'Activer le Top Panel Slider';
+$webui_admin_options_TopPanelSlider_active = 'Top Panel Slider activé';
+$webui_admin_options_TopPanelSlider_desactive = 'Top Panel Slider désactivé';
+$webui_admin_options_TemplateSelector = 'Activer le Template Selector';
+$webui_admin_options_TemplateSelector_active = 'Template Selector activé';
+$webui_admin_options_TemplateSelector_desactive = 'Template Selector désactivé';
+$webui_admin_options_StyleSwitcher = 'Activer le Style Switcher';
+$webui_admin_options_StyleSwitcher_active = 'Style Switcher activé';
+$webui_admin_options_StyleSwitcher_desactive = 'Style Switcher désactivé';
+$webui_admin_options_StyleSizer = 'Activer le Style Sizer';
+$webui_admin_options_StyleSizer_active = 'Style Sizer activé';
+$webui_admin_options_StyleSizer_desactive = 'Style Sizer désactivé';
+$webui_admin_options_FontSizer = 'Activer le Font Sizer';
+$webui_admin_options_FontSizer_active = 'Font Sizer activé';
+$webui_admin_options_FontSizer_desactive = 'Font Sizer désactivé';
+$webui_admin_options_LanguageSelector = 'Activer le Language Selector';
+$webui_admin_options_LanguageSelector_active = 'Language Selector activé';
+$webui_admin_options_LanguageSelector_desactive = 'Language Selector désactivé';
+$webui_admin_options_ScrollingText = 'Activer le Scrolling Text';
+$webui_admin_options_ScrollingText_active = 'Scrolling Text activé';
+$webui_admin_options_ScrollingText_desactive = 'Scrolling Text désactivé';
+$webui_admin_options_WelcomeMessage = 'Activer le Welcome Message';
+$webui_admin_options_WelcomeMessage_active = 'Welcome Message activé';
+$webui_admin_options_WelcomeMessage_desactive = 'Welcome Message désactivé';
+$webui_admin_options_MegaMenu = 'Activer le Mega Menu';
+$webui_admin_options_MegaMenu_active = 'Mega Menu activé';
+$webui_admin_options_MegaMenu_desactive = 'Mega Menu désactivé';
+$webui_admin_options_Logo = 'Activer le Logo';
+$webui_admin_options_Logo_active = 'Logo activé';
+$webui_admin_options_Logo_desactive = 'Logo désactivé';
+$webui_admin_options_LogoEffect = 'Activer le Logo Effect';
+$webui_admin_options_LogoEffect_active = 'Logo Effect activé';
+$webui_admin_options_LogoEffect_desactive = 'Logo Effect désactivé';
+$webui_admin_options_SlideShow = 'Activer le Slide Show';
+$webui_admin_options_SlideShow_active = 'Slide Show activé';
+$webui_admin_options_SlideShow_desactive = 'Slide Show désactivé';
+$webui_admin_options_Date = 'Activer la Date';
+$webui_admin_options_Date_active = 'Date activé';
+$webui_admin_options_Date_desactive = 'Date désactivé';
+$webui_admin_options_Time = 'Activer le Time';
+$webui_admin_options_Time_active = 'Time activé';
+$webui_admin_options_Time_desactive = 'Time désactivé';
+$webui_admin_options_RoundedCorner = 'Activer le Rounded Corner';
+$webui_admin_options_RoundedCorner_active = 'Rounded Corner activé';
+$webui_admin_options_RoundedCorner_desactive = 'Rounded Corner désactivé';
+$webui_admin_options_PageLoadTime = 'Activer le Page Load Time';
+$webui_admin_options_PageLoadTime_active = 'Page Load Time activé';
+$webui_admin_options_PageLoadTime_desactive = 'Page Load Time désactivé';
+$webui_admin_options_W3c = 'Activer le W3c';
+$webui_admin_options_W3c_active = 'W3c activé';
+$webui_admin_options_W3c_desactive = 'W3c désactivé';
+$webui_admin_options_Rss = 'Activer le Rss';
+$webui_admin_options_Rss_active = 'Rss activé';
+$webui_admin_options_Rss_desactive = 'Rss désactivé';
 
 // Admin Styles Background Color Animation
-$webui_admin_options_BackgroundColorAnimation = 'Activate the Background Color Animation';
-$webui_admin_options_BackgroundColorAnimation_active = 'Background Color Animation activated';
-$webui_admin_options_BackgroundColorAnimation_desactive = 'Background Color Animation deactivated';
-$webui_admin_options_BackgroundColorAnimation_info = 'This allows the administrator to change the color of the animations';
-$webui_admin_options_active = 'activated';
-$webui_admin_options_desactive = 'deactivated';
-$webui_admin_options_send = 'Send';
-$webui_admin_options_modify = 'Modify';
+$webui_admin_options_BackgroundColorAnimation = 'Activer le Background Color Animation';
+$webui_admin_options_BackgroundColorAnimation_active = 'Background Color Animation activé';
+$webui_admin_options_BackgroundColorAnimation_desactive = 'Background Color Animation désactivé';
+$webui_admin_options_BackgroundColorAnimation_info = 'Ceci vous permet d\'administrer les couleurs des fonds animés.';
+$webui_admin_options_active = 'activé';
+$webui_admin_options_desactive = 'désactivé';
+$webui_admin_options_send = 'Envoyer';
+$webui_admin_options_modify = 'Modifier';
 $webui_admin_BackgroundColorAnimation_HoverStep1 = 'Color Hover Step 1';
 $webui_admin_BackgroundColorAnimation_EndStep1 = 'Color End Step 1';
 $webui_admin_BackgroundColorAnimation_HoverStep2 = 'Color Hover Step 2';
@@ -415,8 +417,8 @@ $webui_help_step1_title = 'Step 1';
 $webui_help_step2_title = 'Step  2';
 $webui_help_step3_title = 'Step  3';
 $webui_help_step1 = '<a href="index.php?page=register&btn=webui_menu_item_register">Create your FREE Account</a> right here on our pages.';
-$webui_help_step2 = 'Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a>.';
-$webui_help_step3 = 'Be sure to add our grid to your viewer.';
+$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. We recommend Imprudence / Kokua.';
+$webui_help_step3 = '<a href="index.php?page=help&btn=webui_menu_item_help">Add our grid</a> to your favorite viewer. Don\'t forgot it!';
 
 $webui_help_title_comment01 = 'Help 1';
 $webui_help_title_comment02 = 'Help 02';
@@ -459,18 +461,18 @@ $webui_pagination_tooltips_sortn = 'Sort by Grid Y';
 //
 // SlideShow Comments
 //
-$webui_slideshow_title_comment01 = 'Comment 01';
-$webui_slideshow_title_comment02 = 'Comment 02';
-$webui_slideshow_title_comment03 = 'Comment 03';
-$webui_slideshow_title_comment04 = 'Comment 04';
-$webui_slideshow_title_comment05 = 'Comment 05';
-$webui_slideshow_title_comment06 = 'Comment 06';
-$webui_slideshow_comment01 = 'Viewer help.';
-$webui_slideshow_comment02 = 'Server help.';
-$webui_slideshow_comment03 = 'Help with something else.';
-$webui_slideshow_comment04 = 'Help with 04.';
-$webui_slideshow_comment05 = 'Help with 05.';
-$webui_slideshow_comment06 = 'Help with 06.';
+$webui_slideshow_title_comment01 = 'Aide 01';
+$webui_slideshow_title_comment02 = 'Aide 02';
+$webui_slideshow_title_comment03 = 'Aide 03';
+$webui_slideshow_title_comment04 = 'Aide 04';
+$webui_slideshow_title_comment05 = 'Aide 05';
+$webui_slideshow_title_comment06 = 'Aide 06';
+$webui_slideshow_comment01 = 'Aide concernant le Viewer.';
+$webui_slideshow_comment02 = 'Aide Concernant le Server.';
+$webui_slideshow_comment03 = 'Aide concernant autre chose.';
+$webui_slideshow_comment04 = 'Aide concernant 04.';
+$webui_slideshow_comment05 = 'Aide concernant 05.';
+$webui_slideshow_comment06 = 'Aide concernant 06.';
 
 //
 // Infos Comments
@@ -481,10 +483,16 @@ $webui_infos_comment03_title = 'Info 3';
 $webui_infos_comment04_title = 'Info 4';
 $webui_infos_comment05_title = 'Info 5';
 $webui_infos_comment06_title = 'Info 6';
-$webui_infos_comment01 = 'Info comment ...';
-$webui_infos_comment02 = 'Info comment ...';
-$webui_infos_comment03 = 'Info comment ...';
-$webui_infos_comment04 = 'Info comment ...';
-$webui_infos_comment05 = 'Info comment ...';
-$webui_infos_comment06 = 'Info comment ...';
+$webui_infos_comment01 = 'Info concernant ...';
+$webui_infos_comment02 = 'Info concernant ...';
+$webui_infos_comment03 = 'Info concernant ...';
+$webui_infos_comment04 = 'Info concernant ...';
+$webui_infos_comment05 = 'Info concernant ...';
+$webui_infos_comment06 = 'Info concernant ...';
+
+//
+// Page Load Time
+//
+$this_page_took = 'This page took';
+$seconds_to_load = 'seconds to load';
 ?>

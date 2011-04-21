@@ -129,7 +129,7 @@ mapInstance.addMarker(marker);
 
 var map_marker_img = new Img("images/info.gif",<?= $infosize ?>,<?= $infosize ?>);
 var map_marker_icon = new Icon(map_marker_img);
-var mapWindow = new MapWindow("Region Name: <?= $regionName ?><br><br>Coordinates: <?= $locX / 256 ?>,<?= $locY / 256 ?><br><br>Size: <?= $sizeX ?>,<?= $sizeY ?><br><br>Owner: <?= $firstN ?> <?= $lastN ?><br><br><a href=<?= $url ?>>Teleport</a>",{closeOnMove: true});
+var mapWindow = new MapWindow("Region Name: <?= $regionName ?><br /><br />Coordinates: <?= $locX / 256 ?>,<?= $locY / 256 ?><br /><br />Size: <?= $sizeX ?>,<?= $sizeY ?><br><br>Owner: <?= $firstN ?> <?= $lastN ?><br><br><a href=<?= $url ?>>Teleport</a>",{closeOnMove: true});
 var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
 var marker = new Marker(all_images, new XYPoint(<?= $MarkerCoordX ?>,<?= $MarkerCoordY ?>));
 mapInstance.addMarker(marker, mapWindow);
@@ -198,43 +198,43 @@ function handle(delta) {
 
 <div id=map-nav>
   <div id=map-nav-up style="z-index: 1;"><a href="javascript: mapInstance.panUp();">
-    <img alt=Up src="images/pan_up.gif"></a>
+    <img alt=Up src="images/pan_up.png"></a>
   </div>
   
   <div id=map-nav-down style="z-index: 1;"><a href="javascript: mapInstance.panDown();">
-    <img alt=Down src="images/pan_down.gif"></a>
+    <img alt=Down src="images/pan_down.png"></a>
   </div>
   
   <div id=map-nav-left style="z-index: 1;"><a href="javascript: mapInstance.panLeft();">
-    <img alt=Left src="images/pan_left.gif"></a>
+    <img alt=Left src="images/pan_left.png"></a>
   </div>
   
   <div id=map-nav-right style="z-index: 1;"><a href="javascript: mapInstance.panRight();">
-    <img alt=Right src="images/pan_right.gif"></a>
+    <img alt=Right src="images/pan_right.png"></a>
   </div>
   
   <div id=map-nav-center style="z-index: 1;"><a href="javascript: mapInstance.panOrRecenterToWORLDCoord(new XYPoint(<?= $mapstartX ?>,<?= $mapstartY ?>), true);">
-    <img alt=Center src="images/center.gif"></a>
+    <img alt=Center src="images/center.png"></a>
   </div>
   
   <!-- START ZOOM PANEL-->
   <? if ($ALLOW_ZOOM == TRUE) { ?>
     <div id=map-zoom-plus>
       <? if (($zoomLevel + 1) > $maxZoom) { ?>
-        <img alt="Zoom In" src="images/zoom_in_grey.gif">
+        <img alt="Zoom In" src="images/zoom_in_grey.png">
         <? } else { ?>
           <a href="javascript: setZoom(<?= ($zoomLevel + 1) ?>);">
-            <img alt="Zoom In" src="images/zoom_in.gif">
+            <img alt="Zoom In" src="images/zoom_in.png">
           </a>
         <? } ?>
     </div>
     
     <div id=map-zoom-minus>
       <? if (($zoomLevel - 1) == 0) { ?>
-        <img alt="Zoom In" src="images/zoom_out_grey.gif">
+        <img alt="Zoom In" src="images/zoom_out_grey.png">
         <? } else { ?>
           <a href="javascript: setZoom(<?= ($zoomLevel - 1) ?>);">
-            <img alt="Zoom Out" src="images/zoom_out.gif">
+            <img alt="Zoom Out" src="images/zoom_out.png">
           </a>
         <? } ?>
     </div>

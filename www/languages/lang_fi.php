@@ -93,10 +93,12 @@ $webui_menu_item_home = 'Home';
 $webui_menu_item_changeaccount = 'Edit';
 $webui_menu_item_news = 'News';
 $webui_menu_item_regions = 'Regions';
+$webui_menu_item_quickmap = 'QuickMap';
 $webui_menu_item_worldmap = 'Map';
 $webui_menu_item_register = 'Register';
 $webui_menu_item_logout = 'Logout';
 $webui_menu_item_login = 'Login';
+$webui_menu_item_forgotpass = 'Forgotten Password?';
 $webui_menu_item_onlineusers = 'Users';
 $webui_menu_item_peoplesearch = 'Search';
 $webui_menu_item_gallery = 'Gallery';
@@ -115,13 +117,11 @@ $webui_welcome_visitor = 'Visitor';
 $webui_welcome_back = 'Welcome back';
 $webui_welcome_userid = 'Hi Userid!';
 $webui_home_page='
-    <p>
-        This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams. <br />
-        Everything is possible in our brand new 3D World. <br />
-        Our World is created by its residents, you can build everything you can imagine here. <br /><br />
-        Create a free account today, build a virtual you and play in our world. <br />
-        Join us now, and make a difference! <br /><br /><br />
-    </p>';
+        <p>This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams.</p>
+        <p>Everything is possible in our brand new 3D World. <br />
+        <p>Our World is created by its residents, you can build everything you can imagine here.</p>
+        <p>Create a free account today, build a virtual you and play in our world.</p>
+        <p>Join us now, and make a difference!</p>';
 
 $webui_home_page_warning = 'Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.';
 
@@ -416,8 +416,8 @@ $webui_help_step1_title = 'Step 1';
 $webui_help_step2_title = 'Step  2';
 $webui_help_step3_title = 'Step  3';
 $webui_help_step1 = '<a href="index.php?page=register&btn=webui_menu_item_register">Create your FREE Account</a> right here on our pages.';
-$webui_help_step2 = 'Download the viewer. We recommend <a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Imprudence / Kokua</a>.';
-$webui_help_step3 = 'Be sure to add our grid to your viewer.';
+$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. We recommend Imprudence / Kokua.';
+$webui_help_step3 = '<a href="index.php?page=help&btn=webui_menu_item_help">Add our grid</a> to your favorite viewer. Don\'t forgot it!';
 
 $webui_help_title_comment01 = 'Help 1';
 $webui_help_title_comment02 = 'Help 02';

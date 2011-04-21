@@ -64,10 +64,6 @@ function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display, $AdminDisplay)
  }
 ?>
 
-
-
-
-
 <div id="megamenu" class="<?= $MegaMenuSkin; ?>">
     <ul id="mega-menu-<?= $MegaMenuPreset; ?>" class="mega-menu">
     <?

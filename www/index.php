@@ -12,7 +12,8 @@ if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
 session_start();
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <?
 /*
@@ -175,6 +176,7 @@ if ($_POST[Submit] == $webui_admin_login) {
   <script type='text/javascript' src='<?= SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.3.2.js'></script>
 <?php } ?>
 
+
 <script type="text/javascript">
 $(document).ready(function($){
 	$('#mega-menu-1').dcMegaMenu({
@@ -235,6 +237,7 @@ $(document).ready(function($){
 </script>
 <?php } ?>
 
+
 <?php if($displayLogoEffect) { ?>
 <script type="text/javascript">
 //<![CDATA[ 
@@ -275,25 +278,27 @@ $(function(){Header.addFade("#headerimages");});
 		$('#dynUncorner').click(function() {
 			$('#dynamic').uncorner();
 		});
-        $('div.inner').wrap('<div class="outer"></div>');
-        $('pre').wrap("<code></code>");
- 
-        $('div.inner').each(function() {
-            var t = $('p', this).text();
-            eval(t);
-        });
- 
-        // fixed/fluid tests
-        $("div.box, div.plain").corner();
-        $("#abs").corner("cc:#08e");
-	
-		$('#container, #region_map').corner();
+
+	  $("#translator, #welcomeText").corner("5px");
+		$('#container,#header,#content').corner(); // (add to curvycorner)
+		$('#region_map').corner();
 		$('#login, #register, #forget_pass').corner("5px");
 		$('.menu').corner();
 		$('.chat').corner();
+		$('button, .roundedinput, .forgot_pass_bouton, .adminsettings_bouton').corner("10px");
+		$('#roundedcoord').corner("10px");
+
+
     });
 </script>
 <?php } ?>
+
+
+<?php if($MegaMenuPreset == 1)  { ?>
+<script type="text/javascript">
+		$('.mega-menu, #mega-menu-1, #mega-menu-1 li a').corner();
+</script>		
+<?php } ?>	
 
 
 <?php if($displayBackgroundColorAnimation)  { ?>
@@ -404,21 +409,45 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep6 ?>'}, 800);
   });
+  
+	$("#mega-menu-1 a").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepMegaMenu1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepMegaMenu1 ?>'}, 800);
+  });
+  
+	$("#register_bouton, #login_bouton, #forgot_pass_bouton, #adminlogin_button").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
+  });
+  
+	$(".adminsettings_bouton").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepAdminSettingBouton1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepAdminSettingBouton1 ?>'}, 800);
+  });
+
+
 
 }); 
 </script>
 <?php } ?>
 
+
+<? if($displayFontSizer) { ?> 
 <script src="javascripts/jquery/jquery.cookie.js" type="text/javascript"></script>
 <script src="javascripts/jquery/jquery.fontscale.js" type="text/javascript"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-	$("#up").fontscale("p","up",{unit:"px",increment:1});
-	$("#down").fontscale("p","down",{unit:"px",increment:1});
-	$("#reset").fontscale("p","reset");
+	$("#up").fontscale("p, h3","up",{unit:"px",increment:1});
+	$("#down").fontscale("p, h3","down",{unit:"px",increment:1});
+	$("#reset").fontscale("p, h3","reset");
 });
 </script>
-			
+<?php } ?>
+
+
 </head>
     
 <body class="webui">
@@ -430,7 +459,7 @@ $(document).ready(function(){
 
 <div class="maintenance">
   <!-- If we are supposed to only display the maintenance page currently, do so now -->
-  <? if($displayMaintenancePage) {include("sites/Maintenance.php"); return;} ?>
+  <? if($displayMaintenancePage) {include("sites/main/maintenance.php"); return;} ?>
 
   <!--[if lt IE 8]>
     <div id="alert"><p>Hummm, You should upgrade your copy of Internet Explorer.</p></div>
@@ -479,27 +508,27 @@ $(document).ready(function(){
 <div id="container">
     <div id="header">
         <div id="headerimages">
-            <a href="<?= SYSURL ?>"><h1 id=""><? SYSNAME ?></h1></a>
+            <a href="<?= SYSURL ?>"><h1><? SYSNAME ?></h1></a>
         </div>
         <!-- <div id="gridstatus"><? //php include("sites/gridstatus.php"); ?></div> -->
         <div id="home_content_right"><? include("sites/modules/slideshow.php"); ?></div>
-
-        <!-- <div id="menubar"><? // include("sites/menubar.php"); ?></div> -->
-        <?php if($displayMegaMenu) { ?>
-          <div id="menubar"><? include("sites/menus/megamenu/menubar.php"); ?></div>
-        <?php } ?>
     </div><!-- fin de #header -->
 
+    <!-- <div id="menubar"><? // include("sites/menubar.php"); ?></div> -->
+    <?php if($displayMegaMenu) { ?>
+      <div id="menubar"><? include("sites/menus/megamenu/menubar.php"); ?></div>
+    <?php } ?>
+        
     <div id="MainContainer">
         <div id="sites"><? include("sites.php"); ?></div>
     </div><!-- fin de #mainContent -->
 </div><!-- fin de #container -->
 
 <div id="footer">
-<?php include("sites/footer.php"); ?> 
+<?php include("sites/main/footer.php"); ?> 
 </div><!-- fin de #footer -->
 
-<div class="pagemloadtime">
+<div class="pageloadtime">
 <?php
 // Page Load Time 
 $time = microtime(); 
@@ -509,10 +538,10 @@ $finish = $time;
 $totaltime = ($finish - $start);
 if($displayPageLoadTime) {
   printf ('This page took %f seconds to load.', $totaltime);
+  // TODO $this_page_took and $seconds_to_load
 } 
 ?>
 </div>
-
 
 </div>
 </body>

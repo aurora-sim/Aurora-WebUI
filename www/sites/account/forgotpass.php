@@ -116,28 +116,39 @@ if($_POST[Submit]=="Submit")
           <table>
             <tr>
               <td class="even"><? echo $webui_avatar_name ?>*</td>
-              <td class="even">
-                <input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?=$_POST[name]?>">
+              <td class="even" width="50%">
+                <div class="roundedinput">
+                  <input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?=$_POST[name]?>">
+                </div>
               </td>
             </tr>
                 
             <tr>
               <td class="odd"><? echo $webui_email ?>*</td>
               <td class="odd">
-                <input id="forgot_pass_input" name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">
+                <div class="roundedinput">
+                  <input id="forgot_pass_input" name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">
+                </div>
               </td>
             </tr>
                 
             <tr>
               <td class="even"><? echo $webui_confirm ?> <? echo $webui_email ?>*</td>
               <td class="even">
-                <input id="forgot_pass_input" name="email2" type="text" size="40" maxlength="50" value="<?=$_POST[email2]?>">
+                <div class="roundedinput">
+                  <input id="forgot_pass_input" name="email2" type="text" size="40" maxlength="50" value="<?=$_POST[email2]?>">
+                </div>
               </td>
             </tr>
                   
             <tr>
               <td class="odd"></td>
-              <td class="odd"><input id="forgot_pass_bouton" type="submit" name="Submit" value="<? echo $webui_submit ?>"></td>
+              <td class="odd">
+                <div class="center">
+                  <input type="hidden" name="action" value="check">
+                  <button id="forgot_pass_bouton" name="Submit" type="Submit"><? echo $webui_submit ?></button>
+                  <!-- <input id="forgot_pass_bouton" type="submit" name="Submit" value="<? // echo $webui_submit ?>"></td> -->
+              </div>
             </tr>
           </table>
         </td>

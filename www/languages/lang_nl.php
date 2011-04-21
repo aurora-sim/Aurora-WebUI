@@ -94,9 +94,11 @@ $webui_menu_item_changeaccount = 'Wijzig Profiel';
 $webui_menu_item_news = 'Nieuws';
 $webui_menu_item_regions = 'Regio Overzicht';
 $webui_menu_item_worldmap = 'Kaart';
+$webui_menu_item_quickmap = 'QuickMap';
 $webui_menu_item_register = 'Registreer';
 $webui_menu_item_logout = 'Loguit';
 $webui_menu_item_login = 'Login';
+$webui_menu_item_forgotpass = 'Forgotten Password?';
 $webui_menu_item_onlineusers = 'Wie is Online';
 $webui_menu_item_peoplesearch = 'People Search';
 $webui_menu_item_users = 'Users';
@@ -115,12 +117,11 @@ $webui_welcome_visitor='Visitor';
 $webui_welcome_back = 'Welcome back';
 $webui_welcome_userid='Hallo Userid!';
 $webui_home_page='
-	<p>Dit is onze nieuwe virtuele wereld, waar je plezier kan hebben, mensen kan ontmoeten, chatten, spelen, onderzoeken en dromen kan delen en bouwen.<br />
-       Alles is mogelijk in onze gloednieuwe 3d wereld.<br />
-       Onze wereld wordt gemaakt door haar inwoners, en alles wat je maar kan voorstellen kan gebouwd worden.<br /><br />
-       Maak vandaag nog een gratis account aan, ontwerp je avatar en ontdek onze wereld.<br />
-       Volg ons voorbeeld, en maak het verschil!<br /><br /><br />
-    </p>';
+	<p>Dit is onze nieuwe virtuele wereld, waar je plezier kan hebben, mensen kan ontmoeten, chatten, spelen, onderzoeken en dromen kan delen en bouwen.</p>
+    <p>Alles is mogelijk in onze gloednieuwe 3d wereld.</p>
+    <p>Onze wereld wordt gemaakt door haar inwoners, en alles wat je maar kan voorstellen kan gebouwd worden.</p>
+    <p>Maak vandaag nog een gratis account aan, ontwerp je avatar en ontdek onze wereld.</p>
+    <p>Volg ons voorbeeld, en maak het verschil!</p>';
 
 $webui_home_page_warning = 'Hou wel in gedachten dat het Aurora platform nog steeds experimenteel is, en dat sommige dingen (nog) niet zoals verwacht kunnen werken.';
 

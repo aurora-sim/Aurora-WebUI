@@ -32,13 +32,13 @@ if ($sitemax == 0) {
 ?>
 
 <div id="content">
-    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderLeft"><h5><p><?= SYSNAME ?></p></h5></div>
     <div id="ContentHeaderCenter"></div>
-    <div id="ContentHeaderRight"><h5><? echo $webui_people_search; ?></h5></div>
+    <div id="ContentHeaderRight"><h5><p><? echo $webui_people_search; ?></p></h5></div>
     <div id="searchpeople">
         <div id="info"><p><? echo $webui_people_search_info; ?></p></div>
         <div id="message">
-            <? echo $webui_avatar_name; ?>: <input id="name" name="name" type="text" size="25" maxlength="15" value="" />
+            <? echo $webui_avatar_name; ?> : <input id="name" name="name" type="text" size="25" maxlength="15" value="" />
             <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'first=' + document.getElementById('first').value)"><? echo $webui_people_search_bouton ?></button>
         </div>
 
@@ -53,7 +53,7 @@ if ($sitemax == 0) {
                     <table>
                         <tr>
                             <td>
-                                <font><b><?= $count ?> <? echo $webui_users_found ?></b></font>
+                                <p><b><?= $count ?> <? echo $webui_users_found ?></b></p>
                             </td>
 
                             <td>
@@ -77,7 +77,7 @@ if ($sitemax == 0) {
                                             </td>
 
                                             <td>
-                                                <? echo $webui_navigation_page; ?> <?=$sitestart ?> <? echo $webui_navigation_of; ?> <?=$sitemax ?>
+                                                <p><? echo $webui_navigation_page; ?> <?=$sitestart ?> <? echo $webui_navigation_of; ?> <?=$sitemax ?></p>
                                             </td>
 
                                             <td>
@@ -128,10 +128,10 @@ if ($sitemax == 0) {
 
         <tr>
             <td>
-                <a href="index.php?page=peoplesearch&order=name"><b><u><? echo $webui_user_name ?></u></b></a>
+                <a href="index.php?page=peoplesearch&order=name"><p><? echo $webui_user_name ?></p></a>
             </td>                
             
-            <td><b><? echo $webui_info ?></b></td>
+            <td><p><? echo $webui_info ?></p></td>
         </tr>
             
         <tr>
@@ -147,13 +147,13 @@ if ($sitemax == 0) {
 
         <tr class="<? echo ($odd = $w%2 )? "odd":"even" ?>">
             <td>
-                <div><b><?= $Name ?></b></div>
+                <div><p><?= $Name ?></p></div>
             </td>
         
             <td>
                 <div>
                     <a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>app/agent/?name=<?= $Name ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
-                        <b><u><? echo $webui_see_profile ?></u></b>
+                        <p><? echo $webui_see_profile ?></p>
                     </a>
                 </div>
             </td>
