@@ -11,8 +11,8 @@
 define("SYSNAME","***");
 define("SYSURL","***");
 define("SYSMAIL","***");
-define("WIREDUX_SERVICE_URL","***");
-define("WIREDUX_TEXTURE_SERVICE","***");
+define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WIREDUX");
+define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
 define("WIREDUX_PASSWORD","***");
 
 // Should we display a 'Maintenance' page currently that blocks all access to the website.
@@ -137,7 +137,7 @@ $MegaMenuSkin       = "basic";
 #################### Languages ########################
 
 // TODO $displayLanguageSelector = true;
-$languages=array("fr" => "French",
+$languages=array("en" => "English",
     "en" => "English",
     "de" => "German",
     "es" => "Spanish",
