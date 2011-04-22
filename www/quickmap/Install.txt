@@ -1,0 +1,54 @@
+Originally created by (c) Metropolis Metaversum [ http://hypergrid.org ]
+
+The Aurora-Quickmap can be place inside the Aurora-WebUI root folder. 
+This will eventually be intergrated into Aurora-WebUI.
+You can rename the Aurora-QuickMap if you wish like you can with Aurora-WebUI just rememeber this must reflect in
+the config.php PATHS.
+OR you can use it standalone.
+
+
+=== User Guide ===
+Light Green Tiles = Root Region (Occupied)
+Dark Green Tiles = Mainland (Occupied)
+Blue Tiles = Free Space
+
+== Install Guide ==
+
+1. Upload these files to your webserver.
+2. Edit "./includes/config.php"
+
+
+===Configuring config.php===
+
+
+Aurora-QuickMap / includes / config.php
+
+// General items
+// For Statics Images Folder
+define("SYSURL","http://SERVER ADDRESS/webui/quickmap/"); === change paths to your IP,no-ip,dyndns & WebUI & QuickMap.
+
+
+//Your Grid-Domain
+$CONF_sim_domain =     "http://SERVER ADDRESS/"; === change this to your server address, no-ip,dyndns or IP.
+//Installation path
+$CONF_install_path =   "webui/quickmap/";        === change this to the PATH of you WebUI & QuicMap.
+
+
+// Your Grid-Logo
+// Link to your Grid-Logo
+$CONF_logo =           "http://SERVER ADDRESS/webui/quickmap/templates/default/images/aurora-webui-logo.png"; === As above change PATHS
+
+
+// mysql database items
+$CONF_db_server =      "localhost";   // Your Database-Server
+$CONF_db_user =        "***";        // Database-User              === points to your Aurora-Sim Database ===
+$CONF_db_pass =        "***";      // Password of User
+$CONF_db_database =    "***";  // Name of Database
+
+
+// The Coordinates of the Grid-Center
+$CONF_center_coord_x   = "1000";      // the Center-X-Coordinate
+$CONF_center_coord_y   = "1000";      // the Center-Y-Koordinate   === change to your Grid Centre ===
+
+
+Any problems you can find us in irc #aurora-dev
