@@ -418,7 +418,7 @@ $webui_help_step2_title = 'Step  2';
 $webui_help_step3_title = 'Step  3';
 $webui_help_step1 = '<a href="index.php?page=register&btn=webui_menu_item_register">Create your FREE Account</a> right here on our pages.';
 $webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. We recommend Imprudence / Kokua.';
-$webui_help_step3 = '<a href="index.php?page=help&btn=webui_menu_item_help">Add our grid</a> to your favorite viewer. Don\'t forgot it!';
+$webui_help_step3 = '<a href="index.php?page=help&btn=webui_menu_item_help">Add our grid</a> to your favorite viewer. Don\'t forget it!';
 
 $webui_help_title_comment01 = 'Help 1';
 $webui_help_title_comment02 = 'Help 02';
