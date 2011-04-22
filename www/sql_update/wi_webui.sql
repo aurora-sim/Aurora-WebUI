@@ -5,7 +5,7 @@
 -- Machine: localhost
 -- Genereertijd: 28 Apr 2009 om 17:50
 -- Serverversie: 5.1.32
--- PHP-Versie: 5.2.9
+-- PHP-Version: 5.2.9
 
 --
 -- Database: `aurora`
@@ -80,6 +80,8 @@ CREATE TABLE `wi_adminsetting` (
 INSERT INTO `wi_adminsetting` (`id`, `startregion`, `userdir`, `griddir`, `assetdir`, `lastnames`, `adress`, `region`, `allowRegistrations`, `verifyUsers`, `ForceAge`) VALUES 
 (1, '', '', '', '', '0', '0', '0','1','1',0);
 
+-- --------------------------------------------------------
+
 -- wi_appearance
 DROP TABLE IF EXISTS `wi_appearance`;
 CREATE TABLE `wi_appearance` (
@@ -89,6 +91,8 @@ CREATE TABLE `wi_appearance` (
   PRIMARY KEY  (`ArchiveName`)
 ) TYPE=MyISAM;
 
+-- --------------------------------------------------------
+
 -- wi_banned
 DROP TABLE IF EXISTS `wi_banned`;
 CREATE TABLE `wi_banned` (
@@ -96,6 +100,8 @@ CREATE TABLE `wi_banned` (
   `agentIP` varchar(255) NOT NULL,
   `time` varchar(255) NOT NULL
 ) TYPE=MyISAM;
+
+-- --------------------------------------------------------
 
 -- wi_codetable
 DROP TABLE IF EXISTS `wi_codetable`;
@@ -106,6 +112,8 @@ CREATE TABLE `wi_codetable` (
   `email` varchar(255) NOT NULL,
   `time` varchar(255) NOT NULL
 ) TYPE=MyISAM;
+
+-- --------------------------------------------------------
 
 -- wi_country
 DROP TABLE IF EXISTS `wi_country`;
@@ -310,6 +318,8 @@ INSERT INTO `wi_country` (`name`) VALUES
 ('Solomon Islands'),
 ('French Guiana');
 
+-- --------------------------------------------------------
+
 -- wi_lastnames
 DROP TABLE IF EXISTS `wi_lastnames`;
 CREATE TABLE `wi_lastnames` (
@@ -363,6 +373,8 @@ INSERT INTO `wi_lastnames` (`name`, `active`) VALUES
 ('Schwinge', '1'),
 ('Nonsito', '1');
 
+-- --------------------------------------------------------
+
 -- wi_pagemanager
 DROP TABLE IF EXISTS `wi_pagemanager`;
 CREATE TABLE `wi_pagemanager` (
@@ -407,6 +419,8 @@ INSERT INTO `wi_pagemanager` (`id`, `rank`, `active`, `url`, `target`, `display`
 ('webui_menu_item_help', 9.0, '1', 'index.php?page=help', '_self', '2', null),
 ('webui_menu_item_chat', 9.1, '1', 'index.php?page=chat', '_self', '2', 'webui_menu_item_help');
 
+-- --------------------------------------------------------
+
 -- wi_regions
 DROP TABLE IF EXISTS `wi_regions`;
 CREATE TABLE IF NOT EXISTS `wi_regions` (
@@ -419,6 +433,8 @@ CREATE TABLE IF NOT EXISTS `wi_regions` (
   `failcounter` int(11) NOT NULL,
   UNIQUE KEY `serverURI` (`serverIP`,`regionMapTexture`)
 ) TYPE=MyISAM;
+
+-- --------------------------------------------------------
 
 -- wi_sitemanagement
 DROP TABLE IF EXISTS `wi_sitemanagement`;
@@ -460,6 +476,8 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('gallery', 'main', 'gallery.php'),
 ('adminsupport', 'admin', 'support.php');
 
+-- --------------------------------------------------------
+
 -- wi_startscreen_infowindow
 DROP TABLE IF EXISTS `wi_startscreen_infowindow`;
 CREATE TABLE `wi_startscreen_infowindow` (
@@ -472,6 +490,8 @@ CREATE TABLE `wi_startscreen_infowindow` (
 
 INSERT INTO `wi_startscreen_infowindow` (`gridstatus`, `active`, `color`, `title`, `message`) VALUES
 ('1', '1', 'yellow', 'Info system Works very well ;-)', 'Today we''ve built a new loginscreen info system and it works very well. You can now see Info windows on the startup screen.');
+
+-- --------------------------------------------------------
 
 -- wi_startscreen_news
 DROP TABLE IF EXISTS `wi_startscreen_news`;
@@ -486,6 +506,8 @@ CREATE TABLE `wi_startscreen_news` (
 INSERT INTO `wi_startscreen_news` (`id`, `title`, `message`, `time`) VALUES
 (1, '[COMPLETE] The new loginscreen is done and works fine so far', '<p>We built a new loginscreen which will inform you about Grid updates or changes. Also you can now see how many users and regions are online, and more.  Also, you may from time to time see an infowindow, which informs you about important news.  Have Fun !</p>', 1211321439);
 
+-- --------------------------------------------------------
+
 -- wi_statistics
 DROP TABLE IF EXISTS `wi_statistics`;
 CREATE TABLE IF NOT EXISTS `wi_statistics` (
@@ -496,6 +518,7 @@ CREATE TABLE IF NOT EXISTS `wi_statistics` (
   `failcounter` int(11) NOT NULL,
   UNIQUE KEY `serverIP` (`serverIP`,`serverPort`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 -- wi_gallery
 DROP TABLE IF EXISTS `wi_gallery`;
@@ -508,12 +531,16 @@ CREATE TABLE IF NOT EXISTS `wi_gallery` (
   UNIQUE KEY (`picture`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 INSERT INTO `wi_gallery` (`picture`, `picturethumbnail`, `description`, `active`, `rank`) VALUES
 ('login1.jpg', 'image1thumbnail.jpg', 'Image 1 of our world', '1', '1'),
 ('login2.jpg', 'image2thumbnail.jpg', 'Image 2 of our world', '1', '1'),
 ('login3.jpg', 'image3thumbnail.jpg', 'Image 3 of our world', '1', '1'),
 ('login4.jpg', 'image4thumbnail.jpg', 'Image 4 of our world', '1', '1'),
 ('login5.jpg', 'image5thumbnail.jpg', 'Image 5 of our world', '1', '1');
+
+-- --------------------------------------------------------
 
 -- useraccounts_rl
 DROP TABLE IF EXISTS `useraccounts_rl`;
@@ -529,6 +556,8 @@ CREATE TABLE IF NOT EXISTS `useraccounts_rl` (
   `ip_address` varchar(128),
   PRIMARY KEY (`principal_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 -- wi_users
 DROP TABLE IF EXISTS `wi_users`;
