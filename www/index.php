@@ -24,8 +24,6 @@ session_start();
  *
  */
 
-include("settings/configperso.php");
-
 include("settings/config.php");
 include("settings/json.php");
 include("settings/mysql.php");
