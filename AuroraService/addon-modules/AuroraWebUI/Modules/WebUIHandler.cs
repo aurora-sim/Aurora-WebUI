@@ -101,7 +101,6 @@ namespace OpenSim.Services
                 {
                     // Save to bitmap
 
-
                     mapTexture = ResizeBitmap(image, 128, 128);
                     EncoderParameters myEncoderParameters = new EncoderParameters();
                     myEncoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 75L);
@@ -206,7 +205,6 @@ namespace OpenSim.Services
 
             return newsize;
         }
-
 
         private Bitmap CreateZoomLevel(int zoomLevel, int centerX, int centerY)
         {
@@ -402,7 +400,11 @@ namespace OpenSim.Services
                     }
                     else if (method == "AbuseReportMarkComlete")
                     {
-                        return AbuseReportMarkComlete(map);
+                        return AbuseReportMarkComlete (map);
+                    }
+                    else if (method == "SetWebLoginKey")
+                    {
+                        return SetWebLoginKey (map);
                     }
                 }
             }
@@ -522,7 +524,7 @@ namespace OpenSim.Services
             UUID secureSessionID;
             UUID userID = UUID.Zero;
 
-            LoginResponse loginresp = loginService.VerifyClient(Name, Password, UUID.Zero, false, "", "", "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient(Name, "UserAccount", Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
             Verified = loginresp == null;
             if (Verified)
@@ -549,7 +551,7 @@ namespace OpenSim.Services
             UUID secureSessionID;
             UUID userID = UUID.Zero;
 
-            LoginResponse loginresp = loginService.VerifyClient(Name, Password, UUID.Zero, false, "", "", "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient (Name, "UserAccount", Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
             Verified = loginresp == null;
             if (Verified)
@@ -700,14 +702,14 @@ namespace OpenSim.Services
 
             IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
 
-            LoginResponse loginresp = loginService.VerifyClient(userID, Password, UUID.Zero, false, "", "", "", out secureSessionID);
+            LoginResponse loginresp = loginService.VerifyClient (userID, "UserAccount", Password, UUID.Zero, false, "", "", "", out secureSessionID);
             OSDMap resp = new OSDMap();
             //Null means it went through without an error
             bool Verified = loginresp == null;
 
-            if ((auths.Authenticate(userID, Password, 100) != string.Empty) && (Verified))
+            if ((auths.Authenticate(userID, "UserAccount", Password, 100) != string.Empty) && (Verified))
             {
-                auths.SetPassword(userID, newPassword);
+                auths.SetPassword (userID, "UserAccount", newPassword);
                 resp["Verified"] = OSD.FromBoolean(Verified);
             }
 
@@ -734,7 +736,7 @@ namespace OpenSim.Services
                 if (user.UserLevel >= 0)
                 {
                     IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
-                    auths.SetPassword(user.PrincipalID, Password);
+                    auths.SetPassword (user.PrincipalID, "UserAccount", Password);
                 }
                 else
                 {
@@ -1030,6 +1032,20 @@ namespace OpenSim.Services
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
+        }
+
+        byte[] SetWebLoginKey (OSDMap map)
+        {
+            OSDMap resp = new OSDMap ();
+            UUID principalID = map["PrincipalID"].AsUUID();
+            UUID webLoginKey = UUID.Random();
+            IAuthenticationService authService = m_registry.RequestModuleInterface<IAuthenticationService> ();
+            if(authService != null)
+                authService.SetPassword(principalID, "WebLoginKey", webLoginKey.ToString());
+            resp["WebLoginKey"] = webLoginKey;
+            string xmlString = OSDParser.SerializeJsonString (resp);
+            UTF8Encoding encoding = new UTF8Encoding ();
+            return encoding.GetBytes (xmlString);
         }
     }
 }

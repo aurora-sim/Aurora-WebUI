@@ -42,7 +42,7 @@
   <Reference name="Aurora.Services.DataService"/>
   <Reference name="Aurora.Simulation.Base"/>
   <Reference name="OpenSim.Framework"/>
-  
+
   <Reference name="DotNetOpenId" path="../../../bin/"/>
   <Reference name="log4net" path="../../../bin/"/>
   <Reference name="Nini" path="../../../bin/"/>
