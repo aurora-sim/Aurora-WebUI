@@ -15,7 +15,7 @@ define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WIREDUX")
 define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
 define("WIREDUX_PASSWORD","***");
 
-// Should we display a 'Maintenance' page currently that blocks all access to the website.
+// Should we display a 'Maintenance' page currently that blocks all access to the website?
 // (until disabled here)?
 $displayMaintenancePage = false;
 
@@ -52,7 +52,7 @@ $SlideShowEaseing = "";         // bounceout
 $SlideShowDelay = -1000;        // -5000
 
 ################### Loginscreen ###################
-// Should the pictures on the loginscreen be random or by time
+// Should the pictures on the loginscreen be random or by time?
 $picturesByTime = false;
 // Show the bar at the bottom that has the latest grid news?
 $showNewsBar = true;
@@ -66,7 +66,7 @@ $showAlertPanel = true;
 $showSpecialReport = true;
 
 ################### Main Site #######################
-// Should we show any scrolling text at the top of the page
+// Should we show any scrolling text at the top of the page?
 // $displayScrollingText = true;
 // What message should be displayed in the scrolling text?
 $scrollingTextMessage = "Welcome!         Bienvenue!          Hola!";
@@ -111,6 +111,14 @@ $display_marker="tr";
 // Current templates are 'default', 'white' and 'astra'
 $template = 'default';
 
+####################### Web Login ##########################
+// Allow the user to launch the viewer and automatically login 
+// by clicking the "Login" click in the upper righthand corner
+$allowWebLogin = 'true';
+
+// The name of the grid (gridnick) that is set in GridInfoService.ini
+$gridNickName = 'aurora';
+
 ################### Rounded Corner #########################
 // Should we display Rounded Corners
 // $displayRoundedCorner = true;
@@ -135,10 +143,9 @@ $MegaMenuSkin       = "basic";
 
 
 #################### Languages ########################
-
 // TODO $displayLanguageSelector = true;
 $languages=array("en" => "English",
-    "en" => "English",
+    "fr" => "French",
     "de" => "German",
     "es" => "Spanish",
     "it" => "Italian",
@@ -150,11 +157,11 @@ $languages=array("en" => "English",
 ##################### Database ########################
 define("C_DB_TYPE","mysql");
 // Your Hostname here:
-define("C_DB_HOST","***");
+define("C_DB_HOST","localhost");
 // Your Databasename here:
-define("C_DB_NAME","***");
+define("C_DB_NAME","aurora");
 // Your Username from Database here:
-define("C_DB_USER","***");
+define("C_DB_USER","root");
 // Your Database Password here:
 define("C_DB_PASS","***");
 
@@ -171,12 +178,6 @@ define("C_INFOWINDOW_TBL","wi_startscreen_infowindow");
 define("C_NEWS_TBL","wi_startscreen_news");
 define("C_PAGE_TBL","wi_pagemanager");
 define("C_SITES_TBL","wi_sitemanagement");
-
-// REGION MANAGER
-define("C_MAP_REGIONS_TBL", "wi_regions");
-
-// STATISTICS
-define("C_STATS_REGIONS_TBL", "wi_statistics");
 define("C_GALLERY_TBL", "wi_gallery");
 
 // Aurora tables

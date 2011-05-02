@@ -51,6 +51,8 @@ if ($_POST[Submit] == $webui_login) {
     if ($recieved->{'Verified'} == "true") {
         $_SESSION[USERID] = $UUIDC;
         $_SESSION[NAME] = $_POST[logname];
+        $_SESSION[FIRSTNAME] = $recieved->{'FirstName'};
+        $_SESSION[LASTNAME] = $recieved->{'LastName'};
 
         $found[0] = json_encode(array('Method' => 'SetWebLoginKey', 'WebPassword' => md5(WIREDUX_PASSWORD),
                                  'PrincipalID' => $UUIDC));
@@ -501,7 +503,12 @@ $(document).ready(function(){
       if($_SESSION[NAME] != "") {
         echo $webui_welcome_back." ";
         echo $_SESSION[NAME];
-      }          
+        if($allowWebLogin == 'true')
+        {
+          echo " ";
+          echo "<a href=\"secondlife:///app/login?first_name=$_SESSION[FIRSTNAME]&last_name=$_SESSION[LASTNAME]&location=last&grid=$gridNickName&web_login_key=$_SESSION[WEBLOGINKEY]\">$webui_login</a>";
+        }
+      }
       else {
         echo $webui_welcome." ";
         echo SYSNAME." ";
