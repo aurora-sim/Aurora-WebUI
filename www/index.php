@@ -23,8 +23,6 @@ session_start();
  *
  */
 
-include("settings/configperso.php");
-
 include("settings/config.php");
 include("settings/json.php");
 include("settings/mysql.php");
@@ -48,9 +46,17 @@ if ($_POST[Submit] == $webui_login) {
     $do_post_request = do_post_request($found);
     $recieved = json_decode($do_post_request);
     $UUIDC = $recieved->{'UUID'};
+
     if ($recieved->{'Verified'} == "true") {
         $_SESSION[USERID] = $UUIDC;
         $_SESSION[NAME] = $_POST[logname];
+
+        $found[0] = json_encode(array('Method' => 'SetWebLoginKey', 'WebPassword' => md5(WIREDUX_PASSWORD),
+                                 'PrincipalID' => $UUIDC));
+        $do_post_request = do_post_request($found);
+        $recieved = json_decode($do_post_request);
+        $WEBLOGINKEY = $recieved->{'WebLoginKey'};
+        $_SESSION[WEBLOGINKEY] = $WEBLOGINKEY;
     } else {
         echo "<script language='javascript'>
 		<!--
@@ -483,7 +489,6 @@ $(document).ready(function(){
         </div>
         <!-- <div id="gridstatus"><? //php include("sites/gridstatus.php"); ?></div> -->
         <div id="home_content_right"><? include("sites/modules/slideshow.php"); ?></div>
-
         <!-- <div id="menubar"><? // include("sites/menubar.php"); ?></div> -->
         <?php if($displayMegaMenu) { ?>
           <div id="menubar"><? include("sites/menus/megamenu/menubar.php"); ?></div>
