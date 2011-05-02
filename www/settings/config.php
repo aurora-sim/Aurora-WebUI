@@ -8,12 +8,12 @@
 */
 
 ##################### System #########################
-define("SYSNAME","Aurora WiRedux");
-define("SYSURL","http://localhost/");
-define("SYSMAIL","Webmaster <noreply@osgrid.org>");
-define("WIREDUX_SERVICE_URL","http://localhost:8007/WIREDUX");
-define("WIREDUX_TEXTURE_SERVICE","http://localhost:8002");
-define("WIREDUX_PASSWORD","");
+define("SYSNAME","***");
+define("SYSURL","http://your_aurora_server_ip_or_dns_address");
+define("SYSMAIL","***");
+define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WIREDUX");
+define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
+define("WIREDUX_PASSWORD","***");
 
 // Should we display a 'Maintenance' page currently that blocks all access to the website.
 // (until disabled here)?
@@ -39,7 +39,7 @@ $displayMaintenancePage = false;
 // slideX, slideY, toss, turnUp, turnDown, turnLeft, turnRight, uncover, wipe, zoom
 // http://jquery.malsup.com/cycle/
 $displaySlideShow = true;
-$SlideShowStyle = "wipe";
+$SlideShowStyle = "turnDown";
 $SlideShowSpeed = 1000;
 $SlideShowTimeout = 5000;
 $SlideShowSync = 0;             // 1 or 0
@@ -52,7 +52,7 @@ $SlideShowEaseing = "";         // bounceout
 $SlideShowDelay = -1000;        // -5000
 
 ################### Loginscreen ###################
-// Should the pictures on the loginscreen be random or by time?
+// Should the pictures on the loginscreen be random or by time
 $picturesByTime = false;
 // Show the bar at the bottom that has the latest grid news?
 $showNewsBar = true;
@@ -66,7 +66,7 @@ $showAlertPanel = true;
 $showSpecialReport = true;
 
 ################### Main Site #######################
-// Should we show any scrolling text at the top of the page?
+// Should we show any scrolling text at the top of the page
 // $displayScrollingText = true;
 // What message should be displayed in the scrolling text?
 $scrollingTextMessage = "Welcome!         Bienvenue!          Hola!";
@@ -120,7 +120,7 @@ $template = 'default';
 // eg : http://your.site.com/webui/sites/menus/megamenu/demos/
 $displayMegaMenu    = true;
 // 1.2 or 1.3.2 for differents effects
-$MegaMenuVersion    = "1.2";
+$MegaMenuVersion    = "1.3.2";
 // Effects Presets
 $MegaMenuPreset     = "1";      // (1 to 9)
 $MegaMenuRowItems   = "1";      // 1 to 4
@@ -132,39 +132,13 @@ $MegaMenuEvent      = "hover";  // hover, clic
 // WARNING! Styles 'basic' requiere MegaMenuPreset setup to 1
 $MegaMenuSkin       = "basic";
 
-// Background Color Animation
-############### Background Color Animation #################
-// Should we display Background Color Animation 
-// $displayBackgroundColorAnimation = true;
 
-$BackgroundColorHoverStep1 = "#860d08";
-$BackgroundColorEndStep1 = "#111";
-
-$BackgroundColorHoverStep2 = "#0d5f29";
-$BackgroundColorEndStep2 = "#111";
-
-$BackgroundColorHoverStep3 = "#726ea9";
-$BackgroundColorEndStep3 = "#111";
-
-$BackgroundColorHoverStep4 = "#111";
-$BackgroundColorEndStep4 = "#000";
-
-$BackgroundColorHoverStep5 = "#b2902d";
-$BackgroundColorEndStep5 = "#111";
-
-$BackgroundColorHoverStep6 = "#116e84";
-$BackgroundColorEndStep6 = "#111";
-
-$BackgroundColorHoverStep7 = "#871464";
-$BackgroundColorEndStep7 = "#111";
-
-$BackgroundColorHoverStep10 = "#111";
-$BackgroundColorEndStep10 = "#000";
 
 #################### Languages ########################
+
 // TODO $displayLanguageSelector = true;
 $languages=array("en" => "English",
-    "fr" => "French",
+    "en" => "English",
     "de" => "German",
     "es" => "Spanish",
     "it" => "Italian",
@@ -176,13 +150,13 @@ $languages=array("en" => "English",
 ##################### Database ########################
 define("C_DB_TYPE","mysql");
 // Your Hostname here:
-define("C_DB_HOST","localhost");
+define("C_DB_HOST","***");
 // Your Databasename here:
-define("C_DB_NAME","aurora");
+define("C_DB_NAME","***");
 // Your Username from Database here:
-define("C_DB_USER","root");
+define("C_DB_USER","***");
 // Your Database Password here:
-define("C_DB_PASS","");
+define("C_DB_PASS","***");
 
 ################ Database Tables #########################
 define("C_ADMIN_TBL","wi_admin");

@@ -244,7 +244,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayTopPanelSlider" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayTopPanelSlider" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -257,7 +257,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayTopPanelSlider" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayTopPanelSlider" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -280,7 +280,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayTemplateSelector" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton"  type="submit" name="displayTemplateSelector" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -293,7 +293,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayTemplateSelector" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton"  type="submit" name="displayTemplateSelector" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -316,7 +316,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayStyleSwitcher" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayStyleSwitcher" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -329,7 +329,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayStyleSwitcher" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayStyleSwitcher" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -352,7 +352,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayStyleSizer" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayStyleSizer" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -365,7 +365,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayStyleSizer" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayStyleSizer" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -387,7 +387,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayFontSizer" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayFontSizer" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
         
           <? } else { ?>
@@ -400,7 +400,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayFontSizer" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayFontSizer" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -423,7 +423,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayLanguageSelector" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayLanguageSelector" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -436,7 +436,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayLanguageSelector" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayLanguageSelector" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -459,7 +459,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayScrollingText" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayScrollingText" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -472,7 +472,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayScrollingText" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayScrollingText" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -495,7 +495,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayWelcomeMessage" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayWelcomeMessage" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -508,7 +508,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayWelcomeMessage" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayWelcomeMessage" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -531,7 +531,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayLogo" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayLogo" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -544,7 +544,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayLogo" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayLogo" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -567,7 +567,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayLogoEffect" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayLogoEffect" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -580,7 +580,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayLogoEffect" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayLogoEffect" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -603,7 +603,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displaySlideShow" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displaySlideShow" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -616,7 +616,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displaySlideShow" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displaySlideShow" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -639,7 +639,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayMegaMenu" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayMegaMenu" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -652,7 +652,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayMegaMenu" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayMegaMenu" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -675,7 +675,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayDate" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayDate" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -688,7 +688,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayDate" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayDate" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -711,7 +711,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayTime" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayTime" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
 
           <? } else { ?>
@@ -724,7 +724,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayTime" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayTime" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>          
           <? } ?>
         </td>
@@ -748,7 +748,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayRoundedCorner" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayRoundedCorner" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
            
           <? } else { ?>
@@ -761,7 +761,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayRoundedCorner" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayRoundedCorner" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -785,7 +785,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayBackgroundColorAnimation" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayBackgroundColorAnimation" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
            
           <? } else { ?>
@@ -798,7 +798,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayBackgroundColorAnimation" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayBackgroundColorAnimation" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -822,7 +822,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayPageLoadTime" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayPageLoadTime" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
            
           <? } else { ?>
@@ -835,7 +835,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayPageLoadTime" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayPageLoadTime" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -859,7 +859,7 @@
         </td>
 
         <td class="even">
-          <input type="submit" name="displayW3c" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayW3c" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
            
           <? } else { ?>
@@ -872,7 +872,7 @@
         </td>
         
         <td class="even">
-          <input type="submit" name="displayW3c" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayW3c" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>
@@ -896,7 +896,7 @@
         </td>
 
         <td class="odd">
-          <input type="submit" name="displayRss" value="<? echo $webui_admin_settings_activate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayRss" value="<? echo $webui_admin_settings_activate_bouton; ?>"><? echo $webui_admin_settings_activate_bouton; ?></button>
         </td>
            
           <? } else { ?>
@@ -909,7 +909,7 @@
         </td>
         
         <td class="odd">
-          <input type="submit" name="displayRss" value="<? echo $webui_admin_settings_desactivate_bouton; ?>" />
+          <button class="adminsettings_bouton" type="submit" name="displayRss" value="<? echo $webui_admin_settings_desactivate_bouton; ?>"><? echo $webui_admin_settings_desactivate_bouton; ?></button>
         </td>
           <? } ?>
         </td>

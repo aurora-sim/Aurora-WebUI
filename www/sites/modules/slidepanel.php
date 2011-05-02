@@ -41,7 +41,7 @@
     <td><button id="l">L</button></td>
     <? } ?>
 
-    <script>
+    <script type="text/javascript">
       $("#s").click(function(){
         $("#topcontainer").animate({ 
         width: "870px"}, 500 ); 
@@ -75,16 +75,9 @@
     <td><button id="down">-</button></td>
     <td><button id="reset">R</button></td>
     <td><button id="up">+</button></td>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-	$("#up").fontscale("p","up",{unit:"px",increment:1});
-	$("#down").fontscale("p","down",{unit:"px",increment:1});
-	$("#reset").fontscale("p","reset");
-});
-</script>
-
     <? } ?>
+
+
 
   </tr>
 </table>

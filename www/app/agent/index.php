@@ -5,6 +5,8 @@ include("../../settings/mysql.php");
 include("../../languages/translator.php");
 include("../../templates/templates.php");
 
+$DbLink = new DB;
+
 if ($_GET[name]) {
     $userName = $_GET['name'];
 
@@ -23,7 +25,50 @@ if ($_GET[name]) {
     $type = $recieved->{'account'}->{'AccountInfo'};
     $partner = $recieved->{'account'}->{'Partner'};
     $date = date("D d M Y - g:i A", $created);
-} ?>
+} 
+
+  $DbLink->query("SELECT id,
+                         displayTopPanelSlider, 
+                         displayTemplateSelector,
+                         displayStyleSwitcher,
+                         displayStyleSizer,
+                         displayFontSizer,
+                         displayLanguageSelector,
+                         displayScrollingText,
+                         displayWelcomeMessage,
+                         displayLogo,
+                         displayLogoEffect,
+                         displaySlideShow,
+                         displayMegaMenu,
+                         displayDate,
+                         displayTime,
+                         displayRoundedCorner,
+                         displayBackgroundColorAnimation,
+                         displayPageLoadTime,
+                         displayW3c,
+                         displayRss FROM ".C_ADMINMODULES_TBL." ");
+                     
+  list($id,
+       $displayTopPanelSlider,
+       $displayTemplateSelector, 
+       $displayStyleSwitcher,
+       $displayStyleSizer,
+       $displayFontSizer,
+       $displayLanguageSelector,
+       $displayScrollingText,
+       $displayWelcomeMessage,
+       $displayLogo,
+       $displayLogoEffect,
+       $displaySlideShow,
+       $displayMegaMenu,
+       $displayDate,
+       $displayTime,
+       $displayRoundedCorner,
+       $displayBackgroundColorAnimation,
+       $displayPageLoadTime,
+       $displayW3c,
+       $displayRss) = $DbLink->next_record();
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,6 +77,16 @@ if ($_GET[name]) {
     <link rel="stylesheet" href="<?= SYSURL ?><? echo $template_css ?>" type="text/css" />
     <link rel="icon" href="<?= SYSURL ?><?=$favicon_image?>" />
     <title><?= SYSNAME ?>: <? echo $webui_users_profile; ?> <? echo $userName ?></title>
+    
+<?php if($displayRoundedCorner)  { ?>
+<script src="<?= SYSURL ?>javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
+<script type="text/javascript">
+	  $("#profil_picture").corner("15px");
+		$('#container_popup, #content_popup').corner();
+</script>
+<?php } ?>
+
 </head>
 
 <body class="webui">

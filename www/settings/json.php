@@ -26,6 +26,9 @@ function do_post_request($found) {
     if ($response === false) {
         //throw new Exception("Problem reading data from " . WIREDUX_SERVICE_URL . ", $php_errormsg");
     }
+	if ($fp) {
+		fclose($fp);
+	}
     return $response;
 }
 

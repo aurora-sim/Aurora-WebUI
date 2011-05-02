@@ -26,52 +26,46 @@ function printLastNames()
 	$DbLink->query("SELECT lastnames FROM " . C_ADM_TBL . "");
 	list($LASTNAMESC) = $DbLink->next_record();
 	if ($LASTNAMESC == "1") {
-		echo "<select id=\"register_input\" wide=\"25\" name=\"accountlast\">";
+		echo "<div class=\"roundedinput\"><select id=\"register_input\" wide=\"25\" name=\"accountlast\">";
 		$DbLink->query("SELECT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
 		while (list($NAMEDB) = $DbLink->next_record()) {
 			echo "<option>$NAMEDB</option>";
 		}
-		echo "</select>";
+		echo "</select></div>";
 	} else {
-		echo "<input minlength=\"3\" require=\"true\" label=\"accountlast_label\" id=\"register_input\" name=\"accountlast\" type=\"text\" size=\"25\" maxlength=\"15\" value=\"$_SESSION[ACCLAST]\" />";
+		echo "<div class=\"roundedinput\"><input minlength=\"3\" require=\"true\" label=\"accountlast_label\" id=\"register_input\" name=\"accountlast\" type=\"text\" size=\"25\" maxlength=\"15\" value=\"$_SESSION[ACCLAST]\" /></div>";
 	}
 }
+
 
 function displayRegions()
 {
 	$DbLink = new DB;
-	echo "<select require=\"true\" label=\"startregion_label\" id=\"register_input\" wide=\"25\" name=\"startregion\">";
+	echo "<div class=\"roundedinput\"><select require=\"true\" label=\"startregion_label\" id=\"register_input\" wide=\"25\" name=\"startregion\">";
 	$DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " ORDER BY RegionName ASC ");
 	while (list($RegionName, $RegionHandle) = $DbLink->next_record()) {
 		echo "<option value=\"$RegionHandle\">$RegionName</option>";
 	}
-	echo "</select>";
+	echo "</select></div>";
 }
+
 
 function displayCountry()
 {
 	$DbLink = new DB;
-	echo "<select require=\"true\" label=\"country_label\" id=\"register_input\" wide=\"25\" name=\"country\" value=\"$_SESSION[COUNTRY]\">";
+	echo "<div class=\"roundedinput\"><select require=\"true\" label=\"country_label\" id=\"register_input\" wide=\"25\" name=\"country\" value=\"$_SESSION[COUNTRY]\">";
 	$DbLink->query("SELECT name FROM " . C_COUNTRY_TBL . " ORDER BY name ASC ");
 	echo "<option></option>";
 	while (list($COUNTRYDB) = $DbLink->next_record()) {
 		echo "<option>$COUNTRYDB</option>";
 	}
-	echo "</select>";
+	echo "</select></div>";
 }
-
-
-
-
-
-
-
-
 
 
 function displayDOB()
 {	
-	echo "<table><tr><td>";
+	echo "<div id=\"birthday\" class=\"roundedinput\"><table><tr><td>";
 	 
 	if ($status == 1 and $monat == '')
 		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='tag' class='red'>"; 
@@ -114,8 +108,9 @@ function displayDOB()
 			echo("selected ");
 		echo(">$i");
 	}
-	echo "</select></td></tr></table>";
+	echo "</select></td></tr></table></div>";
 }
+
 
 function displayDefaultAvatars()
 {
@@ -154,9 +149,11 @@ function displayDefaultAvatars()
             <table>
                 <tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];?><?=$_GET[ERROR]?></td></tr>
                 <tr>
-                    <td class="even" width="50%"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span></td>
+                    <td class="even" width="52%"><span id="accountfirst_label"><? echo $webui_avatar_first_name ?>*</span></td>
                     <td class="even">
-                        <input minlength="3" id="register_input" require="true" label="accountfirst_label" name="accountfirst" type="text" size="25" maxlength="15" value="<?= $_SESSION[ACCFIRST] ?>">
+                        <div class="roundedinput">
+                          <input minlength="3" id="register_input" require="true" label="accountfirst_label" name="accountfirst" type="text" size="25" maxlength="15" value="<?= $_SESSION[ACCFIRST] ?>">
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -169,13 +166,18 @@ function displayDefaultAvatars()
                 <tr>
                     <td class="even"><span id="wordpass_label"><? echo $webui_password ?>*</span></td>
                     <td class="even">
-                        <input minlength="6" compare="wordpass2" require="true" label="wordpass_label" id="register_input" name="wordpass" type="password" size="25" maxlength="15">
+                        <div class="roundedinput">
+                          <input minlength="6" compare="wordpass2" require="true" label="wordpass_label" id="register_input" name="wordpass" type="password" size="25" maxlength="15">
+                        </div>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="odd"><span id="wordpass2_label"><? echo $webui_confirm ?> <? echo $webui_password ?>*</span></td>
-                    <td class="odd"><input minlength="6" require="true" label="wordpass2_label" id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
+                    <td class="odd">
+                      <div class="roundedinput">
+                        <input minlength="6" require="true" label="wordpass2_label" id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
+                      </div>
                     </td>
                 </tr>
                 
@@ -192,34 +194,44 @@ function displayDefaultAvatars()
 				<tr>
 					<td class="odd"><span id="firstname_label"><? echo $webui_first_name ?>*</span></td>
 					<td class="odd">
-						<input require="true" label="firstname_label" id="register_input" name="firstname" type="text" size="25" maxlength="15" value="<?= $_SESSION[NAMEF] ?>">
+						<div class="roundedinput">
+              <input require="true" label="firstname_label" id="register_input" name="firstname" type="text" size="25" maxlength="15" value="<?= $_SESSION[NAMEF] ?>">
+            </div>
 					</td>
 				</tr>
 
 				<tr>
 					<td class="even"><span id="lastname_label"><? echo $webui_last_name ?>*</span></td>
 					<td class="even">
-						<input require="true" label="lastname_label" id="register_input" name="lastname" type="text" size="25" maxlength="15" value="<?= $_SESSION[NAMEL] ?>">
+						<div class="roundedinput">
+              <input require="true" label="lastname_label" id="register_input" name="lastname" type="text" size="25" maxlength="15" value="<?= $_SESSION[NAMEL] ?>">
+            </div>
 					</td>
 				</tr>
 
 				<tr>
 					<td class="odd"><span id="adress_label"><? echo $webui_address ?>*</span></td>
 					<td class="odd">
-						<input require="true" label="adress_label" id="register_input" name="adress" type="text" size="50" maxlength="50" value="<?= $_SESSION[ADRESS] ?>">
+						<div class="roundedinput">
+              <input require="true" label="adress_label" id="register_input" name="adress" type="text" size="50" maxlength="50" value="<?= $_SESSION[ADRESS] ?>">
+            </div>
 					</td>
 				</tr>
 
 				<tr>
 					<td class="even"><span id="zip_label"><? echo $webui_zip_code ?>*</span></td>
 					<td class="even">
-						<input require="true" label="zip_label" id="register_input" name="zip" type="text" size="25" maxlength="15" value="<?= $_SESSION[ZIP] ?>">
+						<div class="roundedinput">
+              <input require="true" label="zip_label" id="register_input" name="zip" type="text" size="25" maxlength="15" value="<?= $_SESSION[ZIP] ?>">
+            </div>
 					</td>
 				</tr>
 				<tr>
 					<td class="odd"><span id="city_label"><? echo $webui_city ?>*</span></td>
 					<td class="odd">
-						<input require="true" label="city_label" id="register_input" name="city" type="text" size="25" maxlength="15" value="<?= $_SESSION[CITY] ?>">
+						<div class="roundedinput">
+              <input require="true" label="city_label" id="register_input" name="city" type="text" size="25" maxlength="15" value="<?= $_SESSION[CITY] ?>">
+            </div>
 					</td>
 				</tr>
 				<tr>
@@ -249,12 +261,18 @@ function displayDefaultAvatars()
 				<tr>
 					<td class="odd"><span id="email_label"><? echo $webui_email ?>*</span></td>
 					<td class="odd">
-						<input compare="emaic" require="true" label="email_label" id="register_input" name="email" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIL] ?>"></td>
+          	<div class="roundedinput">
+              <input compare="emaic" require="true" label="email_label" id="register_input" name="email" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIL] ?>">
+            </div>
+          </td>
 				</tr>
 				<tr>
 					<td class="even"><span id="emaic_label"><? echo $webui_confirm ?> <? echo $webui_email ?>*</span></td>
 					<td class="even">
-						<input require="true" label="emaic_label" id="register_input" name="emaic" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIC] ?>" ></td>
+						<div class="roundedinput">
+              <input require="true" label="emaic_label" id="register_input" name="emaic" type="text" size="40" maxlength="40" value="<?= $_SESSION[EMAIC] ?>" >
+            </div>  
+          </td>
 				</tr>
 				
         <? displayDefaultAvatars(); ?>
@@ -289,7 +307,7 @@ function displayDefaultAvatars()
             <div class="center">
               <input type="hidden" name="action" value="check">
               <button id="register_bouton" name="submit" type="submit"><? echo $webui_create_new_account ?></button>
-              <!--<input id="register_bouton" name="submit" TYPE="submit" value='<? //echo $webui_create_new_account ?>'>-->
+              <!-- <input id="register_bouton" name="submit" TYPE="submit" value='<? //echo $webui_create_new_account ?>'> -->
             </div>
           </td>
         </tr>
@@ -557,9 +575,9 @@ function displayDefaultAvatars()
 <h2><? echo $webui_successfully; ?></h2>
   <div id="info">
   	<p><? echo $webui_successfully_info; ?></p><br />
-    <p><?= SYSNAME ?> First Name: <b><?= $_SESSION[ACCFIRST] ?></b></p><br />
-    <p><?= SYSNAME ?> Last Name:  <b><?= $_SESSION[ACCLAST] ?></b></p><br />
-    <p><?= SYSNAME ?> E-mail: <?= $_SESSION[EMAIL] ?></b></p><br />
+    <p><?= SYSNAME ?> <? echo $webui_avatar_first_name ?>: <b><?= $_SESSION[ACCFIRST] ?></b></p><br />
+    <p><?= SYSNAME ?> <? echo $webui_avatar_last_name ?>:  <b><?= $_SESSION[ACCLAST] ?></b></p><br />
+    <p><?= SYSNAME ?> <? echo $webui_email ?>: <?= $_SESSION[EMAIL] ?></b></p><br />
 	</div>
 </div>
 
@@ -584,9 +602,13 @@ function displayDefaultAvatars()
 else { ?>
 
 <div id="content">
-<h2><? echo $webui_successfully; ?></h2>
+
+<div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+<div id="ContentHeaderCenter"></div>
+<div id="ContentHeaderRight"><h5><? echo $webui_register; ?></h5></div> 
+
   <div id="alert">
-    <? echo $webui_registrations_disabled; ?>
+    <p><? echo $webui_registrations_disabled; ?></p>
   </div>
 </div>
 

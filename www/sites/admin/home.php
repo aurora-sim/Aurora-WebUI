@@ -4,13 +4,11 @@ if ($_SESSION[ADMINID]) {
 
 <div id="content">
 
-    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+    <div id="ContentHeaderLeft"><h5><p><?= SYSNAME ?></p></h5></div>
     <div id="ContentHeaderCenter"></div>
-    <div id="ContentHeaderRight"><h5><? echo $webui_admin_home; ?></h5></div>
-    
-    
-	<? echo $webui_welcome_userid; ?>
-	<h1><? echo $webui_admin_welcome; ?> <? echo $webui_admin_panel; ?> <?= SYSNAME ?></h1>
+    <div id="ContentHeaderRight"><h5><p><? echo $webui_admin_home; ?></p></h5></div>
+
+	<h3><p><? echo $webui_admin_welcome; ?> <? echo $webui_admin_panel; ?> <?= SYSNAME ?></p></h3>
 	<div id="info">
 		<p><? echo $webui_admin_home_info; ?></p>
 	</div>
@@ -50,19 +48,26 @@ if ($_SESSION[ADMINID]) {
 					<tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
 					<tr>
 						<td class="odd"><span id="logname_label"><? echo $webui_user_name ?>*</span></td>
-						<td class="odd"><input require="true" label="logname_label" id="login_input" name="logname" type="text" value="<?= $_POST[logname] ?>" /></td>
+						<td class="odd">
+              <div class="roundedinput">
+                <input require="true" label="logname_label" id="login_input" name="logname" type="text" value="<?= $_POST[logname] ?>" />
+              </div>
+            </td>
 					</tr>
 					<tr>
 						<td class="even"><span id="password_label"><? echo $webui_password ?>*</span></td>
-						<td class="even"><input require="true" label="password_label" id="login_input" type="password" name="logpassword" /></td>
+						<td class="even">
+              <div class="roundedinput">
+                <input require="true" label="password_label" id="login_input" type="password" name="logpassword" />
+              </div>
+            </td>
 					</tr>
 					<tr>
 						<td class="even"><a href="index.php?page=forgotpass"><? echo $webui_forgot_password ?></a></td>
-            <td class="odd"><button id="Submit" type="Submit" name="Submit" value="<? echo $webui_admin_login ?>"><? echo $webui_admin_login; ?></button></td>
+            <td class="odd"><button id="adminlogin_button" type="Submit" name="Submit" value="<? echo $webui_admin_login ?>"><? echo $webui_admin_login; ?></button></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 	</div>
   <? } ?>
-

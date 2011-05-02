@@ -6,7 +6,6 @@
         <div id="info">
             <p><strong><? echo $webui_news; ?></strong></p>
         </div>
-        <table>
             <table>
                 <?
                 $query = "";
@@ -43,6 +42,5 @@
                 <? } $DbLink->clean_results();
                 $DbLink->close(); ?>
             </table>
-        </table>
-    </div>
+      </div>
 </div>
