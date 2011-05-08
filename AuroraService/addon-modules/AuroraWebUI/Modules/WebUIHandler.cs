@@ -522,20 +522,22 @@ namespace OpenSim.Services
 
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             UUID secureSessionID;
-            UUID userID = UUID.Zero;
+            UserAccount account = null;
+            OSDMap resp = new OSDMap ();
 
             LoginResponse loginresp = loginService.VerifyClient(Name, "UserAccount", Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
             Verified = loginresp == null;
             if (Verified)
             {
-                userID = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name).PrincipalID;
+                account = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, Name);
+                resp["UUID"] = OSD.FromUUID (account.PrincipalID);
+                resp["FirstName"] = OSD.FromString (account.FirstName);
+                resp["LastName"] = OSD.FromString (account.LastName);
             }
 
 
-            OSDMap resp = new OSDMap();
-            resp["Verified"] = OSD.FromBoolean(Verified);
-            resp["UUID"] = OSD.FromUUID(userID);
+            resp["Verified"] = OSD.FromBoolean (Verified);
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
@@ -550,6 +552,7 @@ namespace OpenSim.Services
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             UUID secureSessionID;
             UUID userID = UUID.Zero;
+            OSDMap resp = new OSDMap ();
 
             LoginResponse loginresp = loginService.VerifyClient (Name, "UserAccount", Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
@@ -558,13 +561,17 @@ namespace OpenSim.Services
             {
                 UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name);
                 if ((account.UserFlags & 2048) == 2048) //Admin flag
-                    userID = account.PrincipalID;
+                {
+                    resp["UUID"] = OSD.FromUUID (account.PrincipalID);
+                    resp["FirstName"] = OSD.FromString (account.FirstName);
+                    resp["LastName"] = OSD.FromString (account.LastName);
+                }
+                else
+                    Verified = false;
             }
 
 
-            OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(Verified);
-            resp["UUID"] = OSD.FromUUID(userID);
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
@@ -1040,8 +1047,12 @@ namespace OpenSim.Services
             UUID principalID = map["PrincipalID"].AsUUID();
             UUID webLoginKey = UUID.Random();
             IAuthenticationService authService = m_registry.RequestModuleInterface<IAuthenticationService> ();
-            if(authService != null)
-                authService.SetPassword(principalID, "WebLoginKey", webLoginKey.ToString());
+            if (authService != null)
+            {
+                //Remove the old
+                Aurora.DataManager.DataManager.RequestPlugin<IAuthenticationData> ().Delete (principalID, "WebLoginKey");
+                authService.SetPlainPassword (principalID, "WebLoginKey", webLoginKey.ToString ());
+            }
             resp["WebLoginKey"] = webLoginKey;
             string xmlString = OSDParser.SerializeJsonString (resp);
             UTF8Encoding encoding = new UTF8Encoding ();
