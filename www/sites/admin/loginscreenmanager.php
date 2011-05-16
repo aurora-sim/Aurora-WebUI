@@ -169,7 +169,7 @@ list($gridstatus, $boxstatus, $boxcolor, $infotitle, $infomessage) = $DbLink->ne
             </td>
                 
             <td>
-                <a href=index.php?page=loginscreen&delete=1&id=<?= $id ?>><? echo $webui_admin_news_delete ?></a>
+                <a href=index.php?page=adminloginscreen&delete=1&id=<?= $id ?>><? echo $webui_admin_news_delete ?></a>
             </td>
         </tr>
 
