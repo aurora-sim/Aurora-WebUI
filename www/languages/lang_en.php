@@ -66,7 +66,7 @@ $webui_register='Register';
 //
 // News Page
 //
-$webui_news = 'News';
+$webui_news = 'Aurora-Sim News';
 $webui_history = 'History';
 $webui_news_history = 'News History';
 $webui_no_news = 'No news';
@@ -106,25 +106,7 @@ $webui_menu_item_gallery = 'Gallery';
 $webui_menu_item_world = 'World';
 $webui_menu_item_account = 'Account';
 $webui_menu_item_help = 'Help';
-$webui_menu_item_chat = 'Chat';
-
-
-//
-// Home Page
-//
-$webui_home = 'Home';
-$webui_welcome = 'Welcome to';
-$webui_welcome_back = 'Welcome back';
-$webui_welcome_visitor = 'Visitor';
-$webui_welcome_userid = '';
-$webui_home_page='
-		<p>This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams.</p>
-		<p>Everything is possible in our brand new 3D World.</p>
-		<p>Our World is created by its residents, you can build everything you can imagine here.</p>
-		<p><a href="index.php?page=register&btn=webui_menu_item_register">Create a free account today</a> build a virtual you and play in our world.</p>
-		<p>Join us now, and make a difference!</p>';
-
-$webui_home_page_warning = 'Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.';
+$webui_menu_item_chat = 'Contact Us';
 
 //
 // 404 page
@@ -412,6 +394,21 @@ $webui_support_info = 'This allows you to Support';
 //
 $webui_help = 'Help';
 $webui_help_info = 'This allows you to Help';
+$webui_menu_item_help_server = "Server Help";
+$webui_menu_item_help_client = "Client Help";
+
+
+$webui_menu_item_downloads = "Downloads";
+$webui_menu_item_developers = "Developers";
+$webui_menu_item_testers = "Testers";
+$webui_menu_item_gettinginvolved = "Getting Involved";
+$webui_menu_item_about = "About Aurora";
+$webui_menu_item_contributors = "Contributors and Supporters";
+$webui_menu_item_features = "Features";
+$webui_menu_item_goals = "Goals of Aurora";
+$webui_menu_item_donations = "Donations";
+$webui_menu_item_wiki = "Wiki";
+$webui_menu_item_forum = "Forum";
 
 $webui_help_step1_title = 'Step 1';
 $webui_help_step2_title = 'Step  2';
@@ -474,18 +471,44 @@ $webui_slideshow_comment04 = 'Help on 04.';
 $webui_slideshow_comment05 = 'Help on 05.';
 $webui_slideshow_comment06 = 'Help on 06.';
 
+
+//
+// Home Page
+//
+$webui_home = 'Home';
+$webui_welcome = 'Welcome to';
+$webui_welcome_back = 'Welcome back';
+$webui_welcome_visitor = 'Visitor';
+$webui_welcome_userid = '';
+$webui_home_page='<p>We are pleased to announce the official public release of the Aurora Simulator Project into the open source community as of November 1st, 2010.
+</p><p>
+Aurora-Sim is alpha level software developed under a rapid application development (RAD) process.
+This means that it is not at production level. The code and thus the functionality is in a continuous state of change and stability is not our main priority at this time. While we are working on the source code, we are testing as we progress through the development process.  As more developers join in and start to contribute the pace of the process will quicken.
+</p><p>
+Please feel free to explore our pages and should you have any questions, don\'t hesitate and join the forum where we will do our best to answer you.
+</p><p>
+Thank you for your interest!
+</p><p>
+Team Aurora
+</p>
+<p>
+Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.
+</p>';
+
+$webui_home_page_warning = '<center><h2> Reasons why you should choose Aurora...</h2></center>';
+
 //
 // Infos Comments
 //
-$webui_infos_comment01_title = 'Info 1';
-$webui_infos_comment02_title = 'Info 2';
-$webui_infos_comment03_title = 'Info 3';
+$webui_infos_comment01_title = 'Speed and Security';
+$webui_infos_comment02_title = 'Licensing';
+$webui_infos_comment03_title = 'Community Driven';
 $webui_infos_comment04_title = 'Info 4';
 $webui_infos_comment05_title = 'Info 5';
 $webui_infos_comment06_title = 'Info 6';
-$webui_infos_comment01 = 'Info about ...';
-$webui_infos_comment02 = 'Info about ...';
-$webui_infos_comment03 = 'Info about ...';
+$webui_infos_comment01 = 'Security Info here....';
+$webui_infos_comment02 = 'Aurora is licensed under the <a href=\'http://www.opensource.org/licenses/bsd-license.php\'>BSD License</a> and can be used without many licensing constraints.';
+$webui_infos_comment03 = 'Aurora is mainly supported by its community.';
 $webui_infos_comment04 = 'Info about ...';
 $webui_infos_comment05 = 'Info about ...';
 $webui_infos_comment06 = 'Info about ...';

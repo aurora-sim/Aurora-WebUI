@@ -66,7 +66,7 @@ $webui_register='Registar';
 //
 // News Page
 //
-$webui_news = 'Noticias';
+$webui_news = 'Aurora-Sim Noticias';
 $webui_history = 'Historial';
 $webui_news_history = 'Noticias Historial';
 $webui_no_news = 'No news';

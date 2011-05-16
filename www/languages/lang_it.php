@@ -72,7 +72,7 @@ $webui_register='Registrati';
 //
 // News Page
 //
-$webui_news = 'Novita';
+$webui_news = 'Aurora-Sim Novita';
 $webui_history = 'Estratto Conto';
 $webui_news_history = 'Novita Estratto Conto';
 $webui_no_news = 'No news';

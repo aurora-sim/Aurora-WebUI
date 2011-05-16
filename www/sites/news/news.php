@@ -1,9 +1,7 @@
 <div id="content">
-    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
-    <div id="ContentHeaderCenter"></div>
-    <div id="ContentHeaderRight"><h5><? echo $webui_news; ?></h5></div>
-    <div id="news">
-        <div id="info">
+    <div id="annonce10">
+    <center><h2> <? echo $webui_news; ?><p> </h2></center>
+    <div id="info">
             <p><strong><? echo $webui_news; ?></strong></p>
         </div>
             <table>
@@ -23,7 +21,7 @@
                         $title = substr($title, 0, 64);
                         $title .= "...";
                     }
-                    $TIMES = date("D d M", $time);
+                    $TIMES = date("l M d Y", $time);
                 ?>
 
                     <tr>
@@ -33,7 +31,7 @@
 
                     <tr>
                         <td></td>
-                        <td><?= $message ?></td>
+                        <td width="89%"><?= $message ?></td>
                     </tr>
 
                     <tr>
