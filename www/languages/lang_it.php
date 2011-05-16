@@ -198,7 +198,8 @@ $webui_confirm_password = 'Conferma Password';
 // Admin parts
 //
 $webui_admin_login = 'Login Aministratore';
-$webui_menu_item_adminloginscreen = 'Modifica';
+$webui_menu_item_adminloginscreen = 'Login Screen Manager';
+$webui_menu_item_adminnewsmanager = 'News Manager';
 $webui_menu_item_adminhome = 'Amministratore';
 $webui_menu_item_adminmanage = 'Manager';
 $webui_menu_item_adminsettings = 'Settaggi amministratore';

@@ -188,7 +188,8 @@ $webui_confirm_password = 'Confirm Password';
 // Admin parts
 //
 $webui_admin_login = 'Admin Login';
-$webui_menu_item_adminloginscreen = 'Editer';
+$webui_menu_item_adminloginscreen = 'Login Screen Manager';
+$webui_menu_item_adminnewsmanager = 'News Manager';
 $webui_menu_item_adminhome = 'Admin';
 $webui_menu_item_adminmanage = 'Manage';
 $webui_menu_item_adminsettings = 'Admin Settings';

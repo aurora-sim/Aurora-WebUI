@@ -188,7 +188,8 @@ $webui_confirm_password = 'Επιβεβαίωση Κωδικός πρόσβασ�
 // Admin parts
 //
 $webui_admin_login = 'Διοικητικές Σύνδεση';
-$webui_menu_item_adminloginscreen = 'Επεξεργασία';
+$webui_menu_item_adminloginscreen = 'Login Screen Manager';
+$webui_menu_item_adminnewsmanager = 'News Manager';
 $webui_menu_item_adminhome = 'Διοικητικές';
 $webui_menu_item_adminmanage = 'Διαχείριση';
 $webui_menu_item_adminsettings = 'Διοικητικές Ρυθμίσεις';
