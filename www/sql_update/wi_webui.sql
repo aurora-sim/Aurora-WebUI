@@ -467,6 +467,7 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('adminnewsmanager', 'admin', 'newsmanager.php'),
 ('adminmanage', 'admin', 'manage.php'),
 ('news_add', 'admin', 'news_add.php'),
+('news_edit', 'admin', 'news_edit.php'),
 ('adminsettings', 'admin', 'settings.php'),
 ('adminmodules', 'admin', 'modules.php'),
 ('adminedit', 'admin', 'edit.php'),
