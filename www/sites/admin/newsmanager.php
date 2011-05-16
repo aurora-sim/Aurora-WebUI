@@ -62,14 +62,13 @@ if ($_GET[delete] == 1) {
                     <tr><td></td></tr>
                     <tr><td></td></tr>
                     <tr><td></td></tr>
-                    <tr class="<? echo ($odd = $w % 2 ) ? "even" : "odd" ?>">
-                        <td>    
-                            &nbsp;&nbsp;&nbsp;&nbsp;<?= $title ?>
-                        </td>
+                    <td>
+                        <b><? $TIMES = date("l M d Y", $TIME);
+                        echo"$TIMES"; ?></b>
+                    </td>
 
-                        <td>
-<? $TIMES = date("l M d Y", $TIME);
-                    echo"$TIMES"; ?>
+                    <td>
+                        <?= $title ?>
                     </td>
                     <td>
                         <a href=index.php?page=news_edit&editid=<?= $id ?>><? echo $webui_admin_news_edit ?></a>
@@ -77,7 +76,10 @@ if ($_GET[delete] == 1) {
 
                     <td>
                         <a href=index.php?page=adminloginscreen&delete=1&id=<?= $id ?>><? echo $webui_admin_news_delete ?></a>
-                        </td>
+                    </td>
+
+                    <tr>
+                        <td colspan="4"><hr /></td>
                     </tr>
 <? } ?>
 
