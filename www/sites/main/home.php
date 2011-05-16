@@ -1,18 +1,18 @@
 <div id="content">
+<?php if($displayDate) { ?>
 <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
 
 <div id="ContentHeaderCenter">
-<?php if($displayDate) { ?>
     <div id="date">
      <?php $date = date("d-m-Y");
     $heure = date("H:i");
     Print("$webui_before_date $date $webui_after_date $heure");
     ?>
     </div>
-<?php } ?>
 </div>
 
 <div id="ContentHeaderRight"><h5><? echo $webui_home; ?></h5></div>
+<?php } ?>
 
 <? include("sites/modules/steps123.php"); ?>
 
