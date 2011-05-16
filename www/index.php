@@ -141,7 +141,7 @@ if ($_POST[Submit] == $webui_admin_login) {
 
   <link rel="shortcut icon" href="<?=$favicon_image?>" />
   <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
-    
+  
   <script src="javascripts/global.js" type="text/javascript"></script>
   <script src="javascripts/droppanel/dropdown.js" type="text/javascript"></script>
     
@@ -150,7 +150,6 @@ if ($_POST[Submit] == $webui_admin_login) {
     
   <script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script> 
   <script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
- 
 
 <?php if($displayMegaMenu) { ?>
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/black.css" rel="stylesheet" type="text/css" />
@@ -537,9 +536,8 @@ $(document).ready(function(){
     </div><!-- fin de #mainContent -->
 </div><!-- fin de #container -->
 
-<div id="footer">
-<?php include("sites/main/footer.php"); ?> 
-</div><!-- fin de #footer -->
+<?php include("sites/main/footer.php"); ?>
+<!-- fin de #footer -->
 
 <div class="pageloadtime">
 <?php
@@ -549,9 +547,10 @@ $time = explode(" ", $time);
 $time = $time[1] + $time[0]; 
 $finish = $time; 
 $totaltime = ($finish - $start);
+echo "<p>Copyright 2011 © the Aurora-Sim project<p>";
+echo "All Rights Reserved<p><p>";
 if($displayPageLoadTime) {
-  printf ('This page took %f seconds to load.', $totaltime);
-  // TODO $this_page_took and $seconds_to_load
+  printf ("$this_page_took %f $seconds_to_load.", $totaltime);
 } 
 ?>
 </div>
