@@ -228,6 +228,7 @@ $webui_admin_windows_title = 'Titolo della finestra';
 $webui_admin_windows_message = 'Messaggio della finestra';
 $webui_admin_windows_settings = 'Salva i cambiamenti della finestra';
 $webui_admin_create_news = 'Crera una nuova news';
+$webui_admin_edit_news = 'Edit News item';
 $webui_admin_news_online = 'News online';
 $webui_admin_news_title = 'Titolo';
 $webui_admin_news_date = 'Data';
@@ -392,9 +393,10 @@ $webui_admin_BackgroundColorAnimation_HoverStep10 = 'Color Hover Step 10';
 $webui_admin_BackgroundColorAnimation_EndStep10 = 'Color End Step 10';
 
 //
-// Add News Page
+// Add/Edit News Page
 //
-$webui_admin_create_news_info = 'Qui puoi creare una nuova news.';
+$webui_admin_create_news_info = 'Qui puoi creare una nuova news news item.';
+$webui_admin_edit_news_info = 'This allows you to edit a news item.';
 
 //
 // Login Screen page

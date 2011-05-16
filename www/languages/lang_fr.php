@@ -219,6 +219,7 @@ $webui_admin_windows_title = 'Titre Fenêtre';
 $webui_admin_windows_message = 'Message Fenêtre';
 $webui_admin_windows_settings = 'Enregistrer les paramètres de fenêtre Info';
 $webui_admin_create_news = 'Créer Nouveauté';
+$webui_admin_edit_news = 'Edit News item';
 $webui_admin_news_online = 'Nouveautés actuellement en ligne';
 $webui_admin_news_title = 'Titre';
 $webui_admin_news_date = 'Date';
@@ -382,9 +383,10 @@ $webui_admin_BackgroundColorAnimation_HoverStep10 = 'Color Hover Step 10';
 $webui_admin_BackgroundColorAnimation_EndStep10 = 'Color End Step 10';
 
 //
-// Add News Page
+// Add/Edit News Page
 //
 $webui_admin_create_news_info = 'Cela vous permet de créer une nouvauté.';
+$webui_admin_edit_news_info = 'This allows you to edit a news item.';
 
 //
 // Login Screen page

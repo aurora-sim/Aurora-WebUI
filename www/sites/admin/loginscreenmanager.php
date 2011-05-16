@@ -3,16 +3,6 @@
 
 
 if ($_SESSION[ADMINID]) {
-
-} else {
-
-    echo "<script language=\"javascript\">
-<!--
-window.location.href=\"index.php?page=home\";
-// -->
-</script>";
-}
-
 $DbLink = new DB;
 
 if ($_GET[delete] == 1) {
@@ -22,6 +12,14 @@ if ($_GET[delete] == 1) {
 if ($_POST[infobox] == "save") {
     $message = str_replace("'", "\'", "$_POST[infomessage]");
     $DbLink->query("UPDATE " . C_INFOWINDOW_TBL . " SET gridstatus='" . cleanQuery($_POST[gridstatus]) . "',active='" . cleanQuery($_POST[boxstatus]) . "',color='" . cleanQuery($_POST[boxcolor]) . "',title='" . cleanQuery($_POST[infotitle]) . "',message='" . cleanQuery($message) . "'");
+}
+} else {
+
+    echo "<script language=\"javascript\">
+<!--
+window.location.href=\"index.php?page=home\";
+// -->
+</script>";
 }
 
 $DbLink->query("SELECT gridstatus,active,color,title,message  FROM " . C_INFOWINDOW_TBL . " ");

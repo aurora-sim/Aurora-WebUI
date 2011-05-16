@@ -218,6 +218,7 @@ $webui_admin_windows_title = 'Παράθυρο Τίτλος';
 $webui_admin_windows_message = 'Παράθυρο Μήνυμα';
 $webui_admin_windows_settings = 'Αποθήκευση ρυθμίσεων Παράθυρο Πληροφοριών';
 $webui_admin_create_news = 'Δημιουργία Νέα στοιχείο';
+$webui_admin_edit_news = 'Edit News item';
 $webui_admin_news_online = 'Νέα είναι διαθέσιμα σήμερα';
 $webui_admin_news_title = 'Τίτλος';
 $webui_admin_news_date = 'Ημερομηνία';
@@ -381,9 +382,10 @@ $webui_admin_BackgroundColorAnimation_HoverStep10 = 'Color Hover Step 10';
 $webui_admin_BackgroundColorAnimation_EndStep10 = 'Color End Step 10';
 
 //
-// Add News Page
+// Add/Edit News Page
 //
-$webui_admin_create_news_info = 'Αυτό σας επιτρέπει να δημιουργήσετε ένα νέο.';
+$webui_admin_create_news_info = 'Αυτό σας επιτρέπει να δημιουργήσετε ένα νέο news item.';
+$webui_admin_edit_news_info = 'This allows you to edit a news item.';
      
 //
 // Login Screen page
