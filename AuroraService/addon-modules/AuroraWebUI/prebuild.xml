@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<Project frameworkVersion="v3_5" name="Aurora.WebUI" path="addon-modules/AuroraWebUI/Modules" type="Library">
+<Project frameworkVersion="v3_5" name="Aurora.Addon.WebUI" path="addon-modules/AuroraWebUI/Modules" type="Library">
   <Configuration name="Debug" platform="x86">
     <Options>
       <OutputPath>../../../bin/</OutputPath>
