@@ -119,21 +119,23 @@ function displayDefaultAvatars()
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
 
-	if ($recieved->{'Verified'} == "true") 
+	if ($recieved->{'Verified'} == "true")
 	{
 		$names = explode(",", $recieved->{'names'});
 		$snapshot = explode(",", $recieved->{'snapshot'});
 		$count = count($names);
-		for ($i = 0; $i < $count; $i++) 
+		echo "<tr><td colspan=\"2\" valign=\"top\">";
+		for ($i = 0; $i < $count; $i++)
 		{
-			echo "<tr><td valign=\"top\"><label for=\"$names[$i]\" >$names[$i]</label></td><td valign=\"top\">";
+			echo "<div class=\"avatar_archive_screenshot\"><label for=\"$names[$i]\" >$names[$i]</label>";
 			echo "<input type=\"radio\" id=\"$names[$i]\" name=\"AvatarArchive\" value=\"$names[$i]\"";
 			if (($_SESSION["AVATARARCHIVE"] == $names[$i]) || (($i == 0) && ($_SESSION["AVATARARCHIVE"] == "")))
 			{
-				echo "checked />"; 
+				echo "checked />";
 			}
-			echo "<label for=\"$names[$i]\" ><img src=\"".WIREDUX_TEXTURE_SERVICE."/index.php?method=GridTexture&uuid=".$snapshot[$i]."\" width=\"128\" height=\"128\" /></label></td></tr>";
+			echo "<label for=\"$names[$i]\" ><br><img src=\"".WIREDUX_TEXTURE_SERVICE."/index.php?method=GridTexture&uuid=".$snapshot[$i]."\" /></div>";
 		}
+		echo "</td></tr>";
 	}
 }
 	

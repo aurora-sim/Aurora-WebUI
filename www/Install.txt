@@ -91,7 +91,7 @@ Note: When displaying textures from the texture server they will be resized to 1
 3. in the console of the grid server issue this command 
 save avatar archive <First> <Last> <Filename> <FolderNameToSaveInto> [<SnapshotUUID>] [<Public>]
 example:
-save avatar archive Skidz Tweak EvilOverlord.database "" 00000-0000-0000-0000-00000 1
+save avatar archive Skidz Tweak EvilOverlord.database / 00000-0000-0000-0000-00000 1
 
 NOTE: Only pulic ones will be listed on the website
 

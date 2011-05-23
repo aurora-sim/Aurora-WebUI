@@ -1187,4 +1187,17 @@ div.plain  { background-color: #6af; text-align: center; }
  
 div.desc { margin: 10px }
 
+.avatar_archive_screenshot {
+float: left;
+background-color:#222222;
+border: 1px solid #111111;
+text-align: center;
+cursor: hand;
+padding:10px;
+margin: 10px;
+}
+
+.avatar_archive_screenshot img {border: 1px solid #111111; height: 128px; width:128px;}
+
+
 
