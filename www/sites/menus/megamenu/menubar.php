@@ -29,7 +29,7 @@ function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display, $AdminDisplay)
 			} 
 			else 
 			{
-				echo "<li><a href=\"$siteurl&btn=$siteid\"><span>$a[$siteid]</span></a>";
+				echo "<li><a href=\"$siteurl\"><span>$a[$siteid]</span></a>";
 				if ($DbLink2->num_rows() > 0)
 				{
 					echo "<ul>";
@@ -72,7 +72,7 @@ function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display, $AdminDisplay)
 	} 
 	else 
 	{
-		echo "<li><a href=\index.php?&page=smodul&id=$siteid&btn=$siteid\"><span>$a[$siteid]</span></a></li>";
+		echo "<li><a href=\index.php?&page=smodul&id=$siteid\"><span>$a[$siteid]</span></a></li>";
 	}
  }
 ?>

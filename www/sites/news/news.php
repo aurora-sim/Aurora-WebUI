@@ -26,7 +26,7 @@
 
                     <tr>
                         <td width="100"><b><?= $TIMES ?></b></td>
-                        <td><b> <a href="<?=SYSURL?>index.php?page=news&scr=<?=$id?>" target="_blank"><?=$title?></a></b></td>
+                        <td><h3> <a href="<?=SYSURL?>index.php?page=news&scr=<?=$id?>" target="_blank"><?=$title?></a></h3></td>
                     </tr>
 
                     <tr>
