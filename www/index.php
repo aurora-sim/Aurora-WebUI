@@ -172,7 +172,7 @@ if ($_POST[Submit] == $webui_admin_login) {
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/white.css" rel="stylesheet" type="text/css" />
 
 <?php if($template == 'default')  { ?>
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_gaysanfran.css" rel="stylesheet" type="text/css" />
+<link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_default.css" rel="stylesheet" type="text/css" />
 <?php } ?>
 
 <?php if($template == 'white')  { ?>
