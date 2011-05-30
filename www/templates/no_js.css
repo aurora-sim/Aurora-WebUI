@@ -1,0 +1,17 @@
+/*
+-----------------------------------------------------
+no-js
+-----------------------------------------------------
+*/
+.no-js div
+{
+	display:none; !important;
+}
+#problem
+{
+	display:none;
+}
+.no-js #problem
+{
+	display:block; !important;
+}

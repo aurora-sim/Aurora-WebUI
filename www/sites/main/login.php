@@ -1,9 +1,13 @@
+<script language="javascript" type="text/javascript">
+	
+	addEvent(window, "load", function() { document.getElementById("login_input").focus(); } );
+</script>
 <div id="content">
     <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
     <div id="ContentHeaderCenter"></div>
     <div id="ContentHeaderRight"><h5><? echo $webui_login; ?></h5></div>
     <div id="login">
-        <form action="index.php" method="POST" onsubmit="if (!validate(this)) return false;">
+        <form action="index.php" method="POST" name="loginForm" onsubmit="if (!validate(this)) return false;">
             <table>
 				        <tr>
                     <td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td>

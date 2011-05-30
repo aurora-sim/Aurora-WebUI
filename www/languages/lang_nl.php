@@ -29,6 +29,7 @@ $webui_country='Land';
 $webui_date_of_birth='Geboortedatum';
 $webui_email='Email';
 $webui_create_new_account='Registreer nieuw account';
+$site_terms_of_service_agree = 'Ik ga akkoord met de Terms of Service';
 
 $webui_region_name='Regio naam';
 $webui_location='Locatie';

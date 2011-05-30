@@ -278,19 +278,20 @@ function displayDefaultAvatars()
 				</tr>
 				
         <? displayDefaultAvatars(); ?>
-        <? if( file_exists( $_SERVER{'DOCUMENT_ROOT'} . "/TOS.txt"))  { ?>
+        <? if( file_exists( $_SERVER{'DOCUMENT_ROOT'} . "/TOS.php"))  { ?>
 				
-        <tr>
-					<td class="odd"><input label="agree_label" require="true" type="checkbox" name="Agree_with_TOS" id="agree" value="1" />
-            <label for="agree"><span id="agree_label"><?=$site_terms_of_service_agree?></span></label>
-          </td>
-					<td class="odd">
-            <div style="width:450px;height:300px;overflow:auto;">
-              <pre><? include("tos.txt"); ?></pre>
-            </div>
-          </td>
+		<tr>
+			<td class="even" colspan="2">
+				<div style="width:100%;height:300px;overflow:auto;">
+				  <? include("tos.php"); ?>
+				</div>
+			</td>
         </tr>
-        
+        <tr>
+			<td colspan="2" valign="top" class="odd"><input label="agree_label" require="true" type="checkbox" name="Agree_with_TOS" id="agree" value="1" />
+				<label for="agree"><span id="agree_label"><?=$site_terms_of_service_agree?></span></label>
+			</td>
+		</tr>
         <? } ?>
 				
         <tr>

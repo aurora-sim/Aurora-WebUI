@@ -84,3 +84,13 @@ function removeClass(ele,cls) {
 		ele.className=ele.className.replace(reg,' ');
 	}
 }
+
+var addEvent = function(elem, type, eventHandle) 
+{
+	if (elem == null || elem == undefined) return;
+	if ( elem.addEventListener ) {
+		elem.addEventListener( type, eventHandle, false );
+	} else if ( elem.attachEvent ) {
+		elem.attachEvent( "on" + type, eventHandle );
+	}
+};
