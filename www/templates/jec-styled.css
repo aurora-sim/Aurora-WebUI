@@ -1,0 +1,119 @@
+@CHARSET "UTF-8";
+
+/* "Global" settings for the calendar table */
+table.styledCalendar {
+  border-collapse: collapse;
+  border: 3px solid #99997a;
+  font-size: 12px;
+  font-family: Arial, Verdana;
+  margin: 5px;
+}
+
+/* "Global" settings for all table cells in the calendar table */
+table.styledCalendar th, table.styledCalendar td {
+  border: 1px solid #99997a;
+  padding: 2px;
+  width: 14%;   /* this makes all of the days the same width (note: 7 * 14% = 98%) */
+}
+
+/* Settings for cells in the body of the calendar (i.e., the days) */
+table.styledCalendar td {
+  height: 80px; 
+  vertical-align: top;
+}
+
+/* Formatting of the events when they appear in a day cell */
+table.styledCalendar td div.events {
+  font-size: 9px;
+  line-height: 10px;
+  height: 60px; 
+  overflow-y: auto; 
+  color: #99997a;
+}
+
+table.styledCalendar td div.events span {
+  display: block;
+  margin-bottom: -3px;
+}
+
+table.styledCalendar td div.events a {
+  display: block;
+  margin-bottom: -3px;
+  color: #99997a;  
+}
+
+table.styledCalendar td div.events a:active, table.styledCalendar td div.events a:focus {
+  outline: 0; /* remove the dotted border from the active link */
+}
+
+/* Formatting of the year/month banner */
+table.styledCalendar thead th {
+  background-color: #d9e5f1;
+  color: #fffff0;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+/* Formatting of the weekday names */
+table.styledCalendar tbody th {
+  background-color: #d9e5f1;
+  color: #fffff0;
+  font-size: 8px;
+  font-weight: bold;  
+  margin: 3px;
+}
+
+/* Formatting of the footer cells (with links to other months) */
+table.styledCalendar tfoot th {
+  border: none;
+  background-color: #d9f1f1;
+}
+
+table.styledCalendar tfoot th a {
+  color: #b2b28f;
+  text-decoration: none;
+  display: block;
+}
+
+table.styledCalendar tfoot th a:hover {
+  border: 1px solid #b2b28f;
+}
+
+/* Formatting of the day cells */
+table.styledCalendar {
+  background-color: #ffffff;
+}
+
+table.styledCalendar td.dayBlank {
+  background-color: #fffffa;
+}
+
+table.styledCalendar td.dayToday {
+  background-color: #e6ffcd;
+}
+
+/* Formatting of the date that appears in each calendar day cell */
+table.styledCalendar td div.date {
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  color: #cdcdff;
+}
+
+table.styledCalendar td.dayToday div.date {
+  color: #cdffcd !important;
+}
+
+table.styledCalendar td.daySpecial div.date {
+  color: #e6cdff;
+}
+
+table.styledCalendar td.dayHasEvent div.date {
+  color: #99997a;
+}
+
+/* dates with the special style applied for Memorial Day Weekend */
+table.styledCalendar td.memorialDayWeekend {
+  background-color: #e0f8f8;
+}

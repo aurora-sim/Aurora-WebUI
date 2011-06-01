@@ -151,6 +151,8 @@ if ($_POST[Submit] == $webui_admin_login) {
   <script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script> 
   <script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
 
+  <script type="text/javascript" src="javascripts/calendar-2.2.js"></script>
+
 <?php if($displayMegaMenu) { ?>
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/black.css" rel="stylesheet" type="text/css" />
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/grey.css" rel="stylesheet" type="text/css" />
@@ -160,6 +162,7 @@ if ($_POST[Submit] == $webui_admin_login) {
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/orange.css" rel="stylesheet" type="text/css" />
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/red.css" rel="stylesheet" type="text/css" />
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/white.css" rel="stylesheet" type="text/css" />
+<link href="<?= SYSURL ?>templates/jec-styled.css" rel="stylesheet" type="text/css" />
 
 <?php if($template == 'default')  { ?>
 <link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_default.css" rel="stylesheet" type="text/css" />
