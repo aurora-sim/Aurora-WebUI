@@ -1,4 +1,12 @@
 <?
+/*
+ * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
+ * See CONTRIBUTORS for a full list of copyright holders.
+ *
+ * See LICENSE for the full licensing terms of this file.
+ *
+ */
+
 // Page Load Time 
 $time = microtime(); 
 $time = explode(" ", $time); 
@@ -10,19 +18,20 @@ if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
     ob_start("ob_gzhandler"); else
     ob_start();
 session_start();
-?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<?
-/*
- * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
- * See CONTRIBUTORS for a full list of copyright holders.
- *
- * See LICENSE for the full licensing terms of this file.
- *
- */
+echo "<!doctype html>";
+if ((empty($_GET['lang'])) && (empty($_COOKIE['lang'])))
+{
+	echo "<html lang=en class=\"no-js\">";
+}
+else if (!empty($_GET['lang']))
+{
+	echo "<html lang=".$_GET['lang']." class=\"no-js\">";
+}
+else if(!empty($_COOKIE['lang']))
+{
+	echo "<html lang=".$_COOKIE['lang']." class=\"no-js\">";
+}
 
 include("settings/config.php");
 include("settings/json.php");
@@ -137,11 +146,12 @@ if ($_POST[Submit] == $webui_admin_login) {
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="templates/no_js.css" type="text/css" />
   <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
 
   <link rel="shortcut icon" href="<?=$favicon_image?>" />
   <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
-  
+  <script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
   <script src="javascripts/global.js" type="text/javascript"></script>
   <script src="javascripts/droppanel/dropdown.js" type="text/javascript"></script>
     
@@ -460,7 +470,7 @@ $(document).ready(function(){
 
 </head>
     
-<body class="webui">
+<body  class="webui">
 
 <div class="absolute">
   <!-- Top Panel Slider -->
@@ -559,5 +569,8 @@ if($displayPageLoadTime) {
 </div>
 
 </div>
+<span id="problem">
+	You do not have your Javascript enabled, and this site requires it.
+</span>
 </body>
 </html>

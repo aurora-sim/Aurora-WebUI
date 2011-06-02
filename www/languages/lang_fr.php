@@ -29,6 +29,7 @@ $webui_country='Pays';
 $webui_date_of_birth='Date d\'anniversaire';
 $webui_email='Adresse Email';
 $webui_create_new_account='Créer un nouveau compte';
+$site_terms_of_service_agree='Je suis d\'accord avec les Conditions d\'utilisation';
 
 $webui_region_name='Nom de la région';
 $webui_location='Lieu';

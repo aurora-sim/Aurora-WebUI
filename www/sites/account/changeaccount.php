@@ -28,7 +28,7 @@ if ($_SESSION[USERID] == "") {
     // echo '</pre>';
 
     if (($REGIOCHECK == "0") or ($REGIOCHECK == "1")) {
-        if ($_POST[Submit1] == "Save") {
+        if ($_POST[Submit1] == $webui_submit) {
             $startregion = $_POST[region];
 
             $DbLink->query("SELECT uuid FROM " . C_REGIONS_TBL . " WHERE regionName='".cleanQuery($startregion)."' ");
@@ -38,20 +38,20 @@ if ($_SESSION[USERID] == "") {
             echo
             "<script language='javascript'>
 			<!--
-				window.location.href='index.php?page=change&btn=2';
+				window.location.href='index.php?page=changeaccount&btn=2';
 			// -->
 			</script>";
         }
     }
 
-    if ($_POST[Submit2] == "Save") {
+    if ($_POST[Submit2] == $webui_submit) {
         if ($_POST[passnew] == $_POST[passvalid]) {
 
             $found = array();
             $found[0] = json_encode(array('Method' => 'ChangePassword', 'WebPassword' => md5(WIREDUX_PASSWORD)
                         , 'UUID' => cleanQuery($_SESSION[USERID])
                         , 'Password' => cleanQuery($_POST[passold])
-                        , 'NewPassword' => cleanQuery(md5(md5($_POST[passnew])))));
+                        , 'NewPassword' => cleanQuery($_POST[passnew])));
 
             $do_post_requested = do_post_request($found);
             $recieved = json_decode($do_post_requested);
@@ -93,7 +93,7 @@ if ($_SESSION[USERID] == "") {
 
 
 
-    if ($_POST[Submit3] == "Save") {
+    if ($_POST[Submit3] == $webui_submit) {
         // Check if the new email address isn't empty
         if ($_POST[emailnew] <> "") {
 
@@ -155,7 +155,7 @@ if ($_SESSION[USERID] == "") {
         }
     }
 
-    if ($_POST[Submit4] == "Save") {
+    if ($_POST[Submit4] == $webui_submit) {
         $found = array();
         $found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD),
                     'Name' => cleanQuery($_POST[nameNew])));
@@ -227,7 +227,7 @@ if ($_SESSION[USERID] == "") {
                 </td>
             </tr>
             
-            <form name="form1" method="post" action="index.php?page=change">
+            <form name="form1" method="post" action="index.php?page=changeaccount">
                 <tr>
                     <td class="odd" width="50%"><? echo $webui_old_region ?>: </td>
                     <td class="odd"><?= $oldregionname ?></td>
@@ -278,7 +278,7 @@ if ($_SESSION[USERID] == "") {
                   
             <? } ?>
                   
-            <form name="form1" method="post" action="index.php?page=change">
+            <form name="form1" method="post" action="index.php?page=changeaccount">
                 <tr>
                     <td class="odd" width="50%"><? echo $webui_old_password; ?>:</td>
                     <td class="odd"><input type="password" name="passold"></td>
@@ -317,7 +317,7 @@ if ($_SESSION[USERID] == "") {
                             
             <? } ?>
                             
-            <form name="form1" method="post" action="index.php?page=change">
+            <form name="form1" method="post" action="index.php?page=changeaccount">
                 <tr>
                     <td class="odd" width="50%"><? echo $webui_old_email ?>:</td>
                     <td class="odd"><input type="text" size="40" value="<?= $oldemail ?>" name="emailold"></td>
@@ -356,7 +356,7 @@ if ($_SESSION[USERID] == "") {
                             
             <? } ?>
                             
-            <form name="form1" method="post" action="index.php?page=change">
+            <form name="form1" method="post" action="index.php?page=changeaccount">
                 <tr>
                     <td class="odd" width="50%"><? echo $webui_avatar_name; ?>:</td>
                     <td class="odd"><input type="text" size="40" name="nameNew" value ="<? echo $Name; ?>"></td>

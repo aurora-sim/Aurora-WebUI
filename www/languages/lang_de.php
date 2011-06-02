@@ -41,6 +41,7 @@ $webui_user_name='Nutzername';
 $webui_successfully = 'Account successfully created!';
 $webui_successfully_info = 'Account successfully created; to login, you need to click on the link which was sent to your email address';
 $webui_registrations_disabled = 'Registrations have been disabled by the site administrators, please try again later.';
+$site_terms_of_service_agree = 'Ich stimme den Nutzungsbedingungen';
 
 //
 // Online Users Page
