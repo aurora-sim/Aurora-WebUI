@@ -40,6 +40,8 @@ include("check.php");
 include("languages/translator.php");
 include("templates/templates.php");
 
+
+
 if ($_GET[page] != '') {
     $_SESSION[page] = $_GET[page];
 } else {
@@ -285,31 +287,37 @@ $(function(){Header.addFade("#headerimages");});
 <script type="text/javascript">
 // http://jquery.malsup.com/corner/
 // Add more class here ...
-    $('#annonce1, #annonce2, #annonce3, #annonce4, #annonce5, #annonce6, #annonce7, #annonce10').corner();
-    $('#info1, #info2, #info3, #info4, #info5, #info6, #info7, #info10').corner();
-    $('#aide1, #aide2, #aide3, #aide4, #aide5, #aide6, #aide7, #aide10').corner();
-    $('#step1, #step2, #step3').corner();
+$('#annonce1, #annonce2, #annonce3, #annonce4, #annonce5, #annonce6, #annonce7, #annonce10').corner();
+$('#info1, #info2, #info3, #info4, #info5, #info6, #info7, #info10').corner();
+$('#aide1, #aide2, #aide3, #aide4, #aide5, #aide6, #aide7, #aide10').corner();
+$('#step1, #step2, #step3, #step4, #step5, #step6, #step7, #step10').corner();
+$('#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5').corner();
+$('#ContentHeaderLeft, #ContentHeaderCenter, #ContentHeaderRight').corner("5px");
+$('.news_time, .news_title, .news_content, #news_online').corner();
+	
+$(function(){
+$('#dynCorner').click(function() {
+$('#dynamic').corner();
+});
+
+$('#dynUncorner').click(function() {
+$('#dynamic').uncorner();
+});
+
+$("#translator, #welcomeText").corner("5px");
+$('#container,#header,#content').corner(); // (add to curvycorner)
+$('#region_map').corner();
+$('#login, #register, #forget_pass').corner("5px");
+$('.menu').corner();
+$('#chat').corner();
+$('button, .roundedinput, .forgot_pass_bouton, .adminsettings_bouton').corner("10px");
+$('#roundedcoord').corner("10px");
+});
     
-    $('#ContentHeaderLeft, #ContentHeaderCenter, #ContentHeaderRight').corner("5px");
-    $(function(){
-		$('#dynCorner').click(function() {
-			$('#dynamic').corner();
-		});
-		$('#dynUncorner').click(function() {
-			$('#dynamic').uncorner();
-		});
-
-	  $("#translator, #welcomeText").corner("5px");
-		$('#container,#header,#content').corner(); // (add to curvycorner)
-		$('#region_map').corner();
-		$('#login, #register, #forget_pass').corner("5px");
-		$('.menu').corner();
-		$('.chat').corner();
-		$('button, .roundedinput, .forgot_pass_bouton, .adminsettings_bouton').corner("10px");
-		$('#roundedcoord').corner("10px");
-
-
-    });
+$('#island1, #island2, #island3, #island4, #island5').corner();
+$('#island_picture1,#island_picture2,#island_picture3,#island_picture4,#island_picture5').corner();
+$('#island_info_part1, #island_info_part2, #island_info_part3, #island_info_part4, #island_info_part5').corner();
+// $('#CurrencyHistory').corner();
 </script>
 <?php } ?>
 
@@ -447,8 +455,26 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepAdminSettingBouton1 ?>'}, 800);
   });
+  
+	$("#create_news_button, #edit_news_item_button").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
+  });
+  
+  /* Grid Status Module */
+	$("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
+  });
 
-
+  /* Stardust Module */
+	$("#island_input_button1, #island_input_button2, #island_input_button3, #island_input_button4, #island_input_button5, #get_it_now_button").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
+  });
 
 }); 
 </script>
@@ -537,6 +563,7 @@ $(document).ready(function(){
         </div>
         <!-- <div id="gridstatus"><? //php include("sites/gridstatus.php"); ?></div> -->
         <div id="home_content_right"><? include("sites/modules/slideshow.php"); ?></div>
+
     </div><!-- fin de #header -->
 
     <!-- <div id="menubar"><? // include("sites/menubar.php"); ?></div> -->

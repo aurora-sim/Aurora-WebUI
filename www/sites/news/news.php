@@ -1,5 +1,14 @@
 <div id="content">
-    <?php
+  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderCenter"></div>
+  <div id="ContentHeaderRight"><h5><? echo $webui_news; ?></h5></div>
+  
+  	<div class="clear"></div>
+        	
+  <div id="news">
+    <div id="info"><p><? echo $webui_news; ?></p></div>
+    
+<?php
 
                 $querypage = 0;
                 if($_GET[pagenum] != "") {
@@ -13,9 +22,7 @@ if($querypage*5 + 5 > $count)
     $showNext = false;
 }
                 ?>
-    <div id="annonce10">
-    <center><h2> <? echo $webui_news; ?><p> </h2></center>
-    <div id="info">
+<!-- STYLE TO DO -->
         <div style="text-align: left; width: 50%; float: left;">
         <?php
         if($querypage > 0) { ?>
@@ -28,8 +35,8 @@ if($querypage*5 + 5 > $count)
             <a href="<?=SYSURL?>index.php?page=news&pagenum=<?=$querypage+1?>">Next Page</a>
             <?php } ?>&nbsp;
         </div>
-        <br><center><p><strong><? echo $webui_news; ?>     </strong></p></center>
-        </div>
+<!-- STYLE TO DO -->        
+        	
             <table>
                 <?
                 $query = "";
@@ -51,20 +58,21 @@ if($querypage*5 + 5 > $count)
                 ?>
 
                     <tr>
-                        <td width="100"><b><?= $TIMES ?></b></td>
-                        <td><h3> <a href="<?=SYSURL?>index.php?page=news&scr=<?=$id?>" target="_blank"><?=$title?></a></h3></td>
+                        <td width="100"><div class="news_time"><b><?= $TIMES ?></b></div></td>
+                        <td><div class="news_title"><h3> <a href="<?=SYSURL?>index.php?page=news&scr=<?=$id?>" ><?=$title?></a></h3></div></td>
                     </tr>
 
                     <tr>
                         <td></td>
-                        <td width="89%"><?= $message ?></td>
+                        <td><div class="news_content"><?= $message ?></div></td>
                     </tr>
 
                     <tr>
                         <td colspan="2"><hr /></td>
                     </tr>
                 <? } $DbLink->clean_results();
+				
                 $DbLink->close(); ?>
             </table>
-      </div>
+	  </div>
 </div>

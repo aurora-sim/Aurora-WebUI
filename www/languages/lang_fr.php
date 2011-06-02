@@ -122,7 +122,7 @@ $webui_home_page='
     <p>Ceci est notre nouveau monde virtuel où vous pouvez vous amuser, rencontrer des gens, discuter, jouer, explorer, créer et partager vos rêves.</p>
     <p>Tout est possible dans notre tout nouveau monde 3D.</p>
     <p>Notre monde est créé par ses résidents, vous pouvez y construire tout ce que vous pouvez imaginer.</p>
-    <p><a href="index.php?page=register&btn=webui_menu_item_register">Créer un compte</a> gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde.</p>
+    <p><a href="index.php?page=register">Créer un compte</a> gratuit aujourd\'hui, construire un vous virtuel et venez jouer dans notre monde.</p>
     <p>Rejoignez-nous maintenant, et faites la différence!</p>';
 
 $webui_home_page_warning = 'S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.';
@@ -420,9 +420,9 @@ $webui_help_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
 $webui_help_step1_title = 'Etape 1';
 $webui_help_step2_title = 'Etape 2';
 $webui_help_step3_title = 'Etape 3';
-$webui_help_step1 = '<a href="index.php?page=register&btn=webui_menu_item_register">Créez votre compte</a> gratuit sur notre site dés aujourd\'hui!';
+$webui_help_step1 = '<a href="index.php?page=register">Créez votre compte</a> gratuit sur notre site dés aujourd\'hui!';
 $webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Télécharger le Chat</a> (Client) Imprudence / Kokua.';
-$webui_help_step3 = '<a href="index.php?page=help&btn=webui_menu_item_help">Ajouter notre grille</a> à votre Chat (Client) préféré.';
+$webui_help_step3 = '<a href="index.php?page=help">Ajouter notre grille</a> à votre Chat (Client) préféré.';
 
 $webui_help_title_comment01 = 'Aide 01';
 $webui_help_title_comment02 = 'Aide 02';
@@ -499,4 +499,40 @@ $webui_infos_comment06 = 'Info concernant ...';
 //
 $this_page_took = 'Cette page a pris';
 $seconds_to_load = 'secondes pour charger';
+
+//
+// Modernizer
+//
+$webui_modernizer_problem = 'Vous n\'avez pas votre Javascript activé, et pour ce site, il faut.';
+
+//
+// Page Currency
+//
+$webui_menu_item_getregion='Terrain'; // Buy Land
+
+$webui_menu_item_getcurrency='Acheter G$';
+$webui_menu_item_getcurrencyhistory='Historique';
+$webui_menu_item_currencytransfer='Transfert';
+
+$site_not_a_member='N\'est pas un membre?';
+$site_sign_up_today='Créez Votre Compte GRATUIT sur Notre site.';
+
+$site_sign_up_benifit='
+<ul><li>Grand monde merveilleux avec des gens sympathiques</li>
+<li>La sécurité est une priorité absolue</li>
+<li>Choisissez votre avatar par défaut lorsque vous vous inscrivez</li>
+<li>Dernier moteur physique</li>
+<li>Plus de 100 régions</li>
+<li>Compatible avec les devises de Lindens et US et €</li>
+<li>Pas de frais d\'achat</li>
+<li>Aucun frais d\'installation</li>
+<li>Les mondes virtuels en 3D que datation environnement</li>
+<li>Vous pouvez garder votre nom et l\'identité sl</li>
+<li>Propriétaires bienvenus personnels</li>
+<li>Kick ass administer and scripters</li>
+</ul>';
+
+$site_terms_of_service_agree='Je suis d\'accord avec les Conditions d\'utilisation.';
+$ErrorMessagePurchaseAlreadyComplete = "Cet achat a déjà été complété. Si vous n'avez pas vu la monnaie encore appliqué, s\'il vous plaît soyez patient, car cela pourrait être en attente.";
+
 ?>

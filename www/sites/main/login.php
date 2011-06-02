@@ -1,5 +1,4 @@
 <script language="javascript" type="text/javascript">
-	
 	addEvent(window, "load", function() { document.getElementById("login_input").focus(); } );
 </script>
 <div id="content">
@@ -7,8 +6,16 @@
     <div id="ContentHeaderCenter"></div>
     <div id="ContentHeaderRight"><h5><? echo $webui_login; ?></h5></div>
     <div id="login">
-        <form action="index.php" method="POST" name="loginForm" onsubmit="if (!validate(this)) return false;">
-            <table>
+
+	<?if ($_GET[next_page]){
+	if ($_GET[purchase_id]){?>
+	<form action="index.php?page=<?=$_GET[next_page]?>&purchase_id=<?=$_GET[purchase_id]?>" method="POST" onsubmit="if (!validate(this)) return false;">
+	<?}else{?>
+	<form action="index.php?page=<?=$_GET[next_page]?>" method="POST" onsubmit="if (!validate(this)) return false;">
+<?}}else{?>
+	<form action="index.php" method="POST" onsubmit="if (!validate(this)) return false;">
+<?}?>
+        <table>
 				        <tr>
                     <td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td>
                 </tr>

@@ -121,7 +121,7 @@ $webui_home_page='
         <p>This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams.</p>
         <p>Everything is possible in our brand new 3D World. <br />
         <p>Our World is created by its residents, you can build everything you can imagine here.</p>
-        <p>Create a free account today, build a virtual you and play in our world.</p>
+        <p><a href="index.php?page=register">Create a free account today</a> build a virtual you and play in our world.</p>
         <p>Join us now, and make a difference!</p>';
 
 $webui_home_page_warning = 'Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.';
@@ -419,9 +419,9 @@ $webui_help_info = 'This allows you to Help';
 $webui_help_step1_title = 'Step 1';
 $webui_help_step2_title = 'Step  2';
 $webui_help_step3_title = 'Step  3';
-$webui_help_step1 = '<a href="index.php?page=register&btn=webui_menu_item_register">Create your FREE Account</a> right here on our pages.';
+$webui_help_step1 = '<a href="index.php?page=register">Create your FREE Account</a> right here on our pages.';
 $webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. We recommend Imprudence / Kokua.';
-$webui_help_step3 = '<a href="index.php?page=help&btn=webui_menu_item_help">Add our grid</a> to your favorite viewer. Don\'t forgot it!';
+$webui_help_step3 = '<a href="index.php?page=help">Add our grid</a> to your favorite viewer. Don\'t forgot it!';
 
 $webui_help_title_comment01 = 'Help 1';
 $webui_help_title_comment02 = 'Help 02';
@@ -492,4 +492,47 @@ $webui_infos_comment03 = 'Info concernant ...';
 $webui_infos_comment04 = 'Info concernant ...';
 $webui_infos_comment05 = 'Info concernant ...';
 $webui_infos_comment06 = 'Info concernant ...';
+
+//
+// Page Load Time
+//
+$this_page_took = 'This page took';
+$seconds_to_load = 'seconds to load';
+
+//
+// Modernizer
+//
+$webui_modernizer_problem = 'You do not have your Javascript enabled, and this site requires it.';
+
+//
+// Page Currency
+//
+$webui_menu_item_getregion='Buy Land';
+
+$webui_menu_item_getcurrency='Buy D$';
+$webui_menu_item_getcurrencyhistory='History';
+$webui_menu_item_currencytransfer='Transfer';
+
+$site_not_a_member='Not a member?';
+$site_sign_up_today='Create your FREE Account right here on our pages.';
+
+$site_sign_up_benifit='
+<ul><li>Large wonderful world with friendly people</li>
+<li>Security is a top priority</li>
+<li>Choose your default avatar when you sign up</li>
+<li>Latest physics engine</li>
+<li>Over 100 Regions</li>
+<li>Currency compatible with lindens and us and euros</li>
+<li>No purchase fee</li>
+<li>No set up fee</li>
+<li>The worlds only virtual 3D dating environment</li>
+<li>You can keep you sl name and  identity</li>
+<li>Friendly personal owners</li>
+<li>Kick ass administer and scripters</li>
+</ul>
+';
+
+$site_terms_of_service_agree='I agree with the Terms of Service.';
+$ErrorMessagePurchaseAlreadyComplete = "This purchase has already been completed. If you have not seen the currency applied yet, please be patient, as it might be on hold.";
+
 ?>
