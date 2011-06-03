@@ -146,7 +146,7 @@ if ($_GET[name]) {
             else
                 $profileLink = WIREDUX_TEXTURE_SERVICE . '/index.php?method=GridTexture&uuid=' . $profileImage;
           ?>
-          <img src="<? echo $profileLink ?>" alt="<? echo $userName ?>" title="<? echo $userName ?>" />
+          <img src="<? echo $profileLink ?>" alt="<? echo $profileImage ?>" title="<? echo $userName ?>" />
       </div>
   </div>
 </div>  </div>
