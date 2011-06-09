@@ -4,6 +4,20 @@
   <div id="ContentHeaderRight"><h5><? echo $webui_help; ?></h5></div>
   <div id="help">
   <div id="info"><p><? echo $webui_help_info; ?></p></div>
+  
+<div id="info1"><h3><? echo $webui_help_title_comment01; ?></h3> 
+  <p><? echo $webui_help_comment01; ?></p>
+</div>
+  
+<div id="info2"><h3><? echo $webui_help_title_comment02; ?></h3>
+  <p><? echo $webui_help_comment02; ?></p>
+</div>
+
+<div id="info3"><h3><? echo $webui_help_title_comment03; ?></h3>
+  <p><? echo $webui_help_comment03; ?></p>
+</div>
+
+
 <p>
 <?
   $DbLink2 = new DB;

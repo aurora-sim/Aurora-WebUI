@@ -40,8 +40,6 @@ include("check.php");
 include("languages/translator.php");
 include("templates/templates.php");
 
-
-
 if ($_GET[page] != '') {
     $_SESSION[page] = $_GET[page];
 } else {
@@ -313,7 +311,13 @@ $('#chat').corner();
 $('button, .roundedinput, .forgot_pass_bouton, .adminsettings_bouton').corner("10px");
 $('#roundedcoord').corner("10px");
 });
-    
+/* Downlaod Page */
+$('#download1, #download2, #download3, #download1 a, #download2 a, #download3 a').corner();
+
+/* AddGrid Page */
+$('#addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10, #addgrid h3 a').corner();
+
+/* StarDust Currency Pages */
 $('#island1, #island2, #island3, #island4, #island5').corner();
 $('#island_picture1,#island_picture2,#island_picture3,#island_picture4,#island_picture5').corner();
 $('#island_info_part1, #island_info_part2, #island_info_part3, #island_info_part4, #island_info_part5').corner();
@@ -461,6 +465,26 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
   });
+
+  /* Page Downloads */
+  	$("#download1, #download2, #download3").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
+  });
+
+  	$("#download1 a, #download2 a, #download3 a").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
+  });
+  
+  /* Page News */
+	$(".news_time, .news_title, .news_content").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
+  });
   
   /* Grid Status Module */
 	$("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").hover(function() {
@@ -469,6 +493,19 @@ $(document).ready(function(){
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
 
+  /* AddGrid Page */
+	$("#addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
+  });
+
+  	$("#addgrid h3 a").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
+  });  
+  
   /* Stardust Module */
 	$("#island_input_button1, #island_input_button2, #island_input_button3, #island_input_button4, #island_input_button5, #get_it_now_button").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
@@ -561,9 +598,8 @@ $(document).ready(function(){
         <div id="headerimages">
             <a href="<?= SYSURL ?>"><h1><? SYSNAME ?></h1></a>
         </div>
-        <!-- <div id="gridstatus"><? //php include("sites/gridstatus.php"); ?></div> -->
-        <div id="home_content_right"><? include("sites/modules/slideshow.php"); ?></div>
-
+        <!-- <div id="gridstatus"><?php // include("sites/gridstatus.php"); ?></div> -->
+        <div id="home_content_right"><? include("sites/modules/slideshow.php"); ?></div>		
     </div><!-- fin de #header -->
 
     <!-- <div id="menubar"><? // include("sites/menubar.php"); ?></div> -->

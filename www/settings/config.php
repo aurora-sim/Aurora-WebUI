@@ -9,7 +9,7 @@
 
 ##################### System #########################
 define("SYSNAME","***");
-define("SYSURL","http://your_webui_server_ip_or_dns_address/");
+define("SYSURL","http://your_webui_server_ip_or_dns/");
 define("SYSMAIL","***");
 define("WIREDUX_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WIREDUX");
 define("WIREDUX_TEXTURE_SERVICE","http://your_webui_server_ip_or_dns:8002");
@@ -18,6 +18,29 @@ define("WIREDUX_PASSWORD","***");
 // Should we display a 'Maintenance' page currently that blocks all access to the website?
 // (until disabled here)?
 $displayMaintenancePage = false;
+
+################### Add Grid Page ###################
+define("AddGrid_GridNick","Your Grid Nick");
+define("AddGrid_GridName","Your Grid Full Name");
+define("AddGrid_FirstName","Your Avatar First Name");
+define("AddGrid_LastName","Your Avatar Last Name");
+define("AddGrid_Password","Your Avatar Password");
+define("AddGrid_LoginURL","http://your_webui_server_ip_or_dns:8002/");
+
+define("AddGrid_LoginPage","http://your_webui_server_ip_or_dns/loginscreen");
+define("AddGrid_HelperURL","http://your_webui_server_ip_or_dns:8002/");
+define("AddGrid_Website","http://your_webui_server_ip_or_dns/");
+define("AddGrid_Support","http://your_webui_server_ip_or_dns/");
+define("AddGrid_Account","http://your_webui_server_ip_or_dns/index.php?page=register");
+define("AddGrid_Password","http://your_webui_server_ip_or_dns/index.php?page=forgotpass");
+define("AddGrid_WebSearch","http://your_webui_server_ip_or_dns/search.php");
+
+define("AddGrid_KokuaURL","http://your_webui_server_ip_or_dns:8002/");
+define("AddGrid_SecondLifeURL","http://your_webui_server_ip_or_dns:8002/");
+define("AddGrid_KristenURL","http://your_webui_server_ip_or_dns:8002/");
+
+// define("HyperGridURL1","secondlife://digigrids.no-ip.org:8002/");
+// define("HyperGridURL1","http://slurll.com/secondlife/digigrids.no-ip.org:8002:digigrids");
 
 ################### Logo Light Effect ###################
 // Should we display the logo 

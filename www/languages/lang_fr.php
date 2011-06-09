@@ -108,7 +108,10 @@ $webui_menu_item_gallery = 'Gallery';
 $webui_menu_item_world = 'Monde';
 $webui_menu_item_account = 'Compte';
 $webui_menu_item_help = 'Aide';
-$webui_menu_item_chat = 'Chat';
+$webui_menu_item_chat = 'Chat Support';
+$webui_menu_item_downloads = 'Téléchargements';
+$webui_menu_item_addgrid = 'Ajouter Grille';
+$webui_menu_item_addserver = 'Ajouter Server';
 
 //
 // Home Page
@@ -422,17 +425,19 @@ $webui_help_step2_title = 'Etape 2';
 $webui_help_step3_title = 'Etape 3';
 $webui_help_step1 = '<a href="index.php?page=register">Créez votre compte</a> gratuit sur notre site dés aujourd\'hui!';
 $webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Télécharger le Chat</a> (Client) Imprudence / Kokua.';
-$webui_help_step3 = '<a href="index.php?page=help">Ajouter notre grille</a> à votre Chat (Client) préféré.';
+$webui_help_step3 = '<a href="index.php?page=addgrid">Ajouter notre grille</a> à votre Chat (Client) préféré.';
 
-$webui_help_title_comment01 = 'Aide 01';
-$webui_help_title_comment02 = 'Aide 02';
-$webui_help_title_comment03 = 'Aide 03';
+$webui_help_title_comment01 = 'Téléchargements Gratuits';
+$webui_help_title_comment02 = 'Aide concernant le Client';
+$webui_help_title_comment03 = 'Aide concernant le Server';
+
 $webui_help_title_comment04 = 'Aide 04';
 $webui_help_title_comment05 = 'Aide 05';
 $webui_help_title_comment06 = 'Aide 06';
-$webui_help_comment01 = 'Aide concernant le Viewer.';
-$webui_help_comment02 = 'Aide Concernant le Server.';
-$webui_help_comment03 = 'Aide concernant autre chose.';
+
+$webui_help_comment01 = '<a href="index.php?page=downloads">Lire la suite ...</a>';
+$webui_help_comment02 = '<a href="index.php?page=addgrid">Lire la suite ...</a>';
+$webui_help_comment03 = '<a href="index.php?page=addserver">Lire la suite ...</a>';
 $webui_help_comment04 = 'Aide concernant autre chose.';
 $webui_help_comment05 = 'Aide concernant autre chose.';
 $webui_help_comment06 = 'Aide concernant autre chose.';
@@ -442,6 +447,88 @@ $webui_help_comment06 = 'Aide concernant autre chose.';
 //
 $webui_chat = 'Live Chat Support IRC';
 $webui_chat_info = 'Ceci vous permet d\'obtenir une aide en directe grace à notre Salle de Chat IRC.';
+
+//
+// Downloads Page
+//
+$webui_downloads = 'Téléchargements';
+$webui_downloads_info = 'Nous vous proposons ici quelques téléchargements de Viewer ... nous vous conseillons Imprudence / Kokua';
+$webui_downloads_imprudence_windows_title = 'Imprudence pour Windows';
+$webui_downloads_imprudence_linux_title = 'Imprudence pour Linux';
+$webui_downloads_imprudence_mac_title = 'Imprudence pour Mac';
+$webui_downloads_imprudence_windows = '<a href="#">Télécharger</a> Imprudence / Kokua.';
+$webui_downloads_imprudence_linux = '<a href="#">Télécharger</a> Imprudence / Kokua.';
+$webui_downloads_imprudence_mac = '<a href="#">Télécharger</a> Imprudence / Kokua.';
+
+//
+// Addgrid Page
+//
+$webui_addgrid = 'Ajouter Grille';
+$webui_addgrid_info = 'Après avoir téléchargé et installé votre viewer préféré, il vous reste encore une étape avant de pouvoir vous connecter à notre Server, vous devez configurer le Viewer.';
+
+$webui_addgrid_hippo = 'Hippo';
+$webui_addgrid_imprudence = 'Imprudence';
+$webui_addgrid_phoenix = 'Phoenix';
+$webui_addgrid_emerald = 'Emerald';
+$webui_addgrid_meerkat = 'Meerkat';
+$webui_addgrid_Astra= 'Astra';
+$webui_addgrid_kokua = 'Kokua';
+
+$webui_addgrid_config_hippo = 'Configuration Hippo Viewer';
+$webui_addgrid_config_imprudence = 'Configuration Imprudence Viewer';
+$webui_addgrid_config_phoenix = 'Configuration Phoenix Viewer';
+$webui_addgrid_config_emerald = 'Configuration Emerald Viewer';
+$webui_addgrid_config_meerkat = 'Configuration Meerkat Viewer';
+$webui_addgrid_config_astra= 'Configuration Astra Viewer';
+$webui_addgrid_config_kokua = 'Configuration Kokua Viewer';
+$webui_addgrid_click_to_enlarge = 'Click to enlarge';
+
+$webui_addgrid_title = 'Configuration Imprudence Viewer';
+$webui_addgrid_add = 'Lancer le viewer, cliquer sur <b>GRID MANAGER</b> et puis sur <b>ADD NEW GRID</b>';
+$webui_addgrid_complete = 'Remplir avec les informations ci-dessous (Copier/Coller).';
+
+$webui_addgrid_gridNick = 'Grid nick (unique)';
+$webui_addgrid_gridName = 'Grid name';
+$webui_addgrid_AvFirstName = 'First Name';
+$webui_addgrid_AvlastName = 'Last Name';
+$webui_addgrid_Avpassword = 'Password';
+$webui_addgrid_loginURL = 'Login URL';
+$webui_addgrid_getGridInfo = 'A cette étape vous pouvez cliquer sur <b>GET GRID INFO</b> ou poursuivre manuellement (Copier/Coller).';
+$webui_addgrid_loginPage = 'Login page';
+$webui_addgrid_helperURL = 'Helper URL';
+$webui_addgrid_website = 'Website';
+$webui_addgrid_support = 'Support';
+$webui_addgrid_account = 'Account';
+$webui_addgrid_password = 'Password';
+$webui_addgrid_webSearch = 'Web Search';
+$webui_addgrid_apply = 'Cliquer sur <b>APPLY</b>, puis sur <b>OK</b>';
+$webui_addgrid_login = 'Remplir <b>First Name</b>, <b>Last Name</b> et <b>Password</b>, sélectionnez <b>DigiGrids</b> et cliquez sur <b>ME CONNECTER</b>.';
+$webui_addgrid_valid = 'Valable pour: Astra Viewer, Hippo Viewer, Emerald Viewer, Phoenix Viewer, Meerkat Viewer, ...';
+
+$webui_addgrid_diff_info = 'Les Viewers suivants se configurent un peu différement.';
+$webui_addgrid_diff_title = 'Informations de configuration';
+
+$webui_addgrid_diff_shortcut = 'Créer un raccourci du viewer et placez le sur votre bureau.';
+$webui_addgrid_diff_propriete = 'Clic droit sur le raccourci et aller sur Propriété.';
+$webui_addgrid_diff_complete = 'Remplir avec les informations respectives ci-dessous.';
+$webui_addgrid_KokuaViewer = 'Kokua Viewer';
+$webui_addgrid_SecondLifeViewer = 'Second Life Viewer';
+$webui_addgrid_KristenViewer = 'Kristen Viewer';
+
+$webui_addgrid_HyperGrid_info = 'Notre Server fonctionne aussi en mode HyperGrid (HG).';
+$webui_addgrid_HyperGrid_title = 'Hypergrid';
+$webui_addgrid_HyperGrid_content = 'Prochainement disponnible ...';
+
+$webui_addgrid_banned_info = 'Les Viewers suivants sont bannis sur notre server.';
+$webui_addgrid_banned_title = 'Banned Viewer';
+$webui_addgrid_banned_content = 'Prochainement disponnible ...';
+
+//
+// Addserver Page
+//
+$webui_addserver = 'Ajouter Server';
+$webui_addserver_info = 'Les informations ci-dessous vous permettent de configurer votre serevr afin de le connecter à notre server.';
+
 
 //
 // Pagination Tooltips
