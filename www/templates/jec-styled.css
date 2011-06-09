@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
 
 /* "Global" settings for the calendar table */
 table.styledCalendar {
@@ -27,7 +27,7 @@ table.styledCalendar td div.events {
   font-size: 9px;
   line-height: 10px;
   height: 60px; 
-  overflow-y: auto; 
+  overflow: auto; 
   color: #99997a;
 }
 
