@@ -22,9 +22,9 @@ $displayMaintenancePage = false;
 ################### Add Grid Page ###################
 define("AddGrid_GridNick","Your Grid Nick");
 define("AddGrid_GridName","Your Grid Full Name");
-define("AddGrid_FirstName","Your Avatar First Name");
-define("AddGrid_LastName","Your Avatar Last Name");
-define("AddGrid_Password","Your Avatar Password");
+define("AddGrid_AvFirstName","Your Avatar First Name");
+define("AddGrid_AvLastName","Your Avatar Last Name");
+define("AddGrid_AvPassword","Your Avatar Password");
 define("AddGrid_LoginURL","http://your_webui_server_ip_or_dns:8002/");
 
 define("AddGrid_LoginPage","http://your_webui_server_ip_or_dns/loginscreen");
