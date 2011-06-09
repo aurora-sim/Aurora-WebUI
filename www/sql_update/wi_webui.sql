@@ -480,9 +480,6 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('users', 'main', 'usersmain.php'),
 ('help', 'main', 'help.php'),
 ('chat', 'main', 'chat.php'),
-('chat', 'main', 'downloads.php'),
-('chat', 'main', 'addgrid.php'),
-('chat', 'main', 'addserver.php'),
 ('gallery', 'main', 'gallery.php'),
 ('adminsupport', 'admin', 'support.php');
 

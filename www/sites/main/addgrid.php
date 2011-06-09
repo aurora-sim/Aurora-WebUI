@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="javascripts/highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript" src="javascripts/highslide/highslide-with-gallery.js"></script>
 <link rel="stylesheet" type="text/css" href="javascripts/highslide/highslide.css" />
 <!--[if lt IE 7]>
 <link rel="stylesheet" type="text/css" href="javascripts/highslide/highslide-ie6.css" />
