@@ -623,7 +623,7 @@ $time = explode(" ", $time);
 $time = $time[1] + $time[0]; 
 $finish = $time; 
 $totaltime = ($finish - $start);
-echo "<p>Copyright 2011 © the Aurora-Sim project</p>";
+echo "<p>Copyright 2011 Â© the Aurora-Sim project</p>";
 echo "<p>All Rights Reserved</p>";
 if($displayPageLoadTime) {printf ("$this_page_took %f $seconds_to_load.", $totaltime);}
 ?>
