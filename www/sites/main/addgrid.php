@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="javascripts/highslide/highslide-with-gallery.js"></script>
+<script type="text/javascript" src="javascripts/highslide/highslide-with-gallery.js"></script>
 <link rel="stylesheet" type="text/css" href="javascripts/highslide/highslide.css" />
 <!--[if lt IE 7]>
 <link rel="stylesheet" type="text/css" href="javascripts/highslide/highslide-ie6.css" />
@@ -77,15 +77,15 @@
 			<p><b><? echo $webui_addgrid_gridNick; ?> :</b> <?= AddGrid_GridNick ?></p>
 			<p><b><? echo $webui_addgrid_gridName; ?> :</b> <?= AddGrid_GridName ?></p>
 
-			<p><b><? echo $webui_addgrid_AvFirstName; ?> :</b> <?= AddGrid_FirstName ?></p>
-			<p><b><? echo $webui_addgrid_AvlastName; ?> :</b> <?= AddGrid_LastName ?></p>
-			<p><b><? echo $webui_addgrid_Avpassword; ?> :</b> <?= AddGrid_Password ?></p>		
+			<p><b><? echo $webui_addgrid_AvFirstName; ?> :</b> <?= AddGrid_AvFirstName ?></p>
+			<p><b><? echo $webui_addgrid_AvlastName; ?> :</b> <?= AddGrid_AvLastName ?></p>
+			<p><b><? echo $webui_addgrid_Avpassword; ?> :</b> <?= AddGrid_AvPassword ?></p>		
 		
 			<p><b><? echo $webui_addgrid_loginURL; ?> :</b> <?= AddGrid_LoginURL ?></p>
 		
 			<p>&#149; <? echo $webui_addgrid_getGridInfo; ?></p>
-			<p><b><? echo webui_addgrid_loginPage; ?> :</b> <?= AddGrid_LoginPage ?></p>
-			<p><b><? echo webui_addgrid_helperURL; ?> :</b> <?= AddGrid_HelperURL ?></p>
+			<p><b><? echo $webui_addgrid_loginPage; ?> :</b> <?= AddGrid_LoginPage ?></p>
+			<p><b><? echo $webui_addgrid_helperURL; ?> :</b> <?= AddGrid_HelperURL ?></p>
 			<p><b><? echo $webui_addgrid_website; ?> :</b> <?= AddGrid_Website ?></p>
 			<p><b><? echo $webui_addgrid_support; ?> :</b> <?= AddGrid_Support ?></p>
 			<p><b><? echo $webui_addgrid_account; ?> :</b> <?= AddGrid_Account ?></p>
@@ -122,9 +122,9 @@
 			<p>&#149; <? echo $webui_addgrid_diff_propriete; ?></p>
 			<p>&#149; <? echo $webui_addgrid_diff_complete; ?></p>
 
-			<p>- <b><? echo $webui_addgrid_KokuaViewer; ?> :</b> Kokua.exe" -loginuri http://digigrids.no-ip.org:8002/</p>
-			<p>- <b><? echo $webui_addgrid_SecondLifeViewer; ?> :</b> SecondLife.exe" -loginuri http://digigrids.no-ip.org:8002/</p>
-			<p>- <b><? echo $webui_addgrid_KristenViewer; ?> :</b> Kirstens S20.exe" -loginuri http://digigrids.no-ip.org:8002/</p>
+			<p>- <b><? echo $webui_addgrid_KokuaViewer; ?> :</b> Kokua.exe" -loginuri <?= AddGrid_KokuaURL ?></p>
+			<p>- <b><? echo $webui_addgrid_SecondLifeViewer; ?> :</b> SecondLife.exe" -loginuri <?= AddGrid_SecondLifeURL ?></p>
+			<p>- <b><? echo $webui_addgrid_KristenViewer; ?> :</b> Kirstens S20.exe" -loginuri <?= AddGrid_KristenURL ?></p>
 		</div>
 
 		<div id="info"><p><? echo $webui_addgrid_HyperGrid_info; ?></p></div>

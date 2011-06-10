@@ -420,8 +420,8 @@ INSERT INTO `wi_pagemanager` (`id`, `rank`, `active`, `url`, `target`, `display`
 ('webui_menu_item_help', 9.0, '1', 'index.php?page=help', '_self', '2', null),
 ('webui_menu_item_chat', 9.1, '1', 'index.php?page=chat', '_self', '2', 'webui_menu_item_help'),
 ('webui_menu_item_downloads', 9.2, '1', 'index.php?page=downloads', '_self', '2', 'webui_menu_item_help'),
-('webui_menu_item_addgrid', 9.3, '1', 'index.php?page=addgrid.php', '_self', '2', 'webui_menu_item_help'),
-('webui_menu_item_addserver', 9.4, '1', 'index.php?page=addserver.php', '_self', '2', 'webui_menu_item_help');
+('webui_menu_item_addgrid', 9.3, '1', 'index.php?page=addgrid', '_self', '2', 'webui_menu_item_help'),
+('webui_menu_item_addserver', 9.4, '1', 'index.php?page=addserver', '_self', '2', 'webui_menu_item_help');
 
 
 -- --------------------------------------------------------
@@ -480,9 +480,9 @@ INSERT INTO `wi_sitemanagement` (`pagecase`, `type`, `include`) VALUES
 ('users', 'main', 'usersmain.php'),
 ('help', 'main', 'help.php'),
 ('chat', 'main', 'chat.php'),
-('chat', 'main', 'downloads.php'),
-('chat', 'main', 'addgrid.php'),
-('chat', 'main', 'addserver.php'),
+('downloads', 'main', 'downloads.php'),
+('addgrid', 'main', 'addgrid.php'),
+('addserver', 'main', 'addserver.php'),
 ('gallery', 'main', 'gallery.php'),
 ('adminsupport', 'admin', 'support.php');
 

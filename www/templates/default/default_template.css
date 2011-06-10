@@ -1,4 +1,4 @@
-/* WebUI Css Level 2.1 v0.6 (08/04/2011) */
+/* WebUI Css Level 2.1 v0.7 (10/06/2011) */
 
 html {width: 100%; height: 100%;}
 
@@ -288,8 +288,7 @@ text-align:right;
 .style2 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #ffffff; }
 .Stil9 {font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
 
-
-/* add by djphil */
+/*  add by dj phil */
 a , ul, ol, li, form {margin: 0px; padding: 0px;}
 a {cursor:pointer; font-size: 1em; color:#ffa500; outline: none; text-decoration: none; }
 a:hover {text-decoration: underline;}
@@ -725,6 +724,54 @@ font-size: 12px;
   border-bottom-style: none;
 }
 
+/* Pages Downloads */
+#download1 a, #download2 a, #download3 a   {
+  font-size: 14px; 
+  outline:none;
+  padding:5px;  
+  background-color: #ffa500;
+  background-image: url("shadow_02.png");
+  background-repeat: repeat-x;
+  border: 0px solid #00ff00;
+  color: #000000;
+}
+
+#addgrid  {width:100%; background-color: transparent; float:left;}
+#addgrid table {color: #ffffff; width: 100%; float:left;}
+#addgrid td {padding: 5px;}
+#addgrid a {color: #ffa500; text-decoration: none;}
+#addgrid a:visited {text-decoration: none}
+#addgrid a:active {text-decoration: none}
+#addgrid a:hover {text-decoration: underline;}
+
+
+#addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10 {
+float: left;
+width: 93.4%;
+padding: 20px;
+margin: 5px;
+background: #000000;
+font-size: 12px;
+}
+
+#direct_connect {margin-top: 20px;}
+
+#addgrid h3 a  {
+  
+  font-size: 14px; 
+  outline:none;
+  padding:5px; 
+  background-color: #ffa500;
+  background-image: url("shadow_02.png");
+  background-repeat: repeat-x;
+  border: 0px solid #00ff00;
+  color: #000000;
+}
+
+/* Pages AddGrid */
+
+/* Pages AddServer */
+
 /* Frontend SlideShow */
 .clear {clear:both;}
 
@@ -1111,7 +1158,7 @@ background: #000000;
 font-size: 12px;
 }
 
-div#annonce1, div#info1, div#step1, div#aide1 {
+div#annonce1, div#info1, div#step1, div#aide1, div#download1 {
 float: left;
 width: 27.3%;
 padding: 20px;
@@ -1121,7 +1168,7 @@ background: #000000;
 font-size: 12px;
 }
 
-div#annonce2, div#info2, div#step2, div#aide2 {
+div#annonce2, div#info2, div#step2, div#aide2, div#download2 {
 float: left;
 width: 27.3%;
 padding: 20px;
@@ -1131,7 +1178,7 @@ background: #000000;
 font-size: 12px;
 }
 
-div#annonce3, div#info3, div#step3, div#aide3 {
+div#annonce3, div#info3, div#step3, div#aide3, div#download3 {
 float: left;
 width: 27.3%;
 padding: 20px;
