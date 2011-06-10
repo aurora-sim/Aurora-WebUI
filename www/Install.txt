@@ -23,6 +23,8 @@ define("WIREDUX_PASSWORD","***");
 $mapstartX=1000;
 $mapstartY=1000;
 
+DatabaseInfo.php (basic must settings)
+
 ##################### Database ########################
 define("C_DB_TYPE","mysql");
 // Your Hostname here:

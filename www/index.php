@@ -34,6 +34,7 @@ else if(!empty($_COOKIE['lang']))
 }
 
 include("settings/config.php");
+include("settings/databaseinfo.php");
 include("settings/json.php");
 include("settings/mysql.php");
 include("check.php");

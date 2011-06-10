@@ -178,17 +178,6 @@ $languages=array("en" => "English",
     "gr" => "Greek",
     "slo" => "Slovenski");
 
-##################### Database ########################
-define("C_DB_TYPE","mysql");
-// Your Hostname here:
-define("C_DB_HOST","localhost");
-// Your Databasename here:
-define("C_DB_NAME","aurora");
-// Your Username from Database here:
-define("C_DB_USER","root");
-// Your Database Password here:
-define("C_DB_PASS","***");
-
 ################ Database Tables #########################
 define("C_ADMIN_TBL","wi_admin");
 define("C_WIUSR_TBL","wi_users");
