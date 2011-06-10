@@ -530,27 +530,6 @@ function displayDefaultAvatars()
 
 			if ($recieved->{'Verified'} == "true") {
 				$DbLink = new DB;
-				$DbLink->query("insert into ". C_USERS_RL_TBL . " (
-				principal_id, 
-				first_name, 
-				last_name, 
-				address, 
-				city, 
-				zip, 
-				country, 
-				dob, 
-				ip_address
-				) VALUES (
-				'".cleanQuery($recieved->{'UUID'})."',
-				'".cleanQuery($_SESSION[NAMEF])."',
-				'".cleanQuery($_SESSION[NAMEL])."',
-				'".cleanQuery($_SESSION[ADRESS])."',
-				'".cleanQuery($_SESSION[CITY])."',
-				'".cleanQuery($_SESSION[ZIP])."',
-				'".cleanQuery($_SESSION[COUNTRY])."',
-				'".$jahr."/".$tag."/".$monat."', 
-				'$userIP');");
-			
 				//-----------------------------------MAIL--------------------------------------
 				$date_arr = getdate();
 				$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";

@@ -1,3 +1,30 @@
+/*
+ * Copyright (c) Contributors, http://aurora-sim.org/
+ * See CONTRIBUTORS.TXT for a full list of copyright holders.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the Aurora-Sim Project nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE DEVELOPERS ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -63,6 +90,9 @@ namespace OpenSim.Services
                 m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
                 m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
+
+                MainConsole.Instance.Commands.AddCommand ("webui add user", "Adds an admin user for WebUI", "webui add user", AddUser);
+                MainConsole.Instance.Commands.AddCommand ("webui remove user", "Removes an admin user for WebUI", "webui add user", RemoveUser);
             }
         }
 
@@ -280,6 +310,36 @@ namespace OpenSim.Services
             }
             return null;
         }
+
+        private void AddUser (string[] cmd)
+        {
+            string name = MainConsole.Instance.CmdPrompt ("Name of user");
+            UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
+            if (acc == null)
+            {
+                m_log.Warn ("No such user exists");
+                return;
+            }
+            IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
+            agent.OtherAgentInformation["WebUIEnabled"] = true;
+            Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
+            m_log.Warn ("Admin added");
+        }
+
+        private void RemoveUser (string[] cmd)
+        {
+            string name = MainConsole.Instance.CmdPrompt ("Name of user");
+            UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
+            if (acc == null)
+            {
+                m_log.Warn ("No such user exists");
+                return;
+            }
+            IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
+            agent.OtherAgentInformation["WebUIEnabled"] = false;
+            Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
+            m_log.Warn ("Admin removed");
+        }
     }
 
     public class WireduxHTTPHandler : BaseStreamHandler
@@ -475,20 +535,30 @@ namespace OpenSim.Services
 
             if (Verified)
             {
+                userID = user.PrincipalID;
+                user.UserLevel = -1;
+
                 // could not find a way to save this data here.
-                /*DateTime RLDOB = map["RLDOB"].AsDate();
+                DateTime RLDOB = map["RLDOB"].AsDate();
                 string RLFirstName = map["RLFisrtName"].AsString();
                 string RLLastName = map["RLLastName"].AsString();
-                string RLAdress = map["RLAdress"].AsString();
+                string RLAddress = map["RLAdress"].AsString();
                 string RLCity = map["RLCity"].AsString();
                 string RLZip = map["RLZip"].AsString();
                 string RLCountry = map["RLCountry"].AsString();
-                string RLIP = map["RLIP"].AsString();*/
-                // could not find a way to save this data here.
-
-
-                userID = user.PrincipalID;
-                user.UserLevel = -1;
+                string RLIP = map["RLIP"].AsString();
+                IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ();
+                con.CreateNewAgent (userID);
+                IAgentInfo agent = con.GetAgent (userID);
+                agent.OtherAgentInformation["RLDOB"] = RLDOB;
+                agent.OtherAgentInformation["RLFirstName"] = RLFirstName;
+                agent.OtherAgentInformation["RLLastName"] = RLLastName;
+                agent.OtherAgentInformation["RLAddress"] = RLAddress;
+                agent.OtherAgentInformation["RLCity"] = RLCity;
+                agent.OtherAgentInformation["RLZip"] = RLZip;
+                agent.OtherAgentInformation["RLCountry"] = RLCountry;
+                agent.OtherAgentInformation["RLIP"] = RLIP;
+                con.UpdateAgent (agent);
                 
                 accountService.StoreUserAccount(user);
 
@@ -559,9 +629,10 @@ namespace OpenSim.Services
             Verified = loginresp == null;
             if (Verified)
             {
-                UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name);
-                if ((account.UserFlags & 2048) == 2048) //Admin flag
+                IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().GetAgent(userID);
+                if (agent.OtherAgentInformation["WebUIEnabled"].AsBoolean()) //Admin flag
                 {
+                    UserAccount account = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, Name);
                     resp["UUID"] = OSD.FromUUID (account.PrincipalID);
                     resp["FirstName"] = OSD.FromString (account.FirstName);
                     resp["LastName"] = OSD.FromString (account.LastName);
@@ -714,10 +785,10 @@ namespace OpenSim.Services
             //Null means it went through without an error
             bool Verified = loginresp == null;
 
-            if ((auths.Authenticate(userID, "UserAccount", Util.Md5Hash(Password), 100) != string.Empty) && (Verified))
+            if ((auths.Authenticate(userID, "UserAccount", Password, 100) != string.Empty) && (Verified))
             {
-                bool worked = auths.SetPassword (userID, "UserAccount", newPassword);
-                resp["Verified"] = OSD.FromBoolean(worked);
+                auths.SetPassword (userID, "UserAccount", newPassword);
+                resp["Verified"] = OSD.FromBoolean(Verified);
             }
 
             string xmlString = OSDParser.SerializeJsonString(resp);

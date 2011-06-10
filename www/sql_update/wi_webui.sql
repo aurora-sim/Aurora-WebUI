@@ -553,23 +553,6 @@ INSERT INTO `wi_gallery` (`picture`, `picturethumbnail`, `description`, `active`
 
 -- --------------------------------------------------------
 
--- useraccounts_rl
-DROP TABLE IF EXISTS `useraccounts_rl`;
-CREATE TABLE IF NOT EXISTS `useraccounts_rl` (
-  `principal_id` varchar(36) NOT NULL,
-  `first_name` varchar(56),
-  `last_name` varchar(56),
-  `address` varchar(128),
-  `city` varchar(128),
-  `zip` varchar(12),
-  `country` varchar(128),
-  `dob` date,
-  `ip_address` varchar(128),
-  PRIMARY KEY (`principal_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
 -- wi_users
 DROP TABLE IF EXISTS `wi_users`;
 CREATE TABLE `wi_users` (
