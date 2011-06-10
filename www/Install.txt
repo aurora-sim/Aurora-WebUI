@@ -69,14 +69,24 @@ The Admin Panel is located at:
 http://yourdomain.com/admin
 
 To add your user as an Admin Panel User:
+Start Aurora (Aurora.Server in grid mode) and after it has started, type
 
-Open your database with some form of editor and find the 'useraccounts' table.
-Open the user accounts table and find the user that you wish to allow to use the Admin Panel
-In the 'UserFlags' column, add '2048' to the number already there.
+webui add user
+
+and fill in the information that is asked for.
 
 The user will now be able to use the Admin Panel as given above
 
 Enjoy Aurora WebUI
+
+To remove a user from the Admin Panel:
+Start Aurora (Aurora.Server in grid mode) and after it has started, type
+
+webui remove user
+
+and fill in the information that is asked for.
+
+The user will now not be able to use the Admin Panel
 
 -----------------------------------------------------------------
 
