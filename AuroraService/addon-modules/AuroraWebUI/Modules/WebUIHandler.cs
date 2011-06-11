@@ -75,11 +75,12 @@ namespace OpenSim.Services
 
         public void Start(IConfigSource config, IRegistryCore registry)
         {
-            IConfig handlerConfig = config.Configs["Handlers"];
             if (config.Configs["GridInfoService"] != null)
                 m_servernick = config.Configs["GridInfoService"].GetString("gridnick", m_servernick);
             m_registry = registry;
-            if (handlerConfig.GetString("WireduxHandler", "") != Name)
+            IConfig handlerConfig = config.Configs["Handlers"];
+            string name = handlerConfig.GetString("WireduxHandler", "");
+            if (name != Name)
                 return;
             string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
             if (Password != "")
@@ -629,10 +630,10 @@ namespace OpenSim.Services
             Verified = loginresp == null;
             if (Verified)
             {
-                IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().GetAgent(userID);
-                if (agent.OtherAgentInformation["WebUIEnabled"].AsBoolean()) //Admin flag
+                UserAccount account = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, Name);
+                IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (account.PrincipalID);
+                if (agent.OtherAgentInformation["WebUIEnabled"].AsBoolean ()) //Admin flag
                 {
-                    UserAccount account = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, Name);
                     resp["UUID"] = OSD.FromUUID (account.PrincipalID);
                     resp["FirstName"] = OSD.FromString (account.FirstName);
                     resp["LastName"] = OSD.FromString (account.LastName);
