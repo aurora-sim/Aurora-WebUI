@@ -19,6 +19,11 @@ function validate(form)
 						return false;
 					}
 				}
+				else if (form.elements[i].type == "select-one")
+				{
+					if (form.elements[i].selectedIndex == 0)
+						formproblem(form.elements[i], " is required");
+				}
 				else if (form.elements[i].value == "")
 				{
 					formproblem(form.elements[i], " is required");

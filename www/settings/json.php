@@ -12,7 +12,7 @@ function do_post_request($found) {
         $params['http']['header'] = $optional_headers;
     }
     $ctx = stream_context_create($params);
-    $timeout = 3;
+    $timeout = 15;
     $old = ini_set('default_socket_timeout', $timeout);
     $fp = @fopen(WIREDUX_SERVICE_URL, 'rb', false, $ctx);
     ini_set('default_socket_timeout', $old);
@@ -21,15 +21,14 @@ function do_post_request($found) {
         stream_set_blocking($fp, 3);
     } else{
         //throw new Exception("Problem with " . WIREDUX_SERVICE_URL . ", $php_errormsg");
+		if ($fp) fclose($fp);
         return false;
 	}
     $response = @stream_get_contents($fp);
+	if ($fp) fclose($fp);
     if ($response === false) {
         //throw new Exception("Problem reading data from " . WIREDUX_SERVICE_URL . ", $php_errormsg");
     }
-	if ($fp) {
-		fclose($fp);
-	}
     return $response;
 }
 
