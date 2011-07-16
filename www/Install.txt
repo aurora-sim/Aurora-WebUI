@@ -44,7 +44,8 @@ define("C_DB_PASS","***");
 
 ----- For grid mode (running Aurora.Server.exe) -----
 
-8. In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini file, copy the following info and ensure the password matches the websites in /settings/config.php
+8. In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini file, copy the following info
+    under the [Handlers] line and ensure the password matches the websites in /settings/config.php
 
 	WireduxHandler = WireduxHandler
 	WireduxHandlerPassword = ***
@@ -53,8 +54,10 @@ define("C_DB_PASS","***");
 
 ----- For standalone mode (just running Aurora.exe) -----
 
-8. In the Aurora-Sim\bin\Configuration\StandaloneCommon.ini file, copy the following info and ensure the password matches the websites in /settings/config.php
+8. In the Aurora-Sim\bin\Configuration\Standalone\StandaloneCommon.ini file, copy the following info 
+    and ensure the password matches the websites in /settings/config.php
 
+[Handlers]
 	WireduxHandler = WireduxHandler
 	WireduxHandlerPassword = ***
 	WireduxHandlerPort = 8007
