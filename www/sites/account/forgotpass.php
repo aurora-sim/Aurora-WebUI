@@ -57,7 +57,7 @@ function Form(theForm)
 //-->
 </script>
 <?
-if($_POST[Submit]=="Submit")
+if($_POST[name]!='')
 {
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'ConfirmUserEmailName', 'WebPassword' => md5(WIREDUX_PASSWORD)
@@ -67,7 +67,24 @@ if($_POST[Submit]=="Submit")
 	$recieved = json_decode($do_post_requested);
 	
 	if ($recieved->{'Verified'} == "true") 
-	{		// CODE generator		function code_gen($cod=""){ 			// ######## CODE LENGTH ########			$cod_l = 10;			// ######## CODE LENGTH ########			$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9"; 			$array_b = explode(",",$zeichen); 			for($i=0;$i<$cod_l;$i++) { 				srand((double)microtime()*1000000); 				$z = rand(0,35); 				$cod .= "".$array_b[$z].""; 			} 			return $cod; 		}		$code=code_gen(); 		// CODE generator				$UUID = $recieved->{'UUID'};		$DbLink->query("INSERT INTO ".C_CODES_TBL." (code,UUID,info,email,time)VALUES('$code','$UUID','pwreset','$_POST[email]',".time().")");	
+	{		// CODE generator		
+		function code_gen($cod=""){ 
+		// ######## CODE LENGTH ########			
+		$cod_l = 10;			
+		// ######## CODE LENGTH ########			
+		$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9"; 			
+		$array_b = explode(",",$zeichen); 			
+		for($i=0;$i<$cod_l;$i++) { 				
+		srand((double)microtime()*1000000); 				
+		$z = rand(0,35); 				
+		$cod .= "".$array_b[$z].""; 			
+		} 			
+		return $cod; 		
+		}		
+		$code=code_gen(); 		
+		// CODE generator				
+		$UUID = $recieved->{'UUID'};		
+		$DbLink->query("INSERT INTO ".C_CODES_TBL." (code,UUID,info,email,time)VALUES('$code','$UUID','pwreset','$_POST[email]',".time().")");	
 		//-----------------------------------MAIL--------------------------------------
 		 $date_arr = getdate();
 		 $date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
@@ -79,7 +96,7 @@ if($_POST[Submit]=="Submit")
 		 $body .= "\n\n";
 		 $body .= "To get a new password just click the link below this text:";
 		 $body .= "\n";
-		 $body .= "".SYSURL."/index.php?page=pwreset&code=$code";
+		 $body .= "".SYSURL."/index.php?page=resetpass&code=$code";
 		 $body .= "\n\n"; 
 		 $body .= "Thank you for using ".SYSNAME."";
 		 $header = "From: " . SYSMAIL . "\r\n";
@@ -146,7 +163,7 @@ if($_POST[Submit]=="Submit")
               <td class="odd">
                 <div class="center">
                   <input type="hidden" name="action" value="check">
-                  <button id="forgot_pass_bouton" name="Submit" type="Submit"><? echo $webui_submit ?></button>
+                  <button id="forgot_pass_bouton" name="Submit" type="Submit"><?=$webui_submit ?></button>
                   <!-- <input id="forgot_pass_bouton" type="submit" name="Submit" value="<? // echo $webui_submit ?>"></td> -->
               </div>
             </tr>
