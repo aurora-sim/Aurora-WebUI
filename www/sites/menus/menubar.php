@@ -57,7 +57,7 @@
                 }
 		else 
 		{
-			echo "<li><a href=\"#\" onclick=\"window.open('$siteurl','mywindow','width=400,height=200')\"><span>$a[$siteid]</span></a>";
+			echo "<li><a href=\"#\" onclick=\"window.open('$siteurl','mywindow','')\"><span>$a[$siteid]</span></a>";
 			if ($DbLink2->num_rows() > 0)
 			{
 				echo "<ul>";
