@@ -1,4 +1,4 @@
-?php
+<?php
 /*
  * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
@@ -44,7 +44,7 @@
 		} 
 		else 
 		{
-			echo "<li><a href=\"#\" onclick=\"window.open('$siteurl','mywindow','width=400,height=200')\"><span>$a[$siteid]</span></a>";
+			echo "<li><a href=\"#\" onclick=\"window.open('$siteurl','mywindow','')\"><span>$a[$siteid]</span></a>";
 			if ($DbLink2->num_rows() > 0)
 			{
 				echo "<ul>";
@@ -65,14 +65,10 @@
  
 ?>
 
+<link href="<?php echo SYSURL ?>sites/menus/css/defaultmegamenu.css" rel="stylesheet" type="text/css" />
 
-
-
-
-<link href="<?= SYSURL ?>sites/menus/css/defaultmegamenu.css" rel="stylesheet" type="text/css" />
-
-<script type='text/javascript' src='<?= SYSURL ?>sites/menus/js/jquery.hoverIntent.minified.js'></script>
-<script type='text/javascript' src='<?= SYSURL ?>sites/menus/js/jquery.dcmegamenu.1.2.js'></script>
+<script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/js/jquery.hoverIntent.minified.js'></script>
+<script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/js/jquery.dcmegamenu.1.2.js'></script>
 
 <script type="text/javascript">
 $(document).ready(function($){
@@ -126,7 +122,7 @@ $(document).ready(function($){
 
 <div id="menu">
     <ul class="menu">
-    <?
+    <?php
 		$DbLink = new DB;
 		if ($_SESSION[USERID])
 			$Display = 1;

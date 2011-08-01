@@ -80,7 +80,7 @@
 
 <div id="menu">
     <ul class="menu">
-    <?
+    <?php
 		$DbLink = new DB;
 		if ($_SESSION[USERID])
 			$Display = 1;

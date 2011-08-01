@@ -90,9 +90,9 @@ function WriteMenu($siteid, $siteurl, $sitetarget, $a, $Display, $AdminDisplay)
  }
 ?>
 
-<div id="megamenu" class="<?= $MegaMenuSkin; ?>">
-    <ul id="mega-menu-<?= $MegaMenuPreset; ?>" class="mega-menu">
-    <?
+<div id="megamenu" class="<?php echo $MegaMenuSkin; ?>">
+    <ul id="mega-menu-<?php echo $MegaMenuPreset; ?>" class="mega-menu">
+    <?php
 		$DbLink = new DB;
 		if ($_SESSION[USERID])
 			$Display = 1;
