@@ -510,7 +510,7 @@ namespace OpenSim.Services
             string HomeRegion = map["HomeRegion"].AsString();
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
-
+            int userLevel = map["UserLevel"].AsInteger();
   
 
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
@@ -537,7 +537,7 @@ namespace OpenSim.Services
             if (Verified)
             {
                 userID = user.PrincipalID;
-                user.UserLevel = -1;
+                user.UserLevel = userLevel;
 
                 // could not find a way to save this data here.
                 DateTime RLDOB = map["RLDOB"].AsDate();
