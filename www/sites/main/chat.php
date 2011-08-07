@@ -10,7 +10,7 @@
   <div class="clear"></div>
     <div id="chat">
       <iframe class="level1" 
-              src="http://webchat.freenode.net/?channels=aurora-dev&uio=MTE9MjI2dd" 
+              src="http://webchat.freenode.net/?channels=<?=$support_IRC_channel?>&uio=MTE9MjI2dd" 
               width="100%" 
               height="400" 
               border="0" 

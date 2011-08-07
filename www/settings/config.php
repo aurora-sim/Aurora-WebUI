@@ -111,6 +111,7 @@ $unconfirmed_deltime="24";
 ################### Help support area #####################
 $support_emails_to="noreply@osgrid.org";
 $support_emails_subject="WebUI Support:";
+$support_IRC_channel="aurora-dev";
 
 ################### GridMap Settings  #####################
 // Allowing Zoom on your Map
