@@ -31,10 +31,10 @@ $(document).ready(function() {
 
 <?php if($displaySlideShow) { ?>
   <div class="slideshow">
-    <img src="<?= SYSURL ?>images/gallery/login1.jpg" title="<? echo $webui_slideshow_comment01; ?>" alt="" />
-  	<img src="<?= SYSURL ?>images/gallery/login2.jpg" title="<? echo $webui_slideshow_comment02; ?>" alt="" />
-	 <img src="<?= SYSURL ?>images/gallery/login3.jpg" title="<? echo $webui_slideshow_comment03; ?>" alt="" />
-  	<img src="<?= SYSURL ?>images/gallery/login4.jpg" title="<? echo $webui_slideshow_comment04; ?>" alt="" />
-  	<img src="<?= SYSURL ?>images/gallery/login5.jpg" title="<? echo $webui_slideshow_comment05; ?>" alt="" />
+    <img src="<?= SYSURL ?>images/gallery/image1thumbnail.jpg" title="<? echo $webui_slideshow_comment01; ?>" alt="" />
+  	<img src="<?= SYSURL ?>images/gallery/image2thumbnail.jpg" title="<? echo $webui_slideshow_comment02; ?>" alt="" />
+	 <img src="<?= SYSURL ?>images/gallery/image3thumbnail.jpg" title="<? echo $webui_slideshow_comment03; ?>" alt="" />
+  	<img src="<?= SYSURL ?>images/gallery/image4thumbnail.jpg" title="<? echo $webui_slideshow_comment04; ?>" alt="" />
+  	<img src="<?= SYSURL ?>images/gallery/image5thumbnail.jpg" title="<? echo $webui_slideshow_comment05; ?>" alt="" />
   </div>
 <?php } ?>
