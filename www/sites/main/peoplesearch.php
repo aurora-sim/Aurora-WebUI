@@ -3,7 +3,7 @@ $AnzeigeStart = 0;
 
 // LINK SELECTOR
 $PageLink = "index.php?page=peoplesearch&btn=$_GET[btn]&";
-$LinkAusgabe = $PageLink . "first=$_GET[first] $_GET[last]&";
+$LinkAusgabe = $PageLink . "name=$_GET[name]&";
 
 if ($_GET[AStart]) {
     $AStart = $_GET[AStart];
@@ -39,7 +39,7 @@ if ($sitemax == 0) {
         <div id="info"><p><? echo $webui_people_search_info; ?></p></div>
         <div id="message">
             <? echo $webui_avatar_name; ?> : <input id="name" name="name" type="text" size="25" maxlength="15" value="" />
-            <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'first=' + document.getElementById('first').value)"><? echo $webui_people_search_bouton ?></button>
+            <button id="search_bouton" type="button" onclick="document.location.href=('<?= $PageLink ?>'+ 'name=' + document.getElementById('name').value)"><? echo $webui_people_search_bouton ?></button>
         </div>
 
         <table>
