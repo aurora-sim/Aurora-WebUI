@@ -5,7 +5,7 @@ if ($_SESSION[ADMINID]) {
 ////////////////////////////////// ADMIN ///////////////////////////////////////
         //$date = date("Y-m-d H:i:s");
         $DbLink = new DB;
-        $DbLink->query("INSERT INTO " . C_NEWS_TBL . " SET title='" . cleanQuery($_POST[title]) . "',message='" . cleanQuery($_POST[message]) . "',  time=" . time());
+        $DbLink->query("INSERT INTO " . C_NEWS_TBL . " SET title='" . cleanQuery($_POST[title]) . "',message='" . cleanQuery($_POST[message]) . "',  time=" . time() . "', user='" . cleanQuery($_SESSION[NAME]));
         $DbLink->close();
 
         echo "<script language=\"javascript\">
