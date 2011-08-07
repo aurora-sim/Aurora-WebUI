@@ -514,7 +514,7 @@ CREATE TABLE `wi_startscreen_news` (
   KEY `id` (`id`)
 ) AUTO_INCREMENT=2 ;
 
-INSERT INTO `wi_startscreen_news` (`id`, `title`, `message`, `time`) VALUES
+INSERT INTO `wi_startscreen_news` (`id`, `title`, `message`, `time`,`user`) VALUES
 (1, '[COMPLETE] The new loginscreen is done and works fine so far', '<p>We built a new loginscreen which will inform you about Grid updates or changes. Also you can now see how many users and regions are online, and more.  Also, you may from time to time see an infowindow, which informs you about important news.  Have Fun !</p>', 1211321439,'Grid News');
 
 -- --------------------------------------------------------
