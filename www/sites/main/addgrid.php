@@ -32,35 +32,35 @@
 				<td width="20%" align="center"><h3><? echo $webui_addgrid_hippo; ?></h3></td>
 				<td width="20%" align="center"><h3><? echo $webui_addgrid_imprudence; ?></h3></td>
 				<td width="20%" align="center"><h3><? echo $webui_addgrid_phoenix; ?></h3></td>
-				<td width="20%" align="center"><h3><? echo $webui_addgrid_emerald; ?></h3></td>
-				<td width="20%" align="center"><h3><? echo $webui_addgrid_meerkat; ?></h3></td>
+				<td width="20%" align="center"><h3><? echo $webui_addgrid_astra; ?></h3></td>
+				<td width="20%" align="center"><h3><? echo $webui_addgrid_singularity; ?></h3></td>
 			</tr>
 
 			<tr>
 				<td width="20%" align="center">
-					<a id="thumb1" href="images/viewers/digigrids_hippo_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
-					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/digigrids_hippo_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
+					<a id="thumb1" href="images/viewers/matto_hippo_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
+					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/matto_hippo_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
 					<div class='highslide-caption' id="caption-for-thumb1"><? echo $webui_addgrid_config_hippo; ?>"</div>
 				</td>
 				<td width="20%" align="center">
-					<a id="thumb2" href="images/viewers/digigrids_imprudence_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
-					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/digigrids_imprudence_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
+					<a id="thumb2" href="images/viewers/matto_imprudence_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
+					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/matto_imprudence_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
 					<div class='highslide-caption' id="caption-for-thumb2"><? echo $webui_addgrid_config_imprudence; ?>"</div>
 				</td>
 				<td width="20%" align="center">
-					<a id="thumb3" href="images/viewers/digigrids_phoenix_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
-					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/digigrids_phoenix_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
+					<a id="thumb3" href="images/viewers/matto_phoenix_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
+					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/matto_phoenix_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
 					<div class='highslide-caption' id="caption-for-thumb3"><? echo $webui_addgrid_config_phoenix; ?>"</div>
 				</td>
 				<td width="20%" align="center">
-					<a id="thumb4" href="images/viewers/digigrids_emerald_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
-					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/digigrids_emerald_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
-					<div class='highslide-caption' id="caption-for-thumb4"><? echo $webui_addgrid_config_emerald; ?>"</div>
+					<a id="thumb4" href="images/viewers/matto_astra_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
+					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/matto_astra_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
+					<div class='highslide-caption' id="caption-for-thumb4"><? echo $webui_addgrid_config_astra; ?>"</div>
 				</td>
 				<td width="20%" align="center">
-					<a id="thumb5" href="images/viewers/digigrids_meerkat_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
-					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/digigrids_meerkat_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
-					<div class='highslide-caption' id="caption-for-thumb5"><? echo $webui_addgrid_config_meerkat; ?>"</div>
+					<a id="thumb5" href="images/viewers/matto_singularity_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
+					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/matto_singularity_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
+					<div class='highslide-caption' id="caption-for-thumb5"><? echo $webui_addgrid_config_singularity; ?>"</div>
 				</td>
 			</tr>
 		</table>
