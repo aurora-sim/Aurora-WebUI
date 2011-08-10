@@ -513,17 +513,17 @@ $webui_addgrid_valid = 'Valid for: Astra Viewer, Hippo Viewer, Emerald Viewer, P
 $webui_addgrid_diff_info = 'The following viewers are configured a little differently.';	
 $webui_addgrid_diff_title = 'Information on configuration';
 
+$webui_addgrid_IWC_info = 'Notre Server fonctionne aussi en mode IWC (Inter World Connector).';
+$webui_addgrid_IWC_title = 'Inter World Connector (IWC)';
+$webui_addgrid_IWC_content = 'Voici notre lien IWC';
 
-$webui_addgrid_diff_shortcut = 'Create a shortcut to the viewer and place it on your desktop.';	 	
-$webui_addgrid_diff_propriete = 'Right click the shortcut and go properties.'; 	
-$webui_addgrid_diff_complete = 'Fill with the information below.';
-$webui_addgrid_KokuaViewer = 'Kokua Viewer';
-$webui_addgrid_SecondLifeViewer = 'Second Life Viewer';
-$webui_addgrid_KristenViewer = 'Kristen Viewer';
+$webui_addgrid_HG_info = 'Notre Server fonctionne aussi en mode HG (HyperGrid).';
+$webui_addgrid_HG_title = 'Hypergrid (HG)';
+$webui_addgrid_HG_content = 'Voici notre lien HG';
 
-$webui_addgrid_HyperGrid_info = 'Our Server also works with HyperGrid (HG).';
-$webui_addgrid_HyperGrid_title = 'Hypergrid';
-$webui_addgrid_HyperGrid_content = 'Available soon ...';
+$webui_addgrid_banned_info = 'Les Viewers suivants sont bannis sur notre server.';
+$webui_addgrid_banned_title = 'Banned Viewer';
+$webui_addgrid_banned_content = 'Il n\'y a pas de viewer banni actuellement.';
 
 $webui_addgrid_banned_info = 'The following viewers are banned on our server.';
 $webui_addgrid_banned_title = 'Banned Viewer';
