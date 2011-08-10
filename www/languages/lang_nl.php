@@ -476,14 +476,13 @@ $webui_addgrid_imprudence = 'Imprudence';
 $webui_addgrid_phoenix = 'Phoenix';
 $webui_addgrid_astra = 'Astra';
 $webui_addgrid_singularity = 'Singularity';
-$webui_addgrid_Astra= 'Astra';
 $webui_addgrid_kokua = 'Kokua';
 
 $webui_addgrid_config_hippo = 'Configuration of Hippo Viewer';
 $webui_addgrid_config_imprudence = 'Configuration of Imprudence Viewer';
 $webui_addgrid_config_phoenix = 'Configuration of Phoenix Viewer';
-$webui_addgrid_config_astra = 'Configuration of Astra Viewer';
 $webui_addgrid_config_singularity = 'Configuration of Singularity Viewer';
+$webui_addgrid_config_astra= 'Configuration of Astra Viewer';
 $webui_addgrid_config_kokua = 'Configuration of Kokua Viewer';
 $webui_addgrid_click_to_enlarge = 'Click to enlarge';
 
