@@ -495,7 +495,6 @@ $webui_addgrid_config_imprudence = 'Configuration of Imprudence Viewer';
 $webui_addgrid_config_phoenix = 'Configuration of Phoenix Viewer';
 $webui_addgrid_config_astra = 'Configuration of Astra Viewer';
 $webui_addgrid_config_singularity = 'Configuration of Singularity Viewer';
-$webui_addgrid_config_astra= 'Configuration of Astra Viewer';
 $webui_addgrid_config_kokua = 'Configuration of Kokua Viewer';
 $webui_addgrid_click_to_enlarge = 'Click to enlarge';
 

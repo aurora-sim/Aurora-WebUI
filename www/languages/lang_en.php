@@ -123,7 +123,6 @@ $webui_welcome_back = 'Welcome back';
 $webui_welcome_visitor = 'Visitor';
 $webui_welcome_userid = '';
 $webui_home_page='
-		<p><b><h3>Version :- Aurora-997962d-2011-08-02 00:26:03 -0500 (0.4.1-Dev)-(Unix/Mono)</h3></b>
 		<p>This is our New Virtual World where you can have fun, meet people, chat, play, explore, create and share your dreams.</p>
 		<p>Everything is possible in our brand new 3D World.</p>
 		<p>Our World is created by its residents, you can build everything you can imagine here.</p>
@@ -487,7 +486,6 @@ $webui_addgrid_config_imprudence = 'Configuration of Imprudence Viewer';
 $webui_addgrid_config_phoenix = 'Configuration of Phoenix Viewer';
 $webui_addgrid_config_astra = 'Configuration of Astra Viewer';
 $webui_addgrid_config_singularity = 'Configuration of Singularity Viewer';
-$webui_addgrid_config_astra= 'Configuration of Astra Viewer';
 $webui_addgrid_config_kokua = 'Configuration of Kokua Viewer';
 $webui_addgrid_click_to_enlarge = 'Click to enlarge';
 
