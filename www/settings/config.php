@@ -39,8 +39,15 @@ define("AddGrid_KokuaURL","http://your_webui_server_ip_or_dns:8002/");
 define("AddGrid_SecondLifeURL","http://your_webui_server_ip_or_dns:8002/");
 define("AddGrid_KristenURL","http://your_webui_server_ip_or_dns:8002/");
 
-// define("HyperGridURL1","secondlife://digigrids.no-ip.org:8002/");
-// define("HyperGridURL1","http://slurll.com/secondlife/digigrids.no-ip.org:8002:digigrids");
+$AddGrid_IWC_Actived = true;
+define("AddGrid_IWC_URL_1","secondlife://your_webui_server_ip_or_dns:8003/");
+
+$AddGrid_HG_Actived = true;
+define("AddGrid_HG_URL_1","secondlife://your_webui_server_ip_or_dns:8003/");
+// define("HG_URL_2","http://slurll.com/secondlife/your_webui_server_ip_or_dns:8003:digigrids");
+
+$AddGrid_Voice_Actived = true;
+$AddGrid_Currency_Actived = true;
 
 ################### Logo Light Effect ###################
 // Should we display the logo 

@@ -8,6 +8,20 @@ $webui_actual_language='Greek';
 $webui_grid_status = 'πλέγμα κατάστασης';
 $webui_grid_status_online = 'Διαθέσιμο';
 $webui_grid_status_offline = 'αποσυνδεθεί';
+
+$webui_iwc = 'Inter World Connector (IWC)';
+$webui_iwc_actived = 'Enable';
+$webui_iwc_desactived = 'Disabled';
+$webui_hg = 'HyperGrid (HG)';
+$webui_hg_actived = 'Enable';
+$webui_hg_desactived = 'Disabled';
+$webui_voice = 'Voice (Mumble)';
+$webui_voice_actived = 'Enable';
+$webui_voice_desactived = 'Disabled';
+$webui_currency = 'Monney (StarDust)';
+$webui_currency_actived = 'Enable';
+$webui_currency_desactived = 'Disabled';
+
 $webui_total_users = 'Σύνολο Χρηστών';
 $webui_total_regions = 'Σύνολο Περιφέρειες';
 $webui_unique_visitors = 'Μοναδικοί επισκέπτες τις τελευταίες 30 ημέρες';
@@ -474,18 +488,16 @@ $webui_addgrid_info = 'Après avoir téléchargé et installé votre viewer pré
 $webui_addgrid_hippo = 'Hippo';
 $webui_addgrid_imprudence = 'Imprudence';
 $webui_addgrid_phoenix = 'Phoenix';
-$webui_addgrid_emerald = 'Emerald';
-$webui_addgrid_meerkat = 'Meerkat';
-$webui_addgrid_Astra= 'Astra';
+$webui_addgrid_astra = 'Astra';
+$webui_addgrid_singularity = 'Singularity';
 $webui_addgrid_kokua = 'Kokua';
 
-$webui_addgrid_config_hippo = 'Configuration Hippo Viewer';
-$webui_addgrid_config_imprudence = 'Configuration Imprudence Viewer';
-$webui_addgrid_config_phoenix = 'Configuration Phoenix Viewer';
-$webui_addgrid_config_emerald = 'Configuration Emerald Viewer';
-$webui_addgrid_config_meerkat = 'Configuration Meerkat Viewer';
-$webui_addgrid_config_astra= 'Configuration Astra Viewer';
-$webui_addgrid_config_kokua = 'Configuration Kokua Viewer';
+$webui_addgrid_config_hippo = 'Configuration of Hippo Viewer';
+$webui_addgrid_config_imprudence = 'Configuration of Imprudence Viewer';
+$webui_addgrid_config_phoenix = 'Configuration of Phoenix Viewer';
+$webui_addgrid_config_singularity = 'Configuration of Singularity Viewer';
+$webui_addgrid_config_astra= 'Configuration of Astra Viewer';
+$webui_addgrid_config_kokua = 'Configuration of Kokua Viewer';
 $webui_addgrid_click_to_enlarge = 'Click to enlarge';
 
 $webui_addgrid_title = 'Configuration Imprudence Viewer';
@@ -520,13 +532,17 @@ $webui_addgrid_KokuaViewer = 'Kokua Viewer';
 $webui_addgrid_SecondLifeViewer = 'Second Life Viewer';
 $webui_addgrid_KristenViewer = 'Kristen Viewer';
 
-$webui_addgrid_HyperGrid_info = 'Notre Server fonctionne aussi en mode HyperGrid (HG).';
-$webui_addgrid_HyperGrid_title = 'Hypergrid';
-$webui_addgrid_HyperGrid_content = 'Prochainement disponnible ...';
+$webui_addgrid_IWC_info = 'Notre Server fonctionne aussi en mode IWC (Inter World Connector).';
+$webui_addgrid_IWC_title = 'Inter World Connector (IWC)';
+$webui_addgrid_IWC_content = 'Voici notre lien IWC';
+
+$webui_addgrid_HG_info = 'Notre Server fonctionne aussi en mode HG (HyperGrid).';
+$webui_addgrid_HG_title = 'Hypergrid (HG)';
+$webui_addgrid_HG_content = 'Voici notre lien HG';
 
 $webui_addgrid_banned_info = 'Les Viewers suivants sont bannis sur notre server.';
 $webui_addgrid_banned_title = 'Banned Viewer';
-$webui_addgrid_banned_content = 'Prochainement disponnible ...';
+$webui_addgrid_banned_content = 'Il n\'y a pas de viewer banni actuellement.';
 
 //
 // Addserver Page

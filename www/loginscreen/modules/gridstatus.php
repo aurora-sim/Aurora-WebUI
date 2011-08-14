@@ -1,67 +1,112 @@
-    <TABLE cellSpacing=0 cellPadding=0 border=0>
-        <TBODY>
-            <TR>
+    <table cellSpacing=0 cellPadding=0 border=0>
+        <tbody>
+            <tr>
                 <TD vAlign=top align=right>
-                    <TABLE cellSpacing=0 cellPadding=0 width=300 border=0>
-                        <TBODY>
+                    <table cellSpacing=0 cellPadding=0 width=300 border=0>
+                        <tbody>
                             <tr>
                               <td class=gridbox_tl><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt="" /></td>
                               <td class=gridbox_t><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt="" /></td>
                               <td class=gridbox_tr><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt="" /></td>
                             </tr>
-                            <TR>
-                                <TD class=gridbox_l></TD>
-                                <TD class=black_content>
-                                    <TABLE cellSpacing=0 cellPadding=1 width="100%" border=0>
-                                        <TBODY>
-                                            <TR>
-                                                <TD class=gridtext align=left><STRONG><? echo $webui_grid_status; ?>:</STRONG></TD>
-                                                <TD class=gridtext align=right>
-                                                    <? if ($GRIDSTATUS == 1) { ?>
-                                                    <SPAN class=ONLINE><? echo $webui_grid_status_online; ?></SPAN>
-                                                    <? } else { ?>
-                                                    <SPAN class=OFFLINE><? echo $webui_grid_status_offline; ?></SPAN>
-                                                    <? } ?>
-                                                </TD>
-                                            </TR>
-                                        </TBODY>
-                                    </TABLE>
+                            <tr>
+                                <td class=gridbox_l></td>
+                                <td class=black_content>
+                                    <table cellSpacing=0 cellPadding=1 width="100%" border=0>
+                                        <tbody>
+                                            <tr>
+                                                <td class=gridtext align=left><strong><?php echo $webui_grid_status; ?>:</strong></td>
+                                                <td class=gridtext align=right>
+                                                    <?php if ($GRIDSTATUS == true) { ?>
+                                                    <span class=online><?php echo $webui_grid_status_online; ?></span>
+                                                    <?php } else { ?>
+                                                    <span class=offline><?php echo $webui_grid_status_offline; ?></span>
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                    <DIV id=GREX style="MARGIN: 1px 0px 0px">
-                                        <IMG height=1 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=1>
-                                    </DIV>
+                                    <div id=grex style="margin: 1px 0px 0px">
+                                        <img height=1 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=1>
+                                    </div>
 
-                                    <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-                                        <TBODY>
-                                            <TR class=odd>
-                                                <TD class=gridtext vAlign=top noWrap align=left><? echo $webui_total_users ?>:</TD>
-                                                <TD class=gridtext vAlign=top noWrap align=right width="1%"><?= $USERCOUNT ?></TD>
-                                            </TR>
-                                            <TR class=even>
-                                                <TD class=gridtext vAlign=top noWrap align=left><? echo $webui_total_regions; ?>:</TD>
-                                                <TD class=gridtext vAlign=top noWrap align=right width="1%"><?= $REGIONSCOUNT ?></TD>
-                                            </TR>
-                                            <TR class=odd>
-                                                <TD class=gridtext vAlign=top noWrap align=left><? echo $webui_unique_visitors; ?>:</TD>
-                                                <TD class=gridtext vAlign=top noWrap align=right width="1%"><?= $LASTMONTHONLINE ?></TD>
-                                            </TR>
-                                            <TR class=even>
-                                                <TD class=gridtext vAlign=top noWrap align=left><STRONG><a href="<?= SYSURL ?>index.php?page=onlineusers" target="_blank"><? echo $webui_online_now; ?></a>:</STRONG></TD>
-                                                <TD class=gridtext vAlign=top noWrap align=right width="1%"><STRONG><?= $NOWONLINE ?></STRONG></TD>
-                                            </TR>
-                                        </TBODY>
-                                    </TABLE>
-                                </TD>
-                                <TD class=gridbox_r></TD>
-                            </TR>
-                            <TR>
-                              <TD class=gridbox_bl></TD>
-                              <TD class=gridbox_b></TD>
-                              <TD class=gridbox_br></TD>
-                            </TR>
-                        </TBODY>
-                    </TABLE>
-                </TD>
-            </TR>
-        </TBODY>
-    </TABLE>
+                                    <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                        <tbody>
+                                            <tr class=odd>
+                                                <td class=gridtext vAlign=top noWrap align=left><?php echo $webui_total_users ?>:</td>
+                                                <td class=gridtext vAlign=top noWrap align=right width="1%"><?= $USERCOUNT ?></td>
+                                            </tr>
+                                            <tr class=even>
+                                                <td class=gridtext vAlign=top noWrap align=left><?php echo $webui_total_regions; ?>:</td>
+                                                <td class=gridtext vAlign=top noWrap align=right width="1%"><?= $REGIONSCOUNT ?></td>
+                                            </tr>
+                                            <tr class=odd>
+                                                <td class=gridtext vAlign=top noWrap align=left><?php echo $webui_unique_visitors; ?>:</td>
+                                                <td class=gridtext vAlign=top noWrap align=right width="1%"><?= $LASTMONTHONLINE ?></td>
+                                            </tr>
+                                            <tr class=even>
+                                                <td class=gridtext vAlign=top noWrap align=left><strong><a href="<?= SYSURL ?>index.php?page=onlineusers" target="_blank"><?php echo $webui_online_now; ?></a>:</strong></td>
+                                                <td class=gridtext vAlign=top noWrap align=right width="1%"><strong><?= $NOWONLINE ?></strong></td>
+                                            </tr>                                          
+
+                                            <tr class=odd>
+                                                <td class=gridtext vAlign=top noWrap align=left><?php echo $webui_iwc; ?>:</td>
+                                                
+                                                    <?php if ($AddGrid_IWC_Actived == true) { ?>
+                                                    <td class=gridtext vAlign=top noWrap align=right width="1%"><span class=online><?php echo $webui_iwc_actived; ?></span></td>
+                                                    
+                                                    <?php } else { ?>
+                                                    <td class=gridtext vAlign=top noWrap align=right width="1%"><span class=offline><?php echo $webui_iwc_desactived; ?></span></td>
+                                                    <?php } ?>
+                                            </tr>
+                                            
+                                            <tr class=even>
+                                                <td class=gridtext vAlign=top noWrap align=left><?php echo $webui_hg; ?>:</td>
+
+                                                    <?php if ($AddGrid_HG_Actived  == true) { ?>
+                                                    <td class=gridtext vAlign=top noWrap align=right width="1%"><span class=online><?php echo $webui_hg_actived; ?></span></td>
+                                                    
+                                                    <?php } else { ?>
+                                                    <td class=gridtext vAlign=top noWrap align=right width="1%"><span class=offline><?php echo $webui_hg_desactived; ?></span></td>
+                                                    <?php } ?>
+                                            </tr>
+                                            
+                                            <tr class=odd>
+                                                <td class=gridtext vAlign=top noWrap align=left><?php echo $webui_voice; ?>:</td>
+
+                                                    <?php if ($AddGrid_Voice_Actived == true) { ?>
+                                                    <td class=gridtext vAlign=top noWrap align=right width="1%"><span class=online><?php echo $webui_voice_actived; ?></span></td>
+                                                    
+                                                    <?php } else { ?>
+                                                    <td class=gridtext vAlign=top noWrap align=right width="1%"><span class=offline><?php echo $webui_voice_desactived; ?></span></td>
+                                                    <?php } ?>
+                                            </tr>
+
+                                            <tr class=even>
+                                                <td class=gridtext vAlign=top noWrap align=left><?php echo $webui_currency; ?>:</td>
+
+                                                    <?php if ($AddGrid_Currency_Actived == true) { ?>
+                                                    <td class=gridtext vAlign=top noWrap align=right width="1%"><span class=online><?php echo $webui_currency_actived; ?></span></td>
+                                                    
+                                                    <?php } else { ?>
+                                                    <td class=gridtext vAlign=top noWrap align=right width="1%"><span class=offline><?php echo $webui_currency_desactived; ?></span></td>
+                                                    <?php } ?>
+                                            </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td class=gridbox_r></td>
+                            </tr>
+                            <tr>
+                              <td class=gridbox_bl></td>
+                              <td class=gridbox_b></td>
+                              <td class=gridbox_br></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
