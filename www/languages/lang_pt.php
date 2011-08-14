@@ -18,7 +18,7 @@ $webui_hg_desactived = 'Disabled';
 $webui_voice = 'Voice (Mumble)';
 $webui_voice_actived = 'Enable';
 $webui_voice_desactived = 'Disabled';
-$webui_currency = 'Monney (StarDust)';
+$webui_currency = 'Money (StarDust)';
 $webui_currency_actived = 'Enable';
 $webui_currency_desactived = 'Disabled';
 
