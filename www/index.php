@@ -1,4 +1,4 @@
-<?
+<?php
 /*
  * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
  * See CONTRIBUTORS for a full list of copyright holders.
@@ -15,11 +15,13 @@ $start = $time;
 
 //Use gzip if it is supported
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
-    ob_start("ob_gzhandler"); else
-    ob_start();
+    ob_start("ob_gzhandler");
+else
+ob_start();
 session_start();
 
 echo "<!doctype html>";
+
 if ((empty($_GET['lang'])) && (empty($_COOKIE['lang'])))
 {
 	echo "<html lang=en class=\"no-js\">";
@@ -40,6 +42,8 @@ include("settings/mysql.php");
 include("check.php");
 include("languages/translator.php");
 include("templates/templates.php");
+
+include("settings/configperso.php");
 
 if ($_GET[page] != '') {
     $_SESSION[page] = $_GET[page];
@@ -148,9 +152,9 @@ if ($_POST[Submit] == $webui_admin_login) {
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" href="templates/no_js.css" type="text/css" />
-  <link rel="stylesheet" href="<? echo $template_css ?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo $template_css ?>" type="text/css" />
 
-  <link rel="shortcut icon" href="<?=$favicon_image?>" />
+  <link rel="shortcut icon" href="<?php echo $favicon_image?>" />
   <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
   <script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
   <script src="javascripts/global.js" type="text/javascript"></script>
@@ -165,52 +169,52 @@ if ($_POST[Submit] == $webui_admin_login) {
   <script type="text/javascript" src="javascripts/calendar-2.2.js"></script>
 
 <?php if($displayMegaMenu) { ?>
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/black.css" rel="stylesheet" type="text/css" />
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/grey.css" rel="stylesheet" type="text/css" />
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/blue.css" rel="stylesheet" type="text/css" />
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/green.css" rel="stylesheet" type="text/css" />
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/light_blue.css" rel="stylesheet" type="text/css" />
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/orange.css" rel="stylesheet" type="text/css" />
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/red.css" rel="stylesheet" type="text/css" />
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/skins/white.css" rel="stylesheet" type="text/css" />
-<link href="<?= SYSURL ?>templates/jec-styled.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/black.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/green.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/light_blue.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/orange.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/red.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/white.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>templates/jec-styled.css" rel="stylesheet" type="text/css" />
 
 <?php if($template == 'default')  { ?>
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_default.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/megamenu_default.css" rel="stylesheet" type="text/css" />
 <?php } ?>
 
 <?php if($template == 'white')  { ?>
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_white.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/megamenu_white.css" rel="stylesheet" type="text/css" />
 <?php } ?>
 
 <?php if($template == 'astra')  { ?>
-<link href="<?= SYSURL ?>sites/menus/megamenu/css/megamenu_astra.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/megamenu_astra.css" rel="stylesheet" type="text/css" />
 <?php } ?>
 
-<script type='text/javascript' src='<?= SYSURL ?>sites/menus/megamenu/javascripts/jquery.hoverIntent.minified.js'></script>
+<script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.hoverIntent.minified.js'></script>
 
 <?php if($MegaMenuVersion == '1.2')  { ?>
-  <script type='text/javascript' src='<?= SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.2.js'></script>
+  <script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.2.js'></script>
 <?php } ?>
 
 <?php if($MegaMenuVersion == '1.3.2')  { ?>
-  <script type='text/javascript' src='<?= SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.3.2.js'></script>
+  <script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.3.2.js'></script>
 <?php } ?>
 
 
 <script type="text/javascript">
 $(document).ready(function($){
 	$('#mega-menu-1').dcMegaMenu({
-		rowItems: '<?= $MegaMenuRowItems; ?>',
-		speed: '<?= $MegaMenuSpeed; ?>',
-		effect: '<?= $MegaMenuEffect; ?>',
-		event: '<?= $MegaMenuEvent; ?>'
+		rowItems: '<?php echo $MegaMenuRowItems; ?>',
+		speed: '<?php echo $MegaMenuSpeed; ?>',
+		effect: '<?php echo $MegaMenuEffect; ?>',
+		event: '<?php echo $MegaMenuEvent; ?>'
 	});
 	$('#mega-menu-2').dcMegaMenu({
-		rowItems: '<?= $MegaMenuRowItems; ?>',
-		speed: '<?= $MegaMenuSpeed; ?>',
-		effect: '<?= $MegaMenuEffect; ?>',
-		event: '<?= $MegaMenuEvent; ?>'
+		rowItems: '<?php echo $MegaMenuRowItems; ?>',
+		speed: '<?php echo $MegaMenuSpeed; ?>',
+		effect: '<?php echo $MegaMenuEffect; ?>',
+		event: '<?php echo $MegaMenuEvent; ?>'
 	});
 	$('#mega-menu-3').dcMegaMenu({
 		rowItems: '3',
@@ -311,6 +315,7 @@ $('.menu').corner();
 $('#chat').corner();
 $('button, .roundedinput, .forgot_pass_bouton, .adminsettings_bouton').corner("10px");
 $('#roundedcoord').corner("10px");
+$('#info_loginscreen_button').corner("10px");
 });
 /* Downlaod Page */
 $('#download1, #download2, #download3, #download1 a, #download2 a, #download3 a').corner();
@@ -461,7 +466,7 @@ $(document).ready(function(){
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepAdminSettingBouton1 ?>'}, 800);
   });
   
-	$("#create_news_button, #edit_news_item_button").hover(function() {
+	$("#create_news_button, #edit_news_item_button, #info_loginscreen_button").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
@@ -519,7 +524,7 @@ $(document).ready(function(){
 <?php } ?>
 
 
-<? if($displayFontSizer) { ?> 
+<?php if($displayFontSizer) { ?> 
 <script src="javascripts/jquery/jquery.cookie.js" type="text/javascript"></script>
 <script src="javascripts/jquery/jquery.fontscale.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -538,12 +543,12 @@ $(document).ready(function(){
 
 <div class="absolute">
   <!-- Top Panel Slider -->
-  <? if($displayTopPanelSlider) {include("sites/modules/slidepanel.php");} ?>
+  <?php if($displayTopPanelSlider) {include("sites/modules/slidepanel.php");} ?>
 </div>
 
 <div class="maintenance">
   <!-- If we are supposed to only display the maintenance page currently, do so now -->
-  <? if($displayMaintenancePage) {include("sites/main/maintenance.php"); return;} ?>
+  <?php if($displayMaintenancePage) {include("sites/main/maintenance.php"); return;} ?>
 
   <!--[if lt IE 8]>
     <div id="alert"><p>Hummm, You should upgrade your copy of Internet Explorer.</p></div>
@@ -558,7 +563,7 @@ $(document).ready(function(){
     ?> -->
     <!-- </div>-->
 
-<? if($displayLanguageSelector) {
+<?php if($displayLanguageSelector) {
       echo('<div id="translator">');
       include("languages/translator_page.php");
       echo('</div>');}
@@ -597,19 +602,22 @@ $(document).ready(function(){
 <div id="container">
     <div id="header">
         <div id="headerimages">
-            <a href="<?= SYSURL ?>"><h1><? SYSNAME ?></h1></a>
+            <a href="<?php echo SYSURL ?>"><h1><?php echo SYSNAME ?></h1></a>
         </div>
-        <!-- <div id="gridstatus"><?php // include("sites/gridstatus.php"); ?></div> -->
-        <div id="home_content_right"><? include("sites/modules/slideshow.php"); ?></div>		
+        <!-- <div id="gridstatus"><?php //php include("sites/gridstatus.php"); ?></div> -->
+        <!-- <div id="home_content_right"><?php // include("sites/modules/slideshow.php"); ?></div> -->
+		<div id="home_content_right"><?php include("sites/modules/slideeffect.php"); ?></div>
+		
+		
     </div><!-- fin de #header -->
 
-    <!-- <div id="menubar"><? // include("sites/menubar.php"); ?></div> -->
+    <!-- <div id="menubar"><?php // include("sites/menubar.php"); ?></div> -->
     <?php if($displayMegaMenu) { ?>
-      <div id="menubar"><? include("sites/menus/megamenu/menubar.php"); ?></div>
+      <div id="menubar"><?php include("sites/menus/megamenu/menubar.php"); ?></div>
     <?php } ?>
         
     <div id="MainContainer">
-        <div id="sites"><? include("sites.php"); ?></div>
+        <div id="sites"><?php include("sites.php"); ?></div>
     </div><!-- fin de #mainContent -->
 </div><!-- fin de #container -->
 
@@ -624,15 +632,13 @@ $time = explode(" ", $time);
 $time = $time[1] + $time[0]; 
 $finish = $time; 
 $totaltime = ($finish - $start);
-echo "<p>Copyright 2011 © the Aurora-Sim project</p>";
+echo "<p>Copyright 2011 © Digital Concepts</p>";
 echo "<p>All Rights Reserved</p>";
 if($displayPageLoadTime) {printf ("$this_page_took %f $seconds_to_load.", $totaltime);}
 ?>
 </div>
 
 </div>
-<span id="problem">
-	You do not have your Javascript enabled, and this site requires it.
-</span>
+<span id="problem">You do not have your Javascript enabled, and this site requires it.</span>
 </body>
 </html>

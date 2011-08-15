@@ -1,18 +1,18 @@
 <table cellSpacing=0 cellPadding=0 width="100%" border=0 valign="top">
   <tbody>
       <tr>
-          <td class=gridbox_tl><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
-          <td class=gridbox_t><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
-          <td class=gridbox_tr><img height=5 width=5 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=gridbox_tl><img height=5 width=5 src="<?php echo SYSURL; ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=gridbox_t><img height=5 width=5 src="<?php echo SYSURL; ?>loginscreen/images/icons/spacer.gif" alt=""></td>
+          <td class=gridbox_tr><img height=5 width=5 src="<?php echo SYSURL; ?>loginscreen/images/icons/spacer.gif" alt=""></td>
       </tr>
       
       <tr>
           <td class=gridbox_l></td>
           
           <td class=black_content vAlign=top align=left>
-              <strong><?=SYSNAME?>: <? echo $webui_news; ?></strong>
+              <strong><?php echo SYSNAME ?>: <? echo $webui_news; ?></strong>
               <div id=GREX style="MARGIN: 5px 0px 0px">
-                  <img height=1 src="<?= SYSURL ?>loginscreen/images/icons/spacer.gif" width=1>
+                  <img height=1 src="<?php echo SYSURL; ?>loginscreen/images/icons/spacer.gif" width=1>
               </div>
               
               <table class=newslist cellSpacing=0 cellPadding=0>
@@ -28,7 +28,7 @@
                   
                   <tr <? if(($w % 2)){echo"class=even";}else{echo"class=odd";}?>>
                       <td class=boxtext vAlign=top>
-                          <a href="<?=SYSURL?>index.php?page=news&scr=<?=$ID?>" target="_blank"><?=$NEWS?></a>
+                          <a href="<?php echo SYSURL; ?>index.php?page=news&scr=<?=$ID?>" target="_blank"><?php echo $NEWS ?></a>
                       </td>
                       
                       <td class=boxtext vAlign=top noWrap width="1%">

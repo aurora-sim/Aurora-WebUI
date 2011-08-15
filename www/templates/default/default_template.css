@@ -539,7 +539,7 @@ h5 {font-size: 10px; color:#ffffff;}
 }
 
 #register_bouton, #login_bouton, #forgot_pass_bouton, #adminlogin_button,
-#create_news_button, #edit_news_item_button {
+#create_news_button, #edit_news_item_button, #info_loginscreen_button {
   font-size: 14px; 
   outline:none;
   padding:5px;  
