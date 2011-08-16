@@ -43,7 +43,6 @@ include("check.php");
 include("languages/translator.php");
 include("templates/templates.php");
 
-include("settings/configperso.php");
 
 if ($_GET[page] != '') {
     $_SESSION[page] = $_GET[page];
@@ -605,7 +604,7 @@ $(document).ready(function(){
             <a href="<?php echo SYSURL ?>"><h1><?php echo SYSNAME ?></h1></a>
         </div>
         <!-- <div id="gridstatus"><?php //php include("sites/gridstatus.php"); ?></div> -->
-        <!-- <div id="home_content_right"><?php // include("sites/modules/slideshow.php"); ?></div> -->
+             <div id="home_content_right"><?php include("sites/modules/slideshow.php"); ?></div>
 		<div id="home_content_right"><?php include("sites/modules/slideeffect.php"); ?></div>
 		
 		
@@ -632,7 +631,7 @@ $time = explode(" ", $time);
 $time = $time[1] + $time[0]; 
 $finish = $time; 
 $totaltime = ($finish - $start);
-echo "<p>Copyright 2011 © Digital Concepts</p>";
+echo "<p>Copyright 2011 © the Aurora-Sim project</p>";
 echo "<p>All Rights Reserved</p>";
 if($displayPageLoadTime) {printf ("$this_page_took %f $seconds_to_load.", $totaltime);}
 ?>
