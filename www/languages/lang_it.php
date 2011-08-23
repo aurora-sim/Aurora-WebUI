@@ -10,17 +10,17 @@ $webui_grid_status_online = 'ONLINE';
 $webui_grid_status_offline = 'OFFLINE';
 
 $webui_iwc = 'Inter World Connector (IWC)';
-$webui_iwc_actived = 'Enable';
-$webui_iwc_desactived = 'Disabled';
+$webui_iwc_actived = 'Attivo';
+$webui_iwc_desactived = 'Non Attivo';
 $webui_hg = 'HyperGrid (HG)';
-$webui_hg_actived = 'Enable';
-$webui_hg_desactived = 'Disabled';
+$webui_hg_actived = 'Attivo';
+$webui_hg_desactived = 'non Attivo';
 $webui_voice = 'Voice (Mumble)';
-$webui_voice_actived = 'Enable';
-$webui_voice_desactived = 'Disabled';
-$webui_currency = 'Money (StarDust)';
-$webui_currency_actived = 'Enable';
-$webui_currency_desactived = 'Disabled';
+$webui_voice_actived = 'Attivo';
+$webui_voice_desactived = 'Non Attivo';
+$webui_currency = 'Valuta (StarDust)';
+$webui_currency_actived = 'Attivo';
+$webui_currency_desactived = 'Non Attivo';
 
 $webui_total_users='Utenti Totali';
 $webui_total_regions='Regioni Totali';
@@ -129,8 +129,8 @@ $webui_menu_item_account = 'Account';
 $webui_menu_item_help = 'Aiuto';
 $webui_menu_item_chat = 'Live Support';
 $webui_menu_item_downloads = 'Downloads';
-$webui_menu_item_addgrid = 'Add Grid';
-$webui_menu_item_addserver = 'Add Server';
+$webui_menu_item_addgrid = 'Aggiungi la Grid';
+$webui_menu_item_addserver = 'Aggiungi un server';
 
 //
 // Home Page
@@ -147,7 +147,7 @@ $webui_home_page='
 		<p><a href="index.php?page=register">Crea il tuo account gratuito adesso</a> costruisci il tuo avatar ed inizia a giocare.</p>
 		<p>Entra ora, e fai la differenza !</p>';
 
-$webui_home_page_warning = 'Ti preghimao di considerare che la piattaforma di Aurora e ancora in una fase sperimentale e quindi alcune cose potrebbero funzionare in modo inaspettato.';
+$webui_home_page_warning = 'Ti preghiamo di considerare che la piattaforma di Aurora e ancora in una fase sperimentale e quindi alcune cose potrebbero funzionare in modo inaspettato.';
 
 //
 // 404 page
@@ -220,9 +220,9 @@ $webui_menu_item_adminnewsmanager = 'News Manager';
 $webui_menu_item_adminhome = 'Amministratore';
 $webui_menu_item_adminmanage = 'Manager';
 $webui_menu_item_adminsettings = 'Settaggi amministratore';
-$webui_menu_item_adminmodules = 'Modules';
-$webui_menu_item_adminoptions = 'Options';
-$webui_menu_item_adminsupport = 'Support';
+$webui_menu_item_adminmodules = 'Moduli';
+$webui_menu_item_adminoptions = 'Opzioni';
+$webui_menu_item_adminsupport = 'Supporto';
 
 //
 // Admin Home Page
@@ -245,7 +245,7 @@ $webui_admin_windows_title = 'Titolo della finestra';
 $webui_admin_windows_message = 'Messaggio della finestra';
 $webui_admin_windows_settings = 'Salva i cambiamenti della finestra';
 $webui_admin_create_news = 'Crera una nuova news';
-$webui_admin_edit_news = 'Edit News item';
+$webui_admin_edit_news = 'Modifica le News';
 $webui_admin_news_online = 'News online';
 $webui_admin_news_title = 'Titolo';
 $webui_admin_news_date = 'Data';
@@ -412,8 +412,8 @@ $webui_admin_BackgroundColorAnimation_EndStep10 = 'Color End Step 10';
 //
 // Add/Edit News Page
 //
-$webui_admin_create_news_info = 'Qui puoi creare una nuova news news item.';
-$webui_admin_edit_news_info = 'This allows you to edit a news item.';
+$webui_admin_create_news_info = 'Qui puoi creare una nuova news.';
+$webui_admin_edit_news_info = 'Qui puoi modificare una news.';
 
 //
 // Login Screen page
@@ -441,30 +441,30 @@ $webui_support_info = 'Da qui puoi dare supporto agli utenti';
 //
 // Help Page
 //
-$webui_help = 'Aide';
-$webui_help_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
+$webui_help = 'Supporto';
+$webui_help_info = 'Da questa pagina puoi ricevere supporto';
 
 $webui_help_step1_title = 'Step 1';
 $webui_help_step2_title = 'Step 2';
 $webui_help_step3_title = 'Step 3';
-$webui_help_step1 = '<a href="index.php?page=register">Create your FREE Account</a> right here on our pages.';
-$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. We recommend Imprudence / Kokua.';
-$webui_help_step3 = '<a href="index.php?page=addgrid">Add our grid</a> to your favorite viewer. Don\'t forget it!';
+$webui_help_step1 = '<a href="index.php?page=register">Crea il tuo accoun GRATUITO</a> direttamente da questa pagina.';
+$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Scarica il viewer</a>. Ti raccomandiamo Imprudence / Kokua.';
+$webui_help_step3 = '<a href="index.php?page=addgrid">Aggiungi la nostra grid</a> al tuo viewer favorito. Non dimenticarlo!';
 
-$webui_help_title_comment01 = 'Free Downloads';
-$webui_help_title_comment02 = 'Help about Viewer';
-$webui_help_title_comment03 = 'Help about Server';
+$webui_help_title_comment01 = 'Downloads gratuiti';
+$webui_help_title_comment02 = 'Supporto per il Viewer';
+$webui_help_title_comment03 = 'Supporto per il Server';
 
-$webui_help_title_comment04 = 'Help 04';
-$webui_help_title_comment05 = 'Help 05';
-$webui_help_title_comment06 = 'Help 06';
+$webui_help_title_comment04 = 'Supporto 04';
+$webui_help_title_comment05 = 'Supporto 05';
+$webui_help_title_comment06 = 'Supporto 06';
 
-$webui_help_comment01 = '<a href="index.php?page=downloads">Read more ...</a>';
-$webui_help_comment02 = '<a href="index.php?page=addgrid">Read more ...</a>';
-$webui_help_comment03 = '<a href="index.php?page=addserver">Read more ...</a>';
-$webui_help_comment04 = 'Help about somethink ...';
-$webui_help_comment05 = 'Help about somethink ...';
-$webui_help_comment06 = 'Help about somethink ...';
+$webui_help_comment01 = '<a href="index.php?page=downloads">Leggi ...</a>';
+$webui_help_comment02 = '<a href="index.php?page=addgrid">Leggi ...</a>';
+$webui_help_comment03 = '<a href="index.php?page=addserver">Leggi ...</a>';
+$webui_help_comment04 = 'Supporto per qualcosa ...';
+$webui_help_comment05 = 'Supporto per qualcosa ...';
+$webui_help_comment06 = 'Supporto per qualcosa ...';
 
 //
 // Chat Page
@@ -476,25 +476,25 @@ $webui_chat_info = 'Live Support Chat.';
 // Chat Page
 //
 $webui_chat = 'Live Chat Support IRC';
-$webui_chat_info = 'Ceci vous permet d\'obtenir une aide en directe grace à notre Salle de Chat IRC.';
+$webui_chat_info = 'Da qui puoi connetterti direttamente sul nostro canale di supporto IRC.';
 
 //
 // Downloads Page
 //
-$webui_downloads = 'Téléchargements';
-$webui_downloads_info = 'Nous vous proposons ici quelques téléchargements de Viewer ... nous vous conseillons Imprudence / Kokua';
-$webui_downloads_imprudence_windows_title = 'Imprudence pour Windows';
-$webui_downloads_imprudence_linux_title = 'Imprudence pour Linux';
-$webui_downloads_imprudence_mac_title = 'Imprudence pour Mac';
-$webui_downloads_imprudence_windows = '<a href="#">Télécharger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_linux = '<a href="#">Télécharger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_mac = '<a href="#">Télécharger</a> Imprudence / Kokua.';
+$webui_downloads = 'Download';
+$webui_downloads_info = 'Vi proponiamo il download del viewer ... consigliandovi Imprudence / Kokua';
+$webui_downloads_imprudence_windows_title = 'Imprudence pre Windows';
+$webui_downloads_imprudence_linux_title = 'Imprudence per Linux';
+$webui_downloads_imprudence_mac_title = 'Imprudence per Mac';
+$webui_downloads_imprudence_windows = '<a href="#">Scarica</a> Imprudence / Kokua.';
+$webui_downloads_imprudence_linux = '<a href="#">Scarica</a> Imprudence / Kokua.';
+$webui_downloads_imprudence_mac = '<a href="#">Scarica</a> Imprudence / Kokua.';
 
 //
 // Addgrid Page
 //
-$webui_addgrid = 'Ajouter Grille';
-$webui_addgrid_info = 'Après avoir téléchargé et installé votre viewer préféré, il vous reste encore une étape avant de pouvoir vous connecter à notre Server, vous devez configurer le Viewer.';
+$webui_addgrid = 'Aggiungi la grid';
+$webui_addgrid_info = 'Una volta scaricato ed installato il vostro viewer, ancora un piccolo passo per connettervi al nostro server, dovete configurare il vostro Viewer.';
 
 $webui_addgrid_hippo = 'Hippo';
 $webui_addgrid_imprudence = 'Imprudence';
@@ -503,25 +503,25 @@ $webui_addgrid_astra = 'Astra';
 $webui_addgrid_singularity = 'Singularity';
 $webui_addgrid_kokua = 'Kokua';
 
-$webui_addgrid_config_hippo = 'Configuration of Hippo Viewer';
-$webui_addgrid_config_imprudence = 'Configuration of Imprudence Viewer';
-$webui_addgrid_config_phoenix = 'Configuration of Phoenix Viewer';
-$webui_addgrid_config_singularity = 'Configuration of Singularity Viewer';
-$webui_addgrid_config_astra= 'Configuration of Astra Viewer';
-$webui_addgrid_config_kokua = 'Configuration of Kokua Viewer';
-$webui_addgrid_click_to_enlarge = 'Click to enlarge';
+$webui_addgrid_config_hippo = 'Configurazione di Hippo Viewer';
+$webui_addgrid_config_imprudence = 'Configurazione di Imprudence Viewer';
+$webui_addgrid_config_phoenix = 'Configurazione di Phoenix Viewer';
+$webui_addgrid_config_singularity = 'Configurazione di Singularity Viewer';
+$webui_addgrid_config_astra= 'Configurazione di Astra Viewer';
+$webui_addgrid_config_kokua = 'Configurazione di Kokua Viewer';
+$webui_addgrid_click_to_enlarge = 'Clicca per ingrandire';
 
-$webui_addgrid_title = 'Configuration Imprudence Viewer';
-$webui_addgrid_add = 'Lancer le viewer, cliquer sur <b>GRID MANAGER</b> et puis sur <b>ADD NEW GRID</b>';
-$webui_addgrid_complete = 'Remplir avec les informations ci-dessous (Copier/Coller).';
+$webui_addgrid_title = 'Configurazione Imprudence Viewer';
+$webui_addgrid_add = 'Lancia il viewer, clicca sul <b>GRID MANAGER</b> e poi su <b>ADD NEW GRID</b>';
+$webui_addgrid_complete = 'Copia ed incolla le informazioni di seguito (Copia/Incolla).';
 
-$webui_addgrid_gridNick = 'Grid nick (unique)';
-$webui_addgrid_gridName = 'Grid name';
-$webui_addgrid_AvFirstName = 'First Name';
-$webui_addgrid_AvlastName = 'Last Name';
+$webui_addgrid_gridNick = 'Nick della Grid (unico)';
+$webui_addgrid_gridName = 'Nome della Grid';
+$webui_addgrid_AvFirstName = 'Il vostro Nome';
+$webui_addgrid_AvlastName = 'Il vostro Cognome';
 $webui_addgrid_Avpassword = 'Password';
 $webui_addgrid_loginURL = 'Login URL';
-$webui_addgrid_getGridInfo = 'A cette étape vous pouvez cliquer sur <b>GET GRID INFO</b> ou poursuivre manuellement (Copier/Coller).';
+$webui_addgrid_getGridInfo = 'A questo punto cliccate su <b>GET GRID INFO</b> oppure manualmente riempite (Copa/Incolla).';
 $webui_addgrid_loginPage = 'Login page';
 $webui_addgrid_helperURL = 'Helper URL';
 $webui_addgrid_website = 'Website';
@@ -529,37 +529,37 @@ $webui_addgrid_support = 'Support';
 $webui_addgrid_account = 'Account';
 $webui_addgrid_password = 'Password';
 $webui_addgrid_webSearch = 'Web Search';
-$webui_addgrid_apply = 'Cliquer sur <b>APPLY</b>, puis sur <b>OK</b>';
-$webui_addgrid_login = 'Remplir <b>First Name</b>, <b>Last Name</b> et <b>Password</b>, sélectionnez <b>DigiGrids</b> et cliquez sur <b>ME CONNECTER</b>.';
-$webui_addgrid_valid = 'Valable pour: Astra Viewer, Hippo Viewer, Emerald Viewer, Phoenix Viewer, Meerkat Viewer, ...';
+$webui_addgrid_apply = 'Clicca su <b>APPLY</b>, e poi su <b>OK</b>';
+$webui_addgrid_login = 'Riempi <b>First Name</b>, <b>Last Name</b> e <b>Password</b>, seleziona <b>Nova</b> et clicca su <b>Login</b>.';
+$webui_addgrid_valid = 'Valido per: Astra Viewer, Hippo Viewer, Emerald Viewer, Phoenix Viewer, Meerkat Viewer, ...';
 
-$webui_addgrid_diff_info = 'Les Viewers suivants se configurent un peu différement.';
-$webui_addgrid_diff_title = 'Informations de configuration';
+$webui_addgrid_diff_info = 'Alcuni viewers posson essere configurati differentemente.';
+$webui_addgrid_diff_title = 'Informazioni per la configurazione';
 
-$webui_addgrid_diff_shortcut = 'Créer un raccourci du viewer et placez le sur votre bureau.';
-$webui_addgrid_diff_propriete = 'Clic droit sur le raccourci et aller sur Propriété.';
-$webui_addgrid_diff_complete = 'Remplir avec les informations respectives ci-dessous.';
+$webui_addgrid_diff_shortcut = 'Crea un collegamento per il tuo viewer e posizionalo sul desktop.';
+$webui_addgrid_diff_propriete = 'Clicca destro sul file e seleziona proprieta.';
+$webui_addgrid_diff_complete = 'Riempire i campi con le informazioni di seguito descritte.';
 $webui_addgrid_KokuaViewer = 'Kokua Viewer';
 $webui_addgrid_SecondLifeViewer = 'Second Life Viewer';
 $webui_addgrid_KristenViewer = 'Kristen Viewer';
 
-$webui_addgrid_IWC_info = 'Notre Server fonctionne aussi en mode IWC (Inter World Connector).';
+$webui_addgrid_IWC_info = 'Sul nostro server e attiva la modalita IWC (Inter World Connector).';
 $webui_addgrid_IWC_title = 'Inter World Connector (IWC)';
-$webui_addgrid_IWC_content = 'Voici notre lien IWC';
+$webui_addgrid_IWC_content = 'Siamo connessi a IWC';
 
-$webui_addgrid_HG_info = 'Notre Server fonctionne aussi en mode HG (HyperGrid).';
+$webui_addgrid_HG_info = 'Sul nostro server e attiva la modalita HG (HyperGrid).';
 $webui_addgrid_HG_title = 'Hypergrid (HG)';
-$webui_addgrid_HG_content = 'Voici notre lien HG';
+$webui_addgrid_HG_content = 'Siamo connessi a HG';
 
-$webui_addgrid_banned_info = 'Les Viewers suivants sont bannis sur notre server.';
-$webui_addgrid_banned_title = 'Banned Viewer';
-$webui_addgrid_banned_content = 'Il n\'y a pas de viewer banni actuellement.';
+$webui_addgrid_banned_info = 'I seguenti viewer sono bannati sul nostro server.';
+$webui_addgrid_banned_title = 'Viewer bannati';
+$webui_addgrid_banned_content = 'non e possibile utilizzare i viewer bannati attualmente.';
 
 //
 // Addserver Page
 //
-$webui_addserver = 'Ajouter Server';
-$webui_addserver_info = 'Les informations ci-dessous vous permettent de configurer votre serevr afin de le connecter à notre server.';
+$webui_addserver = 'Aggiungi il Server';
+$webui_addserver_info = 'Le informazioni dis eguito vi permettono di configurare la vostra regione e connetterla al nostro server.';
 
 //
 // Pagination Tooltips
@@ -615,43 +615,43 @@ $webui_infos_comment06 = 'Info concernant ...';
 //
 // Page Load Time
 //
-$this_page_took = 'This page took';
-$seconds_to_load = 'seconds to load';
+$this_page_took = 'Questa pagina ha impiegato';
+$seconds_to_load = 'secondi a caricarsi';
 
 //
 // Modernizer
 //
-$webui_modernizer_problem = 'You do not have your Javascript enabled, and this site requires it.';
+$webui_modernizer_problem = 'Non hai Javascript abilitato, e questo sito ne ha bisogno.';
 
 //
 // Page Currency
 //
-$webui_menu_item_getregion='Buy Land';
+$webui_menu_item_getregion='Compra una regione';
 
-$webui_menu_item_getcurrency='Buy D$';
-$webui_menu_item_getcurrencyhistory='History';
-$webui_menu_item_currencytransfer='Transfer';
+$webui_menu_item_getcurrency='Compra N$';
+$webui_menu_item_getcurrencyhistory='Estratto conto';
+$webui_menu_item_currencytransfer='Trasferisci';
 
-$site_not_a_member='Not a member?';
-$site_sign_up_today='Create your FREE Account right here on our pages.';
+$site_not_a_member='non sei registrato?';
+$site_sign_up_today='Crea il tuo account gratutito direttamente da questa pagina.';
 
 $site_sign_up_benifit='
-<ul><li>Large wonderful world with friendly people</li>
-<li>Security is a top priority</li>
-<li>Choose your default avatar when you sign up</li>
-<li>Latest physics engine</li>
-<li>Over 100 Regions</li>
-<li>Currency compatible with lindens and us and euros</li>
-<li>No purchase fee</li>
-<li>No set up fee</li>
-<li>The worlds only virtual 3D dating environment</li>
-<li>You can keep you sl name and  identity</li>
-<li>Friendly personal owners</li>
-<li>Kick ass administer and scripters</li>
+<ul><li>Un grande mondo virtuale con tanta bella gente</li>
+<li>La sicurezza innanzitutto</li>
+<li>Scegli il tuo avatar di default quando ti iscrivi</li>
+<li>Motore fisico di ultima generazione</li>
+<li>Oltre 100 Regioni</li>
+<li>Valuta compatibile con i lindens e con il dollaro ed euro</li>
+<li>Non ci sono diritti di compravendita</li>
+<li>Non ci sono diritti di entrata</li>
+<li>Il motore di dating universale in 3D</li>
+<li>Puoi mantenere la tua identita di SL</li>
+<li>Il personale addetto sempre a tua disposizione</li>
+<li>Tira un calcio in culo agli sviluppatori ed agli amministratori</li>
 </ul>
 ';
 
-$site_terms_of_service_agree='I agree with the Terms of Service.';
-$ErrorMessagePurchaseAlreadyComplete = "This purchase has already been completed. If you have not seen the currency applied yet, please be patient, as it might be on hold.";
+$site_terms_of_service_agree='Sono daccordo con i termini di servizio.';
+$ErrorMessagePurchaseAlreadyComplete = "Questo acquisto e gia stato effettuato. Se ancora non vedi il tuo bilancio aggiornato, per favore sii paziente, potreebe essere necessario ulteriore tempo.";
 
 ?>
