@@ -6,6 +6,7 @@ if ($_SESSION[ADMINID]) {
     $DbLink = new DB;
 
     if ($_POST[Submitreg] == "$webui_admin_settings_save_bouton") {
+	    $DbLink->query("UPDATE " . C_ADM_TBL . " SET startregion='".cleanQuery($_POST[region])."'");
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET adress='".cleanQuery($_POST[adressset])."',region='".cleanQuery($_POST[regtyp])."',startregion='".cleanQuery($_POST[region])."'");
     }
 
@@ -32,10 +33,6 @@ if ($_SESSION[ADMINID]) {
 
     if ($_POST[Submit5] == "$webui_admin_settings_save_bouton") {
         $DbLink->query("DELETE FROM " . C_NAMES_TBL . " WHERE name='".cleanQuery($_POST[delname])."'");
-    }
-
-    if ($_POST[Submitgau] == "Save") {
-        $DbLink->query("UPDATE " . C_ADM_TBL . " SET griddir='".cleanQuery($_POST[griddir])."',assetdir='".cleanQuery($_POST[assetdir])."',userdir='".cleanQuery($_POST[userdir])."'");
     }
 
     if ($_POST[Submitnam2] == "$webui_admin_settings_activate_bouton") {
@@ -99,10 +96,10 @@ if ($_SESSION[ADMINID]) {
                   <? echo $webui_admin_settings_startregion; ?>: 
                       <select class="box" wide="25" name="region">
                         <?
-                            $DbLink->query("SELECT RegionName FROM " . C_REGIONS_TBL . " ORDER BY RegionName ASC ");
+                            $DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " ORDER BY RegionName ASC ");
                                   
                             while (list($RegionName, $RegionUUID) = $DbLink->next_record()) {
-                                echo"<option value='$RegionUUID' " . ($STARTREGION == '$RegionUUID' ? 'selected' : '') . ">$RegionName</option>";
+                                echo"<option value='$RegionUUID' " . ($STARTREGION == $RegionUUID ? 'selected' : '') . ">$RegionName</option>";
                             }
                         ?>
                       </select>
