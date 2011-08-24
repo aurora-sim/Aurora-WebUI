@@ -226,12 +226,14 @@ if($_SESSION[ADMINID]) {
                 		$found[0] = json_encode(array('Method' => 'FindUsers', 'WebPassword' => md5(WIREDUX_PASSWORD),
                       		'UserID' => cleanQuery($_GET[user_id]), 'Start' => cleanQuery($AStart), 'End' => cleanQuery($ALimit), 'Query' => cleanQuery($_POST[query])));
             		    $do_post_request = do_post_request($found);
-                    $recieved = json_decode($do_post_request);
-		    foreach($recieved->{'Users'} as $userInfo) {
-		    $user_id = $userInfo->{'PrincipalID'};
-                    $username = $userInfo->{'UserName'};
-                    $created = $userInfo->{'Created'};
-                    $flags = $userInfo->{'UserFlags'};
+                    $recieved = json_decode($do_post_request, true);
+					$fullUserInfo = (array)$recieved['Users'];
+		    foreach($fullUserInfo as $userInfo)
+			{
+					$user_id = $userInfo['PrincipalID'];
+                    $username = $userInfo['UserName'];
+                    $created = $userInfo['Created'];
+                    $flags = $userInfo['UserFlags'];
 
                     $create = date("d.m.Y", $created);
             ?>
