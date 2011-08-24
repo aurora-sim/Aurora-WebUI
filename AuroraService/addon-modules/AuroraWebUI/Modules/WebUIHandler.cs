@@ -528,7 +528,8 @@ namespace OpenSim.Services
             if (agentInfoService != null && gridService != null)
             {
                 GridRegion r = gridService.GetRegionByName (UUID.Zero, HomeRegion);
-                agentInfoService.SetHomePosition (user.PrincipalID.ToString (), r.RegionID, new Vector3 (r.RegionSizeX / 2, r.RegionSizeY / 2, 20), Vector3.Zero);
+                if (r != null)
+                    agentInfoService.SetHomePosition (user.PrincipalID.ToString (), r.RegionID, new Vector3 (r.RegionSizeX / 2, r.RegionSizeY / 2, 20), Vector3.Zero);
             }
 
             Verified = user != null;
