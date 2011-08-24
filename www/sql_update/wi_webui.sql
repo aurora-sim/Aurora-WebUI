@@ -78,7 +78,7 @@ CREATE TABLE `wi_adminsetting` (
 ) AUTO_INCREMENT=2 ;
 
 INSERT INTO `wi_adminsetting` (`id`, `startregion`, `userdir`, `griddir`, `assetdir`, `lastnames`, `adress`, `region`, `allowRegistrations`, `verifyUsers`, `ForceAge`) VALUES 
-(1, '', '', '', '', '0', '0', '0','1','1',0);
+(1, '', '', '', '', '0', '0', '0','1','0',0);
 
 -- --------------------------------------------------------
 
