@@ -2,83 +2,74 @@
 if($_SESSION[ADMINID]){
 
 $DbLink = new DB;
-if($_POST[userdata]=="set"){
-$DbLink->query("SELECT PrincipalID FROM ".C_USERS_TBL." WHERE FirstName='".cleanQuery($_POST[accfirst])."' and LastName='".cleanQuery($_POST[acclast])."'");
-list($CHECKUSER) = $DbLink->next_record();
-
-$DbLink->query("UPDATE ".C_WIUSR_TBL." SET 
-realname1 ='".cleanQuery($_POST[fname])."',
-realname2 ='".cleanQuery($_POST[lname])."',
-adress1 ='".cleanQuery($_POST[street])."',
-zip1 ='".cleanQuery($_POST[zip])."',
-city1 ='".cleanQuery($_POST[city])."',
-country1 ='".cleanQuery($_POST[country])."',
-emailadress ='".cleanQuery($_POST[email])."'
-WHERE UUID='".cleanQuery($_POST[uuid])."'");
-
-if($CHECKUSER == ''){
-
-$DbLink->query("UPDATE ".C_USERS_TBL." SET 
-Name ='".cleanQuery($_POST[name])."'
-WHERE PrincipalID='".cleanQuery($_POST[uuid])."'");
-}
+if($_POST[userdata]=="set")
+{
+$found = array();
+$found[0] = json_encode(array('Method' => 'EditUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
+                    'UserID' => cleanQuery($_POST[userid]),
+					'Name' => cleanQuery($_POST[name]),
+                    'RLName' => cleanQuery($_POST[rlname]),
+                    'RLAddress' => cleanQuery($_POST[street]),
+                    'RLZip' => cleanQuery($_POST[zip]),
+                    'RLCity' => cleanQuery($_POST[city]),
+                    'RLCountry' => cleanQuery($_POST[country]),
+                    'Email' => cleanQuery($_POST[email])));
+$do_post_request = do_post_request($found);
 
 echo "<script language='javascript'>
 <!--
-window.location.href='index.php?page=edit&userid=".$_POST[uuid]."';
+window.location.href='index.php?page=adminedit&userid=".$_POST[userid]."';
 // -->
 </script>";
 }
 
-if($_POST[state]=="set"){
-$DbLink->query("SELECT PrincipalID,Created FROM ".C_USERS_TBL." WHERE PrincipalID='".cleanQuery($_POST[uuid])."'");
-list($uuid,$created) = $DbLink->next_record();
-
-if($_POST[active] !=3){
-if($_POST[status]==0){
-$DbLink->query("UPDATE ".C_WIUSR_TBL." SET active='".cleanQuery($_POST[status])."' WHERE UUID='".cleanQuery($_POST[uuid])."'");
-}else{
-$DbLink->query("UPDATE ".C_WIUSR_TBL." SET active='".cleanQuery($_POST[status])."' WHERE UUID='".cleanQuery($_POST[uuid])."'");
-}
-}else{
+if($_POST[state]=="set")
+{
 if($_POST[status]==1){
-$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE UUID='".cleanQuery($_POST[uuid])."'");
+$DbLink->query("UPDATE ".C_USERS_TBL." SET UserLevel='0' WHERE PrincipalID='".cleanQuery($_POST[userid])."'");
+}else{
+$DbLink->query("UPDATE ".C_USERS_TBL." SET UserLevel='-1' WHERE PrincipalID='".cleanQuery($_POST[userid])."'");
 }
-}
-
 echo "<script language='javascript'>
 <!--
-window.location.href='index.php?page=edit&userid=".$_POST[uuid]."';
+window.location.href='index.php?page=adminedit&userid=".$_POST[userid]."';
 // -->
 </script>";
- 
 }
+
+
 $found = array();
 $found[0] = json_encode(array('Method' => 'GetProfile', 'WebPassword' => md5(WIREDUX_PASSWORD)
-            , 'Name' => cleanQuery($_GET['name'])));
+            , 'UUID' => cleanQuery($_GET['userid'])));
 $do_post_requested = do_post_request($found);
 $recieved = json_decode($do_post_requested);
 $profileTXT = $recieved->{'profile'}->{'AboutText'};
 $profileImage = $recieved->{'profile'}->{'Image'};
 $created = $recieved->{'account'}->{'Created'};
 $uuid = $recieved->{'account'}->{'PrincipalID'};
+$name = $recieved->{'account'}->{'Name'};
 $diff = $recieved->{'account'}->{'TimeSinceCreated'};
 $type = $recieved->{'account'}->{'AccountInfo'};
+$email = $recieved->{'account'}->{'Email'};
 $partner = $recieved->{'account'}->{'Partner'};
+$rlname = $recieved->{'agent'}->{'RLName'};
+$street = $recieved->{'agent'}->{'RLAddress'};
+$zip = $recieved->{'agent'}->{'RLZip'};
+$city = $recieved->{'agent'}->{'RLCity'};
+$country = $recieved->{'agent'}->{'RLCountry'};
 $date = date("D d M Y - g:i A", $created);
 
 $DbLink->query("SELECT PrincipalID,Name FROM ".C_USERS_TBL." WHERE PrincipalID='".cleanQuery($_GET[userid])."'");
 list($uuid,$accName) = $DbLink->next_record();
 
-$DbLink->query("SELECT realname1,realname2,adress1,zip1,city1,country1,emailadress FROM ".C_WIUSR_TBL." WHERE UUID='".cleanQuery($_GET[userid])."'");
-list($firstnm,$lastnm,$street,$zip,$city,$country,$email) = $DbLink->next_record();
+$DbLink->query("SELECT UserLevel FROM ".C_USERS_TBL." a where PrincipalID='".cleanQuery($_GET[userid])."'");
+list($active) = $DbLink->next_record(); 
 
-$DbLink->query("SELECT a.active,(SELECT info FROM ".C_CODES_TBL." b WHERE b.uuid = a.uuid ) as confirm FROM ".C_WIUSR_TBL." a where UUID='".cleanQuery($_GET[userid])."'");
-list($active,$confirm) = $DbLink->next_record(); 
+if($active == "-1")
+	$active = "0";
+else
+	$active = "1";
 
-if($confirm == 'confirm'){
-$active=3;
-} 
 ?>
 
 
@@ -94,9 +85,9 @@ $active=3;
         </div>
         
         <table>
-            <form name="form1" method="post" action="index.php?page=edit">
+            <form name="form1" method="post" action="index.php?page=adminedit">
             <input type="hidden" name="userdata" value="set" />
-            <input type="hidden" name="uuid" value="<?=$uuid?>" />
+            <input type="hidden" name="userid" value="<?=$uuid?>" />
                
             <tr>
                 <td class="odd" width="50%"><? echo $webui_admin_edit_manage_userid; ?></td>
@@ -104,30 +95,15 @@ $active=3;
             </tr>
             
       		  <tr>
-		            <td class="even"><? echo $webui_admin_edit_manage_avatar_firstname; ?></td> 
-		            <td class="even"><input style="width:99%" name="accfirst" type="text" id="accfirst" value="<?=$accfirst?>"</td>
+		            <td class="even"><? echo $webui_admin_edit_manage_avatar_name; ?></td> 
+		            <td class="even"><input style="width:99%" name="name" type="text" id="name" value="<?=$name?>"</td>
 		        </tr>
-		        
-            <tr>
-		            <td class="odd">
-                    <? echo $webui_admin_edit_manage_avatar_lastname; ?>
-                </td>
-                
-                <td class="idd">
-                    <input style="width:99%" name="acclast" type="text" id="acclast" value="<?=$acclast?>" />
-                </td>
-            </tr>
             
             <tr>
-                <td class="even"><? echo $webui_admin_edit_manage_real_firstname; ?></td>
+                <td class="even"><? echo $webui_admin_edit_manage_real_name; ?></td>
                 <td class="even">
-                    <input style="width:99%" name="fname" type="text" id="fname" value="<?=$firstnm?>" />
+                    <input style="width:99%" name="rlname" type="text" id="fname" value="<?=$rlname?>" />
                 </td>
-            </tr>
-          
-            <tr>
-                <td class="odd"><? echo $webui_admin_edit_manage_real_lastname; ?></td>
-                <td class="odd"><input style="width:99%" name="lname" type="text" id="lname" value="<?=$lastnm?>" /></td>
             </tr>
             
           
@@ -175,14 +151,13 @@ $active=3;
             </tr>
             </form>
 
-            <form name="form1" method="post" action="index.php?page=edit">
+            <form name="form1" method="post" action="index.php?page=adminedit">
 
             <tr>
                 <td class="even"><? echo $webui_admin_edit_manage_currentstatus; ?></td>
                 <td class="even">
                   <? if($active==1){echo"<font COLOR=#00FF00>$webui_admin_edit_manage_active</font>";}
-				            else if($active==3){echo"<font COLOR=#FF0000>$webui_admin_edit_manage_notconf</font>";}
-				            else{echo"<font COLOR=#FF0000>$webui_admin_edit_manage_inactive</font>";}
+				     else{echo"<font COLOR=#FF0000>$webui_admin_edit_manage_inactive</font>";}
                   ?>
                 </td>
             </tr>
@@ -191,8 +166,7 @@ $active=3;
                 <td class="odd"><? echo $webui_admin_edit_manage_setstatus; ?></td>
                 <td class="odd">
                     <input type="hidden" name="state" value="set" />
-                    <input type="hidden" name="uuid" value="<?=$uuid?>" />
-				            <input type="hidden" name="active" value="<?=$active?>" />
+                    <input type="hidden" name="userid" value="<?=$uuid?>" />
                     
                     <select name="status">
                         <option value="1"><? echo $webui_admin_edit_manage_active; ?></option> 

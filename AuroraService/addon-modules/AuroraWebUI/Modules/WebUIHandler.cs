@@ -463,9 +463,13 @@ namespace OpenSim.Services
                     {
                         return AbuseReportMarkComlete (map);
                     }
-                    else if (method == "SetWebLoginKey")
+                    else if(method == "SetWebLoginKey")
                     {
-                        return SetWebLoginKey (map);
+                        return SetWebLoginKey(map);
+                    }
+                    else if(method == "EditUser")
+                    {
+                        return EditUser(map);
                     }
                 }
             }
@@ -528,7 +532,7 @@ namespace OpenSim.Services
             if (agentInfoService != null && gridService != null)
             {
                 GridRegion r = gridService.GetRegionByName (UUID.Zero, HomeRegion);
-                if (r != null)
+                if(r != null)
                     agentInfoService.SetHomePosition (user.PrincipalID.ToString (), r.RegionID, new Vector3 (r.RegionSizeX / 2, r.RegionSizeY / 2, 20), Vector3.Zero);
             }
 
@@ -875,13 +879,18 @@ namespace OpenSim.Services
         {
             OSDMap resp = new OSDMap();
             string Name = map["Name"].AsString();
+            UUID userID = map["UUID"].AsUUID();
 
-            UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name);
+            UserAccount account = Name != "" ? 
+                m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name) :
+                 m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, userID);
             if (account != null)
             {
                 OSDMap accountMap = new OSDMap();
                 accountMap["Created"] = account.Created;
+                accountMap["Name"] = account.Name;
                 accountMap["PrincipalID"] = account.PrincipalID;
+                accountMap["Email"] = account.Email;
                 TimeSpan diff = DateTime.Now - Util.ToDateTime(account.Created);
                 int years = (int)diff.TotalDays / 356;
                 int days = years > 0 ? (int)diff.TotalDays / years : (int)diff.TotalDays;
@@ -905,9 +914,54 @@ namespace OpenSim.Services
                     else
                         accountMap["Partner"] = "";
                 }
+                IAgentConnector agentConnector = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                IAgentInfo agent = agentConnector.GetAgent(account.PrincipalID);
+                if(agent != null)
+                {
+                    OSDMap agentMap = new OSDMap();
+                    agentMap["RLName"] = agent.OtherAgentInformation["RLName"];
+                    agentMap["RLAddress"] = agent.OtherAgentInformation["RLAddress"];
+                    agentMap["RLZip"] = agent.OtherAgentInformation["RLZip"];
+                    agentMap["RLCity"] = agent.OtherAgentInformation["RLCity"];
+                    agentMap["RLCountry"] = agent.OtherAgentInformation["RLCountry"];
+                    resp["agent"] = agentMap;
+                }
                 resp["account"] = accountMap;
             }
 
+            string xmlString = OSDParser.SerializeJsonString(resp);
+            UTF8Encoding encoding = new UTF8Encoding();
+            return encoding.GetBytes(xmlString);
+        }
+
+        byte[] EditUser (OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            UUID principalID = map["UserID"].AsUUID();
+            UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, principalID);
+            if(account != null)
+            {
+                account.Email = map["Email"];
+                if(m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, map["Name"].AsString()) == null)
+                    account.Name = map["Name"];
+                IAgentConnector agentConnector = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                IAgentInfo agent = agentConnector.GetAgent(account.PrincipalID);
+                if(agent == null)
+                {
+                    agentConnector.CreateNewAgent(account.PrincipalID);
+                    agent = agentConnector.GetAgent(account.PrincipalID);
+                }
+                if(agent != null)
+                {
+                    agent.OtherAgentInformation["RLName"] = map["RLName"];
+                    agent.OtherAgentInformation["RLAddress"] = map["RLAddress"];
+                    agent.OtherAgentInformation["RLZip"] = map["RLZip"];
+                    agent.OtherAgentInformation["RLCity"] = map["RLCity"];
+                    agent.OtherAgentInformation["RLCountry"] = map["RLCountry"];
+                    agentConnector.UpdateAgent(agent);
+                }
+                m_registry.RequestModuleInterface<IUserAccountService>().StoreUserAccount(account);
+            }
             string xmlString = OSDParser.SerializeJsonString(resp);
             UTF8Encoding encoding = new UTF8Encoding();
             return encoding.GetBytes(xmlString);
