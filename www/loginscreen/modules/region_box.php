@@ -49,7 +49,7 @@
 			<div style=" border:hidden; color:#ffffff; padding:0px; width:300px; height:160px; overflow:auto; ">
 			<?php
         $w=0;
-			  $DbLink->query("SELECT regionName,locX,locY FROM ".C_REGIONS_TBL." $ORDERBY ");
+			  $DbLink->query("SELECT regionName,locX,locY FROM ".C_REGIONS_TBL." where !(Flags & 512) && !(Flags & 1024) $ORDERBY ");
 			  while(list($regionName,$locX,$locY) = $DbLink->next_record()){
 			  $w++;
 			?>

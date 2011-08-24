@@ -96,7 +96,7 @@ if ($_SESSION[ADMINID]) {
                   <? echo $webui_admin_settings_startregion; ?>: 
                       <select class="box" wide="25" name="region">
                         <?
-                            $DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " ORDER BY RegionName ASC ");
+                            $DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " where !(Flags & 512) && !(Flags & 1024) ORDER BY RegionName ASC ");
                                   
                             while (list($RegionName, $RegionUUID) = $DbLink->next_record()) {
                                 echo"<option value='$RegionUUID' " . ($STARTREGION == $RegionUUID ? 'selected' : '') . ">$RegionName</option>";

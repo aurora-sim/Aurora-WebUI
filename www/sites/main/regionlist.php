@@ -22,7 +22,7 @@ if(!$AStart) $AStart = $AnzeigeStart;
 $ALimit = 10;
 $Limit = "LIMIT $AStart, $ALimit";
 
-$DbLink->query("SELECT COUNT(*) FROM ".C_REGIONS_TBL.""); 
+$DbLink->query("SELECT COUNT(*) FROM ".C_REGIONS_TBL." where !(Flags & 512) && !(Flags & 1024)"); 
 list($count) = $DbLink->next_record();
 
 $sitemax=ceil($count / 10);
@@ -119,7 +119,7 @@ if($sitemax == 0){$sitemax=1;}
 						<tbody>
 						<?
 							$w=0;
-							$DbLink->query("SELECT RegionName,LocX,LocY FROM ".C_REGIONS_TBL." $ORDERBY $Limit");
+							$DbLink->query("SELECT RegionName,LocX,LocY FROM ".C_REGIONS_TBL." where !(Flags & 512) && !(Flags & 1024) $ORDERBY $Limit");
 							while(list($RegionName,$locX,$locY) = $DbLink->next_record()){
 							$w++;
 						?>
