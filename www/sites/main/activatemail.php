@@ -2,7 +2,7 @@
 if($_GET[code]){
 $DbLink = new DB;
 
-$DbLink->query("SELECT UUID, email FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='confirm'");
+$DbLink->query("SELECT UUID, email FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='emailconfirm'");
 list($UUID, $EMAIL) = $DbLink->next_record();
 }
 
@@ -10,15 +10,15 @@ if($UUID)
 {	
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'SaveEmail', 'WebPassword' => md5(WIREDUX_PASSWORD)
-		, 'UUID' => cleanQuery($_SESSION[USERID])
+		, 'UUID' => cleanQuery($UUID)
 		, 'Email' => cleanQuery($EMAIL)));
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
 	
-	if ($recieved->{'Verified'} == "true") 
+	if ($recieved->{'Verified'} == 1) 
 	{
 		$WERROR="Thank you, your email address was changed";		
-		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='confirm'");
+		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='emailconfirm'");
 	}
 }
 else
@@ -35,7 +35,7 @@ else
 }
 -->
 </style>
-<table width="100%" height="425" border="0" align="center">
+<table width="100%" border="0" align="center">
 	<tr>
 		<td valign="top"><table width="50%" border="0" align="center">
 			<tr>
@@ -44,16 +44,7 @@ else
                         </table>
 		</td>
 	</tr>
-</table>
-<br />
-<table width="79%" height="199" border="0" align="center" cellpadding="5" cellspacing="5" bgcolor="#FFFFFF">
 	<tr>
-		<td valign="top"><br>
-			<br>
-			<? if($WERROR){?>
-			<font color="FF0000"><?=$WERROR?></font><br>
-			<? } ?>
-			<br>
-		</td>
+		<td valign="top"><?=$WERROR?></td>
 	</tr>
 </table>
