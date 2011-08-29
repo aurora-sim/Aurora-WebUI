@@ -117,7 +117,7 @@ if ($_SESSION[USERID] == "") {
 
             $UUID = $_SESSION[USERID];
 
-            $DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUID','confirm','".cleanQuery($_POST[emailnew])."'," . time() . ")");
+            $DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUID','emailconfirm','".cleanQuery($_POST[emailnew])."'," . time() . ")");
 
             //-----------------------------------MAIL--------------------------------------
             $date_arr = getdate();
