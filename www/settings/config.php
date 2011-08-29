@@ -22,9 +22,11 @@ $displayMaintenancePage = false;
 ################### Add Grid Page ###################
 define("AddGrid_GridNick","Your Grid Nick");
 define("AddGrid_GridName","Your Grid Full Name");
+// DO NOT PUT YOUR REAL USER NAME AND PASSWORD HERE!!! THIS IS PUBLICALLY SHOWN AND JUST CHANGES HOW IT LOOKS ON THE ADDGRID PAGE!!
 define("AddGrid_AvFirstName","Your Avatar First Name");
 define("AddGrid_AvLastName","Your Avatar Last Name");
 define("AddGrid_AvPassword","Your Avatar Password");
+// END ABOVE WARNING
 define("AddGrid_LoginURL","http://your_webui_server_ip_or_dns:8002/");
 
 define("AddGrid_LoginPage","http://your_webui_server_ip_or_dns/loginscreen");
