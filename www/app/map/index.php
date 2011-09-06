@@ -96,36 +96,36 @@ if ($_GET[starty]) {
 
   $regionSizeOffset = ($sizeX / 256) * 0.40;
   if ($display_marker == "tl") {
-    $MarkerCoordX = ($MarkerCoordX / 256) - $regionSizeOffset;
-    $MarkerCoordY = ($MarkerCoordY / 256) + $regionSizeOffset;
+    $MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
+    $MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
   }
   
   else if ($display_marker == "tr") {
-    $MarkerCoordX = ($MarkerCoordX / 256) + $regionSizeOffset;
-    $MarkerCoordY = ($MarkerCoordY / 256) + $regionSizeOffset;
+    $MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
+    $MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
   }
   
   else if ($display_marker == "dl") {
-    $MarkerCoordX = ($MarkerCoordX / 256) - $regionSizeOffset;
-    $MarkerCoordY = ($MarkerCoordY / 256) - $regionSizeOffset;
+    $MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
+    $MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
   }
   
   else if ($display_marker == "dr") {
-    $MarkerCoordX = ($MarkerCoordX / 256) + $regionSizeOffset;
-    $MarkerCoordY = ($MarkerCoordY / 256) - $regionSizeOffset;
+    $MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
+    $MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
   }
   
   $recieved = json_decode($info);
   $serverUrl = $recieved->{'serverURI'};
   $uuid = str_replace('-', '', $uuid);
   $filename = $serverUrl . "/index.php?method=regionImage" . $uuid;
-  $mapTextureURL = WIREDUX_TEXTURE_SERVICE.'/index.php?method=MapTexture&zoom='. $antiZoomSize .'&x=' . $mapX . '&y=' . $mapY;
+  //$mapTextureURL = WIREDUX_TEXTURE_SERVICE.'/index.php?method=MapTexture&zoom=1&x=' . $mapX . '&y=' . $mapY;
   echo 'var tmp_region_image = new Img("' . $filename . '",' . $zoomSize * ($sizeX / 256) . ',' . $zoomSize * ($sizeY / 256) . ');';
   $url = "secondlife://" . $regionName . "/" . ($sizeX / 2) . "/" . ($sizeY / 2);
 ?>
 var region_loc = new Icon(tmp_region_image);
 var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];
-var marker = new Marker(all_images, new XYPoint(<?= (($locX / 256)) ?>,<?= (($locY / 256)) ?>));
+var marker = new Marker(all_images, new XYPoint(<?= (($locX / 256))+($sizeX / 512 - 0.5) ?>,<?= (($locY / 256))+($sizeY / 512 - 0.5) ?>));
 mapInstance.addMarker(marker);
 
 var map_marker_img = new Img("images/info.gif",<?= $infosize ?>,<?= $infosize ?>);
