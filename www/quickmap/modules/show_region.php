@@ -28,7 +28,7 @@ if($_GET[region]){
     $lastN  = $ownerdb[LastName];
   }
 
-  $x = mysql_query("SELECT regiomMapTexture FROM wi_regions where id='$regionMapTexture'");
+  $x = mysql_query("SELECT regionMapTexture FROM wi_regions where id='$regionMapTexture'");
   while($imagedb=mysql_fetch_array($x))
   {
     $data = $imagedb[data];
