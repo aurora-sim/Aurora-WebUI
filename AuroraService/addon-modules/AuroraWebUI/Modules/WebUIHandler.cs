@@ -367,7 +367,9 @@ namespace OpenSim.Services
             body = body.Trim();
 
             //m_log.DebugFormat("[XXX]: query String: {0}", body);
+            m_log.TraceFormat("[WebUI]: query String: {0}", body);
             string method = string.Empty;
+            OSDMap resp = new OSDMap();
             try
             {
                 OSDMap map = (OSDMap)OSDParser.DeserializeJson(body);
@@ -377,122 +379,128 @@ namespace OpenSim.Services
                     method = map["Method"].AsString();
                     if (method == "Login")
                     {
-                        return ProcessLogin(map);
+                        resp = ProcessLogin(map);
                     }
                     else if (method == "AdminLogin")
                     {
-                        return ProcessAdminLogin(map);
+                        resp = ProcessAdminLogin(map);
                     }
                     else if (method == "CreateAccount")
                     {
-                        return ProcessCreateAccount(map);
+                        resp = ProcessCreateAccount(map);
                     }
                     else if (method == "OnlineStatus")
                     {
-                        return ProcessOnlineStatus(map);
+                        resp = ProcessOnlineStatus(map);
                     }
                     else if (method == "Authenticated")
                     {
-                        return Authenticated(map);
+                        resp = Authenticated(map);
                     }
                     else if (method == "GetGridUserInfo")
                     {
-                        return GetGridUserInfo(map);
+                        resp = GetGridUserInfo(map);
                     }
                     else if (method == "ChangePassword")
                     {
-                        return ChangePassword(map);
+                        resp = ChangePassword(map);
                     }
                     else if (method == "CheckIfUserExists")
                     {
-                        return CheckIfUserExists(map);
+                        resp = CheckIfUserExists(map);
                     }
                     else if (method == "SaveEmail")
                     {
-                        return SaveEmail(map);
+                        resp = SaveEmail(map);
                     }
                     else if (method == "ChangeName")
                     {
-                        return ChangeName(map);
+                        resp = ChangeName(map);
                     }
                     else if (method == "ConfirmUserEmailName")
                     {
-                        return ConfirmUserEmailName(map);
+                        resp = ConfirmUserEmailName(map);
                     }
                     else if (method == "ForgotPassword")
                     {
-                        return ForgotPassword(map);
+                        resp = ForgotPassword(map);
                     }
                     else if (method == "GetProfile")
                     {
-                        return GetProfile(map);
+                        resp = GetProfile(map);
                     }
                     else if (method == "GetAvatarArchives")
                     {
-                        return GetAvatarArchives(map);
+                        resp = GetAvatarArchives(map);
                     }
                     else if (method == "DeleteUser")
                     {
-                        return DeleteUser(map);
+                        resp = DeleteUser(map);
                     }
                     else if (method == "BanUser")
                     {
-                        return BanUser(map);
+                        resp = BanUser(map);
                     }
                     else if (method == "TempBanUser")
                     {
-                        return TempBanUser(map);
+                        resp = TempBanUser(map);
                     }
                     else if (method == "UnBanUser")
                     {
-                        return UnBanUser(map);
+                        resp = UnBanUser(map);
                     }
                     else if (method == "FindUsers")
                     {
-                        return FindUsers(map);
+                        resp = FindUsers(map);
                     }
                     else if (method == "GetAbuseReports")
                     {
-                        return GetAbuseReports(map);
+                        resp = GetAbuseReports(map);
                     }
                     else if (method == "AbuseReportSaveNotes")
                     {
-                        return AbuseReportSaveNotes(map);
+                        resp = AbuseReportSaveNotes(map);
                     }
                     else if (method == "AbuseReportMarkComlete")
                     {
-                        return AbuseReportMarkComlete (map);
+                        resp = AbuseReportMarkComlete(map);
                     }
                     else if(method == "SetWebLoginKey")
                     {
-                        return SetWebLoginKey(map);
+                        resp = SetWebLoginKey(map);
                     }
                     else if(method == "EditUser")
                     {
-                        return EditUser(map);
+                        resp = EditUser(map);
+                    }
+                    else
+                    {
+                        m_log.TraceFormat("[WebUI] Unsupported method called ({0})", method);
                     }
                 }
+                else
+                {
+                    m_log.Debug("Password does not match");
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                m_log.TraceFormat("[WebUI] Exception thrown: " + e.ToString());
             }
-            OSDMap resp = new OSDMap();
-            resp.Add("response", OSD.FromString("Failed"));
-            string xmlString = OSDParser.SerializeJsonString(resp);
+            if(resp.Count == 0){
+                resp.Add("response", OSD.FromString("Failed"));
+            }
             UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            httpResponse.ContentType = "application/json";
+            return encoding.GetBytes(OSDParser.SerializeJsonString(resp, true));
         }
 
         private bool VerifyPassword(OSDMap map)
         {
-            if (map.ContainsKey("WebPassword"))
-            {
-                return map["WebPassword"] == m_password;
-            }
-            return false;
+            return map.ContainsKey("WebPassword") && (map["WebPassword"] == m_password);
         }
 
-        private byte[] CheckIfUserExists(OSDMap map)
+        private OSDMap CheckIfUserExists(OSDMap map)
         {
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             UserAccount user = accountService.GetUserAccount(UUID.Zero, map["Name"].AsString());
@@ -500,12 +508,10 @@ namespace OpenSim.Services
             bool Verified = user != null;
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromString(Verified.ToString());
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        private byte[] ProcessCreateAccount(OSDMap map)
+        private OSDMap ProcessCreateAccount(OSDMap map)
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
@@ -532,8 +538,14 @@ namespace OpenSim.Services
             if (agentInfoService != null && gridService != null)
             {
                 GridRegion r = gridService.GetRegionByName (UUID.Zero, HomeRegion);
-                if(r != null)
-                    agentInfoService.SetHomePosition (user.PrincipalID.ToString (), r.RegionID, new Vector3 (r.RegionSizeX / 2, r.RegionSizeY / 2, 20), Vector3.Zero);
+                if (r != null)
+                {
+                    agentInfoService.SetHomePosition(user.PrincipalID.ToString(), r.RegionID, new Vector3(r.RegionSizeX / 2, r.RegionSizeY / 2, 20), Vector3.Zero);
+                }
+                else
+                {
+                    m_log.DebugFormat("[WebUI]: Could not set home position for user {0}, region \"{1}\" did not produce a result from the grid service", user.PrincipalID.ToString(), HomeRegion);
+                }
             }
 
             Verified = user != null;
@@ -585,12 +597,10 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(Verified);
             resp["UUID"] = OSD.FromUUID(userID);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        private byte[] ProcessLogin(OSDMap map)
+        private OSDMap ProcessLogin(OSDMap map)
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
@@ -612,14 +622,12 @@ namespace OpenSim.Services
                 resp["LastName"] = OSD.FromString (account.LastName);
             }
 
-
             resp["Verified"] = OSD.FromBoolean (Verified);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+
+            return resp;
         }
 
-        private byte[] ProcessAdminLogin(OSDMap map)
+        private OSDMap ProcessAdminLogin(OSDMap map)
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
@@ -649,12 +657,11 @@ namespace OpenSim.Services
 
 
             resp["Verified"] = OSD.FromBoolean(Verified);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+
+            return resp;
         }
 
-        private byte[] ProcessOnlineStatus(OSDMap map)
+        private OSDMap ProcessOnlineStatus(OSDMap map)
         {
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             bool LoginEnabled = loginService.MinLoginLevel == 0;
@@ -662,12 +669,11 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             resp["Online"] = OSD.FromInteger(1);
             resp["LoginEnabled"] = OSD.FromInteger(LoginEnabled ? 1 : 0);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+
+            return resp;
         }
 
-        private byte[] Authenticated(OSDMap map)
+        private OSDMap Authenticated(OSDMap map)
         {
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UUID"].AsUUID());
@@ -682,9 +688,7 @@ namespace OpenSim.Services
                 accountService.StoreUserAccount(user);
             }
 
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
         /// <summary>
@@ -692,7 +696,7 @@ namespace OpenSim.Services
         /// </summary>
         /// <param name="map">UUID</param>
         /// <returns>Verified, HomeName, HomeUUID, Online, Email, FirstName, LastName</returns>
-        byte[] GetGridUserInfo(OSDMap map)
+        OSDMap GetGridUserInfo(OSDMap map)
         {
             string uuid = String.Empty;
             uuid = map["UUID"].AsString();
@@ -719,9 +723,7 @@ namespace OpenSim.Services
                 resp["Name"] = OSD.FromString(user.Name);
             }
 
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
         /// <summary>
@@ -729,7 +731,7 @@ namespace OpenSim.Services
         /// </summary>
         /// <param name="map">UUID, Email</param>
         /// <returns>Verified</returns>
-        byte[] SaveEmail(OSDMap map)
+        OSDMap SaveEmail(OSDMap map)
         {
             string email = map["Email"].AsString();
 
@@ -745,9 +747,7 @@ namespace OpenSim.Services
                 user.UserLevel = 0;
                 accountService.StoreUserAccount(user);
             }
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
         /// <summary>
@@ -755,7 +755,7 @@ namespace OpenSim.Services
         /// </summary>
         /// <param name="map">UUID, FirstName, LastName</param>
         /// <returns>Verified</returns>
-        byte[] ChangeName(OSDMap map)
+        OSDMap ChangeName(OSDMap map)
         {
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UUID"].AsUUID());
@@ -769,12 +769,10 @@ namespace OpenSim.Services
                 accountService.StoreUserAccount(user);
             }
 
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        byte[] ChangePassword(OSDMap map)
+        OSDMap ChangePassword(OSDMap map)
         {
             string Password = map["Password"].AsString();
             string newPassword = map["NewPassword"].AsString();
@@ -797,12 +795,10 @@ namespace OpenSim.Services
                 resp["Verified"] = OSD.FromBoolean(Verified);
             }
 
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        byte[] ForgotPassword(OSDMap map)
+        OSDMap ForgotPassword(OSDMap map)
         {
             UUID UUDI = map["UUID"].AsUUID();
             string Password = map["Password"].AsString();
@@ -828,12 +824,10 @@ namespace OpenSim.Services
                 }
             }
 
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        byte[] ConfirmUserEmailName(OSDMap map)
+        OSDMap ConfirmUserEmailName(OSDMap map)
         {
             string Name = map["Name"].AsString();
             string Email = map["Email"].AsString();
@@ -870,12 +864,10 @@ namespace OpenSim.Services
             }
 
 
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        byte[] GetProfile(OSDMap map)
+        OSDMap GetProfile(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             string Name = map["Name"].AsString();
@@ -929,12 +921,10 @@ namespace OpenSim.Services
                 resp["account"] = accountMap;
             }
 
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        byte[] EditUser (OSDMap map)
+        OSDMap EditUser (OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID principalID = map["UserID"].AsUUID();
@@ -962,18 +952,18 @@ namespace OpenSim.Services
                 }
                 m_registry.RequestModuleInterface<IUserAccountService>().StoreUserAccount(account);
             }
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        byte[] GetAvatarArchives(OSDMap map)
+        OSDMap GetAvatarArchives(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             List<AvatarArchive> temp = DataManager.RequestPlugin<IAvatarArchiverConnector>().GetAvatarArchives(true);
 
             string names = "";
             string snapshot = "";
+
+            m_log.DebugFormat("[WebUI] {0} avatar archives found", temp.Count);
 
             foreach (AvatarArchive a in temp)
             {
@@ -992,12 +982,10 @@ namespace OpenSim.Services
             }
 
 
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+            return resp;
         }
 
-        byte[] DeleteUser(OSDMap map)
+        OSDMap DeleteUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID agentID = map["UserID"].AsUUID();
@@ -1006,9 +994,6 @@ namespace OpenSim.Services
             if (GetAgent == null)
             {
                 resp["Finished"] = OSD.FromBoolean(true);
-                string xmlString = OSDParser.SerializeJsonString(resp);
-                UTF8Encoding encoding = new UTF8Encoding();
-                return encoding.GetBytes(xmlString);
             }
             else
             {
@@ -1016,13 +1001,11 @@ namespace OpenSim.Services
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
                 resp["Finished"] = OSD.FromBoolean(true);
-                string xmlString = OSDParser.SerializeJsonString(resp);
-                UTF8Encoding encoding = new UTF8Encoding();
-                return encoding.GetBytes(xmlString);
             }
+            return resp;
         }
 
-        byte[] BanUser(OSDMap map)
+        OSDMap BanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID agentID = map["UserID"].AsUUID();
@@ -1031,9 +1014,6 @@ namespace OpenSim.Services
             if (GetAgent == null)
             {
                 resp["Finished"] = OSD.FromBoolean(true);
-                string xmlString = OSDParser.SerializeJsonString(resp);
-                UTF8Encoding encoding = new UTF8Encoding();
-                return encoding.GetBytes(xmlString);
             }
             else
             {
@@ -1041,13 +1021,12 @@ namespace OpenSim.Services
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
                 resp["Finished"] = OSD.FromBoolean(true);
-                string xmlString = OSDParser.SerializeJsonString(resp);
-                UTF8Encoding encoding = new UTF8Encoding();
-                return encoding.GetBytes(xmlString);
             }
+
+            return resp;
         }
 
-        byte[] TempBanUser(OSDMap map)
+        OSDMap TempBanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID agentID = map["UserID"].AsUUID();
@@ -1056,9 +1035,6 @@ namespace OpenSim.Services
             if (GetAgent == null)
             {
                 resp["Finished"] = OSD.FromBoolean(true);
-                string xmlString = OSDParser.SerializeJsonString(resp);
-                UTF8Encoding encoding = new UTF8Encoding();
-                return encoding.GetBytes(xmlString);
             }
             else
             {
@@ -1067,13 +1043,12 @@ namespace OpenSim.Services
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
                 resp["Finished"] = OSD.FromBoolean(true);
-                string xmlString = OSDParser.SerializeJsonString(resp);
-                UTF8Encoding encoding = new UTF8Encoding();
-                return encoding.GetBytes(xmlString);
             }
+
+            return resp;
         }
 
-        byte[] UnBanUser(OSDMap map)
+        OSDMap UnBanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             UUID agentID = map["UserID"].AsUUID();
@@ -1082,9 +1057,6 @@ namespace OpenSim.Services
             if (GetAgent == null)
             {
                 resp["Finished"] = OSD.FromBoolean(true);
-                string xmlString = OSDParser.SerializeJsonString(resp);
-                UTF8Encoding encoding = new UTF8Encoding();
-                return encoding.GetBytes(xmlString);
             }
             else
             {
@@ -1092,13 +1064,12 @@ namespace OpenSim.Services
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
 
                 resp["Finished"] = OSD.FromBoolean(true);
-                string xmlString = OSDParser.SerializeJsonString(resp);
-                UTF8Encoding encoding = new UTF8Encoding();
-                return encoding.GetBytes(xmlString);
             }
+
+            return resp;
         }
 
-        byte[] FindUsers(OSDMap map)
+        OSDMap FindUsers(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             int start = map["Start"].AsInteger();
@@ -1120,12 +1091,11 @@ namespace OpenSim.Services
             resp["Users"] = users;
 
             resp["Finished"] = OSD.FromBoolean(true);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+
+            return resp;
         }
 
-        byte[] GetAbuseReports(OSDMap map)
+        OSDMap GetAbuseReports(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
@@ -1137,12 +1107,11 @@ namespace OpenSim.Services
                 returnvalue.Add(tar.ToOSD());
             }
             resp["abusereports"] = returnvalue;
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+
+            return resp;
         }
 
-        byte[] AbuseReportMarkComlete(OSDMap map)
+        OSDMap AbuseReportMarkComlete(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
@@ -1150,12 +1119,11 @@ namespace OpenSim.Services
             tar.Active = false;
             ar.UpdateAbuseReport(tar, map["WebPassword"].AsString());
             resp["Finished"] = OSD.FromBoolean(true);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+
+            return resp;
         }
 
-        byte[] AbuseReportSaveNotes(OSDMap map)
+        OSDMap AbuseReportSaveNotes(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
@@ -1163,12 +1131,11 @@ namespace OpenSim.Services
             tar.Notes = map["Notes"].ToString();
             ar.UpdateAbuseReport(tar, map["WebPassword"].AsString());
             resp["Finished"] = OSD.FromBoolean(true);
-            string xmlString = OSDParser.SerializeJsonString(resp);
-            UTF8Encoding encoding = new UTF8Encoding();
-            return encoding.GetBytes(xmlString);
+
+            return resp;
         }
 
-        byte[] SetWebLoginKey (OSDMap map)
+        OSDMap SetWebLoginKey(OSDMap map)
         {
             OSDMap resp = new OSDMap ();
             UUID principalID = map["PrincipalID"].AsUUID();
@@ -1181,9 +1148,8 @@ namespace OpenSim.Services
                 authService.SetPlainPassword (principalID, "WebLoginKey", webLoginKey.ToString ());
             }
             resp["WebLoginKey"] = webLoginKey;
-            string xmlString = OSDParser.SerializeJsonString (resp);
-            UTF8Encoding encoding = new UTF8Encoding ();
-            return encoding.GetBytes (xmlString);
+
+            return resp;
         }
     }
 }
