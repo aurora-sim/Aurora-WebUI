@@ -54,6 +54,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using GridRegion = OpenSim.Services.Interfaces.GridRegion;
 using BitmapProcessing;
+using RegionFlags = Aurora.Framework.RegionFlags;
 
 namespace OpenSim.Services
 {
@@ -472,6 +473,10 @@ namespace OpenSim.Services
                     else if(method == "EditUser")
                     {
                         resp = EditUser(map);
+                    }
+                    else if (method == "GetRegions")
+                    {
+                        resp = GetRegions(map);
                     }
                     else
                     {
@@ -1149,6 +1154,35 @@ namespace OpenSim.Services
             }
             resp["WebLoginKey"] = webLoginKey;
 
+            return resp;
+        }
+
+        OSDMap GetRegions(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            RegionFlags type = RegionFlags.RegionOnline;
+            if (map.Keys.Contains("RegionFlags"))
+            {
+                type = (RegionFlags)map["RegionFlags"].AsInteger();
+            }
+            IRegionData regiondata = m_registry.RequestModuleInterface<IRegionData>();
+            List<GridRegion> regions = regiondata.Get(type);
+            foreach (GridRegion region in regions)
+            {
+                OSDMap kvpairs = new OSDMap();
+                foreach(KeyValuePair<string, object> entry in region.ToKeyValuePairs()){
+                    kvpairs[entry.Key] = entry.Value.ToString();
+                    if( entry.Key == "locX" ||
+                        entry.Key == "locY" ||
+                        entry.Key == "sizeX" ||
+                        entry.Key == "sizeY" ||
+                        entry.Key == "serverHttpPort"
+                    ){
+                        kvpairs[entry.Key] = (OSDInteger)kvpairs[entry.Key];
+                    }
+                }
+                resp[region.RegionID.ToString()] = kvpairs;
+            }
             return resp;
         }
     }
