@@ -1165,7 +1165,7 @@ namespace OpenSim.Services
             {
                 type = (RegionFlags)map["RegionFlags"].AsInteger();
             }
-            IRegionData regiondata = m_registry.RequestModuleInterface<IRegionData>();
+            IRegionData regiondata = Aurora.DataManager.DataManager.RequestPlugin<IRegionData>();
             List<GridRegion> regions = regiondata.Get(type);
             foreach (GridRegion region in regions)
             {
@@ -1178,7 +1178,7 @@ namespace OpenSim.Services
                         entry.Key == "sizeY" ||
                         entry.Key == "serverHttpPort"
                     ){
-                        kvpairs[entry.Key] = (OSDInteger)kvpairs[entry.Key];
+                        kvpairs[entry.Key] = (OSDInteger)kvpairs[entry.Key].AsInteger();
                     }
                 }
                 resp[region.RegionID.ToString()] = kvpairs;
