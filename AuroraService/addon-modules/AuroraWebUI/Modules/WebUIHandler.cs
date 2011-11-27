@@ -1181,6 +1181,25 @@ namespace OpenSim.Services
                         kvpairs[entry.Key] = (OSDInteger)kvpairs[entry.Key].AsInteger();
                     }
                 }
+                if (region.ToKeyValuePairs().ContainsKey("Flags") == false){
+                    kvpairs["Flags"] = region.Flags;
+                }
+                if (region.ToKeyValuePairs().ContainsKey("SessionID") == false)
+                {
+                    kvpairs["SessionID"] = region.SessionID;
+                }
+                if (region.ToKeyValuePairs().ContainsKey("EstateOwner") == false)
+                {
+                    kvpairs["EstateOwner"] = region.EstateOwner;
+                }
+                if (region.ToKeyValuePairs().ContainsKey("locZ") == false)
+                {
+                    kvpairs["locZ"] = (OSDInteger)region.RegionLocZ;
+                }
+                if (region.ToKeyValuePairs().ContainsKey("sizeZ") == false)
+                {
+                    kvpairs["sizeZ"] = (OSDInteger)region.RegionSizeZ;
+                }
                 resp[region.RegionID.ToString()] = kvpairs;
             }
             return resp;
