@@ -1150,9 +1150,10 @@ namespace OpenSim.Services
             {
                 //Remove the old
                 Aurora.DataManager.DataManager.RequestPlugin<IAuthenticationData> ().Delete (principalID, "WebLoginKey");
-                authService.SetPlainPassword (principalID, "WebLoginKey", webLoginKey.ToString ());
+                authService.SetPlainPassword(principalID, "WebLoginKey", webLoginKey.ToString());
+                resp["WebLoginKey"] = webLoginKey;
             }
-            resp["WebLoginKey"] = webLoginKey;
+            resp["Failed"] = OSD.FromString(String.Format("No auth service, cannot set WebLoginKey for user {0}.", map["PrincipalID"].AsUUID().ToString()));
 
             return resp;
         }
