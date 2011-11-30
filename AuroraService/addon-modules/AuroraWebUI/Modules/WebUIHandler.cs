@@ -721,11 +721,14 @@ namespace OpenSim.Services
                 IGridService gs = m_registry.RequestModuleInterface<IGridService>();
                 Services.Interfaces.GridRegion gr = gs.GetRegionByUUID(UUID.Zero, userinfo.HomeRegionID);
 
+                resp["UUID"] = OSD.FromUUID(user.PrincipalID);
                 resp["HomeUUID"] = OSD.FromUUID(userinfo.HomeRegionID);
                 resp["HomeName"] = OSD.FromString(gr.RegionName);
                 resp["Online"] = OSD.FromBoolean(userinfo.IsOnline);
                 resp["Email"] = OSD.FromString(user.Email);
                 resp["Name"] = OSD.FromString(user.Name);
+                resp["FirstName"] = OSD.FromString(user.FirstName);
+                resp["LastName"] = OSD.FromString(user.LastName);
             }
 
             return resp;
