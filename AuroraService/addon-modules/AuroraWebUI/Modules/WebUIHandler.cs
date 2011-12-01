@@ -380,11 +380,11 @@ namespace OpenSim.Services
                     method = map["Method"].AsString();
                     if (method == "Login")
                     {
-                        resp = ProcessLogin(map);
+                        resp = ProcessLogin(map,false);
                     }
                     else if (method == "AdminLogin")
                     {
-                        resp = ProcessAdminLogin(map);
+                        resp = ProcessLogin(map,true);
                     }
                     else if (method == "CreateAccount")
                     {
@@ -605,7 +605,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        private OSDMap ProcessLogin(OSDMap map)
+        private OSDMap ProcessLogin(OSDMap map, bool asAdmin)
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
@@ -615,6 +615,7 @@ namespace OpenSim.Services
             UUID secureSessionID;
             UserAccount account = null;
             OSDMap resp = new OSDMap ();
+            resp["Verified"] = OSD.FromBoolean(false);
 
             LoginResponse loginresp = loginService.VerifyClient(Name, "UserAccount", Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
@@ -622,46 +623,20 @@ namespace OpenSim.Services
             if (Verified)
             {
                 account = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, Name);
+                if (asAdmin)
+                {
+                    IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().GetAgent(account.PrincipalID);
+                    if (agent.OtherAgentInformation["WebUIEnabled"].AsBoolean() == false)
+                    {
+                        return resp;
+                    }
+                }
                 resp["UUID"] = OSD.FromUUID (account.PrincipalID);
                 resp["FirstName"] = OSD.FromString (account.FirstName);
                 resp["LastName"] = OSD.FromString (account.LastName);
             }
 
             resp["Verified"] = OSD.FromBoolean (Verified);
-
-            return resp;
-        }
-
-        private OSDMap ProcessAdminLogin(OSDMap map)
-        {
-            bool Verified = false;
-            string Name = map["Name"].AsString();
-            string Password = map["Password"].AsString();
-
-            ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
-            UUID secureSessionID;
-            UUID userID = UUID.Zero;
-            OSDMap resp = new OSDMap ();
-
-            LoginResponse loginresp = loginService.VerifyClient (Name, "UserAccount", Password, UUID.Zero, false, "", "", "", out secureSessionID);
-            //Null means it went through without an error
-            Verified = loginresp == null;
-            if (Verified)
-            {
-                UserAccount account = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, Name);
-                IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (account.PrincipalID);
-                if (agent.OtherAgentInformation["WebUIEnabled"].AsBoolean ()) //Admin flag
-                {
-                    resp["UUID"] = OSD.FromUUID (account.PrincipalID);
-                    resp["FirstName"] = OSD.FromString (account.FirstName);
-                    resp["LastName"] = OSD.FromString (account.LastName);
-                }
-                else
-                    Verified = false;
-            }
-
-
-            resp["Verified"] = OSD.FromBoolean(Verified);
 
             return resp;
         }
