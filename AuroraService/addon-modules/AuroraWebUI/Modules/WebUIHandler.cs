@@ -687,19 +687,22 @@ namespace OpenSim.Services
 
             UserInfo userinfo;
             OSDMap resp = new OSDMap();
-
             bool verified = user != null;
             resp["Verified"] = OSD.FromBoolean(verified);
             if (verified)
             {
                 userinfo = agentService.GetUserInfo(uuid);
                 IGridService gs = m_registry.RequestModuleInterface<IGridService>();
-                Services.Interfaces.GridRegion gr = gs.GetRegionByUUID(UUID.Zero, userinfo.HomeRegionID);
+                Services.Interfaces.GridRegion gr = null;
+                if (userinfo != null)
+                {
+                    gr = gs.GetRegionByUUID(UUID.Zero, userinfo.HomeRegionID);
+                }
 
                 resp["UUID"] = OSD.FromUUID(user.PrincipalID);
-                resp["HomeUUID"] = OSD.FromUUID(userinfo.HomeRegionID);
-                resp["HomeName"] = OSD.FromString(gr.RegionName);
-                resp["Online"] = OSD.FromBoolean(userinfo.IsOnline);
+                resp["HomeUUID"] = OSD.FromUUID((userinfo == null) ? UUID.Zero : userinfo.HomeRegionID);
+                resp["HomeName"] = OSD.FromString((userinfo == null) ? "" : gr.RegionName);
+                resp["Online"] = OSD.FromBoolean((userinfo == null) ? false : userinfo.IsOnline);
                 resp["Email"] = OSD.FromString(user.Email);
                 resp["Name"] = OSD.FromString(user.Name);
                 resp["FirstName"] = OSD.FromString(user.FirstName);
