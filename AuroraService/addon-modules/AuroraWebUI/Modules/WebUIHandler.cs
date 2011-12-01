@@ -563,9 +563,9 @@ namespace OpenSim.Services
 
                 // could not find a way to save this data here.
                 DateTime RLDOB = map["RLDOB"].AsDate();
-                string RLFirstName = map["RLFisrtName"].AsString();
+                string RLFirstName = map["RLFirstName"].AsString();
                 string RLLastName = map["RLLastName"].AsString();
-                string RLAddress = map["RLAdress"].AsString();
+                string RLAddress = map["RLAddress"].AsString();
                 string RLCity = map["RLCity"].AsString();
                 string RLZip = map["RLZip"].AsString();
                 string RLCountry = map["RLCountry"].AsString();
