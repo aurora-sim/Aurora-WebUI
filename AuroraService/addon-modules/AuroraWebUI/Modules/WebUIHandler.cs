@@ -513,6 +513,7 @@ namespace OpenSim.Services
             bool Verified = user != null;
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromString(Verified.ToString());
+            resp["UUID"] = OSD.FromUUID(Verified ? user.PrincipalID : UUID.Zero);
             return resp;
         }
 
@@ -752,7 +753,7 @@ namespace OpenSim.Services
             if (verified)
             {
                 user.Name = map["Name"].AsString();
-                accountService.StoreUserAccount(user);
+                resp["Stored" ] = OSD.FromBoolean(accountService.StoreUserAccount(user));
             }
 
             return resp;
