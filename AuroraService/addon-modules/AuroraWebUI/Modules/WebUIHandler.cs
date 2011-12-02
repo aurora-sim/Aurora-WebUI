@@ -775,11 +775,11 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             //Null means it went through without an error
             bool Verified = loginresp == null;
+            resp["Verified"] = OSD.FromBoolean(Verified);
 
             if ((auths.Authenticate(userID, "UserAccount", Util.Md5Hash(Password), 100) != string.Empty) && (Verified))
             {
                 auths.SetPassword (userID, "UserAccount", newPassword);
-                resp["Verified"] = OSD.FromBoolean(Verified);
             }
 
             return resp;
