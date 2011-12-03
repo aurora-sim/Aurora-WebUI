@@ -908,11 +908,11 @@ namespace OpenSim.Services
                 if(agent != null)
                 {
                     OSDMap agentMap = new OSDMap();
-                    agentMap["RLName"] = agent.OtherAgentInformation["RLName"];
-                    agentMap["RLAddress"] = agent.OtherAgentInformation["RLAddress"];
-                    agentMap["RLZip"] = agent.OtherAgentInformation["RLZip"];
-                    agentMap["RLCity"] = agent.OtherAgentInformation["RLCity"];
-                    agentMap["RLCountry"] = agent.OtherAgentInformation["RLCountry"];
+                    agentMap["RLName"] = agent.OtherAgentInformation["RLName"].AsString();
+                    agentMap["RLAddress"] = agent.OtherAgentInformation["RLAddress"].AsString();
+                    agentMap["RLZip"] = agent.OtherAgentInformation["RLZip"].AsString();
+                    agentMap["RLCity"] = agent.OtherAgentInformation["RLCity"].AsString();
+                    agentMap["RLCountry"] = agent.OtherAgentInformation["RLCountry"].AsString();
                     resp["agent"] = agentMap;
                 }
                 resp["account"] = accountMap;
