@@ -827,9 +827,9 @@ namespace OpenSim.Services
 
             if (verified)
             {
+                resp["UUID"] = OSD.FromUUID(user.PrincipalID);
                 if (user.UserLevel >= 0)
                 {
-                    resp["UUID"] = OSD.FromUUID(user.PrincipalID);
                     if (user.Email.ToLower() != Email.ToLower())
                     {
                         resp["Error"] = OSD.FromString("Email does not match the user name.");
