@@ -820,22 +820,17 @@ namespace OpenSim.Services
             string Email = map["Email"].AsString();
 
             OSDMap resp = new OSDMap();
-            resp["Verified"] = OSD.FromBoolean(false);
-            resp["Error"] = OSD.FromString("");
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             UserAccount user = accountService.GetUserAccount(UUID.Zero, Name);
             bool verified = user != null;
+            resp["Verified"] = OSD.FromBoolean(verified);
 
             if (verified)
             {
                 if (user.UserLevel >= 0)
                 {
                     resp["UUID"] = OSD.FromUUID(user.PrincipalID);
-                    if (user.Email.ToLower() == Email.ToLower())
-                    {
-                        resp["Verified"] = OSD.FromBoolean(true);
-                    }
-                    else
+                    if (user.Email.ToLower() != Email.ToLower())
                     {
                         resp["Error"] = OSD.FromString("Email does not match the user name.");
                     }
