@@ -988,19 +988,15 @@ namespace OpenSim.Services
         OSDMap DeleteUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
+            resp["Finished"] = OSD.FromBoolean(true);
+
             UUID agentID = map["UserID"].AsUUID();
             IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
 
-            if (GetAgent == null)
-            {
-                resp["Finished"] = OSD.FromBoolean(true);
-            }
-            else
+            if (GetAgent != null)
             {
                 GetAgent.Flags &= ~IAgentFlags.PermBan;
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
-
-                resp["Finished"] = OSD.FromBoolean(true);
             }
             return resp;
         }
