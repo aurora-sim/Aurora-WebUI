@@ -832,6 +832,7 @@ namespace OpenSim.Services
                 {
                     if (user.Email.ToLower() != Email.ToLower())
                     {
+                        m_log.TraceFormat("User email for account \"{0}\" is \"{1}\" but \"{2}\" was specified.", Name, user.Email.ToString(), Email);
                         resp["Error"] = OSD.FromString("Email does not match the user name.");
                         resp["ErrorCode"] = OSD.FromInteger(3);
                     }
@@ -864,14 +865,17 @@ namespace OpenSim.Services
             if (account != null)
             {
                 OSDMap accountMap = new OSDMap();
+
                 accountMap["Created"] = account.Created;
                 accountMap["Name"] = account.Name;
                 accountMap["PrincipalID"] = account.PrincipalID;
                 accountMap["Email"] = account.Email;
+
                 TimeSpan diff = DateTime.Now - Util.ToDateTime(account.Created);
                 int years = (int)diff.TotalDays / 356;
                 int days = years > 0 ? (int)diff.TotalDays / years : (int)diff.TotalDays;
-                accountMap["TimeSinceCreated"] = years + " years, " + days + " days";
+                accountMap["TimeSinceCreated"] = years + " years, " + days + " days"; // if we're sending account.Created do we really need to send this string ?
+
                 IProfileConnector profileConnector = Aurora.DataManager.DataManager.RequestPlugin<IProfileConnector>();
                 IUserProfileInfo profile = profileConnector.GetUserProfile(account.PrincipalID);
                 if (profile != null)
@@ -880,6 +884,7 @@ namespace OpenSim.Services
 
                     if (account.UserFlags == 0)
                         account.UserFlags = 2; //Set them to no info given
+
                     string flags = ((IUserProfileInfo.ProfileFlags)account.UserFlags).ToString();
                     IUserProfileInfo.ProfileFlags.NoPaymentInfoOnFile.ToString();
 
@@ -887,9 +892,16 @@ namespace OpenSim.Services
                         account.UserFlags == 0 ? "Resident" : "Admin") + "\n" + flags;
                     UserAccount partnerAccount = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, profile.Partner);
                     if (partnerAccount != null)
+                    {
                         accountMap["Partner"] = partnerAccount.Name;
+                        accountMap["PartnerUUID"] = partnerAccount.PrincipalID;
+                    }
                     else
+                    {
                         accountMap["Partner"] = "";
+                        accountMap["PartnerUUID"] = UUID.Zero;
+                    }
+
                 }
                 IAgentConnector agentConnector = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
                 IAgentInfo agent = agentConnector.GetAgent(account.PrincipalID);
