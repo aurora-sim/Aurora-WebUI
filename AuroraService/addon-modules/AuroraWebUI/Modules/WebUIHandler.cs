@@ -924,6 +924,7 @@ namespace OpenSim.Services
         OSDMap EditUser (OSDMap map)
         {
             OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromBoolean(false);
             UUID principalID = map["UserID"].AsUUID();
             UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, principalID);
             if(account != null)
@@ -946,6 +947,7 @@ namespace OpenSim.Services
                     agent.OtherAgentInformation["RLCity"] = map["RLCity"];
                     agent.OtherAgentInformation["RLCountry"] = map["RLCountry"];
                     agentConnector.UpdateAgent(agent);
+                    resp["Verified"] = OSD.FromBoolean(true);
                 }
                 m_registry.RequestModuleInterface<IUserAccountService>().StoreUserAccount(account);
             }
