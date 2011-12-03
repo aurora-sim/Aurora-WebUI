@@ -119,10 +119,10 @@ function displayDefaultAvatars()
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
 
-	if ($recieved->{'Verified'} == "true")
+	if (isset($recieved->{'names'}, $recieved->{'snapshot'}) && count($recieved->{'names'}) > 0)
 	{
-		$names = explode(",", $recieved->{'names'});
-		$snapshot = explode(",", $recieved->{'snapshot'});
+		$names = $recieved->{'names'};
+		$snapshot = $recieved->{'snapshot'};
 		$count = count($names);
 		echo "<tr><td colspan=\"2\" valign=\"top\">";
 		for ($i = 0; $i < $count; $i++)

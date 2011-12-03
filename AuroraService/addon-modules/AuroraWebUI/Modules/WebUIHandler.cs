@@ -965,29 +965,22 @@ namespace OpenSim.Services
         OSDMap GetAvatarArchives(OSDMap map)
         {
             OSDMap resp = new OSDMap();
+
             List<AvatarArchive> temp = DataManager.RequestPlugin<IAvatarArchiverConnector>().GetAvatarArchives(true);
 
-            string names = "";
-            string snapshot = "";
+            OSDArray names = new OSDArray();
+            OSDArray snapshot = new OSDArray();
 
             m_log.DebugFormat("[WebUI] {0} avatar archives found", temp.Count);
 
             foreach (AvatarArchive a in temp)
             {
-                names += a.Name + ",";
-                snapshot += a.Snapshot + ",";
-            }
-            if (names.Length > 0)
-            {
-                resp["names"] = names.Substring(0, names.Length - 1);
-                resp["snapshot"] = snapshot.Substring(0, snapshot.Length - 1);
-                resp["Verified"] = OSD.FromBoolean(true);
-            }
-            else
-            {
-                resp["Verified"] = OSD.FromBoolean(false);
+                names.Add(OSD.FromString(a.Name));
+                snapshot.Add(OSD.FromUUID(UUID.Parse(a.Snapshot)));
             }
 
+            resp["names"] = names;
+            resp["snapshot"] = snapshot;
 
             return resp;
         }
