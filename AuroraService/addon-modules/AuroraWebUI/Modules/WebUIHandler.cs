@@ -833,16 +833,19 @@ namespace OpenSim.Services
                     if (user.Email.ToLower() != Email.ToLower())
                     {
                         resp["Error"] = OSD.FromString("Email does not match the user name.");
+                        resp["ErrorCode"] = OSD.FromInteger(3);
                     }
                 }
                 else
                 {
                     resp["Error"] = OSD.FromString("This account is disabled.");
+                    resp["ErrorCode"] = OSD.FromInteger(2);
                 }
             }
             else
             {
                 resp["Error"] = OSD.FromString("No such user.");
+                resp["ErrorCode"] = OSD.FromInteger(1);
             }
 
 
