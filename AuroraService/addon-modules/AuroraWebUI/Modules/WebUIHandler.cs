@@ -923,32 +923,39 @@ namespace OpenSim.Services
 
         OSDMap EditUser (OSDMap map)
         {
+            bool editRLInfo = (map.ContainsKey("RLName") && map.ContainsKey("RLAddress") && map.ContainsKey("RLZip") && map.ContainsKey("RLCity") && map.ContainsKey("RLCountry"));
             OSDMap resp = new OSDMap();
-            resp["agent"] = OSD.FromBoolean(false);
+            resp["agent"] = OSD.FromBoolean(!editRLInfo); // if we have no RLInfo, editing account is assumed to be successful.
             resp["account"] = OSD.FromBoolean(false);
             UUID principalID = map["UserID"].AsUUID();
             UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, principalID);
             if(account != null)
             {
                 account.Email = map["Email"];
-                if(m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, map["Name"].AsString()) == null)
+                if (m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, map["Name"].AsString()) == null)
+                {
                     account.Name = map["Name"];
-                IAgentConnector agentConnector = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
-                IAgentInfo agent = agentConnector.GetAgent(account.PrincipalID);
-                if(agent == null)
-                {
-                    agentConnector.CreateNewAgent(account.PrincipalID);
-                    agent = agentConnector.GetAgent(account.PrincipalID);
                 }
-                if(agent != null)
+
+                if (editRLInfo)
                 {
-                    agent.OtherAgentInformation["RLName"] = map["RLName"];
-                    agent.OtherAgentInformation["RLAddress"] = map["RLAddress"];
-                    agent.OtherAgentInformation["RLZip"] = map["RLZip"];
-                    agent.OtherAgentInformation["RLCity"] = map["RLCity"];
-                    agent.OtherAgentInformation["RLCountry"] = map["RLCountry"];
-                    agentConnector.UpdateAgent(agent);
-                    resp["agent"] = OSD.FromBoolean(true);
+                    IAgentConnector agentConnector = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                    IAgentInfo agent = agentConnector.GetAgent(account.PrincipalID);
+                    if (agent == null)
+                    {
+                        agentConnector.CreateNewAgent(account.PrincipalID);
+                        agent = agentConnector.GetAgent(account.PrincipalID);
+                    }
+                    if (agent != null)
+                    {
+                        agent.OtherAgentInformation["RLName"] = map["RLName"];
+                        agent.OtherAgentInformation["RLAddress"] = map["RLAddress"];
+                        agent.OtherAgentInformation["RLZip"] = map["RLZip"];
+                        agent.OtherAgentInformation["RLCity"] = map["RLCity"];
+                        agent.OtherAgentInformation["RLCountry"] = map["RLCountry"];
+                        agentConnector.UpdateAgent(agent);
+                        resp["agent"] = OSD.FromBoolean(true);
+                    }
                 }
                 resp["account"] = OSD.FromBoolean(m_registry.RequestModuleInterface<IUserAccountService>().StoreUserAccount(account));
             }
