@@ -1067,6 +1067,7 @@ namespace OpenSim.Services
             List<UserAccount> accounts = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccounts(UUID.Zero, Query);
 
             OSDArray users = new OSDArray();
+            m_log.TraceFormat("{0} accounts found", accounts.Count);
             for(int i = start; i < end && i < accounts.Count; i++)
             {
                 UserAccount acc = accounts[i];
@@ -1079,7 +1080,9 @@ namespace OpenSim.Services
             }
             resp["Users"] = users;
 
-            resp["Finished"] = OSD.FromBoolean(true);
+            resp["Start"] = OSD.FromInteger(start);
+            resp["End"] = OSD.FromInteger(end);
+            resp["Query"] = OSD.FromString(Query);
 
             return resp;
         }
