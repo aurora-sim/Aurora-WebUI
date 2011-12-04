@@ -1136,9 +1136,17 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
             AbuseReport tar = ar.GetAbuseReport(map["Number"].AsInteger(), map["WebPassword"].AsString());
-            tar.Notes = map["Notes"].ToString();
-            ar.UpdateAbuseReport(tar, map["WebPassword"].AsString());
-            resp["Finished"] = OSD.FromBoolean(true);
+            if (tar != null)
+            {
+                tar.Notes = map["Notes"].ToString();
+                ar.UpdateAbuseReport(tar, map["WebPassword"].AsString());
+                resp["Finished"] = OSD.FromBoolean(true);
+            }
+            else
+            {
+                resp["Finished"] = OSD.FromBoolean(false);
+                resp["Failed"] = OSD.FromString(String.Format("No abuse report found with specified number {0}", map["Number"].AsInteger()));
+            }
 
             return resp;
         }
