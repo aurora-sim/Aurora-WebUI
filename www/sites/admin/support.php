@@ -26,7 +26,7 @@ else
 	
 	$found = array(); 
 	$found[0] = json_encode(array('Method' => 'GetAbuseReports', 'WebPassword' => md5(WIREDUX_PASSWORD),
-		'start' => '1', 'count' => '10', 'filter' => ' Active = \'1\''));
+		'Start' => '1', 'Count' => '10', 'Active' => true));
 	$do_post_request = do_post_request($found);
 	$recieved = json_decode($do_post_request);
 ?> 
@@ -59,7 +59,7 @@ else
 				Summary
 			</td>
 		</tr>
-		<?$w=0;foreach($recieved->{'abusereports'} as $ar) {$w++;?>
+		<?$w=0;foreach($recieved->{'AbuseReports'} as $ar) {$w++;?>
 		<tr class="<? echo ($odd = $w%2 )? "odd":"even" ?>" onclick="rowClicked('<?=$ar->{'Number'}?>', '<? echo ($odd = $w%2 )? "odd":"even" ?>');">
 			<td><?=$ar->{'ReporterName'}?></td>
 			<td><?=$ar->{'Category'}?></td>

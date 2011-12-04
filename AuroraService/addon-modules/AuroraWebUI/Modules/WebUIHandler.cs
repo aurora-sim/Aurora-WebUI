@@ -1092,13 +1092,21 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
 
-            List<AbuseReport> lar = ar.GetAbuseReports(map["start"].AsInteger(), map["count"].AsInteger(), map["filter"].AsString());
-            OSDArray returnvalue = new OSDArray();
+            int start = map["Start"].AsInteger();
+            int count = map["Count"].AsInteger();
+            bool active = map["Active"].AsBoolean();
+
+            List<AbuseReport> lar = ar.GetAbuseReports(start, count, active ? "Active='1'" : "Active='0'");
+            OSDArray AbuseReports = new OSDArray();
             foreach (AbuseReport tar in lar)
             {
-                returnvalue.Add(tar.ToOSD());
+                AbuseReports.Add(tar.ToOSD());
             }
-            resp["abusereports"] = returnvalue;
+
+            resp["AbuseReports"] = AbuseReports;
+            resp["Start"] = OSD.FromInteger(start);
+            resp["Count"] = OSD.FromInteger(count); // we're not using the AbuseReports.Count because client implementations of the WebUI API can check the count themselves. This is just for showing the input.
+            resp["Active"] = OSD.FromBoolean(active);
 
             return resp;
         }
