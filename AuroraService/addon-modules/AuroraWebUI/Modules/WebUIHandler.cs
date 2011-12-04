@@ -462,9 +462,9 @@ namespace OpenSim.Services
                     {
                         resp = AbuseReportSaveNotes(map);
                     }
-                    else if (method == "AbuseReportMarkComlete")
+                    else if (method == "AbuseReportMarkComplete")
                     {
-                        resp = AbuseReportMarkComlete(map);
+                        resp = AbuseReportMarkComplete(map);
                     }
                     else if(method == "SetWebLoginKey")
                     {
@@ -1111,7 +1111,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap AbuseReportMarkComlete(OSDMap map)
+        OSDMap AbuseReportMarkComplete(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
