@@ -86,9 +86,22 @@ namespace OpenSim.Services
             string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
             if (Password != "")
             {
+                IConfig gridCfg = config.Configs["GridInfoService"];
+                OSDMap gridInfo = new OSDMap();
+                if (gridCfg != null)
+                {
+                    if (gridCfg.GetString("gridname", "") != "" && gridCfg.GetString("gridnick", "") != "")
+                    {
+                        foreach (string k in gridCfg.GetKeys())
+                        {
+                            gridInfo[k] = gridCfg.GetString(k);
+                        }
+                    }
+                }
+
                 m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
                 //This handler allows sims to post CAPS for their sims on the CAPS server.
-                m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry));
+                m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo));
                 m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
                 m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
@@ -350,13 +363,14 @@ namespace OpenSim.Services
 
         protected string m_password;
         protected IRegistryCore m_registry;
+        protected OSDMap GridInfo;
 
-        public WireduxHTTPHandler(string pass, IRegistryCore reg) :
+        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo) :
             base("POST", "/WIREDUX")
         {
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
-
+            GridInfo = gridInfo;
         }
 
         public override byte[] Handle(string path, Stream requestData,
@@ -477,6 +491,11 @@ namespace OpenSim.Services
                     else if (method == "GetRegions")
                     {
                         resp = GetRegions(map);
+                    }
+                    else if (method == "get_grid_info")
+                    {
+                        resp = new OSDMap();
+                        resp["GridInfo"] = GridInfo;
                     }
                     else
                     {
