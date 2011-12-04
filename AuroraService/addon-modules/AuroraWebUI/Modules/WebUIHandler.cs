@@ -1001,23 +1001,26 @@ namespace OpenSim.Services
             return resp;
         }
 
+        private void doBan(UUID agentID, DateTime? until=null){
+            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            if (GetAgent != null)
+            {
+                GetAgent.Flags &= (until.HasValue) ? ~IAgentFlags.TempBan : ~IAgentFlags.PermBan;
+                if (until.HasValue)
+                {
+                    GetAgent.OtherAgentInformation["TemperaryBanInfo"] = until.Value.ToString("s");
+                    m_log.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
+                }
+                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+            }
+        }
+
         OSDMap BanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
+            resp["Finished"] = OSD.FromBoolean(true);
             UUID agentID = map["UserID"].AsUUID();
-            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
-
-            if (GetAgent == null)
-            {
-                resp["Finished"] = OSD.FromBoolean(true);
-            }
-            else
-            {
-                GetAgent.Flags &= ~IAgentFlags.PermBan;
-                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
-
-                resp["Finished"] = OSD.FromBoolean(true);
-            }
+            doBan(agentID);
 
             return resp;
         }
@@ -1025,21 +1028,10 @@ namespace OpenSim.Services
         OSDMap TempBanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
+            resp["Finished"] = OSD.FromBoolean(true);
             UUID agentID = map["UserID"].AsUUID();
-            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
-
-            if (GetAgent == null)
-            {
-                resp["Finished"] = OSD.FromBoolean(true);
-            }
-            else
-            {
-                GetAgent.Flags &= ~IAgentFlags.TempBan;
-                GetAgent.OtherAgentInformation["TemperaryBanInfo"] = resp["BannedUntil"];
-                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
-
-                resp["Finished"] = OSD.FromBoolean(true);
-            }
+            DateTime until = map["BannedUntil"].AsDate();
+            doBan(agentID, until);
 
             return resp;
         }
@@ -1047,19 +1039,20 @@ namespace OpenSim.Services
         OSDMap UnBanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
+            resp["Finished"] = OSD.FromBoolean(true);
+
             UUID agentID = map["UserID"].AsUUID();
             IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
 
-            if (GetAgent == null)
-            {
-                resp["Finished"] = OSD.FromBoolean(true);
-            }
-            else
+            if (GetAgent != null)
             {
                 GetAgent.Flags &= IAgentFlags.PermBan;
+                GetAgent.Flags &= IAgentFlags.TempBan;
+                if (GetAgent.OtherAgentInformation.ContainsKey("TemperaryBanInfo") == true)
+                {
+                    GetAgent.OtherAgentInformation.Remove("TemperaryBanInfo");
+                }
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
-
-                resp["Finished"] = OSD.FromBoolean(true);
             }
 
             return resp;
