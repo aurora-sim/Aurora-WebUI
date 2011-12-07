@@ -106,8 +106,8 @@ namespace OpenSim.Services
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
                 m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
 
-                MainConsole.Instance.Commands.AddCommand ("webui add user", "Adds an admin user for WebUI", "webui add user", AddUser);
-                MainConsole.Instance.Commands.AddCommand ("webui remove user", "Removes an admin user for WebUI", "webui add user", RemoveUser);
+                MainConsole.Instance.Commands.AddCommand ("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
+                MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
             }
         }
 
@@ -326,13 +326,13 @@ namespace OpenSim.Services
             return null;
         }
 
-        private void AddUser (string[] cmd)
+        private void PromoteUser (string[] cmd)
         {
             string name = MainConsole.Instance.CmdPrompt ("Name of user");
             UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
             if (acc == null)
             {
-                m_log.Warn ("No such user exists");
+                m_log.Warn ("You must create the user before promoting them.");
                 return;
             }
             IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
@@ -341,13 +341,13 @@ namespace OpenSim.Services
             m_log.Warn ("Admin added");
         }
 
-        private void RemoveUser (string[] cmd)
+        private void DemoteUser (string[] cmd)
         {
             string name = MainConsole.Instance.CmdPrompt ("Name of user");
             UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
             if (acc == null)
             {
-                m_log.Warn ("No such user exists");
+                m_log.Warn ("User does not exist, no action taken.");
                 return;
             }
             IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
