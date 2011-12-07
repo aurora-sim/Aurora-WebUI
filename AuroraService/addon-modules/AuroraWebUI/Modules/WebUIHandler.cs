@@ -36,6 +36,7 @@ using log4net;
 using Nini.Config;
 using Aurora.Simulation.Base;
 using OpenSim.Services.Interfaces;
+using FriendInfo = OpenSim.Services.Interfaces.FriendInfo;
 using OpenSim.Framework;
 using OpenSim.Framework.Servers.HttpServer;
 
@@ -496,6 +497,10 @@ namespace OpenSim.Services
                     {
                         resp = new OSDMap();
                         resp["GridInfo"] = GridInfo;
+                    }
+                    else if (method == "GetFriends")
+                    {
+                        resp = GetFriends(map);
                     }
                     else
                     {
@@ -1233,6 +1238,42 @@ namespace OpenSim.Services
                 }
                 resp[region.RegionID.ToString()] = kvpairs;
             }
+            return resp;
+        }
+
+        OSDMap GetFriends(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+
+            if (map.ContainsKey("UserID") == false)
+            {
+                resp["Failed"] = OSD.FromString("User ID not specified.");
+                return resp;
+            }
+
+            IFriendsService friendService = m_registry.RequestModuleInterface<IFriendsService>();
+
+            if (friendService == null)
+            {
+                resp["Failed"] = OSD.FromString("No friend service found.");
+                return resp;
+            }
+
+            FriendInfo[] friendsList = friendService.GetFriends(map["UserID"].AsUUID());
+            OSDArray friends = new OSDArray(friendsList.Length);
+            foreach (FriendInfo friendInfo in friendsList)
+            {
+                UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, UUID.Parse(friendInfo.Friend));
+                OSDMap friend = new OSDMap(4);
+                friend["PrincipalID"] = friendInfo.Friend;
+                friend["Name"] = account.Name;
+                friend["MyFlags"] = friendInfo.MyFlags;
+                friend["TheirFlags"] = friendInfo.TheirFlags;
+                friends.Add(friend);
+            }
+
+            resp["Friends"] = friends;
+
             return resp;
         }
     }
