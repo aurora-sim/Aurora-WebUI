@@ -27,8 +27,8 @@ $webui_total_regions = 'Nombre total de régions';
 $webui_unique_visitors = 'Visiteurs unique (30 jours)';
 $webui_online_now = 'En ligne maintenant';
 
-$webui_avatar_first_name = 'Nom de l\'Avatar';
-$webui_avatar_last_name = 'Prénom de l\'Avatar';
+$webui_avatar_first_name = 'Prénom de l\'Avatar';
+$webui_avatar_last_name = 'Nom de l\'Avatar';
 $webui_avatar_name = 'Avatar Name';
 $webui_first_name='Nom';
 $webui_last_name='Prénom';
