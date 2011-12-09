@@ -1025,7 +1025,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        private void doBan(UUID agentID, DateTime? until=null){
+        private void doBan(UUID agentID, DateTime? until){
             IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
             if (GetAgent != null)
             {
@@ -1044,7 +1044,7 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             resp["Finished"] = OSD.FromBoolean(true);
             UUID agentID = map["UserID"].AsUUID();
-            doBan(agentID);
+            doBan(agentID,null);
 
             return resp;
         }
