@@ -415,6 +415,10 @@ namespace OpenSim.Services
                     {
                         resp = Authenticated(map);
                     }
+                    else if (method == "ActivateAccount")
+                    {
+                        resp = ActivateAccount(map);
+                    }
                     else if (method == "GetGridUserInfo")
                     {
                         resp = GetGridUserInfo(map);
@@ -483,11 +487,11 @@ namespace OpenSim.Services
                     {
                         resp = AbuseReportMarkComplete(map);
                     }
-                    else if(method == "SetWebLoginKey")
+                    else if (method == "SetWebLoginKey")
                     {
                         resp = SetWebLoginKey(map);
                     }
-                    else if(method == "EditUser")
+                    else if (method == "EditUser")
                     {
                         resp = EditUser(map);
                     }
@@ -553,6 +557,8 @@ namespace OpenSim.Services
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
             int userLevel = map["UserLevel"].AsInteger();
+
+            bool activationRequired = map.ContainsKey("ActivationRequired") ? map["ActivationRequired"].AsBoolean() : false;
   
 
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
@@ -583,6 +589,9 @@ namespace OpenSim.Services
             Verified = user != null;
             UUID userID = UUID.Zero;
 
+            OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromBoolean(Verified);
+
             if (Verified)
             {
                 userID = user.PrincipalID;
@@ -597,8 +606,10 @@ namespace OpenSim.Services
                 string RLZip = map["RLZip"].AsString();
                 string RLCountry = map["RLCountry"].AsString();
                 string RLIP = map["RLIP"].AsString();
+
                 IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ();
                 con.CreateNewAgent (userID);
+
                 IAgentInfo agent = con.GetAgent (userID);
                 agent.OtherAgentInformation["RLDOB"] = RLDOB;
                 agent.OtherAgentInformation["RLFirstName"] = RLFirstName;
@@ -608,6 +619,12 @@ namespace OpenSim.Services
                 agent.OtherAgentInformation["RLZip"] = RLZip;
                 agent.OtherAgentInformation["RLCountry"] = RLCountry;
                 agent.OtherAgentInformation["RLIP"] = RLIP;
+                if (activationRequired)
+                {
+                    UUID activationToken = UUID.Random();
+                    agent.OtherAgentInformation["WebUIActivationToken"] = Util.Md5Hash(activationToken.ToString() + ":" + PasswordHash);
+                    resp["WebUIActivationToken"] = activationToken;
+                }
                 con.UpdateAgent (agent);
                 
                 accountService.StoreUserAccount(user);
@@ -626,8 +643,6 @@ namespace OpenSim.Services
                 profileData.UpdateUserProfile(profile);
             }
 
-            OSDMap resp = new OSDMap();
-            resp["Verified"] = OSD.FromBoolean(Verified);
             resp["UUID"] = OSD.FromUUID(userID);
             return resp;
         }
@@ -693,6 +708,53 @@ namespace OpenSim.Services
             {
                 user.UserLevel = 0;
                 accountService.StoreUserAccount(user);
+                IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                IAgentInfo agent = con.GetAgent(user.PrincipalID);
+                if (agent != null && agent.OtherAgentInformation.ContainsKey("WebUIActivationToken"))
+                {
+                    agent.OtherAgentInformation.Remove("WebUIActivationToken");
+                    con.UpdateAgent(agent);
+                }
+            }
+
+            return resp;
+        }
+
+        private OSDMap ActivateAccount(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromBoolean(false);
+
+            if (map.ContainsKey("UserName") && map.ContainsKey("PasswordHash") && map.ContainsKey("AcivationToken"))
+            {
+                IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+                UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UserName"].ToString());
+                if (user != null)
+                {
+                    IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                    IAgentInfo agent = con.GetAgent(user.PrincipalID);
+                    if (agent != null && agent.OtherAgentInformation.ContainsKey("WebUIActivationToken"))
+                    {
+                        UUID activationToken = map["ActivationToken"];
+                        string WebUIActivationToken = agent.OtherAgentInformation["WebUIActivationToken"];
+                        string PasswordHash = map["PasswordHash"];
+                        if (!PasswordHash.StartsWith("$1$"))
+                        {
+                            PasswordHash = "$1$" + Util.Md5Hash(PasswordHash);
+                        }
+                        PasswordHash = PasswordHash.Remove(0, 3); //remove $1$
+
+                        bool verified = Utils.MD5String(activationToken.ToString() + ":" + PasswordHash) == WebUIActivationToken;
+                        resp["Verified"] = verified;
+                        if (verified)
+                        {
+                            user.UserLevel = 0;
+                            accountService.StoreUserAccount(user);
+                            agent.OtherAgentInformation.Remove("WebUIActivationToken");
+                            con.UpdateAgent(agent);
+                        }
+                    }
+                }
             }
 
             return resp;
