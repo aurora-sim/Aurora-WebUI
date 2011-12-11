@@ -1267,41 +1267,37 @@ namespace OpenSim.Services
             }
             IRegionData regiondata = Aurora.DataManager.DataManager.RequestPlugin<IRegionData>();
             List<GridRegion> regions = regiondata.Get(type);
+            OSDArray Regions = new OSDArray();
             foreach (GridRegion region in regions)
             {
                 OSDMap kvpairs = new OSDMap();
-                foreach(KeyValuePair<string, object> entry in region.ToKeyValuePairs()){
-                    kvpairs[entry.Key] = entry.Value.ToString();
-                    if( entry.Key == "locX" ||
-                        entry.Key == "locY" ||
-                        entry.Key == "sizeX" ||
-                        entry.Key == "sizeY" ||
-                        entry.Key == "serverHttpPort"
-                    ){
-                        kvpairs[entry.Key] = (OSDInteger)kvpairs[entry.Key].AsInteger();
-                    }
-                }
-                if (region.ToKeyValuePairs().ContainsKey("Flags") == false){
-                    kvpairs["Flags"] = region.Flags;
-                }
-                if (region.ToKeyValuePairs().ContainsKey("SessionID") == false)
+                kvpairs["uuid"] = OSD.FromUUID(region.RegionID);
+                kvpairs["locX"] = OSD.FromInteger(region.RegionLocX);
+                kvpairs["locY"] = OSD.FromInteger(region.RegionLocY);
+                kvpairs["locZ"] = OSD.FromInteger(region.RegionLocZ);
+                kvpairs["regionName"] = OSD.FromString(region.RegionName);
+                kvpairs["regionType"] = OSD.FromString(region.RegionType);
+                kvpairs["serverIP"] = OSD.FromString(region.ExternalHostName);
+                kvpairs["serverHttpPort"] = OSD.FromInteger(region.HttpPort);
+                kvpairs["serverURI"] = OSD.FromString(region.ServerURI);
+                if (region.InternalEndPoint != null)
                 {
-                    kvpairs["SessionID"] = region.SessionID;
+                    kvpairs["serverPort"] = region.InternalEndPoint.Port;
                 }
-                if (region.ToKeyValuePairs().ContainsKey("EstateOwner") == false)
-                {
-                    kvpairs["EstateOwner"] = region.EstateOwner;
-                }
-                if (region.ToKeyValuePairs().ContainsKey("locZ") == false)
-                {
-                    kvpairs["locZ"] = (OSDInteger)region.RegionLocZ;
-                }
-                if (region.ToKeyValuePairs().ContainsKey("sizeZ") == false)
-                {
-                    kvpairs["sizeZ"] = (OSDInteger)region.RegionSizeZ;
-                }
-                resp[region.RegionID.ToString()] = kvpairs;
+                kvpairs["regionMapTexture"] = OSD.FromUUID(region.TerrainImage);
+                kvpairs["regionTerrainTexture"] = OSD.FromUUID(region.TerrainMapImage);
+                kvpairs["access"] = OSD.FromInteger(region.Access);
+                kvpairs["owner_uuid"] = OSD.FromUUID(region.EstateOwner);
+                kvpairs["Token"] = OSD.FromString(region.AuthToken);
+                kvpairs["sizeX"] = OSD.FromInteger(region.RegionSizeX);
+                kvpairs["sizeY"] = OSD.FromInteger(region.RegionSizeY);
+                kvpairs["sizeZ"] = OSD.FromInteger(region.RegionSizeZ);
+                kvpairs["Flags"] = OSD.FromInteger(region.Flags);
+                kvpairs["SessionID"] = OSD.FromUUID(region.SessionID);
+                kvpairs["EstateOwner"] = OSD.FromUUID(region.EstateOwner);
+                Regions.Add(kvpairs);
             }
+            resp["Regions"] = Regions;
             return resp;
         }
 
