@@ -163,7 +163,7 @@ if ($_SESSION[USERID] == "") {
         $recieved = json_decode($do_post_requested);
 
 
-        if ($recieved->{'Verified'} != "false") {
+        if ($recieved->{'Verified'} != false) {
             $ERRORS2 = "<font color=white><b>User already Exists</b></font>";
         } else {
             $found = array();

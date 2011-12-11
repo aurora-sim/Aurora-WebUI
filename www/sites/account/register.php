@@ -470,7 +470,7 @@ function displayDefaultAvatars()
 		// var_dump($do_post_requested);
 		// echo '</pre>';
 
-		if ($recieved->{'Verified'} != "False") {
+		if ($recieved->{'Verified'} != false) {
 			$_SESSION[ERROR] = "User already exists in Database";
 			echo "<script language='javascript'>
 				<!--

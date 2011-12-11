@@ -542,7 +542,7 @@ namespace OpenSim.Services
 
             bool Verified = user != null;
             OSDMap resp = new OSDMap();
-            resp["Verified"] = OSD.FromString(Verified.ToString());
+            resp["Verified"] = OSD.FromBoolean(Verified);
             resp["UUID"] = OSD.FromUUID(Verified ? user.PrincipalID : UUID.Zero);
             return resp;
         }
@@ -725,7 +725,7 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(false);
 
-            if (map.ContainsKey("UserName") && map.ContainsKey("PasswordHash") && map.ContainsKey("AcivationToken"))
+            if (map.ContainsKey("UserName") && map.ContainsKey("PasswordHash") && map.ContainsKey("ActivationToken"))
             {
                 IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
                 UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UserName"].ToString());
