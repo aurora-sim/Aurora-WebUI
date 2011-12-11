@@ -659,6 +659,10 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap ();
             resp["Verified"] = OSD.FromBoolean(false);
 
+            if(CheckIfUserExists(map)["Verified"] != true){
+                return resp;
+            }
+
             LoginResponse loginresp = loginService.VerifyClient(Name, "UserAccount", Password, UUID.Zero, false, "", "", "", out secureSessionID);
             //Null means it went through without an error
             Verified = loginresp == null;
