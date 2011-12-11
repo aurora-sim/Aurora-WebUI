@@ -70,7 +70,7 @@ list($REGIONSCOUNT) = $DbLink->next_record();
               <tr bgColor=#000000>
                 <td class=gridtext align=left><strong><? echo $webui_grid_status; ?>:</strong></td>
                   <td class=gridtext align=right>
-                   <? if($GRIDSTATUS == 1){ ?>
+                   <? if($GRIDSTATUS){ ?>
                    <span class=online><? echo $webui_grid_status_online; ?></span>
                     <? } else { ?>
                     <span class=offline><? echo $webui_grid_status_offline; ?></span>

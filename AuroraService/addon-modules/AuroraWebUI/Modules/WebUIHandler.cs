@@ -689,8 +689,8 @@ namespace OpenSim.Services
             bool LoginEnabled = loginService.MinLoginLevel == 0;
 
             OSDMap resp = new OSDMap();
-            resp["Online"] = OSD.FromInteger(1);
-            resp["LoginEnabled"] = OSD.FromInteger(LoginEnabled ? 1 : 0);
+            resp["Online"] = OSD.FromBoolean(true);
+            resp["LoginEnabled"] = OSD.FromBoolean(LoginEnabled);
 
             return resp;
         }

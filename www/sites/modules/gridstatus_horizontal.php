@@ -54,7 +54,7 @@ list($REGIONSCOUNT) = $DbLink->next_record();
   <table>
     <tr>
       <td><div id="gridstatus1">
-        <? echo $webui_grid_status; ?>: <? if($GRIDSTATUS == 1){ ?>
+        <? echo $webui_grid_status; ?>: <? if($GRIDSTATUS){ ?>
         <span class=online><? echo $webui_grid_status_online; ?></span>
         <? } else { ?>
         <span class=offline><? echo $webui_grid_status_offline; ?></span>
