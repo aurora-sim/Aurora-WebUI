@@ -1273,8 +1273,13 @@ namespace OpenSim.Services
             if(count < 0){
                 count = 1;
             }
+
             IRegionData regiondata = Aurora.DataManager.DataManager.RequestPlugin<IRegionData>();
-            List<GridRegion> regions = regiondata.Get(type);
+            List<GridRegion> regions = regiondata.Get(type,
+                map.ContainsKey("SortRegionName") ? map["SortRegionName"].AsBoolean() : new Nullable<bool>(),
+                map.ContainsKey("SortLocX") ? map["SortLocX"].AsBoolean() : new Nullable<bool>(),
+                map.ContainsKey("SortLocY") ? map["SortLocY"].AsBoolean() : new Nullable<bool>()
+            );
             OSDArray Regions = new OSDArray();
             if (start < regions.Count)
             {
