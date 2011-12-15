@@ -39,6 +39,7 @@ using OpenSim.Services.Interfaces;
 using FriendInfo = OpenSim.Services.Interfaces.FriendInfo;
 using OpenSim.Framework;
 using OpenSim.Framework.Servers.HttpServer;
+using IGroupsServiceConnector = Aurora.Framework.IGroupsServiceConnector;
 
 using OpenMetaverse;
 using OpenMetaverse.Imaging;
@@ -507,6 +508,10 @@ namespace OpenSim.Services
                     else if (method == "GetFriends")
                     {
                         resp = GetFriends(map);
+                    }
+                    else if (method == "GetGroups")
+                    {
+                        resp = GetGroups(map);
                     }
                     else
                     {
@@ -1356,6 +1361,76 @@ namespace OpenSim.Services
 
             resp["Friends"] = friends;
 
+            return resp;
+        }
+
+        OSDMap GetGroups(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+
+            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            OSDArray Groups = new OSDArray();
+            if (groups != null)
+            {
+                Dictionary<string, bool> sort       = new Dictionary<string, bool>();
+                Dictionary<string, bool> boolFields = new Dictionary<string, bool>();
+
+                if (map.ContainsKey("Sort") && map["Sort"].Type == OSDType.Map)
+                {
+                    OSDMap fields = (OSDMap)map["Sort"];
+                    if (fields.Count > 0)
+                    {
+                        IDictionaryEnumerator enumerator = fields.GetEnumerator();
+                        bool valid = true;
+                        while (valid)
+                        {
+                            sort[enumerator.Key.ToString()] = OSD.FromObject(enumerator.Value).AsBoolean();
+                            valid = enumerator.MoveNext();
+                        }
+                    }
+                }
+                if (map.ContainsKey("BoolFields") && map["BoolFields"].Type == OSDType.Map)
+                {
+                    OSDMap fields = (OSDMap)map["BoolFields"];
+                    if (fields.Count > 0)
+                    {
+                        IDictionaryEnumerator enumerator = fields.GetEnumerator();
+                        bool valid = true;
+                        while (valid)
+                        {
+                            boolFields[enumerator.Key.ToString()] = OSD.FromObject(enumerator.Value).AsBoolean();
+                            valid = enumerator.MoveNext();
+                        }
+                    }
+                }
+                List<GroupRecord> reply = groups.GetGroupRecords(
+                    map.ContainsKey("Start") ? map["Start"].AsUInteger() : 0,
+                    map.ContainsKey("Count") ? map["Count"].AsUInteger() : 10,
+                    sort,
+                    boolFields
+                );
+                if (reply.Count > 0)
+                {
+                    foreach (GroupRecord groupReply in reply)
+                    {
+                        OSDMap group = new OSDMap();
+                        group["GroupID"] = groupReply.GroupID;
+                        group["GroupName"] = groupReply.GroupName;
+                        group["AllowPublish"] = groupReply.AllowPublish;
+                        group["MaturePublish"] = groupReply.MaturePublish;
+                        group["Charter"] = groupReply.Charter;
+                        group["FounderID"] = groupReply.FounderID;
+                        group["GroupPicture"] = groupReply.GroupPicture;
+                        group["MembershipFee"] = groupReply.MembershipFee;
+                        group["OpenEnrollment"] = groupReply.OpenEnrollment;
+                        group["OwnerRoleID"] = groupReply.OwnerRoleID;
+                        group["ShowInList"] = groupReply.ShowInList;
+                        Groups.Add(group);
+                    }
+                }
+            }
+
+            resp["Groups"] = Groups;
             return resp;
         }
     }
