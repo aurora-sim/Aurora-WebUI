@@ -103,7 +103,7 @@ namespace OpenSim.Services
 
                 m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
                 //This handler allows sims to post CAPS for their sims on the CAPS server.
-                m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo));
+                m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero));
                 m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
                 m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
@@ -368,13 +368,15 @@ namespace OpenSim.Services
         protected string m_password;
         protected IRegistryCore m_registry;
         protected OSDMap GridInfo;
+        private UUID AdminAgentID;
 
-        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo) :
+        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID) :
             base("POST", "/WIREDUX")
         {
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
             GridInfo = gridInfo;
+            AdminAgentID = adminAgentID;
         }
 
         public override byte[] Handle(string path, Stream requestData,
@@ -1407,6 +1409,7 @@ namespace OpenSim.Services
                     }
                 }
                 List<GroupRecord> reply = groups.GetGroupRecords(
+                    AdminAgentID,
                     start,
                     map.ContainsKey("Count") ? map["Count"].AsUInteger() : 10,
                     sort,
