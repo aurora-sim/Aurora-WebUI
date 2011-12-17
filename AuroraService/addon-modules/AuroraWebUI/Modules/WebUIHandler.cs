@@ -1367,6 +1367,9 @@ namespace OpenSim.Services
         OSDMap GetGroups(OSDMap map)
         {
             OSDMap resp = new OSDMap();
+            uint start = map.ContainsKey("Start") ? map["Start"].AsUInteger() : 0;
+            resp["Start"] = start;
+            resp["Total"] = 0;
 
             IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
             OSDArray Groups = new OSDArray();
@@ -1404,7 +1407,7 @@ namespace OpenSim.Services
                     }
                 }
                 List<GroupRecord> reply = groups.GetGroupRecords(
-                    map.ContainsKey("Start") ? map["Start"].AsUInteger() : 0,
+                    start,
                     map.ContainsKey("Count") ? map["Count"].AsUInteger() : 10,
                     sort,
                     boolFields
@@ -1428,6 +1431,7 @@ namespace OpenSim.Services
                         Groups.Add(group);
                     }
                 }
+                resp["Total"] = groups.GetNumberOfGroups();
             }
 
             resp["Groups"] = Groups;
