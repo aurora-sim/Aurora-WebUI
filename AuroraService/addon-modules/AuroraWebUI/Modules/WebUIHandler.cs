@@ -107,6 +107,7 @@ namespace OpenSim.Services
                 m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
                 m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
                 m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
+                gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
 
                 MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
                 MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
@@ -514,6 +515,10 @@ namespace OpenSim.Services
                     else if (method == "GetGroups")
                     {
                         resp = GetGroups(map);
+                    }
+                    else if (method == "GetGroup")
+                    {
+                        resp = GetGroup(map);
                     }
                     else
                     {
@@ -1366,6 +1371,23 @@ namespace OpenSim.Services
             return resp;
         }
 
+        private OSDMap GroupRecord2OSDMap(GroupRecord group)
+        {
+            OSDMap resp = new OSDMap();
+            resp["GroupID"] = group.GroupID;
+            resp["GroupName"] = group.GroupName;
+            resp["AllowPublish"] = group.AllowPublish;
+            resp["MaturePublish"] = group.MaturePublish;
+            resp["Charter"] = group.Charter;
+            resp["FounderID"] = group.FounderID;
+            resp["GroupPicture"] = group.GroupPicture;
+            resp["MembershipFee"] = group.MembershipFee;
+            resp["OpenEnrollment"] = group.OpenEnrollment;
+            resp["OwnerRoleID"] = group.OwnerRoleID;
+            resp["ShowInList"] = group.ShowInList;
+            return resp;
+        }
+
         OSDMap GetGroups(OSDMap map)
         {
             OSDMap resp = new OSDMap();
@@ -1407,25 +1429,31 @@ namespace OpenSim.Services
                 {
                     foreach (GroupRecord groupReply in reply)
                     {
-                        OSDMap group = new OSDMap();
-                        group["GroupID"] = groupReply.GroupID;
-                        group["GroupName"] = groupReply.GroupName;
-                        group["AllowPublish"] = groupReply.AllowPublish;
-                        group["MaturePublish"] = groupReply.MaturePublish;
-                        group["Charter"] = groupReply.Charter;
-                        group["FounderID"] = groupReply.FounderID;
-                        group["GroupPicture"] = groupReply.GroupPicture;
-                        group["MembershipFee"] = groupReply.MembershipFee;
-                        group["OpenEnrollment"] = groupReply.OpenEnrollment;
-                        group["OwnerRoleID"] = groupReply.OwnerRoleID;
-                        group["ShowInList"] = groupReply.ShowInList;
-                        Groups.Add(group);
+                        Groups.Add(GroupRecord2OSDMap(groupReply));
                     }
                 }
                 resp["Total"] = groups.GetNumberOfGroups(AdminAgentID, boolFields);
             }
 
             resp["Groups"] = Groups;
+            return resp;
+        }
+
+        OSDMap GetGroup(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            resp["Group"] = false;
+            if (groups != null && (map.ContainsKey("Name") || map.ContainsKey("UUID")))
+            {
+                UUID groupID = map.ContainsKey("UUID") ? UUID.Parse(map["UUID"].ToString()) : UUID.Zero;
+                string name = map.ContainsKey("Name") ? map["Name"].ToString() : "";
+                GroupRecord reply = groups.GetGroupRecord(AdminAgentID, groupID, name);
+                if (reply != null)
+                {
+                    resp["Group"] = GroupRecord2OSDMap(reply);
+                }
+            }
             return resp;
         }
     }
