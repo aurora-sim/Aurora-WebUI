@@ -1383,29 +1383,17 @@ namespace OpenSim.Services
                 if (map.ContainsKey("Sort") && map["Sort"].Type == OSDType.Map)
                 {
                     OSDMap fields = (OSDMap)map["Sort"];
-                    if (fields.Count > 0)
+                    foreach (string field in fields.Keys)
                     {
-                        IDictionaryEnumerator enumerator = fields.GetEnumerator();
-                        bool valid = true;
-                        while (valid)
-                        {
-                            sort[enumerator.Key.ToString()] = OSD.FromObject(enumerator.Value).AsBoolean();
-                            valid = enumerator.MoveNext();
-                        }
+                        sort[field] = int.Parse(fields[field]) != 0;
                     }
                 }
                 if (map.ContainsKey("BoolFields") && map["BoolFields"].Type == OSDType.Map)
                 {
                     OSDMap fields = (OSDMap)map["BoolFields"];
-                    if (fields.Count > 0)
+                    foreach (string field in fields.Keys)
                     {
-                        IDictionaryEnumerator enumerator = fields.GetEnumerator();
-                        bool valid = true;
-                        while (valid)
-                        {
-                            boolFields[enumerator.Key.ToString()] = OSD.FromObject(enumerator.Value).AsBoolean();
-                            valid = enumerator.MoveNext();
-                        }
+                        boolFields[field] = int.Parse(fields[field]) != 0;
                     }
                 }
                 List<GroupRecord> reply = groups.GetGroupRecords(
@@ -1434,7 +1422,7 @@ namespace OpenSim.Services
                         Groups.Add(group);
                     }
                 }
-                resp["Total"] = groups.GetNumberOfGroups();
+                resp["Total"] = groups.GetNumberOfGroups(AdminAgentID, boolFields);
             }
 
             resp["Groups"] = Groups;
