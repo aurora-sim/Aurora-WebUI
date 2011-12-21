@@ -520,6 +520,10 @@ namespace OpenSim.Services
                     {
                         resp = GetGroup(map);
                     }
+                    else if (method == "GroupAsNewsSource")
+                    {
+                        resp = GroupAsNewsSource(map);
+                    }
                     else
                     {
                         m_log.TraceFormat("[WebUI] Unsupported method called ({0})", method);
@@ -1453,6 +1457,29 @@ namespace OpenSim.Services
                 {
                     resp["Group"] = GroupRecord2OSDMap(reply);
                 }
+            }
+            return resp;
+        }
+
+        OSDMap GroupAsNewsSource(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["Verified"] = OSD.FromBoolean(false);
+            IGenericsConnector generics = DataManager.RequestPlugin<IGenericsConnector>();
+            UUID groupID;
+            if (generics != null && map.ContainsKey("Group") == true && map.ContainsKey("Use") && UUID.TryParse(map["Group"], out groupID) == true)
+            {
+                if (map["Use"].AsBoolean())
+                {
+                    OSDMap useValue = new OSDMap();
+                    useValue["Use"] = OSD.FromBoolean(true);
+                    generics.AddGeneric(groupID, "Group", "WebUI_newsSource", useValue);
+                }
+                else
+                {
+                    generics.RemoveGeneric(groupID, "Group", "WebUI_newsSource");
+                }
+                resp["Verified"] = OSD.FromBoolean(true);
             }
             return resp;
         }
