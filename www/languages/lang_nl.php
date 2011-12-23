@@ -10,16 +10,16 @@ $webui_grid_status_online = 'ONLINE';
 $webui_grid_status_offline = 'OFFLINE';
 
 $webui_iwc = 'Inter World Connector (IWC)';
-$webui_iwc_actived = 'Enable';
+$webui_iwc_actived = 'Enabled';
 $webui_iwc_desactived = 'Disabled';
 $webui_hg = 'HyperGrid (HG)';
-$webui_hg_actived = 'Enable';
+$webui_hg_actived = 'Enabled';
 $webui_hg_desactived = 'Disabled';
 $webui_voice = 'Voice (Mumble)';
-$webui_voice_actived = 'Enable';
+$webui_voice_actived = 'Enabled';
 $webui_voice_desactived = 'Disabled';
 $webui_currency = 'Money (StarDust)';
-$webui_currency_actived = 'Enable';
+$webui_currency_actived = 'Enabled';
 $webui_currency_desactived = 'Disabled';
 
 $webui_total_users='Totaal Gebruikers';
