@@ -1442,7 +1442,8 @@ namespace OpenSim.Services
             resp["GroupNotices"] = new OSDArray();
             resp["Total"] = 0;
             IGenericsConnector generics = DataManager.RequestPlugin<IGenericsConnector>();
-            if (generics == null)
+            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            if (generics == null || groups == null)
             {
                 return resp;
             }
@@ -1452,6 +1453,14 @@ namespace OpenSim.Services
             if (GroupIDs.Count <= 0)
             {
                 return resp;
+            }
+            foreach (UUID groupID in GroupIDs)
+            {
+                GroupRecord group = groups.GetGroupRecord(AdminAgentID, groupID, "");
+                if (!group.ShowInList)
+                {
+                    GroupIDs.Remove(groupID);
+                }
             }
 
             uint start = map.ContainsKey("Start") ? uint.Parse(map["Start"].ToString()) : 0;
