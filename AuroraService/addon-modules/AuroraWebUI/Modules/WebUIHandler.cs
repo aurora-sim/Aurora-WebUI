@@ -528,6 +528,10 @@ namespace OpenSim.Services
                     {
                         resp = GroupNotices(map);
                     }
+                    else if (method == "NewsFromGroupNotices")
+                    {
+                        resp = NewsFromGroupNotices(map);
+                    }
                     else
                     {
                         m_log.TraceFormat("[WebUI] Unsupported method called ({0})", method);
@@ -1525,6 +1529,8 @@ namespace OpenSim.Services
                         gnd["ItemID"] = OSD.FromUUID(GND.ItemID);
                         gnd["AssetType"] = OSD.FromInteger((int)GND.AssetType);
                         gnd["ItemName"] = OSD.FromString(GND.ItemName);
+                        GroupNoticeInfo notice = groups.GetGroupNotice(AdminAgentID, GND.NoticeID);
+                        gnd["Message"] = OSD.FromString(groups.GetGroupNotice(AdminAgentID, GND.NoticeID).Message);
                         GroupNotices.Add(gnd);
                     }
                     resp["GroupNotices"] = GroupNotices;
@@ -1533,6 +1539,35 @@ namespace OpenSim.Services
             }
 
             return resp;
+        }
+
+        OSDMap NewsFromGroupNotices(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["GroupNotices"] = new OSDArray();
+            resp["Total"] = 0;
+            IGenericsConnector generics = DataManager.RequestPlugin<IGenericsConnector>();
+            if (generics == null)
+            {
+                return resp;
+            }
+            OSDMap useValue = new OSDMap();
+            useValue["Use"] = OSD.FromBoolean(true);
+            List<UUID> GroupIDs = generics.GetOwnersByGeneric("Group", "WebUI_newsSource", useValue);
+            if (GroupIDs.Count <= 0)
+            {
+                return resp;
+            }
+
+            uint start = map.ContainsKey("Start") ? uint.Parse(map["Start"].ToString()) : 0;
+            uint count = map.ContainsKey("Count") ? uint.Parse(map["Count"].ToString()) : 10;
+
+            OSDMap args = new OSDMap();
+            args["Start"] = OSD.FromString(start.ToString());
+            args["Count"] = OSD.FromString(count.ToString());
+            args["Groups"] = new OSDArray(GroupIDs.ConvertAll(x=>OSD.FromString(x.ToString())));
+
+            return GroupNotices(args);
         }
     }
 }
