@@ -39,7 +39,12 @@ define("C_DB_PASS","***");
 3. Make a backup of your database ;)
 4. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
 
------ If you havn't installed Aurora-WebUI via the build.am module, then you need to follow options 5 - 7
+---- If you wish to install WebUI manually (with compilation, skip down to the alternate step 5 ----
+5. Start Aurora.Server.exe (if you want to run in Grid mode) or Aurora.exe (if you want to run in StandAlone mode)
+6. Put into the console 'compile module gui' and browse to the AuroraService folder in your WebUI download and open the build.am file.
+7. Follow the instructions onscreen and it will compile and install your module and you are all done with setup.
+
+----- If you havn't installed Aurora-WebUI via the build.am module as shown above, then you need to follow below
 
 5. copy the contents of the .Aurora-WebUI/AuroraService/addon-modules/ directory into your ~/Aurora-Sim/addon-modules/ directory
 6. Run runprebuild.bat or runprebuild2010.bat
