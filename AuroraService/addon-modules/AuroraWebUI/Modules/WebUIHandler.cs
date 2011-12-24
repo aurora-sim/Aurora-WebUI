@@ -524,6 +524,10 @@ namespace OpenSim.Services
                     {
                         resp = GroupAsNewsSource(map);
                     }
+                    else if (method == "GroupNotices")
+                    {
+                        resp = GroupNotices(map);
+                    }
                     else
                     {
                         m_log.TraceFormat("[WebUI] Unsupported method called ({0})", method);
@@ -1481,6 +1485,53 @@ namespace OpenSim.Services
                 }
                 resp["Verified"] = OSD.FromBoolean(true);
             }
+            return resp;
+        }
+
+        OSDMap GroupNotices(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["GroupNotices"] = new OSDArray();
+            resp["Total"] = 0;
+            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+
+            if (map.ContainsKey("Groups") && groups != null && map["Groups"].Type.ToString() == "Array")
+            {
+                OSDArray groupIDs = (OSDArray)map["Groups"];
+                List<UUID> GroupIDs = new List<UUID>();
+                foreach (string groupID in groupIDs)
+                {
+                    UUID foo;
+                    if (UUID.TryParse(groupID, out foo))
+                    {
+                        GroupIDs.Add(foo);
+                    }
+                }
+                if (GroupIDs.Count > 0)
+                {
+                    uint start = map.ContainsKey("Start") ? uint.Parse(map["Start"]) : 0;
+                    uint count = map.ContainsKey("Count") ? uint.Parse(map["Count"]) : 10;
+                    List<GroupNoticeData> groupNotices = groups.GetGroupNotices(AdminAgentID, start, count, GroupIDs);
+                    OSDArray GroupNotices = new OSDArray(groupNotices.Count);
+                    foreach (GroupNoticeData GND in groupNotices)
+                    {
+                        OSDMap gnd = new OSDMap();
+                        gnd["GroupID"] = OSD.FromUUID(GND.GroupID);
+                        gnd["NoticeID"] = OSD.FromUUID(GND.NoticeID);
+                        gnd["Timestamp"] = OSD.FromInteger((int)GND.Timestamp);
+                        gnd["FromName"] = OSD.FromString(GND.FromName);
+                        gnd["Subject"] = OSD.FromString(GND.Subject);
+                        gnd["HasAttachment"] = OSD.FromBoolean(GND.HasAttachment);
+                        gnd["ItemID"] = OSD.FromUUID(GND.ItemID);
+                        gnd["AssetType"] = OSD.FromInteger((int)GND.AssetType);
+                        gnd["ItemName"] = OSD.FromString(GND.ItemName);
+                        GroupNotices.Add(gnd);
+                    }
+                    resp["GroupNotices"] = GroupNotices;
+                    resp["Total"] = (int)groups.GetNumberOfGroupNotices(AdminAgentID, GroupIDs);
+                }
+            }
+
             return resp;
         }
     }
