@@ -370,6 +370,7 @@ namespace OpenSim.Services
         protected IRegistryCore m_registry;
         protected OSDMap GridInfo;
         private UUID AdminAgentID;
+        private Dictionary<string, MethodInfo> APIMethods = new Dictionary<string, MethodInfo>();
 
         public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID) :
             base("POST", "/WIREDUX")
@@ -378,6 +379,14 @@ namespace OpenSim.Services
             m_password = Util.Md5Hash(pass);
             GridInfo = gridInfo;
             AdminAgentID = adminAgentID;
+            MethodInfo[] methods = this.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
+            for (uint i = 0; i < methods.Length; ++i)
+            {
+                if (methods[i].IsPrivate && methods[i].ReturnType == typeof(OSDMap) && methods[i].GetParameters().Length == 1 && methods[i].GetParameters()[0].ParameterType == typeof(OSDMap))
+                {
+                    APIMethods[methods[i].Name] = methods[i];
+                }
+            }
         }
 
         public override byte[] Handle(string path, Stream requestData,
@@ -388,7 +397,6 @@ namespace OpenSim.Services
             sr.Close();
             body = body.Trim();
 
-            //m_log.DebugFormat("[XXX]: query String: {0}", body);
             m_log.TraceFormat("[WebUI]: query String: {0}", body);
             string method = string.Empty;
             OSDMap resp = new OSDMap();
@@ -401,136 +409,16 @@ namespace OpenSim.Services
                     method = map["Method"].AsString();
                     if (method == "Login")
                     {
-                        resp = ProcessLogin(map,false);
+                        resp = Login(map,false);
                     }
                     else if (method == "AdminLogin")
                     {
-                        resp = ProcessLogin(map,true);
+                        resp = Login(map,true);
                     }
-                    else if (method == "CreateAccount")
+                    else if (APIMethods.ContainsKey(method))
                     {
-                        resp = ProcessCreateAccount(map);
-                    }
-                    else if (method == "OnlineStatus")
-                    {
-                        resp = ProcessOnlineStatus(map);
-                    }
-                    else if (method == "Authenticated")
-                    {
-                        resp = Authenticated(map);
-                    }
-                    else if (method == "ActivateAccount")
-                    {
-                        resp = ActivateAccount(map);
-                    }
-                    else if (method == "GetGridUserInfo")
-                    {
-                        resp = GetGridUserInfo(map);
-                    }
-                    else if (method == "ChangePassword")
-                    {
-                        resp = ChangePassword(map);
-                    }
-                    else if (method == "CheckIfUserExists")
-                    {
-                        resp = CheckIfUserExists(map);
-                    }
-                    else if (method == "SaveEmail")
-                    {
-                        resp = SaveEmail(map);
-                    }
-                    else if (method == "ChangeName")
-                    {
-                        resp = ChangeName(map);
-                    }
-                    else if (method == "ConfirmUserEmailName")
-                    {
-                        resp = ConfirmUserEmailName(map);
-                    }
-                    else if (method == "ForgotPassword")
-                    {
-                        resp = ForgotPassword(map);
-                    }
-                    else if (method == "GetProfile")
-                    {
-                        resp = GetProfile(map);
-                    }
-                    else if (method == "GetAvatarArchives")
-                    {
-                        resp = GetAvatarArchives(map);
-                    }
-                    else if (method == "DeleteUser")
-                    {
-                        resp = DeleteUser(map);
-                    }
-                    else if (method == "BanUser")
-                    {
-                        resp = BanUser(map);
-                    }
-                    else if (method == "TempBanUser")
-                    {
-                        resp = TempBanUser(map);
-                    }
-                    else if (method == "UnBanUser")
-                    {
-                        resp = UnBanUser(map);
-                    }
-                    else if (method == "FindUsers")
-                    {
-                        resp = FindUsers(map);
-                    }
-                    else if (method == "GetAbuseReports")
-                    {
-                        resp = GetAbuseReports(map);
-                    }
-                    else if (method == "AbuseReportSaveNotes")
-                    {
-                        resp = AbuseReportSaveNotes(map);
-                    }
-                    else if (method == "AbuseReportMarkComplete")
-                    {
-                        resp = AbuseReportMarkComplete(map);
-                    }
-                    else if (method == "SetWebLoginKey")
-                    {
-                        resp = SetWebLoginKey(map);
-                    }
-                    else if (method == "EditUser")
-                    {
-                        resp = EditUser(map);
-                    }
-                    else if (method == "GetRegions")
-                    {
-                        resp = GetRegions(map);
-                    }
-                    else if (method == "get_grid_info")
-                    {
-                        resp = new OSDMap();
-                        resp["GridInfo"] = GridInfo;
-                    }
-                    else if (method == "GetFriends")
-                    {
-                        resp = GetFriends(map);
-                    }
-                    else if (method == "GetGroups")
-                    {
-                        resp = GetGroups(map);
-                    }
-                    else if (method == "GetGroup")
-                    {
-                        resp = GetGroup(map);
-                    }
-                    else if (method == "GroupAsNewsSource")
-                    {
-                        resp = GroupAsNewsSource(map);
-                    }
-                    else if (method == "GroupNotices")
-                    {
-                        resp = GroupNotices(map);
-                    }
-                    else if (method == "NewsFromGroupNotices")
-                    {
-                        resp = NewsFromGroupNotices(map);
+                        object[] args = new object[1]{map};
+                        resp = (OSDMap)APIMethods[method].Invoke(this, args);
                     }
                     else
                     {
@@ -571,7 +459,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        private OSDMap ProcessCreateAccount(OSDMap map)
+        private OSDMap CreateAccount(OSDMap map)
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
@@ -671,7 +559,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        private OSDMap ProcessLogin(OSDMap map, bool asAdmin)
+        private OSDMap Login(OSDMap map, bool asAdmin)
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
@@ -711,7 +599,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        private OSDMap ProcessOnlineStatus(OSDMap map)
+        private OSDMap OnlineStatus(OSDMap map)
         {
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             bool LoginEnabled = loginService.MinLoginLevel == 0;
@@ -793,7 +681,7 @@ namespace OpenSim.Services
         /// </summary>
         /// <param name="map">UUID</param>
         /// <returns>Verified, HomeName, HomeUUID, Online, Email, FirstName, LastName</returns>
-        OSDMap GetGridUserInfo(OSDMap map)
+        private OSDMap GetGridUserInfo(OSDMap map)
         {
             string uuid = String.Empty;
             uuid = map["UUID"].AsString();
@@ -834,7 +722,7 @@ namespace OpenSim.Services
         /// </summary>
         /// <param name="map">UUID, Email</param>
         /// <returns>Verified</returns>
-        OSDMap SaveEmail(OSDMap map)
+        private OSDMap SaveEmail(OSDMap map)
         {
             string email = map["Email"].AsString();
 
@@ -858,7 +746,7 @@ namespace OpenSim.Services
         /// </summary>
         /// <param name="map">UUID, FirstName, LastName</param>
         /// <returns>Verified</returns>
-        OSDMap ChangeName(OSDMap map)
+        private OSDMap ChangeName(OSDMap map)
         {
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             UserAccount user = accountService.GetUserAccount(UUID.Zero, map["UUID"].AsUUID());
@@ -875,7 +763,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap ChangePassword(OSDMap map)
+        private OSDMap ChangePassword(OSDMap map)
         {
             string Password = map["Password"].AsString();
             string newPassword = map["NewPassword"].AsString();
@@ -901,7 +789,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap ForgotPassword(OSDMap map)
+        private OSDMap ForgotPassword(OSDMap map)
         {
             UUID UUDI = map["UUID"].AsUUID();
             string Password = map["Password"].AsString();
@@ -930,7 +818,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap ConfirmUserEmailName(OSDMap map)
+        private OSDMap ConfirmUserEmailName(OSDMap map)
         {
             string Name = map["Name"].AsString();
             string Email = map["Email"].AsString();
@@ -969,7 +857,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GetProfile(OSDMap map)
+        private OSDMap GetProfile(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             string Name = map["Name"].AsString();
@@ -1037,7 +925,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap EditUser (OSDMap map)
+        private OSDMap EditUser(OSDMap map)
         {
             bool editRLInfo = (map.ContainsKey("RLName") && map.ContainsKey("RLAddress") && map.ContainsKey("RLZip") && map.ContainsKey("RLCity") && map.ContainsKey("RLCountry"));
             OSDMap resp = new OSDMap();
@@ -1078,7 +966,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GetAvatarArchives(OSDMap map)
+        private OSDMap GetAvatarArchives(OSDMap map)
         {
             OSDMap resp = new OSDMap();
 
@@ -1101,7 +989,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap DeleteUser(OSDMap map)
+        private OSDMap DeleteUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             resp["Finished"] = OSD.FromBoolean(true);
@@ -1131,7 +1019,7 @@ namespace OpenSim.Services
             }
         }
 
-        OSDMap BanUser(OSDMap map)
+        private OSDMap BanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             resp["Finished"] = OSD.FromBoolean(true);
@@ -1141,7 +1029,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap TempBanUser(OSDMap map)
+        private OSDMap TempBanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             resp["Finished"] = OSD.FromBoolean(true);
@@ -1152,7 +1040,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap UnBanUser(OSDMap map)
+        private OSDMap UnBanUser(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             resp["Finished"] = OSD.FromBoolean(true);
@@ -1174,7 +1062,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap FindUsers(OSDMap map)
+        private OSDMap FindUsers(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             int start = map["Start"].AsInteger();
@@ -1203,7 +1091,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GetAbuseReports(OSDMap map)
+        private OSDMap GetAbuseReports(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
@@ -1227,7 +1115,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap AbuseReportMarkComplete(OSDMap map)
+        private OSDMap AbuseReportMarkComplete(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
@@ -1247,7 +1135,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap AbuseReportSaveNotes(OSDMap map)
+        private OSDMap AbuseReportSaveNotes(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             IAbuseReports ar = m_registry.RequestModuleInterface<IAbuseReports>();
@@ -1267,7 +1155,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap SetWebLoginKey(OSDMap map)
+        private OSDMap SetWebLoginKey(OSDMap map)
         {
             OSDMap resp = new OSDMap ();
             UUID principalID = map["PrincipalID"].AsUUID();
@@ -1285,7 +1173,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GetRegions(OSDMap map)
+        private OSDMap GetRegions(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             RegionFlags type = map.Keys.Contains("RegionFlags") ? (RegionFlags)map["RegionFlags"].AsInteger() : RegionFlags.RegionOnline;
@@ -1347,7 +1235,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GetFriends(OSDMap map)
+        private OSDMap GetFriends(OSDMap map)
         {
             OSDMap resp = new OSDMap();
 
@@ -1383,7 +1271,14 @@ namespace OpenSim.Services
             return resp;
         }
 
-        private OSDMap GroupRecord2OSDMap(GroupRecord group)
+        private OSDMap get_grid_info(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["GridInfo"] = GridInfo;
+            return resp;
+        }
+
+        private static OSDMap GroupRecord2OSDMap(GroupRecord group)
         {
             OSDMap resp = new OSDMap();
             resp["GroupID"] = group.GroupID;
@@ -1400,7 +1295,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GetGroups(OSDMap map)
+        private OSDMap GetGroups(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             uint start = map.ContainsKey("Start") ? map["Start"].AsUInteger() : 0;
@@ -1451,7 +1346,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GetGroup(OSDMap map)
+        private OSDMap GetGroup(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
@@ -1469,7 +1364,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GroupAsNewsSource(OSDMap map)
+        private OSDMap GroupAsNewsSource(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(false);
@@ -1492,7 +1387,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap GroupNotices(OSDMap map)
+        private OSDMap GroupNotices(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             resp["GroupNotices"] = new OSDArray();
@@ -1541,7 +1436,7 @@ namespace OpenSim.Services
             return resp;
         }
 
-        OSDMap NewsFromGroupNotices(OSDMap map)
+        private OSDMap NewsFromGroupNotices(OSDMap map)
         {
             OSDMap resp = new OSDMap();
             resp["GroupNotices"] = new OSDArray();
