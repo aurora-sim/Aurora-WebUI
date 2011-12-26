@@ -1209,6 +1209,30 @@ namespace OpenSim.Services
             return resp;
         }
 
+        private OSDMap GetRegion(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            IRegionData regiondata = Aurora.DataManager.DataManager.RequestPlugin<IRegionData>();
+            if (regiondata != null && (map.ContainsKey("RegionID") || map.ContainsKey("Region")))
+            {
+                string regionName = map.ContainsKey("Region") ? map["Region"].ToString().Trim() : "";
+                UUID regionID = map.ContainsKey("RegionID") ? UUID.Parse(map["RegionID"].ToString()) : UUID.Zero;
+                UUID scopeID = map.ContainsKey("ScopeID") ? UUID.Parse(map["ScopeID"].ToString()) : UUID.Zero;
+                GridRegion region=null;
+                if (regionID != UUID.Zero)
+                {
+                    region = regiondata.Get(regionID, scopeID);
+                }else if(regionName != string.Empty){
+                    region = regiondata.Get(regionName, scopeID)[0];
+                }
+                if (region != null)
+                {
+                    resp["Region"] = region.ToOSD();
+                }
+            }
+            return resp;
+        }
+
         private OSDMap GetFriends(OSDMap map)
         {
             OSDMap resp = new OSDMap();
@@ -1446,6 +1470,46 @@ namespace OpenSim.Services
             args["Groups"] = new OSDArray(GroupIDs.ConvertAll(x=>OSD.FromString(x.ToString())));
 
             return GroupNotices(args);
+        }
+
+        private OSDMap GetParcelsByRegion(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["Parcels"] = new OSDArray();
+            resp["Total"] = OSD.FromInteger(0);
+
+            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
+
+            if (directory != null && map.ContainsKey("Region") == true)
+            {
+                UUID RegionID = UUID.Parse(map["Region"]);
+                UUID ScopeID = map.ContainsKey("ScopeID") ? UUID.Parse(map["ScopeID"].ToString()) : UUID.Zero;
+                UUID owner = map.ContainsKey("Owner") ? UUID.Parse(map["Owner"].ToString()) : UUID.Zero;
+                uint start = map.ContainsKey("Start") ? uint.Parse(map["Start"].ToString()) : 0;
+                uint count = map.ContainsKey("Count") ? uint.Parse(map["Count"].ToString()) : 10;
+                ParcelFlags flags = map.ContainsKey("Flags") ? (ParcelFlags)int.Parse(map["Flags"].ToString()) : ParcelFlags.None;
+                ParcelCategory category = map.ContainsKey("Category") ? (ParcelCategory)uint.Parse(map["Flags"].ToString()) : ParcelCategory.Any;
+                uint total = directory.GetNumberOfParcelsByRegion(RegionID, ScopeID, owner, flags, category);
+                if (total > 0)
+                {
+                    resp["Total"] = OSD.FromInteger((int)total);
+                    if(count == 0){
+                        return resp;
+                    }
+                    List<LandData> parcels = directory.GetParcelsByRegion(start, count, RegionID, ScopeID, owner, flags, category);
+                    OSDArray Parcels = new OSDArray(parcels.Count);
+                    parcels.ForEach(delegate(LandData parcel)
+                    {
+                        OSDMap parcelOSD = parcel.ToOSD();
+                        parcelOSD["GenericData"] = parcelOSD.ContainsKey("GenericData") ? (parcelOSD["GenericData"].Type == OSDType.Map ? parcelOSD["GenericData"] : (OSDMap)OSDParser.DeserializeLLSDXml(parcelOSD["GenericData"].ToString())) : new OSDMap();
+                        parcelOSD["Bitmap"] = OSD.FromBinary(parcelOSD["Bitmap"]).ToString();
+                        Parcels.Add(parcelOSD);
+                    });
+                    resp["Parcels"] = Parcels;
+                }
+            }
+
+            return resp;
         }
     }
 }
