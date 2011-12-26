@@ -333,7 +333,7 @@ namespace OpenSim.Services
 
         private void PromoteUser (string[] cmd)
         {
-            string name = MainConsole.Instance.CmdPrompt ("Name of user");
+            string name = MainConsole.Instance.Prompt ("Name of user");
             UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
             if (acc == null)
             {
@@ -348,7 +348,7 @@ namespace OpenSim.Services
 
         private void DemoteUser (string[] cmd)
         {
-            string name = MainConsole.Instance.CmdPrompt ("Name of user");
+            string name = MainConsole.Instance.Prompt ("Name of user");
             UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
             if (acc == null)
             {
@@ -1199,33 +1199,7 @@ namespace OpenSim.Services
                 int j = regions.Count <= (start + count) ? regions.Count : (start + count);
                 for (i = start; i < j; ++i)
                 {
-                    GridRegion region = regions[i];
-                    OSDMap kvpairs = new OSDMap();
-                    kvpairs["uuid"] = OSD.FromUUID(region.RegionID);
-                    kvpairs["locX"] = OSD.FromInteger(region.RegionLocX);
-                    kvpairs["locY"] = OSD.FromInteger(region.RegionLocY);
-                    kvpairs["locZ"] = OSD.FromInteger(region.RegionLocZ);
-                    kvpairs["regionName"] = OSD.FromString(region.RegionName);
-                    kvpairs["regionType"] = OSD.FromString(region.RegionType);
-                    kvpairs["serverIP"] = OSD.FromString(region.ExternalHostName);
-                    kvpairs["serverHttpPort"] = OSD.FromInteger(region.HttpPort);
-                    kvpairs["serverURI"] = OSD.FromString(region.ServerURI);
-                    if (region.InternalEndPoint != null)
-                    {
-                        kvpairs["serverPort"] = region.InternalEndPoint.Port;
-                    }
-                    kvpairs["regionMapTexture"] = OSD.FromUUID(region.TerrainImage);
-                    kvpairs["regionTerrainTexture"] = OSD.FromUUID(region.TerrainMapImage);
-                    kvpairs["access"] = OSD.FromInteger(region.Access);
-                    kvpairs["owner_uuid"] = OSD.FromUUID(region.EstateOwner);
-                    kvpairs["Token"] = OSD.FromString(region.AuthToken);
-                    kvpairs["sizeX"] = OSD.FromInteger(region.RegionSizeX);
-                    kvpairs["sizeY"] = OSD.FromInteger(region.RegionSizeY);
-                    kvpairs["sizeZ"] = OSD.FromInteger(region.RegionSizeZ);
-                    kvpairs["Flags"] = OSD.FromInteger(region.Flags);
-                    kvpairs["SessionID"] = OSD.FromUUID(region.SessionID);
-                    kvpairs["EstateOwner"] = OSD.FromUUID(region.EstateOwner);
-                    Regions.Add(kvpairs);
+                    Regions.Add(regions[i].ToOSD());
                 }
             }
             resp["Start"] = OSD.FromInteger(start);
