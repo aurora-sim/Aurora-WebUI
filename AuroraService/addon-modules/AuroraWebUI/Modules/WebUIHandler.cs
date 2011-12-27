@@ -1334,6 +1334,13 @@ namespace OpenSim.Services
 
         #region Parcels
 
+        private static OSDMap LandData2WebOSD(LandData parcel){
+            OSDMap parcelOSD = parcel.ToOSD();
+            parcelOSD["GenericData"] = parcelOSD.ContainsKey("GenericData") ? (parcelOSD["GenericData"].Type == OSDType.Map ? parcelOSD["GenericData"] : (OSDMap)OSDParser.DeserializeLLSDXml(parcelOSD["GenericData"].ToString())) : new OSDMap();
+            parcelOSD["Bitmap"] = OSD.FromBinary(parcelOSD["Bitmap"]).ToString();
+            return parcelOSD;
+        }
+
         private OSDMap GetParcelsByRegion(OSDMap map)
         {
             OSDMap resp = new OSDMap();
@@ -1362,12 +1369,39 @@ namespace OpenSim.Services
                     OSDArray Parcels = new OSDArray(parcels.Count);
                     parcels.ForEach(delegate(LandData parcel)
                     {
-                        OSDMap parcelOSD = parcel.ToOSD();
-                        parcelOSD["GenericData"] = parcelOSD.ContainsKey("GenericData") ? (parcelOSD["GenericData"].Type == OSDType.Map ? parcelOSD["GenericData"] : (OSDMap)OSDParser.DeserializeLLSDXml(parcelOSD["GenericData"].ToString())) : new OSDMap();
-                        parcelOSD["Bitmap"] = OSD.FromBinary(parcelOSD["Bitmap"]).ToString();
-                        Parcels.Add(parcelOSD);
+                        Parcels.Add(LandData2WebOSD(parcel));
                     });
                     resp["Parcels"] = Parcels;
+                }
+            }
+
+            return resp;
+        }
+
+        private OSDMap GetParcel(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+
+            UUID regionID = map.ContainsKey("RegionID") ? UUID.Parse(map["RegionID"].ToString()) : UUID.Zero;
+            UUID scopeID = map.ContainsKey("ScopeID") ? UUID.Parse(map["ScopeID"].ToString()) : UUID.Zero;
+            UUID parcelID = map.ContainsKey("ParcelInfoUUID") ? UUID.Parse(map["ParcelInfoUUID"].ToString()) : UUID.Zero;
+            string parcelName = map.ContainsKey("Parcel") ? map["Parcel"].ToString().Trim() : string.Empty;
+
+            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
+
+            if (directory != null && (parcelID != UUID.Zero || (regionID != UUID.Zero && parcelName != string.Empty)))
+            {
+                LandData parcel = null;
+
+                if(parcelID != UUID.Zero){
+                    parcel = directory.GetParcelInfo(parcelID);
+                }else if(regionID != UUID.Zero && parcelName != string.Empty){
+                    parcel = directory.GetParcelInfo(regionID, scopeID, parcelName);
+                }
+
+                if (parcel != null)
+                {
+                    resp["Parcel"] = LandData2WebOSD(parcel);
                 }
             }
 
