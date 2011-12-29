@@ -1346,7 +1346,7 @@ namespace OpenSim.Services
         private OSDMap GetParcelsByRegion(OSDMap map)
         {
             OSDMap resp = new OSDMap();
-            resp["Parcels"] = new OSDArray();
+            resp["Parcels"] = new OSDArray(0);
             resp["Total"] = OSD.FromInteger(0);
 
             IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
@@ -1404,6 +1404,45 @@ namespace OpenSim.Services
                 if (parcel != null)
                 {
                     resp["Parcel"] = LandData2WebOSD(parcel);
+                }
+            }
+
+            return resp;
+        }
+
+        private OSDMap GetParcelsWithNameByRegion(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["Parcels"] = new OSDArray(0);
+            resp["Total"] = OSD.FromInteger(0);
+
+            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
+
+            if (directory != null && map.ContainsKey("Region") == true && map.ContainsKey("Parcel") == true)
+            {
+                UUID RegionID = UUID.Parse(map["Region"]);
+                UUID ScopeID = map.ContainsKey("ScopeID") ? UUID.Parse(map["ScopeID"].ToString()) : UUID.Zero;
+                string name = map.ContainsKey("Parcel") ? map["Parcel"].ToString().Trim() : string.Empty;
+                if (name != string.Empty)
+                {
+                    uint start = map.ContainsKey("Start") ? uint.Parse(map["Start"].ToString()) : 0;
+                    uint count = map.ContainsKey("Count") ? uint.Parse(map["Count"].ToString()) : 10;
+                    uint total = directory.GetNumberOfParcelsWithNameByRegion(RegionID, ScopeID, name);
+                    if (total > 0)
+                    {
+                        resp["Total"] = OSD.FromInteger((int)total);
+                        if (count == 0)
+                        {
+                            return resp;
+                        }
+                        List<LandData> parcels = directory.GetParcelsWithNameByRegion(start, count, RegionID, ScopeID, name);
+                        OSDArray Parcels = new OSDArray(parcels.Count);
+                        parcels.ForEach(delegate(LandData parcel)
+                        {
+                            Parcels.Add(LandData2WebOSD(parcel));
+                        });
+                        resp["Parcels"] = Parcels;
+                    }
                 }
             }
 
