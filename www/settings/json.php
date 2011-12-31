@@ -1,8 +1,5 @@
 <?php
 
-include("config.php");
-include("databaseinfo.php");
-
 function do_post_request($found) {
     $params = array('http' => array(
             'method' => 'POST',

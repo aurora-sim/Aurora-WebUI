@@ -116,6 +116,7 @@ $scrollingTextMessage = "Welcome!         Bienvenue!          Hola!";
 ############ Delete Unconfirmed accounts ################
 // e.g. 24 for 24 hours  leave empty for no timed delete
 $unconfirmed_deltime="24";
+$do_email_verification = false
 
 ################### Help support area #####################
 $support_emails_to="noreply@osgrid.org";

@@ -529,29 +529,32 @@ function displayDefaultAvatars()
 			// echo '</pre>';
 
 			if ($recieved->{'Verified'} == "true") {
-				$DbLink = new DB;
-				//-----------------------------------MAIL--------------------------------------
-				$date_arr = getdate();
-				$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
-				$sendto = $_SESSION[EMAIL];
-				$subject = "Account Activation from " . SYSNAME;
-				$body .= "Your account was successfully created at " . SYSNAME . ".\n";
-				$body .= "Your first name: $_SESSION[ACCFIRST]\n";
-				$body .= "Your last name:  $_SESSION[ACCLAST]\n";
-				$body .= "Your password:  $_SESSION[PASSWD]\n\n";
-				$body .= "In order to login, you need to confirm your email by clicking this link within $deletetime hours:";
-				$body .= "\n";
-				$body .= "" . SYSURL . "/index.php?page=activate&code=$code";
-				$body .= "\n\n\n";
-				$body .= "Thank you for using " . SYSNAME . "";
-				$header = "From: " . SYSMAIL . "\r\n";
-				$mail_status = mail($sendto, $subject, $body, $header);
+				if($do_email_verification)
+				{
+					$DbLink = new DB;
+					//-----------------------------------MAIL--------------------------------------
+					$date_arr = getdate();
+					$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
+					$sendto = $_SESSION[EMAIL];
+					$subject = "Account Activation from " . SYSNAME;
+					$body .= "Your account was successfully created at " . SYSNAME . ".\n";
+					$body .= "Your first name: $_SESSION[ACCFIRST]\n";
+					$body .= "Your last name:  $_SESSION[ACCLAST]\n";
+					$body .= "Your password:  $_SESSION[PASSWD]\n\n";
+					$body .= "In order to login, you need to confirm your email by clicking this link within $deletetime hours:";
+					$body .= "\n";
+					$body .= "" . SYSURL . "/index.php?page=activate&code=$code";
+					$body .= "\n\n\n";
+					$body .= "Thank you for using " . SYSNAME . "";
+					$header = "From: " . SYSMAIL . "\r\n";
+					$mail_status = mail($sendto, $subject, $body, $header);
 
-				//-----------------------------MAIL END --------------------------------------
-				// insert code
-				$UUIDC = $recieved->{'UUID'};
-				$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','".cleanQuery($_SESSION[EMAIL])."'," . time() . ")");
-				// insert code end
+					//-----------------------------MAIL END --------------------------------------
+					// insert code
+					$UUIDC = $recieved->{'UUID'};
+					$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','".cleanQuery($_SESSION[EMAIL])."'," . time() . ")");
+					// insert code end
+					}
 ?>
 <div id="content">
 <h2><? echo $webui_successfully; ?></h2>
