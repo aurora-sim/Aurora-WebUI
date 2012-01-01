@@ -32,13 +32,12 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using log4net;
 using Nini.Config;
 using Aurora.Simulation.Base;
 using OpenSim.Services.Interfaces;
 using FriendInfo = OpenSim.Services.Interfaces.FriendInfo;
-using OpenSim.Framework;
-using OpenSim.Framework.Servers.HttpServer;
+using Aurora.Framework;
+using Aurora.Framework.Servers.HttpServer;
 using IGroupsServiceConnector = Aurora.Framework.IGroupsServiceConnector;
 
 using OpenMetaverse;
@@ -62,7 +61,6 @@ namespace OpenSim.Services
 {
     public class WireduxHandler : IService
     {
-        private static readonly ILog m_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public IHttpServer m_server = null;
         public IHttpServer m_server2 = null;
         string m_servernick = "hippogrid";
@@ -147,7 +145,7 @@ namespace OpenSim.Services
             if (keysvals["method"].ToString() != "GridTexture")
                 return reply;
 
-            m_log.Debug("[WebUI]: Sending image jpeg");
+            MainConsole.Instance.Debug("[WebUI]: Sending image jpeg");
             int statuscode = 200;
             byte[] jpeg = new byte[0];
             IAssetService m_AssetService = m_registry.RequestModuleInterface<IAssetService>();
@@ -187,7 +185,7 @@ namespace OpenSim.Services
             catch (Exception)
             {
                 // Dummy!
-                m_log.Warn("[WebUI]: Unable to post image.");
+                MainConsole.Instance.Warn("[WebUI]: Unable to post image.");
             }
             finally
             {
@@ -232,7 +230,7 @@ namespace OpenSim.Services
             if (keysvals.ContainsKey("y"))
                 y = (int)float.Parse(keysvals["y"].ToString());
 
-            m_log.Debug("[WebUI]: Sending map image jpeg");
+            MainConsole.Instance.Debug("[WebUI]: Sending map image jpeg");
             int statuscode = 200;
             byte[] jpeg = new byte[0];
             
@@ -361,13 +359,13 @@ namespace OpenSim.Services
             UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
             if (acc == null)
             {
-                m_log.Warn ("You must create the user before promoting them.");
+                MainConsole.Instance.Warn ("You must create the user before promoting them.");
                 return;
             }
             IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
             agent.OtherAgentInformation["WebUIEnabled"] = true;
             Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
-            m_log.Warn ("Admin added");
+            MainConsole.Instance.Warn ("Admin added");
         }
 
         private void DemoteUser (string[] cmd)
@@ -376,13 +374,13 @@ namespace OpenSim.Services
             UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
             if (acc == null)
             {
-                m_log.Warn ("User does not exist, no action taken.");
+                MainConsole.Instance.Warn ("User does not exist, no action taken.");
                 return;
             }
             IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
             agent.OtherAgentInformation["WebUIEnabled"] = false;
             Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
-            m_log.Warn ("Admin removed");
+            MainConsole.Instance.Warn ("Admin removed");
         }
 
         #endregion
@@ -390,8 +388,6 @@ namespace OpenSim.Services
 
     public class WireduxHTTPHandler : BaseStreamHandler
     {
-        private static readonly ILog m_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         protected string m_password;
         protected IRegistryCore m_registry;
         protected OSDMap GridInfo;
@@ -429,7 +425,7 @@ namespace OpenSim.Services
             sr.Close();
             body = body.Trim();
 
-            m_log.TraceFormat("[WebUI]: query String: {0}", body);
+            MainConsole.Instance.TraceFormat("[WebUI]: query String: {0}", body);
             string method = string.Empty;
             OSDMap resp = new OSDMap();
             try
@@ -454,17 +450,17 @@ namespace OpenSim.Services
                     }
                     else
                     {
-                        m_log.TraceFormat("[WebUI] Unsupported method called ({0})", method);
+                        MainConsole.Instance.TraceFormat("[WebUI] Unsupported method called ({0})", method);
                     }
                 }
                 else
                 {
-                    m_log.Debug("Password does not match");
+                    MainConsole.Instance.Debug("Password does not match");
                 }
             }
             catch (Exception e)
             {
-                m_log.TraceFormat("[WebUI] Exception thrown: " + e.ToString());
+                MainConsole.Instance.TraceFormat("[WebUI] Exception thrown: " + e.ToString());
             }
             if(resp.Count == 0){
                 resp.Add("response", OSD.FromString("Failed"));
@@ -565,7 +561,7 @@ namespace OpenSim.Services
                 }
                 else
                 {
-                    m_log.DebugFormat("[WebUI]: Could not set home position for user {0}, region \"{1}\" did not produce a result from the grid service", user.PrincipalID.ToString(), HomeRegion);
+                    MainConsole.Instance.DebugFormat("[WebUI]: Could not set home position for user {0}, region \"{1}\" did not produce a result from the grid service", user.PrincipalID.ToString(), HomeRegion);
                 }
             }
 
@@ -639,7 +635,7 @@ namespace OpenSim.Services
             OSDArray names = new OSDArray();
             OSDArray snapshot = new OSDArray();
 
-            m_log.DebugFormat("[WebUI] {0} avatar archives found", temp.Count);
+            MainConsole.Instance.DebugFormat("[WebUI] {0} avatar archives found", temp.Count);
 
             foreach (AvatarArchive a in temp)
             {
@@ -827,7 +823,7 @@ namespace OpenSim.Services
                 {
                     if (user.Email.ToLower() != Email.ToLower())
                     {
-                        m_log.TraceFormat("User email for account \"{0}\" is \"{1}\" but \"{2}\" was specified.", Name, user.Email.ToString(), Email);
+                        MainConsole.Instance.TraceFormat("User email for account \"{0}\" is \"{1}\" but \"{2}\" was specified.", Name, user.Email.ToString(), Email);
                         resp["Error"] = OSD.FromString("Email does not match the user name.");
                         resp["ErrorCode"] = OSD.FromInteger(3);
                     }
@@ -1111,7 +1107,7 @@ namespace OpenSim.Services
                 if (until.HasValue)
                 {
                     GetAgent.OtherAgentInformation["TemperaryBanInfo"] = until.Value.ToString("s");
-                    m_log.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
+                    MainConsole.Instance.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
                 }
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
             }
@@ -1171,7 +1167,7 @@ namespace OpenSim.Services
             List<UserAccount> accounts = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccounts(UUID.Zero, Query);
 
             OSDArray users = new OSDArray();
-            m_log.TraceFormat("{0} accounts found", accounts.Count);
+            MainConsole.Instance.TraceFormat("{0} accounts found", accounts.Count);
             for(int i = start; i < end && i < accounts.Count; i++)
             {
                 UserAccount acc = accounts[i];
