@@ -67,6 +67,7 @@ namespace OpenSim.Services
         public IHttpServer m_server2 = null;
         string m_servernick = "hippogrid";
         protected IRegistryCore m_registry;
+        protected bool m_runLocal = true;
         public string Name
         {
             get { return GetType().Name; }
@@ -87,35 +88,48 @@ namespace OpenSim.Services
             string name = handlerConfig.GetString("WireduxHandler", "");
             if (name != Name)
                 return;
-            string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
-            if (Password != "")
+            m_runLocal = handlerConfig.GetBoolean("RunLocally", m_runLocal);
+            uint httpPort = handlerConfig.GetUInt("WebUIHTTPPort", 80);
+            string Password = "";
+            if (!m_runLocal)
             {
-                IConfig gridCfg = config.Configs["GridInfoService"];
-                OSDMap gridInfo = new OSDMap();
-                if (gridCfg != null)
+                Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
+                if (Password == "")
+                    return;
+            }
+            else
+                SetUpWebUIPHP(httpPort);
+
+            IConfig gridCfg = config.Configs["GridInfoService"];
+            OSDMap gridInfo = new OSDMap();
+            if (gridCfg != null)
+            {
+                if (gridCfg.GetString("gridname", "") != "" && gridCfg.GetString("gridnick", "") != "")
                 {
-                    if (gridCfg.GetString("gridname", "") != "" && gridCfg.GetString("gridnick", "") != "")
+                    foreach (string k in gridCfg.GetKeys())
                     {
-                        foreach (string k in gridCfg.GetKeys())
-                        {
-                            gridInfo[k] = gridCfg.GetString(k);
-                        }
+                        gridInfo[k] = gridCfg.GetString(k);
                     }
                 }
-
-                m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
-                //This handler allows sims to post CAPS for their sims on the CAPS server.
-                m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero));
-                m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
-                m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
-                m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
-                gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
-
-                MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui add user", "Deprecated alias for webui promote user.", "webui add user", PromoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui remove user", "Deprecated alias for webui demote user.", "webui remove user", DemoteUser);
             }
+            m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort", 8007));
+            //This handler allows sims to post CAPS for their sims on the CAPS server.
+            m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero, m_runLocal, httpPort));
+            m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort", 8002));
+            m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
+            m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
+            gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
+
+            MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui add user", "Deprecated alias for webui promote user.", "webui add user", PromoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui remove user", "Deprecated alias for webui demote user.", "webui remove user", DemoteUser);
+        }
+
+        private void SetUpWebUIPHP(uint port)
+        {
+            HttpServer.HttpModules.AdvancedFileModule.CreateHTTPServer(Util.BasePathCombine("data//WebUI//"), "/",
+                @"C:\wamp\bin\php\php5.3.8\php-cgi.exe", port, false);
         }
 
         public void FinishedStartup()
@@ -383,14 +397,18 @@ namespace OpenSim.Services
         protected OSDMap GridInfo;
         private UUID AdminAgentID;
         private Dictionary<string, MethodInfo> APIMethods = new Dictionary<string, MethodInfo>();
+        private bool m_runLocal = true;
+        private uint m_localPort;
 
-        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID) :
+        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID, bool runLocally, uint port) :
             base("POST", "/WIREDUX")
         {
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
             GridInfo = gridInfo;
             AdminAgentID = adminAgentID;
+            m_runLocal = runLocally;
+            m_localPort = port;
             MethodInfo[] methods = this.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
             for (uint i = 0; i < methods.Length; ++i)
             {
@@ -418,7 +436,7 @@ namespace OpenSim.Services
             {
                 OSDMap map = (OSDMap)OSDParser.DeserializeJson(body);
                 //Make sure that the person who is calling can access the web service
-                if (map.ContainsKey("WebPassword") && (map["WebPassword"] == m_password))
+                if (ValidateUser(httpRequest, map))
                 {
                     method = map["Method"].AsString();
                     if (method == "Login")
@@ -454,6 +472,19 @@ namespace OpenSim.Services
             UTF8Encoding encoding = new UTF8Encoding();
             httpResponse.ContentType = "application/json";
             return encoding.GetBytes(OSDParser.SerializeJsonString(resp, true));
+        }
+
+        private bool ValidateUser(OSHttpRequest request, OSDMap map)
+        {
+            if(!m_runLocal)
+                if (map.ContainsKey("WebPassword") && (map["WebPassword"] == m_password))
+                    return true;
+            if (m_runLocal)
+            {
+                if (request.RemoteIPEndPoint.Address.Equals(IPAddress.Loopback))
+                    return true;
+            }
+            return false;
         }
 
         #endregion
@@ -1346,7 +1377,7 @@ namespace OpenSim.Services
         private OSDMap GetParcelsByRegion(OSDMap map)
         {
             OSDMap resp = new OSDMap();
-            resp["Parcels"] = new OSDArray(0);
+            resp["Parcels"] = new OSDArray();
             resp["Total"] = OSD.FromInteger(0);
 
             IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
@@ -1404,45 +1435,6 @@ namespace OpenSim.Services
                 if (parcel != null)
                 {
                     resp["Parcel"] = LandData2WebOSD(parcel);
-                }
-            }
-
-            return resp;
-        }
-
-        private OSDMap GetParcelsWithNameByRegion(OSDMap map)
-        {
-            OSDMap resp = new OSDMap();
-            resp["Parcels"] = new OSDArray(0);
-            resp["Total"] = OSD.FromInteger(0);
-
-            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
-
-            if (directory != null && map.ContainsKey("Region") == true && map.ContainsKey("Parcel") == true)
-            {
-                UUID RegionID = UUID.Parse(map["Region"]);
-                UUID ScopeID = map.ContainsKey("ScopeID") ? UUID.Parse(map["ScopeID"].ToString()) : UUID.Zero;
-                string name = map.ContainsKey("Parcel") ? map["Parcel"].ToString().Trim() : string.Empty;
-                if (name != string.Empty)
-                {
-                    uint start = map.ContainsKey("Start") ? uint.Parse(map["Start"].ToString()) : 0;
-                    uint count = map.ContainsKey("Count") ? uint.Parse(map["Count"].ToString()) : 10;
-                    uint total = directory.GetNumberOfParcelsWithNameByRegion(RegionID, ScopeID, name);
-                    if (total > 0)
-                    {
-                        resp["Total"] = OSD.FromInteger((int)total);
-                        if (count == 0)
-                        {
-                            return resp;
-                        }
-                        List<LandData> parcels = directory.GetParcelsWithNameByRegion(start, count, RegionID, ScopeID, name);
-                        OSDArray Parcels = new OSDArray(parcels.Count);
-                        parcels.ForEach(delegate(LandData parcel)
-                        {
-                            Parcels.Add(LandData2WebOSD(parcel));
-                        });
-                        resp["Parcels"] = Parcels;
-                    }
                 }
             }
 
