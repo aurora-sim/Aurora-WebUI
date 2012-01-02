@@ -37,9 +37,7 @@ using Nini.Config;
 using Aurora.Simulation.Base;
 using OpenSim.Services.Interfaces;
 using FriendInfo = OpenSim.Services.Interfaces.FriendInfo;
-using OpenSim.Framework;
-using OpenSim.Framework.Servers.HttpServer;
-using IGroupsServiceConnector = Aurora.Framework.IGroupsServiceConnector;
+using Aurora.Framework.Servers.HttpServer;
 
 using OpenMetaverse;
 using OpenMetaverse.Imaging;
