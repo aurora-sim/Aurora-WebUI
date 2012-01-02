@@ -1580,7 +1580,7 @@ namespace OpenSim.Services
                     uint count = map.ContainsKey("Count") ? uint.Parse(map["Count"]) : 10;
                     List<GroupNoticeData> groupNotices = groups.GetGroupNotices(AdminAgentID, start, count, GroupIDs);
                     OSDArray GroupNotices = new OSDArray(groupNotices.Count);
-                    foreach (GroupNoticeData GND in groupNotices)
+                    groupNotices.ForEach(delegate(GroupNoticeData GND)
                     {
                         OSDMap gnd = new OSDMap();
                         gnd["GroupID"] = OSD.FromUUID(GND.GroupID);
@@ -1593,9 +1593,9 @@ namespace OpenSim.Services
                         gnd["AssetType"] = OSD.FromInteger((int)GND.AssetType);
                         gnd["ItemName"] = OSD.FromString(GND.ItemName);
                         GroupNoticeInfo notice = groups.GetGroupNotice(AdminAgentID, GND.NoticeID);
-                        gnd["Message"] = OSD.FromString(groups.GetGroupNotice(AdminAgentID, GND.NoticeID).Message);
+                        gnd["Message"] = OSD.FromString(notice.Message);
                         GroupNotices.Add(gnd);
-                    }
+                    });
                     resp["GroupNotices"] = GroupNotices;
                     resp["Total"] = (int)groups.GetNumberOfGroupNotices(AdminAgentID, GroupIDs);
                 }
