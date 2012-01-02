@@ -63,7 +63,6 @@ namespace OpenSim.Services
         public IHttpServer m_server2 = null;
         string m_servernick = "hippogrid";
         protected IRegistryCore m_registry;
-        protected bool m_runLocal = true;
         public string Name
         {
             get { return GetType().Name; }
@@ -77,55 +76,59 @@ namespace OpenSim.Services
 
         public void Start(IConfigSource config, IRegistryCore registry)
         {
-            if (config.Configs["GridInfoService"] != null)
-                m_servernick = config.Configs["GridInfoService"].GetString("gridnick", m_servernick);
-            m_registry = registry;
             IConfig handlerConfig = config.Configs["Handlers"];
             string name = handlerConfig.GetString("WireduxHandler", "");
-            if (name != Name)
-                return;
-            m_runLocal = handlerConfig.GetBoolean("RunLocally", m_runLocal);
+            string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
+            bool runLocally = handlerConfig.GetBoolean("RunLocally", false);
             uint httpPort = handlerConfig.GetUInt("WebUIHTTPPort", 80);
-            string Password = "";
-            if (!m_runLocal)
-            {
-                Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
-                if (Password == "")
-                    return;
-            }
-            else
-                SetUpWebUIPHP(httpPort);
+            string phpBinPath = handlerConfig.GetString("phpBinPath", string.Empty);
 
-            IConfig gridCfg = config.Configs["GridInfoService"];
-            OSDMap gridInfo = new OSDMap();
-            if (gridCfg != null)
+            if (name != Name || (!runLocally && Password == string.Empty) || (runLocally && phpBinPath == string.Empty))
             {
-                if (gridCfg.GetString("gridname", "") != "" && gridCfg.GetString("gridnick", "") != "")
+                return;
+            }
+
+            m_registry = registry;
+
+            IConfig GridInfoConfig = config.Configs["GridInfoService"];
+            if (GridInfoConfig != null)
+            {
+                m_servernick = GridInfoConfig.GetString("gridnick", m_servernick);
+            }
+
+            if (runLocally)
+            {
+                SetUpWebUIPHP(httpPort, phpBinPath);
+            }
+
+            OSDMap gridInfo = new OSDMap();
+            if (GridInfoConfig != null && (GridInfoConfig.GetString("gridname", "") != "" && GridInfoConfig.GetString("gridnick", "") != ""))
+            {
+                foreach (string k in GridInfoConfig.GetKeys())
                 {
-                    foreach (string k in gridCfg.GetKeys())
-                    {
-                        gridInfo[k] = gridCfg.GetString(k);
-                    }
+                    gridInfo[k] = GridInfoConfig.GetString(k);
                 }
             }
-            m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort", 8007));
-            //This handler allows sims to post CAPS for their sims on the CAPS server.
-            m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero, m_runLocal, httpPort));
-            m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort", 8002));
+
+            ISimulationBase simBase = registry.RequestModuleInterface<ISimulationBase>();
+
+            m_server2 = simBase.GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort", 8002));
             m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
             m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
             gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
 
+            m_server = simBase.GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort", 8007));
+            m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero, runLocally, httpPort)); //This handler allows sims to post CAPS for their sims on the CAPS server.
+
             MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
             MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
-            MainConsole.Instance.Commands.AddCommand("webui add user", "Deprecated alias for webui promote user.", "webui add user", PromoteUser);
-            MainConsole.Instance.Commands.AddCommand("webui remove user", "Deprecated alias for webui demote user.", "webui remove user", DemoteUser);
+//            MainConsole.Instance.Commands.AddCommand("webui add user", "Deprecated alias for webui promote user.", "webui add user", PromoteUser);
+//            MainConsole.Instance.Commands.AddCommand("webui remove user", "Deprecated alias for webui demote user.", "webui remove user", DemoteUser);
         }
 
-        private void SetUpWebUIPHP(uint port)
+        private void SetUpWebUIPHP(uint port, string phpBinPath)
         {
-            HttpServer.HttpModules.AdvancedFileModule.CreateHTTPServer(Util.BasePathCombine("data//WebUI//"), "/",
-                @"C:\wamp\bin\php\php5.3.8\php-cgi.exe", port, false);
+            HttpServer.HttpModules.AdvancedFileModule.CreateHTTPServer(Util.BasePathCombine("data//WebUI//"), "/", @phpBinPath, port, false);
         }
 
         public void FinishedStartup()
