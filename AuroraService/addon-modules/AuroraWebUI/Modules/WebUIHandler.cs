@@ -1472,40 +1472,68 @@ namespace OpenSim.Services
             OSDArray Groups = new OSDArray();
             if (groups != null)
             {
-                Dictionary<string, bool> sort       = new Dictionary<string, bool>();
-                Dictionary<string, bool> boolFields = new Dictionary<string, bool>();
+                if (!map.ContainsKey("GroupIDs"))
+                {
+                    Dictionary<string, bool> sort = new Dictionary<string, bool>();
+                    Dictionary<string, bool> boolFields = new Dictionary<string, bool>();
 
-                if (map.ContainsKey("Sort") && map["Sort"].Type == OSDType.Map)
-                {
-                    OSDMap fields = (OSDMap)map["Sort"];
-                    foreach (string field in fields.Keys)
+                    if (map.ContainsKey("Sort") && map["Sort"].Type == OSDType.Map)
                     {
-                        sort[field] = int.Parse(fields[field]) != 0;
+                        OSDMap fields = (OSDMap)map["Sort"];
+                        foreach (string field in fields.Keys)
+                        {
+                            sort[field] = int.Parse(fields[field]) != 0;
+                        }
+                    }
+                    if (map.ContainsKey("BoolFields") && map["BoolFields"].Type == OSDType.Map)
+                    {
+                        OSDMap fields = (OSDMap)map["BoolFields"];
+                        foreach (string field in fields.Keys)
+                        {
+                            boolFields[field] = int.Parse(fields[field]) != 0;
+                        }
+                    }
+                    List<GroupRecord> reply = groups.GetGroupRecords(
+                        AdminAgentID,
+                        start,
+                        map.ContainsKey("Count") ? map["Count"].AsUInteger() : 10,
+                        sort,
+                        boolFields
+                    );
+                    if (reply.Count > 0)
+                    {
+                        foreach (GroupRecord groupReply in reply)
+                        {
+                            Groups.Add(GroupRecord2OSDMap(groupReply));
+                        }
+                    }
+                    resp["Total"] = groups.GetNumberOfGroups(AdminAgentID, boolFields);
+                }
+                else
+                {
+                    OSDArray groupIDs = (OSDArray)map["Groups"];
+                    List<UUID> GroupIDs = new List<UUID>();
+                    foreach (string groupID in groupIDs)
+                    {
+                        UUID foo;
+                        if (UUID.TryParse(groupID, out foo))
+                        {
+                            GroupIDs.Add(foo);
+                        }
+                    }
+                    if (GroupIDs.Count > 0)
+                    {
+                        List<GroupRecord> reply = groups.GetGroupRecords(AdminAgentID, GroupIDs);
+                        if (reply.Count > 0)
+                        {
+                            foreach (GroupRecord groupReply in reply)
+                            {
+                                Groups.Add(GroupRecord2OSDMap(groupReply));
+                            }
+                        }
+                        resp["Total"] = Groups.Count;
                     }
                 }
-                if (map.ContainsKey("BoolFields") && map["BoolFields"].Type == OSDType.Map)
-                {
-                    OSDMap fields = (OSDMap)map["BoolFields"];
-                    foreach (string field in fields.Keys)
-                    {
-                        boolFields[field] = int.Parse(fields[field]) != 0;
-                    }
-                }
-                List<GroupRecord> reply = groups.GetGroupRecords(
-                    AdminAgentID,
-                    start,
-                    map.ContainsKey("Count") ? map["Count"].AsUInteger() : 10,
-                    sort,
-                    boolFields
-                );
-                if (reply.Count > 0)
-                {
-                    foreach (GroupRecord groupReply in reply)
-                    {
-                        Groups.Add(GroupRecord2OSDMap(groupReply));
-                    }
-                }
-                resp["Total"] = groups.GetNumberOfGroups(AdminAgentID, boolFields);
             }
 
             resp["Groups"] = Groups;
