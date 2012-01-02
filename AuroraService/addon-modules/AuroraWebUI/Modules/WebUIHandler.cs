@@ -37,7 +37,6 @@ using Aurora.Simulation.Base;
 using OpenSim.Services.Interfaces;
 using FriendInfo = OpenSim.Services.Interfaces.FriendInfo;
 using Aurora.Framework.Servers.HttpServer;
-using IGroupsServiceConnector = Aurora.Framework.IGroupsServiceConnector;
 
 using OpenMetaverse;
 using OpenMetaverse.Imaging;
