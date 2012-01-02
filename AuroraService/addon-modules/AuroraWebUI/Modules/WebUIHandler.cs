@@ -32,7 +32,6 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using log4net;
 using Nini.Config;
 using Aurora.Simulation.Base;
 using OpenSim.Services.Interfaces;
@@ -61,11 +60,11 @@ namespace OpenSim.Services
 {
     public class WireduxHandler : IService
     {
-        private static readonly ILog m_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public IHttpServer m_server = null;
         public IHttpServer m_server2 = null;
         string m_servernick = "hippogrid";
         protected IRegistryCore m_registry;
+        protected bool m_runLocal = true;
         public string Name
         {
             get { return GetType().Name; }
@@ -86,35 +85,48 @@ namespace OpenSim.Services
             string name = handlerConfig.GetString("WireduxHandler", "");
             if (name != Name)
                 return;
-            string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
-            if (Password != "")
+            m_runLocal = handlerConfig.GetBoolean("RunLocally", m_runLocal);
+            uint httpPort = handlerConfig.GetUInt("WebUIHTTPPort", 80);
+            string Password = "";
+            if (!m_runLocal)
             {
-                IConfig gridCfg = config.Configs["GridInfoService"];
-                OSDMap gridInfo = new OSDMap();
-                if (gridCfg != null)
+                Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
+                if (Password == "")
+                    return;
+            }
+            else
+                SetUpWebUIPHP(httpPort);
+
+            IConfig gridCfg = config.Configs["GridInfoService"];
+            OSDMap gridInfo = new OSDMap();
+            if (gridCfg != null)
+            {
+                if (gridCfg.GetString("gridname", "") != "" && gridCfg.GetString("gridnick", "") != "")
                 {
-                    if (gridCfg.GetString("gridname", "") != "" && gridCfg.GetString("gridnick", "") != "")
+                    foreach (string k in gridCfg.GetKeys())
                     {
-                        foreach (string k in gridCfg.GetKeys())
-                        {
-                            gridInfo[k] = gridCfg.GetString(k);
-                        }
+                        gridInfo[k] = gridCfg.GetString(k);
                     }
                 }
-
-                m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
-                //This handler allows sims to post CAPS for their sims on the CAPS server.
-                m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero));
-                m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
-                m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
-                m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
-                gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
-
-                MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui add user", "Deprecated alias for webui promote user.", "webui add user", PromoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui remove user", "Deprecated alias for webui demote user.", "webui remove user", DemoteUser);
             }
+            m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort", 8007));
+            //This handler allows sims to post CAPS for their sims on the CAPS server.
+            m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero, m_runLocal, httpPort));
+            m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort", 8002));
+            m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
+            m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
+            gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
+
+            MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui add user", "Deprecated alias for webui promote user.", "webui add user", PromoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui remove user", "Deprecated alias for webui demote user.", "webui remove user", DemoteUser);
+        }
+
+        private void SetUpWebUIPHP(uint port)
+        {
+            HttpServer.HttpModules.AdvancedFileModule.CreateHTTPServer(Util.BasePathCombine("data//WebUI//"), "/",
+                @"C:\wamp\bin\php\php5.3.8\php-cgi.exe", port, false);
         }
 
         public void FinishedStartup()
@@ -132,7 +144,7 @@ namespace OpenSim.Services
             if (keysvals["method"].ToString() != "GridTexture")
                 return reply;
 
-            m_log.Debug("[WebUI]: Sending image jpeg");
+            MainConsole.Instance.Debug("[WebUI]: Sending image jpeg");
             int statuscode = 200;
             byte[] jpeg = new byte[0];
             IAssetService m_AssetService = m_registry.RequestModuleInterface<IAssetService>();
@@ -172,7 +184,7 @@ namespace OpenSim.Services
             catch (Exception)
             {
                 // Dummy!
-                m_log.Warn("[WebUI]: Unable to post image.");
+                MainConsole.Instance.Warn("[WebUI]: Unable to post image.");
             }
             finally
             {
@@ -217,7 +229,7 @@ namespace OpenSim.Services
             if (keysvals.ContainsKey("y"))
                 y = (int)float.Parse(keysvals["y"].ToString());
 
-            m_log.Debug("[WebUI]: Sending map image jpeg");
+            MainConsole.Instance.Debug("[WebUI]: Sending map image jpeg");
             int statuscode = 200;
             byte[] jpeg = new byte[0];
             
@@ -346,13 +358,13 @@ namespace OpenSim.Services
             UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
             if (acc == null)
             {
-                m_log.Warn ("You must create the user before promoting them.");
+                MainConsole.Instance.Warn ("You must create the user before promoting them.");
                 return;
             }
             IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
             agent.OtherAgentInformation["WebUIEnabled"] = true;
             Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
-            m_log.Warn ("Admin added");
+            MainConsole.Instance.Warn ("Admin added");
         }
 
         private void DemoteUser (string[] cmd)
@@ -361,13 +373,13 @@ namespace OpenSim.Services
             UserAccount acc = m_registry.RequestModuleInterface<IUserAccountService> ().GetUserAccount (UUID.Zero, name);
             if (acc == null)
             {
-                m_log.Warn ("User does not exist, no action taken.");
+                MainConsole.Instance.Warn ("User does not exist, no action taken.");
                 return;
             }
             IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
             agent.OtherAgentInformation["WebUIEnabled"] = false;
             Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
-            m_log.Warn ("Admin removed");
+            MainConsole.Instance.Warn ("Admin removed");
         }
 
         #endregion
@@ -375,21 +387,23 @@ namespace OpenSim.Services
 
     public class WireduxHTTPHandler : BaseStreamHandler
     {
-        private static readonly ILog m_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         protected string m_password;
         protected IRegistryCore m_registry;
         protected OSDMap GridInfo;
         private UUID AdminAgentID;
         private Dictionary<string, MethodInfo> APIMethods = new Dictionary<string, MethodInfo>();
+        private bool m_runLocal = true;
+        private uint m_localPort;
 
-        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID) :
+        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID, bool runLocally, uint port) :
             base("POST", "/WIREDUX")
         {
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
             GridInfo = gridInfo;
             AdminAgentID = adminAgentID;
+            m_runLocal = runLocally;
+            m_localPort = port;
             MethodInfo[] methods = this.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
             for (uint i = 0; i < methods.Length; ++i)
             {
@@ -410,14 +424,14 @@ namespace OpenSim.Services
             sr.Close();
             body = body.Trim();
 
-            m_log.TraceFormat("[WebUI]: query String: {0}", body);
+            MainConsole.Instance.TraceFormat("[WebUI]: query String: {0}", body);
             string method = string.Empty;
             OSDMap resp = new OSDMap();
             try
             {
                 OSDMap map = (OSDMap)OSDParser.DeserializeJson(body);
                 //Make sure that the person who is calling can access the web service
-                if (map.ContainsKey("WebPassword") && (map["WebPassword"] == m_password))
+                if (ValidateUser(httpRequest, map))
                 {
                     method = map["Method"].AsString();
                     if (method == "Login")
@@ -435,17 +449,17 @@ namespace OpenSim.Services
                     }
                     else
                     {
-                        m_log.TraceFormat("[WebUI] Unsupported method called ({0})", method);
+                        MainConsole.Instance.TraceFormat("[WebUI] Unsupported method called ({0})", method);
                     }
                 }
                 else
                 {
-                    m_log.Debug("Password does not match");
+                    MainConsole.Instance.Debug("Password does not match");
                 }
             }
             catch (Exception e)
             {
-                m_log.TraceFormat("[WebUI] Exception thrown: " + e.ToString());
+                MainConsole.Instance.TraceFormat("[WebUI] Exception thrown: " + e.ToString());
             }
             if(resp.Count == 0){
                 resp.Add("response", OSD.FromString("Failed"));
@@ -453,6 +467,19 @@ namespace OpenSim.Services
             UTF8Encoding encoding = new UTF8Encoding();
             httpResponse.ContentType = "application/json";
             return encoding.GetBytes(OSDParser.SerializeJsonString(resp, true));
+        }
+
+        private bool ValidateUser(OSHttpRequest request, OSDMap map)
+        {
+            if(!m_runLocal)
+                if (map.ContainsKey("WebPassword") && (map["WebPassword"] == m_password))
+                    return true;
+            if (m_runLocal)
+            {
+                if (request.RemoteIPEndPoint.Address.Equals(IPAddress.Loopback))
+                    return true;
+            }
+            return false;
         }
 
         #endregion
@@ -533,7 +560,7 @@ namespace OpenSim.Services
                 }
                 else
                 {
-                    m_log.DebugFormat("[WebUI]: Could not set home position for user {0}, region \"{1}\" did not produce a result from the grid service", user.PrincipalID.ToString(), HomeRegion);
+                    MainConsole.Instance.DebugFormat("[WebUI]: Could not set home position for user {0}, region \"{1}\" did not produce a result from the grid service", user.PrincipalID.ToString(), HomeRegion);
                 }
             }
 
@@ -607,7 +634,7 @@ namespace OpenSim.Services
             OSDArray names = new OSDArray();
             OSDArray snapshot = new OSDArray();
 
-            m_log.DebugFormat("[WebUI] {0} avatar archives found", temp.Count);
+            MainConsole.Instance.DebugFormat("[WebUI] {0} avatar archives found", temp.Count);
 
             foreach (AvatarArchive a in temp)
             {
@@ -795,7 +822,7 @@ namespace OpenSim.Services
                 {
                     if (user.Email.ToLower() != Email.ToLower())
                     {
-                        m_log.TraceFormat("User email for account \"{0}\" is \"{1}\" but \"{2}\" was specified.", Name, user.Email.ToString(), Email);
+                        MainConsole.Instance.TraceFormat("User email for account \"{0}\" is \"{1}\" but \"{2}\" was specified.", Name, user.Email.ToString(), Email);
                         resp["Error"] = OSD.FromString("Email does not match the user name.");
                         resp["ErrorCode"] = OSD.FromInteger(3);
                     }
@@ -1079,7 +1106,7 @@ namespace OpenSim.Services
                 if (until.HasValue)
                 {
                     GetAgent.OtherAgentInformation["TemperaryBanInfo"] = until.Value.ToString("s");
-                    m_log.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
+                    MainConsole.Instance.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
                 }
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
             }
@@ -1139,7 +1166,7 @@ namespace OpenSim.Services
             List<UserAccount> accounts = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccounts(UUID.Zero, Query);
 
             OSDArray users = new OSDArray();
-            m_log.TraceFormat("{0} accounts found", accounts.Count);
+            MainConsole.Instance.TraceFormat("{0} accounts found", accounts.Count);
             for(int i = start; i < end && i < accounts.Count; i++)
             {
                 UserAccount acc = accounts[i];
@@ -1345,7 +1372,7 @@ namespace OpenSim.Services
         private OSDMap GetParcelsByRegion(OSDMap map)
         {
             OSDMap resp = new OSDMap();
-            resp["Parcels"] = new OSDArray(0);
+            resp["Parcels"] = new OSDArray();
             resp["Total"] = OSD.FromInteger(0);
 
             IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
@@ -1403,45 +1430,6 @@ namespace OpenSim.Services
                 if (parcel != null)
                 {
                     resp["Parcel"] = LandData2WebOSD(parcel);
-                }
-            }
-
-            return resp;
-        }
-
-        private OSDMap GetParcelsWithNameByRegion(OSDMap map)
-        {
-            OSDMap resp = new OSDMap();
-            resp["Parcels"] = new OSDArray(0);
-            resp["Total"] = OSD.FromInteger(0);
-
-            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
-
-            if (directory != null && map.ContainsKey("Region") == true && map.ContainsKey("Parcel") == true)
-            {
-                UUID RegionID = UUID.Parse(map["Region"]);
-                UUID ScopeID = map.ContainsKey("ScopeID") ? UUID.Parse(map["ScopeID"].ToString()) : UUID.Zero;
-                string name = map.ContainsKey("Parcel") ? map["Parcel"].ToString().Trim() : string.Empty;
-                if (name != string.Empty)
-                {
-                    uint start = map.ContainsKey("Start") ? uint.Parse(map["Start"].ToString()) : 0;
-                    uint count = map.ContainsKey("Count") ? uint.Parse(map["Count"].ToString()) : 10;
-                    uint total = directory.GetNumberOfParcelsWithNameByRegion(RegionID, ScopeID, name);
-                    if (total > 0)
-                    {
-                        resp["Total"] = OSD.FromInteger((int)total);
-                        if (count == 0)
-                        {
-                            return resp;
-                        }
-                        List<LandData> parcels = directory.GetParcelsWithNameByRegion(start, count, RegionID, ScopeID, name);
-                        OSDArray Parcels = new OSDArray(parcels.Count);
-                        parcels.ForEach(delegate(LandData parcel)
-                        {
-                            Parcels.Add(LandData2WebOSD(parcel));
-                        });
-                        resp["Parcels"] = Parcels;
-                    }
                 }
             }
 
