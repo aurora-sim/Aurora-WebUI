@@ -26,34 +26,36 @@
  */
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Reflection;
 using System.Text;
-using Nini.Config;
-using Aurora.Simulation.Base;
-using OpenSim.Services.Interfaces;
-using FriendInfo = OpenSim.Services.Interfaces.FriendInfo;
-using Aurora.Framework.Servers.HttpServer;
-
-using OpenMetaverse;
-using OpenMetaverse.Imaging;
-using Aurora.DataManager;
-using Aurora.Framework;
-using Aurora.Services.DataService;
-using OpenMetaverse.StructuredData;
-
-using System.Collections.Specialized;
-
 using System.Drawing;
 using System.Drawing.Text;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using GridRegion = OpenSim.Services.Interfaces.GridRegion;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Reflection;
+
 using BitmapProcessing;
-using RegionFlags = Aurora.Framework.RegionFlags;
+
+using Nini.Config;
+
+using OpenMetaverse;
+using OpenMetaverse.Imaging;
+using OpenMetaverse.StructuredData;
+
+using OpenSim.Services.Interfaces;
+using FriendInfo = OpenSim.Services.Interfaces.FriendInfo;
+using GridRegion = OpenSim.Services.Interfaces.GridRegion;
+
+using Aurora.Framework;
+using Aurora.Framework.Servers.HttpServer;
+using Aurora.Framework.RegionFlags;
+using Aurora.DataManager;
+using Aurora.Services.DataService;
+using Aurora.Simulation.Base;
 
 namespace OpenSim.Services
 {
