@@ -52,10 +52,10 @@ using GridRegion = OpenSim.Services.Interfaces.GridRegion;
 
 using Aurora.Framework;
 using Aurora.Framework.Servers.HttpServer;
-using Aurora.Framework.RegionFlags;
 using Aurora.DataManager;
 using Aurora.Services.DataService;
 using Aurora.Simulation.Base;
+using RegionFlags = Aurora.Framework.RegionFlags;
 
 namespace OpenSim.Services
 {
