@@ -120,7 +120,7 @@ namespace OpenSim.Services
             gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
 
             m_server = simBase.GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort", 8007));
-            m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero, runLocally, httpPort)); //This handler allows sims to post CAPS for their sims on the CAPS server.
+            m_server.AddStreamHandler(new WireduxHTTPHandler(this, Password, registry, gridInfo, UUID.Zero, runLocally, httpPort)); //This handler allows sims to post CAPS for their sims on the CAPS server.
 
             MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
             MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
@@ -391,6 +391,7 @@ namespace OpenSim.Services
 
     public class WireduxHTTPHandler : BaseStreamHandler
     {
+        protected WireduxHandler WIREDUX;
         protected string m_password;
         protected IRegistryCore m_registry;
         protected OSDMap GridInfo;
@@ -399,9 +400,10 @@ namespace OpenSim.Services
         private bool m_runLocal = true;
         private uint m_localPort;
 
-        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID, bool runLocally, uint port) :
-            base("POST", "/WIREDUX")
+        public WireduxHTTPHandler(WireduxHandler wiredux, string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID, bool runLocally, uint port)
+            : base("POST", "/WIREDUX")
         {
+            WIREDUX = wiredux;
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
             GridInfo = gridInfo;
@@ -1673,6 +1675,30 @@ namespace OpenSim.Services
         }
 
         #endregion
+
+        #endregion
+
+        #region Textures
+
+        private OSDMap SizeOfHTTPGetTextureImage(OSDMap map)
+        {
+            OSDMap resp = new OSDMap(1);
+            resp["Size"] = OSD.FromUInteger(0);
+
+            if (map.ContainsKey("Texture"))
+            {
+                Hashtable args = new Hashtable(2);
+                args["method"] = "GridTexture";
+                args["uuid"] = UUID.Parse(map["Texture"].ToString());
+                Hashtable texture = WIREDUX.OnHTTPGetTextureImage(args);
+                if (texture.ContainsKey("str_response_string"))
+                {
+                    resp["Size"] = OSD.FromInteger(Convert.FromBase64String(texture["str_response_string"].ToString()).Length);
+                }
+            }
+
+            return resp;
+        }
 
         #endregion
 
