@@ -57,9 +57,9 @@ using Aurora.Services.DataService;
 using Aurora.Simulation.Base;
 using RegionFlags = Aurora.Framework.RegionFlags;
 
-namespace OpenSim.Services
+namespace Aurora.Services
 {
-    public class WireduxHandler : IService
+    public class WebUIHandler : IService
     {
         public IHttpServer m_server = null;
         public IHttpServer m_server2 = null;
@@ -79,8 +79,8 @@ namespace OpenSim.Services
         public void Start(IConfigSource config, IRegistryCore registry)
         {
             IConfig handlerConfig = config.Configs["Handlers"];
-            string name = handlerConfig.GetString("WireduxHandler", "");
-            string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
+            string name = handlerConfig.GetString(Name, "");
+            string Password = handlerConfig.GetString(Name + "Password", String.Empty);
             bool runLocally = handlerConfig.GetBoolean("RunLocally", false);
             uint httpPort = handlerConfig.GetUInt("WebUIHTTPPort", 80);
             string phpBinPath = handlerConfig.GetString("phpBinPath", string.Empty);
@@ -114,13 +114,13 @@ namespace OpenSim.Services
 
             ISimulationBase simBase = registry.RequestModuleInterface<ISimulationBase>();
 
-            m_server2 = simBase.GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort", 8002));
+            m_server2 = simBase.GetHttpServer(handlerConfig.GetUInt(Name + "TextureServerPort", 8002));
             m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
             m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
-            gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
+            gridInfo[Name + "TextureServer"] = m_server2.ServerURI;
 
-            m_server = simBase.GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort", 8007));
-            m_server.AddStreamHandler(new WireduxHTTPHandler(this, Password, registry, gridInfo, UUID.Zero, runLocally, httpPort)); //This handler allows sims to post CAPS for their sims on the CAPS server.
+            m_server = simBase.GetHttpServer(handlerConfig.GetUInt(Name + "Port", 8007));
+            m_server.AddStreamHandler(new WebUIHTTPHandler(this, Password, registry, gridInfo, UUID.Zero, runLocally, httpPort)); //This handler allows sims to post CAPS for their sims on the CAPS server.
 
             MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
             MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
@@ -389,9 +389,9 @@ namespace OpenSim.Services
         #endregion
     }
 
-    public class WireduxHTTPHandler : BaseStreamHandler
+    public class WebUIHTTPHandler : BaseStreamHandler
     {
-        protected WireduxHandler WIREDUX;
+        protected WebUIHandler WebUI;
         protected string m_password;
         protected IRegistryCore m_registry;
         protected OSDMap GridInfo;
@@ -400,10 +400,10 @@ namespace OpenSim.Services
         private bool m_runLocal = true;
         private uint m_localPort;
 
-        public WireduxHTTPHandler(WireduxHandler wiredux, string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID, bool runLocally, uint port)
-            : base("POST", "/WIREDUX")
+        public WebUIHTTPHandler(WebUIHandler webui, string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID, bool runLocally, uint port)
+            : base("POST", "/WEBUI")
         {
-            WIREDUX = wiredux;
+            WebUI = webui;
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
             GridInfo = gridInfo;
@@ -613,7 +613,7 @@ namespace OpenSim.Services
                 
                 accountService.StoreUserAccount(user);
 
-                IProfileConnector profileData = DataManager.RequestPlugin<IProfileConnector>();
+                IProfileConnector profileData = Aurora.DataManager.DataManager.RequestPlugin<IProfileConnector>();
                 IUserProfileInfo profile = profileData.GetUserProfile(user.PrincipalID);
                 if (profile == null)
                 {
@@ -635,7 +635,7 @@ namespace OpenSim.Services
         {
             OSDMap resp = new OSDMap();
 
-            List<AvatarArchive> temp = DataManager.RequestPlugin<IAvatarArchiverConnector>().GetAvatarArchives(true);
+            List<AvatarArchive> temp = Aurora.DataManager.DataManager.RequestPlugin<IAvatarArchiverConnector>().GetAvatarArchives(true);
 
             OSDArray names = new OSDArray();
             OSDArray snapshot = new OSDArray();
@@ -999,7 +999,7 @@ namespace OpenSim.Services
             {
                 userinfo = agentService.GetUserInfo(uuid);
                 IGridService gs = m_registry.RequestModuleInterface<IGridService>();
-                Services.Interfaces.GridRegion gr = null;
+                GridRegion gr = null;
                 if (userinfo != null)
                 {
                     gr = gs.GetRegionByUUID(UUID.Zero, userinfo.HomeRegionID);
@@ -1092,12 +1092,12 @@ namespace OpenSim.Services
             resp["Finished"] = OSD.FromBoolean(true);
 
             UUID agentID = map["UserID"].AsUUID();
-            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            IAgentInfo GetAgent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
 
             if (GetAgent != null)
             {
                 GetAgent.Flags &= ~IAgentFlags.PermBan;
-                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+                Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
             }
             return resp;
         }
@@ -1105,7 +1105,7 @@ namespace OpenSim.Services
         #region banning
 
         private void doBan(UUID agentID, DateTime? until){
-            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            IAgentInfo GetAgent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
             if (GetAgent != null)
             {
                 GetAgent.Flags &= (until.HasValue) ? ~IAgentFlags.TempBan : ~IAgentFlags.PermBan;
@@ -1114,7 +1114,7 @@ namespace OpenSim.Services
                     GetAgent.OtherAgentInformation["TemperaryBanInfo"] = until.Value.ToString("s");
                     MainConsole.Instance.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
                 }
-                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+                Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
             }
         }
 
@@ -1145,7 +1145,7 @@ namespace OpenSim.Services
             resp["Finished"] = OSD.FromBoolean(true);
 
             UUID agentID = map["UserID"].AsUUID();
-            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            IAgentInfo GetAgent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
 
             if (GetAgent != null)
             {
@@ -1155,7 +1155,7 @@ namespace OpenSim.Services
                 {
                     GetAgent.OtherAgentInformation.Remove("TemperaryBanInfo");
                 }
-                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+                Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
             }
 
             return resp;
@@ -1381,7 +1381,7 @@ namespace OpenSim.Services
             resp["Parcels"] = new OSDArray();
             resp["Total"] = OSD.FromInteger(0);
 
-            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
+            IDirectoryServiceConnector directory = Aurora.DataManager.DataManager.RequestPlugin<IDirectoryServiceConnector>();
 
             if (directory != null && map.ContainsKey("Region") == true)
             {
@@ -1421,7 +1421,7 @@ namespace OpenSim.Services
             UUID parcelID = map.ContainsKey("ParcelInfoUUID") ? UUID.Parse(map["ParcelInfoUUID"].ToString()) : UUID.Zero;
             string parcelName = map.ContainsKey("Parcel") ? map["Parcel"].ToString().Trim() : string.Empty;
 
-            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
+            IDirectoryServiceConnector directory = Aurora.DataManager.DataManager.RequestPlugin<IDirectoryServiceConnector>();
 
             if (directory != null && (parcelID != UUID.Zero || (regionID != UUID.Zero && parcelName != string.Empty)))
             {
@@ -1472,7 +1472,7 @@ namespace OpenSim.Services
             resp["Start"] = start;
             resp["Total"] = 0;
 
-            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            IGroupsServiceConnector groups = Aurora.DataManager.DataManager.RequestPlugin<IGroupsServiceConnector>();
             OSDArray Groups = new OSDArray();
             if (groups != null)
             {
@@ -1547,7 +1547,7 @@ namespace OpenSim.Services
         private OSDMap GetGroup(OSDMap map)
         {
             OSDMap resp = new OSDMap();
-            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            IGroupsServiceConnector groups = Aurora.DataManager.DataManager.RequestPlugin<IGroupsServiceConnector>();
             resp["Group"] = false;
             if (groups != null && (map.ContainsKey("Name") || map.ContainsKey("UUID")))
             {
@@ -1568,7 +1568,7 @@ namespace OpenSim.Services
         {
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(false);
-            IGenericsConnector generics = DataManager.RequestPlugin<IGenericsConnector>();
+            IGenericsConnector generics = Aurora.DataManager.DataManager.RequestPlugin<IGenericsConnector>();
             UUID groupID;
             if (generics != null && map.ContainsKey("Group") == true && map.ContainsKey("Use") && UUID.TryParse(map["Group"], out groupID) == true)
             {
@@ -1592,7 +1592,7 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             resp["GroupNotices"] = new OSDArray();
             resp["Total"] = 0;
-            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            IGroupsServiceConnector groups = Aurora.DataManager.DataManager.RequestPlugin<IGroupsServiceConnector>();
 
             if (map.ContainsKey("Groups") && groups != null && map["Groups"].Type.ToString() == "Array")
             {
@@ -1641,8 +1641,8 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             resp["GroupNotices"] = new OSDArray();
             resp["Total"] = 0;
-            IGenericsConnector generics = DataManager.RequestPlugin<IGenericsConnector>();
-            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            IGenericsConnector generics = Aurora.DataManager.DataManager.RequestPlugin<IGenericsConnector>();
+            IGroupsServiceConnector groups = Aurora.DataManager.DataManager.RequestPlugin<IGroupsServiceConnector>();
             if (generics == null || groups == null)
             {
                 return resp;
@@ -1690,7 +1690,7 @@ namespace OpenSim.Services
                 Hashtable args = new Hashtable(2);
                 args["method"] = "GridTexture";
                 args["uuid"] = UUID.Parse(map["Texture"].ToString());
-                Hashtable texture = WIREDUX.OnHTTPGetTextureImage(args);
+                Hashtable texture = WebUI.OnHTTPGetTextureImage(args);
                 if (texture.ContainsKey("str_response_string"))
                 {
                     resp["Size"] = OSD.FromInteger(Convert.FromBase64String(texture["str_response_string"].ToString()).Length);
