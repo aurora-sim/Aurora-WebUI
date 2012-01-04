@@ -631,7 +631,10 @@ namespace OpenSim.Services
 
             if (Verified)
             {
-                user.UserLevel = 0;
+				if (map.ContainsKey("value"))
+					user.UserLevel = map["value"].AsInteger();
+				else
+					user.UserLevel = 0;
                 accountService.StoreUserAccount(user);
                 IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
                 IAgentInfo agent = con.GetAgent(user.PrincipalID);
@@ -722,6 +725,7 @@ namespace OpenSim.Services
                 resp["UUID"] = OSD.FromUUID (account.PrincipalID);
                 resp["FirstName"] = OSD.FromString (account.FirstName);
                 resp["LastName"] = OSD.FromString (account.LastName);
+                resp["Email"] = OSD.FromString(account.Email);
             }
 
             resp["Verified"] = OSD.FromBoolean (Verified);
@@ -842,6 +846,18 @@ namespace OpenSim.Services
                 auths.SetPassword (userID, "UserAccount", newPassword);
             }
 
+            return resp;
+        }
+		
+		private OSDMap ChangePassword2(OSDMap map)
+        {
+            string Password = map["Password"].AsString();
+            ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
+            UUID userID = map["UUID"].AsUUID();
+            IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
+            OSDMap resp = new OSDMap();
+            auths.SetPassword(userID, "UserAccount", Password);
+            resp["Verified"] = OSD.FromBoolean(true);
             return resp;
         }
 
