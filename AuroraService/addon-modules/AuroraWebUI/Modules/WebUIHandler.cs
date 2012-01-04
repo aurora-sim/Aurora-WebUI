@@ -440,13 +440,9 @@ namespace Aurora.Services
                 if (ValidateUser(httpRequest, map))
                 {
                     method = map["Method"].AsString();
-                    if (method == "Login")
+                    if (method == "Login" || method == "AdminLogin")
                     {
-                        resp = Login(map,false);
-                    }
-                    else if (method == "AdminLogin")
-                    {
-                        resp = Login(map,true);
+                        resp = Login(map, method == "AdminLogin");
                     }
                     else if (APIMethods.ContainsKey(method))
                     {
