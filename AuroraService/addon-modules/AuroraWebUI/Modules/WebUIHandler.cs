@@ -1296,6 +1296,53 @@ namespace Aurora.Services
 
         #region Places
 
+        #region Estate
+
+        private static OSDMap EstateSettings2WebOSD(EstateSettings ES)
+        {
+            OSDMap es = ES.ToOSD();
+
+            es["RedirectGridX"] = (ES.RedirectGridX == null) ? null : es["RedirectGridX"];
+            es["RedirectGridY"] = (ES.RedirectGridY == null) ? null : es["RedirectGridY"];
+
+            OSDArray bans = (OSDArray)es["EstateBans"];
+            OSDArray Bans = new OSDArray(bans.Count);
+            foreach (OSDMap ban in bans)
+            {
+                Bans.Add(OSD.FromUUID(ban["BannedUserID"]));
+            }
+            es["EstateBans"] = Bans;
+
+            return es;
+        }
+
+        private OSDMap GetEstates(OSDMap map)
+        {
+            OSDMap resp = new OSDMap(1);
+            resp["Estates"] = new OSDArray(0);
+
+            IEstateConnector estates = Aurora.DataManager.DataManager.RequestPlugin<IEstateConnector>();
+
+            if (estates != null && map.ContainsKey("Owner"))
+            {
+                Dictionary<string, bool> boolFields = new Dictionary<string, bool>();
+                if (map.ContainsKey("BoolFields") && map["BoolFields"].Type == OSDType.Map)
+                {
+                    OSDMap fields = (OSDMap)map["BoolFields"];
+                    foreach (string field in fields.Keys)
+                    {
+                        boolFields[field] = int.Parse(fields[field]) != 0;
+                    }
+                }
+
+                resp["Estates"] = new OSDArray(estates.GetEstates(map["Owner"].AsUUID(), boolFields).ConvertAll<OSD>(x => EstateSettings2WebOSD(x)));
+            }
+
+            return resp;
+        }
+
+        #endregion
+
         #region Regions
 
         private OSDMap GetRegions(OSDMap map)
