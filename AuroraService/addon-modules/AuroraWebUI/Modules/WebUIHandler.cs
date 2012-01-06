@@ -1347,9 +1347,43 @@ namespace Aurora.Services
             return resp;
         }
 
+        private OSDMap GetEstate(OSDMap map)
+        {
+            OSDMap resp = new OSDMap(1);
+            resp["Failed"] = true;
+
+            IEstateConnector estates = Aurora.DataManager.DataManager.RequestPlugin<IEstateConnector>();
+            if (estates != null && map.ContainsKey("Estate"))
+            {
+                int EstateID;
+                EstateSettings es = null;
+                if (int.TryParse(map["Estate"], out EstateID))
+                {
+                    es = estates.GetEstateSettings(map["Estate"].AsInteger());
+                }
+                else
+                {
+                    es = estates.GetEstateSettings(map["Estate"].AsString());
+                }
+                if (es != null)
+                {
+                    resp.Remove("Failed");
+                    resp["Estate"] = EstateSettings2WebOSD(es);
+                }
+            }
+
+            return resp;
+        }
+
         #endregion
 
         #region Regions
+
+        private static OSDMap GridRegion2WebOSD(GridRegion region){
+            OSDMap regionOSD = region.ToOSD();
+            regionOSD["EstateID"] = Aurora.DataManager.DataManager.RequestPlugin<IEstateConnector>().GetEstateID(region.RegionID);
+            return regionOSD;
+        }
 
         private OSDMap GetRegions(OSDMap map)
         {
@@ -1377,7 +1411,7 @@ namespace Aurora.Services
                 int j = regions.Count <= (start + count) ? regions.Count : (start + count);
                 for (i = start; i < j; ++i)
                 {
-                    Regions.Add(regions[i].ToOSD());
+                    Regions.Add(GridRegion2WebOSD(regions[i]));
                 }
             }
             resp["Start"] = OSD.FromInteger(start);
@@ -1405,7 +1439,7 @@ namespace Aurora.Services
                 }
                 if (region != null)
                 {
-                    resp["Region"] = region.ToOSD();
+                    resp["Region"] = GridRegion2WebOSD(region);
                 }
             }
             return resp;
