@@ -661,7 +661,7 @@ namespace Aurora.Services
 
             if (Verified)
             {
-                user.UserLevel = 0;
+                user.UserLevel = map.ContainsKey("value") ? map["value"].AsInteger() : 0;
                 accountService.StoreUserAccount(user);
                 IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
                 IAgentInfo agent = con.GetAgent(user.PrincipalID);
@@ -752,6 +752,7 @@ namespace Aurora.Services
                 resp["UUID"] = OSD.FromUUID (account.PrincipalID);
                 resp["FirstName"] = OSD.FromString (account.FirstName);
                 resp["LastName"] = OSD.FromString (account.LastName);
+				resp["Email"] = OSD.FromString(account.Email);
             }
 
             resp["Verified"] = OSD.FromBoolean (Verified);
@@ -903,6 +904,11 @@ namespace Aurora.Services
 
             return resp;
         }
+		
+		private OSDMap ChangePassword2(OSDMap map)
+		{
+		    return ForgotPassword(map);
+		}
 
         #endregion
 
