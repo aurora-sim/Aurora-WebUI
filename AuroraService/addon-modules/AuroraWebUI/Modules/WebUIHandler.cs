@@ -1566,6 +1566,8 @@ namespace Aurora.Services
 
         #endregion
 
+        #region Groups
+
         #region GroupRecord
 
         private static OSDMap GroupRecord2OSDMap(GroupRecord group)
@@ -1682,6 +1684,8 @@ namespace Aurora.Services
             return resp;
         }
 
+        #endregion
+
         #region GroupNoticeData
 
         private OSDMap GroupAsNewsSource(OSDMap map)
@@ -1795,6 +1799,56 @@ namespace Aurora.Services
         }
 
         #endregion
+
+        #endregion
+
+        #region Events
+
+        private OSDMap GetEvents(OSDMap map)
+        {
+            uint start = map.ContainsKey("Start") ? map["Start"].AsUInteger() : 0;
+            uint count = map.ContainsKey("Count") ? map["Count"].AsUInteger() : 0;
+            Dictionary<string, bool> sort = new Dictionary<string, bool>();
+            Dictionary<string, object> filter = new Dictionary<string, object>();
+
+            OSDMap resp = new OSDMap();
+            resp["Start"] = start;
+            resp["Total"] = 0;
+            resp["Events"] = new OSDArray(0);
+
+            IDirectoryServiceConnector directory = Aurora.DataManager.DataManager.RequestPlugin<IDirectoryServiceConnector>();
+            if (directory != null)
+            {
+                if (map.ContainsKey("Filter") && map["Filter"].Type == OSDType.Map)
+                {
+                    OSDMap fields = (OSDMap)map["Filter"];
+                    foreach (string field in fields.Keys)
+                    {
+                        filter[field] = fields[field];
+                    }
+                }
+                if (count > 0)
+                {
+                    if (map.ContainsKey("Sort") && map["Sort"].Type == OSDType.Map)
+                    {
+                        OSDMap fields = (OSDMap)map["Sort"];
+                        foreach (string field in fields.Keys)
+                        {
+                            sort[field] = int.Parse(fields[field]) != 0;
+                        }
+                    }
+                    
+                    OSDArray Events = new OSDArray();
+                    directory.GetEvents(start, count, sort, filter).ForEach(delegate(EventData Event){
+                        Events.Add(Event.ToOSD());
+                    });
+                    resp["Events"] = Events;
+                }
+                resp["Total"] = (int)directory.GetNumberOfEvents(filter);
+            }
+
+            return resp;
+        }
 
         #endregion
 
