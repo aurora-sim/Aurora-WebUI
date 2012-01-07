@@ -1421,6 +1421,43 @@ namespace Aurora.Services
             return resp;
         }
 
+        private OSDMap GetRegionsInEstate(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            
+            RegionFlags flags = map.Keys.Contains("RegionFlags") ? (RegionFlags)map["RegionFlags"].AsInteger() : RegionFlags.RegionOnline;
+            uint start = map.Keys.Contains("Start") ? map["Start"].AsUInteger() : 0;
+            uint count = map.Keys.Contains("Count") ? map["Count"].AsUInteger() : 10;
+            Dictionary<string, bool> sort = new Dictionary<string, bool>();
+            if (map.ContainsKey("Sort") && map["Sort"].Type == OSDType.Map)
+            {
+                OSDMap fields = (OSDMap)map["Sort"];
+                foreach (string field in fields.Keys)
+                {
+                    sort[field] = int.Parse(fields[field]) != 0;
+                }
+            }
+
+            resp["Start"] = OSD.FromInteger(start);
+            resp["Count"] = OSD.FromInteger(count);
+            resp["Total"] = OSD.FromInteger(0);
+            resp["Regions"] = new OSDArray(0);
+
+            IRegionData regiondata = Aurora.DataManager.DataManager.RequestPlugin<IRegionData>();
+            if (regiondata != null && map.ContainsKey("Estate"))
+            {
+                List<GridRegion> regions = regiondata.Get(start, count, map["Estate"].AsUInteger(), flags, sort);
+                OSDArray Regions = new OSDArray(regions.Count);
+                regions.ForEach(delegate(GridRegion region)
+                {
+                    Regions.Add(GridRegion2WebOSD(region));
+                });
+                resp["Total"] = regiondata.Count(map["Estate"].AsUInteger(), flags);
+            }
+
+            return resp;
+        }
+
         private OSDMap GetRegion(OSDMap map)
         {
             OSDMap resp = new OSDMap();
