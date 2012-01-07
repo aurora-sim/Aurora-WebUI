@@ -1850,6 +1850,30 @@ namespace Aurora.Services
             return resp;
         }
 
+        private OSDMap CreateEvent(OSDMap map)
+        {
+            OSDMap resp = new OSDMap(1);
+
+            IDirectoryServiceConnector directory = Aurora.DataManager.DataManager.RequestPlugin<IDirectoryServiceConnector>();
+            if(directory != null && (map.ContainsKey("Creator") && map.ContainsKey("Name") && map.ContainsKey("Description") && map.ContainsKey("Category") && map.ContainsKey("Date") && map.ContainsKey("Duration") && map.ContainsKey("Cover") && map.ContainsKey("Region") && map.ContainsKey("Position") && map.ContainsKey("EventFlags") && map.ContainsKey("Maturity"))){
+                resp["Event"] = directory.CreateEvent(
+                    map["Creator"].AsUUID(),
+                    map["Name"].ToString(),
+                    map["Description"].AsString(),
+                    map["Category"].AsString(),
+                    map["Date"].AsDate(),
+                    map["Duration"].AsUInteger(),
+                    map["Cover"].AsUInteger(),
+                    map["Region"].AsString(),
+                    Vector3.Parse(map["Position"].AsString()),
+                    map["EventFlags"].AsUInteger(),
+                    map["Maturity"].AsUInteger()
+                ).ToOSD();
+            }
+
+            return resp;
+        }
+
         #endregion
 
         #region Textures
