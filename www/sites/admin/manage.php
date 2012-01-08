@@ -19,7 +19,7 @@ if($_SESSION[ADMINID]) {
 //DELETE USER START
         if(($_GET[action2] == '$webui_admin_manage_userdelete') and ($_GET[quest] == 'yes')) {
             $found = array();
-            $found[0] = json_encode(array('Method' => 'DeleteUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
+            $found[0] = json_encode(array('Method' => 'DeleteUser', 'WebPassword' => md5(WEBUI_PASSWORD),
                     'UserID' => cleanQuery($_GET[user_id])));
             $do_post_request = do_post_request($found);
         }
@@ -28,7 +28,7 @@ if($_SESSION[ADMINID]) {
 //BAN USER START
         if(($_GET[action2] == '$webui_admin_manage_userban') and ($_GET[quest] == 'yes')) {
             $found = array();
-            $found[0] = json_encode(array('Method' => 'BanUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
+            $found[0] = json_encode(array('Method' => 'BanUser', 'WebPassword' => md5(WEBUI_PASSWORD),
                     'UserID' => cleanQuery($_GET[user_id])));
             $do_post_request = do_post_request($found);
         }
@@ -37,7 +37,7 @@ if($_SESSION[ADMINID]) {
 //UNBAN USER START
         if(($_GET[action2] == '$webui_admin_manage_userunban') and ($_GET[quest] == 'yes')) {
             $found = array();
-            $found[0] = json_encode(array('Method' => 'UnBanUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
+            $found[0] = json_encode(array('Method' => 'UnBanUser', 'WebPassword' => md5(WEBUI_PASSWORD),
                     'UserID' => cleanQuery($_GET[user_id])));
             $do_post_request = do_post_request($found);
         }
@@ -223,7 +223,7 @@ if($_SESSION[ADMINID]) {
             <?
     						$DbLink3 = new DB; 
                     $found = array();
-                		$found[0] = json_encode(array('Method' => 'FindUsers', 'WebPassword' => md5(WIREDUX_PASSWORD),
+                		$found[0] = json_encode(array('Method' => 'FindUsers', 'WebPassword' => md5(WEBUI_PASSWORD),
                       		'UserID' => cleanQuery($_GET[user_id]), 'Start' => cleanQuery($AStart), 'End' => cleanQuery($ALimit), 'Query' => cleanQuery($_POST[query])));
             		    $do_post_request = do_post_request($found);
                     $recieved = json_decode($do_post_request, true);

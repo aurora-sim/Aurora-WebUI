@@ -5,7 +5,7 @@ $DbLink = new DB;
 if($_POST[userdata]=="set")
 {
 $found = array();
-$found[0] = json_encode(array('Method' => 'EditUser', 'WebPassword' => md5(WIREDUX_PASSWORD),
+$found[0] = json_encode(array('Method' => 'EditUser', 'WebPassword' => md5(WEBUI_PASSWORD),
                     'UserID' => cleanQuery($_POST[userid]),
 					'Name' => cleanQuery($_POST[name]),
                     'RLName' => cleanQuery($_POST[rlname]),
@@ -39,7 +39,7 @@ window.location.href='index.php?page=adminedit&userid=".$_POST[userid]."';
 
 
 $found = array();
-$found[0] = json_encode(array('Method' => 'GetProfile', 'WebPassword' => md5(WIREDUX_PASSWORD)
+$found[0] = json_encode(array('Method' => 'GetProfile', 'WebPassword' => md5(WEBUI_PASSWORD)
             , 'UUID' => cleanQuery($_GET['userid'])));
 $do_post_requested = do_post_request($found);
 $recieved = json_decode($do_post_requested);

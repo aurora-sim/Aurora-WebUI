@@ -9,7 +9,7 @@ else
 	if ($_POST["method"] == "Save Notes")
 	{
 		$found = array(); 
-		$found[0] = json_encode(array('Method' => 'AbuseReportSaveNotes', 'WebPassword' => md5(WIREDUX_PASSWORD),
+		$found[0] = json_encode(array('Method' => 'AbuseReportSaveNotes', 'WebPassword' => md5(WEBUI_PASSWORD),
 			'Number' => cleanQuery($_POST["Number"]),
 			'Notes' => cleanQuery($_POST["Notes"])
 		));
@@ -18,14 +18,14 @@ else
 	if ($_POST["method"] == "Mark Complete")
 	{
 		$found = array(); 
-		$found[0] = json_encode(array('Method' => 'AbuseReportMarkComlete', 'WebPassword' => md5(WIREDUX_PASSWORD),
+		$found[0] = json_encode(array('Method' => 'AbuseReportMarkComlete', 'WebPassword' => md5(WEBUI_PASSWORD),
 			'Number' => cleanQuery($_POST["Number"])
 		));
 		do_post_request($found);
 	}
 	
 	$found = array(); 
-	$found[0] = json_encode(array('Method' => 'GetAbuseReports', 'WebPassword' => md5(WIREDUX_PASSWORD),
+	$found[0] = json_encode(array('Method' => 'GetAbuseReports', 'WebPassword' => md5(WEBUI_PASSWORD),
 		'Start' => '1', 'Count' => '10', 'Active' => true));
 	$do_post_request = do_post_request($found);
 	$recieved = json_decode($do_post_request);

@@ -18,7 +18,7 @@ $DbLink->query("SELECT gridstatus,active,color,title,message  FROM ".C_INFOWINDO
 list($GRIDSTATUS,$INFOBOX,$BOXCOLOR,$BOX_TITLE,$BOX_INFOTEXT) = $DbLink->next_record();
 
 $found = array();
-$found[0] = json_encode(array('Method' => 'OnlineStatus', 'WebPassword' => md5(WIREDUX_PASSWORD)));
+$found[0] = json_encode(array('Method' => 'OnlineStatus', 'WebPassword' => md5(WEBUI_PASSWORD)));
 $do_post_request = do_post_request($found);
 $recieved = json_decode($do_post_request);
 $GRIDSTATUS = $recieved->{'Online'};

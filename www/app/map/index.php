@@ -119,7 +119,7 @@ if ($_GET[starty]) {
   $serverUrl = $recieved->{'serverURI'};
   $uuid = str_replace('-', '', $uuid);
   $filename = $serverUrl . "/index.php?method=regionImage" . $uuid;
-  //$mapTextureURL = WIREDUX_TEXTURE_SERVICE.'/index.php?method=MapTexture&zoom=1&x=' . $mapX . '&y=' . $mapY;
+  //$mapTextureURL = WEBUI_TEXTURE_SERVICE.'/index.php?method=MapTexture&zoom=1&x=' . $mapX . '&y=' . $mapY;
   echo 'var tmp_region_image = new Img("' . $filename . '",' . $zoomSize * ($sizeX / 256) . ',' . $zoomSize * ($sizeY / 256) . ');';
   $url = "secondlife://" . $regionName . "/" . ($sizeX / 2) . "/" . ($sizeY / 2);
 ?>

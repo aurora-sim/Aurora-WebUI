@@ -60,7 +60,7 @@ function Form(theForm)
 if($_POST[name]!='')
 {
 	$found = array();
-	$found[0] = json_encode(array('Method' => 'ConfirmUserEmailName', 'WebPassword' => md5(WIREDUX_PASSWORD)
+	$found[0] = json_encode(array('Method' => 'ConfirmUserEmailName', 'WebPassword' => md5(WEBUI_PASSWORD)
 		, 'Name' => cleanQuery($_POST[name])
 		, 'Email' => cleanQuery($_POST[email])));
 	$do_post_requested = do_post_request($found);

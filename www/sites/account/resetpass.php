@@ -46,7 +46,7 @@ if($UUID)
 	$pass = gen_pass();
 
 	$found = array();
-	$found[0] = json_encode(array('Method' => 'ForgotPassword', 'WebPassword' => md5(WIREDUX_PASSWORD)
+	$found[0] = json_encode(array('Method' => 'ForgotPassword', 'WebPassword' => md5(WEBUI_PASSWORD)
 		, 'UUID' => cleanQuery($UUID)
 		, 'Password' => cleanQuery($pass)));
 		

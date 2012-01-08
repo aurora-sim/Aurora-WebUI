@@ -115,7 +115,7 @@ function displayDOB()
 function displayDefaultAvatars()
 {
 	$found = array();
-	$found[0] = json_encode(array('Method' => 'GetAvatarArchives', 'WebPassword' => md5(WIREDUX_PASSWORD)));
+	$found[0] = json_encode(array('Method' => 'GetAvatarArchives', 'WebPassword' => md5(WEBUI_PASSWORD)));
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
 
@@ -133,7 +133,7 @@ function displayDefaultAvatars()
 			{
 				echo "checked />";
 			}
-			echo "<label for=\"$names[$i]\" ><br><img src=\"".WIREDUX_TEXTURE_SERVICE."/index.php?method=GridTexture&uuid=".$snapshot[$i]."\" /></div>";
+			echo "<label for=\"$names[$i]\" ><br><img src=\"".WEBUI_TEXTURE_SERVICE."/index.php?method=GridTexture&uuid=".$snapshot[$i]."\" /></div>";
 		}
 		echo "</td></tr>";
 	}
@@ -461,7 +461,7 @@ function displayDefaultAvatars()
 		$passwordHash = md5(md5($passneu) . ":");
 
 		$found = array();
-		$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD), 'Name' => cleanQuery($_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST])));
+		$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WEBUI_PASSWORD), 'Name' => cleanQuery($_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST])));
 		$do_post_requested = do_post_request($found);
 		$recieved = json_decode($do_post_requested);
 
@@ -500,7 +500,7 @@ function displayDefaultAvatars()
 				$userLevel = 0;
 
 			$found = array();
-			$found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WIREDUX_PASSWORD),
+			$found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WEBUI_PASSWORD),
 						'Name' => cleanQuery($_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST]),
 						'Email' => cleanQuery($_SESSION[EMAIL]),
 						'HomeRegion' => cleanQuery($_SESSION[REGIONID]),

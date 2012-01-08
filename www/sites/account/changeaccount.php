@@ -12,7 +12,7 @@ if ($_SESSION[USERID] == "") {
     list($REGIOCHECK) = $DbLink->next_record();
 
     $found = array();
-    $found[0] = json_encode(array('Method' => 'GetGridUserInfo', 'WebPassword' => md5(WIREDUX_PASSWORD), 'UUID' => cleanQuery($_SESSION[USERID])));
+    $found[0] = json_encode(array('Method' => 'GetGridUserInfo', 'WebPassword' => md5(WEBUI_PASSWORD), 'UUID' => cleanQuery($_SESSION[USERID])));
     $do_post_requested = do_post_request($found);
     $recieved = json_decode($do_post_requested);
     if ($recieved->{'Verified'} == "true") {
@@ -48,7 +48,7 @@ if ($_SESSION[USERID] == "") {
         if ($_POST[passnew] == $_POST[passvalid]) {
 
             $found = array();
-            $found[0] = json_encode(array('Method' => 'ChangePassword', 'WebPassword' => md5(WIREDUX_PASSWORD)
+            $found[0] = json_encode(array('Method' => 'ChangePassword', 'WebPassword' => md5(WEBUI_PASSWORD)
                         , 'UUID' => cleanQuery($_SESSION[USERID])
                         , 'Password' => cleanQuery($_POST[passold])
                         , 'NewPassword' => cleanQuery($_POST[passnew])));
@@ -157,7 +157,7 @@ if ($_SESSION[USERID] == "") {
 
     if ($_POST[Submit4] == $webui_submit) {
         $found = array();
-        $found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WIREDUX_PASSWORD),
+        $found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WEBUI_PASSWORD),
                     'Name' => cleanQuery($_POST[nameNew])));
         $do_post_requested = do_post_request($found);
         $recieved = json_decode($do_post_requested);
@@ -167,7 +167,7 @@ if ($_SESSION[USERID] == "") {
             $ERRORS2 = "<font color=white><b>User already Exists</b></font>";
         } else {
             $found = array();
-            $found[0] = json_encode(array('Method' => 'ChangeName', 'WebPassword' => md5(WIREDUX_PASSWORD)
+            $found[0] = json_encode(array('Method' => 'ChangeName', 'WebPassword' => md5(WEBUI_PASSWORD)
                         , 'UUID' => cleanQuery($_SESSION[USERID])
                         , 'Name' => cleanQuery($_POST[nameNew])));
 

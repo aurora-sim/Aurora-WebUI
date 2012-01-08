@@ -15,9 +15,9 @@ Config.php (basic must settings)
 define("SYSNAME","This_usually_is_what_the_site_is_called");
 define("SYSURL","http://your_aurora_server_ip_or_dns_address");
 define("SYSMAIL","***");
-define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WIREDUX");
-define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
-define("WIREDUX_PASSWORD","***");
+define("WEBUI_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WEBUI");
+define("WEBUI_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
+define("WEBUI_PASSWORD","***");
 
 // Default StartPoint for Map
 $mapstartX=1000;
@@ -55,10 +55,10 @@ define("C_DB_PASS","***");
 8. In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini file, copy the following info
     under the [Handlers] line and ensure the password matches the websites in /settings/config.php
 
-	WireduxHandler = WireduxHandler
-	WireduxHandlerPassword = ***
-	WireduxHandlerPort = 8007
-	WireduxTextureServerPort = 8002
+    WebUIHandler = WebUIHandler
+    WebUIHandlerPort = 8007
+    WebUIHandlerPassword = "***"
+    WebUIHandlerTextureServerPort = 8002
 
 ----- For standalone mode (just running Aurora.exe) -----
 
@@ -66,12 +66,12 @@ define("C_DB_PASS","***");
     and ensure the password matches the websites in /settings/config.php
 
 [Handlers]
-	WireduxHandler = WireduxHandler
-	WireduxHandlerPassword = ***
-	WireduxHandlerPort = 8007
-	WireduxTextureServerPort = 8002
+    WebUIHandler = WebUIHandler
+    WebUIHandlerPort = 8007
+    WebUIHandlerPassword = "***"
+    WebUIHandlerTextureServerPort = 8002
 	
-	## NOTE :- define("WIREDUX_PASSWORD","***"); and WireduxHandlerPassword = *** passwords need to be the same ## 
+	## NOTE :- define("WEBUI_PASSWORD","***"); and WireduxHandlerPassword = *** passwords need to be the same ## 
 	
 	-----------------------------------------------------------------
 
