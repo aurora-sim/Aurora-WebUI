@@ -45,6 +45,7 @@ using Nini.Config;
 using OpenMetaverse;
 using OpenMetaverse.Imaging;
 using OpenMetaverse.StructuredData;
+using EventFlags = OpenMetaverse.DirectoryManager.EventFlags;
 
 using OpenSim.Services.Interfaces;
 using FriendInfo = OpenSim.Services.Interfaces.FriendInfo;
@@ -1855,20 +1856,38 @@ namespace Aurora.Services
             OSDMap resp = new OSDMap(1);
 
             IDirectoryServiceConnector directory = Aurora.DataManager.DataManager.RequestPlugin<IDirectoryServiceConnector>();
-            if(directory != null && (map.ContainsKey("Creator") && map.ContainsKey("Name") && map.ContainsKey("Description") && map.ContainsKey("Category") && map.ContainsKey("Date") && map.ContainsKey("Duration") && map.ContainsKey("Cover") && map.ContainsKey("Region") && map.ContainsKey("Position") && map.ContainsKey("EventFlags") && map.ContainsKey("Maturity"))){
-                resp["Event"] = directory.CreateEvent(
+            if (directory != null && (
+                map.ContainsKey("Creator") && 
+                map.ContainsKey("Region") && 
+                map.ContainsKey("Date") && 
+                map.ContainsKey("Cover") && 
+                map.ContainsKey("Maturity") && 
+                map.ContainsKey("EventFlags") && 
+                map.ContainsKey("Duration") && 
+                map.ContainsKey("Position") && 
+                map.ContainsKey("Name") && 
+                map.ContainsKey("Description") && 
+                map.ContainsKey("Category")
+            )){
+                EventData eventData = directory.CreateEvent(
                     map["Creator"].AsUUID(),
-                    map["Name"].ToString(),
-                    map["Description"].AsString(),
-                    map["Category"].AsString(),
+                    map["Region"].AsUUID(),
+                    map.ContainsKey("Parcel") ? map["Parcel"].AsUUID() : UUID.Zero,
                     map["Date"].AsDate(),
-                    map["Duration"].AsUInteger(),
                     map["Cover"].AsUInteger(),
-                    map["Region"].AsString(),
+                    (EventFlags)map["Maturity"].AsUInteger(),
+                    map["EventFlags"].AsUInteger() | map["Maturity"].AsUInteger(),
+                    map["Duration"].AsUInteger(),
                     Vector3.Parse(map["Position"].AsString()),
-                    map["EventFlags"].AsUInteger(),
-                    map["Maturity"].AsUInteger()
-                ).ToOSD();
+                    map["Name"].AsString(),
+                    map["Description"].AsString(),
+                    map["Category"].AsString()
+                );
+
+                if (eventData != null)
+                {
+                    resp["Event"] = eventData.ToOSD();
+                }
             }
 
             return resp;
