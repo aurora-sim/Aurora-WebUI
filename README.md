@@ -65,16 +65,13 @@ In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini file, copy the followin
 
 ## For standalone mode (just running Aurora.exe)
 In the Aurora-Sim\bin\Configuration\Standalone\StandaloneCommon.ini file, copy the following info under the [Handlers] line and ensure the password matches the websites in /settings/config.php
+
 ```ini
     WebUIHandler = WebUIHandler
     WebUIHandlerPort = 8007
     WebUIHandlerPassword = "***"
     WebUIHandlerTextureServerPort = 8002
 ```
-	
-NOTE :- define("WEBUI_PASSWORD","***"); and WebUIHandlerPassword = "***" passwords need to be the same ## 
-	
-	-----------------------------------------------------------------
 
 # Admin Panel
 The Admin Panel is located at:
