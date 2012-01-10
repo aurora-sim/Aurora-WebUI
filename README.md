@@ -80,7 +80,7 @@ http://yourdomain.com/admin
 To add your user as an Admin Panel User:
 Start Aurora (Aurora.Server in grid mode) and after it has started, type
 
-webui add user
+webui promote user
 
 and fill in the information that is asked for.
 
@@ -91,7 +91,7 @@ Enjoy Aurora WebUI
 To remove a user from the Admin Panel:
 Start Aurora (Aurora.Server in grid mode) and after it has started, type
 
-webui remove user
+webui demote user
 
 and fill in the information that is asked for.
 
