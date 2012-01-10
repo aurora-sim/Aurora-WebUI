@@ -108,12 +108,14 @@ Note: When displaying textures from the texture server they will be resized to 1
 
 1. Dress a avatar up like you want it to look
 2. Take a picture of it and upload this to the grid
-3. in the console of the grid server issue this command 
+3. in the console of the grid server issue this command
+
 ```
 save avatar archive <First> <Last> <Filename> <FolderNameToSaveInto> [<SnapshotUUID>] [<Public>]
 ```
 
 example:
+
 ```
 save avatar archive Skidz Tweak EvilOverlord.database / 00000-0000-0000-0000-00000 1
 ```
@@ -181,6 +183,7 @@ asp_tags = Off
 ```
 
 Change to
+
 ```ini
 short_open_tag = On
 
@@ -203,6 +206,7 @@ error_reporting = E_ALL
 ```
 
 Change to
+
 ```ini
 error_reporting = E_ALL & ~E_NOTICE
 ```
