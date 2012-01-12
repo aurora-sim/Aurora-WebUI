@@ -1400,11 +1400,24 @@ namespace Aurora.Services
             }
 
             IRegionData regiondata = Aurora.DataManager.DataManager.RequestPlugin<IRegionData>();
-            List<GridRegion> regions = regiondata.Get(type,
-                map.ContainsKey("SortRegionName") ? map["SortRegionName"].AsBoolean() : new Nullable<bool>(),
-                map.ContainsKey("SortLocX") ? map["SortLocX"].AsBoolean() : new Nullable<bool>(),
-                map.ContainsKey("SortLocY") ? map["SortLocY"].AsBoolean() : new Nullable<bool>()
-            );
+
+            Dictionary<string, bool> sort = new Dictionary<string, bool>();
+
+            string[] supportedSort = new string[3]{
+                "SortRegionName",
+                "SortLocX",
+                "SortLocY"
+            };
+
+            foreach (string sortable in supportedSort)
+            {
+                if (map.ContainsKey(sortable))
+                {
+                    sort[sortable.Substring(4)] = map[sortable].AsBoolean();
+                }
+            }
+
+            List<GridRegion> regions = regiondata.Get(type, sort);
             OSDArray Regions = new OSDArray();
             if (start < regions.Count)
             {
