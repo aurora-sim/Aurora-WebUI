@@ -49,7 +49,8 @@ define("C_DB_PASS","***");
 3. Follow the instructions onscreen and it will compile and install your module and you are all done with setup.
 
 ## Install WebUI manually
-1. copy the contents of the .Aurora-WebUI/AuroraService/addon-modules/ directory into your ~/Aurora-Sim/addon-modules/ directory
+1. obtain a copy of the [https://github.com/aurora-sim/Aurora-Sim-Optional-Modules](optional modules repository)
+2. copy the Aurora-WebUI directory into your ~/Aurora-Sim/addon-modules/ directory
 2. Run runprebuild.bat or runprebuild2010.bat
 3. Run compile.bat
 
