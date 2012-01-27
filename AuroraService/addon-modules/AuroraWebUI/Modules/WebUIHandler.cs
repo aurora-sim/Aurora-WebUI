@@ -1177,7 +1177,7 @@ namespace OpenSim.Services
             }
 
             List<FriendInfo> friendsList = new List<FriendInfo>(friendService.GetFriends(map["UserID"].AsUUID()));
-            OSDArray friends = new OSDArray(friendsList.Length);
+            OSDArray friends = new OSDArray(friendsList.Count);
             foreach (FriendInfo friendInfo in friendsList)
             {
                 UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, UUID.Parse(friendInfo.Friend));
