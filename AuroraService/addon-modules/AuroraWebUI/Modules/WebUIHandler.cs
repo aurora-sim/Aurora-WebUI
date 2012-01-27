@@ -1176,7 +1176,7 @@ namespace OpenSim.Services
                 return resp;
             }
 
-            FriendInfo[] friendsList = friendService.GetFriends(map["UserID"].AsUUID());
+            List<FriendInfo> friendsList = new List<FriendInfo>(friendService.GetFriends(map["UserID"].AsUUID()));
             OSDArray friends = new OSDArray(friendsList.Length);
             foreach (FriendInfo friendInfo in friendsList)
             {
