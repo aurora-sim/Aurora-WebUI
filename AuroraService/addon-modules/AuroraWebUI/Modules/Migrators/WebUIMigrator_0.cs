@@ -50,83 +50,143 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[20]{
                     new ColumnDefinition{
                         Name = "id",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayTopPanelSlider",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayTemplateSelector",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayStyleSwitcher",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayStyleSizer",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayFontSizer",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayLanguageSelector",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayScrollingText",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayWelcomeMessage",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayLogo",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayLogoEffect",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displaySlideShow",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayMegaMenu",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayDate",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayTime",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayRoundedCorner",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayBackgroundColorAnimation",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayPageLoadTime",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayW3c",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "displayRss",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -145,47 +205,79 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[11]{
                     new ColumnDefinition{
                         Name = "id",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     },
                     new ColumnDefinition{
                         Name = "startregion",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "userdir",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "griddir",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "assetdir",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "lastnames",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "adress",
-                        Type = ColumnTypes.String32
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 32
+                        }
                     },
                     new ColumnDefinition{
                         Name = "region",
-                        Type = ColumnTypes.Text
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Text
+                        }
                     },
                     new ColumnDefinition{
                         Name = "allowRegistrations",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "verifyUsers",
-                        Type = ColumnTypes.String10
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "ForceAge",
-                        Type = ColumnTypes.TinyInt1
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     }
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -204,15 +296,24 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[3]{
                     new ColumnDefinition{
                         Name = "Enabled",
-                        Type = ColumnTypes.String36
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 36
+                        }
                     },
                     new ColumnDefinition{
                         Name = "Picture",
-                        Type = ColumnTypes.String32
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 32
+                        }
                     },
                     new ColumnDefinition{
                         Name = "ArchiveName",
-                        Type = ColumnTypes.String32
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 32
+                        }
                     }
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -231,15 +332,24 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[3]{
                     new ColumnDefinition{
                         Name = "UUID",
-                        Type = ColumnTypes.String36
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 36
+                        }
                     },
                     new ColumnDefinition{
                         Name = "agentIP",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "time",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }
                 }, new IndexDefinition[0]
             ));
@@ -253,19 +363,34 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[5]{
                     new ColumnDefinition{
                         Name = "UUID",
-                        Type = ColumnTypes.String36
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 36
+                        }
                     }, new ColumnDefinition{
                         Name = "code",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }, new ColumnDefinition{
                         Name = "info",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }, new ColumnDefinition{
                         Name = "email",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }, new ColumnDefinition{
                         Name = "time",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }
                 }, new IndexDefinition[0]
             ));
@@ -279,7 +404,34 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[1]{
                     new ColumnDefinition{
                         Name = "name",
-                        Type = ColumnTypes.String100
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 100
+                        }
+                    }
+                }, new IndexDefinition[0]
+            ));
+
+            #endregion
+
+            #region wi_lastnames
+
+            schema.Add(new Rec<string, ColumnDefinition[], IndexDefinition[]>(
+                "wi_lastnames",
+                new ColumnDefinition[]{
+                    new ColumnDefinition{
+                        Name = "name",
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
+                    },
+                    new ColumnDefinition{
+                        Name = "active",
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }
                 }, new IndexDefinition[0]
             ));
@@ -293,25 +445,44 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[7]{
                     new ColumnDefinition{
                         Name = "id",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }, new ColumnDefinition{
                         Name = "rank",
-                        Type = ColumnTypes.Float
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Float
+                        }
                     }, new ColumnDefinition{
                         Name = "active",
-                        Type = ColumnTypes.String30
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 30
+                        }
                     }, new ColumnDefinition{
                         Name = "url",
-                        Type = ColumnTypes.Text
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Text
+                        }
                     }, new ColumnDefinition{
                         Name = "target",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }, new ColumnDefinition{
                         Name = "display",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }, new ColumnDefinition{
                         Name = "parent",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -330,31 +501,52 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[7]{
                     new ColumnDefinition{
                         Name = "serverIP",
-                        Type = ColumnTypes.String64
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 64
+                        }
                     },
                     new ColumnDefinition{
                         Name = "serverPort",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     },
                     new ColumnDefinition{
                         Name = "regionMapTexture",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "locX",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     },
                     new ColumnDefinition{
                         Name = "locY",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     },
                     new ColumnDefinition{
                         Name = "lastcheck",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "failcounter",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     }
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -373,13 +565,22 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[3]{
                     new ColumnDefinition{
                         Name = "pagecase",
-                        Type = ColumnTypes.String100
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 100
+                        }
                     }, new ColumnDefinition{
                         Name = "type",
-                        Type = ColumnTypes.String100
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 100
+                        }
                     }, new ColumnDefinition{
                         Name = "include",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -398,23 +599,37 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[5]{
                     new ColumnDefinition{
                         Name = "gridstatus",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "active",
-                        Type = ColumnTypes.String30
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 30
+                        }
                     },
                     new ColumnDefinition{
                         Name = "color",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "title",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "message",
-                        Type = ColumnTypes.Text
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Text
+                        }
                     }
                 }, new IndexDefinition[0]
             ));
@@ -423,24 +638,38 @@ namespace Aurora.Addon.WebUI.Migrators
 
             #region wi_startscreen_news
 
-            schema.Add(new Rec<string,ColumnDefinition[],IndexDefinition[]>(
+            schema.Add(new Rec<string, ColumnDefinition[], IndexDefinition[]>(
                 "wi_startscreen_news",
                 new ColumnDefinition[5]{
                     new ColumnDefinition{
                         Name = "id",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     }, new ColumnDefinition{
                         Name = "title",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }, new ColumnDefinition{
                         Name = "message",
-                        Type = ColumnTypes.Text
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Text
+                        }
                     }, new ColumnDefinition{
                         Name = "time",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 10
+                        }
                     }, new ColumnDefinition{
                         Name = "user",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -459,23 +688,38 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[5]{
                     new ColumnDefinition{
                         Name = "serverIP",
-                        Type = ColumnTypes.String64
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 64
+                        }
                     },
                     new ColumnDefinition{
                         Name = "serverPort",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     },
                     new ColumnDefinition{
                         Name = "version",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "lastcheck",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 10
+                        }
                     },
                     new ColumnDefinition{
                         Name = "failcounter",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     }
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -494,23 +738,38 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[5]{
                     new ColumnDefinition{
                         Name = "picture",
-                        Type = ColumnTypes.String64
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 64
+                        }
                     },
                     new ColumnDefinition{
                         Name = "picturethumbnail",
-                        Type = ColumnTypes.String64
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 64
+                        }
                     },
                     new ColumnDefinition{
                         Name = "description",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "active",
-                        Type = ColumnTypes.TinyInt1
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 1
+                        }
                     },
                     new ColumnDefinition{
                         Name = "rank",
-                        Type = ColumnTypes.Integer11
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.Integer,
+                            Size = 11
+                        }
                     }
                 }, new IndexDefinition[1]{
                     new IndexDefinition{
@@ -529,59 +788,101 @@ namespace Aurora.Addon.WebUI.Migrators
                 new ColumnDefinition[14]{
                     new ColumnDefinition{
                         Name = "UUID",
-                        Type = ColumnTypes.String36
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 36
+                        }
                     },
                     new ColumnDefinition{
                         Name = "username",
-                        Type = ColumnTypes.String32
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 32
+                        }
                     },
                     new ColumnDefinition{
                         Name = "lastname",
-                        Type = ColumnTypes.String32
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 32
+                        }
                     },
                     new ColumnDefinition{
                         Name = "passwordHash",
-                        Type = ColumnTypes.String32
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 32
+                        }
                     },
                     new ColumnDefinition{
                         Name = "passwordSalt",
-                        Type = ColumnTypes.String32
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 32
+                        }
                     },
                     new ColumnDefinition{
                         Name = "realname1",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "realname2",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "adress1",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "zip1",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "city1",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "country1",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "emailadress",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "agentIP",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     },
                     new ColumnDefinition{
                         Name = "active",
-                        Type = ColumnTypes.String255
+                        Type = new ColumnTypeDef{
+                            Type = ColumnType.String,
+                            Size = 255
+                        }
                     }
                 }, new IndexDefinition[2]{
                     new IndexDefinition{
