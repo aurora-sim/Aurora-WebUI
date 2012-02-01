@@ -4,7 +4,7 @@
   <div id="ContentHeaderRight">
   <h5><a <?= "onclick=\"window.open('".SYSURL."app/map/index.php','mywindow')\"" ?> style="float:right; display:inline-block;"><? echo $webui_fullscreen; ?></a></h5></div>
 
-<br /><br /><br /><br /><br />
+<div class="clear"></div>
 
   <div id="region_map">
 

@@ -56,7 +56,7 @@ function Form(theForm)
 }
 //-->
 </script>
-<?
+<?php
 if($_POST[name]!='')
 {
 	$found = array();
@@ -121,39 +121,41 @@ if($_POST[name]!='')
 
 
 <div id="content">
-  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderLeft"><h5><?php echo SYSNAME ?></h5></div>
   <div id="ContentHeaderCenter"></div>
-  <div id="ContentHeaderRight"><h5><? echo $webui_forgot_password; ?></h5></div> 
+  <div id="ContentHeaderRight"><h5><?php echo $webui_forgot_password; ?></h5></div> 
   <div id="forget_pass">
-  <div id="info"><p><? echo $webui_forgot_password_info ?></p></div>
+  <div id="info"><p><?php echo $webui_forgot_password_info ?></p></div>
+  
+  <div id="annonce10">
   <form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
     <table>
       <tr>
         <td>
           <table>
             <tr>
-              <td class="even"><? echo $webui_avatar_name ?>*</td>
+              <td class="even"><?php echo $webui_avatar_name ?>*</td>
               <td class="even" width="50%">
                 <div class="roundedinput">
-                  <input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?=$_POST[name]?>">
+                  <input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?php echo $_POST[name]?>">
                 </div>
               </td>
             </tr>
                 
             <tr>
-              <td class="odd"><? echo $webui_email ?>*</td>
+              <td class="odd"><?php echo $webui_email ?>*</td>
               <td class="odd">
                 <div class="roundedinput">
-                  <input id="forgot_pass_input" name="email" type="text" size="40" maxlength="50" value="<?=$_POST[email]?>">
+                  <input id="forgot_pass_input" name="email" type="text" size="40" maxlength="50" value="<?php echo $_POST[email]?>">
                 </div>
               </td>
             </tr>
                 
             <tr>
-              <td class="even"><? echo $webui_confirm ?> <? echo $webui_email ?>*</td>
+              <td class="even"><?php echo $webui_confirm ?> <?php echo $webui_email ?>*</td>
               <td class="even">
                 <div class="roundedinput">
-                  <input id="forgot_pass_input" name="email2" type="text" size="40" maxlength="50" value="<?=$_POST[email2]?>">
+                  <input id="forgot_pass_input" name="email2" type="text" size="40" maxlength="50" value="<?php echo $_POST[email2]?>">
                 </div>
               </td>
             </tr>
@@ -163,8 +165,8 @@ if($_POST[name]!='')
               <td class="odd">
                 <div class="center">
                   <input type="hidden" name="action" value="check">
-                  <button id="forgot_pass_bouton" name="Submit" type="Submit"><?=$webui_submit ?></button>
-                  <!-- <input id="forgot_pass_bouton" type="submit" name="Submit" value="<? // echo $webui_submit ?>"></td> -->
+                  <button id="forgot_pass_bouton" name="Submit" type="Submit"><?php echo $webui_submit ?></button>
+                  <!-- <input id="forgot_pass_bouton" type="submit" name="Submit" value="<?php // echo $webui_submit ?>"></td> -->
               </div>
             </tr>
           </table>
@@ -172,5 +174,6 @@ if($_POST[name]!='')
       </tr>
     </table>
   </form>
+  </div>
   </div>
 </div>

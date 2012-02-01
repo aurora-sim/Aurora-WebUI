@@ -27,7 +27,7 @@ body.webui {
 
 /* Translator and date Container */
 .webui #topcontainer {
-	width: 920px;
+	width: 900px;
   margin-left: auto;
   margin-right: auto;
   z-index: 50;
@@ -118,7 +118,7 @@ div.scrollingtext {
 
 /* The Container */
 .webui #container {
-	width: 900px;
+	width: 880px;
   /* background-image: url("background_06.png"); */
   background-color: #000000;
   background-repeat: repeat;
@@ -150,7 +150,7 @@ div.scrollingtext {
 }
 
 #headerimages a {
-  width: 900px;
+  width: 100%;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -182,11 +182,11 @@ div.scrollingtext {
 /* content*/
 .webui #content {
   float:left;
-  width: 880px;
+  width: 870px;
   margin: 0 auto;
   margin-top:10px;
   font-size: 12px;
-  padding: 10px;
+  padding: 5px; 
 	background-color: #1a1a1a;
   text-align:left;
   color:#eee; 
@@ -212,7 +212,7 @@ div#ContentHeaderRight {
 margin: 10px;
 width: 30%;
 background-color: transparent;
-float: left;
+float: right;
 text-align:right;
 }
 
@@ -294,12 +294,14 @@ a {cursor:pointer; font-size: 1em; color:#ffa500; outline: none; text-decoration
 a:hover {text-decoration: underline;}
 img {border: 0px;}
 table {font-size: 100%; border:0px;}
+table p {line-height:21px;margin:0px;padding:0px;}
+p {line-height:21px;margin:0px;padding-bottom:0px;}
 
-h1 {font-size: 24px; color:#ffffff;}
-h2 {font-size: 18px; color:#ffffff;}
-h3 {font-size: 14px; color:#ffffff;}
-h4 {font-size: 12px; color:#ffffff;}
-h5 {font-size: 10px; color:#ffffff;}
+h1 {font-size: 24px; color:#ffffff;margin:0px;padding:0px;}
+h2 {font-size: 18px; color:#ffffff;margin:0px;padding:0px;}
+h3 {font-size: 14px; color:#ffffff;margin:0px;padding-bottom:5px;}
+h4 {font-size: 12px; color:#ffffff;margin:0px;padding:0px;}
+h5 {font-size: 10px; color:#ffffff;margin:0px;padding:0px;}
 
 .webui #header h1 span {display:none;}
 .webui #header h2 span {display:none;}
@@ -422,6 +424,7 @@ h5 {font-size: 10px; color:#ffffff;}
 #chat a:hover {text-decoration: underline;}
 
 #gallery {width:100%;background-color: transparent;float:left;}
+#gallery img {width:165px;}
 #gallery table {color: #ffffff; width: 100%;}
 #gallery a {color: #ffa500; text-decoration: none;}
 #gallery a:visited {text-decoration: none}
@@ -461,7 +464,7 @@ h5 {font-size: 10px; color:#ffffff;}
 
 #profil_picture {
   float: right;
-  margin-top: -120px;
+  margin-top: -95px;
 }
 
 #profil_picture img {
@@ -624,7 +627,7 @@ div#map-container {width: 100%; height: 100%}
 #map-nav-right {position: absolute; top: 70px; left: 115px; width: 30px; height: 30px;}
 #map-nav-center {position: absolute; top: 70px; left: 85px; width: 30px; height: 30px;}
 
-#topright1 {position: relative; float:left; margin-top: -45px; margin-left: 550px;}
+#topright1 {position: relative; float:left; margin-top: -28px; margin-left: 550px;}
 
 #map-coord-text {position: absolute; top: 15px; right: 70px;}
 #map-coord-x {position: absolute; top: 1px; right: 180px; color: #111111;}
@@ -663,27 +666,25 @@ div#map-container {width: 100%; height: 100%}
 #news a:active {text-decoration: none}
 #news a:hover {text-decoration: underline;}
 
+.author {font-size: 10px;padding-top:5px;padding-bottom:5px;}
+
 .news_time {
 width:60%;
 float: left;
-padding: 20px;
-margin: 5px;
+padding: 10px;
 background: #000000;
 font-size: 12px;
 }
 .news_title {
-width: 93%;
+width: 97.5%;
 float: left;
-padding: 20px;
-margin: 5px;
+padding: 10px;
 background: #000000;
 font-size: 12px;
 }
 .news_content {
-width: 93%;
 float: left;
-padding: 20px;
-margin: 5px;
+padding: 10px;
 background: #000000;
 font-size: 12px;
 }
@@ -692,7 +693,6 @@ font-size: 12px;
 width: 94%;
 float: left;
 padding: 20px;
-margin: 5px;
 background: #000000;
 font-size: 12px;
 }
@@ -728,7 +728,7 @@ font-size: 12px;
 #download1 a, #download2 a, #download3 a   {
   font-size: 14px; 
   outline:none;
-  padding:5px;  
+  padding: 5px;
   background-color: #ffa500;
   background-image: url("shadow_02.png");
   background-repeat: repeat-x;
@@ -747,8 +747,8 @@ font-size: 12px;
 
 #addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10 {
 float: left;
-width: 93.4%;
-padding: 20px;
+width: 96.25%;
+padding: 10px;
 margin: 5px;
 background: #000000;
 font-size: 12px;
@@ -907,9 +907,8 @@ td.gridbox_br {
   background-color: #CCCC99;
   border-top: 2px solid #CCCC55;
   border-bottom: 2px solid #CCCC55;
-  padding-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-left: 10px;
+  margin: 5px;
   color: #000000;
   float: left;
   width:97.5%;
@@ -919,9 +918,8 @@ td.gridbox_br {
   background-color: #9999CC;
   border-top: 2px solid #5555CC;
   border-bottom: 2px solid #5555CC;
-  padding-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-left: 10px;
+  margin: 5px;
   color: #000000;
   float: left;
   width:97.5%;
@@ -931,9 +929,8 @@ td.gridbox_br {
   background-color: #CC9999;
   border-top: 2px solid #CC5555;
   border-bottom: 2px solid #CC5555;
-  padding-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-left: 10px;
+  margin: 5px;
   color: #000000;
   float: left;
   width:97.5%;
@@ -943,9 +940,8 @@ td.gridbox_br {
   background-color: #99CC99;
   border-top: 2px solid #55CC55;
   border-bottom: 2px solid #55CC55;
-  padding-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-left: 10px;
+  margin: 5px;
   color: #000000;
   float: left;
   width:97.5%;
@@ -1069,10 +1065,10 @@ a.link3 {color:#0100aa;}
 /* Stardust Additionnal Css */
 #island1, #island2, #island3, #island4, #island5 {
   float: left;
-  width: 93.4%;
+  width: 100%;
   padding: 20px;
   margin: 5px;
-  background: #000000;
+  background: #1a1a1a;
   font-size: 12px;
 }
 
@@ -1082,13 +1078,14 @@ a.link3 {color:#0100aa;}
   height: 79px;
 }
 
-#island_info_part1, #island_info_part2 {
+.islandinfo2 {
 float: left;
-width: 87%;
+width: 44.2%;
 padding: 20px;
 margin: 5px;
-background: #000000;
+background: #1a1a1a;
 font-size: 12px;
+  min-height:155px;
 }
 
 #island_description1, #island_description2, #island_description3, 
@@ -1134,6 +1131,15 @@ font-size: 12px;
 /* End of Stardust Additionnal Css */
 
 
+#PeopleSearch  {width:100%; background-color: transparent; float:left;}
+#PeopleSearch table {color: #ffffff; width: 100%; float:left;}
+#PeopleSearch td {;}
+#PeopleSearch a {color: #ffa500; text-decoration: none;}
+#PeopleSearch a:visited {text-decoration: none}
+#PeopleSearch a:active {text-decoration: none}
+#PeopleSearch a:hover {text-decoration: underline;}
+
+
 /* jQuery */
 div.section {clear: left;}
 
@@ -1146,13 +1152,61 @@ text-align: center;
 font-family: verdana, arial, sans-serif;
 }
 
+.annonce1 {
+float: left;
+width: 93.4%;
+padding: 20px;
+margin: 5px;
+background: #000000;
+font-size: 12px;
+}
+
+.annonce2 {
+float: left;
+width: 405px;
+padding: 10px;
+margin: 5px;
+background: #000000;
+font-size: 16px;
+}
+
+.annonce2home{
+float: left;
+width: 385px;
+height: 270px;
+padding: 20px;
+padding-top:10px;
+margin: 5px;
+background: #000000;
+font-size: 12px;
+}
+
+.annonce3 {
+float: left;
+width: 27.3%;
+padding: 20px;
+padding-top:10px;
+margin: 5px;
+background: #000000;
+font-size: 12px;
+}
+
+.infos3 {
+float: left;
+width: 27.3%;
+
+padding: 20px;
+padding-top:10px;
+margin: 5px;
+background: #000000;
+font-size: 12px;
+}
 
 #gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5 {
 float: left;
 width: 140px;
 height: 30px;
 padding: 10px;
-padding-top:10px;
 margin: 5px;
 background: #000000;
 font-size: 12px;
@@ -1160,9 +1214,8 @@ font-size: 12px;
 
 div#annonce1, div#info1, div#step1, div#aide1, div#download1 {
 float: left;
-width: 27.3%;
-padding: 20px;
-padding-top:10px;
+width: 260px;
+padding: 10px;
 margin: 5px;
 background: #000000;
 font-size: 12px;
@@ -1170,9 +1223,8 @@ font-size: 12px;
 
 div#annonce2, div#info2, div#step2, div#aide2, div#download2 {
 float: left;
-width: 27.3%;
-padding: 20px;
-padding-top:10px;
+width: 260px;
+padding: 10px;
 margin: 5px;
 background: #000000;
 font-size: 12px;
@@ -1180,7 +1232,16 @@ font-size: 12px;
 
 div#annonce3, div#info3, div#step3, div#aide3, div#download3 {
 float: left;
-width: 27.3%;
+width: 260px;
+padding: 10px;
+margin: 5px;
+background: #000000;
+font-size: 12px;
+}
+
+.video3 {
+float: left;
+width: 27.58%;
 padding: 20px;
 padding-top:10px;
 margin: 5px;
@@ -1192,8 +1253,7 @@ div#annonce4 {
 float: left;
 width: 27.3%;
 padding: 20px;
-padding-top:10px;
-margin: 5px;
+margin: 10px;
 background: #000000;
 font-size: 12px;
 }
@@ -1202,8 +1262,7 @@ div#annonce5 {
 float: left;
 width: 27.3%;
 padding: 20px;
-padding-top:10px;
-margin: 5px;
+margin: 10px;
 background: #000000;
 font-size: 12px;
 }
@@ -1212,16 +1271,15 @@ div#annonce6 {
 float: left;
 width: 27.3%;
 padding: 20px;
-padding-top:10px;
-margin: 5px;
+margin: 10px;
 background: #000000;
 font-size: 12px;
 }
 
 div#annonce7 {
 float: left;
-width: 93.4%;
-padding: 20px;
+width: 96.5%;
+padding: 10px;
 margin: 5px;
 background: #000000;
 font-size: 12px;
@@ -1229,8 +1287,8 @@ font-size: 12px;
 
 div#annonce10 {
 float: left;
-width: 93.4%;
-padding: 20px;
+width: 96.5%;
+padding: 10px;
 margin: 5px;
 background: #000000;
 font-size: 12px;
@@ -1254,6 +1312,9 @@ div.plain  {background-color: #6af; text-align: center;}
 #twitter {float:right; right: 20px;}
 #twitter a {text-decoration: none; font-family: arial; vertical-align: top;}
 #twitter img {border: none; float: left;}
+
+#tweet, #like, #google, #addthis {float:left; padding-left: 5px;}
+#paypal {float:right; padding-left: 5px;}
  
 div.desc {margin: 10px;}
 

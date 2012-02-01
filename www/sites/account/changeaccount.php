@@ -206,6 +206,8 @@ if ($_SESSION[USERID] == "") {
 ?>
 
 
+
+
 <div id="content">
     <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
     <div id="ContentHeaderCenter"></div>
@@ -216,12 +218,15 @@ if ($_SESSION[USERID] == "") {
             <p><? echo $webui_change_account_info ?></p>
         </div>
         
-        <!-- Change Start Region -->         
+        <!-- Change Start Region -->
+		
+		<div id="annonce7">     
         <table>
             <? if (($REGIOCHECK == "0") or ($REGIOCHECK == "1")) { ?>
             <tr>
                 <td colspan="2">
-                    <div align="center">
+                    <div>
+
                         <strong><? echo $webui_change_home_region ?> </strong>
                     </div>
                 </td>
@@ -257,9 +262,11 @@ if ($_SESSION[USERID] == "") {
             
             <? } ?>
         </table>
+		</div>
               
-        <br />
-        
+        <div id="annonce7">
+
+
         <!-- Change password -->      
         <table>
             <tr>
@@ -300,10 +307,13 @@ if ($_SESSION[USERID] == "") {
                 </tr>
             </form>
         </table>
-        
-        <br />
-        
-        <!-- Change Email --> 
+		</div>
+
+
+
+
+        <!-- Change Email -->
+		<div id="annonce7">
         <table>
             <tr>
                 <td colspan="2"><div align="center"><strong><? echo $webui_change_email; ?></strong></div></td>
@@ -335,10 +345,12 @@ if ($_SESSION[USERID] == "") {
                 </tr>
             </form>
         </table>
+		</div>
 
-        <br />                                   
-        
-        <!-- Change Name --> 
+
+
+        <!-- Change Name -->
+		<div id="annonce7">
         <table>
             <tr>
                 <td colspan="2">
@@ -368,10 +380,13 @@ if ($_SESSION[USERID] == "") {
                 </tr>
             </form>
         </table>
+		</div>
+     
 
-        <br />
-                       
+
+
         <!-- Purge Avatar Appearance -->
+		<div id="annonce7">
         <table>
             <tr>
                 <td colspan="2">
@@ -399,6 +414,7 @@ if ($_SESSION[USERID] == "") {
                 </tr>
             </form>
         </table>
+		</div>		
     </div>
 </div>
 <? } ?>
