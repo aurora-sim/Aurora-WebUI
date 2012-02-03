@@ -39,7 +39,7 @@ namespace Aurora.Addon.WebUI.Migrators
         public WebUI_0()
         {
             Version = new Version(0, 0, 0);
-            MigrationName = "WebUI";
+            MigrationName = "Wiredux";
 
             schema = new List<Rec<string, ColumnDefinition[], IndexDefinition[]>>(6);
 
@@ -52,7 +52,8 @@ namespace Aurora.Addon.WebUI.Migrators
                         Name = "id",
                         Type = new ColumnTypeDef{
                             Type = ColumnType.Integer,
-                            Size = 11
+                            Size = 11,
+                            auto_increment = true
                         }
                     },
                     new ColumnDefinition{

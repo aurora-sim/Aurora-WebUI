@@ -58,8 +58,136 @@ using RegionFlags = Aurora.Framework.RegionFlags;
 
 namespace OpenSim.Services
 {
+    public class WireduxConnector : IAuroraDataPlugin
+    {
+        private bool m_enabled = false;
+        public bool Enabled
+        {
+            get { return m_enabled; }
+        }
+
+        private string m_Handler = string.Empty;
+        public string Handler
+        {
+            get
+            {
+                return m_Handler;
+            }
+        }
+
+        private string m_HandlerPassword = string.Empty;
+        public string HandlerPassword
+        {
+            get
+            {
+                return m_HandlerPassword;
+            }
+        }
+
+        private uint m_HandlerPort = 0;
+        public uint HandlerPort
+        {
+            get
+            {
+                return m_HandlerPort;
+            }
+        }
+
+        private uint m_TexturePort = 0;
+        public uint TexturePort
+        {
+            get
+            {
+                return m_TexturePort;
+            }
+        }
+
+        private IGenericData GD;
+        private string ConnectionString = "";
+
+        #region console wrappers
+
+        private void Info(object message)
+        {
+            MainConsole.Instance.Info("[" + Name + "]: " + message.ToString());
+        }
+
+        private void Warn(object message)
+        {
+            MainConsole.Instance.Warn("[" + Name + "]: " + message.ToString());
+        }
+
+        #endregion
+
+        #region IAuroraDataPlugin Members
+
+        public string Name
+        {
+            get
+            {
+                return "WireduxConnector";
+            }
+        }
+
+        private void handleConfig(IConfigSource m_config)
+        {
+            IConfig config = m_config.Configs["Handlers"];
+            if (config == null)
+            {
+                m_enabled = false;
+                Warn("not loaded, no configuration found.");
+                return;
+            }
+
+            m_Handler = config.GetString("WireduxHandler", string.Empty);
+            m_HandlerPassword = config.GetString("WireduxHandlerPassword", string.Empty);
+            m_HandlerPort = config.GetUInt("WireduxHandlerPort", 0);
+            m_TexturePort = config.GetUInt("WireduxTextureServerPort", 0);
+
+            if (Handler == string.Empty || HandlerPassword == string.Empty || HandlerPort == 0 || TexturePort == 0)
+            {
+                m_enabled = false;
+                Warn("Not loaded, configuration missing.");
+                return;
+            }
+
+            IConfig dbConfig = m_config.Configs["DatabaseService"];
+            if (dbConfig != null)
+            {
+                ConnectionString = dbConfig.GetString("ConnectionString", String.Empty);
+            }
+
+            if (ConnectionString == string.Empty)
+            {
+                m_enabled = false;
+                Warn("not loaded, no storage parameters found");
+                return;
+            }
+
+            m_enabled = true;
+        }
+
+        public void Initialize(IGenericData GenericData, IConfigSource source, IRegistryCore simBase, string DefaultConnectionString)
+        {
+            handleConfig(source);
+            if (!Enabled)
+            {
+                Warn("not loaded, disabled in config.");
+                return;
+            }
+            DataManager.RegisterPlugin(this);
+
+            GD = GenericData;
+            GD.ConnectToDatabase(ConnectionString, "Wiredux", true);
+        }
+
+        #endregion
+    }
+
     public class WireduxHandler : IService
     {
+        private WireduxConnector m_connector;
+
         private static readonly ILog m_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         public IHttpServer m_server = null;
         public IHttpServer m_server2 = null;
@@ -78,42 +206,43 @@ namespace OpenSim.Services
 
         public void Start(IConfigSource config, IRegistryCore registry)
         {
-            if (config.Configs["GridInfoService"] != null)
-                m_servernick = config.Configs["GridInfoService"].GetString("gridnick", m_servernick);
-            m_registry = registry;
-            IConfig handlerConfig = config.Configs["Handlers"];
-            string name = handlerConfig.GetString("WireduxHandler", "");
-            if (name != Name)
-                return;
-            string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
-            if (Password != "")
+            m_connector = DataManager.RequestPlugin<WireduxConnector>();
+            if (m_connector == null || m_connector.Enabled == false || m_connector.Handler != Name)
             {
-                IConfig gridCfg = config.Configs["GridInfoService"];
-                OSDMap gridInfo = new OSDMap();
-                if (gridCfg != null)
+                return;
+            }
+
+            if (config.Configs["GridInfoService"] != null)
+            {
+                m_servernick = config.Configs["GridInfoService"].GetString("gridnick", m_servernick);
+            }
+            m_registry = registry;
+
+            IConfig gridCfg = config.Configs["GridInfoService"];
+            OSDMap gridInfo = new OSDMap();
+            if (gridCfg != null)
+            {
+                if (gridCfg.GetString("gridname", "") != "" && gridCfg.GetString("gridnick", "") != "")
                 {
-                    if (gridCfg.GetString("gridname", "") != "" && gridCfg.GetString("gridnick", "") != "")
+                    foreach (string k in gridCfg.GetKeys())
                     {
-                        foreach (string k in gridCfg.GetKeys())
-                        {
-                            gridInfo[k] = gridCfg.GetString(k);
-                        }
+                        gridInfo[k] = gridCfg.GetString(k);
                     }
                 }
-
-                m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
-                //This handler allows sims to post CAPS for their sims on the CAPS server.
-                m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero));
-                m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
-                m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
-                m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
-                gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
-
-                MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui add user", "Deprecated alias for webui promote user.", "webui add user", PromoteUser);
-                MainConsole.Instance.Commands.AddCommand("webui remove user", "Deprecated alias for webui demote user.", "webui remove user", DemoteUser);
             }
+
+            m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(m_connector.HandlerPort);
+            //This handler allows sims to post CAPS for their sims on the CAPS server.
+            m_server.AddStreamHandler(new WireduxHTTPHandler(m_connector.HandlerPassword, registry, gridInfo, UUID.Zero));
+            m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(m_connector.TexturePort);
+            m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
+            m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
+            gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
+
+            MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui add user", "Deprecated alias for webui promote user.", "webui add user", PromoteUser);
+            MainConsole.Instance.Commands.AddCommand("webui remove user", "Deprecated alias for webui demote user.", "webui remove user", DemoteUser);
         }
 
         public void FinishedStartup()
