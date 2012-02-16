@@ -7,7 +7,7 @@ ul{list-style:none;}
 .mega-menu .sub ul {display: block;}
 
 #mega-menu-1 {
-font: normal 13px Arial, sans-serif; 
+/* font: normal 13px Arial, sans-serif; */
 list-style: none; 
 position: relative; 
 padding: 0px; 
