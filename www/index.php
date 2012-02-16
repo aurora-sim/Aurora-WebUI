@@ -152,6 +152,14 @@ if ($_POST[Submit] == $webui_admin_login) {
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" href="templates/no_js.css" type="text/css" />
   <link rel="stylesheet" href="<?php echo $template_css ?>" type="text/css" />
+  
+  <?php if($displayGoogleFonts) { ?>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=<?php echo $GoogleFontsList ?>">
+    <?php echo "<style>
+					body.webui {font-family: '$GoogleFontsBody', Verdana, Arial;   font-size: 100%;} 
+					#mega-menu-1 {font-family: '$GoogleFontsMenu',Verdana, Arial; font-size: 14px;}
+				</style>" ?>
+  <?php } ?>
 
   <link rel="shortcut icon" href="<?php echo $favicon_image?>" />
   <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
