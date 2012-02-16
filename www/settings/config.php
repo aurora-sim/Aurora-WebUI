@@ -113,6 +113,14 @@ $scrollingTextMessage = "Welcome!         Bienvenue!          Hola!";
 // $displayRss = true;
 
 
+################### Google Fonts Settings  #####################
+$displayGoogleFonts = false;
+// font list @ http://www.google.com/webfont
+$GoogleFontsList = "Tangerine|Glegoo|Exo|Asap|Acme|Viga";
+$GoogleFontsBody = "Exo";
+$GoogleFontsMenu = "Viga";
+
+
 ############ Delete Unconfirmed accounts ################
 // e.g. 24 for 24 hours  leave empty for no timed delete
 $unconfirmed_deltime="24";
