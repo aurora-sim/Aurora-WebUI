@@ -1,8 +1,8 @@
 body {
 	margin: 0 auto;
 	padding: 0;
-	width: 100%;
-	font: 75%/120% Arial, Helvetica, sans-serif;
+        /* font-size: 100%; */
+        /* font-family: Verdana, Arial, Helvetica, sans-serif; */
 	background-color:#fff;
 }
 a:focus {
