@@ -5,8 +5,8 @@ html {width: 100%; height: 100%;}
 body.webui {
   margin: 0px;
   padding: 0px;
-  font-size: 100%;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  /* font-size: 100%; */
+  /* font-family: Verdana, Arial, Helvetica, sans-serif; */
   text-align: center;
   color:#eee;
   /* background: #9a9a9a url("background_01.jpg") fixed 50% 0% repeat-x; */
