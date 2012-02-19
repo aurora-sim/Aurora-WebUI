@@ -9,7 +9,6 @@ Please remember to backup your database regularly.
 1. Unzip & Upload these files to your webserver.
 2. Edit "./settings/config.php"
 3. Make a backup of your database ;)
-4. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
 
 Config.php (basic must settings)
 

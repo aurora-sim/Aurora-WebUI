@@ -912,25 +912,6 @@ namespace Aurora.Addon.WebUI.Migrators
         protected override void DoCreateDefaults(IDataConnector genericData)
         {
             EnsureAllTablesInSchemaExist(genericData);
-        }
-
-        protected override bool DoValidate(IDataConnector genericData)
-        {
-            return TestThatAllTablesValidate(genericData);
-        }
-
-        protected override void DoMigrate(IDataConnector genericData)
-        {
-            DoCreateDefaults(genericData);
-        }
-
-        protected override void DoPrepareRestorePoint(IDataConnector genericData)
-        {
-            CopyAllTablesToTempVersions(genericData);
-        }
-
-        public override void FinishedMigration(IDataConnector genericData)
-        {
             Dictionary<string, Dictionary<string, object>> tableData = new Dictionary<string, Dictionary<string, object>>();
             Dictionary<string, List<object[]>> tableMultiData = new Dictionary<string, List<object[]>>();
 
@@ -964,7 +945,7 @@ namespace Aurora.Addon.WebUI.Migrators
 
             #region wi_adminsettings
 
-            table = "wi_adminsettings";
+            table = "wi_adminsetting";
             tableData[table] = new Dictionary<string, object>();
 
             tableData[table]["startregion"] = "";
@@ -1355,6 +1336,7 @@ namespace Aurora.Addon.WebUI.Migrators
             {
                 if (!genericData.TableExists(tableName))
                 {
+                    MainConsole.Instance.Debug(tableName + " does not exist");
                     return;
                 }
             }
@@ -1362,6 +1344,7 @@ namespace Aurora.Addon.WebUI.Migrators
             {
                 if (!genericData.TableExists(tableName))
                 {
+                    MainConsole.Instance.Debug(tableName + " does not exist");
                     return;
                 }
             }
@@ -1377,6 +1360,25 @@ namespace Aurora.Addon.WebUI.Migrators
                     genericData.Insert(tableMultiDataInsert.Key, rows);
                 }
             }
+        }
+
+        protected override bool DoValidate(IDataConnector genericData)
+        {
+            return TestThatAllTablesValidate(genericData);
+        }
+
+        protected override void DoMigrate(IDataConnector genericData)
+        {
+            DoCreateDefaults(genericData);
+        }
+
+        protected override void DoPrepareRestorePoint(IDataConnector genericData)
+        {
+            CopyAllTablesToTempVersions(genericData);
+        }
+
+        public override void FinishedMigration(IDataConnector genericData)
+        {
         }
     }
 }
