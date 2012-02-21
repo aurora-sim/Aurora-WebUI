@@ -11,9 +11,10 @@
 <?php
 	use Aurora\Framework;
 	use Aurora\Addon\WebUI\Configs;
+
 	$querypage = max(isset($_GET['pagenum']) ? (integer)$_GET['pagenum'] : 0, 0);
-	$news = Configs::d()->NewsFromGroupNotices($querypage * 5, 5);
-	$showNext = (($querypage * 5) + 5) <= $news->count();
+	$news = isset($_GET['scr']) ? null : Configs::d()->NewsFromGroupNotices($querypage * 5, 5);
+	$showNext = isset($news) ? (($querypage * 5) + 5) <= $news->count() : false;
 ?>
 <!-- STYLE TO DO -->
         <div style="text-align: left; width: 50%; float: left;">
@@ -62,9 +63,13 @@
 <?php
 	}
 
-	while($news->valid() && $news->key() < (($querypage * 5) + 5)){
-		OutputNews($news->current());
-		$news->next();
+	if(isset($_GET['scr']) === false){
+		while($news->valid() && $news->key() < (($querypage * 5) + 5)){
+			OutputNews($news->current());
+			$news->next();
+		}
+	}else{
+		OutputNews(Configs::d()->GetGroupNotice($_GET['scr']));
 	}
 ?>
             </table>
