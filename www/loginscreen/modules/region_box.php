@@ -1,9 +1,9 @@
 <?php
-  include("../languages/translator.php");
-  if($_GET[regio]==""){$ORDERBY=" ORDER by regionName ASC";}
-  else if($_GET[regio]=="name"){$ORDERBY=" ORDER by regionName ASC";}
-  else if($_GET[regio]=="x"){$ORDERBY=" ORDER by locX ASC";}
-  else if($_GET[regio]=="y"){$ORDERBY=" ORDER by locY ASC";}
+	include("../languages/translator.php");
+	$_GET['regio'] = isset($_GET['regio']) ? $_GET['regio'] : 'name';
+	$sortByRegion = $_GET['regio'] === 'name' ? true : null;
+	$sortByLocX = $_GET['regio'] === 'x' ? true : null;
+	$sortByLocY = $_GET['regio'] === 'y' ? true : null;
 ?>
 
 <table width="300" height="120" border=0 cellPadding=0 cellSpacing=0>
@@ -47,12 +47,15 @@
       </div>
             
 			<div style=" border:hidden; color:#ffffff; padding:0px; width:300px; height:160px; overflow:auto; ">
-			<?php
-        $w=0;
-			  $DbLink->query("SELECT regionName,locX,locY FROM ".C_REGIONS_TBL." where !(Flags & 512) && !(Flags & 1024) $ORDERBY ");
-			  while(list($regionName,$locX,$locY) = $DbLink->next_record()){
-			  $w++;
-			?>
+<?php
+	$w=0;
+	use Aurora\Addon\WebUI\Configs;
+	foreach(Configs::d()->GetRegions(null, 0, null, $sortByRegion, $sortByLocX, $sortByLocY) as $region){
+		$regionName = $region->RegionName();
+		$locX = $region->RegionLocX();
+		$locY = $region->RegionLocY();
+		$w++;
+?>
 			
 			  <table cellSpacing=0 cellPadding=0 width="100%" border=0>
           <tbody>
@@ -66,7 +69,7 @@
           </tr>
 			    </tbody>
         </table>
-        <?php } ?>
+<?php } ?>
       </div>
     </td>
     <td class=gridbox_r></td></tr>

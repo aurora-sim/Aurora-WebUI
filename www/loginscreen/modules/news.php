@@ -17,15 +17,20 @@
               
               <table class=newslist cellSpacing=0 cellPadding=0>
                   <tbody>
-                  <?
-                    //NEWS SYSTEM
-                    $DbLink->query("SELECT id,title,time FROM ".C_NEWS_TBL." order by time DESC LIMIT 4");
-                    for($w = 0; $w < 4; $w++)
-                    {
-                        if(list($ID,$NEWS,$TIME) = $DbLink->next_record())
-                        {
-                    ?>
-                  
+<?php
+	use Aurora\Addon\WebUI\Configs;
+	//NEWS SYSTEM
+	
+	$news = Configs::d()->NewsFromGroupNotices(0, 4);
+	for($w = 0; $w < 4; $w++)
+	{
+		if($news->valid())
+		{
+			$item = $news->current();
+			$ID = $item->NoticeID();
+			$NEWS = $item->Subject();
+			$TIME = $item->Timestamp();
+?>
                   <tr <? if(($w % 2)){echo"class=even";}else{echo"class=odd";}?>>
                       <td class=boxtext vAlign=top>
                           <a href="<?php echo SYSURL; ?>index.php?page=news&scr=<?=$ID?>" target="_blank"><?php echo $NEWS ?></a>
@@ -35,11 +40,10 @@
                           <?=date("D d M g:i A",$TIME)?>
                       </td>
                   </tr>
-                  <? }
-                  else
-                  {
-                      ?>
-
+<?php
+			$news->next();
+		}else{
+?>
                   <tr <? if(($w % 2)){echo"class=even";}else{echo"class=odd";}?>>
                       <td class=boxnotext vAlign=top>
                          <? echo $webui_no_news; ?>
@@ -49,9 +53,10 @@
                           
                       </td>
                   </tr>
-                  <?
-                  }
-                  } ?>
+<?php
+		}
+	}
+?>
                   </tbody>
               </table>
           </td>
