@@ -13,7 +13,7 @@ date_default_timezone_set('America/Los_Angeles');
 //});
 
 ##################### System #########################
-define("SYSNAME","***");
+//define("SYSNAME","***");
 define("SYSURL","http://your_webui_server_ip_or_dns/");
 define("SYSMAIL","***");
 define("WIREDUX_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WIREDUX");
@@ -49,6 +49,9 @@ $configs[] = WebUI::r(
 ################### Add Grid Page ###################
 define("AddGrid_GridNick", Configs::d()->get_grid_info('gridnick'));
 define("AddGrid_GridName", Configs::d()->get_grid_info('gridname'));
+if(!defined('SYSNAME')){
+	define('SYSNAME', AddGrid_GridNick);
+}
 // DO NOT PUT YOUR REAL USER NAME AND PASSWORD HERE!!! THIS IS PUBLICALLY SHOWN AND JUST CHANGES HOW IT LOOKS ON THE ADDGRID PAGE!!
 define("AddGrid_AvFirstName","Your Avatar First Name");
 define("AddGrid_AvLastName","Your Avatar Last Name");
