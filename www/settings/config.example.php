@@ -24,15 +24,37 @@ define("WIREDUX_PASSWORD","***");
 // (until disabled here)?
 $displayMaintenancePage = false;
 
+################ Aurora-Sim.php ########################################
+
+$dir = getcwd();
+$i = 0;
+while(!is_dir($dir . DIRECTORY_SEPARATOR . 'settings') && !is_file($dir . DIRECTORY_SEPARATOR . 'settings' . DIRECTORY_SEPARATOR . 'Aurora-Sim.php.phar.gz') && $i <= 2){
+	++$i;
+	$pathinfo = pathinfo($dir);
+	$dir = $pathinfo['dirname'];
+}
+
+require_once('phar://' . str_repeat('../', $i) . 'settings/Aurora-Sim.php.phar.gz/Aurora/load.php');
+
+use Aurora\Addon\WebUI;
+use Aurora\Addon\WebUI\Configs;
+
+$configs = Configs::i();
+
+$configs[] = WebUI::r(
+	WIREDUX_SERVICE_URL,
+	WIREDUX_PASSWORD
+);
+
 ################### Add Grid Page ###################
-define("AddGrid_GridNick","Your Grid Nick");
-define("AddGrid_GridName","Your Grid Full Name");
+define("AddGrid_GridNick", Configs::d()->get_grid_info('gridnick'));
+define("AddGrid_GridName", Configs::d()->get_grid_info('gridname'));
 // DO NOT PUT YOUR REAL USER NAME AND PASSWORD HERE!!! THIS IS PUBLICALLY SHOWN AND JUST CHANGES HOW IT LOOKS ON THE ADDGRID PAGE!!
 define("AddGrid_AvFirstName","Your Avatar First Name");
 define("AddGrid_AvLastName","Your Avatar Last Name");
 define("AddGrid_AvPassword","Your Avatar Password");
 // END ABOVE WARNING
-define("AddGrid_LoginURL","http://your_webui_server_ip_or_dns:8002/");
+define("AddGrid_LoginURL", Configs::d()->get_grid_info('login'));
 
 define("AddGrid_LoginPage","http://your_webui_server_ip_or_dns/loginscreen");
 define("AddGrid_HelperURL","http://your_webui_server_ip_or_dns:8002/");
@@ -232,25 +254,4 @@ define("C_ADMINBGCOLORANIM_TBL", "wi_adminbgcoloranim");
 ################ Optional WebUI Features ###############################
 define('EmailAccountActivation',true);
 
-################ Aurora-Sim.php ########################################
-
-$dir = getcwd();
-$i = 0;
-while(!is_dir($dir . DIRECTORY_SEPARATOR . 'settings') && !is_file($dir . DIRECTORY_SEPARATOR . 'settings' . DIRECTORY_SEPARATOR . 'Aurora-Sim.php.phar.gz') && $i <= 2){
-	++$i;
-	$pathinfo = pathinfo($dir);
-	$dir = $pathinfo['dirname'];
-}
-
-require_once('phar://' . str_repeat('../', $i) . 'settings/Aurora-Sim.php.phar.gz/Aurora/load.php');
-
-use Aurora\Addon\WebUI;
-use Aurora\Addon\WebUI\Configs;
-
-$configs = Configs::i();
-
-$configs[] = WebUI::r(
-	WIREDUX_SERVICE_URL,
-	WIREDUX_PASSWORD
-);
 ?>
