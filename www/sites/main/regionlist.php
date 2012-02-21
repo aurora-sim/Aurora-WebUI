@@ -1,13 +1,22 @@
 <?
-if($_GET[order]=="name"){
-$ORDERBY=" ORDER by regionName ASC";
-}else if($_GET[order]=="x"){
-$ORDERBY=" ORDER by locX ASC";
-}else if($_GET[order]=="y"){
-$ORDERBY=" ORDER by locY ASC";
-}else{
-$ORDERBY=" ORDER by RegionName ASC";
+use Aurora\Addon\WebUI;
+use Aurora\Addon\WebUI\Configs;
+
+$_GET['AStart'] = isset($_GET['AStart']) ? (integer)$_GET['AStart'] : 1;
+$_GET['ALimit'] = isset($_GET['ALimit']) ? (integer)$_GET['ALimit'] : 10;
+
+if($_GET['AStart'] < 1){
+	$_GET['AStart'] = 1;
 }
+if($_GET['ALimit'] < 10){
+	$_GET['ALimit'] = 10;
+}
+$_GET['order'] = isset($_GET['order']) ? $_GET['order'] : 'name';
+$sortByRegion = $_GET['order'] === 'name' ? true : null;
+$sortByLocX = $_GET['order'] === 'x' ? true : null;
+$sortByLocY = $_GET['order'] === 'y' ? true : null;
+$start = (($_GET['AStart'] - 1) * $_GET['ALimit']);
+$regions = Configs::d()->GetRegions(null, $start, $_GET['ALimit'], $sortByRegion, $sortByLocX, $sortByLocY);
 
 $GoPage= "index.php?page=regionlist";
 
@@ -16,17 +25,11 @@ $AnzeigeStart = 0;
 // LINK SELECTOR
 $LinkAusgabe="page=index.php?page=regionlist&";
 
-if($_GET[AStart]){$AStart=$_GET[AStart];};
-if(!$AStart) $AStart = $AnzeigeStart;
-
-$ALimit = 10;
-$Limit = "LIMIT $AStart, $ALimit";
-
-$DbLink->query("SELECT COUNT(*) FROM ".C_REGIONS_TBL." where !(Flags & 512) && !(Flags & 1024)"); 
-list($count) = $DbLink->next_record();
-
-$sitemax=ceil($count / 10);
-$sitestart=ceil($AStart / 10)+1;
+$AStart = $_GET['AStart'];
+$ALimit = $_GET['ALimit'];
+$count = $regions->count();
+$sitemax=ceil($count / $_GET['ALimit']);
+$sitestart=ceil($_GET['ALimit'] / 10)+1;
 if($sitemax == 0){$sitemax=1;}
 ?>
 
@@ -119,9 +122,12 @@ if($sitemax == 0){$sitemax=1;}
 						<tbody>
 						<?
 							$w=0;
-							$DbLink->query("SELECT RegionName,LocX,LocY FROM ".C_REGIONS_TBL." where !(Flags & 512) && !(Flags & 1024) $ORDERBY $Limit");
-							while(list($RegionName,$locX,$locY) = $DbLink->next_record()){
+							while($regions->valid() && $regions->key() < ($start + $ALimit)){
 							$w++;
+							$region = $regions->current();
+							$RegionName = $region->RegionName();
+							$locX = $region->RegionLocX();
+							$locY = $region->RegionLocY();
 						?>
 							<tr class="<? echo ($odd = $w%2 )? "even":"odd" ?>" >
 								<td width="55%">
@@ -141,7 +147,9 @@ if($sitemax == 0){$sitemax=1;}
 									</div>
 								</td>
 							</tr>
-						<?}?>
+						<?
+							$regions->next();
+						}?>
 						</tbody>
 					</table>
 				</td>

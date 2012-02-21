@@ -231,4 +231,26 @@ define("C_ADMINBGCOLORANIM_TBL", "wi_adminbgcoloranim");
 
 ################ Optional WebUI Features ###############################
 define('EmailAccountActivation',true);
+
+################ Aurora-Sim.php ########################################
+
+$dir = getcwd();
+$i = 0;
+while(!is_dir($dir . DIRECTORY_SEPARATOR . 'settings') && !is_file($dir . DIRECTORY_SEPARATOR . 'settings' . DIRECTORY_SEPARATOR . 'Aurora-Sim.php.phar.gz') && $i <= 2){
+	++$i;
+	$pathinfo = pathinfo($dir);
+	$dir = $pathinfo['dirname'];
+}
+
+require_once('phar://' . str_repeat('../', $i) . 'settings/Aurora-Sim.php.phar.gz/Aurora/load.php');
+
+use Aurora\Addon\WebUI;
+use Aurora\Addon\WebUI\Configs;
+
+$configs = Configs::i();
+
+$configs[] = WebUI::r(
+	WIREDUX_SERVICE_URL,
+	WIREDUX_PASSWORD
+);
 ?>
