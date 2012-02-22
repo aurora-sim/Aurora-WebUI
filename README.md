@@ -7,7 +7,8 @@ Originally created by Rookiie84
 Please remember to backup your database regularly.
 
 1. Unzip & Upload these files to your webserver.
-2. Edit "./settings/config.php"
+2. Copy **./settings/config.example.php** to **./settings/config.php**
+2. Copy **./settings/DatabaseInfo.example.php** to **./settings/DatabaseInfo.php**
 3. Make a backup of your database ;)
 
 Config.php (basic must settings)
