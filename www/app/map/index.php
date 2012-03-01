@@ -62,79 +62,71 @@ if ($_GET[starty]) {
 ?>
 
 <head>
-  <title><?= SYSNAME ?> World Map</title>
-  <style type="text/css" media=all>@import url(map.css);</style>
-  <script src="prototype.js" type="text/javascript"></script>
-  <script src="effects.js" type="text/javascript"></script>
-  <script src="mapapi.js" type="text/javascript"></script>
+<title><?= SYSNAME ?> World Map</title>
+<style type="text/css" media=all>@import url(map.css);</style>
+<script src="prototype.js" type="text/javascript"></script>
+<script src="effects.js" type="text/javascript"></script>
+<script src="mapapi.js" type="text/javascript"></script>
 
-  <script type="text/javascript">
-  function loadmap() 
-  {
-    <? if ($ALLOW_ZOOM == TRUE) { ?>    
-        if (window.addEventListener)
-        /** DOMMouseScroll is for mozilla. */
-        window.addEventListener('DOMMouseScroll', wheel, false);
-        /* IE/Opera. */
-        window.onmousewheel = document.onmousewheel = wheel;
-    <? } ?>
+<script type="text/javascript">
+function loadmap(){
+<? if ($ALLOW_ZOOM == TRUE) { ?>    
+	if (window.addEventListener)
+	/** DOMMouseScroll is for mozilla. */
+	window.addEventListener('DOMMouseScroll', wheel, false);
+	/* IE/Opera. */
+	window.onmousewheel = document.onmousewheel = wheel;
+<? } ?>
 
     mapInstance = new ZoomSize(<?= $zoomSize ?>);
     mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: true, hasPanningControls: true});
     mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?= $mapX ?>,<?= $mapY ?>),1);
 <?
-  $DbLink = new DB;
-  $DbLink->query("SELECT RegionUUID, RegionName,LocX,LocY,SizeX,SizeY,OwnerUUID,Info FROM " . C_REGIONS_TBL . " Order by LocX");
-  while (list($uuid, $regionName, $locX, $locY, $sizeX, $sizeY, $owner, $info) = $DbLink->next_record()) {
+use Aurora\Addon\WebUI\Configs;
+foreach(Configs::d()->GetRegions() as $region){
+	$MarkerCoordX = $locX = $region->RegionLocX();
+	$MarkerCoordY = $locY = $region->RegionLocY();
+	$sizeX = $region->RegionSizeX();
+	$sizeY = $region->RegionSizeY();
+	$owner = Configs::d()->GetGridUserInfo($region->EstateOwner());
+	$firstN = $owner->FirstName();
+	$lastN = $owner->LastName();
+	$regionName = $region->RegionName();
 
-  $DbLink1 = new DB;
-  $DbLink1->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='".cleanQuery($owner)."'");
-  list($firstN, $lastN) = $DbLink1->next_record();
+	$regionSizeOffset = ($sizeX / 256) * 0.40;
+	if ($display_marker == "tl") {
+		$MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
+		$MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
+	}else if ($display_marker == "tr") {
+		$MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
+		$MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
+	}else if ($display_marker == "dl") {
+		$MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
+		$MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
+	}else if ($display_marker == "dr") {
+		$MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
+		$MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
+	}
 
-  $MarkerCoordX = $locX;
-  $MarkerCoordY = $locY;
-
-  $regionSizeOffset = ($sizeX / 256) * 0.40;
-  if ($display_marker == "tl") {
-    $MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
-    $MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
-  }
-  
-  else if ($display_marker == "tr") {
-    $MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
-    $MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
-  }
-  
-  else if ($display_marker == "dl") {
-    $MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
-    $MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
-  }
-  
-  else if ($display_marker == "dr") {
-    $MarkerCoordX = ($MarkerCoordX / 256)+($sizeX / 512 - 0.5) + $regionSizeOffset;
-    $MarkerCoordY = ($MarkerCoordY / 256)+($sizeX / 512 - 0.5) - $regionSizeOffset;
-  }
-  
-  $recieved = json_decode($info);
-  $serverUrl = $recieved->{'serverURI'};
-  $uuid = str_replace('-', '', $uuid);
-  $filename = $serverUrl . "/index.php?method=regionImage" . $uuid;
-  //$mapTextureURL = WIREDUX_TEXTURE_SERVICE.'/index.php?method=MapTexture&zoom=1&x=' . $mapX . '&y=' . $mapY;
-  echo 'var tmp_region_image = new Img("' . $filename . '",' . $zoomSize * ($sizeX / 256) . ',' . $zoomSize * ($sizeY / 256) . ');';
-  $url = "secondlife://" . $regionName . "/" . ($sizeX / 2) . "/" . ($sizeY / 2);
+	$filename = $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID());
+	//$mapTextureURL = WIREDUX_TEXTURE_SERVICE.'/index.php?method=MapTexture&zoom=1&x=' . $mapX . '&y=' . $mapY;
+	echo 'var tmp_region_image = new Img("',$filename,'",',$zoomSize * ($sizeX / 256),',',$zoomSize * ($sizeY / 256),');',"\n";
+	$url = "secondlife://" . $regionName . "/" . ($sizeX / 2) . "/" . ($sizeY / 2);
 ?>
-var region_loc = new Icon(tmp_region_image);
-var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];
-var marker = new Marker(all_images, new XYPoint(<?= (($locX / 256))+($sizeX / 512 - 0.5) ?>,<?= (($locY / 256))+($sizeY / 512 - 0.5) ?>));
-mapInstance.addMarker(marker);
+	var region_loc = new Icon(tmp_region_image);
+	var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];
+	var marker = new Marker(all_images, new XYPoint(<?= (($locX / 256))+($sizeX / 512 - 0.5) ?>,<?= (($locY / 256))+($sizeY / 512 - 0.5) ?>));
+	mapInstance.addMarker(marker);
 
-var map_marker_img = new Img("images/info.gif",<?= $infosize ?>,<?= $infosize ?>);
-var map_marker_icon = new Icon(map_marker_img);
-var mapWindow = new MapWindow("Region Name: <?= $regionName ?><br /><br />Coordinates: <?= $locX / 256 ?>,<?= $locY / 256 ?><br /><br />Size: <?= $sizeX ?>,<?= $sizeY ?><br><br>Owner: <?= $firstN ?> <?= $lastN ?><br><br><a href=<?= $url ?>>Teleport</a>",{closeOnMove: true});
-var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
-var marker = new Marker(all_images, new XYPoint(<?= $MarkerCoordX ?>,<?= $MarkerCoordY ?>));
-mapInstance.addMarker(marker, mapWindow);
-<? } ?>
+	var map_marker_img = new Img("images/info.gif",<?= $infosize ?>,<?= $infosize ?>);
+	var map_marker_icon = new Icon(map_marker_img);
+	var mapWindow = new MapWindow("Region Name: <?= $regionName ?><br /><br />Coordinates: <?= $locX / 256 ?>,<?= $locY / 256 ?><br /><br />Size: <?= $sizeX ?>,<?= $sizeY ?><br><br>Owner: <?= $firstN ?> <?= $lastN ?><br><br><a href=<?= $url ?>>Teleport</a>",{closeOnMove: true});
+	var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
+	var marker = new Marker(all_images, new XYPoint(<?= $MarkerCoordX ?>,<?= $MarkerCoordY ?>));
+	mapInstance.addMarker(marker, mapWindow);
+<?
+}
+?>
 }
 
 function setZoom(size) {
