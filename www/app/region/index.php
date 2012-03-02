@@ -6,46 +6,35 @@ include("../../settings/json.php");
 include("../../languages/translator.php");
 include("../../templates/templates.php");
 
-$DbLink = new DB;
-$query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM " . C_REGIONS_TBL . " where LocX='" . $_GET[x] . "' and LocY='" . $_GET[y] . "'";
-$query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM " . C_REGIONS_TBL . " where LocX='" . cleanQuery($_GET[x]) . "' and LocY='" . cleanQuery($_GET[y]) . "'";
-$DbLink->query($query);
-list($RegionName, $locX, $locY, $owner, $info) = $DbLink->next_record();
-$locX = $locX / 256;
-$locY = $locY / 256;
-$recieved = json_decode($info);
-$regionType = $recieved->{'regionType'};
-if ($regionType == '')
+use Aurora\Addon\WebUI\Configs;
+$regions = Configs::d()->GetRegionsByXY($_GET['x'], $_GET['y']);
+$region = $regions->current();
+$RegionName = $region->RegionName();
+$regionType = $region->RegionType();
+$owner = Configs::d()->GetGridUserInfo($region->EstateOwner());
+$firstN = $owner->FirstName();
+$lastN = $owner->LastName();
+$locX = $region->RegionLocX() / 256;
+$locY = $region->RegionLocY() / 256;
+if ($regionType == ''){
     $regionType = 'Unknown';
-$DbLink->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='$owner'");
-$DbLink->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='" . cleanQuery($owner) . "'");
-list($firstN, $lastN) = $DbLink->next_record();
+}
+$source = $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID());
 
-$DbLink->query("SELECT RegionUUID, Info FROM " . C_REGIONS_TBL . " where locX='" . ($locX * 256) . "' and locY='" . ($locY * 256) . "'");
-list($UUID, $Info) = $DbLink->next_record();
-$recieved = json_decode($Info);
-$serverIP = $recieved->{'serverIP'};
-$serverHttpPort = $recieved->{'serverHttpPort'};
-
-$SERVER = "http://$serverIP:$serverHttpPort";
-$UUID = str_replace("-", "", $UUID);
-$source = $SERVER . "/index.php?method=regionImage" . $UUID . "";
-?>
-
-
-<?
+$DbLink = new DB;
 /* +++ PRINT NEIGHBORS +++ */
+
 // Array of 8 locations to search for
 $locarr['RegionName1'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
 $locarr['RegionName2'] = "(LocX='" . $locX * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
 $locarr['RegionName3'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
 $locarr['RegionName4'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . $locY * 256 . "')";
 /* This region would go here */
+
 $locarr['RegionName6'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . $locY * 256 . "')";
 $locarr['RegionName7'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
 $locarr['RegionName8'] = "(LocX='" . $locX * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
 $locarr['RegionName9'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
-
 $DbLink->query("SELECT RegionName,LocX,LocY FROM " . C_REGIONS_TBL . " where " . implode(" or ", $locarr));
 while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
 
