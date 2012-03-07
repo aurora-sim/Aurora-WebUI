@@ -1320,3 +1320,8 @@ input[type="radio"] {outline: none;}
 
 #hover p {font-size:12px;	color:#fff;	font-weight:normal;}
 /* End of slideeffect.php */
+
+.webui #regioninfo ul{
+	text-align: right ;
+	list-style-type: none ;
+}

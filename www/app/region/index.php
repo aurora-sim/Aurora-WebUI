@@ -22,59 +22,6 @@ if ($regionType == ''){
 $source = $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID());
 
 $DbLink = new DB;
-/* +++ PRINT NEIGHBORS +++ */
-
-// Array of 8 locations to search for
-$locarr['RegionName1'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
-$locarr['RegionName2'] = "(LocX='" . $locX * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
-$locarr['RegionName3'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
-$locarr['RegionName4'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . $locY * 256 . "')";
-/* This region would go here */
-
-$locarr['RegionName6'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . $locY * 256 . "')";
-$locarr['RegionName7'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
-$locarr['RegionName8'] = "(LocX='" . $locX * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
-$locarr['RegionName9'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
-$DbLink->query("SELECT RegionName,LocX,LocY FROM " . C_REGIONS_TBL . " where " . implode(" or ", $locarr));
-while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
-
-    switch ($locX1 / 256) {
-        case $locX: //same col
-            $regN = 5;
-            switch ($locY1 / 256) {
-                case $locY - 1: //down one
-                    $regN = 8;
-                    break;
-                case $locY + 1: //up one
-                    $regN = 2;
-                    break;
-            }
-            break;
-        case $locX - 1: //one left
-            $regN = 4;
-            switch ($locY1 / 256) {
-                case $locY - 1: //down one
-                    $regN = 7;
-                    break;
-                case $locY + 1: //up one
-                    $regN = 1;
-                    break;
-            }
-            break;
-        default: // one right
-            $regN = 6;
-            switch ($locY1 / 256) {
-                case $locY - 1: //down one
-                    $regN = 9;
-                    break;
-                case $locY + 1: //up one
-                    $regN = 3;
-                    break;
-            }
-            break;
-    }
-    ${"RegionName" . $regN} = "<a href='?x=" . $locX1 . "&y=" . $locY1 . "'>" . $RegionNameX . "</a>";
-}
 
   $DbLink->query("SELECT id,
                          displayTopPanelSlider, 
@@ -149,27 +96,31 @@ while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
   <!--  <h2><? // echo $webui_region_information; ?>:</h2> -->
 
     <hr>
+<?php
+	$range = $region->RegionSizeX();
+	$range = $region->RegionSizeY() > $range ? $region->RegionSizeY() : $range;
+	$neighbours = Configs::d()->GetRegionNeighbours($region->RegionID(), (integer)ceil($range / 2));
+	if($neighbours->count() > 0){
+?>
     <div id="regionMap">
-      <table cellpadding="0" cellspacing="4">
-        <tr>
-          <td <?php echo ($RegionName1 ? ">" . $RegionName1 : "class='nosim'>") ?></td>
-          <td <?php echo ($RegionName2 ? ">" . $RegionName2 : "class='nosim'>") ?></td>
-          <td <?php echo ($RegionName3 ? ">" . $RegionName3 : "class='nosim'>") ?></td>
-        </tr>
-      
-        <tr>
-          <td <?php echo ($RegionName4 ? ">" . $RegionName4 : "class='nosim'>") ?></td>
-          <td class='thissim'><?= $RegionName ?></td>
-          <td <?php echo ($RegionName6 ? ">" . $RegionName6 : "class='nosim'>") ?></td>
-        </tr>
-      
-        <tr>
-          <td <?php echo ($RegionName7 ? ">" . $RegionName7 : "class='nosim'>") ?></td>
-          <td <?php echo ($RegionName8 ? ">" . $RegionName8 : "class='nosim'>") ?></td>
-          <td <?php echo ($RegionName9 ? ">" . $RegionName9 : "class='nosim'>") ?></td>
-        </tr>
-      </table>
+		<h3>Neighbours:</h3>
+		<ul>
+<?php
+		foreach($neighbours as $neighbour){
+			$query = array(
+				'x' => $neighbour->RegionLocX(),
+				'y' => $neighbour->RegionLocY(),
+				'z' => $neighbour->RegionLocZ()
+			);
+			if($query['z'] == 0){
+				unset($query['z']);
+			}
+?>
+			<li><a href="?<?php echo http_build_query($query, '', '&amp;'); ?>"><?php echo htmlentities($neighbour->RegionName()); ?></a></li>
+<?php	} ?>
+		</ul>
     </div>
+<?php } ?>
 
     <div id="region_picture">
       <img src="<? echo $source; ?>" alt="<?= $RegionName ?>" title="<?= $RegionName ?>" />
