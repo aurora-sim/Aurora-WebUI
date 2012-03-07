@@ -1,42 +1,25 @@
 <? 
+include("../../settings/config.php");
 include("../includes/config.php");
 include("../includes/mt_header.php");
 include("../languages/translator.php");
+use Aurora\Addon\WebUI\Configs;
+use Aurora\Framework\RegionFlags;
 
-if($_GET[region]){
-
-  mysql_connect($CONF_db_server,$CONF_db_user,$CONF_db_pass);
-  mysql_select_db($CONF_db_database);
-  $z=mysql_query("SELECT RegionUUID,RegionName,Access,LocX,LocY,SizeX,SizeY,OwnerUUID FROM gridregions where RegionUUID='$_GET[region]'");
-  while($regiondb=mysql_fetch_array($z))
-  {
-    $UUID           = $regiondb[RegionUUID];
-    $regionName     = $regiondb[RegionName];  
-    $locX           = $regiondb[LocX];
-    $locY           = $regiondb[LocY];
-    $sizeX          = $regiondb[SizeX];
-    $sizeY          = $regiondb[SizeY];
-    $owner          = $regiondb[OwnerUUID];
-    $regionOnline   = $regiondb[Access];    
-    $mapTexture     = $regiondb[regionMapTexture];
-  }
-
-  $y = mysql_query("SELECT FirstName,LastName FROM useraccounts where PrincipalID='$owner'");
-  while($ownerdb=mysql_fetch_array($y))
-  {
-    $firstN = $ownerdb[FirstName];
-    $lastN  = $ownerdb[LastName];
-  }
-
-  $x = mysql_query("SELECT regionMapTexture FROM wi_regions where id='$regionMapTexture'");
-  while($imagedb=mysql_fetch_array($x))
-  {
-    $data = $imagedb[data];
-    $input = fopen( "../tmp/".$mapTexture.".jp2", "w" );
-    fwrite( $input, $data, strlen( $data ));
-    fclose($input);
-  }
-
+if($_GET['region']){
+	$region = Configs::d()->GetRegion($_GET['region']);
+	$owner = Configs::d()->GetGridUserInfo($region->EstateOwner());
+	$firstN = $owner->FirstName();
+	$lastN = $owner->LastName();
+	
+	$UUID       = $region->RegionID()   ;
+	$regionName = $region->RegionName() ;
+	$locX       = $region->RegionLocX() ;
+	$locY       = $region->RegionLocY() ;
+	$sizeX      = $region->RegionSizeX();
+	$sizeY      = $region->RegionSizeY();
+	$owner      = $region->EstateOwner();
+	$regionOnline = ($region->Flags() & RegionFlags::RegionOnline) == RegionFlags::RegionOnline;
 }
 ?>
 
@@ -109,31 +92,9 @@ if($_GET[region]){
     </td>
 
 
-  <td width="45%" valign="top">
-	<?
-	$SERVER ="http://$serverIP:$serverHttpPort";
-	$UUID = str_replace("-", "", $UUID);
-
-    if ($counter == 1)
-    { 
-    ?> 
-      <iframe width="275" height="275" frameborder="0" src="regionimage.php?uuid=<?=$mapTexture?>&image=<?=$CONF_sim_domain?><?=$CONF_install_path?>/tmp/<?=$mapTexture?>.jp2"></iframe>
-      </iframe>
-    <?
-    }
-    else
-    {
-    ?>
-    
-    <br /><br /><br />
-    
-    <center>
-    <img src="../images/no_region.jpg" alt="<?=$CONF_txt_noregimage?>" title="<?=$CONF_txt_noregimage?>" width="150" height="150" />
-    </center>
-    <? } ?>
-
-
-     </td>
+	<td width="45%" valign="top">
+		<img src="<?php echo $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID()); ?>">
+	</td>
    </tr>
  </table>
 </div></div></div>
