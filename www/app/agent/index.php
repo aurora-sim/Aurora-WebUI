@@ -7,8 +7,6 @@ include("../../languages/translator.php");
 include("../../templates/templates.php");
 use Aurora\Addon\WebUI\Configs;
 
-$DbLink = new DB;
-
 if ($_GET[name]) {
     $userName = $_GET['name'];
 
