@@ -21,49 +21,7 @@ if ($regionType == ''){
 }
 $source = $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID());
 
-$DbLink = new DB;
-
-  $DbLink->query("SELECT id,
-                         displayTopPanelSlider, 
-                         displayTemplateSelector,
-                         displayStyleSwitcher,
-                         displayStyleSizer,
-                         displayFontSizer,
-                         displayLanguageSelector,
-                         displayScrollingText,
-                         displayWelcomeMessage,
-                         displayLogo,
-                         displayLogoEffect,
-                         displaySlideShow,
-                         displayMegaMenu,
-                         displayDate,
-                         displayTime,
-                         displayRoundedCorner,
-                         displayBackgroundColorAnimation,
-                         displayPageLoadTime,
-                         displayW3c,
-                         displayRss FROM ".C_ADMINMODULES_TBL." ");
-                     
-  list($id,
-       $displayTopPanelSlider,
-       $displayTemplateSelector, 
-       $displayStyleSwitcher,
-       $displayStyleSizer,
-       $displayFontSizer,
-       $displayLanguageSelector,
-       $displayScrollingText,
-       $displayWelcomeMessage,
-       $displayLogo,
-       $displayLogoEffect,
-       $displaySlideShow,
-       $displayMegaMenu,
-       $displayDate,
-       $displayTime,
-       $displayRoundedCorner,
-       $displayBackgroundColorAnimation,
-       $displayPageLoadTime,
-       $displayW3c,
-       $displayRss) = $DbLink->next_record();
+$adminmodules = Configs::d()->adminmodules();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -74,7 +32,7 @@ $DbLink = new DB;
   <link rel="icon" href="<?= SYSURL ?><?= $favicon_image ?>" />
   <title><?= SYSNAME ?>: <? echo $webui_region_information; ?></title>
 
-<?php if($displayRoundedCorner)  { ?>
+<?php if($adminmodules['displayRoundedCorner'])  { ?>
 <script src="<?= SYSURL ?>javascripts/jquery/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
 <script type="text/javascript">
@@ -92,9 +50,6 @@ $DbLink = new DB;
   <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?></h2>
   
   <div id="regioninfo">
-  <!--  <div id="info"><p><? // echo $webui_regioninfo ?></p></div> -->
-  <!--  <h2><? // echo $webui_region_information; ?>:</h2> -->
-
     <hr>
 <?php
 	$range = $region->RegionSizeX();
