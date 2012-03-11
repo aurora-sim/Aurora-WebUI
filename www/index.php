@@ -39,7 +39,6 @@ include("settings/config.php");
 include("settings/databaseinfo.php");
 include("settings/json.php");
 include("settings/mysql.php");
-include("check.php");
 include("languages/translator.php");
 include("templates/templates.php");
 use Aurora\Addon\WebUI\Configs;
