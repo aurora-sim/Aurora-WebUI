@@ -1,4 +1,5 @@
 <?php
+/**translated by MrNapz**/
 $webui_language_code='pt';
 $webui_actual_language='Portugu&ecirc;s';
 
@@ -10,28 +11,28 @@ $webui_grid_status_online = 'ONLINE';
 $webui_grid_status_offline = 'OFFLINE';
 
 $webui_iwc = 'Inter World Connector (IWC)';
-$webui_iwc_actived = 'Enabled';
-$webui_iwc_desactived = 'Disabled';
+$webui_iwc_actived = 'Ativado';
+$webui_iwc_desactived = 'Desativado';
 $webui_hg = 'HyperGrid (HG)';
-$webui_hg_actived = 'Enabled';
-$webui_hg_desactived = 'Disabled';
-$webui_voice = 'Voice (Mumble)';
-$webui_voice_actived = 'Enabled';
-$webui_voice_desactived = 'Disabled';
-$webui_currency = 'Money (StarDust)';
-$webui_currency_actived = 'Enabled';
-$webui_currency_desactived = 'Disabled';
+$webui_hg_actived = 'Ativado';
+$webui_hg_desactived = 'Desativado';
+$webui_voice = 'Voz (Mumble)';
+$webui_voice_actived = 'Ativado';
+$webui_voice_desactived = 'Desativado';
+$webui_currency = 'Moeda (Stardusk)';
+$webui_currency_actived = 'Ativado';
+$webui_currency_desactived = 'Desativado';
 
 $webui_total_users='Total Utilizadores';
 $webui_total_regions='Total Regi&otilde;es';
 $webui_unique_visitors='Visitantes nos &uacute;ltimos 30 dias';
 $webui_online_now='Ligados agora';
 
-$webui_avatar_first_name = 'Avatar First Name';
-$webui_avatar_last_name = 'Avatar Last Name';
-$webui_avatar_name = 'Avatar Name';
+$webui_avatar_first_name = 'Primeiro Nome do Avatar';
+$webui_avatar_last_name = '&Uacute;ltimo Nome do Avatar';
+$webui_avatar_name = 'Nome do Avatar';
 $webui_first_name='Primeiro Nome';
-$webui_last_name='&Uacute;ltimo Nome';
+$webui_last_name='Ùltimo Nome';
 $webui_password='Password';
 $webui_login='Login';
 $webui_confirm='Confirme';
@@ -53,27 +54,27 @@ $webui_region_list='Lista de Regi&otilde;es';
 $webui_region_list_page_info='Esta &eacute; a lista de regi&otilde;es, clique no nome de uma regi&atilde;o para obter mais informa&ccedil;&atilde;o.';
 $webui_more_info='Mais Informa&ccedil;&atilde;o';
 $webui_user_name='Nome de Utilizador';
-$webui_successfully = 'Account successfully created!';
-$webui_successfully_info = 'Account successfully created; to login, you need to click on the link which was sent to your email address';
-$webui_registrations_disabled = 'Registrations have been disabled by the site administrators, please try again later.';
+$webui_successfully = 'Conta criada com sucesso!';
+$webui_successfully_info = 'Conta criada com sucesso; para logar, precisa de clicar no link que foi-lhe enviado para o email.';
+$webui_registrations_disabled = 'Os registos est&otildo desativados pelo administrador, por favor tente mais tarde.';
 
 //
 // Online Users Page
 //
-$webui_online_users='Online Users';
-$webui_online_users_info='This shows all the users that are online at this moment.';
+$webui_online_users='Utilizadores Online';
+$webui_online_users_info='Isto mostra todos os utilizadores online no momento.';
 
 $webui_submit='Submeter';
 $webui_verified_account='Obrigado, a sua conta est&aacute agora activa  pronta para utilizar.';
 $webui_internal_error='Erro interno, por favor tente mais tarde.';
 $webui_invalid_code='Este n&atilde;o &eacute; um c&oacute;digo valido ou &eacute; um c&oacute;digo com mais de 24 horas';
-$webui_activate_account='Activar Conta';
+$webui_activate_account='Ativar Conta';
 $webui_change_account='Alterar Conta';
 $webui_change_password='Alterar Password';
 $webui_old_password='Password anterior';
 $webui_change_email='Alterar Email';
 $webui_old_email='Email anterior';
-$webui_new_email = 'New Email';
+$webui_new_email = 'Novo Email';
 $webui_change_name='Alterar Nome';
 $webui_login='Login';
 $webui_register='Registar';
@@ -81,21 +82,21 @@ $webui_register='Registar';
 //
 // News Page
 //
-$webui_news = 'Aurora-Sim Noticias';
+$webui_news = 'Aurora-Sim Notícias';
 $webui_history = 'Historial';
 $webui_news_history = 'Noticias Historial';
-$webui_no_news = 'No news';
+$webui_no_news = 'Sem Notícias';
 
 //
 // User Profil Page
 //
-$webui_see_profile='Ver Profile';
-$webui_users_profile='Profile de';
+$webui_see_profile='Ver Perfil';
+$webui_users_profile='Perfil de';
 $webui_no_information_set="Informa&ccedil;&atilde;o n&atilde;o dispon&iacute;vel";
 $webui_about_me="Sobre Mim";
 $webui_partner="Parceiro/a";
 $webui_resident_since="Residente desde";
-$webui_resident_age="Age of resident";
+$webui_resident_age="Idade do Residente";
 $webui_account_info="Informa&ccedil;&atilde;o de Conta";
 $webui_region_information="Informa&ccedil;&atilde;o de Regi&atilde;o";
 $webui_region_type="Tipo de Regi&atilde;o";
@@ -106,39 +107,39 @@ $webui_owner="Dono";
 //
 $webui_menu_item_home = 'Home';
 $webui_menu_item_changeaccount = 'Editar Conta';
-$webui_menu_item_news = 'Noticias';
+$webui_menu_item_news = 'Notícias';
 $webui_menu_item_regions = 'Lista de Regi&otilde;es';
 $webui_menu_item_worldmap = 'Mapa';
 $webui_menu_item_quickmap = 'QuickMap';
 $webui_menu_item_register = 'Registar';
 $webui_menu_item_logout = 'Logout';
 $webui_menu_item_login = 'Login';
-$webui_menu_item_forgotpass = 'Forgotten Password?';
+$webui_menu_item_forgotpass = 'Esqueceu a Password??';
 $webui_menu_item_onlineusers = 'Utilizadores Ligados';
 $webui_menu_item_peoplesearch = 'Busca de Pessoas';
-$webui_menu_item_users = 'Users';
-$webui_menu_item_gallery = 'Gallery';
-$webui_menu_item_world = 'World';
-$webui_menu_item_account = 'Account';
-$webui_menu_item_help = 'Help';
-$webui_menu_item_chat = 'Live Support';
+$webui_menu_item_users = 'Utilizadores';
+$webui_menu_item_gallery = 'Galeria';
+$webui_menu_item_world = 'Mundo';
+$webui_menu_item_account = 'Conta';
+$webui_menu_item_help = 'Ajuda';
+$webui_menu_item_chat = 'Suporte Online';
 $webui_menu_item_downloads = 'Downloads';
 $webui_menu_item_addgrid = 'Add Grid';
-$webui_menu_item_addserver = 'Add Server';
+$webui_menu_item_addserver = 'Add Servidor';
 
 //
 // Home Page
 //
 $webui_home='Home';
-$webui_welcome='Bem Vindo to';
-$webui_welcome_visitor='Visitor';
-$webui_welcome_back = 'Welcome back';
-$webui_welcome_userid='Hi Userid!';
+$webui_welcome='Bem Vindo ao';
+$webui_welcome_visitor='Visitante';
+$webui_welcome_back = 'Bem Vindo de Volta';
+$webui_welcome_userid='Olá Userid!';
 $webui_home_page='
         <p>Este &eacute; o nosso novo Mundo Virtual onde se pode divertir, conhecer pessoas, jogar, explorar, criar e partilhar sonhos.</p>
-      	<p>Tudo &eacute possivel neste novo Mundo 3D onde tudo &eacute construido pelos seus Residentes.</p>
+              <p>Tudo &eacute possivel neste novo Mundo 3D onde tudo &eacute construido pelos seus Residentes.</p>
     	<p>O limite &eacute; a sua Imagina&ccedil;&atilde;o.</p>   	  
-  	    <p><a href="index.php?page=register">Create a free account today</a> build a virtual you and play in our world.</p>
+  	    <p><a href="index.php?page=register">Regista uma conta agora</a> constroi o teu mundo virtual..</p>
         <p>Venha fazer a diferenca!</p>';
 
 $webui_home_page_warning = 'Por favor entenda que a plataforma Aurora est&aacute; ainda em fase de desenvolvimento, podendo por isso ocasionalmente n&atilde;o funcionar da forma desejada.';
@@ -148,234 +149,234 @@ $webui_home_page_warning = 'Por favor entenda que a plataforma Aurora est&aacute
 //
 $webui_404_text = 'A pagina solicitada n&atilde;o foi encontrada. Por favor tente mais tarde.';
 $webui_404_title = 'Error 404';
-$webui_404_gohome = 'Go Home';
+$webui_404_gohome = 'Ir para Inicio';
 
 //
 // Maintenance page
 //
-$webui_maint_title = 'Error';
-$webui_maint_text = 'The site is currently undergoing maintenance, please try again later.';
+$webui_maint_title = 'Erro';
+$webui_maint_text = 'Este website está em manuntenção, por favor tente mais tarde.';
 
 //
 // Forgot Pass Page
 //
 $webui_forgot_password='Esqueceu a Password?';
-$webui_forgot_password_info='Forgot your Password? No problem! Enter your email address and your password will be sent to you.';      
+$webui_forgot_password_info='Esqueceu a Password? Sem problema! Insira o seu email e a sua password será lhe enviada.';      
 
 //
 // Date
 //
-$webui_before_date='It is';
-$webui_after_date='at';
+$webui_before_date='Data:';
+$webui_after_date='Horas:';
 
 //
 // Navigation
 //
-$webui_navigation_page = 'Page';
-$webui_navigation_of = 'of';
+$webui_navigation_page = 'Pagina';
+$webui_navigation_of = 'de';
 
 //
 // World Map Page
 //
-$webui_world_map = 'World Map';
-$webui_fullscreen = 'Full Screen';
+$webui_world_map = 'Mapa Mundo';
+$webui_fullscreen = 'Tela Cheia';
 
 //
 // People Search Page
 //
-$webui_people_search='Users Search';
-$webui_people_search_info = 'Ceci vous permet de rechercher des utilisateurs parmis les registred users';
-$webui_people_search_bouton = 'Search';
-$webui_users_found='Users Found';
+$webui_people_search='Busca de Utilizadores';
+$webui_people_search_info = 'Isto permite-lhe procurar os utilizadores registados';
+$webui_people_search_bouton = 'Busca';
+$webui_users_found='Utilizadores encontrados';
 
 //
 // Change Account Page
 //
-$webui_change_account = 'Edit Account';
-$webui_change_account_info = 'You can modify your account here.';
-$webui_change_home_region = 'Change Home Region';
-$webui_old_region = 'Old Region';
-$webui_home_region = 'Start Region';
-$webui_purge_apparence = 'Purge the appearance of your avatar';
-$webui_purge_apparence_bouton = 'Purge';
-$webui_old_password = 'Old Password';
-$webui_new_password = 'New Password';
-$webui_confirm_password = 'Confirm Password';
+$webui_change_account = 'Editar Conta';
+$webui_change_account_info = 'Modifica a tua conta aqui.';
+$webui_change_home_region = 'Trocar região casa';
+$webui_old_region = 'Antiga região';
+$webui_home_region = 'Região de início';
+$webui_purge_apparence = 'Limpa a aparencia do teu avatar';
+$webui_purge_apparence_bouton = 'Limpar';
+$webui_old_password = 'Password Antiga';
+$webui_new_password = 'Nova Password';
+$webui_confirm_password = 'Confirmar Password';
 
 //
 // Admin parts
 //
 $webui_admin_login = 'Admin Login';
-$webui_menu_item_adminloginscreen = 'Login Screen Manager';
-$webui_menu_item_adminnewsmanager = 'News Manager';
+$webui_menu_item_adminloginscreen = 'Gerir Login Screen';
+$webui_menu_item_adminnewsmanager = 'Gerir Nitícias';
 $webui_menu_item_adminhome = 'Admin';
-$webui_menu_item_adminmanage = 'Manage';
-$webui_menu_item_adminsettings = 'Admin Settings';
-$webui_menu_item_adminmodules = 'Modules';
-$webui_menu_item_adminoptions = 'Options';
-$webui_menu_item_adminsupport = 'Support';
+$webui_menu_item_adminmanage = 'Gerir';
+$webui_menu_item_adminsettings = 'Defenições de Admin';
+$webui_menu_item_adminmodules = 'Modulos';
+$webui_menu_item_adminoptions = 'Opções';
+$webui_menu_item_adminsupport = 'Suporte';
 
 //
 // Admin Home Page
 //
-$webui_admin_home = 'Accueil Administration';
-$webui_admin_home_info = 'Here you can create users, edit the login screen, and more...';
-$webui_admin_welcome = 'Welcome to the';
-$webui_admin_panel = 'Admin Panel';
-$webui_admin_login = 'Connection Administration';
+$webui_admin_home = 'Início Administração';
+$webui_admin_home_info = 'Aqui você pode criar utilizadores, editar a tela de login, e mais ...';
+$webui_admin_welcome = 'Bem-vindo ao';
+$webui_admin_panel = 'Painel Admin';
+$webui_admin_login = 'Administração de conexão';
 
 //
 // Admin Edit LoginScreen Page
 //
-$webui_admin_edit_loginscreen = 'Loginscreen manager';
-$webui_admin_loginscreen_info = 'You can edit the information on the loginscreen here.';
-$webui_admin_grid_status = 'Grid Status';
-$webui_admin_windows_status = 'Window Status';
-$webui_admin_windows_color = 'Window Color';
-$webui_admin_windows_title = 'Window Title';
-$webui_admin_windows_message = 'Window Message';
-$webui_admin_windows_settings = 'Save Info Window Settings';
-$webui_admin_create_news = 'Create News item';
-$webui_admin_edit_news = 'Edit News item';
-$webui_admin_news_online = 'News currently online';
-$webui_admin_news_title = 'Title';
-$webui_admin_news_date = 'Date';
-$webui_admin_news_edit = 'Edit';
-$webui_admin_news_delete = 'Delete';
+$webui_admin_edit_loginscreen = 'Gerir Loginscreen';
+$webui_admin_loginscreen_info = 'Você pode editar a informação sobre a loginScreen aqui.';
+$webui_admin_grid_status = 'Estado do Grid';
+$webui_admin_windows_status = 'Estado da Página';
+$webui_admin_windows_color = 'Cor da Página';
+$webui_admin_windows_title = 'Título da Página';
+$webui_admin_windows_message = 'Mensagem da Página';
+$webui_admin_windows_settings = 'Gravar informações das definições';
+$webui_admin_create_news = 'Criar notícia';
+$webui_admin_edit_news = 'Editar notícia';
+$webui_admin_news_online = 'Notícias online';
+$webui_admin_news_title = 'Título';
+$webui_admin_news_date = 'Data';
+$webui_admin_news_edit = 'Editar';
+$webui_admin_news_delete = 'Apagar';
 
 //
 // Admin Management Panel Page
 //
-$webui_admin_manage = 'Management Panel';
-$webui_admin_manage_info = 'Ceci vous permet d\'administrer les utilisateurs.';
-$webui_admin_manage_user = 'Admin User Management Panel';
-$webui_admin_manage_username = 'User Name';
+$webui_admin_manage = 'Painel de Gestão';
+$webui_admin_manage_info = 'Isso permite você gerir utlizador.';
+$webui_admin_manage_user = 'Painel de Gestão de administração dos utilizadores';
+$webui_admin_manage_username = 'Nome do Utilizador';
 
-$webui_admin_manage_user = 'User';
-$webui_admin_manage_edit = 'Edit';
-$webui_admin_manage_created = 'Created';
-$webui_admin_manage_active = 'Active';
-$webui_admin_manage_inactive = 'Inactive';
-$webui_admin_manage_banned = 'Banned';
-$webui_admin_manage_notconf = 'Not Confirmed';
-$webui_admin_manage_userban = 'Ban this User';
-$webui_admin_manage_userunban = 'Unban this User';
-$webui_admin_manage_userdelete = 'Delete this User';
+$webui_admin_manage_user = 'Utilizador';
+$webui_admin_manage_edit = 'Editar';
+$webui_admin_manage_created = 'Criado';
+$webui_admin_manage_active = 'Ativo';
+$webui_admin_manage_inactive = 'Inativo';
+$webui_admin_manage_banned = 'Banido';
+$webui_admin_manage_notconf = 'Não Confirmado';
+$webui_admin_manage_userban = 'Banir Utilizador';
+$webui_admin_manage_userunban = 'Desbanir Utilizador';
+$webui_admin_manage_userdelete = 'Apagar Utilizador';
 
 //
 // Admin Edit Management Panel Page
 //
-$webui_admin_edit_manage = 'Edit Management Panel';
-$webui_admin_edit_manage_info = 'Ceci vous permet d\'�diter le panneau d\'administrations des utilisateurs.';
+$webui_admin_edit_manage = 'Editar Painel de Gestão';
+$webui_admin_edit_manage_info = 'Isso permite que você edite o painel de usuários na administração.';
 $webui_admin_edit_manage_userid = 'USERID (UUID)';
-$webui_admin_edit_manage_avatar_name = 'Avatar name';
-$webui_admin_edit_manage_real_name = 'Real name';
-$webui_admin_edit_manage_real_street = 'Street';
-$webui_admin_edit_manage_real_city = 'City';
-$webui_admin_edit_manage_real_zip = 'Zip';
-$webui_admin_edit_manage_real_country = 'Country';
+$webui_admin_edit_manage_avatar_name = 'Nome do Avatar';
+$webui_admin_edit_manage_real_name = 'Nome Real';
+$webui_admin_edit_manage_real_street = 'Endereço';
+$webui_admin_edit_manage_real_city = 'Cidade';
+$webui_admin_edit_manage_real_zip = 'Codigo Postal';
+$webui_admin_edit_manage_real_country = 'País';
 $webui_admin_edit_manage_real_email = 'Email';
-$webui_admin_edit_manage_savechanges = 'Save Changes';
-$webui_admin_edit_manage_savestatus = 'Save Status';
-$webui_admin_edit_manage_currentstatus = 'Current Status';
-$webui_admin_edit_manage_setstatus = 'Set Status';
-$webui_admin_edit_manage_active = 'Active';
-$webui_admin_edit_manage_inactive = 'Inactive';
-$webui_admin_edit_manage_notconf = 'Not Confirmed';
+$webui_admin_edit_manage_savechanges = 'Gravar Alterações';
+$webui_admin_edit_manage_savestatus = 'Gravar Estado';
+$webui_admin_edit_manage_currentstatus = 'Estado Currente';
+$webui_admin_edit_manage_setstatus = 'Definir status';
+$webui_admin_edit_manage_active = 'Ativo';
+$webui_admin_edit_manage_inactive = 'Inativo';
+$webui_admin_edit_manage_notconf = 'Não activado';
 
 //
 // Admin Settings Page
 //
-$webui_admin_settings = 'Admin Settings';
-$webui_admin_settings_info = 'Ceci vous permet des setting administrateur.';
-$webui_admin_settings_changeable = 'Start Region changeable at';
-$webui_admin_settings_startregion = 'Start Region';
-$webui_admin_settings_require = 'Require address for account creation?';
-$webui_admin_settings_allow = 'Allow Registration';
-$webui_admin_settings_verify = 'Verify Users by Validating their email';
-$webui_admin_settings_activate = 'Activate Lastnames';
-$webui_admin_settings_addlastname = 'Add last name';
-$webui_admin_settings_deslastname = 'Deactivate last name';
-$webui_admin_settings_realastname = 'Reactivate last name';
-$webui_admin_settings_delete = 'Delete last name';
-$webui_admin_settings_save_bouton = 'Save';
-$webui_admin_settings_activate_bouton = 'Activate';
-$webui_admin_settings_desactivate_bouton = 'Desactivate';
-$webui_admin_settings_create_select = 'Create/Edit account';
-$webui_admin_settings_edit_select = 'Edit account';
-$webui_admin_settings_adminonly_select = 'Adminsitrator only';
-$webui_admin_settings_yes_select = 'Yes';
-$webui_admin_settings_no_select = 'No';
+$webui_admin_settings = 'Configurações de administrador';
+$webui_admin_settings_info = 'Esta configuração permite ao administrador.';
+$webui_admin_settings_changeable = 'Iniciar Região mutável em';
+$webui_admin_settings_startregion = 'Iniciar Região';
+$webui_admin_settings_require = 'Exigir endereço para a criação da conta?';
+$webui_admin_settings_allow = 'Permitir o Registo?';
+$webui_admin_settings_verify = 'Verificar os usuários, validando seu e-mail';
+$webui_admin_settings_activate = 'Ativar Ùltimo Nome';
+$webui_admin_settings_addlastname = 'Adicionar Ùltimos Nomes';
+$webui_admin_settings_deslastname = 'Desativaar Ùltimo Nome';
+$webui_admin_settings_realastname = 'Reativar Ùltimo Nome';
+$webui_admin_settings_delete = 'Apagar Ùltimo Nome';
+$webui_admin_settings_save_bouton = 'Guardar';
+$webui_admin_settings_activate_bouton = 'Ativar';
+$webui_admin_settings_desactivate_bouton = 'Desativar';
+$webui_admin_settings_create_select = 'Criar/Editar Conta';
+$webui_admin_settings_edit_select = 'Editar Conta';
+$webui_admin_settings_adminonly_select = 'Adminiistrador apenas';
+$webui_admin_settings_yes_select = 'Sim';
+$webui_admin_settings_no_select = 'Não';
 
 //
 // Admin Styles Options Page
 //
-$webui_admin_options = 'Admin Modules et Options';
-$webui_admin_options_info = 'Ceci vous permet d\'activer/désactiver les différents modules et leurs options.';
-$webui_admin_options_TopPanelSlider = 'Activer le Top Panel Slider';
-$webui_admin_options_TopPanelSlider_active = 'Top Panel Slider activé';
-$webui_admin_options_TopPanelSlider_desactive = 'Top Panel Slider désactivé';
-$webui_admin_options_TemplateSelector = 'Activer le Template Selector';
-$webui_admin_options_TemplateSelector_active = 'Template Selector activé';
-$webui_admin_options_TemplateSelector_desactive = 'Template Selector désactivé';
-$webui_admin_options_StyleSwitcher = 'Activer le Style Switcher';
-$webui_admin_options_StyleSwitcher_active = 'Style Switcher activé';
-$webui_admin_options_StyleSwitcher_desactive = 'Style Switcher désactivé';
-$webui_admin_options_StyleSizer = 'Activer le Style Sizer';
-$webui_admin_options_StyleSizer_active = 'Style Sizer activé';
-$webui_admin_options_StyleSizer_desactive = 'Style Sizer désactivé';
-$webui_admin_options_FontSizer = 'Activer le Font Sizer';
-$webui_admin_options_FontSizer_active = 'Font Sizer activé';
-$webui_admin_options_FontSizer_desactive = 'Font Sizer désactivé';
-$webui_admin_options_LanguageSelector = 'Activer le Language Selector';
-$webui_admin_options_LanguageSelector_active = 'Language Selector activé';
-$webui_admin_options_LanguageSelector_desactive = 'Language Selector désactivé';
-$webui_admin_options_ScrollingText = 'Activer le Scrolling Text';
-$webui_admin_options_ScrollingText_active = 'Scrolling Text activé';
-$webui_admin_options_ScrollingText_desactive = 'Scrolling Text désactivé';
-$webui_admin_options_WelcomeMessage = 'Activer le Welcome Message';
-$webui_admin_options_WelcomeMessage_active = 'Welcome Message activé';
-$webui_admin_options_WelcomeMessage_desactive = 'Welcome Message désactivé';
-$webui_admin_options_MegaMenu = 'Activer le Mega Menu';
-$webui_admin_options_MegaMenu_active = 'Mega Menu activé';
-$webui_admin_options_MegaMenu_desactive = 'Mega Menu désactivé';
-$webui_admin_options_Logo = 'Activer le Logo';
-$webui_admin_options_Logo_active = 'Logo activé';
-$webui_admin_options_Logo_desactive = 'Logo désactivé';
-$webui_admin_options_LogoEffect = 'Activer le Logo Effect';
-$webui_admin_options_LogoEffect_active = 'Logo Effect activé';
-$webui_admin_options_LogoEffect_desactive = 'Logo Effect désactivé';
-$webui_admin_options_SlideShow = 'Activer le Slide Show';
-$webui_admin_options_SlideShow_active = 'Slide Show activé';
-$webui_admin_options_SlideShow_desactive = 'Slide Show désactivé';
-$webui_admin_options_Date = 'Activer la Date';
-$webui_admin_options_Date_active = 'Date activé';
-$webui_admin_options_Date_desactive = 'Date désactivé';
-$webui_admin_options_Time = 'Activer le Time';
-$webui_admin_options_Time_active = 'Time activé';
-$webui_admin_options_Time_desactive = 'Time désactivé';
-$webui_admin_options_RoundedCorner = 'Activer le Rounded Corner';
-$webui_admin_options_RoundedCorner_active = 'Rounded Corner activé';
-$webui_admin_options_RoundedCorner_desactive = 'Rounded Corner désactivé';
-$webui_admin_options_PageLoadTime = 'Activer le Page Load Time';
-$webui_admin_options_PageLoadTime_active = 'Page Load Time activé';
-$webui_admin_options_PageLoadTime_desactive = 'Page Load Time désactivé';
-$webui_admin_options_W3c = 'Activer le W3c';
-$webui_admin_options_W3c_active = 'W3c activé';
-$webui_admin_options_W3c_desactive = 'W3c désactivé';
-$webui_admin_options_Rss = 'Activer le Rss';
-$webui_admin_options_Rss_active = 'Rss activé';
-$webui_admin_options_Rss_desactive = 'Rss désactivé';
+$webui_admin_options = 'Módulos Administrativos e Opções';
+$webui_admin_options_info = 'Isso permite você ativar / desativar os vários módulos e suas opções.';
+$webui_admin_options_TopPanelSlider = 'Ativar Top Slider';
+$webui_admin_options_TopPanelSlider_active = 'Top Slider Ativado';
+$webui_admin_options_TopPanelSlider_desactive = 'Top Slider Desativado';
+$webui_admin_options_TemplateSelector = 'Ativar Escolha de Temas';
+$webui_admin_options_TemplateSelector_active = 'Escolha de Temas Ativado';
+$webui_admin_options_TemplateSelector_desactive = 'Escolha de Temas Desativado';
+$webui_admin_options_StyleSwitcher = 'Ativar Escolha de Estilos ';
+$webui_admin_options_StyleSwitcher_active = 'Escolha de Estilos Ativado';
+$webui_admin_options_StyleSwitcher_desactive = 'Escolha de Estilos Desativado';
+$webui_admin_options_StyleSizer = 'Ativar Escolha do Tamanho do Estilo';
+$webui_admin_options_StyleSizer_active = 'Escolha do Tamanho do Estilo Ativado';
+$webui_admin_options_StyleSizer_desactive = 'Escolha do Tamanho do Estilo Desativado';
+$webui_admin_options_FontSizer = 'Ativar Escolha do Tamanho do Texto';
+$webui_admin_options_FontSizer_active = 'Escolha do Tamanho do Texto Ativado';
+$webui_admin_options_FontSizer_desactive = 'Escolha do Tamanho do Texto Desativado';
+$webui_admin_options_LanguageSelector = 'Ativar Escolha de Lingua';
+$webui_admin_options_LanguageSelector_active = 'Escolha de Lingua Ativado';
+$webui_admin_options_LanguageSelector_desactive = 'Escolha de Lingua Desativado';
+$webui_admin_options_ScrollingText = 'Ativar Regulagem do Texto';
+$webui_admin_options_ScrollingText_active = 'Regulagem do Texto Ativado';
+$webui_admin_options_ScrollingText_desactive = 'Regulagem do Texto Desativado';
+$webui_admin_options_WelcomeMessage = 'Ativar Mensagem de Boas vindas';
+$webui_admin_options_WelcomeMessage_active = 'Mensagem de Boas vindas Ativada';
+$webui_admin_options_WelcomeMessage_desactive = 'Mensagem de Boas vindas Ativada';
+$webui_admin_options_MegaMenu = 'Ativar Mega Menu';
+$webui_admin_options_MegaMenu_active = 'Mega Menu Ativado';
+$webui_admin_options_MegaMenu_desactive = 'Mega Menu Desativado';
+$webui_admin_options_Logo = 'Ativar o Logo';
+$webui_admin_options_Logo_active = 'Logo Ativado';
+$webui_admin_options_Logo_desactive = 'Logo Desativado';
+$webui_admin_options_LogoEffect = 'Ativar Efeito no Logo';
+$webui_admin_options_LogoEffect_active = 'Efeito no Logo Ativado';
+$webui_admin_options_LogoEffect_desactive = 'Efeito no Desativado';
+$webui_admin_options_SlideShow = 'Ativar o Slide Show';
+$webui_admin_options_SlideShow_active = 'Slide Show Ativado';
+$webui_admin_options_SlideShow_desactive = 'Slide Show Desativado';
+$webui_admin_options_Date = 'Ativar Data';
+$webui_admin_options_Date_active = 'Data Ativada';
+$webui_admin_options_Date_desactive = 'Date Desativada';
+$webui_admin_options_Time = 'Ativar Hora';
+$webui_admin_options_Time_active = 'Hora Ativada';
+$webui_admin_options_Time_desactive = 'Hora Desativada';
+$webui_admin_options_RoundedCorner = 'Ativar Cantos Redondos'; 
+$webui_admin_options_RoundedCorner_active = 'Cantos Redondos Ativados';
+$webui_admin_options_RoundedCorner_desactive = 'Cantos Redondos Desativados';
+$webui_admin_options_PageLoadTime = 'Ativar Page Load Time';
+$webui_admin_options_PageLoadTime_active = 'Page Load Time Ativado';
+$webui_admin_options_PageLoadTime_desactive = 'Page Load Time Desativado';
+$webui_admin_options_W3c = 'Ativar o W3c';
+$webui_admin_options_W3c_active = 'W3c Ativado';
+$webui_admin_options_W3c_desactive = 'W3c Desativado';
+$webui_admin_options_Rss = 'Ativar o Rss';
+$webui_admin_options_Rss_active = 'Rss Ativado';
+$webui_admin_options_Rss_desactive = 'Rss Desativado';
 
 // Admin Styles Background Color Animation
-$webui_admin_options_BackgroundColorAnimation = 'Activer le Background Color Animation';
-$webui_admin_options_BackgroundColorAnimation_active = 'Background Color Animation activé';
-$webui_admin_options_BackgroundColorAnimation_desactive = 'Background Color Animation désactivé';
-$webui_admin_options_BackgroundColorAnimation_info = 'Ceci vous permet d\'administrer les couleurs des fonds animés.';
-$webui_admin_options_active = 'activé';
-$webui_admin_options_desactive = 'désactivé';
-$webui_admin_options_send = 'Envoyer';
-$webui_admin_options_modify = 'Modifier';
+$webui_admin_options_BackgroundColorAnimation = 'Ativar Animação Cor de Fundo';
+$webui_admin_options_BackgroundColorAnimation_active = 'Animação Cor de Fundo Ativada';
+$webui_admin_options_BackgroundColorAnimation_desactive = 'Animação Cor de Fundo Desativada';
+$webui_admin_options_BackgroundColorAnimation_info = 'Isso permite você administrar as cores de fundos animadas.';
+$webui_admin_options_active = 'ativado';
+$webui_admin_options_desactive = 'desativado';
+$webui_admin_options_send = 'Enviar';
+$webui_admin_options_modify = 'Modificar';
 $webui_admin_BackgroundColorAnimation_HoverStep1 = 'Color Hover Step 1';
 $webui_admin_BackgroundColorAnimation_EndStep1 = 'Color End Step 1';
 $webui_admin_BackgroundColorAnimation_HoverStep2 = 'Color Hover Step 2';
@@ -400,72 +401,66 @@ $webui_admin_BackgroundColorAnimation_EndStep10 = 'Color End Step 10';
 //
 // Add/Edit News Page
 //
-$webui_admin_create_news_info = 'This allows you to create a new news item.';
-$webui_admin_edit_news_info = 'This allows you to edit a news item.';
+$webui_admin_create_news_info = 'Isto permite-lhe criar uma nova notícia.';
+$webui_admin_edit_news_info = 'Isso permite que você edite uma notícia.';
 
 //
 // Login Screen page
 //
-$webui_login_screen = 'Login Screen';
-$webui_regionbox = 'Region';
-$webui_special_info = 'At this moment we would like to ask you to go to the website and make sure that you have your email registered';
-$webui_special_visit = 'Visit';
-$webui_special_website = 'the website';
-$webui_special_moreinfo = 'for more information';
+$webui_login_screen = 'Tela de Login';
+$webui_regionbox = 'Região';
+$webui_special_info = 'Neste momento, gostaria de pedir-lhe para ir para o site e verifique se você tem o seu e-mail registrado';
+$webui_special_visit = 'Visite';
+$webui_special_website = 'o website';
+$webui_special_moreinfo = 'para mais informações';
 
 //
 // Gallery Page
 //
-$webui_gallery = 'Album photo';
-$webui_gallery_info = 'Ceci vous permet d\'avoir un aperçu en image des différentes régions de la grille';
+$webui_gallery = 'Galeria de Fotos';
+$webui_gallery_info = 'Isso permite-lhe ter uma imagem de visualização das diferentes regiões da grid';
 
 //
 // Support Page
 //
-$webui_support = 'Support';
-$webui_support_info = 'This allows you to Support';
+$webui_support = 'Suporte';
+$webui_support_info = 'Isto permite-lhe dar suporte.';
 
 //
 // Help Page
 //
-$webui_help = 'Aide';
-$webui_help_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
+$webui_help = 'Ajuda';
+$webui_help_info = 'Isso permite-lhe obter assistência com ...';
 
-$webui_help_step1_title = 'Step 1';
-$webui_help_step2_title = 'Step 2';
-$webui_help_step3_title = 'Step 3';
-$webui_help_step1 = '<a href="index.php?page=register">Create your FREE Account</a> right here on our pages.';
-$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. We recommend Imprudence / Kokua.';
-$webui_help_step3 = '<a href="index.php?page=addgrid">Add our grid</a> to your favorite viewer. Don\'t forget it!';
+$webui_help_step1_title = 'Passo 1';
+$webui_help_step2_title = 'Passo 2';
+$webui_help_step3_title = 'Passo 3';
+$webui_help_step1 = '<a href="index.php?page=register">Crie sua conta GRÁTIS</a> bem aqui na nossa página.';
+$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Descarregue o Cliente</a>. Nós recomendamos Imprudence / Kokua.';
+$webui_help_step3 = '<a href="index.php?page=addgrid">Adicione a nossa grid</a> no seu cliente. Não se esqueça disso!';
 //
 // Chat Page
 //
-$webui_chat = 'Salle de Chat IRC';
-$webui_chat_info = 'This allows you to Live Chat Support.';
-
-//
-// Chat Page
-//
-$webui_chat = 'Live Chat Support IRC';
-$webui_chat_info = 'Ceci vous permet d\'obtenir une aide en directe grace à notre Salle de Chat IRC.';
+$webui_chat = 'Sala de Chat IRC';
+$webui_chat_info = 'Isto permite-lhe Suporte ao Vivo via Chat.';
 
 //
 // Downloads Page
 //
-$webui_downloads = 'Téléchargements';
-$webui_downloads_info = 'Nous vous proposons ici quelques téléchargements de Viewer ... nous vous conseillons Imprudence / Kokua';
-$webui_downloads_imprudence_windows_title = 'Imprudence pour Windows';
-$webui_downloads_imprudence_linux_title = 'Imprudence pour Linux';
-$webui_downloads_imprudence_mac_title = 'Imprudence pour Mac';
-$webui_downloads_imprudence_windows = '<a href="#">Télécharger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_linux = '<a href="#">Télécharger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_mac = '<a href="#">Télécharger</a> Imprudence / Kokua.';
+$webui_downloads = 'Downloads';
+$webui_downloads_info = 'Disponíbilizamos aqui alguns clientes nos quais recomendamos Imprudence / Kokua';
+$webui_downloads_imprudence_windows_title = 'Imprudence para Windows';
+$webui_downloads_imprudence_linux_title = 'Imprudence para Linux';
+$webui_downloads_imprudence_mac_title = 'Imprudence para Mac';
+$webui_downloads_imprudence_windows = '<a href="#">Descarregar</a> Imprudence / Kokua.';
+$webui_downloads_imprudence_linux = '<a href="#">Descarregar</a> Imprudence / Kokua.';
+$webui_downloads_imprudence_mac = '<a href="#">Descarregar</a> Imprudence / Kokua.';
 
 //
 // Addgrid Page
 //
-$webui_addgrid = 'Ajouter Grille';
-$webui_addgrid_info = 'Après avoir téléchargé et installé votre viewer préféré, il vous reste encore une étape avant de pouvoir vous connecter à notre Server, vous devez configurer le Viewer.';
+$webui_addgrid = 'Adicionar Grid';
+$webui_addgrid_info = 'Depois de baixar e instalar o seu cliente favorito, você ainda tem um passo antes de se ligar ao nosso servidor, você deve configurar o Cliente..';
 
 $webui_addgrid_hippo = 'Hippo';
 $webui_addgrid_imprudence = 'Imprudence';
@@ -474,25 +469,25 @@ $webui_addgrid_astra = 'Astra';
 $webui_addgrid_singularity = 'Singularity';
 $webui_addgrid_kokua = 'Kokua';
 
-$webui_addgrid_config_hippo = 'Configuration of Hippo Viewer';
-$webui_addgrid_config_imprudence = 'Configuration of Imprudence Viewer';
-$webui_addgrid_config_phoenix = 'Configuration of Phoenix Viewer';
-$webui_addgrid_config_singularity = 'Configuration of Singularity Viewer';
-$webui_addgrid_config_astra= 'Configuration of Astra Viewer';
-$webui_addgrid_config_kokua = 'Configuration of Kokua Viewer';
-$webui_addgrid_click_to_enlarge = 'Click to enlarge';
+$webui_addgrid_config_hippo = 'Configuração do Hippo Viewer';
+$webui_addgrid_config_imprudence = 'Configuração do Imprudence Viewer';
+$webui_addgrid_config_phoenix = 'Configuração do Phoenix Viewer';
+$webui_addgrid_config_singularity = 'Configuração do Singularity Viewer';
+$webui_addgrid_config_astra= 'Configuração do Astra Viewer';
+$webui_addgrid_config_kokua = 'Configuração do Kokua Viewer';
+$webui_addgrid_click_to_enlarge = 'Clique para Alargar';
 
-$webui_addgrid_title = 'Configuration Imprudence Viewer';
-$webui_addgrid_add = 'Lancer le viewer, cliquer sur <b>GRID MANAGER</b> et puis sur <b>ADD NEW GRID</b>';
-$webui_addgrid_complete = 'Remplir avec les informations ci-dessous (Copier/Coller).';
+$webui_addgrid_title = 'Configuração do Imprudence Viewer';
+$webui_addgrid_add = 'Inicie o cliente, clique em <b>GRID MANAGER</b> e em seguida, <b>ADD NEW GRID</b>';
+$webui_addgrid_complete = 'Preencha as informações abaixo (copiar/colar).';
 
 $webui_addgrid_gridNick = 'Grid nick (unique)';
-$webui_addgrid_gridName = 'Grid name';
+$webui_addgrid_gridName = 'Grid Name';
 $webui_addgrid_AvFirstName = 'First Name';
 $webui_addgrid_AvlastName = 'Last Name';
 $webui_addgrid_Avpassword = 'Password';
 $webui_addgrid_loginURL = 'Login URL';
-$webui_addgrid_getGridInfo = 'A cette étape vous pouvez cliquer sur <b>GET GRID INFO</b> ou poursuivre manuellement (Copier/Coller).';
+$webui_addgrid_getGridInfo = 'Neste ponto, você pode clicar <b>GET GRID INFO</b> ou continuar manualmente (copiar/colar).';
 $webui_addgrid_loginPage = 'Login page';
 $webui_addgrid_helperURL = 'Helper URL';
 $webui_addgrid_website = 'Website';
@@ -500,72 +495,72 @@ $webui_addgrid_support = 'Support';
 $webui_addgrid_account = 'Account';
 $webui_addgrid_password = 'Password';
 $webui_addgrid_webSearch = 'Web Search';
-$webui_addgrid_apply = 'Cliquer sur <b>APPLY</b>, puis sur <b>OK</b>';
-$webui_addgrid_login = 'Remplir <b>First Name</b>, <b>Last Name</b> et <b>Password</b>, sélectionnez <b>DigiGrids</b> et cliquez sur <b>ME CONNECTER</b>.';
-$webui_addgrid_valid = 'Valable pour: Astra Viewer, Hippo Viewer, Emerald Viewer, Phoenix Viewer, Meerkat Viewer, ...';
+$webui_addgrid_apply = 'Clique em <b>APPLY</b>, depois em <b>OK</b>';
+$webui_addgrid_login = 'Preencha <b>Primeiro Nome</b>, <b>Ùltimo Nome</b> e <b>Senha</b>, selecione <b>DigiGrids</b> e clique em <b>SIGN IN</b >.';
+$webui_addgrid_valid = 'Válido para: Astra Viewer, Hippo Viewer, Emerald Viewer, Phoenix Viewer, Meerkat Viewer, ...';
 
-$webui_addgrid_diff_info = 'Les Viewers suivants se configurent un peu différement.';
-$webui_addgrid_diff_title = 'Informations de configuration';
+$webui_addgrid_diff_info = 'Os espectadores que se seguem são configurados um pouco diferente.';
+$webui_addgrid_diff_title = 'Informações de configuração';
 
-$webui_addgrid_diff_shortcut = 'Créer un raccourci du viewer et placez le sur votre bureau.';
-$webui_addgrid_diff_propriete = 'Clic droit sur le raccourci et aller sur Propriété.';
-$webui_addgrid_diff_complete = 'Remplir avec les informations respectives ci-dessous.';
+$webui_addgrid_diff_shortcut = 'Criar um atalho para o cliente e colocá-lo em seu desktop.';
+$webui_addgrid_diff_propriete = 'Botão direito do rato no atalho e selecione Propriedades.';
+$webui_addgrid_diff_complete = 'Encha com a respectiva informação abaixo.';
 $webui_addgrid_KokuaViewer = 'Kokua Viewer';
 $webui_addgrid_SecondLifeViewer = 'Second Life Viewer';
 $webui_addgrid_KristenViewer = 'Kristen Viewer';
 
-$webui_addgrid_IWC_info = 'Notre Server fonctionne aussi en mode IWC (Inter World Connector).';
+$webui_addgrid_IWC_info = 'Nosso Server também trabalha em modo IWC (Interconnected World Connector).';
 $webui_addgrid_IWC_title = 'Inter World Connector (IWC)';
-$webui_addgrid_IWC_content = 'Voici notre lien IWC';
+$webui_addgrid_IWC_content = 'Aqui é a nossa ligação em IWC';
 
-$webui_addgrid_HG_info = 'Notre Server fonctionne aussi en mode HG (HyperGrid).';
+$webui_addgrid_HG_info = 'Nosso Server também funciona em modo HG (Hypergrid).';
 $webui_addgrid_HG_title = 'Hypergrid (HG)';
-$webui_addgrid_HG_content = 'Voici notre lien HG';
+$webui_addgrid_HG_content = 'Aqui é a nossa ligação em HG';
 
-$webui_addgrid_banned_info = 'Les Viewers suivants sont bannis sur notre server.';
-$webui_addgrid_banned_title = 'Banned Viewer';
-$webui_addgrid_banned_content = 'Il n\'y a pas de viewer banni actuellement.';
+$webui_addgrid_banned_info = 'Os clientes que se seguem são proibidos em nosso servidor.';
+$webui_addgrid_banned_title = 'Clientes Banidos';
+$webui_addgrid_banned_content = 'Não há qualquer cliente banido.';
 
 //
 // Addserver Page
 //
-$webui_addserver = 'Ajouter Server';
-$webui_addserver_info = 'Les informations ci-dessous vous permettent de configurer votre serevr afin de le connecter à notre server.';
+$webui_addserver = 'Adicionar Servidor';
+$webui_addserver_info = 'As informações a seguir permitem que você configure seu servidor para se conectar ao nosso servidor.';
 
 //
 // Pagination Tooltips
 //
-$webui_pagination_tooltips_back_begin = 'Go back to the beginning.';
-$webui_pagination_tooltips_back_page = 'Go back one page.';
-$webui_pagination_tooltips_forward_page = 'Go forward one page.';
-$webui_pagination_tooltips_last_page = 'Go to the last page.';
-$webui_pagination_tooltips_show10 = 'Show 10 Results per page.';
-$webui_pagination_tooltips_show25 = 'Show 25 Results per page.';
-$webui_pagination_tooltips_show50 = 'Show 50 Results per page.';
-$webui_pagination_tooltips_show100 = 'Show 100 Results per page.';
-$webui_pagination_tooltips_limit10 = 'Limit 10';
-$webui_pagination_tooltips_limit25 = 'Limit 25';
-$webui_pagination_tooltips_limit50 = 'Limit 50';
-$webui_pagination_tooltips_limit100 = 'Limit 100';
-$webui_pagination_tooltips_sortn = 'Sort by Name';
-$webui_pagination_tooltips_sortx = 'Sort by Grid X';
-$webui_pagination_tooltips_sortn = 'Sort by Grid Y';
+$webui_pagination_tooltips_back_begin = 'Voltar ao início.';
+$webui_pagination_tooltips_back_page = 'Página Anterior.';
+$webui_pagination_tooltips_forward_page = 'Próxima página.';
+$webui_pagination_tooltips_last_page = 'Ùltima Página.';
+$webui_pagination_tooltips_show10 = 'Mostrar 20 resultados por Página.';
+$webui_pagination_tooltips_show25 = 'Mostrar 25 resultados por Página.';
+$webui_pagination_tooltips_show50 = 'Mostrar 50 resultados por Página.';
+$webui_pagination_tooltips_show100 = 'Mostrar 100 resultados por Página.';
+$webui_pagination_tooltips_limit10 = 'Limite 10';
+$webui_pagination_tooltips_limit25 = 'Limite 25';
+$webui_pagination_tooltips_limit50 = 'Limite 50';
+$webui_pagination_tooltips_limit100 = 'Limite 100';
+$webui_pagination_tooltips_sortn = 'Listar por Nome';
+$webui_pagination_tooltips_sortx = 'Listar por Grid X';
+$webui_pagination_tooltips_sortn = 'Listar por Grid Y';
 
 //
 // SlideShow Comments
 //
-$webui_slideshow_title_comment01 = 'Aide 01';
-$webui_slideshow_title_comment02 = 'Aide 02';
-$webui_slideshow_title_comment03 = 'Aide 03';
-$webui_slideshow_title_comment04 = 'Aide 04';
-$webui_slideshow_title_comment05 = 'Aide 05';
-$webui_slideshow_title_comment06 = 'Aide 06';
-$webui_slideshow_comment01 = 'Aide concernant le Viewer.';
-$webui_slideshow_comment02 = 'Aide Concernant le Server.';
-$webui_slideshow_comment03 = 'Aide concernant autre chose.';
-$webui_slideshow_comment04 = 'Aide concernant 04.';
-$webui_slideshow_comment05 = 'Aide concernant 05.';
-$webui_slideshow_comment06 = 'Aide concernant 06.';
+$webui_slideshow_title_comment01 = 'Ajuda 01';
+$webui_slideshow_title_comment02 = 'Ajuda 02';
+$webui_slideshow_title_comment03 = 'Ajuda 03';
+$webui_slideshow_title_comment04 = 'Ajuda 04';
+$webui_slideshow_title_comment05 = 'Ajuda 05';
+$webui_slideshow_title_comment06 = 'Ajuda 06';
+$webui_slideshow_comment01 = 'Assistência com Viewer.';
+$webui_slideshow_comment02 = 'Assistência com Server.';
+$webui_slideshow_comment03 = 'Assistência com outra coisa.';
+$webui_slideshow_comment04 = 'Assistência com 04.';
+$webui_slideshow_comment05 = 'Assistência com 05.';
+$webui_slideshow_comment06 = 'Assistência com 06.';
 
 //
 // Infos Comments
@@ -576,53 +571,52 @@ $webui_infos_comment03_title = 'Info 3';
 $webui_infos_comment04_title = 'Info 4';
 $webui_infos_comment05_title = 'Info 5';
 $webui_infos_comment06_title = 'Info 6';
-$webui_infos_comment01 = 'Info concernant ...';
-$webui_infos_comment02 = 'Info concernant ...';
-$webui_infos_comment03 = 'Info concernant ...';
-$webui_infos_comment04 = 'Info concernant ...';
-$webui_infos_comment05 = 'Info concernant ...';
-$webui_infos_comment06 = 'Info concernant ...';
+$webui_infos_comment01 = 'informações sobre ...';
+$webui_infos_comment02 = 'informações sobre ...';
+$webui_infos_comment03 = 'informações sobre ...';
+$webui_infos_comment04 = 'informações sobre ...';
+$webui_infos_comment05 = 'informações sobre ...';
+$webui_infos_comment06 = 'informações sobre ...';
 
 //
 // Page Load Time
 //
-$this_page_took = 'This page took';
-$seconds_to_load = 'seconds to load';
+$this_page_took = 'Esta Página levou';
+$seconds_to_load = 'segundos para carregar';
 
 //
 // Modernizer
 //
-$webui_modernizer_problem = 'You do not have your Javascript enabled, and this site requires it.';
+$webui_modernizer_problem = 'Você não tem o Javascript habilitado e este site exige.';
 
 //
 // Page Currency
 //
-$webui_menu_item_getregion='Buy Land';
+$webui_menu_item_getregion='Comprar Terra';
 
-$webui_menu_item_getcurrency='Buy D$';
-$webui_menu_item_getcurrencyhistory='History';
-$webui_menu_item_currencytransfer='Transfer';
+$webui_menu_item_getcurrency='Comprar Tv$';
+$webui_menu_item_getcurrencyhistory='Historial';
+$webui_menu_item_currencytransfer='Transferir';
 
-$site_not_a_member='Not a member?';
-$site_sign_up_today='Create your FREE Account right here on our pages.';
+$site_not_a_member='Não é membro?';
+$site_sign_up_today='Crie sua conta GRÁTIS aqui na nossa página.';
 
 $site_sign_up_benifit='
-<ul><li>Large wonderful world with friendly people</li>
-<li>Security is a top priority</li>
-<li>Choose your default avatar when you sign up</li>
-<li>Latest physics engine</li>
-<li>Over 100 Regions</li>
-<li>Currency compatible with lindens and us and euros</li>
-<li>No purchase fee</li>
-<li>No set up fee</li>
-<li>The worlds only virtual 3D dating environment</li>
-<li>You can keep you sl name and  identity</li>
-<li>Friendly personal owners</li>
-<li>Kick ass administer and scripters</li>
+<ul><li>Maravilhoso mundo grande com pessoas amigas</li>
+<li>Segurança é uma prioridade</li>
+<li>Escolha o seu avatar padrão quando você se inscrever</li>
+<li>Mais recente motor de física</li>
+<li>Mais de 100 Regiões</li>
+<li>Moedas compatível com lindens e Dollars e Euros</li>
+<li>Nenhuma taxa de compra</li>
+<li>Nenhuma Taxa de Criação</li>
+<li>O mundo é apenas ambiente de namoro virtual 3D</li>
+<li>Você pode manter o seu nome e identidade sl</li>
+<li>Donos amigáveis</li>
 </ul>
 ';
 
-$site_terms_of_service_agree='I agree with the Terms of Service.';
-$ErrorMessagePurchaseAlreadyComplete = "This purchase has already been completed. If you have not seen the currency applied yet, please be patient, as it might be on hold.";
+$site_terms_of_service_agree='Aceito os Termos do Serviço.';
+$ErrorMessagePurchaseAlreadyComplete = "Esta compra já foi concluída. Se você ainda não viu a moeda aplicada, por favor, seja paciente, pois pode estar em espera.";
 
 ?>
