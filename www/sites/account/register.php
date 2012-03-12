@@ -1,7 +1,12 @@
 <?php
+use Aurora\Addon\WebUI\Configs;
 $DbLink = new DB;
-$DbLink->query("SELECT adress,region,allowRegistrations,verifyUsers,ForceAge FROM " . C_ADM_TBL . "");
-list($ADRESSCHECK, $REGIOCHECK,$ALLOWREGISTRATION,$VERIFYUSERS,$FORCEAGE) = $DbLink->next_record();
+$adminsetting = Configs::d()->adminsetting();
+$ADRESSCHECK = $adminsetting['adress'];
+$REGIOCHECK = $adminsetting['region'];
+$ALLOWREGISTRATION = $adminsetting['allowRegistrations'];
+$VERIFYUSERS = $adminsetting['verifyUsers'];
+$FORCEAGE = $adminsetting['ForceAge'];
 
 //GET IP ADRESS
 if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
@@ -23,8 +28,8 @@ if ($_POST[action] == "") {
 function printLastNames()
 {
 	$DbLink = new DB;
-	$DbLink->query("SELECT lastnames FROM " . C_ADM_TBL . "");
-	list($LASTNAMESC) = $DbLink->next_record();
+	$adminsetting = Configs::d()->adminsetting();
+	$LASTNAMESC = $adminsetting['lastnames'];
 	if ($LASTNAMESC == "1") {
 		echo "<div class=\"roundedinput\"><select id=\"register_input\" wide=\"25\" name=\"accountlast\">";
 		$DbLink->query("SELECT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
@@ -40,10 +45,10 @@ function printLastNames()
 
 function displayRegions()
 {
-	$DbLink = new DB;
 	echo "<div class=\"roundedinput\"><select require=\"true\" label=\"startregion_label\" id=\"register_input\" wide=\"25\" name=\"startregion\">";
-	$DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " ORDER BY RegionName ASC ");
-	while (list($RegionName, $RegionHandle) = $DbLink->next_record()) {
+	foreach(Configs::d()->GetRegions() as $region) {
+		$RegionHandle = $region->RegionID();
+		$RegionName = $region->RegionName();
 		echo "<option value=\"$RegionHandle\">$RegionName</option>";
 	}
 	echo "</select></div>";
