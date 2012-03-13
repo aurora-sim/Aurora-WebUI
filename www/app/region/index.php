@@ -21,7 +21,8 @@ if ($regionType == ''){
 }
 $source = $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID());
 
-$adminmodules = Configs::d()->adminmodules();
+$webuicid = Configs::d()->WebUIClientImplementationData();
+$adminmodules = $webuicid['adminmodules'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

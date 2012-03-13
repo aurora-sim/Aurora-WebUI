@@ -28,7 +28,8 @@ if ($_GET[name]) {
 } 
 
 
-$adminmodules                    = Configs::d()->adminmodules();
+$webuicid                        = Configs::d()->WebUIClientImplementationData();
+$adminmodules                    = $webuicid['adminmodules'];
 $id                              = $adminmodules['id'];
 $displayTopPanelSlider           = $adminmodules['displayTopPanelSlider'];
 $displayTemplateSelector         = $adminmodules['displayTemplateSelector'];

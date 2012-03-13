@@ -105,7 +105,8 @@ if ($_POST[Submit] == $webui_admin_login) {
     }
   } // LOGIN END
 
-$adminmodules                    = Configs::d()->adminmodules();
+$webuicid                        = Configs::d()->WebUIClientImplementationData();
+$adminmodules                    = $webuicid['adminmodules'];
 $id                              = $adminmodules['id'];
 $displayTopPanelSlider           = $adminmodules['displayTopPanelSlider'];
 $displayTemplateSelector         = $adminmodules['displayTemplateSelector'];

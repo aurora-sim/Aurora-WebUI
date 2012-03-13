@@ -28,8 +28,9 @@ if ($_POST[action] == "") {
 function printLastNames()
 {
 	$DbLink = new DB;
-	$adminsetting = Configs::d()->adminsetting();
-	$LASTNAMESC = $adminsetting['lastnames'];
+	$webuicid     = Configs::d()->WebUIClientImplementationData();
+	$adminsetting = $webuicid['adminsetting'];
+	$LASTNAMESC   = $adminsetting['lastnames'];
 	if ($LASTNAMESC == "1") {
 		echo "<div class=\"roundedinput\"><select id=\"register_input\" wide=\"25\" name=\"accountlast\">";
 		$DbLink->query("SELECT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
