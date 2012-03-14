@@ -16,7 +16,7 @@ date_default_timezone_set('America/Los_Angeles');
 //define("SYSNAME","***");
 define("SYSURL","http://your_webui_server_ip_or_dns/");
 define("SYSMAIL","***");
-define("WIREDUX_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WIREDUX");
+define("WIREDUX_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WEBUI");
 define("WIREDUX_TEXTURE_SERVICE","http://your_webui_server_ip_or_dns:8002");
 define("WIREDUX_PASSWORD","***");
 
