@@ -709,7 +709,7 @@ namespace OpenSim.Services
             account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(UUID.Zero, Name);
 
             //Null means it went through without an errorz
-            if (loginService.VerifyClient(account.PrincipalID, Name, "", Password, account.ScopeID))
+            if (loginService.VerifyClient(account.PrincipalID, Name, "UserAccount", Password, account.ScopeID))
             {
                 if (asAdmin)
                 {
@@ -838,7 +838,7 @@ namespace OpenSim.Services
 
             OSDMap resp = new OSDMap();
             //Null means it went through without an error
-            bool Verified = loginService.VerifyClient(account.PrincipalID, account.Name, "", Password, account.ScopeID);
+            bool Verified = loginService.VerifyClient(account.PrincipalID, account.Name, "UserAccount", Password, account.ScopeID);
             resp["Verified"] = OSD.FromBoolean(Verified);
 
             if ((auths.Authenticate(userID, "UserAccount", Util.Md5Hash(Password), 100) != string.Empty) && (Verified))
