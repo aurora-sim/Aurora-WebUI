@@ -29,35 +29,32 @@
 		<div align="center"><center>
 		<table>
 			<tr>
-				<td width="20%" align="center"><h3><? echo $webui_addgrid_hippo; ?></h3></td>
-				<td width="20%" align="center"><h3><? echo $webui_addgrid_imprudence; ?></h3></td>
-				<td width="20%" align="center"><h3><? echo $webui_addgrid_phoenix; ?></h3></td>
-				<td width="20%" align="center"><h3><? echo $webui_addgrid_astra; ?></h3></td>
-				<td width="20%" align="center"><h3><? echo $webui_addgrid_singularity; ?></h3></td>
-			</tr>
-
-			<tr>
 				<td width="20%" align="center">
+					<h3><? echo $webui_addgrid_hippo; ?></h3>
 					<a id="thumb1" href="images/viewers/aurora_hippo_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
 					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/aurora_hippo_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
 					<div class='highslide-caption' id="caption-for-thumb1"><? echo $webui_addgrid_config_hippo; ?>"</div>
 				</td>
 				<td width="20%" align="center">
+					<h3><? echo $webui_addgrid_imprudence; ?></h3>
 					<a id="thumb2" href="images/viewers/aurora_imprudence_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
 					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/aurora_imprudence_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
 					<div class='highslide-caption' id="caption-for-thumb2"><? echo $webui_addgrid_config_imprudence; ?>"</div>
 				</td>
 				<td width="20%" align="center">
+					<h3><? echo $webui_addgrid_phoenix; ?></h3>
 					<a id="thumb3" href="images/viewers/aurora_phoenix_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
 					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/aurora_phoenix_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
 					<div class='highslide-caption' id="caption-for-thumb3"><? echo $webui_addgrid_config_phoenix; ?>"</div>
 				</td>
 				<td width="20%" align="center">
+					<h3><? echo $webui_addgrid_astra; ?></h3>
 					<a id="thumb4" href="images/viewers/aurora_astra_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
 					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/aurora_astra_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
 					<div class='highslide-caption' id="caption-for-thumb4"><? echo $webui_addgrid_config_astra; ?>"</div>
 				</td>
 				<td width="20%" align="center">
+					<h3><? echo $webui_addgrid_singularity; ?></h3>
 					<a id="thumb5" href="images/viewers/aurora_singularity_01.jpg" class="highslide" onclick="return hs.expand(this, {wrapperClassName: 'borderless floating-caption', dimmingOpacity: 0.75, align: 'center'})">
 					<img style="margin-top: 15px" width="120" height="80" src="images/viewers/aurora_singularity_thumb_01.jpg" alt="Highslide JS" title="<? echo $webui_addgrid_click_to_enlarge; ?>" /></a>
 					<div class='highslide-caption' id="caption-for-thumb5"><? echo $webui_addgrid_config_singularity; ?>"</div>

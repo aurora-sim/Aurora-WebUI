@@ -62,24 +62,36 @@
 <? if($displayStyleSizer) { ?>
 <script type="text/javascript">
   $("#s").click(function(){
-  $("#topcontainer").animate({width: "870px"}, 500 ); 
-  $("#container").animate({width: "850px"}, 500 );
-  $("#content").animate({width: "830px"}, 500 );   
-  $("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").animate({width: "130px"}, 500 ); 
+  $("#topcontainer").animate({width: "850px"}, 500 ); 
+  $("#container").animate({width: "830px"}, 500 );
+  $("#content").animate({width: "820px"}, 500 );   
+  $("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").animate({width: "26%"}, 500 );
+  $("#annonce1, #info1, #step1, #aide1, #download1").animate({width: "243px"}, 500 ); 
+  $("#annonce2, #info2, #step2, #aide2, #download2").animate({width: "244px"}, 500 );
+  $("#annonce3, #info3, #step3, #aide3, #download3").animate({width: "243px"}, 500 );
+  $(".annonce2").animate({width: "380px"}, 500 );
   });
        
   $("#m").click(function(){
-    $("#topcontainer").animate({width: "920px"}, 500 );
-    $("#container").animate({width: "900px"}, 500 );
-    $("#content").animate({width: "880px"}, 500 );
-    $("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").animate({width: "140px"}, 500 ); 
+    $("#topcontainer").animate({width: "900px"}, 500 );
+    $("#container").animate({width: "880px"}, 500 );
+    $("#content").animate({width: "870px"}, 500 );
+    $("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").animate({width: "31%"}, 500 );
+  $("#annonce1, #info1, #step1, #aide1, #download1").animate({width: "260px"}, 500 ); 
+  $("#annonce2, #info2, #step2, #aide2, #download2").animate({width: "260px"}, 500 );
+  $("#annonce3, #info3, #step3, #aide3, #download3").animate({width: "260px"}, 500 );
+  $(".annonce2").animate({width: "405px"}, 500 );
   });
 
   $("#l").click(function(){
-    $("#topcontainer").animate({width: "970px"}, 500 );
-    $("#container").animate({width: "950px"}, 500 );
-    $("#content").animate({width: "930px"}, 500 );
-    $("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").animate({width: "150px"}, 500 ); 
+    $("#topcontainer").animate({width: "950px"}, 500 );
+    $("#container").animate({width: "930px"}, 500 );
+    $("#content").animate({width: "920px"}, 500 );
+    $("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").animate({width: "150px"}, 500 );
+  $("#annonce1, #info1, #step1, #aide1, #download1").animate({width: "277px"}, 500 ); 
+  $("#annonce2, #info2, #step2, #aide2, #download2").animate({width: "276px"}, 500 );
+  $("#annonce3, #info3, #step3, #aide3, #download3").animate({width: "277px"}, 500 );
+  $(".annonce2").animate({width: "430px"}, 500 );
   }); 
 </script>
 <? } ?>

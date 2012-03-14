@@ -24,11 +24,10 @@ position: relative;
 }
 #mega-menu-1 li {
 float: left; 
-margin: 0; 
-padding: 0; 
 font-weight: bold;
 margin-left:10px;
-margin: 10px;
+margin-bottom:10px;
+margin-top:10px;
 }
 #mega-menu-1 li a {
 float: left; 

@@ -39,6 +39,8 @@ if($sitemax == 0){$sitemax=1;}
   <div id="ContentHeaderRight"><h5><p><? echo $webui_region_list; ?></p></h5></div>
   <div id="regionlist">
 	<div id="info"><p><? echo $webui_region_list_page_info ?></p></div>
+	
+	<div id="annonce10">
 	<table>
 		<tr>
 			<td>
@@ -98,6 +100,9 @@ if($sitemax == 0){$sitemax=1;}
 			</td>
 		</tr>
 	</table>
+	</div>
+	
+	<div id="annonce10">
 	<table>
 		<thead>
 			<tr>
@@ -156,5 +161,6 @@ if($sitemax == 0){$sitemax=1;}
 			</tr>
 		</tbody>
 	</table>
+	</div>
 </div>
 </div>
