@@ -7,9 +7,9 @@ Originally created by Rookiie84
 Please remember to backup your database regularly.
 
 1. Unzip & Upload these files to your webserver.
-2. Edit "./settings/config.php"
+2. Copy **./settings/config.example.php** to **./settings/config.php**
+2. Copy **./settings/DatabaseInfo.example.php** to **./settings/DatabaseInfo.php**
 3. Make a backup of your database ;)
-4. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
 
 Config.php (basic must settings)
 
@@ -18,9 +18,9 @@ Config.php (basic must settings)
 define("SYSNAME","This_usually_is_what_the_site_is_called");
 define("SYSURL","http://your_aurora_server_ip_or_dns_address");
 define("SYSMAIL","***");
-define("WEBUI_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WEBUI");
-define("WEBUI_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
-define("WEBUI_PASSWORD","***");
+define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WEBUI");
+define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
+define("WIREDUX_PASSWORD","***");
 
 // Default StartPoint for Map
 $mapstartX=1000;
@@ -45,34 +45,26 @@ define("C_DB_PASS","***");
 
 ## Install WebUI via console
 1. Start Aurora.Server.exe (if you want to run in Grid mode) or Aurora.exe (if you want to run in StandAlone mode)
-2. Put into the console 'compile module gui' and browse to the AuroraService folder in your WebUI download and open the build.am file.
+2. Put into the console 'compile module gui' and browse to the AuroraWebUI folder in your Aurora-Sim-Optional-Modules download and open the build.am file.
 3. Follow the instructions onscreen and it will compile and install your module and you are all done with setup.
 
 ## Install WebUI manually
-1. obtain a copy of the [https://github.com/aurora-sim/Aurora-Sim-Optional-Modules](optional modules repository)
-2. copy the Aurora-WebUI directory into your ~/Aurora-Sim/addon-modules/ directory
+1. copy the Aurora-Sim-Optional-Modules/AuroraWebUI directory into your ~/Aurora-Sim/addon-modules/ directory
 2. Run runprebuild.bat or runprebuild2010.bat
 3. Run compile.bat
 
 ## For grid mode (running Aurora.Server.exe)
-In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini file, copy the following info under the [Handlers] line and ensure the password matches the websites in /settings/config.php
-
-```ini
-    WebUIHandler = WebUIHandler
-    WebUIHandlerPort = 8007
-    WebUIHandlerPassword = "***"
-    WebUIHandlerTextureServerPort = 8002
-```
+Copy Aurora-Sim-Optional-Modules/AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
 
 ## For standalone mode (just running Aurora.exe)
-In the Aurora-Sim\bin\Configuration\Standalone\StandaloneCommon.ini file, copy the following info under the [Handlers] line and ensure the password matches the websites in /settings/config.php
+Copy Aurora-Sim-Optional-Modules/AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/Configuration/Modules directory
 
-```ini
-    WebUIHandler = WebUIHandler
-    WebUIHandlerPort = 8007
-    WebUIHandlerPassword = "***"
-    WebUIHandlerTextureServerPort = 8002
-```
+## Upgrading from older version of WebUI
+* The *WireduxHandler* property is renamed **WebUIHandler**
+* The *WireduxHandler* value is renamed **WebUIHandler**
+* The *WireduxHandlerPort* property is renamed **WebUIHandlerPort**
+* The *WireduxHandlerPassword* property is renamed **WebUIHandlerPassword**
+* The *WireduxTextureServerPort* property is renamed **WebUIHandlerTextureServerPort**
 
 # Admin Panel
 The Admin Panel is located at:
@@ -81,7 +73,7 @@ http://yourdomain.com/admin
 To add your user as an Admin Panel User:
 Start Aurora (Aurora.Server in grid mode) and after it has started, type
 
-webui promote user
+webui add user
 
 and fill in the information that is asked for.
 
@@ -92,7 +84,7 @@ Enjoy Aurora WebUI
 To remove a user from the Admin Panel:
 Start Aurora (Aurora.Server in grid mode) and after it has started, type
 
-webui demote user
+webui remove user
 
 and fill in the information that is asked for.
 

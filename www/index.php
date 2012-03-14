@@ -39,9 +39,9 @@ include("settings/config.php");
 include("settings/databaseinfo.php");
 include("settings/json.php");
 include("settings/mysql.php");
-include("check.php");
 include("languages/translator.php");
 include("templates/templates.php");
+use Aurora\Addon\WebUI\Configs;
 
 
 if ($_GET[page] != '') {
@@ -105,47 +105,28 @@ if ($_POST[Submit] == $webui_admin_login) {
     }
   } // LOGIN END
 
-  $DbLink->query("SELECT id,
-                         displayTopPanelSlider, 
-                         displayTemplateSelector,
-                         displayStyleSwitcher,
-                         displayStyleSizer,
-                         displayFontSizer,
-                         displayLanguageSelector,
-                         displayScrollingText,
-                         displayWelcomeMessage,
-                         displayLogo,
-                         displayLogoEffect,
-                         displaySlideShow,
-                         displayMegaMenu,
-                         displayDate,
-                         displayTime,
-                         displayRoundedCorner,
-                         displayBackgroundColorAnimation,
-                         displayPageLoadTime,
-                         displayW3c,
-                         displayRss FROM ".C_ADMINMODULES_TBL." ");
-                     
-  list($id,
-       $displayTopPanelSlider,
-       $displayTemplateSelector, 
-       $displayStyleSwitcher,
-       $displayStyleSizer,
-       $displayFontSizer,
-       $displayLanguageSelector,
-       $displayScrollingText,
-       $displayWelcomeMessage,
-       $displayLogo,
-       $displayLogoEffect,
-       $displaySlideShow,
-       $displayMegaMenu,
-       $displayDate,
-       $displayTime,
-       $displayRoundedCorner,
-       $displayBackgroundColorAnimation,
-       $displayPageLoadTime,
-       $displayW3c,
-       $displayRss) = $DbLink->next_record();
+$webuicid                        = Configs::d()->WebUIClientImplementationData();
+$adminmodules                    = $webuicid['adminmodules'];
+$id                              = $adminmodules['id'];
+$displayTopPanelSlider           = $adminmodules['displayTopPanelSlider'];
+$displayTemplateSelector         = $adminmodules['displayTemplateSelector'];
+$displayStyleSwitcher            = $adminmodules['displayStyleSwitcher'];
+$displayStyleSizer               = $adminmodules['displayStyleSizer'];
+$displayFontSizer                = $adminmodules['displayFontSizer'];
+$displayLanguageSelector         = $adminmodules['displayLanguageSelector'];
+$displayScrollingText            = $adminmodules['displayScrollingText'];
+$displayWelcomeMessage           = $adminmodules['displayWelcomeMessage'];
+$displayLogo                     = $adminmodules['displayLogo'];
+$displayLogoEffect               = $adminmodules['displayLogoEffect'];
+$displaySlideShow                = $adminmodules['displaySlideShow'];
+$displayMegaMenu                 = $adminmodules['displayMegaMenu'];
+$displayDate                     = $adminmodules['displayDate'];
+$displayTime                     = $adminmodules['displayTime'];
+$displayRoundedCorner            = $adminmodules['displayRoundedCorner'];
+$displayBackgroundColorAnimation = $adminmodules['displayBackgroundColorAnimation'];
+$displayPageLoadTime             = $adminmodules['displayPageLoadTime'];
+$displayW3c                      = $adminmodules['displayW3c'];
+$displayRss                      = $adminmodules['displayRss'];
 ?>
 
 <head>
@@ -157,7 +138,6 @@ if ($_POST[Submit] == $webui_admin_login) {
   <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
   <script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
   <script src="javascripts/global.js" type="text/javascript"></script>
-  <script src="javascripts/droppanel/dropdown.js" type="text/javascript"></script>
     
   <script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>

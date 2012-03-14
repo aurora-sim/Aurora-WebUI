@@ -5,8 +5,7 @@ include("../../settings/json.php");
 include("../../settings/mysql.php");
 include("../../languages/translator.php");
 include("../../templates/templates.php");
-
-$DbLink = new DB;
+use Aurora\Addon\WebUI\Configs;
 
 if ($_GET[name]) {
     $userName = $_GET['name'];
@@ -28,47 +27,29 @@ if ($_GET[name]) {
     $date = date("D d M Y - g:i A", $created);
 } 
 
-  $DbLink->query("SELECT id,
-                         displayTopPanelSlider, 
-                         displayTemplateSelector,
-                         displayStyleSwitcher,
-                         displayStyleSizer,
-                         displayFontSizer,
-                         displayLanguageSelector,
-                         displayScrollingText,
-                         displayWelcomeMessage,
-                         displayLogo,
-                         displayLogoEffect,
-                         displaySlideShow,
-                         displayMegaMenu,
-                         displayDate,
-                         displayTime,
-                         displayRoundedCorner,
-                         displayBackgroundColorAnimation,
-                         displayPageLoadTime,
-                         displayW3c,
-                         displayRss FROM ".C_ADMINMODULES_TBL." ");
-                     
-  list($id,
-       $displayTopPanelSlider,
-       $displayTemplateSelector, 
-       $displayStyleSwitcher,
-       $displayStyleSizer,
-       $displayFontSizer,
-       $displayLanguageSelector,
-       $displayScrollingText,
-       $displayWelcomeMessage,
-       $displayLogo,
-       $displayLogoEffect,
-       $displaySlideShow,
-       $displayMegaMenu,
-       $displayDate,
-       $displayTime,
-       $displayRoundedCorner,
-       $displayBackgroundColorAnimation,
-       $displayPageLoadTime,
-       $displayW3c,
-       $displayRss) = $DbLink->next_record();
+
+$webuicid                        = Configs::d()->WebUIClientImplementationData();
+$adminmodules                    = $webuicid['adminmodules'];
+$id                              = $adminmodules['id'];
+$displayTopPanelSlider           = $adminmodules['displayTopPanelSlider'];
+$displayTemplateSelector         = $adminmodules['displayTemplateSelector'];
+$displayStyleSwitcher            = $adminmodules['displayStyleSwitcher'];
+$displayStyleSizer               = $adminmodules['displayStyleSizer'];
+$displayFontSizer                = $adminmodules['displayFontSizer'];
+$displayLanguageSelector         = $adminmodules['displayLanguageSelector'];
+$displayScrollingText            = $adminmodules['displayScrollingText'];
+$displayWelcomeMessage           = $adminmodules['displayWelcomeMessage'];
+$displayLogo                     = $adminmodules['displayLogo'];
+$displayLogoEffect               = $adminmodules['displayLogoEffect'];
+$displaySlideShow                = $adminmodules['displaySlideShow'];
+$displayMegaMenu                 = $adminmodules['displayMegaMenu'];
+$displayDate                     = $adminmodules['displayDate'];
+$displayTime                     = $adminmodules['displayTime'];
+$displayRoundedCorner            = $adminmodules['displayRoundedCorner'];
+$displayBackgroundColorAnimation = $adminmodules['displayBackgroundColorAnimation'];
+$displayPageLoadTime             = $adminmodules['displayPageLoadTime'];
+$displayW3c                      = $adminmodules['displayW3c'];
+$displayRss                      = $adminmodules['displayRss'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

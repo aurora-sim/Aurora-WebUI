@@ -9,53 +9,40 @@
     <div id="info"><p><? echo $webui_news; ?></p></div>
     
 <?php
+	use Aurora\Framework;
+	use Aurora\Addon\WebUI\Configs;
 
-                $querypage = 0;
-                if($_GET[pagenum] != "") {
-                    $querypage = cleanQuery($_GET[pagenum]);
-                }
-                $showNext = true;
-                $DbLink = new DB;
-                $DbLink->query("SELECT COUNT(*) from " . C_NEWS_TBL . $query);
-while (list($count) = $DbLink->next_record()) {
-if($querypage*5 + 5 > $count)
-    $showNext = false;
-}
-                ?>
+	$querypage = max(isset($_GET['pagenum']) ? (integer)$_GET['pagenum'] : 0, 0);
+	$news = isset($_GET['scr']) ? null : Configs::d()->NewsFromGroupNotices($querypage * 5, 5);
+	$showNext = isset($news) ? (($querypage * 5) + 5) <= $news->count() : false;
+?>
 <!-- STYLE TO DO -->
         <div style="text-align: left; width: 50%; float: left;">
-        <?php
-        if($querypage > 0) { ?>
+<?php if($querypage > 0) { ?>
             <a href="<?=SYSURL?>index.php?page=news&pagenum=<?=$querypage-1?>">Previous Page</a>
-            <?php } ?>&nbsp;
+<?php } ?>&nbsp;
         </div>
         <div style="text-align: right; width: 50%; float: left;">
-            <?php
-            if($showNext) { ?>
+<?php if($showNext) { ?>
             <a href="<?=SYSURL?>index.php?page=news&pagenum=<?=$querypage+1?>">Next Page</a>
-            <?php } ?>&nbsp;
+<?php } ?>&nbsp;
         </div>
 <!-- STYLE TO DO -->        
         	
             <table>
-                <?
-                $query = "";
-                if($_GET[scr] != "") {
-                    $query = " where id='".cleanQuery($_GET[scr])."'";
-                }
-                $querypage = $querypage * 5;
-                $DbLink->query("SELECT id,title,message,time,user from " . C_NEWS_TBL . $query . " ORDER BY time DESC LIMIT $querypage,".($querypage+5));
-                $count = 0;
+<?php
 
-                while (list($id, $title, $message, $time, $user) = $DbLink->next_record()) {
-                    $count++;
-
-                    if (strlen($title) > 92) {
-                        $title = substr($title, 0, 92);
-                        $title .= "...";
-                    }
-                    $TIMES = date("l M d Y", $time);
-                ?>
+	function OutputNews(Framework\GroupNoticeData $item){
+		$title = $item->Subject();
+		if (strlen($title) > 92) {
+			$title = substr($title, 0, 92);
+			$title .= "...";
+		}
+		$TIMES = date("l M d Y", $item->Timestamp());
+		$message = $item->Message();
+		$user = $item->FromName();
+		$id = $item->NoticeID();
+?>
 
                     <tr>
                         <td width="100"><div class="news_time"><b><?= $TIMES ?></b>
@@ -73,9 +60,18 @@ if($querypage*5 + 5 > $count)
                     <tr>
                         <td colspan="2"><hr /></td>
                     </tr>
-                <? } $DbLink->clean_results();
-				
-                $DbLink->close(); ?>
+<?php
+	}
+
+	if(isset($_GET['scr']) === false){
+		while($news->valid() && $news->key() < (($querypage * 5) + 5)){
+			OutputNews($news->current());
+			$news->next();
+		}
+	}else{
+		OutputNews(Configs::d()->GetGroupNotice($_GET['scr']));
+	}
+?>
             </table>
 	  </div>
 </div>

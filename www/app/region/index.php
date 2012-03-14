@@ -6,128 +6,23 @@ include("../../settings/json.php");
 include("../../languages/translator.php");
 include("../../templates/templates.php");
 
-$DbLink = new DB;
-$query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM " . C_REGIONS_TBL . " where LocX='" . $_GET[x] . "' and LocY='" . $_GET[y] . "'";
-$query = "SELECT RegionName,LocX,LocY,OwnerUUID,Info FROM " . C_REGIONS_TBL . " where LocX='" . cleanQuery($_GET[x]) . "' and LocY='" . cleanQuery($_GET[y]) . "'";
-$DbLink->query($query);
-list($RegionName, $locX, $locY, $owner, $info) = $DbLink->next_record();
-$locX = $locX / 256;
-$locY = $locY / 256;
-$recieved = json_decode($info);
-$regionType = $recieved->{'regionType'};
-if ($regionType == '')
+use Aurora\Addon\WebUI\Configs;
+$regions = Configs::d()->GetRegionsByXY($_GET['x'], $_GET['y']);
+$region = $regions->current();
+$RegionName = $region->RegionName();
+$regionType = $region->RegionType();
+$owner = Configs::d()->GetGridUserInfo($region->EstateOwner());
+$firstN = $owner->FirstName();
+$lastN = $owner->LastName();
+$locX = $region->RegionLocX() / 256;
+$locY = $region->RegionLocY() / 256;
+if ($regionType == ''){
     $regionType = 'Unknown';
-$DbLink->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='$owner'");
-$DbLink->query("SELECT FirstName,LastName FROM " . C_USERS_TBL . " where PrincipalID='" . cleanQuery($owner) . "'");
-list($firstN, $lastN) = $DbLink->next_record();
-
-$DbLink->query("SELECT RegionUUID, Info FROM " . C_REGIONS_TBL . " where locX='" . ($locX * 256) . "' and locY='" . ($locY * 256) . "'");
-list($UUID, $Info) = $DbLink->next_record();
-$recieved = json_decode($Info);
-$serverIP = $recieved->{'serverIP'};
-$serverHttpPort = $recieved->{'serverHttpPort'};
-
-$SERVER = "http://$serverIP:$serverHttpPort";
-$UUID = str_replace("-", "", $UUID);
-$source = $SERVER . "/index.php?method=regionImage" . $UUID . "";
-?>
-
-
-<?
-/* +++ PRINT NEIGHBORS +++ */
-// Array of 8 locations to search for
-$locarr['RegionName1'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
-$locarr['RegionName2'] = "(LocX='" . $locX * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
-$locarr['RegionName3'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . ($locY - 1) * 256 . "')";
-$locarr['RegionName4'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . $locY * 256 . "')";
-/* This region would go here */
-$locarr['RegionName6'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . $locY * 256 . "')";
-$locarr['RegionName7'] = "(LocX='" . ($locX - 1) * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
-$locarr['RegionName8'] = "(LocX='" . $locX * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
-$locarr['RegionName9'] = "(LocX='" . ($locX + 1) * 256 . "' and LocY='" . ($locY + 1) * 256 . "')";
-
-$DbLink->query("SELECT RegionName,LocX,LocY FROM " . C_REGIONS_TBL . " where " . implode(" or ", $locarr));
-while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
-
-    switch ($locX1 / 256) {
-        case $locX: //same col
-            $regN = 5;
-            switch ($locY1 / 256) {
-                case $locY - 1: //down one
-                    $regN = 8;
-                    break;
-                case $locY + 1: //up one
-                    $regN = 2;
-                    break;
-            }
-            break;
-        case $locX - 1: //one left
-            $regN = 4;
-            switch ($locY1 / 256) {
-                case $locY - 1: //down one
-                    $regN = 7;
-                    break;
-                case $locY + 1: //up one
-                    $regN = 1;
-                    break;
-            }
-            break;
-        default: // one right
-            $regN = 6;
-            switch ($locY1 / 256) {
-                case $locY - 1: //down one
-                    $regN = 9;
-                    break;
-                case $locY + 1: //up one
-                    $regN = 3;
-                    break;
-            }
-            break;
-    }
-    ${"RegionName" . $regN} = "<a href='?x=" . $locX1 . "&y=" . $locY1 . "'>" . $RegionNameX . "</a>";
 }
+$source = $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID());
 
-  $DbLink->query("SELECT id,
-                         displayTopPanelSlider, 
-                         displayTemplateSelector,
-                         displayStyleSwitcher,
-                         displayStyleSizer,
-                         displayFontSizer,
-                         displayLanguageSelector,
-                         displayScrollingText,
-                         displayWelcomeMessage,
-                         displayLogo,
-                         displayLogoEffect,
-                         displaySlideShow,
-                         displayMegaMenu,
-                         displayDate,
-                         displayTime,
-                         displayRoundedCorner,
-                         displayBackgroundColorAnimation,
-                         displayPageLoadTime,
-                         displayW3c,
-                         displayRss FROM ".C_ADMINMODULES_TBL." ");
-                     
-  list($id,
-       $displayTopPanelSlider,
-       $displayTemplateSelector, 
-       $displayStyleSwitcher,
-       $displayStyleSizer,
-       $displayFontSizer,
-       $displayLanguageSelector,
-       $displayScrollingText,
-       $displayWelcomeMessage,
-       $displayLogo,
-       $displayLogoEffect,
-       $displaySlideShow,
-       $displayMegaMenu,
-       $displayDate,
-       $displayTime,
-       $displayRoundedCorner,
-       $displayBackgroundColorAnimation,
-       $displayPageLoadTime,
-       $displayW3c,
-       $displayRss) = $DbLink->next_record();
+$webuicid = Configs::d()->WebUIClientImplementationData();
+$adminmodules = $webuicid['adminmodules'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -138,7 +33,7 @@ while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
   <link rel="icon" href="<?= SYSURL ?><?= $favicon_image ?>" />
   <title><?= SYSNAME ?>: <? echo $webui_region_information; ?></title>
 
-<?php if($displayRoundedCorner)  { ?>
+<?php if($adminmodules['displayRoundedCorner'])  { ?>
 <script src="<?= SYSURL ?>javascripts/jquery/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
 <script type="text/javascript">
@@ -156,31 +51,32 @@ while (list($RegionNameX, $locX1, $locY1) = $DbLink->next_record()) {
   <h2><?= SYSNAME ?>: <? echo $webui_region_information; ?></h2>
   
   <div id="regioninfo">
-  <!--  <div id="info"><p><? // echo $webui_regioninfo ?></p></div> -->
-  <!--  <h2><? // echo $webui_region_information; ?>:</h2> -->
-
     <hr>
+<?php
+	$range = $region->RegionSizeX();
+	$range = $region->RegionSizeY() > $range ? $region->RegionSizeY() : $range;
+	$neighbours = Configs::d()->GetRegionNeighbours($region->RegionID(), (integer)ceil($range / 2));
+	if($neighbours->count() > 0){
+?>
     <div id="regionMap">
-      <table cellpadding="0" cellspacing="4">
-        <tr>
-          <td <?php echo ($RegionName1 ? ">" . $RegionName1 : "class='nosim'>") ?></td>
-          <td <?php echo ($RegionName2 ? ">" . $RegionName2 : "class='nosim'>") ?></td>
-          <td <?php echo ($RegionName3 ? ">" . $RegionName3 : "class='nosim'>") ?></td>
-        </tr>
-      
-        <tr>
-          <td <?php echo ($RegionName4 ? ">" . $RegionName4 : "class='nosim'>") ?></td>
-          <td class='thissim'><?= $RegionName ?></td>
-          <td <?php echo ($RegionName6 ? ">" . $RegionName6 : "class='nosim'>") ?></td>
-        </tr>
-      
-        <tr>
-          <td <?php echo ($RegionName7 ? ">" . $RegionName7 : "class='nosim'>") ?></td>
-          <td <?php echo ($RegionName8 ? ">" . $RegionName8 : "class='nosim'>") ?></td>
-          <td <?php echo ($RegionName9 ? ">" . $RegionName9 : "class='nosim'>") ?></td>
-        </tr>
-      </table>
+		<h3>Neighbours:</h3>
+		<ul>
+<?php
+		foreach($neighbours as $neighbour){
+			$query = array(
+				'x' => $neighbour->RegionLocX(),
+				'y' => $neighbour->RegionLocY(),
+				'z' => $neighbour->RegionLocZ()
+			);
+			if($query['z'] == 0){
+				unset($query['z']);
+			}
+?>
+			<li><a href="?<?php echo http_build_query($query, '', '&amp;'); ?>"><?php echo htmlentities($neighbour->RegionName()); ?></a></li>
+<?php	} ?>
+		</ul>
     </div>
+<?php } ?>
 
     <div id="region_picture">
       <img src="<? echo $source; ?>" alt="<?= $RegionName ?>" title="<?= $RegionName ?>" />
