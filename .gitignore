@@ -37,3 +37,4 @@
 *.pid
 *.pl
 *.user
+AuroraService/addon-modules/*/Modules/obj/
