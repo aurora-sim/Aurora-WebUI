@@ -207,6 +207,7 @@ $MegaMenuSkin       = "basic";
 
 #################### Languages ########################
 // TODO $displayLanguageSelector = true;
+define('DEFAULT_LANG', 'en');
 $languages=array("en" => "English",
     "fr" => "French",
     "de" => "German",
