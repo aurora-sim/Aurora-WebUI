@@ -51,59 +51,41 @@ if ($_GET[page] != '') {
 }
 
 //LOGIN AUTHENTIFICATION
-if ($_POST[Submit] == $webui_login) {
+if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
+	$login = false;
+	if($_POST['Submit'] == $webui_login){
+		try{
+			$login = Configs::d()->Login($_POST['logname'], $_POST['logpassword']);
+		}catch(Aurora\Addon\InvalidArgumentException $e){
+		}
+		if($login instanceof Aurora\Addon\WebUI\genUser){
+			$_SESSION['FIRSTNAME']   = $login->FirstName();
+			$_SESSION['LASTNAME']    = $login->LastName();
+			$_SESSION['WEBLOGINKEY'] = Configs::d()->SetWebLoginKey($login->PrincipalID());
+		}
+	}else{
+		try{
+			$login = Configs::d()->AdminLogin($_POST['logname'], $_POST['logpassword']);
+		}catch(Aurora\Addon\InvalidArgumentException $e){
+		}
+		if($login instanceof Aurora\Addon\WebUI\genUser){
+			$_SESSION['ADMINID'] = $login->PrincipalID();
+		}
+	}
 
-    $found = array();
-    $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => md5(WEBUI_PASSWORD),
-                                 'Name' => cleanQuery($_POST[logname]),
-                                 'Password' => cleanQuery($_POST[logpassword])));
-    $do_post_request = do_post_request($found);
-    $recieved = json_decode($do_post_request);
-    $UUIDC = $recieved->{'UUID'};
-
-    if ($recieved->{'Verified'} == "true") {
-        $_SESSION[USERID] = $UUIDC;
-        $_SESSION[NAME] = $_POST[logname];
-        $_SESSION[FIRSTNAME] = $recieved->{'FirstName'};
-        $_SESSION[LASTNAME] = $recieved->{'LastName'};
-
-        $found[0] = json_encode(array('Method' => 'SetWebLoginKey', 'WebPassword' => md5(WEBUI_PASSWORD),
-                                 'PrincipalID' => $UUIDC));
-        $do_post_request = do_post_request($found);
-        $recieved = json_decode($do_post_request);
-        $WEBLOGINKEY = $recieved->{'WebLoginKey'};
-        $_SESSION[WEBLOGINKEY] = $WEBLOGINKEY;
-    } else {
-        echo "<script language='javascript'>
-		<!--
-		alert(\"Sorry, no Account matched\");
-		// -->
-		</script>";
+	if($login instanceof Aurora\Addon\WebUI\genUser){
+		$_SESSION['USERID'] = $login->PrincipalID();
+		$_SESSION['NAME']   = $login->Name();
+	}else{
+		echo
+			'<script>',"\n",
+			'<!--',"\n",
+			'alert("Sorry, no ', ($_POST['Submit'] == $webui_admin_login ? 'Admin ' : ''), 'Account matched");',"\n",
+			'// -->',"\n",
+			'</script>'
+		;
     }
 }
-
-if ($_POST[Submit] == $webui_admin_login) {
-
-    $found = array();
-    $found[0] = json_encode(array('Method' => 'AdminLogin', 'WebPassword' => md5(WEBUI_PASSWORD),
-                                 'Name' => $_POST[logname],
-                                 'Password' => $_POST[logpassword]));
-    $do_post_request = do_post_request($found);
-    $recieved = json_decode($do_post_request);
-    $UUIDC = $recieved->{'UUID'};
-    if ($recieved->{'Verified'} == "true") {
-        //Set both the admin and user ids
-        $_SESSION[ADMINID] = $UUIDC;
-        $_SESSION[USERID] = $UUIDC;
-        $_SESSION[NAME] = $_POST[logname];
-    } else {
-        echo "<script language='javascript'>
-		<!--
-		alert(\"Sorry, no Admin Account matched\");
-		// -->
-		</script>";
-    }
-  } // LOGIN END
 
 $webuicid                        = Configs::d()->WebUIClientImplementationData();
 $adminmodules                    = $webuicid['adminmodules'];
