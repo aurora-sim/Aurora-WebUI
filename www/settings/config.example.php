@@ -258,4 +258,38 @@ define("C_ADMINBGCOLORANIM_TBL", "wi_adminbgcoloranim");
 ################ Optional WebUI Features ###############################
 define('EmailAccountActivation',true);
 
+################ wi_sitemanagement replacement #########################
+
+require_once($config_directory . 'wi_sitemanagement.php');
+$wi_sitemanagement['activate']         = 'main/activate.php';
+$wi_sitemanagement['activatemail']     = 'main/activatemail.php';
+$wi_sitemanagement['changeaccount']    = 'account/changeaccount.php';
+$wi_sitemanagement['forgotpass']       = 'account/forgotpass.php';
+$wi_sitemanagement['news']             = 'news/news.php';
+$wi_sitemanagement['home']             = 'main/home.php';
+$wi_sitemanagement['login']            = 'main/login.php';
+$wi_sitemanagement['logout']           = 'main/logout.php';
+$wi_sitemanagement['onlineusers']      = 'main/onlineusers.php';
+$wi_sitemanagement['peoplesearch']     = 'main/peoplesearch.php';
+$wi_sitemanagement['register']         = 'account/register.php';
+$wi_sitemanagement['regionlist']       = 'main/regionlist.php';
+$wi_sitemanagement['resetpass']        = 'account/resetpass.php';
+$wi_sitemanagement['worldmap']         = 'main/worldmap.php';
+$wi_sitemanagement['quickmap']         = 'main/quickmap.php';
+$wi_sitemanagement['adminhome']        = 'admin/home.php';
+$wi_sitemanagement['adminloginscreen'] = 'admin/loginscreenmanager.php';
+$wi_sitemanagement['adminnewsmanager'] = 'admin/newsmanager.php';
+$wi_sitemanagement['adminmanage']      = 'admin/manage.php';
+$wi_sitemanagement['news_add']         = 'admin/news_add.php';
+$wi_sitemanagement['news_edit']        = 'admin/news_edit.php';
+$wi_sitemanagement['adminsettings']    = 'admin/settings.php';
+$wi_sitemanagement['adminmodules']     = 'admin/modules.php';
+$wi_sitemanagement['adminedit']        = 'admin/edit.php';
+$wi_sitemanagement['account']          = 'account/main.php';
+$wi_sitemanagement['world']            = 'main/worldmain.php';
+$wi_sitemanagement['users']            = 'main/usersmain.php';
+$wi_sitemanagement['help']             = 'main/help.php';
+$wi_sitemanagement['chat']             = 'main/chat.php';
+$wi_sitemanagement['downloads']        = 'main/downloads.php';
+
 ?>

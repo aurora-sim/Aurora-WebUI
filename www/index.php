@@ -43,12 +43,7 @@ include("languages/translator.php");
 include("templates/templates.php");
 use Aurora\Addon\WebUI\Configs;
 
-
-if ($_GET[page] != '') {
-    $_SESSION[page] = $_GET[page];
-} else {
-    $_SESSION[page] = 'home';
-}
+define('WEBUI_PAGE', isset($_GET['page']) ? $_GET['page'] : 'home');
 
 //LOGIN AUTHENTIFICATION
 if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
