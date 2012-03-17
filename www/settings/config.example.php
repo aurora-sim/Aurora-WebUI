@@ -230,8 +230,6 @@ define("C_COUNTRY_TBL","wi_country");
 define("C_NAMES_TBL","wi_lastnames");
 define("C_INFOWINDOW_TBL","wi_startscreen_infowindow");
 define("C_NEWS_TBL","wi_startscreen_news");
-define("C_PAGE_TBL","wi_pagemanager");
-define("C_SITES_TBL","wi_sitemanagement");
 define("C_GALLERY_TBL", "wi_gallery");
 
 // Aurora tables
@@ -291,5 +289,46 @@ $wi_sitemanagement['users']            = 'main/usersmain.php';
 $wi_sitemanagement['help']             = 'main/help.php';
 $wi_sitemanagement['chat']             = 'main/chat.php';
 $wi_sitemanagement['downloads']        = 'main/downloads.php';
+
+################ wi_pagemanager replacement ############################
+
+require_once($config_directory . 'wi_pagemanager.php');
+
+$webui_menu_item_home      = $wi_pagemanager['webui_menu_item_home']      = WebUIPage::f('webui_menu_item_home'             , 1  , 'index.php?page=home'             , '_self', 2);
+
+$webui_menu_item_adminhome = $wi_pagemanager['webui_menu_item_adminhome'] = WebUIPage::f('webui_menu_item_adminhome'        , 2  , 'index.php?page=adminhome'        , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminmanage']             = WebUIPage::f('webui_menu_item_adminmanage'      , 2.1, 'index.php?page=adminmanage'      , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminsettings']           = WebUIPage::f('webui_menu_item_adminsettings'    , 2.2, 'index.php?page=adminsettings'    , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminmodules']            = WebUIPage::f('webui_menu_item_adminmodules'     , 2.3, 'index.php?page=adminmodules'     , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminloginscreen']        = WebUIPage::f('webui_menu_item_adminloginscreen' , 2.4, 'index.php?page=adminloginscreen' , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminnewsmanager']        = WebUIPage::f('webui_menu_item_adminnewsmanager' , 2.5, 'index.php?page=adminnewsmanager' , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminsupport']            = WebUIPage::f('webui_menu_item_adminsupport'     , 2.6, 'index.php?page=adminsupport'     , '_self', 3);
+
+$webui_menu_item_account   = $wi_pagemanager['webui_menu_item_account']   = WebUIPage::f('webui_menu_item_account'          , 3  , 'index.php?page=account'          , '_self', 1);
+	$webui_menu_item_account['webui_menu_item_changeaccount']             = WebUIPage::f('webui_menu_item_changeaccount'    , 3.1, 'index.php?page=changeaccount'    , '_self', 1);
+
+$webui_menu_item_world     = $wi_pagemanager['webui_menu_item_world']     = WebUIPage::f('webui_menu_item_world'            , 4  , 'index.php?page=world'            , '_self', 2);
+	$webui_menu_item_world['webui_menu_item_news']                        = WebUIPage::f('webui_menu_item_news'             , 4.1, 'index.php?page=news'             , '_self', 2);
+	$webui_menu_item_world['webui_menu_item_regions']                     = WebUIPage::f('webui_menu_item_regions'          , 4.2, 'index.php?page=regionlist'       , '_self', 2);
+	$webui_menu_item_world['webui_menu_item_worldmap']                    = WebUIPage::f('webui_menu_item_worldmap'         , 4.3, 'index.php?page=worldmap'         , '_self', 2);
+	$webui_menu_item_world['webui_menu_item_quickmap']                    = WebUIPage::f('webui_menu_item_quickmap'         , 4.4, 'index.php?page=quickmap'         , '_self', 2);
+	$webui_menu_item_world['webui_menu_item_gallery']                     = WebUIPage::f('webui_menu_item_gallery'          , 4.5, 'index.php?page=gallery'          , '_self', 2);
+
+$webui_menu_item_users     = $wi_pagemanager['webui_menu_item_users']     = WebUIPage::f('webui_menu_item_users'            , 5  , 'index.php?page=users'            , '_self', 1);
+	$webui_menu_item_users['webui_menu_item_peoplesearch']                = WebUIPage::f('webui_menu_item_peoplesearch'     , 5.1, 'index.php?page=peoplesearch'     , '_self', 1);
+	$webui_menu_item_users['webui_menu_item_onlineusers']                 = WebUIPage::f('webui_menu_item_onlineusers'      , 5.2, 'index.php?page=onlineusers'      , '_self', 1);
+
+$webui_menu_item_register  = $wi_pagemanager['webui_menu_item_register']  = WebUIPage::f('webui_menu_item_register'         , 6  , 'index.php?page=register'         , '_self', 0);
+
+$webui_menu_item_login     = $wi_pagemanager['webui_menu_item_login']     = WebUIPage::f('webui_menu_item_login'            , 7  , 'index.php?page=login'            , '_self', 0);
+	$webui_menu_item_login['webui_menu_item_forgotpass']                  = WebUIPage::f('webui_menu_item_forgotpass'       , 7.1, 'index.php?page=forgotpass'       , '_self', 0);
+
+$webui_menu_item_logout    = $wi_pagemanager['webui_menu_item_logout']    = WebUIPage::f('webui_menu_item_logout'           , 8  , 'index.php?page=logout'           , '_self', 1);
+
+$webui_menu_item_help      = $wi_pagemanager['webui_menu_item_help']      = WebUIPage::f('webui_menu_item_help'             , 9  , 'index.php?page=help'             , '_self', 2);
+	$webui_menu_item_help['webui_menu_item_chat']                         = WebUIPage::f('webui_menu_item_chat'             , 9.1, 'index.php?page=chat'             , '_self', 2);
+	$webui_menu_item_help['webui_menu_item_downloads']                    = WebUIPage::f('webui_menu_item_downloads'        , 9.2, 'index.php?page=downloads'        , '_self', 2);
+	$webui_menu_item_help['webui_menu_item_addgrid']                      = WebUIPage::f('webui_menu_item_addgrid'          , 9.3, 'index.php?page=addgrid'          , '_self', 2);
+	$webui_menu_item_help['webui_menu_item_addserver']                    = WebUIPage::f('webui_menu_item_addserver'        , 9.4, 'index.php?page=addserver'        , '_self', 2);
 
 ?>
