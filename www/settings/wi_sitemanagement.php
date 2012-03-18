@@ -18,7 +18,7 @@ class WebUISites extends Aurora\Addon\WORM{
 			throw new InvalidArgumentException('Value must be a string.');
 		}else if(preg_match('/^([A-z0-9_]+)\/([A-z0-9_]+\.php)$/', $value, $matches) != 1){
 			throw new InvalidArgumentException('Value must be a PHP file');
-		}else if(file_exists('./sites/' . $matches[1] . '/' . $matches[2]) === false){
+		}else if(file_exists(WEBUI_INSTALL_PATH . 'sites/' . $matches[1] . '/' . $matches[2]) === false){
 			throw new InvalidArgumentException('Page does not exist');
 		}
 		$this->data[$offset] = $value;

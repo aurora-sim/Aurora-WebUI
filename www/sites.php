@@ -8,8 +8,8 @@
 */
 
 if(isset(Globals::i()->wi_sitemanagement[WEBUI_PAGE])){
-	include('./sites/' . Globals::i()->wi_sitemanagement[WEBUI_PAGE]);
+	include(WEBUI_INSTALL_PATH . 'sites/' . Globals::i()->wi_sitemanagement[WEBUI_PAGE]);
 }else{
-	include("./sites/404.php");
+	include(WEBUI_INSTALL_PATH . 'sites/404.php');
 }
 ?>
