@@ -348,7 +348,18 @@ namespace OpenSim.Services
                 m_log.Warn ("You must create the user before promoting them.");
                 return;
             }
-            IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
+            IAgentConnector agents = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+            if (agents == null)
+            {
+                m_log.Warn("Could not get IAgentConnector plugin");
+                return;
+            }
+            IAgentInfo agent = agents.GetAgent (acc.PrincipalID);
+            if (agent == null)
+            {
+                m_log.Warn("Could not get IAgentInfo for " + name + ", try logging the user into your grid first.");
+                return;
+            }
             agent.OtherAgentInformation["WebUIEnabled"] = true;
             Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
             m_log.Warn ("Admin added");
@@ -363,7 +374,18 @@ namespace OpenSim.Services
                 m_log.Warn ("User does not exist, no action taken.");
                 return;
             }
-            IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().GetAgent (acc.PrincipalID);
+            IAgentConnector agents = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+            if (agents == null)
+            {
+                m_log.Warn("Could not get IAgentConnector plugin");
+                return;
+            }
+            IAgentInfo agent = agents.GetAgent(acc.PrincipalID);
+            if (agent == null)
+            {
+                m_log.Warn("Could not get IAgentInfo for " + name + ", try logging the user into your grid first.");
+                return;
+            }
             agent.OtherAgentInformation["WebUIEnabled"] = false;
             Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
             m_log.Warn ("Admin removed");
