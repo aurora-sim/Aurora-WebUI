@@ -145,5 +145,6 @@
 			<h3><? echo $webui_addgrid_banned_title; ?></h3>
 			<p><? echo $webui_addgrid_banned_content; ?></p>
 		</div>
+		<!-- <?php // include("sites/modules/steps123.php"); ?> -->
 	</div>
 </div>

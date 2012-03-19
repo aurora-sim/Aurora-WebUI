@@ -442,6 +442,13 @@ $webui_support_info = 'Da qui puoi dare supporto agli utenti';
 $webui_help = 'Supporto';
 $webui_help_info = 'Da questa pagina puoi ricevere supporto';
 
+$webui_help_step1_title = 'Step 1';
+$webui_help_step2_title = 'Step 2';
+$webui_help_step3_title = 'Step 3';
+$webui_help_step1 = '<a href="index.php?page=register">Crea il tuo accoun GRATUITO</a> direttamente da questa pagina.';
+$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Scarica il viewer</a>. Ti raccomandiamo Imprudence / Kokua.';
+$webui_help_step3 = '<a href="index.php?page=addgrid">Aggiungi la nostra grid</a> al tuo viewer favorito. Non dimenticarlo!';
+
 $webui_help_title_comment01 = 'Downloads gratuiti';
 $webui_help_title_comment02 = 'Supporto per il Viewer';
 $webui_help_title_comment03 = 'Supporto per il Server';

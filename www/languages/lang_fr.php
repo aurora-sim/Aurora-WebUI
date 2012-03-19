@@ -432,6 +432,12 @@ $webui_support_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
 $webui_help = 'Aide';
 $webui_help_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
 
+$webui_help_step1_title = 'Etape 1';
+$webui_help_step2_title = 'Etape 2';
+$webui_help_step3_title = 'Etape 3';
+$webui_help_step1 = '<a href="index.php?page=register">Créez votre compte</a> gratuit sur notre site dés aujourd\'hui!';
+$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Télécharger le Chat</a> (Client) Imprudence / Kokua.';
+$webui_help_step3 = '<a href="index.php?page=addgrid">Ajouter notre grille</a> à votre Chat (Client) préféré.';
 //
 // Chat Page
 //
