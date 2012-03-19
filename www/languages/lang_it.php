@@ -446,17 +446,6 @@ $webui_help_title_comment01 = 'Downloads gratuiti';
 $webui_help_title_comment02 = 'Supporto per il Viewer';
 $webui_help_title_comment03 = 'Supporto per il Server';
 
-$webui_help_title_comment04 = 'Supporto 04';
-$webui_help_title_comment05 = 'Supporto 05';
-$webui_help_title_comment06 = 'Supporto 06';
-
-$webui_help_comment01 = '<a href="index.php?page=downloads">Leggi ...</a>';
-$webui_help_comment02 = '<a href="index.php?page=addgrid">Leggi ...</a>';
-$webui_help_comment03 = '<a href="index.php?page=addserver">Leggi ...</a>';
-$webui_help_comment04 = 'Supporto per qualcosa ...';
-$webui_help_comment05 = 'Supporto per qualcosa ...';
-$webui_help_comment06 = 'Supporto per qualcosa ...';
-
 //
 // Chat Page
 //

@@ -433,21 +433,6 @@ $webui_support_info = 'This allows you to Support';
 $webui_help = 'Help';
 $webui_help_info = 'This allows you to Help';
 
-$webui_help_title_comment01 = 'Free Downloads';
-$webui_help_title_comment02 = 'Help about Viewer';
-$webui_help_title_comment03 = 'Help about Server';
-
-$webui_help_title_comment04 = 'Help 04';
-$webui_help_title_comment05 = 'Help 05';
-$webui_help_title_comment06 = 'Help 06';
-
-$webui_help_comment01 = '<a href="index.php?page=downloads">Read more ...</a>';
-$webui_help_comment02 = '<a href="index.php?page=addgrid">Read more ...</a>';
-$webui_help_comment03 = '<a href="index.php?page=addserver">Read more ...</a>';
-$webui_help_comment04 = 'Help about some thing ...';
-$webui_help_comment05 = 'Help about some thing ...';
-$webui_help_comment06 = 'Help about some thing ...';
-
 //
 // Chat Page
 //

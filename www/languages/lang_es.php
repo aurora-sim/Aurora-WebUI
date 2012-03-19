@@ -430,21 +430,6 @@ $webui_support_info = 'Esto te permite dar soporte';
 $webui_help = 'Ayuda';
 $webui_help_info = 'Esto le permite\'obtener ayuda ...';
 
-$webui_help_title_comment01 = 'Descargas gratis';
-$webui_help_title_comment02 = 'Ayuda a cerca del visor';
-$webui_help_title_comment03 = 'Ayuda a cerca del servidor';
-
-$webui_help_title_comment04 = 'Ayuda 04';
-$webui_help_title_comment05 = 'Ayuda 05';
-$webui_help_title_comment06 = 'Ayuda 06';
-
-$webui_help_comment01 = '<a href="index.php?page=downloads">Leer mÃ¡s ...</a>';
-$webui_help_comment02 = '<a href="index.php?page=addgrid">Leer mÃ¡se ...</a>';
-$webui_help_comment03 = '<a href="index.php?page=addserver">Leer mÃ¡s ...</a>';
-$webui_help_comment04 = 'Ayuda sobre algo ...';
-$webui_help_comment05 = 'Ayuda sobre algo ...';
-$webui_help_comment06 = 'Ayuda sobre algo ...';
-
 //
 // Chat Page
 //

@@ -432,21 +432,6 @@ $webui_support_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
 $webui_help = 'Aide';
 $webui_help_info = 'Ceci vous permet d\'obtenir une aide concernant ...';
 
-$webui_help_title_comment01 = 'Téléchargements Gratuits';
-$webui_help_title_comment02 = 'Aide concernant le Client';
-$webui_help_title_comment03 = 'Aide concernant le Server';
-
-$webui_help_title_comment04 = 'Aide 04';
-$webui_help_title_comment05 = 'Aide 05';
-$webui_help_title_comment06 = 'Aide 06';
-
-$webui_help_comment01 = '<a href="index.php?page=downloads">Lire la suite ...</a>';
-$webui_help_comment02 = '<a href="index.php?page=addgrid">Lire la suite ...</a>';
-$webui_help_comment03 = '<a href="index.php?page=addserver">Lire la suite ...</a>';
-$webui_help_comment04 = 'Aide concernant autre chose.';
-$webui_help_comment05 = 'Aide concernant autre chose.';
-$webui_help_comment06 = 'Aide concernant autre chose.';
-
 //
 // Chat Page
 //
