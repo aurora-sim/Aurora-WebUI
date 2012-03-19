@@ -560,7 +560,6 @@ $(document).ready(function(){
         <div id="headerimages">
             <a href="<?php echo SYSURL ?>"><h1><?php echo SYSNAME ?></h1></a>
         </div>
-        <!-- <div id="gridstatus"><?php //php include("sites/gridstatus.php"); ?></div> -->
              <div id="home_content_right"><?php include("sites/modules/slideshow.php"); ?></div>
 		<div id="home_content_right"><?php include("sites/modules/slideeffect.php"); ?></div>
 		
