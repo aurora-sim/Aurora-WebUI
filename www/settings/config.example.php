@@ -274,7 +274,6 @@ $wi_sitemanagement['register']         = 'account/register.php';
 $wi_sitemanagement['regionlist']       = 'main/regionlist.php';
 $wi_sitemanagement['resetpass']        = 'account/resetpass.php';
 $wi_sitemanagement['worldmap']         = 'main/worldmap.php';
-$wi_sitemanagement['quickmap']         = 'main/quickmap.php';
 $wi_sitemanagement['adminhome']        = 'admin/home.php';
 $wi_sitemanagement['adminloginscreen'] = 'admin/loginscreenmanager.php';
 $wi_sitemanagement['adminnewsmanager'] = 'admin/newsmanager.php';
@@ -312,7 +311,6 @@ $webui_menu_item_world     = $wi_pagemanager['webui_menu_item_world']     = WebU
 	$webui_menu_item_world['webui_menu_item_news']                        = WebUIPage::f('webui_menu_item_news'             , 4.1, 'index.php?page=news'             , '_self', 2);
 	$webui_menu_item_world['webui_menu_item_regions']                     = WebUIPage::f('webui_menu_item_regions'          , 4.2, 'index.php?page=regionlist'       , '_self', 2);
 	$webui_menu_item_world['webui_menu_item_worldmap']                    = WebUIPage::f('webui_menu_item_worldmap'         , 4.3, 'index.php?page=worldmap'         , '_self', 2);
-	$webui_menu_item_world['webui_menu_item_quickmap']                    = WebUIPage::f('webui_menu_item_quickmap'         , 4.4, 'index.php?page=quickmap'         , '_self', 2);
 	$webui_menu_item_world['webui_menu_item_gallery']                     = WebUIPage::f('webui_menu_item_gallery'          , 4.5, 'index.php?page=gallery'          , '_self', 2);
 
 $webui_menu_item_users     = $wi_pagemanager['webui_menu_item_users']     = WebUIPage::f('webui_menu_item_users'            , 5  , 'index.php?page=users'            , '_self', 1);

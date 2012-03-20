@@ -40,3 +40,4 @@
 AuroraService/addon-modules/*/Modules/obj/
 www/settings/config.php
 www/settings/databaseinfo.php
+www/app/*
