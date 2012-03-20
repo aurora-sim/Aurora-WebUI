@@ -1,7 +1,8 @@
 <?php
 use Aurora\Addon\WebUI\Configs;
 $DbLink = new DB;
-$adminsetting = Configs::d()->adminsetting();
+$webuicid     = Configs::d()->WebUIClientImplementationData();
+$adminsetting = $webuicid['adminsetting'];
 $ADRESSCHECK = $adminsetting['adress'];
 $REGIOCHECK = $adminsetting['region'];
 $ALLOWREGISTRATION = $adminsetting['allowRegistrations'];
