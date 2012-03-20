@@ -50,7 +50,7 @@ foreach(Configs::d()->GetRegionsInArea($start_x * 256, $start_y * 256, $end_x * 
 <div id="ContentHeaderLeft"><h5><?= SYSNAME ?>: <? echo $webui_world_map ?></h5></div>
   <div id="ContentHeaderCenter"></div>
   <div id="ContentHeaderRight">
-    <h5><a <?= "onclick=\"window.open('".SYSURL."quickmap/index.php','mywindow')\"" ?> style="float:right; display:inline-block;"><? echo $webui_fullscreen; ?></a></h5>
+    <h5><a <?= "onclick=\"window.open('".SYSURL."app/quickmap/index.php','mywindow')\"" ?> style="float:right; display:inline-block;"><? echo $webui_fullscreen; ?></a></h5>
   </div>
 
   <div id="region_quickmap">

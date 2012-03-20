@@ -607,7 +607,7 @@ div#map-container {width: 100%; height: 100%}
   position: absolute; 
   top: -5px; 
   right: 0px;
-  background: url(../../quickmap/images/refresh.png) 0 0 no-repeat;
+  background: url(../../app/quickmap/images/refresh.png) 0 0 no-repeat;
   height:30px;
   width:30px;
   border: none;

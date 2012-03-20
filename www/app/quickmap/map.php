@@ -1,4 +1,5 @@
 <? 
+include('../../settings/config.php');
 include("includes/config.php");
 include("languages/translator.php");
 
@@ -45,7 +46,7 @@ foreach(Configs::d()->GetRegionsInArea($start_x * 256, $start_y * 256, $end_x * 
 }
 ?>
 
-<link href="<?echo $CONF_sim_domain.$CONF_install_path.$CONF_style_sheet_webui;?>" type="text/css" rel="stylesheet" />
+<link href="<?echo SYSURL, 'app/quickmap/'.$CONF_style_sheet;?>" type="text/css" rel="stylesheet" />
 
 <body class="webui">
 
@@ -65,26 +66,26 @@ foreach(Configs::d()->GetRegionsInArea($start_x * 256, $start_y * 256, $end_x * 
     <center>         
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td><img src="<?=SYSURL?>images/spacer.gif" alt="" /></td>
-          <td><a href="index.php?x=<? echo $grid_x;?>&y=<? echo $grid_y + 10; ?>" target="_self"><img src="<?=SYSURL?>images/pan_up.png" border="0" alt="<? echo $CONF_txt_north;?>" title="<? echo $CONF_txt_north;?>" /></a>
+          <td><img src="<?=SYSURL?>app/quickmap/images/spacer.gif" alt="" /></td>
+          <td><a href="index.php?x=<? echo $grid_x;?>&y=<? echo $grid_y + 10; ?>" target="_self"><img src="<?=SYSURL?>app/quickmap/images/pan_up.png" border="0" alt="<? echo $CONF_txt_north;?>" title="<? echo $CONF_txt_north;?>" /></a>
           </td>
-          <td><img src="<?=SYSURL?>images/spacer.gif" alt="" /></td>
+          <td><img src="<?=SYSURL?>app/quickmap/images/spacer.gif" alt="" /></td>
         </tr>
         
         <tr>
-          <td><a href="index.php?x=<? print $grid_x - 10; ?>&y=<? print $grid_y; ?>" target="_self"><img src="<?=SYSURL?>images/pan_left.png" border="0" alt="<? echo $CONF_txt_west;?>" title="<? echo $CONF_txt_west;?>" /></a>
+          <td><a href="index.php?x=<? print $grid_x - 10; ?>&y=<? print $grid_y; ?>" target="_self"><img src="<?=SYSURL?>app/quickmap/images/pan_left.png" border="0" alt="<? echo $CONF_txt_west;?>" title="<? echo $CONF_txt_west;?>" /></a>
           </td>
-          <td><a href="index.php?x=<? echo $CONF_center_coord_x;?>&y=<? echo $CONF_center_coord_y;?>" target="_self"><img src="<?=SYSURL?>images/center.png" border="0" alt="<? echo $CONF_txt_center;?>" title="<? echo $CONF_txt_center;?>" /></a>
+          <td><a href="index.php?x=<? echo $CONF_center_coord_x;?>&y=<? echo $CONF_center_coord_y;?>" target="_self"><img src="<?=SYSURL?>app/quickmap/images/center.png" border="0" alt="<? echo $CONF_txt_center;?>" title="<? echo $CONF_txt_center;?>" /></a>
           </td>
-          <td><a href="index.php?x=<? print $grid_x + 10; ?>&y=<? print $grid_y; ?>" target="_self"><img src="<?=SYSURL?>images/pan_right.png" border="0" alt="<? echo $CONF_txt_east;?>" title="<? echo $CONF_txt_east;?>" /></a>
+          <td><a href="index.php?x=<? print $grid_x + 10; ?>&y=<? print $grid_y; ?>" target="_self"><img src="<?=SYSURL?>app/quickmap/images/pan_right.png" border="0" alt="<? echo $CONF_txt_east;?>" title="<? echo $CONF_txt_east;?>" /></a>
           </td>
         </tr>
         
         <tr>
-          <td><img src ="<?=SYSURL?>images/spacer.gif" alt="" /></td>
-          <td><a href="index.php?x=<? print $grid_x; ?>&y=<? print $grid_y -10; ?>" target="_self"><img src="<?=SYSURL?>images/pan_down.png" border="0" alt="<? echo $CONF_txt_south;?>" title="<? echo $CONF_txt_south;?>" /></a>
+          <td><img src ="<?=SYSURL?>app/quickmap/images/spacer.gif" alt="" /></td>
+          <td><a href="index.php?x=<? print $grid_x; ?>&y=<? print $grid_y -10; ?>" target="_self"><img src="<?=SYSURL?>app/quickmap/images/pan_down.png" border="0" alt="<? echo $CONF_txt_south;?>" title="<? echo $CONF_txt_south;?>" /></a>
           </td>
-          <td><img src ="<?=SYSURL?>images/spacer.gif" alt="" /></td>
+          <td><img src ="<?=SYSURL?>app/quickmap/images/spacer.gif" alt="" /></td>
         </tr>
       </table>
     </center>
@@ -204,23 +205,23 @@ foreach(Configs::d()->GetRegionsInArea($start_x * 256, $start_y * 256, $end_x * 
             </td>
              
              <td>
-                <a style="cursor:pointer" onClick="window.open('quickmap/modules/show_region.php?region=<?print $region_uuid; ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=950,height=600')">
-                  <img src="<?=SYSURL?>images/grid_mainland.jpg" alt="Region=<? print $region_name; ?> | X=<?print $x; ?> | Y=<?print $y; ?> | Status: <? echo $CONF_txt_occupied;?>" title="Region=<? print $region_name; ?> | X=<?print $x; ?> | Y=<?print $y; ?> | Status: <? echo $CONF_txt_occupied;?>" /></a>
+                <a style="cursor:pointer" onClick="window.open('<?php echo SYSURL; ?>app/quickmap/modules/show_region.php?region=<?print $region_uuid; ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=950,height=600')">
+                  <img src="<?=SYSURL?>app/quickmap/images/grid_mainland.jpg" alt="Region=<? print $region_name; ?> | X=<?print $x; ?> | Y=<?print $y; ?> | Status: <? echo $CONF_txt_occupied;?>" title="Region=<? print $region_name; ?> | X=<?print $x; ?> | Y=<?print $y; ?> | Status: <? echo $CONF_txt_occupied;?>" /></a>
                 <? $x++; }
               else { if ($sim_new == 1) { ?>
               
               </td>
               
               <td>
-                <a style="cursor:pointer" onClick="window.open('quickmap/modules/show_region.php?region=<?print $region_uuid; ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=950,height=600')">
-                <img src="<?=SYSURL?>images/grid_occupied.jpg" alt="Region=<? print $region_name; ?> | X=<?print $x; ?> | Y=<?print $y; ?> | Status: occupied" title="Region=<? print $region_name; ?> | X=<?print $x; ?> | Y=<?print $y; ?> | Status: occupied" /></a>
+                <a style="cursor:pointer" onClick="window.open('<?php echo SYSURL; ?>app/quickmap/modules/show_region.php?region=<?print $region_uuid; ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=950,height=600')">
+                <img src="<?=SYSURL?>app/quickmap/images/grid_occupied.jpg" alt="Region=<? print $region_name; ?> | X=<?print $x; ?> | Y=<?print $y; ?> | Status: occupied" title="Region=<? print $region_name; ?> | X=<?print $x; ?> | Y=<?print $y; ?> | Status: occupied" /></a>
                 <? $x++; }
               
                 else { ?>
               </td>
               
               <td>
-                <img src="<?=SYSURL?>images/grid_free.jpg" alt= "X=<?print $x; ?> | Y=<?print $y; ?> | Status: <? echo $CONF_txt_free;?>" title="X=<?print $x; ?> | Y=<?print $y; ?> | Status: <? echo $CONF_txt_free;?>" />
+                <img src="<?=SYSURL?>app/quickmap/images/grid_free.jpg" alt= "X=<?print $x; ?> | Y=<?print $y; ?> | Status: <? echo $CONF_txt_free;?>" title="X=<?print $x; ?> | Y=<?print $y; ?> | Status: <? echo $CONF_txt_free;?>" />
                 <? $x++; }}}}
                 $y--; } ?>
           </td>
