@@ -8,6 +8,9 @@
 */
 
 class WebUIPages extends Aurora\Addon\WORM{
+
+	private $dirty = false;
+
 	public function offsetSet($offset, $value){
 		if(($value instanceof WebUIPage) === false){
 			throw new InvalidArgumentException('Only instances of WebUIPage should be appended to instances of WebUIPages');
@@ -17,6 +20,8 @@ class WebUIPages extends Aurora\Addon\WORM{
 			throw new InvalidArgumentException('page already set');
 		}
 		$this->data[$offset] = $value;
+		$this->dirty = true;
+		$this->sort();
 	}
 
 	public static function f(){
@@ -34,6 +39,18 @@ class WebUIPages extends Aurora\Addon\WORM{
 		}
 		
 		return $results;
+	}
+
+	public function sort(){
+		if($this->dirty){
+			uasort($this->data, function($a, $b){
+				return $a->rank() < $b->rank() ? -1 : 1;
+			});
+			$this->dirty = false;
+		}
+		foreach($this as $v){
+			$v->sort();
+		}
 	}
 }
 
