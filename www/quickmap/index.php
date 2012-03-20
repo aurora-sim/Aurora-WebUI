@@ -27,58 +27,52 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<? 
+<?
+include("includes/config.php");
+include("includes/mt_header.php");
+include("languages/translator.php");
 
-  include("includes/config.php");
-  include("includes/mt_header.php");
-  include("languages/translator.php");
+$grid_x = 0;
+$grid_y = 0;
 
-  $dbort = $CONF_db_server;
-  $dbuser = $CONF_db_user;
-  $dbpw = $CONF_db_pass;
-  $dbdb = $CONF_db_database;
+if (isset($_POST['x']) && ($_POST['y'])){
+	$grid_x = $_POST['x'];
+	$grid_y = $_POST['y'];
+}else if(isset($_GET['x']) && ($_GET['y'])){
+	$grid_x = $_GET['x'];
+	$grid_y = $_GET['y'];
+}
 
-  $grid_x = 0;
-  $grid_y = 0;
+if($grid_x == 0){
+	$grid_x = $CONF_center_coord_x;
+}
+if($grid_y == 0){
+	$grid_y = $CONF_center_coord_y;
+}
+if($grid_y <= 30){
+	$grid_y = "100";
+}
+if($grid_x <= 30){
+	$grid_x = "100";
+}
+if($grid_x >=99999){
+	$grid_x = $CONF_center_coord_x;
+}
+if($grid_y >=99999){
+	$grid_y = $CONF_center_coord_y;
+}
 
-  if (isset($_POST['x']) && ($_POST['y']))
-  {
-  $grid_x = $_POST['x'];
-  $grid_y = $_POST['y'];
-  }
-  else
-  {
-  if (isset($_GET['x']) && ($_GET['y']))
-  {
-  $grid_x = $_GET['x'];
-  $grid_y = $_GET['y'];
-  } 
-  }
+$start_x = $grid_x - 20;
+$start_y = $grid_y + 10;
 
-  if ($grid_x == 0) {$grid_x = $CONF_center_coord_x;}
-  if ($grid_y == 0) {$grid_y = $CONF_center_coord_y;}
-  if ($grid_y <= 30) {$grid_y = "100";}
-  if ($grid_x <= 30) {$grid_x = "100";}
-  if ($grid_x >=99999) {$grid_x = $CONF_center_coord_x;}
-  if ($grid_y >=99999) {$grid_y = $CONF_center_coord_y;}
+$end_x = $grid_x + 20;
+$end_y = $grid_y - 10;
 
-  $start_x = $grid_x - 20;
-  $start_y = $grid_y + 10;
-
-  $end_x = $grid_x + 20;
-  $end_y = $grid_y - 10;
-
-  mysql_connect($dbort,$dbuser,$dbpw); 
-  mysql_select_db($dbdb); 
-  $z=mysql_query("SELECT RegionUUID,RegionName,LocX,LocY FROM gridregions");
-  
-  $xx=0;
-  while($region=mysql_fetch_array($z))
-  {
-      $work_reg = $region[RegionUUID].";".$region[RegionName].";".$region[LocX].";".$region[LocY];
-      $region_sg[$xx] = $work_reg;
-      $xx++;
-  } 
+use Aurora\Addon\WebUI\Configs;
+$region_sg = array();
+foreach(Configs::d()->GetRegionsInArea($start_x * 256, $start_y * 256, $end_x * 256, $end_y * 256) as $region){
+	$region_sg[] = $region->RegionID() . ';' . $region->RegionName() . ';' . $region->RegionLocX() . ';' . $region->RegionLocY();
+}
 ?>
 
 <div id="modtopright">
