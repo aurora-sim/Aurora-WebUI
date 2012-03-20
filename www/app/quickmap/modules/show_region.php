@@ -1,5 +1,5 @@
 <? 
-include("../../settings/config.php");
+include("../../../settings/config.php");
 include("../includes/config.php");
 include("../includes/mt_header.php");
 include("../languages/translator.php");

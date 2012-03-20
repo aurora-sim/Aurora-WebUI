@@ -1,56 +1,40 @@
 <? 
+include("../../../settings/config.php");
 include("../includes/config.php");
 include("../includes/mt_header.php");
 include("../languages/translator.php");
-
-$agent = $_GET[agent];
-
-if($agent){
-
-  mysql_connect($CONF_db_server,$CONF_db_user,$CONF_db_pass);
-  mysql_select_db($CONF_db_database);
-
-  $z = mysql_query("SELECT PrincipalID,FirstName,LastName,Created FROM useraccounts where PrincipalID='$agent'");
- while($userdb=mysql_fetch_array($z))
-   {
-     $uuid           = $userdb[PrincipalID];
-     $firstN         = $userdb[FirstName];
-     $lastN          = $userdb[LastName];
-     $created        = $userdb[Created];
-   }
- $w = mysql_query("SELECT UserID,IsOnline,LastLogin,LastLogout FROM userinfo where UserID='$agent'");
- while($userdb=mysql_fetch_array($w))
-   {
-     $uuid           = $userdb[UserID];
-     $lastLogin      = $userdb[LastLogin];
-     $lastLogout     = $userdb[LastLogout];
-     $agentOnline    = $userdb[IsOnline];
-   }
- $x = mysql_query("SELECT OwnerUUID,RegionUUID,RegionName FROM gridregions where OwnerUUID='$agent'");
- while($regiondb=mysql_fetch_array($x))
-   {
-     $uuid           = $regiondb[OwnerUUID];
-     $RegionUUID     = $regiondb[RegionUUID];
-     $RegionName     = $regiondb[RegionName];
-   }
-  $q = mysql_query("SELECT Archive FROM wi_appearance where Picture='$profileImage'");
-  while($imagedb=mysql_fetch_array($q))
-  {
-    $data = $imagedb[data];
-    $input = fopen( "../tmp/".$profileImage.".jp2", "w" );
-    fwrite( $input, $data, strlen( $data ));
-    fclose($input);
-    if (strlen($data) >= 1000)
-    {$counter = 1;}
-  }
+use Aurora\Addon\WebUI\Configs;
 
 
+if(isset($_GET['agent'])){
+	try{
+		$info    = Configs::d()->GetGridUserInfo($_GET['agent']);
+		$profile = Configs::d()->GetProfile($info->Name());
+	}catch(UnexpectedValueException $e){
+		$webui_404_title = 'User not found';
+		$webui_404_text  = 'User not found';
+		require('../../../sites/404.php');
+		return;
+	}
+	$uuid         = $info->PrincipalID();
+	$firstN       = $info->FirstName();
+	$lastN        = $info->LastName();
+	$created      = $profile->Created();
+	$agentOnline  = $info->Online();
+	$last_login    = date("d.m.Y - H:i",$info->LastLogin());
+	$last_logout   = date("d.m.Y - H:i",$info->LastLogout());
+	$RegionUUID   = $info->HomeUUID();
+	$RegionName   = $info->HomeName();
+	$profileImage = ($profile->Image() == '00000000-0000-0000-0000-000000000000') ? SYSURL . 'app/quickmap/images/no_profile.jpg' : Configs::d()->GridTexture($profile->Image());
+    $profileTXT   = $profile->AboutText();
 
- $date=date("d.m.Y - H:i",$created);
- $last_login=date("d.m.Y - H:i",$lastLogin);
- $last_logout=date("d.m.Y - H:i",$lastLogout);
-
- }
+	$date=date("d.m.Y - H:i",$created);
+}else{
+	$webui_404_title = 'User not specified';
+	$webui_404_text  = 'User not specified';
+	require('../../../sites/404.php');
+	return;
+}
 ?>
 
 <div id="content">
@@ -113,16 +97,17 @@ if($agent){
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
-      
+<?php if($info->HomeUUID() !== '00000000-0000-0000-0000-000000000000'){ ?>
       <tr>
         <td align="right" class="styleItem"><?=$CONF_txt_home?>:&nbsp;</td>
         <td align="left" class="styleLink"> <a href="./show_region.php?region=<?=$RegionUUID?>"><?=$RegionName?></a></td>
       </tr>
-      
       <tr>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
+<?php } ?>
+
       
       <tr>
         <td align="right" valign="top" class="styleItem"><?=$CONF_txt_profiletext?>:&nbsp;</td>
@@ -132,29 +117,12 @@ if($agent){
       
     </table>
     </td>
-    <td width="45%" valign="top">
-
-	<?
-	$SERVER ="http://$serverIP:$serverHttpPort";
-	$UUID = str_replace("-", "", $UUID);
-
-    if ($counter == 1)
-    { 
-    ?> 
-      <iframe width="275" height="275" frameborder="0" src="http://metropolis.hypergrid.org/webassets/jp2-to-jpg.php?uuid=<?=$profileImage?>&image=<?=$CONF_sim_domain?><?=$CONF_install_path?>/tmp/<?=$profileImage?>.jp2"> &nbsp;
-      </iframe>
-    <?
-    }
-    else
-    {
-    ?>
-    
+    <td width="45%" valign="top">    
     <br /><br /><br />
     
     <center>
-    <img src="../images/no_profile.jpg" alt="<?=$CONF_txt_noproimage?>" title="<?=$CONF_txt_noproimage?>" width="150" height="150" />
+    <img src="<?php echo $profileImage; ?>" alt="<?=$CONF_txt_noproimage?>" title="<?=$CONF_txt_noproimage?>" width="150" height="150" />
     </center>
-    <? } ?>
     </td>
   </tr>
 </table>

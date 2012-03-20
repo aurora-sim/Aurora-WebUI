@@ -7,6 +7,10 @@
  *
 */
 class WebUISites extends Aurora\Addon\WORM{
+
+	const regex_sites = '/^([A-z0-9_]+)\/([A-z0-9_]+\.php)$/';
+	const regex_app   = '/^([A-z0-9_]+\.php)$/';
+
 	public function offsetSet($offset, $value){
 		if(isset($this[$offset]) === true){
 			throw new InvalidArgumentException('Offset already set, cannot overwrite');
@@ -16,10 +20,16 @@ class WebUISites extends Aurora\Addon\WORM{
 			throw new InvalidArgumentException('Offset must be visible characters only');
 		}else if(is_string($value) === false){
 			throw new InvalidArgumentException('Value must be a string.');
-		}else if(preg_match('/^([A-z0-9_]+)\/([A-z0-9_]+\.php)$/', $value, $matches) != 1){
+		}else if(preg_match(static::regex_sites, $value, $matches) == 1){
+			if(file_exists(WEBUI_INSTALL_PATH . 'sites' . DIRECTORY_SEPARATOR . $matches[1] . DIRECTORY_SEPARATOR . $matches[2]) === false){
+				throw new InvalidArgumentException('Page \'' . $offset . '\' does not exist in sites');
+			}
+		}else if(preg_match(static::regex_app, $value, $matches) == 1){
+			if(file_exists(WEBUI_INSTALL_PATH . 'app' . DIRECTORY_SEPARATOR . $offset . DIRECTORY_SEPARATOR . $matches[1]) === false){
+				throw new InvalidArgumentException('Page \'' . $offset . '\' does not exist as app');
+			}
+		}else{
 			throw new InvalidArgumentException('Value must be a PHP file');
-		}else if(file_exists(WEBUI_INSTALL_PATH . 'sites/' . $matches[1] . '/' . $matches[2]) === false){
-			throw new InvalidArgumentException('Page does not exist');
 		}
 		$this->data[$offset] = $value;
 	}
