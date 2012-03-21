@@ -1,5 +1,5 @@
 <?php
-if($_SESSION[ADMINID]) {
+if(isset($_SESSION['ADMINID'])) {
         $GoPage= "page=adminmanage";
 
         $AnzeigeStart 		= 0;
@@ -287,12 +287,9 @@ if($_SESSION[ADMINID]) {
 	</div>
 </div>
 </div>
-
-<?php }
-else {
-    echo "<script language=\"javascript\">
-<!--
-window.location.href=\"index.php?page=home\";
-// -->
-</script>";
-}?>
+<?php
+}else{
+	header('Location: ' . SYSURL . 'index.php?page=home');
+	exit;
+}
+?>
