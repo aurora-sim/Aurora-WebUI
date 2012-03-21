@@ -35,7 +35,7 @@ while(!is_dir($dir . DIRECTORY_SEPARATOR . 'settings') && !is_file($dir . DIRECT
 }
 define('WEBUI_INSTALL_PATH', $dir . DIRECTORY_SEPARATOR);
 
-require_once('phar://' . WEBUI_INSTALL_PATH . 'settings/Aurora-Sim.php.phar.gz/Aurora/load.php');
+require_once('phar://' . WEBUI_INSTALL_PATH . 'settings/libAurora.php.phar.gz/Aurora/load.php');
 
 use Aurora\Addon\WebUI;
 use Aurora\Addon\WebUI\Configs;
