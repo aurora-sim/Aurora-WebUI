@@ -37,26 +37,9 @@ if (($REGIOCHECK == "0" || $REGIOCHECK == "1") && isset($_POST['Submit1']) && $_
 	}catch(Aurora\Addon\WebUI\Exception $e){
 		$ERROR_setHome = $e->getMessage();
 	}
-}
-
-if ($_POST[Submit2] == $webui_submit) {
-	if ($_POST[passnew] == $_POST[passvalid]) {
-
-		$found = array();
-		$found[0] = json_encode(array('Method' => 'ChangePassword', 'WebPassword' => md5(WEBUI_PASSWORD)
-					, 'UUID' => cleanQuery($_SESSION[USERID])
-					, 'Password' => cleanQuery($_POST[passold])
-					, 'NewPassword' => cleanQuery($_POST[passnew])));
-
-		$do_post_requested = do_post_request($found);
-		$recieved = json_decode($do_post_requested);
-
-		// echo '<pre>';
-		// var_dump($recieved);
-		// var_dump($do_post_requested);
-		// echo '</pre>';
-
-		if ($recieved->{'Verified'} == "true") {
+}else if(isset($_POST['Submit2'], $_POST['passnew'], $_POST['passvalid'], $_POST['passold']) && $_POST['Submit2'] == $webui_submit){
+	if ($_POST['passnew'] == $_POST['passvalid']) {
+		if(Configs::d()->ChangePassword($_SESSION['USERID'], $_POST['passold'], $_POST['passnew'])){
 //-----------------------------------MAIL--------------------------------------
 			$date_arr = getdate();
 			$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
@@ -66,18 +49,12 @@ if ($_POST[Submit2] == $webui_submit) {
 			$body .= "\n\n\n";
 			$body .= "Thank you for using " . SYSNAME . "";
 			$header = "From: " . SYSMAIL . "\r\n";
-			$mail_status = mail($sendto, $subject, $body, $header);
+			$mail_status = @mail($sendto, $subject, $body, $header);
 //-----------------------------MAIL END --------------------------------------
-
-
-
 			session_unset();
 			session_destroy();
-			echo "<script language='javascript'>
-			<!--
-				window.location.href='index.php?page=home';
-			// -->
-			</script>";
+			header('Location: ' . SYSURL . 'index.php?page=home');
+			exit;
 		} else {
 			$ERRORS = "<font color=white><b>Error saving new password. Please try again later.</b></font>";
 		}
