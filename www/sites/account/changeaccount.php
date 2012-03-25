@@ -110,20 +110,11 @@ if ($_POST[Submit3] == $webui_submit) {
 	}
 }
 
-if ($_POST[purge]) {
-	$query = "SELECT COUNT(*) FROM " . C_APPEARANCE_TBL . " WHERE PrincipalID ='" . cleanQuery($_SESSION[USERID]) . "'";
-	$DbLink->query($query);
-	list($numrows) = $DbLink->next_record();
-
-	if ($numrows > 0) {
-		$remove = "DELETE FROM " . C_APPEARANCE_TBL . " WHERE PrincipalID ='" . cleanQuery($_SESSION[USERID]) . "'";
-
-		$DbLink = new DB;
-		$DbLink->query($remove);
-
-		$ERRORS = "Succesfully removed your appearance";
-	} else {
-		$ERRORS = "Could not find a appearance for you";
+if(isset($_POST['purge']) && $_POST['purge'] == $webui_purge_apparence_bouton){
+	if(Configs::d()->ResetAvatar($_SESSION['USERID'])){
+		$ERRORS = "Succesfully reset your appearance";
+	}else{
+		$ERRORS = "Could not reset your appearance";
 	}
 }
 
@@ -336,7 +327,7 @@ if ($_POST[Submit4] == $webui_submit) {
 					<td colspan="2"><div align="center"><?php echo $ERRORS; ?></div></td>
 				</tr>
 <?php } ?>
-				<form name="form1" method="post" action="index.php?page=accounting">
+				<form name="form1" method="post" action="index.php?page=changeaccount">
 					<tr>
 						<td class="odd">
 							<div align="center"><input type="submit" name="purge" value="<? echo $webui_purge_apparence_bouton; ?>"></div>
