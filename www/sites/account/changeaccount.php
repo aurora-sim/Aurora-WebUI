@@ -118,31 +118,12 @@ if(isset($_POST['purge']) && $_POST['purge'] == $webui_purge_apparence_bouton){
 	}
 }
 
-if ($_POST[Submit4] == $webui_submit) {
-	$found = array();
-	$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WEBUI_PASSWORD),
-				'Name' => cleanQuery($_POST[nameNew])));
-	$do_post_requested = do_post_request($found);
-	$recieved = json_decode($do_post_requested);
-
-
-	if ($recieved->{'Verified'} != false) {
+if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
+	if (Configs::d()->CheckIfUserExists($_POST['nameNew'])) {
 		$ERRORS2 = "<font color=white><b>User already Exists</b></font>";
 	} else {
-		$found = array();
-		$found[0] = json_encode(array('Method' => 'ChangeName', 'WebPassword' => md5(WEBUI_PASSWORD)
-					, 'UUID' => cleanQuery($_SESSION[USERID])
-					, 'Name' => cleanQuery($_POST[nameNew])));
 
-		$do_post_requested = do_post_request($found);
-		$recieved = json_decode($do_post_requested);
-
-		// echo '<pre>';
-		// var_dump($recieved);
-		// var_dump($do_post_requested);
-		// echo '</pre>';
-
-		if ($recieved->{'Verified'} == "true") {
+		if (Configs::d()->ChangeName($_SESSION['USERID'], $_POST['nameNew'])) {
 			//-----------------------------------MAIL--------------------------------------
 			$date_arr = getdate();
 			$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
@@ -152,17 +133,14 @@ if ($_POST[Submit4] == $webui_submit) {
 			$body .= "\n\n\n";
 			$body .= "Thank you for using " . SYSNAME . "";
 			$header = "From: " . SYSMAIL . "\r\n";
-			$mail_status = mail($sendto, $subject, $body, $header);
+			$mail_status = @mail($sendto, $subject, $body, $header);
 			//-----------------------------MAIL END --------------------------------------
 
 			session_unset();
 			session_destroy();
 
-			echo "<script language='javascript'>
-			<!--
-				window.location.href='index.php?page=home';
-			// -->
-			</script>";
+			header('Location: ' . SYSURL . 'index.php?page=home');
+			exit;
 		}
 	}
 }
