@@ -38,7 +38,7 @@ function Form(theForm){
 <?php
 use Aurora\Addon\WebUI\Configs;
 if(isset($_POST['name']) && $_POST['name']!=''){
-	
+
 	if (Configs::d()->ConfirmUserEmailName($_POST['name'], $_POST['email']))
 	{	// CODE generator
 		function code_gen($cod=""){
@@ -53,12 +53,12 @@ if(isset($_POST['name']) && $_POST['name']!=''){
 				$cod .= "".$array_b[$z]."";
 			}
 			return $cod;
-		}		
-		$code=code_gen(); 		
-		// CODE generator				
-		$UUID = $recieved->{'UUID'};		
+		}
+		$code=code_gen();
+		// CODE generator
+		$UUID = $recieved->{'UUID'};
 		$DbLink = new DB();
-		$DbLink->query("INSERT INTO ".C_CODES_TBL." (code,UUID,info,email,time)VALUES('$code','$UUID','pwreset','$_POST[email]',".time().")");	
+		$DbLink->query("INSERT INTO ".C_CODES_TBL." (code,UUID,info,email,time)VALUES('$code','$UUID','pwreset','$_POST[email]',".time().")");
 		//-----------------------------------MAIL--------------------------------------
 		 $date_arr = getdate();
 		 $date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
@@ -71,7 +71,7 @@ if(isset($_POST['name']) && $_POST['name']!=''){
 		 $body .= "To get a new password just click the link below this text:";
 		 $body .= "\n";
 		 $body .= "".SYSURL."/index.php?page=resetpass&code=$code";
-		 $body .= "\n\n"; 
+		 $body .= "\n\n";
 		 $body .= "Thank you for using ".SYSNAME."";
 		 $header = "From: " . SYSMAIL . "\r\n";
 		 $mail_status = @mail($sendto, $subject, $body, $header);
@@ -85,7 +85,7 @@ if(isset($_POST['name']) && $_POST['name']!=''){
 		// -->
 		</script>";
 	}else{
-		if ($recieved->{'Error'} != "") 
+		if ($recieved->{'Error'} != "")
 		{
 			echo "<script language='javascript'>
 			<!--			alert(\"" . $recieved->{'Error'} . "\");			// -->			</script>";
@@ -100,7 +100,7 @@ if(isset($_POST['name']) && $_POST['name']!=''){
 <div id="content">
 	<div id="ContentHeaderLeft"><h5><?php echo SYSNAME ?></h5></div>
 	<div id="ContentHeaderCenter"></div>
-	<div id="ContentHeaderRight"><h5><?php echo $webui_forgot_password; ?></h5></div> 
+	<div id="ContentHeaderRight"><h5><?php echo $webui_forgot_password; ?></h5></div>
 	<div id="forget_pass">
 		<div id="info"><p><?php echo $webui_forgot_password_info ?></p></div>
 		<div id="annonce10">
