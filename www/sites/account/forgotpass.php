@@ -36,16 +36,10 @@ function Form(theForm){
 //-->
 </script>
 <?php
-if($_POST[name]!='')
-{
-	$found = array();
-	$found[0] = json_encode(array('Method' => 'ConfirmUserEmailName', 'WebPassword' => md5(WEBUI_PASSWORD)
-		, 'Name' => cleanQuery($_POST[name])
-		, 'Email' => cleanQuery($_POST[email])));
-	$do_post_requested = do_post_request($found);
-	$recieved = json_decode($do_post_requested);
+use Aurora\Addon\WebUI\Configs;
+if(isset($_POST['name']) && $_POST['name']!=''){
 	
-	if ($recieved->{'Verified'} == "true") 
+	if (Configs::d()->ConfirmUserEmailName($_POST['name'], $_POST['email']))
 	{	// CODE generator
 		function code_gen($cod=""){
 			// ######## CODE LENGTH ########
@@ -63,6 +57,7 @@ if($_POST[name]!='')
 		$code=code_gen(); 		
 		// CODE generator				
 		$UUID = $recieved->{'UUID'};		
+		$DbLink = new DB();
 		$DbLink->query("INSERT INTO ".C_CODES_TBL." (code,UUID,info,email,time)VALUES('$code','$UUID','pwreset','$_POST[email]',".time().")");	
 		//-----------------------------------MAIL--------------------------------------
 		 $date_arr = getdate();
@@ -79,7 +74,7 @@ if($_POST[name]!='')
 		 $body .= "\n\n"; 
 		 $body .= "Thank you for using ".SYSNAME."";
 		 $header = "From: " . SYSMAIL . "\r\n";
-		 $mail_status = mail($sendto, $subject, $body, $header);
+		 $mail_status = @mail($sendto, $subject, $body, $header);
 		//-----------------------------MAIL END --------------------------------------
 
 
