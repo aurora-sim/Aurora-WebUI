@@ -67,19 +67,19 @@ if($_POST[name]!='')
 	$recieved = json_decode($do_post_requested);
 	
 	if ($recieved->{'Verified'} == "true") 
-	{		// CODE generator		
-		function code_gen($cod=""){ 
-		// ######## CODE LENGTH ########			
-		$cod_l = 10;			
-		// ######## CODE LENGTH ########			
-		$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9"; 			
-		$array_b = explode(",",$zeichen); 			
-		for($i=0;$i<$cod_l;$i++) { 				
-		srand((double)microtime()*1000000); 				
-		$z = rand(0,35); 				
-		$cod .= "".$array_b[$z].""; 			
-		} 			
-		return $cod; 		
+	{	// CODE generator
+		function code_gen($cod=""){
+			// ######## CODE LENGTH ########
+			$cod_l = 10;
+			// ######## CODE LENGTH ########
+			$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9";
+			$array_b = explode(",",$zeichen);
+			for($i=0;$i<$cod_l;$i++) {
+				srand((double)microtime()*1000000);
+				$z = rand(0,35);
+				$cod .= "".$array_b[$z]."";
+			}
+			return $cod;
 		}		
 		$code=code_gen(); 		
 		// CODE generator				
@@ -102,77 +102,77 @@ if($_POST[name]!='')
 		 $header = "From: " . SYSMAIL . "\r\n";
 		 $mail_status = mail($sendto, $subject, $body, $header);
 		//-----------------------------MAIL END --------------------------------------
-		
-		
+
+
 		echo "<script language='javascript'>
 		<!--
 			window.alert('Check your email.');
 			window.location.href='/index.php?page=login&btn=9';
 		// -->
 		</script>";
-	}
-	else
-	{
+	}else{
 		if ($recieved->{'Error'} != "") 
 		{
 			echo "<script language='javascript'>
-			<!--			alert(\"" . $recieved->{'Error'} . "\");			// -->			</script>";		}		else		{			echo "<script language='javascript'>			<!--			alert(\"Unknow error. Please try again later.\");			// -->			</script>";		}	}}
+			<!--			alert(\"" . $recieved->{'Error'} . "\");			// -->			</script>";
+		}else{
+			echo "<script language='javascript'>			<!--			alert(\"Unknow error. Please try again later.\");			// -->			</script>";
+		}
+	}
+}
 ?>
 
 
 <div id="content">
-  <div id="ContentHeaderLeft"><h5><?php echo SYSNAME ?></h5></div>
-  <div id="ContentHeaderCenter"></div>
-  <div id="ContentHeaderRight"><h5><?php echo $webui_forgot_password; ?></h5></div> 
-  <div id="forget_pass">
-  <div id="info"><p><?php echo $webui_forgot_password_info ?></p></div>
-  
-  <div id="annonce10">
-  <form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
-    <table>
-      <tr>
-        <td>
-          <table>
-            <tr>
-              <td class="even"><?php echo $webui_avatar_name ?>*</td>
-              <td class="even" width="50%">
-                <div class="roundedinput">
-                  <input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?php echo $_POST[name]?>">
-                </div>
-              </td>
-            </tr>
-                
-            <tr>
-              <td class="odd"><?php echo $webui_email ?>*</td>
-              <td class="odd">
-                <div class="roundedinput">
-                  <input id="forgot_pass_input" name="email" type="email" size="40" maxlength="50" value="<?php echo $_POST[email]?>">
-                </div>
-              </td>
-            </tr>
-                
-            <tr>
-              <td class="even"><?php echo $webui_confirm ?> <?php echo $webui_email ?>*</td>
-              <td class="even">
-                <div class="roundedinput">
-                  <input id="forgot_pass_input" name="email2" type="email" size="40" maxlength="50" value="<?php echo $_POST[email2]?>">
-                </div>
-              </td>
-            </tr>
-                  
-            <tr>
-              <td class="odd"></td>
-              <td class="odd">
-                <div class="center">
-                  <input type="hidden" name="action" value="check">
-                  <button id="forgot_pass_bouton" name="Submit" type="Submit"><?php echo $webui_submit ?></button>
-              </div>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </form>
-  </div>
-  </div>
+	<div id="ContentHeaderLeft"><h5><?php echo SYSNAME ?></h5></div>
+	<div id="ContentHeaderCenter"></div>
+	<div id="ContentHeaderRight"><h5><?php echo $webui_forgot_password; ?></h5></div> 
+	<div id="forget_pass">
+		<div id="info"><p><?php echo $webui_forgot_password_info ?></p></div>
+		<div id="annonce10">
+			<form method="POST" action="index.php?page=forgotpass" onSubmit="return Form(this)">
+				<table>
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td class="even"><?php echo $webui_avatar_name ?>*</td>
+									<td class="even" width="50%">
+										<div class="roundedinput">
+											<input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?php echo $_POST[name]?>">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="odd"><?php echo $webui_email ?>*</td>
+									<td class="odd">
+										<div class="roundedinput">
+											<input id="forgot_pass_input" name="email" type="email" size="40" maxlength="50" value="<?php echo $_POST[email]?>">
+										</div>
+									</td>
+								</tr>
+									<tr>
+										<td class="even"><?php echo $webui_confirm ?> <?php echo $webui_email ?>*</td>
+										<td class="even">
+											<div class="roundedinput">
+												<input id="forgot_pass_input" name="email2" type="email" size="40" maxlength="50" value="<?php echo $_POST[email2]?>">
+											</div>
+										</td>
+									</tr>
+								<tr>
+								<td class="odd"></td>
+									<td class="odd">
+										<div class="center">
+											<input type="hidden" name="action" value="check">
+											<button id="forgot_pass_bouton" name="Submit" type="Submit"><?php echo $webui_submit ?></button>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
 </div>
