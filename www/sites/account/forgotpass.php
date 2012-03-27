@@ -146,7 +146,7 @@ if($_POST[name]!='')
               <td class="odd"><?php echo $webui_email ?>*</td>
               <td class="odd">
                 <div class="roundedinput">
-                  <input id="forgot_pass_input" name="email" type="text" size="40" maxlength="50" value="<?php echo $_POST[email]?>">
+                  <input id="forgot_pass_input" name="email" type="email" size="40" maxlength="50" value="<?php echo $_POST[email]?>">
                 </div>
               </td>
             </tr>
@@ -155,7 +155,7 @@ if($_POST[name]!='')
               <td class="even"><?php echo $webui_confirm ?> <?php echo $webui_email ?>*</td>
               <td class="even">
                 <div class="roundedinput">
-                  <input id="forgot_pass_input" name="email2" type="text" size="40" maxlength="50" value="<?php echo $_POST[email2]?>">
+                  <input id="forgot_pass_input" name="email2" type="email" size="40" maxlength="50" value="<?php echo $_POST[email2]?>">
                 </div>
               </td>
             </tr>
