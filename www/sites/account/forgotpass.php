@@ -166,7 +166,6 @@ if($_POST[name]!='')
                 <div class="center">
                   <input type="hidden" name="action" value="check">
                   <button id="forgot_pass_bouton" name="Submit" type="Submit"><?php echo $webui_submit ?></button>
-                  <!-- <input id="forgot_pass_bouton" type="submit" name="Submit" value="<?php // echo $webui_submit ?>"></td> -->
               </div>
             </tr>
           </table>
