@@ -1,58 +1,37 @@
 <script language="JavaScript">
 <!--
-function Form(theForm)
-{
+function Form(theForm){
+	if (theForm.email.value == ""){
+		alert("Please enter your e-mail address.");
+		theForm.email.focus();
+		return (false);
+	}else if(theForm.email.value.indexOf('@') == -1){
+	   alert("Not a valid e-mail address!");
+	   theForm.email.focus();
+	   return (false);
+	}else if(theForm.email.value.indexOf('.') == -1){
+	   alert("Not a valid e-mail address!");
+	   theForm.email.focus();
+	   return (false);
+	}else if (theForm.email2.value == ""){
+		alert("Please confirm your e-mail address.");
+		theForm.email2.focus();
+		return (false);
+	}else if(theForm.email2.value.indexOf('@') == -1){
+	   alert("Not a valid e-mail address!");
+	   theForm.email2.focus();
+	   return (false);
+	}else if(theForm.email2.value.indexOf('.') == -1){
+	   alert("Not a valid e-mail address!");
+	   theForm.email2.focus();
+	   return (false);
+	}else if(theForm.email2.value != theForm.email.value){
+		alert("E-mail confirmation does not match with e-mail address.");
+		theForm.email2.focus();
+		return (false);
+	}
 
-  if (theForm.email.value == "")
-  {
-    alert("Please enter your e-mail address.");
-    theForm.email.focus();
-    return (false);
-  }
-
-  if(theForm.email.value.indexOf('@') == -1)
-  {
-       alert("Not a valid e-mail address!");
-       theForm.email.focus();
-       return (false);
-  }
-  
-  if(theForm.email.value.indexOf('.') == -1)
-  {
-       alert("Not a valid e-mail address!");
-       theForm.email.focus();
-       return (false);
-  }
-  
-    if (theForm.email2.value == "")
-  {
-    alert("Please confirm your e-mail address.");
-    theForm.email2.focus();
-    return (false);
-  }
-
-  if(theForm.email2.value.indexOf('@') == -1)
-  {
-       alert("Not a valid e-mail address!");
-       theForm.email2.focus();
-       return (false);
-  }
-  
-  if(theForm.email2.value.indexOf('.') == -1)
-  {
-       alert("Not a valid e-mail address!");
-       theForm.email2.focus();
-       return (false);
-  }
-  
-      if (theForm.email2.value != theForm.email.value)
-  {
-    alert("E-mail confirmation does not match with e-mail address.");
-    theForm.email2.focus();
-    return (false);
-  }
-
-  return (true);
+	return (true);
 }
 //-->
 </script>
