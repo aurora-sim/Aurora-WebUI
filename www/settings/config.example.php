@@ -278,6 +278,7 @@ $wi_sitemanagement['adminhome']        = 'admin/home.php';
 $wi_sitemanagement['adminloginscreen'] = 'admin/loginscreenmanager.php';
 $wi_sitemanagement['adminnewsmanager'] = 'admin/newsmanager.php';
 $wi_sitemanagement['adminmanage']      = 'admin/manage.php';
+$wi_sitemanagement['adminsupport']     = 'admin/support.php';
 $wi_sitemanagement['news_add']         = 'admin/news_add.php';
 $wi_sitemanagement['news_edit']        = 'admin/news_edit.php';
 $wi_sitemanagement['adminsettings']    = 'admin/settings.php';
