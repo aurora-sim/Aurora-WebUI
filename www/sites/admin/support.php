@@ -1,4 +1,5 @@
 <?php
+use Aurora\Addon\WebUI\Configs;
 if(!isset($_SESSION['ADMINID'])){
 	header("Location: index.php?page=Home");
 	exit;
@@ -6,36 +7,14 @@ if(!isset($_SESSION['ADMINID'])){
 
 if(isset($_POST['method'])){
 	if($_POST["method"] == "Save Notes"){
-		$found = array();
-		$found[0] = json_encode(array(
-			'Method' => 'AbuseReportSaveNotes',
-			'WebPassword' => md5(WEBUI_PASSWORD),
-			'Number' => cleanQuery($_POST["Number"]),
-			'Notes' => cleanQuery($_POST["Notes"])
-		));
-		do_post_request($found);
+		Configs::d()->AbuseReportSaveNotes($_POST['Number'], $_POST['Notes']);
 	}
 	if ($_POST["method"] == "Mark Complete"){
-		$found = array();
-		$found[0] = json_encode(array(
-			'Method' => 'AbuseReportMarkComlete',
-			'WebPassword' => md5(WEBUI_PASSWORD),
-			'Number' => cleanQuery($_POST["Number"])
-		));
-		do_post_request($found);
+		Configs::d()->AbuseReportMarkComplete($_POST['Number']);
 	}
 }
 
-$found = array();
-$found[0] = json_encode(array(
-	'Method' => 'GetAbuseReports',
-	'WebPassword' => md5(WEBUI_PASSWORD),
-	'Start' => '1',
-	'Count' => '10',
-	'Active' => true
-));
-$do_post_request = do_post_request($found);
-$recieved = json_decode($do_post_request);
+$recieved = Configs::d()->GetAbuseReports();
 ?>
 <script type="text/javascript">
 	function rowClicked(row, clas){
@@ -64,32 +43,32 @@ $recieved = json_decode($do_post_request);
 			</tr>
 <?php
 	$w=0;
-	if(isset($recieved, $recieved->AbuseReports)){
-		foreach($recieved->{'AbuseReports'} as $ar){
+	if($recieved->count() > 0){
+		foreach($recieved as $ar){
 			$w++;
 ?>
-			<tr class="<?php echo ($odd = $w%2 )? "odd" : "even"; ?>" onclick="rowClicked('<?php echo $ar->{'Number'}; ?>', '<?php echo ($odd = $w%2 ) ? "odd" : "even"; ?>');">
-				<td><?php echo $ar->{'ReporterName'}; ?></td>
-				<td><?php echo $ar->{'Category'}; ?></td>
-				<td><?php echo $ar->{'AbuseSummary'}; ?></td>
+			<tr class="<?php echo ($odd = $w%2 )? "odd" : "even"; ?>" onclick="rowClicked('<?php echo $ar->Number(); ?>', '<?php echo ($odd = $w%2 ) ? "odd" : "even"; ?>');">
+				<td><?php echo $ar->ReporterName(); ?></td>
+				<td><?php echo $ar->Category(); ?></td>
+				<td><?php echo $ar->Summary(); ?></td>
 			</tr>
-			<tr id="workrow_<?php echo $ar->{'Number'}; ?>" class="hiddenrow">
+			<tr id="workrow_<?php echo $ar->Number(); ?>" class="hiddenrow">
 				<td colspan="3">
 					<form method="post"action="index.php?page=adminsupport&btn=webui_menu_item_adminsupport">
 						<table width="100%">
 							<tr>
 								<td align="right" colspan="3">
-									<a href="<?php echo $ar->{'AbuseLocation'}; ?>">TP</a>
+									<a href="<?php echo $ar->Location(); ?>">TP</a>
 									<input type="Submit" value="Mark Complete" name="method" />
-									<input type="button" value="X" onclick="rowClicked('<?php echo $ar->{'Number'}; ?>', '<?php echo ($odd = $w%2 )? "odd":"even" ?>');" />
-									<input type="hidden" name="Number" value="<?php echo $ar->{'Number'}; ?>" />
+									<input type="button" value="X" onclick="rowClicked('<?php echo $ar->Number(); ?>', '<?php echo ($odd = $w%2 )? "odd":"even" ?>');" />
+									<input type="hidden" name="Number" value="<?php echo $ar->Number(); ?>" />
 								</td>
 							</tr>
 							<tr>
 								<td colspan="3"><b>Details</b></td>
 							</tr>
 							<tr>
-								<td colspan="3"><?php echo $ar->{'AbuseDetails'}; ?></td>
+								<td colspan="3"><?php echo $ar->Details(); ?></td>
 							</tr>
 							<tr>
 								<td><b>AbuserName</b></td>
@@ -97,13 +76,18 @@ $recieved = json_decode($do_post_request);
 								<td><b>ObjectPosition</b></td>
 							</tr>
 							<tr>
-								<td><?php echo $ar->{'AbuserName'}; ?></td>
-								<td><?php echo $ar->{'ObjectName'}; ?></td>
-								<td><a href="<?php echo $ar->{'AbuseLocation'}; ?>"><?php echo $ar->{'ObjectPosition'}; ?></a></td>
+								<td><?php echo $ar->UserName(); ?></td>
+								<td><?php echo $ar->ObjectName(); ?></td>
+								<td><a href="<?php echo $ar->Location(); ?>"><?php echo $ar->ObjectPosition(); ?></a></td>
 							</tr>
+<?php		if($ar->Screenshot() !== '00000000-0000-0000-0000-000000000000'){ ?>
+							<tr>
+								<td colspan="3" align="center"><img src="<?php echo Configs::d()->GridTexture($ar->Screenshot()); ?>" /></td>
+							</tr>
+<?php		} ?>
 							<tr>
 								<td colspan="3">
-									<textarea name="Notes" cols="100" rows="10"><?php echo $ar->{'Notes'}; ?></textarea>
+									<textarea name="Notes" cols="100" rows="10"><?php echo $ar->Notes(); ?></textarea>
 								</td>
 							</tr>
 							<tr>
