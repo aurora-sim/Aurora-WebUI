@@ -32,9 +32,9 @@ if($ALLOWREGISTRATION == '1'){
 		$LASTNAMESC   = $adminsetting['lastnames'];
 		if ($LASTNAMESC == "1") {
 			echo "<div class=\"roundedinput\"><select id=\"register_input\" wide=\"25\" name=\"accountlast\">";
-			$DbLink->query("SELECT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
+			$DbLink->query("SELECT DISTINCT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
 			while (list($NAMEDB) = $DbLink->next_record()) {
-				echo "<option>$NAMEDB</option>";
+				echo '<option value="', $NAMEDB, '">',$NAMEDB, '</option>',"\n";
 			}
 			echo "</select></div>";
 		} else {
@@ -397,85 +397,84 @@ if($ALLOWREGISTRATION == '1'){
 			$_SESSION['ERROR'] = "Email confirmation not correct";
 			header('Location: index.php?page=register');
 			exit;
+		}else if(Configs::d()->CheckIfUserExists(
+			$_SESSION['ACCFIRST'] . ' ' . $_SESSION['ACCLAST']
+		)){
+			$_SESSION['ERROR'] = "User already exists in Database";
+			header('Location: index.php?page=register');
+			exit;
 		}else{
-			$passneu = $_SESSION['PASSWD'];
-			$passwordHash = md5(md5($passneu) . ":");
-			$found = array();
-			$found[0] = json_encode(array('Method' => 'CheckIfUserExists', 'WebPassword' => md5(WEBUI_PASSWORD), 'Name' => cleanQuery($_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST])));
-			$do_post_requested = do_post_request($found);
-			$recieved = json_decode($do_post_requested);
+			// CODE generator
+			function code_gen($cod="") {
+				$cod_l = 10;
+				$zeichen = "abcdefghijklmnopqrstuvwxyz0123456789";
+				$array_b = str_split($zeichen, 1);
 
-			if ($recieved->{'Verified'} != false){
-				$_SESSION['ERROR'] = "User already exists in Database";
+				for ($i = 0; $i < $cod_l; $i++) {
+					$z = mt_rand(0, 35);
+					$cod .= $array_b[$z];
+				}
+				return $cod;
+			}
+
+			$code = code_gen();
+
+			$userLevel = ($VERIFYUSERS == 0) ? 0 : -1;
+
+			try{
+				$recieved = Configs::d()->CreateAccount(
+					$_SESSION['ACCFIRST'] . ' ' . $_SESSION['ACCLAST'],
+					$_SESSION['PASSWD'],
+					$_SESSION['EMAIL'],
+					$_SESSION['REGIONID'],
+					$userLevel,
+					isset($_POST['jahr'], $_POST['monat'], $_POST['tag']) ? $_POST['jahr'] . '-' . $_POST['monat'] . '-' . $_POST['tag'] : '1970-01-01',
+					$_SESSION['NAMEF'],
+					$_SESSION['NAMEL'],
+					$_SESSION['ADRESS'],
+					$_SESSION['CITY'],
+					$_SESSION['ZIP'],
+					$_SESSION['COUNTRY'],
+					$userIP
+				);
+			}catch(Exception $e){
+				$_SESSION['ERROR'] = 'Unknown error. Please try again later.';
 				header('Location: index.php?page=register');
 				exit;
-			}else{
-				// CODE generator
-				function code_gen($cod="") {
-					$cod_l = 10;
-					$zeichen = "abcdefghijklmnopqrstuvwxyz0123456789";
-					$array_b = str_split($zeichen, 1);
+			}
+			
+			list($userInfo, $activationCode) = $recieved;
+			if(!($userInfo instanceof \Aurora\Addon\WebUI\GridUserInfo)){
+				$_SESSION['ERROR'] = 'Unknown error. Please try again later.';
+				header('Location: index.php?page=register');
+				exit;
+			}
 
-					for ($i = 0; $i < $cod_l; $i++) {
-						$z = mt_rand(0, 35);
-						$cod .= $array_b[$z];
-					}
-					return $cod;
-				}
+			if($do_email_verification){
+				$DbLink = new DB;
+				//-----------------------------------MAIL--------------------------------------
+				$date_arr = getdate();
+				$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
+				$sendto = $_SESSION['EMAIL'];
+				$subject = "Account Activation from " . SYSNAME;
+				$body .= "Your account was successfully created at " . SYSNAME . ".\n";
+				$body .= "Your first name: $_SESSION[ACCFIRST]\n";
+				$body .= "Your last name:  $_SESSION[ACCLAST]\n";
+				$body .= "Your password:  $_SESSION[PASSWD]\n\n";
+				$body .= "In order to login, you need to confirm your email by clicking this link within $deletetime hours:";
+				$body .= "\n";
+				$body .= "" . SYSURL . "/index.php?page=activate&code=$code";
+				$body .= "\n\n\n";
+				$body .= "Thank you for using " . SYSNAME . "";
+				$header = "From: " . SYSMAIL . "\r\n";
+				$mail_status = @mail($sendto, $subject, $body, $header);
 
-				$code = code_gen();
-
-				$userLevel = ($VERIFYUSERS == 0) ? 0 : -1;
-
-				$found = array();
-				$found[0] = json_encode(array('Method' => 'CreateAccount', 'WebPassword' => md5(WEBUI_PASSWORD),
-							'Name' => cleanQuery($_SESSION[ACCFIRST].' '.$_SESSION[ACCLAST]),
-							'Email' => cleanQuery($_SESSION[EMAIL]),
-							'HomeRegion' => cleanQuery($_SESSION[REGIONID]),
-							'PasswordHash' => cleanQuery($passneu),
-							'PasswordSalt' => cleanQuery($passwordSalt),
-							'AvatarArchive' => cleanQuery($_SESSION[AVATARARCHIVE]),
-							'UserLevel' => cleanQuery($userLevel),
-							'RLFisrtName' => cleanQuery($_SESSION[NAMEF]),
-							'RLLastName' => cleanQuery($_SESSION[NAMEL]),
-							'RLAdress' => cleanQuery($_SESSION[ADRESS]),
-							'RLCity' => cleanQuery($_SESSION[CITY]),
-							'RLZip' => cleanQuery($_SESSION[ZIP]),
-							'RLCountry' => cleanQuery($_SESSION[COUNTRY]),
-							'RLDOB' => cleanQuery($tag . "/" . $monat . "/" . $jahr),
-							'RLIP' => cleanQuery($userIP)
-							));
-
-
-				$do_post_requested = do_post_request($found);
-				$recieved = json_decode($do_post_requested);
-
-				if ($recieved->{'Verified'} == "true"){
-					if($do_email_verification){
-						$DbLink = new DB;
-						//-----------------------------------MAIL--------------------------------------
-						$date_arr = getdate();
-						$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
-						$sendto = $_SESSION[EMAIL];
-						$subject = "Account Activation from " . SYSNAME;
-						$body .= "Your account was successfully created at " . SYSNAME . ".\n";
-						$body .= "Your first name: $_SESSION[ACCFIRST]\n";
-						$body .= "Your last name:  $_SESSION[ACCLAST]\n";
-						$body .= "Your password:  $_SESSION[PASSWD]\n\n";
-						$body .= "In order to login, you need to confirm your email by clicking this link within $deletetime hours:";
-						$body .= "\n";
-						$body .= "" . SYSURL . "/index.php?page=activate&code=$code";
-						$body .= "\n\n\n";
-						$body .= "Thank you for using " . SYSNAME . "";
-						$header = "From: " . SYSMAIL . "\r\n";
-						$mail_status = @mail($sendto, $subject, $body, $header);
-
-						//-----------------------------MAIL END --------------------------------------
-						// insert code
-						$UUIDC = $recieved->{'UUID'};
-						$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','".cleanQuery($_SESSION['EMAIL'])."'," . $_SERVER['REQUEST_TIME'] . ")");
-						// insert code end
-					}
+				//-----------------------------MAIL END --------------------------------------
+				// insert code
+				$UUIDC = $userInfo->PrincipalID();
+				$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','".cleanQuery($_SESSION['EMAIL'])."'," . $_SERVER['REQUEST_TIME'] . ")");
+				// insert code end
+			}
 ?>
 <div id="content">
 <h2><?php echo $webui_successfully; ?></h2>
@@ -488,14 +487,8 @@ if($ALLOWREGISTRATION == '1'){
 </div>
 
 <?php
-					session_unset();
-					session_destroy();
-				}else{
-					$_SESSION['ERROR'] = 'Unknown error. Please try again later.';
-					header('Location: index.php?page=register');
-					exit;
-				}
-			}
+			session_unset();
+			session_destroy();
 		}
 	}
 }else{ ?>
