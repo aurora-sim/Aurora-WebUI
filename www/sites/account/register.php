@@ -24,8 +24,8 @@ if($ALLOWREGISTRATION == '1')
 if ($_POST[action] == "") {
     $_SESSION[PASSWD] = "";
     $_SESSION[EMAIC] = "";
-	
-	
+
+
 function printLastNames()
 {
 	$DbLink = new DB;
@@ -71,15 +71,15 @@ function displayCountry()
 
 
 function displayDOB()
-{	
+{
 	echo "<div id=\"birthday\" class=\"roundedinput\"><table><tr><td>";
-	 
+
 	if ($status == 1 and $monat == '')
-		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='tag' class='red'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='tag' class='red'>";
 	else
-		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='tag' class='black'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='tag' class='black'>";
 	echo "<option></option>";
-	for ($i = 1; $i <= 31; $i++) 
+	for ($i = 1; $i <= 31; $i++)
 	{
 		echo("<OPTION VALUE=\"$i\" ");
 		if ($tag == $i)
@@ -89,11 +89,11 @@ function displayDOB()
 	echo "</select>";
 
 	if ($status == 1 and $monat == '')
-		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='monat' class='red'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='monat' class='red'>";
 	else
-		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='monat' class='black'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='monat' class='black'>";
 	echo "<option></option>";
-	for ($i = 1; $i <= 12; $i++) 
+	for ($i = 1; $i <= 12; $i++)
 	{
 		echo("<OPTION VALUE=\"$i\" ");
 		if ($monat == $i)
@@ -102,9 +102,9 @@ function displayDOB()
 	}
 	echo "</select>";
 	if ($status == 1 and $jahr == '')
-		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='jahr' class='red'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='jahr' class='red'>";
 	else
-		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='jahr' class='black'>"; 
+		echo "<select label=\"dob_label\" id=\"birthday_input\" require=\"true\" name='jahr' class='black'>";
 	echo "<option></option>";
 	$jetzt = getdate();
 	$jahr1 = $jetzt["year"];
@@ -120,7 +120,7 @@ function displayDOB()
 
 
 function displayDefaultAvatars(){
-	
+
 	$AvatarArchives = Configs::d()->GetAvatarArchives();
 	if ($AvatarArchives->count() > 0)
 	{
@@ -143,14 +143,14 @@ function displayDefaultAvatars(){
 		echo '</td></tr>';
 	}
 }
-	
+
 ?>
     <div id="content">
-    
+
     <div id="ContentHeaderLeft"><h5><?php echo SYSNAME ?></h5></div>
     <div id="ContentHeaderCenter"></div>
     <div id="ContentHeaderRight"><h5><?php echo $webui_register; ?></h5></div>
-      
+
     <div id="register">
 	<div id="annonce10">
         <form ACTION="index.php?page=register" METHOD="POST" onsubmit="if (!validate(this)) return false;">
@@ -188,16 +188,16 @@ function displayDefaultAvatars(){
                       </div>
                     </td>
                 </tr>
-                
+
                 <?php if ($REGIOCHECK == "0") { ?>
-                
+
                 <tr>
                     <td class="even"><span id="startregion_label"><?php echo $webui_start_region ?>*</span></td>
                     <td class="even">
                         <?php displayRegions();	?>
                     </td>
                 </tr>
-                
+
                 <?php } if ($ADRESSCHECK == "1") { ?>
 				<tr>
 					<td class="odd"><span id="firstname_label"><?php echo $webui_first_name ?>*</span></td>
@@ -254,18 +254,18 @@ function displayDefaultAvatars(){
                         <?php displayDOB(); ?>
                     </td>
                 </tr>
-                
+
                 <?php } else if ($FORCEAGE == "1"){ ?>
-                
+
                 <tr>
                     <td class="odd"><span id="dob_label"><?php echo $webui_date_of_birth ?>*</span></td>
                     <td class="odd">
                         <?php displayDOB(); ?>
                     </td>
                 </tr>
-                
+
                 <? } ?>
-                
+
 				<tr>
 					<td class="odd"><span id="email_label"><?php echo $webui_email ?>*</span></td>
 					<td class="odd">
@@ -279,13 +279,13 @@ function displayDefaultAvatars(){
 					<td class="even">
 						<div class="roundedinput">
               <input require="true" label="emaic_label" id="register_input" name="emaic" type="text" size="40" maxlength="40" value="<?php echo $_SESSION[EMAIC] ?>" >
-            </div>  
+            </div>
           </td>
 				</tr>
-				
+
         <?php displayDefaultAvatars(); ?>
         <?php if( file_exists( $_SERVER{'DOCUMENT_ROOT'} . "/TOS.php"))  { ?>
-				
+
 		<tr>
 			<td class="even" colspan="2">
 				<div style="width:100%;height:300px;overflow:auto;">
@@ -299,11 +299,11 @@ function displayDefaultAvatars(){
 			</td>
 		</tr>
         <?php } ?>
-				
+
         <tr>
           <td class="even">
             <div class="center">
-              <?php 
+              <?php
                 echo "<script type=\"text/javascript\">var RecaptchaOptions = {theme : '".$template_captcha_color."'};</script>"; ?>
                 <? require_once('recaptchalib.php');
                 $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
@@ -325,7 +325,7 @@ function displayDefaultAvatars(){
 		</div>
 	</div>
 </div>
-<?php } else if ($_POST[action] == "check") 
+<?php } else if ($_POST[action] == "check")
 {
 	$_SESSION[ACCFIRST] = $_POST[accountfirst];
 	$_SESSION[ACCFIRSL] = strtolower($_POST[accountfirst]);
@@ -355,7 +355,7 @@ function displayDefaultAvatars(){
 		list($adminregion) = $DbLink->next_record();
 		$_SESSION[REGIONID] = $adminregion;
 	}
-	
+
 	$_SESSION[EMAIL] = $_POST[email];
 	$_SESSION[EMAIC] = $_POST[emaic];
 	$_SESSION[PASSWD] = $_POST[wordpass];
@@ -372,7 +372,7 @@ function displayDefaultAvatars(){
 	$jahr2 = $jahr2 - 18;
 	$agecheck1 = $tag + $monat + $jahr;
 	$agecheck2 = $tag2 + $monat2 + $jahr2;
-	
+
 	if ($FORCEAGE == "1")
 	{
 		if ($agecheck1 > $agecheck2)
@@ -384,7 +384,7 @@ function displayDefaultAvatars(){
 			exit();
 		}
 	}
-	
+
 	require_once('recaptchalib.php');
 	$privatekey = "6Lf_MQQAAAAAAB2vCZraiD2lGDKCkWfULvhG4szK";
 	$resp = recaptcha_check_answer($privatekey,
@@ -454,7 +454,7 @@ function displayDefaultAvatars(){
 				window.location.href='index.php?page=register';
 				// -->
 				</script>";
-	} 
+	}
 	else if ($_SESSION[EMAIL] != $_SESSION[EMAIC]) {
 		$_SESSION[ERROR] = "Email confirmation not correct";
 		echo "<script language='javascript'>
@@ -501,7 +501,7 @@ function displayDefaultAvatars(){
 			}
 
 			$code = code_gen();
-			
+
 			$userLevel = -1;
 			if($VERIFYUSERS == 0)
 				$userLevel = 0;
@@ -524,12 +524,12 @@ function displayDefaultAvatars(){
 						'RLDOB' => cleanQuery($tag . "/" . $monat . "/" . $jahr),
 						'RLIP' => cleanQuery($userIP)
 						));
-						
-						
+
+
 			$do_post_requested = do_post_request($found);
 			$recieved = json_decode($do_post_requested);
 
-			
+
 			// echo '<pre>';
 			// var_dump($recieved);
 			// var_dump($do_post_requested);
@@ -577,7 +577,7 @@ function displayDefaultAvatars(){
   session_unset();
 	session_destroy();
 	 }
-   
+
    else {
     echo "<script language='javascript'>
 		      <!--
@@ -597,7 +597,7 @@ else { ?>
 
 <div id="ContentHeaderLeft"><h5><?php echo SYSNAME ?></h5></div>
 <div id="ContentHeaderCenter"></div>
-<div id="ContentHeaderRight"><h5><?php echo $webui_register; ?></h5></div> 
+<div id="ContentHeaderRight"><h5><?php echo $webui_register; ?></h5></div>
 
   <div id="alert">
     <p><?php echo $webui_registrations_disabled; ?></p>
