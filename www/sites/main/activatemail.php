@@ -7,17 +7,17 @@ list($UUID, $EMAIL) = $DbLink->next_record();
 }
 
 if($UUID)
-{	
+{
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'SaveEmail', 'WebPassword' => md5(WEBUI_PASSWORD)
 		, 'UUID' => cleanQuery($UUID)
 		, 'Email' => cleanQuery($EMAIL)));
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
-	
-	if ($recieved->{'Verified'} == 1) 
+
+	if ($recieved->{'Verified'} == 1)
 	{
-		$WERROR="Thank you, your email address was changed";		
+		$WERROR="Thank you, your email address was changed";
 		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='emailconfirm'");
 	}
 }
