@@ -119,30 +119,28 @@ function displayDOB()
 }
 
 
-function displayDefaultAvatars()
-{
-	$found = array();
-	$found[0] = json_encode(array('Method' => 'GetAvatarArchives', 'WebPassword' => md5(WEBUI_PASSWORD)));
-	$do_post_requested = do_post_request($found);
-	$recieved = json_decode($do_post_requested);
-
-	if (isset($recieved->{'names'}, $recieved->{'snapshot'}) && count($recieved->{'names'}) > 0)
+function displayDefaultAvatars(){
+	
+	$AvatarArchives = Configs::d()->GetAvatarArchives();
+	if ($AvatarArchives->count() > 0)
 	{
 		$names = $recieved->{'names'};
 		$snapshot = $recieved->{'snapshot'};
-		$count = count($names);
+		$count = $AvatarArchives->count();
 		echo "<tr><td colspan=\"2\" valign=\"top\">";
-		for ($i = 0; $i < $count; $i++)
-		{
-			echo "<div class=\"avatar_archive_screenshot\"><label for=\"$names[$i]\" >$names[$i]</label>";
-			echo "<input type=\"radio\" id=\"$names[$i]\" name=\"AvatarArchive\" value=\"$names[$i]\"";
-			if (($_SESSION["AVATARARCHIVE"] == $names[$i]) || (($i == 0) && ($_SESSION["AVATARARCHIVE"] == "")))
-			{
+		$checked = false;
+		foreach($AvatarArchives as $avarch){
+			echo
+				'<div class="avatar_archive_screenshot"><label for="',$avarch->Name(),'" >', $avarch->Name(), '</label>',
+				'<input type="radio" id="', $avarch->Name(), '" name="AvatarArchive" value="', $avarch->Name() , '"'
+			;
+			if ((isset($_SESSION['AVATARARCHIVE']) && $_SESSION["AVATARARCHIVE"] == $avarch->Name()) || (isset($_SESSION['AVATARARCHIVE']) === false && $checked === false)){
 				echo "checked />";
+				$checked;
 			}
-			echo "<label for=\"$names[$i]\" ><br><img src=\"".WEBUI_TEXTURE_SERVICE."/index.php?method=GridTexture&uuid=".$snapshot[$i]."\" /></div>";
+			echo ' /><label for="', $avarch->Name(), '" ><br><img src="', Configs::d()->GridTexture($avarch->Snapshot()), '" /></label></div>';
 		}
-		echo "</td></tr>";
+		echo '</td></tr>';
 	}
 }
 	
