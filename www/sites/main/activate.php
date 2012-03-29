@@ -9,12 +9,12 @@ if($_GET[code])
 }
 
 if($UUID)
-{	
+{
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'Authenticated', 'WebPassword' => md5(WEBUI_PASSWORD), 'UUID' => cleanQuery($UUID)));
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
-	if ($recieved->{'Verified'} == "true") 
+	if ($recieved->{'Verified'} == "true")
 	{
 		$WERROR= $webui_verified_account;
 		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='confirm'");
