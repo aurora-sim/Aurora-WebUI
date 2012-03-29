@@ -18,17 +18,17 @@ if($UUID)
 		$rand_pass = rand(6,10);
 		   for ($i = 0;$i < $rand_pass; $i++){
 
-			$rand_num = rand(48,57); 
-			$rand_lowcase = rand(97,122); 
-			$rand_upcase = rand(65,90); 
-			$rand_choose = rand(1,3); 
-			   
+			$rand_num = rand(48,57);
+			$rand_lowcase = rand(97,122);
+			$rand_upcase = rand(65,90);
+			$rand_choose = rand(1,3);
+
 			$num = $rand_num ;
 			$lowcase = chr($rand_lowcase);
 			$upcase = chr($rand_upcase);
-	   
+
 			switch ($rand_choose){
-		   
+
 			case 1:
 				$pass = $pass. $num;
 				break;
@@ -42,24 +42,24 @@ if($UUID)
 		}
 		return($pass);
 	}
-	  
+
 	$pass = gen_pass();
 
 	$found = array();
 	$found[0] = json_encode(array('Method' => 'ForgotPassword', 'WebPassword' => md5(WEBUI_PASSWORD)
 		, 'UUID' => cleanQuery($UUID)
 		, 'Password' => cleanQuery($pass)));
-		
+
 	$do_post_requested = do_post_request($found);
 	$recieved = json_decode($do_post_requested);
-	
+
 	// echo '<pre>';
 	// var_dump($recieved);
 	// var_dump($do_post_requested);
 	// echo '</pre>';
-	
-	if ($recieved->{'Verified'} == "true") 
-	{	
+
+	if ($recieved->{'Verified'} == "true")
+	{
 		$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='pwreset'");
 		//-----------------------------------MAIL--------------------------------------
 		 $date_arr = getdate();
