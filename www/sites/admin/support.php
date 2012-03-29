@@ -1,5 +1,5 @@
 <?
-if (!$_SESSION[ADMINID]) 
+if (!$_SESSION[ADMINID])
 {
 	header("Location: Index.php?page=Home");
 	Exit();
@@ -8,7 +8,7 @@ else
 {
 	if ($_POST["method"] == "Save Notes")
 	{
-		$found = array(); 
+		$found = array();
 		$found[0] = json_encode(array('Method' => 'AbuseReportSaveNotes', 'WebPassword' => md5(WEBUI_PASSWORD),
 			'Number' => cleanQuery($_POST["Number"]),
 			'Notes' => cleanQuery($_POST["Notes"])
@@ -17,19 +17,19 @@ else
 	}
 	if ($_POST["method"] == "Mark Complete")
 	{
-		$found = array(); 
+		$found = array();
 		$found[0] = json_encode(array('Method' => 'AbuseReportMarkComlete', 'WebPassword' => md5(WEBUI_PASSWORD),
 			'Number' => cleanQuery($_POST["Number"])
 		));
 		do_post_request($found);
 	}
-	
-	$found = array(); 
+
+	$found = array();
 	$found[0] = json_encode(array('Method' => 'GetAbuseReports', 'WebPassword' => md5(WEBUI_PASSWORD),
 		'Start' => '1', 'Count' => '10', 'Active' => true));
 	$do_post_request = do_post_request($found);
 	$recieved = json_decode($do_post_request);
-?> 
+?>
 <script language="javascript">
 	function rowClicked(row, clas)
 	{
@@ -42,10 +42,10 @@ else
 <div id="content">
   <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
   <div id="ContentHeaderCenter"></div>
-  <div id="ContentHeaderRight"><h5><? echo $webui_support; ?></h5></div> 
+  <div id="ContentHeaderRight"><h5><? echo $webui_support; ?></h5></div>
   <div id="support">
   <div id="info"><p><? echo $webui_support_info; ?></p></div>
-       
+
 	<?=$_POST["method"]?>
 	<table width="100%">
 		<tr>
@@ -71,7 +71,7 @@ else
 					<table width="100%">
 						<tr>
 							<td align="right" colspan="3">
-								
+
 								<a href="<?=$ar->{'AbuseLocation'}?>">TP</a>
 								<input type="Submit" value="Mark Complete" name="method" />
 								<input type="button" value="X" onclick="rowClicked('<?=$ar->{'Number'}?>', '<? echo ($odd = $w%2 )? "odd":"even" ?>');" />
