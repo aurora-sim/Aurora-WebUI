@@ -19,11 +19,11 @@ function OpenAgent(firstname, lastname)
       <td>
         <b><? echo $webui_user_name ?>:</b>
       </td>
-      
+
       <td>
         <b><? echo $webui_region_name ?>:</b>
       </td>
-      
+
       <td>
         <b>Info</b>
       </td>
