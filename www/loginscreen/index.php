@@ -18,8 +18,8 @@ $DbLink->query("SELECT gridstatus,active,color,title,message  FROM ".C_INFOWINDO
 list($GRIDSTATUS,$INFOBOX,$BOXCOLOR,$BOX_TITLE,$BOX_INFOTEXT) = $DbLink->next_record();
 
 $GRIDSTATUS = Configs::d()->OnlineStatus()->Online();
-$NOWONLINE       = Configs::d()->RecentlyOnlineUsers(0,true);
-$LASTMONTHONLINE = Configs::d()->RecentlyOnlineUsers(2419200,false);
+$NOWONLINE       = Configs::d()->NumberOfRecentlyOnlineUsers(0,true);
+$LASTMONTHONLINE = Configs::d()->NumberOfRecentlyOnlineUsers(2419200,false);
 $USERCOUNT       = Configs::d()->FindUsers()->count();
 $REGIONSCOUNT    = Configs::d()->GetRegions()->count();
 ?>
