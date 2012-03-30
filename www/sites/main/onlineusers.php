@@ -77,14 +77,3 @@ WHERE
 		</table>
 	</div>
 </div>
-<?
-$DbLink->query(
-'SELECT
-	COUNT(*)
-FROM
-	' . C_USERINFO_TBL . '
-WHERE
-	IsOnline = 1 AND
-	LastLogin > (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now()) - 86400)))');
-list($NOWONLINE) = $DbLink->next_record();
-?>
