@@ -2,7 +2,6 @@
 include("../../settings/config.php");
 include("../../settings/databaseinfo.php");
 include("../../settings/mysql.php");
-include("../../settings/json.php");
 
 $maxZoom = 8;
 $sizes=array(1 => 4,

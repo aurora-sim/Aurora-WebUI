@@ -38,7 +38,6 @@ else if(!empty($_COOKIE['lang']))
 include("settings/config.php");
 include("settings/webui_bootstrap.php");
 include("settings/databaseinfo.php");
-include("settings/json.php");
 include("settings/mysql.php");
 include("languages/translator.php");
 include("templates/templates.php");
