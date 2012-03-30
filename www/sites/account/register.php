@@ -140,7 +140,7 @@ if($ALLOWREGISTRATION == '1'){
 						<td class="even"><span id="wordpass_label"><?php echo $webui_password ?>*</span></td>
 						<td class="even">
 							<div class="roundedinput">
-								<input minlength="6" compare="wordpass2" require="true" label="wordpass_label" id="register_input" name="wordpass" type="password" size="25" maxlength="15">
+								<input minlength="8" compare="wordpass2" require="true" label="wordpass_label" id="register_input" name="wordpass" type="password" size="25" maxlength="15">
 							</div>
 						</td>
 					</tr>
@@ -148,7 +148,7 @@ if($ALLOWREGISTRATION == '1'){
 						<td class="odd"><span id="wordpass2_label"><?php echo $webui_confirm ?> <?php echo $webui_password ?>*</span></td>
 						<td class="odd">
 							<div class="roundedinput">
-								<input minlength="6" require="true" label="wordpass2_label" id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
+								<input minlength="8" require="true" label="wordpass2_label" id="register_input" name="wordpass2" type="password" size="25" maxlength="15">
 							</div>
 						</td>
 					</tr>
