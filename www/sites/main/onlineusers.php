@@ -18,56 +18,14 @@ function OpenAgent(firstname, lastname){
 					<td><b>Info</b></td>
 				</tr>
 <?php
-$DbLink = new DB;
-$DbLink->query(
-'SELECT
-	UserID
-FROM
-	' . C_USERINFO_TBL . '
-WHERE
-	IsOnline = 1 AND 
-	LastLogin < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND 
-	LastLogout < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) 
-ORDER BY
-	LastLogin DESC');
-while(list($UUID) = $DbLink->next_record()){
-	// Let's get the user info
-	$DbLink2 = new DB;
-	$DbLink2->query('
-SELECT
-	FirstName,
-	LastName
-FROM
-	' . C_USERS_TBL . '
-WHERE
-	PrincipalID = "' . cleanQuery($UUID) . '"');
-	list($firstname, $lastname) = $DbLink2->next_record();
-	$DbLink3 = new DB;
-	$DbLink3->query('
-SELECT
-	CurrentRegionID
-FROM
-	' . C_USERINFO_TBL . '
-WHERE
-	UserID = "' . cleanQuery($UUID) . '"');
-	list($regionUUID) = $DbLink3->next_record();
-	$username = $firstname . ' ' . $lastname;
-	// Let's get the region information
-	$DbLink3 = new DB;
-	$DbLink3->query(
-'SELECT
-	RegionName
-FROM
-	' . C_REGIONS_TBL . '
-WHERE
-	RegionUUID = "' . cleanQuery($regionUUID) . '"');
-	list($region) = $DbLink3->next_record();
-	if ($region != ""){
+use Aurora\Addon\WebUI\Configs;
+foreach(Configs::d()->RecentlyOnlineUsers(3930, true) as $UserInfo){
+	if ($UserInfo->CurrentRegionName() != ''){
 		echo
 			'<tr>',
-			'<td class="even"><b>', $username , '</b></td>',
-			'<td class="even"><b>'.$region.'</b></td>',
-			'<td class="even"><a onClick="OpenAgent(\'' , $firstname, '\', \'', $lastname, '\')"><b><u>Click for more Info</u></b></a></td>',
+			'<td class="even"><b>', $UserInfo->Name() , '</b></td>',
+			'<td class="even"><b>', $UserInfo->CurrentRegionName(), '</b></td>',
+			'<td class="even"><a onClick="OpenAgent(\'' , $UserInfo->FirstName(), '\', \'', $UserInfo->LastName(), '\')"><b><u>Click for more Info</u></b></a></td>',
 			'</tr>'
 		;
 	}
