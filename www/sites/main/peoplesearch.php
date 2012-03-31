@@ -37,7 +37,7 @@ if ($sitemax == 0) {
     <div id="ContentHeaderRight"><h5><p><?php echo $webui_people_search; ?></p></h5></div>
     <div id="searchpeople">
         <div id="info"><p><?php echo $webui_people_search_info; ?></p></div>
-		
+
         <div id="message">
             <?php echo $webui_avatar_name; ?> : <input id="name" name="name" type="text" size="25" maxlength="15" value="" />
             <button id="search_bouton" type="button" onclick="document.location.href=('<?php echo $PageLink ?>'+ 'name=' + document.getElementById('name').value)"><? echo $webui_people_search_bouton ?></button>
@@ -64,7 +64,7 @@ if ($sitemax == 0) {
 					<a href="<?php echo $LinkAusgabe ?>AStart=<?php if (0 > ($AStart - $ALimit)) echo 0; else echo $AStart - $ALimit; ?>&amp;ALimit=<?php echo $ALimit ?>" target="_self">
                     <img SRC=images/icons/icon_back_one_<?php if (0 > ($AStart - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0" /></a>
                 </td>
-                
+
 				<td>
 					<p><?php echo $webui_navigation_page; ?> <?php echo $sitestart ?> <?php echo $webui_navigation_of; ?> <?php echo $sitemax ?></p>
                 </td>
@@ -78,12 +78,12 @@ if ($sitemax == 0) {
 					<a href="<?php echo $LinkAusgabe ?>AStart=<?php if (0 > ($count - $ALimit)) echo 0; else echo $count - $ALimit; ?>&amp;ALimit=<?php echo $ALimit ?>" target="_self">
                     <img SRC=images/icons/icon_forward_more_<?php if (0 > ($count - $ALimit)) echo off; else echo on ?>.gif WIDTH=15 HEIGHT=15 border="0" /></a>
                 </td>
-            
+
 				<td>
 					<a href="<?php echo $LinkAusgabe ?>AStart=0&amp;ALimit=10&amp;" target="_self">
 					<img SRC=images/icons/<?php if ($ALimit != 10) echo icon_limit_10_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 10" /></a>
 				</td>
-            
+
 				<td>
 					<a href="<?php echo $LinkAusgabe ?>AStart=0&amp;ALimit=25&amp;" target="_self">
 					<img SRC=images/icons/<?php if ($ALimit != 25) echo icon_limit_25_on; else echo icon_limit_off; ?>.gif WIDTH=15 HEIGHT=15 border="0" ALT="Limit 25" /></a>
@@ -111,11 +111,11 @@ if ($sitemax == 0) {
         <tr>
             <td>
                 <a href="index.php?page=peoplesearch&order=name"><p><?php echo $webui_user_name ?></p></a>
-            </td>                
-            
+            </td>
+
             <td><p><?php echo $webui_info ?></p></td>
         </tr>
-            
+
         <tr>
           <td colspan="2"></td>
         </tr>
@@ -131,7 +131,7 @@ if ($sitemax == 0) {
             <td>
                 <div><p><?php echo $Name ?></p></div>
             </td>
-        
+
             <td>
                 <div>
                     <a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>app/agent/?name=<?php echo $Name ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
