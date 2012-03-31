@@ -1,4 +1,5 @@
 <?php
+use Aurora\Addon\WebUI\Configs;
 $AnzeigeStart = 0;
 
 // LINK SELECTOR
@@ -17,17 +18,8 @@ if(!isset($AStart)){
 $ALimit = $AStart + 10;
 $Limit = "LIMIT $AStart, $ALimit";
 
-$whereclause = ' where ';
-if(isset($_GET['name']) && $_GET['name'] != ''){
-    $whereclause = $whereclause . 'Name like \'' . $_GET[name] . '%\' ';
-}
-if($whereclause == ' where '){
-    $whereclause = '';
-}
-
-$DbLink = new DB();
-$DbLink->query("SELECT COUNT(*) FROM " . C_USERS_TBL . $whereclause);
-list($count) = $DbLink->next_record();
+$results = Configs::d()->FindUsers(isset($_GET['name']) ? $_GET['name'] : '', $AStart, 10);
+$count   = $results->count();
 
 $sitemax   = round($count / 10, 0);
 $sitestart = round($AStart / 10, 0) + 1;
@@ -117,21 +109,25 @@ if($sitemax == 0){
 				</tr>
 <?php
 $w = 0;
-$DbLink->query("SELECT Name FROM " . C_USERS_TBL . $whereclause . " " . $Limit);
-while (list($Name) = $DbLink->next_record()){
+foreach($results as $user){
 $w++;
 ?>
 				<tr class="<?php echo ($odd = $w%2 )? "odd":"even" ?>">
-					<td><div><p><?php echo $Name ?></p></div></td>
+					<td><div><p><?php echo $user->Name() ?></p></div></td>
 					<td>
 						<div>
-							<a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>app/agent/?name=<?php echo $Name ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
+							<a style="cursor:pointer" onClick="window.open('<?= SYSURL ?>app/agent/?name=<?php echo $user->Name() ?>','mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')">
 								<p><?php echo $webui_see_profile ?></p>
 							</a>
 						</div>
 					</td>
 				</tr>
-<?php } ?>
+<?php
+	if($w >= 10){
+		break;
+	}
+}
+?>
 			</table>
 		</div>
 	</div>
