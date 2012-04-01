@@ -7,7 +7,7 @@
  *
 */
 ##################### PHP ############################
-date_default_timezone_set('America/Los_Angeles');
+@date_default_timezone_set(@date_default_timezone_get());
 //set_error_handler(function($errno, $errstr, $errfile, $errline){
 //	throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
 //});
