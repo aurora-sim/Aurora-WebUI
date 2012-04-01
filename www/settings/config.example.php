@@ -234,15 +234,7 @@ define("C_NEWS_TBL","wi_startscreen_news");
 define("C_GALLERY_TBL", "wi_gallery");
 
 // Aurora tables
-define("C_USERS_TBL","useraccounts");
-define("C_AUTH_TBL","auth");
 define("C_REGIONS_TBL","gridregions");
-define("C_APPEARANCE_TBL", "avatar");
-define("C_USERINFO_TBL", "userinfo");
-define("C_PROFILE_TBL", "profilegeneral");
-
-// other
-define("C_USERS_RL_TBL", "useraccounts_rl");
 
 // Options
 define("C_ADMINMODULES_TBL", "wi_adminmodules");
