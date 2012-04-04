@@ -233,9 +233,6 @@ define("C_INFOWINDOW_TBL","wi_startscreen_infowindow");
 define("C_NEWS_TBL","wi_startscreen_news");
 define("C_GALLERY_TBL", "wi_gallery");
 
-// Aurora tables
-define("C_REGIONS_TBL","gridregions");
-
 // Options
 define("C_ADMINMODULES_TBL", "wi_adminmodules");
 define("C_ADMINOPTIONS_TBL", "wi_adminoptions");
