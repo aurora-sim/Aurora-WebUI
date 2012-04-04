@@ -1,4 +1,6 @@
 <?php
+use Aurora\Addon\WebUI\Configs;
+use Aurora\Framework\RegionFlags;
 if(isset($_SESSION['ADMINID'])){
 
     $DbLink = new DB;
@@ -84,10 +86,8 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="odd">
 						<select class="box" wide="25" name="region">
 <?php
-	$DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " where !(Flags & 512) && !(Flags & 1024) ORDER BY RegionName ASC ");
-
-	while(list($RegionName, $RegionUUID) = $DbLink->next_record()){
-		echo '<option value="', $RegionUUID, '" ', ($STARTREGION == $RegionUUID ? 'selected' : ''), '>', $RegionName, '</option>',"\n";
+	foreach(Configs::d()->GetRegions(RegionFlags::RegionOnline, RegionFlags::Hyperlink | RegionFlags::Hidden) as $Region){
+		echo '<option value="', $Region->RegionID(), '" ', ($STARTREGION == $Region->RegionID() ? 'selected' : ''), '>', $Region->RegionName(), '</option>',"\n";
 	}
 ?>
 						</select>
