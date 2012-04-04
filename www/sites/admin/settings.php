@@ -16,7 +16,7 @@ if ($_SESSION[ADMINID]) {
             list($checkname) = $DbLink->next_record();
 
             if ($checkname) {
-                
+
             } else {
                 $DbLink->query("INSERT INTO " . C_NAMES_TBL . " (name,active)VALUES('".cleanQuery($_POST[lastname])."','1')");
             }
@@ -58,7 +58,7 @@ if ($_SESSION[ADMINID]) {
     if ($_POST[verifyusersSubmit] == "$webui_admin_settings_desactivate_bouton") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET verifyUsers='0'");
     }
-	
+
 	if ($_POST[Submitage] == "Activate") {
         $DbLink->query("UPDATE " . C_ADM_TBL . " SET ForceAge='1'");
     }
@@ -77,12 +77,12 @@ if ($_SESSION[ADMINID]) {
   <div id="ContentHeaderRight"><h5><? echo $webui_admin_settings; ?></h5></div>
   <div id="adminsettings">
   <div id="info"><p><? echo $webui_admin_settings_info; ?></p></div>
-  
+
   <table>
       <form id="form41" name="form41" method="post" action="index.php?page=adminsettings">
           <tr>
               <td class="odd" width="50%">
-                  <? echo $webui_admin_settings_changeable; ?>: 
+                  <? echo $webui_admin_settings_changeable; ?>:
                       <select wide="25" name="regtyp">
                         <?
                             echo "<option value='0' " . ($REGIOCHECK == '0' ? 'selected' : '') . ">$webui_admin_settings_create_select</option>
@@ -91,13 +91,13 @@ if ($_SESSION[ADMINID]) {
                         ?>
                       </select>
               </td>
-                      
+
               <td class="odd" width="50%">
-                  <? echo $webui_admin_settings_startregion; ?>: 
+                  <? echo $webui_admin_settings_startregion; ?>:
                       <select class="box" wide="25" name="region">
                         <?
                             $DbLink->query("SELECT RegionName,RegionUUID FROM " . C_REGIONS_TBL . " where !(Flags & 512) && !(Flags & 1024) ORDER BY RegionName ASC ");
-                                  
+
                             while (list($RegionName, $RegionUUID) = $DbLink->next_record()) {
                                 echo"<option value='$RegionUUID' " . ($STARTREGION == $RegionUUID ? 'selected' : '') . ">$RegionName</option>";
                             }
@@ -105,10 +105,10 @@ if ($_SESSION[ADMINID]) {
                       </select>
               </td>
           </tr>
-                      
+
           <tr>
               <td class="even">
-                  <? echo $webui_admin_settings_require; ?>: 
+                  <? echo $webui_admin_settings_require; ?>:
                       <select class="box" wide="25" name="adressset" >
                         <?
                             echo "<option value='0' " . ($ADRESSCHECK == '0' ? 'selected' : '') . ">$webui_admin_settings_yes_select</option>
@@ -116,7 +116,7 @@ if ($_SESSION[ADMINID]) {
                        ?>
                       </select>
               </td>
-                              
+
               <td class="even">
                   <div align="center">
                       <input type="submit" name="Submitreg" value="<? echo $webui_admin_settings_save_bouton; ?>" />
@@ -139,7 +139,7 @@ if ($_SESSION[ADMINID]) {
               </td>
             </tr>
         </form>
-        
+
         <form id="form9" name="form9" method="post" action="index.php?page=adminsettings">
             <tr>
               <td class="even">
@@ -154,7 +154,7 @@ if ($_SESSION[ADMINID]) {
               </td>
             </tr>
         </form>
-        
+
         <form id="form9" name="form9" method="post" action="index.php?page=adminsettings">
             <tr>
               <td class="odd">
@@ -169,7 +169,7 @@ if ($_SESSION[ADMINID]) {
               </td>
             </tr>
         </form>
-        
+
         <form id="form2" name="form2" method="post" action="index.php?page=adminsettings">
             <tr>
               <td class="even">
@@ -181,7 +181,7 @@ if ($_SESSION[ADMINID]) {
               </td>
             </tr>
         </form>
-              
+
         <form id="form3" name="form3" method="post" action="index.php?page=adminsettings">
             <tr>
               <td class="odd">
@@ -193,15 +193,15 @@ if ($_SESSION[ADMINID]) {
                         $DbLink->query("SELECT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
                         while (list($NAMEDB) = $DbLink->next_record()) {
                       ?>
-                              
+
                       <option><?= $NAMEDB ?></option><? } ?>
                   </select>
-                          
+
                   <input type="submit" name="Submit3" value="<? echo $webui_admin_settings_save_bouton; ?>" />
               </td>
             </tr>
         </form>
-              
+
         <form id="form4" name="form4" method="post" action="index.php?page=adminsettings">
             <tr>
               <td class="even">
@@ -213,15 +213,15 @@ if ($_SESSION[ADMINID]) {
                         $DbLink->query("SELECT name FROM " . C_NAMES_TBL . " WHERE active=0 ORDER BY name ASC ");
                         while (list($NAMEDB) = $DbLink->next_record()) {
                       ?>
-                          
+
                       <option><?= $NAMEDB ?></option><? } ?>
                   </select>
-                          
+
                   <input type="submit" name="Submit4" value="<? echo $webui_admin_settings_save_bouton; ?>" />
               </td>
             </tr>
         </form>
-              
+
         <form id="form5" name="form5" method="post" action="index.php?page=adminsettings">
             <tr>
               <td class="odd">
@@ -233,21 +233,21 @@ if ($_SESSION[ADMINID]) {
                         $DbLink->query("SELECT name FROM " . C_NAMES_TBL . " ORDER BY name ASC ");
                         while (list($NAMEDB) = $DbLink->next_record()) {
                       ?>
-                      
+
                       <option><?= $NAMEDB ?></option><? } ?>
                   </select>
-                          
+
                   <input type="submit" name="Submit5" value="<? echo $webui_admin_settings_save_bouton; ?>" />
               </td>
             </tr>
         </form>
-        
+
         <form id="form6" name="form6" method="post" action="index.php?page=adminsettings">
-          <tr> 
+          <tr>
             <td class="even">
               <span class="Stil4">Restrict age to 18 or older</span>
             </td>
-                
+
             <td class="even"><? if ($FORCEAGE == 0) { ?>
                 <input type="submit" name="Submitage" value="Activate" />
                 <? } else { ?>
@@ -259,4 +259,4 @@ if ($_SESSION[ADMINID]) {
     </table>
   </div>
 </div>
-<? } ?>              
+<? } ?>
