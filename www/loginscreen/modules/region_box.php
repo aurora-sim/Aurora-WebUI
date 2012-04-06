@@ -50,7 +50,7 @@
 <?php
 	$w=0;
 	use Aurora\Addon\WebUI\Configs;
-	foreach(Configs::d()->GetRegions(null, 0, null, $sortByRegion, $sortByLocX, $sortByLocY) as $region){
+	foreach(Configs::d()->GetRegions(null,0, 0, 10, $sortByRegion, $sortByLocX, $sortByLocY) as $region){
 		$regionName = $region->RegionName();
 		$locX = $region->RegionLocX();
 		$locY = $region->RegionLocY();
