@@ -12,10 +12,12 @@ include("../settings/mysql.php");
 include("templates/templates.php");
 use Aurora\Addon\WebUI\Configs;
 
-$DbLink = new DB;
-
-$DbLink->query("SELECT gridstatus,active,color,title,message  FROM ".C_INFOWINDOW_TBL." ");
-list($GRIDSTATUS,$INFOBOX,$BOXCOLOR,$BOX_TITLE,$BOX_INFOTEXT) = $DbLink->next_record();
+list($INFOBOX,$BOXCOLOR,$BOX_TITLE,$BOX_INFOTEXT) = Globals::i()->DBLink->Query(array(
+	'active',
+	'color',
+	'title',
+	'message'
+), C_INFOWINDOW_TBL);
 
 $GRIDSTATUS = Configs::d()->OnlineStatus()->Online();
 $NOWONLINE       = Configs::d()->NumberOfRecentlyOnlineUsers(0,true);
