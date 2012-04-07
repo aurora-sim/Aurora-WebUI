@@ -73,7 +73,7 @@ if(isset($_SESSION['ADMINID'])) {
         }
 	}
 
-	$UserSearch = Configs::d()->FindUsers($AStart, $ALimit, isset($_POST['query']) ? $_POST['query'] : '');
+	$UserSearch = Configs::d()->FindUsers(isset($_POST['query']) ? $_POST['query'] : '', $AStart, $ALimit);
 	$count = $UserSearch->count();
 ?>
 
