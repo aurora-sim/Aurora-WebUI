@@ -16,7 +16,6 @@ if(!isset($AStart)){
 }
 
 $ALimit = $AStart + 10;
-$Limit = "LIMIT $AStart, $ALimit";
 
 $results = Configs::d()->FindUsers(isset($_GET['name']) ? $_GET['name'] : '', $AStart, 10);
 $count   = $results->count();
