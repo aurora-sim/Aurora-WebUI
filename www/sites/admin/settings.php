@@ -65,7 +65,7 @@ if(isset($_SESSION['ADMINID'])){
 	<div id="ContentHeaderRight"><h5><?php echo $webui_admin_settings; ?></h5></div>
 	<div id="adminsettings">
 		<div id="info"><p><?php echo $webui_admin_settings_info; ?></p></div>
-		<form id="form41" name="form41" method="post" action="index.php?page=adminsettings">
+		<form id="form41" name="form41" method="post" action="index.php?page=adminsettings" style="clear:both;">
 			<table>
 				<tr>
 					<td class="even" width="50%"><?php echo $webui_admin_settings_changeable; ?></td>
@@ -81,7 +81,7 @@ if(isset($_SESSION['ADMINID'])){
 						</select>
 					</td>
 				</tr>
-				</tr>
+				<tr>
 					<td class="odd" width="50%"><?php echo $webui_admin_settings_startregion; ?></td>
 					<td class="odd">
 						<select class="box" wide="25" name="region">
