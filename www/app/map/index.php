@@ -15,7 +15,7 @@ $sizes=array(1 => 4,
 
 if($ALLOW_ZOOM == TRUE && $_GET[zoom])
 {
-	foreach ($sizes as $zoomUntested => $sizeUntested) 
+	foreach ($sizes as $zoomUntested => $sizeUntested)
 	{
 		if($zoomUntested == $_GET[zoom])
 		{
@@ -69,7 +69,7 @@ if ($_GET[starty]) {
 
 <script type="text/javascript">
 function loadmap(){
-<? if ($ALLOW_ZOOM == TRUE) { ?>    
+<? if ($ALLOW_ZOOM == TRUE) { ?>
 	if (window.addEventListener)
 	/** DOMMouseScroll is for mozilla. */
 	window.addEventListener('DOMMouseScroll', wheel, false);
@@ -146,21 +146,21 @@ function wheel(event){
     if (window.opera)
       delta = -delta;
   }
-  
+
   else if (event.detail) { /** Mozilla case. */
     /** In Mozilla, sign of delta is different than in IE.
     * Also, delta is multiple of 3.
     */
     delta = -event.detail/3;
   }
-  
+
   /** If delta is nonzero, handle it.
   * Basically, delta is now positive if wheel was scrolled up,
   * and negative, if wheel was scrolled down.
   */
   if (delta)
     handle(delta);
-        
+
   /** Prevent default actions caused by mouse wheel.
   * That might be ugly, but we handle scrolls somehow
   * anyway, so don't bother here..
@@ -171,11 +171,11 @@ function wheel(event){
 }
 
 function handle(delta) {
-  if (delta == 1) { 
+  if (delta == 1) {
     <? if (($zoomLevel) < $maxZoom) { ?> setZoom(<?echo ($zoomLevel + 1); ?>);
     <? } ?>
   }
-  
+
   else {
     <? if (($zoomLevel - 1) != 0) { ?>setZoom(<?echo ($zoomLevel - 1); ?>);<? } ?>
   }
@@ -192,23 +192,23 @@ function handle(delta) {
   <div id=map-nav-up style="z-index: 1;"><a href="javascript: mapInstance.panUp();">
     <img alt=Up src="images/pan_up.png"></a>
   </div>
-  
+
   <div id=map-nav-down style="z-index: 1;"><a href="javascript: mapInstance.panDown();">
     <img alt=Down src="images/pan_down.png"></a>
   </div>
-  
+
   <div id=map-nav-left style="z-index: 1;"><a href="javascript: mapInstance.panLeft();">
     <img alt=Left src="images/pan_left.png"></a>
   </div>
-  
+
   <div id=map-nav-right style="z-index: 1;"><a href="javascript: mapInstance.panRight();">
     <img alt=Right src="images/pan_right.png"></a>
   </div>
-  
+
   <div id=map-nav-center style="z-index: 1;"><a href="javascript: mapInstance.panOrRecenterToWORLDCoord(new XYPoint(<?= $mapstartX ?>,<?= $mapstartY ?>), true);">
     <img alt=Center src="images/center.png"></a>
   </div>
-  
+
   <!-- START ZOOM PANEL-->
   <? if ($ALLOW_ZOOM == TRUE) { ?>
     <div id=map-zoom-plus>
@@ -220,7 +220,7 @@ function handle(delta) {
           </a>
         <? } ?>
     </div>
-    
+
     <div id=map-zoom-minus>
       <? if (($zoomLevel - 1) == 0) { ?>
         <img alt="Zoom In" src="images/zoom_out_grey.png">
