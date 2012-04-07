@@ -1,67 +1,57 @@
-<?
-include("../../settings/config.php");
-include("../../settings/databaseinfo.php");
-include("../../settings/mysql.php");
+<?php
+require_once("../../settings/config.php");
+require_once("../../settings/databaseinfo.php");
+require_once("../../settings/mysql.php");
 
 $maxZoom = 8;
-$sizes=array(1 => 4,
-    2 => 8,
-    3 => 16,
-    4 => 32,
-    5 => 64,
-    6 => 128,
-    7 => 256,
-    8 => 512);
+$sizes=array(
+	1 => 4,
+	2 => 8,
+	3 => 16,
+	4 => 32,
+	5 => 64,
+	6 => 128,
+	7 => 256,
+	8 => 512
+);
 
-if($ALLOW_ZOOM == TRUE && $_GET[zoom])
-{
-	foreach ($sizes as $zoomUntested => $sizeUntested)
-	{
-		if($zoomUntested == $_GET[zoom])
-		{
+if($ALLOW_ZOOM == TRUE && isset($_GET['zoom'])){
+	foreach($sizes as $zoomUntested => $sizeUntested){
+		if($zoomUntested == $_GET['zoom']){
 		    $zoomSize = $sizeUntested;
 		    $zoomLevel = $zoomUntested;
 		}
-		if($zoomUntested == 9-$_GET[zoom])
-		{
+		if($zoomUntested == 9 - $_GET['zoom']){
 		    $antiZoomSize = $sizeUntested;
 		}
 	}
 }
 
-if ($zoomLevel == 1) {
-    $infosize = 4;
-} else if ($zoomLevel == 2) {
+
+if($zoomLevel == 1){
+	$infosize = 4;
+}else if($zoomLevel == 2){
     $infosize = 5;
-} else if ($zoomLevel == 3) {
+}else if($zoomLevel == 3){
     $infosize = 7;
-} else if ($zoomLevel == 4) {
+}else if ($zoomLevel == 4){
     $infosize = 10;
-} else if ($zoomLevel == 5) {
+}else if ($zoomLevel == 5){
     $infosize = 10;
-} else if ($zoomLevel == 6) {
+}else if ($zoomLevel == 6){
     $infosize = 20;
-} else if ($zoomLevel == 7) {
+}else if ($zoomLevel == 7){
     $infosize = 30;
-} else if ($zoomLevel == 8) {
+}else if ($zoomLevel == 8){
     $infosize = 40;
 }
 
-if ($_GET[startx]) {
-    $mapX = $_GET[startx];
-} else {
-    $mapX = $mapstartX;
-}
-
-if ($_GET[starty]) {
-    $mapY = $_GET[starty];
-} else {
-    $mapY = $mapstartY;
-}
+$mapX = isset($_GET['startx']) ? $_GET['startx'] : $mapstartX;
+$mapY = isset($_GET['starty']) ? $_GET['starty'] : $mapstartY;
 ?>
 
 <head>
-<title><?= SYSNAME ?> World Map</title>
+<title><?php echo SYSNAME; ?> World Map</title>
 <style type="text/css" media=all>@import url(map.css);</style>
 <script src="prototype.js" type="text/javascript"></script>
 <script src="effects.js" type="text/javascript"></script>
@@ -69,27 +59,31 @@ if ($_GET[starty]) {
 
 <script type="text/javascript">
 function loadmap(){
-<? if ($ALLOW_ZOOM == TRUE) { ?>
+<?php if($ALLOW_ZOOM == TRUE){ ?>
 	if (window.addEventListener)
 	/** DOMMouseScroll is for mozilla. */
 	window.addEventListener('DOMMouseScroll', wheel, false);
 	/* IE/Opera. */
 	window.onmousewheel = document.onmousewheel = wheel;
-<? } ?>
+<?php } ?>
 
-    mapInstance = new ZoomSize(<?= $zoomSize ?>);
+    mapInstance = new ZoomSize(<?php echo $zoomSize; ?>);
     mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: true, hasPanningControls: true});
-    mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?= $mapX ?>,<?= $mapY ?>),1);
-<?
+    mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?php echo $mapX; ?>,<?php echo $mapY; ?>),1);
+<?php
 use Aurora\Addon\WebUI\Configs;
 foreach(Configs::d()->GetRegions() as $region){
 	$MarkerCoordX = $locX = $region->RegionLocX();
 	$MarkerCoordY = $locY = $region->RegionLocY();
-	$sizeX = $region->RegionSizeX();
-	$sizeY = $region->RegionSizeY();
-	$owner = Configs::d()->GetGridUserInfo($region->EstateOwner());
-	$firstN = $owner->FirstName();
-	$lastN = $owner->LastName();
+	$sizeX  = $region->RegionSizeX();
+	$sizeY  = $region->RegionSizeY();
+	$firstN = 'Unknown';
+	$lastN  = 'User';
+	if($region->EstateOwner() != '00000000-0000-0000-0000-000000000000'){
+		$owner  = Configs::d()->GetGridUserInfo($region->EstateOwner());
+		$firstN = $owner->FirstName();
+		$lastN  = $owner->LastName();
+	}
 	$regionName = $region->RegionName();
 
 	$regionSizeOffset = ($sizeX / 256) * 0.40;
@@ -108,20 +102,19 @@ foreach(Configs::d()->GetRegions() as $region){
 	}
 
 	$filename = $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID());
-	//$mapTextureURL = WIREDUX_TEXTURE_SERVICE.'/index.php?method=MapTexture&zoom=1&x=' . $mapX . '&y=' . $mapY;
-	echo 'var tmp_region_image = new Img("',$filename,'",',$zoomSize * ($sizeX / 256),',',$zoomSize * ($sizeY / 256),');',"\n";
+	echo "\n\n\t", 'var tmp_region_image = new Img("',$filename,'",',$zoomSize * ($sizeX / 256),',',$zoomSize * ($sizeY / 256),');',"\n";
 	$url = "secondlife://" . $regionName . "/" . ($sizeX / 2) . "/" . ($sizeY / 2);
 ?>
 	var region_loc = new Icon(tmp_region_image);
 	var all_images = [region_loc, region_loc, region_loc, region_loc, region_loc, region_loc];
-	var marker = new Marker(all_images, new XYPoint(<?= (($locX / 256))+($sizeX / 512 - 0.5) ?>,<?= (($locY / 256))+($sizeY / 512 - 0.5) ?>));
+	var marker = new Marker(all_images, new XYPoint(<?php echo ((($locX / 256))+($sizeX / 512 - 0.5));  ?>,<?php echo ((($locY / 256))+($sizeY / 512 - 0.5)); ?>));
 	mapInstance.addMarker(marker);
 
-	var map_marker_img = new Img("images/info.gif",<?= $infosize ?>,<?= $infosize ?>);
+	var map_marker_img = new Img("images/info.gif",<?php echo $infosize; ?>,<?php echo $infosize; ?>);
 	var map_marker_icon = new Icon(map_marker_img);
-	var mapWindow = new MapWindow("Region Name: <?= $regionName ?><br /><br />Coordinates: <?= $locX / 256 ?>,<?= $locY / 256 ?><br /><br />Size: <?= $sizeX ?>,<?= $sizeY ?><br><br>Owner: <?= $firstN ?> <?= $lastN ?><br><br><a href=<?= $url ?>>Teleport</a>",{closeOnMove: true});
+	var mapWindow = new MapWindow("Region Name: <?php echo $regionName; ?><br /><br />Coordinates: <?php echo ($locX / 256), ',', ($locY / 256); ?><br /><br />Size: <?php echo $sizeX, ',', $sizeY; ?><br><br>Owner: <?php echo $firstN,' ', $lastN; ?><br><br><a href=<?php echo $url; ?>>Teleport</a>",{closeOnMove: true});
 	var all_images = [map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon, map_marker_icon];
-	var marker = new Marker(all_images, new XYPoint(<?= $MarkerCoordX ?>,<?= $MarkerCoordY ?>));
+	var marker = new Marker(all_images, new XYPoint(<?php echo $MarkerCoordX; ?>,<?php echo $MarkerCoordY; ?>));
 	mapInstance.addMarker(marker, mapWindow);
 <?
 }
@@ -132,7 +125,7 @@ function setZoom(size) {
   var a = mapInstance.getViewportBounds();
   var x = (a.xMin + a.xMax) / 2;
   var y = (a.yMin + a.yMax) / 2;
-  window.location.href="<?= SYSURL ?>app/map/?zoom="+size+"&startx="+x+"&starty="+y;
+  window.location.href="<?php echo SYSURL; ?>app/map/?zoom="+size+"&startx="+x+"&starty="+y;
 }
 
 function wheel(event){
@@ -170,67 +163,46 @@ function wheel(event){
     event.returnValue = false;
 }
 
-function handle(delta) {
-  if (delta == 1) {
-    <? if (($zoomLevel) < $maxZoom) { ?> setZoom(<?echo ($zoomLevel + 1); ?>);
-    <? } ?>
-  }
-
-  else {
-    <? if (($zoomLevel - 1) != 0) { ?>setZoom(<?echo ($zoomLevel - 1); ?>);<? } ?>
-  }
+function handle(delta){
+	if (delta == 1) {
+<?php if(($zoomLevel) < $maxZoom){ ?>
+		setZoom(<?php echo ($zoomLevel + 1); ?>);
+<?php } ?>
+	}else{
+<?php if (($zoomLevel - 1) != 0){ ?>
+		setZoom(<?php echo ($zoomLevel - 1); ?>);
+<?php } ?>
+	}
 }
 </script>
 
 </head>
 
 <body class="webui" onload=loadmap()>
-
-<div id=map-container style="z-index: 0;"></div>
-
-<div id=map-nav>
-  <div id=map-nav-up style="z-index: 1;"><a href="javascript: mapInstance.panUp();">
-    <img alt=Up src="images/pan_up.png"></a>
-  </div>
-
-  <div id=map-nav-down style="z-index: 1;"><a href="javascript: mapInstance.panDown();">
-    <img alt=Down src="images/pan_down.png"></a>
-  </div>
-
-  <div id=map-nav-left style="z-index: 1;"><a href="javascript: mapInstance.panLeft();">
-    <img alt=Left src="images/pan_left.png"></a>
-  </div>
-
-  <div id=map-nav-right style="z-index: 1;"><a href="javascript: mapInstance.panRight();">
-    <img alt=Right src="images/pan_right.png"></a>
-  </div>
-
-  <div id=map-nav-center style="z-index: 1;"><a href="javascript: mapInstance.panOrRecenterToWORLDCoord(new XYPoint(<?= $mapstartX ?>,<?= $mapstartY ?>), true);">
-    <img alt=Center src="images/center.png"></a>
-  </div>
-
-  <!-- START ZOOM PANEL-->
-  <? if ($ALLOW_ZOOM == TRUE) { ?>
-    <div id=map-zoom-plus>
-      <? if (($zoomLevel + 1) > $maxZoom) { ?>
-        <img alt="Zoom In" src="images/zoom_in_grey.png">
-        <? } else { ?>
-          <a href="javascript: setZoom(<?= ($zoomLevel + 1) ?>);">
-            <img alt="Zoom In" src="images/zoom_in.png">
-          </a>
-        <? } ?>
-    </div>
-
-    <div id=map-zoom-minus>
-      <? if (($zoomLevel - 1) == 0) { ?>
-        <img alt="Zoom In" src="images/zoom_out_grey.png">
-        <? } else { ?>
-          <a href="javascript: setZoom(<?= ($zoomLevel - 1) ?>);">
-            <img alt="Zoom Out" src="images/zoom_out.png">
-          </a>
-        <? } ?>
-    </div>
-    <? } ?>
-  <!-- END ZOOM PANEL-->
-</div>
+	<div id=map-container style="z-index: 0;"></div>
+	<div id=map-nav>
+		<div id=map-nav-up style="z-index: 1;"><a href="javascript: mapInstance.panUp();"><img alt=Up src="images/pan_up.png"></a></div>
+		<div id=map-nav-down style="z-index: 1;"><a href="javascript: mapInstance.panDown();"><img alt=Down src="images/pan_down.png"></a></div>
+		<div id=map-nav-left style="z-index: 1;"><a href="javascript: mapInstance.panLeft();"><img alt=Left src="images/pan_left.png"></a></div>
+		<div id=map-nav-right style="z-index: 1;"><a href="javascript: mapInstance.panRight();"><img alt=Right src="images/pan_right.png"></a></div>
+		<div id=map-nav-center style="z-index: 1;"><a href="javascript: mapInstance.panOrRecenterToWORLDCoord(new XYPoint(<?php echo $mapstartX, ',', $mapstartY; ?>), true);"><img alt=Center src="images/center.png"></a></div>
+<?php if($ALLOW_ZOOM == TRUE){ ?>
+<!-- START ZOOM PANEL-->
+		<div id=map-zoom-plus>
+<?php	if (($zoomLevel + 1) > $maxZoom){ ?>
+			<img alt="Zoom In" src="images/zoom_in_grey.png">
+<?php	} else { ?>
+			<a href="javascript: setZoom(<?php echo ($zoomLevel + 1); ?>);"><img alt="Zoom In" src="images/zoom_in.png"></a>
+<?php	} ?>
+		</div>
+		<div id=map-zoom-minus>
+<?php	if(($zoomLevel - 1) == 0){ ?>
+			<img alt="Zoom In" src="images/zoom_out_grey.png">
+<?php	} else { ?>
+			<a href="javascript: setZoom(<?php echo ($zoomLevel - 1); ?>);"><img alt="Zoom Out" src="images/zoom_out.png"></a>
+<?php	} ?>
+		</div>
+<!-- END ZOOM PANEL-->
+<?php } ?>
+	</div>
 </body>
