@@ -82,11 +82,14 @@ if ($_POST['Submit3'] == $webui_submit) {
 		}
 
 		$code = code_gen();
-		// CODE generator
-
-		$UUID = $_SESSION['USERID'];
-
-		$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUID','emailconfirm','".cleanQuery($_POST['emailnew'])."'," . time() . ")");
+		
+		Globals::i()->DBLink->Insert(C_CODES_TBL, array(
+			'code'  => $code,
+			'UUID'  =>  $_SESSION['USERID'],
+			'info'  => 'emailconfirm',
+			'email' => $_POST['emailnew'],
+			'time'  => $_SERVER['REQUEST_TIME']
+		));
 
 		//-----------------------------------MAIL--------------------------------------
 		$date_arr = getdate();
