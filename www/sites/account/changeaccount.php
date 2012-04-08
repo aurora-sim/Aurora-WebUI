@@ -4,7 +4,6 @@ if (!isset($_SESSION['USERID'])){
     header('Location: ' . SYSURL . 'index.php?page=home');
 	exit;
 }
-$DbLink = new DB;
 
 $webuicid     = Configs::d()->WebUIClientImplementationData();
 $adminsetting = $webuicid['adminsetting'];
