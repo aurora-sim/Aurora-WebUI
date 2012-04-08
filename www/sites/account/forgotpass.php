@@ -38,31 +38,34 @@ function Form(theForm){
 <?php
 use Aurora\Addon\WebUI\Configs;
 if(isset($_POST['name']) && $_POST['name']!=''){
-
-	if (Configs::d()->ConfirmUserEmailName($_POST['name'], $_POST['email']))
-	{	// CODE generator
+	if (Configs::d()->ConfirmUserEmailName($_POST['name'], $_POST['email'])){
+		// CODE generator
 		function code_gen($cod=""){
 			// ######## CODE LENGTH ########
 			$cod_l = 10;
 			// ######## CODE LENGTH ########
-			$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9";
-			$array_b = explode(",",$zeichen);
-			for($i=0;$i<$cod_l;$i++) {
-				srand((double)microtime()*1000000);
-				$z = rand(0,35);
-				$cod .= "".$array_b[$z]."";
+			$zeichen = 'abcdefghijklmnopqrstuvwxyz0123456789';
+			$array_b = str_split($zeichen);
+			for ($i = 0; $i < $cod_l; $i++) {
+				$cod .= "" . $array_b[mt_rand(0, 35)] . "";
 			}
 			return $cod;
 		}
-		$code=code_gen();
-		// CODE generator
-		$UUID = $recieved->{'UUID'};
-		$DbLink = new DB();
-		$DbLink->query("INSERT INTO ".C_CODES_TBL." (code,UUID,info,email,time)VALUES('$code','$UUID','pwreset','$_POST[email]',".time().")");
+
+		$code = code_gen();
+		
+		Globals::i()->DBLink->Insert(C_CODES_TBL, array(
+			'code'  => $code,
+			'UUID'  => Configs::d()->GetProfile($_POST['name'])->PrincipalID(),
+			'info'  => 'pwreset',
+			'email' => $_POST['email'],
+			'time'  => $_SERVER['REQUEST_TIME']
+		));
+
 		//-----------------------------------MAIL--------------------------------------
 		 $date_arr = getdate();
 		 $date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
-		 $sendto = $_POST[email];
+		 $sendto = $_POST['email'];
 		 $subject = "Reset Account Password from ".SYSNAME;
 		 $body .= "Here is the link to change your password for ".SYSNAME.".";
 		 $body .= "\n\n";
@@ -113,7 +116,7 @@ if(isset($_POST['name']) && $_POST['name']!=''){
 									<td class="even"><?php echo $webui_avatar_name ?>*</td>
 									<td class="even" width="50%">
 										<div class="roundedinput">
-											<input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?php echo $_POST[name]?>">
+											<input id="forgot_pass_input" name="name" type="text" size="40" maxlength="50" value="<?php echo $_POST['name']?>">
 										</div>
 									</td>
 								</tr>
@@ -121,7 +124,7 @@ if(isset($_POST['name']) && $_POST['name']!=''){
 									<td class="odd"><?php echo $webui_email ?>*</td>
 									<td class="odd">
 										<div class="roundedinput">
-											<input id="forgot_pass_input" name="email" type="email" size="40" maxlength="50" value="<?php echo $_POST[email]?>">
+											<input id="forgot_pass_input" name="email" type="email" size="40" maxlength="50" value="<?php echo $_POST['email']?>">
 										</div>
 									</td>
 								</tr>
@@ -129,7 +132,7 @@ if(isset($_POST['name']) && $_POST['name']!=''){
 										<td class="even"><?php echo $webui_confirm ?> <?php echo $webui_email ?>*</td>
 										<td class="even">
 											<div class="roundedinput">
-												<input id="forgot_pass_input" name="email2" type="email" size="40" maxlength="50" value="<?php echo $_POST[email2]?>">
+												<input id="forgot_pass_input" name="email2" type="email" size="40" maxlength="50" value="<?php echo $_POST['email2']?>">
 											</div>
 										</td>
 									</tr>
