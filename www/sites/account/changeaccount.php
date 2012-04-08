@@ -94,7 +94,7 @@ if ($_POST['Submit3'] == $webui_submit) {
 		//-----------------------------------MAIL--------------------------------------
 		$date_arr = getdate();
 		$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
-		$sendto = $_POST[emailnew];
+		$sendto = $_POST['emailnew'];
 		$subject = "Email change from " . SYSNAME;
 		$body = "In order to login, you need to confirm your email by clicking this link within 24 hours:";
 		$body .= "\n";
@@ -129,7 +129,7 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 			$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
 			$sendto = $oldemail;
 			$subject = "Username changed on " . SYSNAME;
-			$body .= "Your account login name as changed from " . $Name . " to " . $_POST[nameNew] . " on " . SYSNAME . ".\n";
+			$body .= "Your account login name as changed from " . $Name . " to " . $_POST['nameNew'] . " on " . SYSNAME . ".\n";
 			$body .= "\n\n\n";
 			$body .= "Thank you for using " . SYSNAME . "";
 			$header = "From: " . SYSMAIL . "\r\n";
