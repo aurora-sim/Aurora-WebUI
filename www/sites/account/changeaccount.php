@@ -65,21 +65,18 @@ if (($REGIOCHECK == "0" || $REGIOCHECK == "1") && isset($_POST['Submit1']) && $_
 
 
 
-if ($_POST[Submit3] == $webui_submit) {
+if ($_POST['Submit3'] == $webui_submit) {
 	// Check if the new email address isn't empty
-	if ($_POST[emailnew] <> "") {
-
+	if($_POST['emailnew'] <> ""){
 		// CODE generator
-		function code_gen($cod="") {
+		function code_gen($cod=""){
 			// ######## CODE LENGTH ########
 			$cod_l = 10;
 			// ######## CODE LENGTH ########
-			$zeichen = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9";
-			$array_b = explode(",", $zeichen);
+			$zeichen = 'abcdefghijklmnopqrstuvwxyz0123456789';
+			$array_b = str_split($zeichen);
 			for ($i = 0; $i < $cod_l; $i++) {
-				srand((double) microtime() * 1000000);
-				$z = rand(0, 35);
-				$cod .= "" . $array_b[$z] . "";
+				$cod .= "" . $array_b[mt_rand(0, 35)] . "";
 			}
 			return $cod;
 		}
@@ -87,9 +84,9 @@ if ($_POST[Submit3] == $webui_submit) {
 		$code = code_gen();
 		// CODE generator
 
-		$UUID = $_SESSION[USERID];
+		$UUID = $_SESSION['USERID'];
 
-		$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUID','emailconfirm','".cleanQuery($_POST[emailnew])."'," . time() . ")");
+		$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUID','emailconfirm','".cleanQuery($_POST['emailnew'])."'," . time() . ")");
 
 		//-----------------------------------MAIL--------------------------------------
 		$date_arr = getdate();
@@ -145,10 +142,6 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 	}
 }
 ?>
-
-
-
-
 <div id="content">
 	<div id="ContentHeaderLeft"><h5><?php echo SYSNAME; ?></h5></div>
 	<div id="ContentHeaderCenter"></div>
@@ -175,11 +168,11 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 
 			<form name="form1" method="post" action="index.php?page=changeaccount">
 				<tr>
-					<td class="odd" width="50%"><? echo $webui_old_region ?>: </td>
-					<td class="odd"><?= $oldregionname ?></td>
+					<td class="odd" width="50%"><?php echo $webui_old_region; ?>: </td>
+					<td class="odd"><?php echo $oldregionname; ?></td>
 				</tr>
 				<tr>
-					<td class="even"><? echo $webui_home_region ?>:</td>
+					<td class="even"><?php echo $webui_home_region ?>:</td>
 					<td class="even">
 						<select wide="25" name="region">
 <?php	foreach(Configs::d()->GetRegions() as $region){ ?>
@@ -190,7 +183,7 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 				</tr>
 				<tr>
 					<td class="odd"></td>
-					<td class="odd"><input type="submit" name="Submit1" value="<? echo $webui_submit ?>"></td>
+					<td class="odd"><input type="submit" name="Submit1" value="<?php echo $webui_submit ?>"></td>
 				</tr>
 			</form>
 <?php } ?>
@@ -202,34 +195,34 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 			<table>
 				<tr>
 					<td colspan="2">
-						<div align="center"><strong><? echo $webui_change_password; ?></strong></div>
+						<div align="center"><strong><?php echo $webui_change_password; ?></strong></div>
 					</td>
 				</tr>
 
 <?php if ($ERRORS){ ?>
 				<tr>
-					<td colspan="2"><div align="center"><?= $ERRORS ?></div></td>
+					<td colspan="2"><div align="center"><?php echo $ERRORS; ?></div></td>
 				</tr>
 <?php } ?>
 				<form name="form1" method="post" action="index.php?page=changeaccount">
 					<tr>
-						<td class="odd" width="50%"><? echo $webui_old_password; ?>:</td>
+						<td class="odd" width="50%"><?php echo $webui_old_password; ?>:</td>
 						<td class="odd"><input type="password" name="passold"></td>
 					</tr>
 
 					<tr>
-						<td class="even"><? echo $webui_new_password; ?>:</td>
+						<td class="even"><?php echo $webui_new_password; ?>:</td>
 						<td class="even"><input type="password" name="passnew"></td>
 					</tr>
 
 					<tr>
-						<td class="odd"><? echo $webui_confirm_password; ?>:</td>
+						<td class="odd"><?php echo $webui_confirm_password; ?>:</td>
 						<td class="odd"><input type="password" name="passvalid"></td>
 					</tr>
 
 					<tr>
 						<td class="even"></td>
-						<td class="even"><input type="submit" name="Submit2" value="<? echo $webui_submit; ?>"></td>
+						<td class="even"><input type="submit" name="Submit2" value="<?php echo $webui_submit; ?>"></td>
 					</tr>
 				</form>
 			</table>
@@ -239,26 +232,26 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 		<div id="annonce7">
 			<table>
 				<tr>
-					<td colspan="2"><div align="center"><strong><? echo $webui_change_email; ?></strong></div></td>
+					<td colspan="2"><div align="center"><strong><?php echo $webui_change_email; ?></strong></div></td>
 				</tr>
 
 <?php if($ERRORS2){ ?>
 				<tr>
-					<td colspan="2"><div align="center"><?= $ERRORS2 ?></div></td>
+					<td colspan="2"><div align="center"><?php echo $ERRORS2; ?></div></td>
 				</tr>
 <?php } ?>
 				<form name="form1" method="post" action="index.php?page=changeaccount">
 					<tr>
-						<td class="odd" width="50%"><? echo $webui_old_email ?>:</td>
-						<td class="odd"><input type="text" size="40" value="<?= $oldemail ?>" name="emailold"></td>
+						<td class="odd" width="50%"><?php echo $webui_old_email ?>:</td>
+						<td class="odd"><input type="text" size="40" value="<?php echo $oldemail; ?>" name="emailold"></td>
 					</tr>
 					<tr>
-						<td class="even"><? echo $webui_new_email; ?>:</td>
+						<td class="even"><?php echo $webui_new_email; ?>:</td>
 						<td class="even"><input type="text" size="40" name="emailnew"></td>
 					</tr>
 					<tr>
 						<td class="odd"></td>
-						<td class="odd"><input type="submit" name="Submit3" value="<? echo $webui_submit; ?>"></td>
+						<td class="odd"><input type="submit" name="Submit3" value="<?php echo $webui_submit; ?>"></td>
 					</tr>
 				</form>
 			</table>
@@ -269,23 +262,23 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 			<table>
 				<tr>
 					<td colspan="2">
-						<div align="center"><strong><? echo $webui_change_name; ?> </strong></div>
+						<div align="center"><strong><?php echo $webui_change_name; ?> </strong></div>
 					</td>
 				</tr>
 
 <?php if($ERRORS2){ ?>
 				<tr>
-					<td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?= $ERRORS2 ?></div></td>
+					<td colspan="2" valign="top" bgcolor="#666666"><div align="center"><?php echo $ERRORS2; ?></div></td>
 				</tr>
 <?php } ?>
 				<form name="form1" method="post" action="index.php?page=changeaccount">
 					<tr>
-						<td class="odd" width="50%"><? echo $webui_avatar_name; ?>:</td>
-						<td class="odd"><input type="text" size="40" name="nameNew" value ="<? echo $Name; ?>"></td>
+						<td class="odd" width="50%"><?php echo $webui_avatar_name; ?>:</td>
+						<td class="odd"><input type="text" size="40" name="nameNew" value ="<?php echo $Name; ?>"></td>
 					</tr>
 					<tr>
 						<td class="odd"></td>
-						<td class="odd"><input type="submit" name="Submit4" value="<? echo $webui_submit; ?>"></td>
+						<td class="odd"><input type="submit" name="Submit4" value="<?php echo $webui_submit; ?>"></td>
 					</tr>
 				</form>
 			</table>
@@ -308,7 +301,7 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 				<form name="form1" method="post" action="index.php?page=changeaccount">
 					<tr>
 						<td class="odd">
-							<div align="center"><input type="submit" name="purge" value="<? echo $webui_purge_apparence_bouton; ?>"></div>
+							<div align="center"><input type="submit" name="purge" value="<?php echo $webui_purge_apparence_bouton; ?>"></div>
 						</td>
 					</tr>
 				</form>
