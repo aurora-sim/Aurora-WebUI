@@ -10,7 +10,7 @@ $webuicid     = Configs::d()->WebUIClientImplementationData();
 $adminsetting = $webuicid['adminsetting'];
 $REGIOCHECK   = $adminsetting['region'];
 try{
-	$UserInfo      = Configs::d()->GetGridUserInfo($_SESSION['USERID']);	
+	$UserInfo      = Configs::d()->GetGridUserInfo($_SESSION['USERID']);
 	$oldregionid   = $UserInfo->HomeUUID();
 	$oldregionname = $UserInfo->HomeName();
 	$oldemail      = $UserInfo->Email();
@@ -152,14 +152,14 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 <div id="content">
 	<div id="ContentHeaderLeft"><h5><?php echo SYSNAME; ?></h5></div>
 	<div id="ContentHeaderCenter"></div>
-	<div id="ContentHeaderRight"><h5><?php echo $webui_change_account; ?></h5></div> 
+	<div id="ContentHeaderRight"><h5><?php echo $webui_change_account; ?></h5></div>
 	<div id="changeaccount">
 		<div id="info">
 			<p><?php echo $webui_change_account_info ?></p>
 		</div>
 
 		<!-- Change Start Region -->
-		<div id="annonce7">     
+		<div id="annonce7">
 			<table>
 <?php if ($REGIOCHECK == "0" || $REGIOCHECK == "1"){ ?>
 			<tr>
@@ -313,6 +313,6 @@ if (isset($_POST['Submit4']) && $_POST['Submit4'] == $webui_submit) {
 					</tr>
 				</form>
 			</table>
-		</div>		
+		</div>
 	</div>
 </div>
