@@ -40,7 +40,7 @@ window.location.href=\"index.php?page=home\";
       if ($DbLink->num_rows() != 0) {
         list($id, $title, $message) = $DbLink->next_record();
       }
-    
+
       $DbLink->clean_results();
       $DbLink->close();
     ?>
@@ -56,7 +56,7 @@ window.location.href=\"index.php?page=home\";
           </td>
         </tr>
       </table>
-            
+
       <table>
         <tr>
           <td>
@@ -64,7 +64,7 @@ window.location.href=\"index.php?page=home\";
           </td>
         </tr>
       </table>
-            
+
       <div align="center">
         <!-- <input type="submit" name="Submit" value="<? // echo $webui_admin_edit_news; ?>" /> -->
         <button id="edit_news_item_button" type="Submit" name="Submit">
