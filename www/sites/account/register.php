@@ -1,8 +1,8 @@
 <?php
 use Aurora\Addon\WebUI\Configs;
 use Aurora\Framework\RegionFlags;
+use Aurora\Framework\QueryFilter;
 require_once('recaptchalib.php');
-$DbLink            = new DB;
 $webuicid          = Configs::d()->WebUIClientImplementationData();
 $adminsetting      = $webuicid['adminsetting'];
 $ADRESSCHECK       = $adminsetting['adress'];
@@ -26,14 +26,14 @@ if($ALLOWREGISTRATION == '1'){
 
 
 	function printLastNames(){
-		$DbLink = new DB;
 		$webuicid     = Configs::d()->WebUIClientImplementationData();
 		$adminsetting = $webuicid['adminsetting'];
 		$LASTNAMESC   = $adminsetting['lastnames'];
 		if ($LASTNAMESC == "1") {
 			echo "<div class=\"roundedinput\"><select id=\"register_input\" wide=\"25\" name=\"accountlast\">";
-			$DbLink->query("SELECT DISTINCT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
-			while (list($NAMEDB) = $DbLink->next_record()) {
+			$filter = new QueryFilter;
+			$filter->andFilters['active'] = 1;
+			foreach(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter, array('name'=>true)) as $NAMEDB){
 				echo '<option value="', $NAMEDB, '">',$NAMEDB, '</option>',"\n";
 			}
 			echo "</select></div>";
@@ -53,14 +53,12 @@ if($ALLOWREGISTRATION == '1'){
 	}
 
 	function displayCountry(){
-		$DbLink = new DB;
-		echo "<div class=\"roundedinput\"><select require=\"true\" label=\"country_label\" id=\"register_input\" wide=\"25\" name=\"country\" value=\"$_SESSION[COUNTRY]\">";
-		$DbLink->query("SELECT name FROM " . C_COUNTRY_TBL . " ORDER BY name ASC ");
-		echo "<option></option>";
-		while (list($COUNTRYDB) = $DbLink->next_record()) {
-			echo "<option>$COUNTRYDB</option>";
+		echo '<div class="roundedinput"><select require="true" label="country_label" id="register_input" wide="25" name="country" value="', $_SESSION['COUNTRY']. '">';
+		echo '<option></option>', "\n";
+		foreach(Globals::i()->DBLink->Query(array('name'), C_COUNTRY_TBL, null, array('name'=>true)) as $COUNTRYDB){
+			echo '<option value="', $COUNTRYDB, '">', $COUNTRYDB, '</option>', "\n";
 		}
-		echo "</select></div>";
+		echo '</select></div>';
 	}
 
 	function displayDOB(){
@@ -451,7 +449,6 @@ if($ALLOWREGISTRATION == '1'){
 			}
 
 			if($do_email_verification){
-				$DbLink = new DB;
 				//-----------------------------------MAIL--------------------------------------
 				$date_arr = getdate();
 				$date = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
@@ -472,7 +469,13 @@ if($ALLOWREGISTRATION == '1'){
 				//-----------------------------MAIL END --------------------------------------
 				// insert code
 				$UUIDC = $userInfo->PrincipalID();
-				$DbLink->query("INSERT INTO " . C_CODES_TBL . " (code,UUID,info,email,time)VALUES('$code','$UUIDC','confirm','".cleanQuery($_SESSION['EMAIL'])."'," . $_SERVER['REQUEST_TIME'] . ")");
+				Globals::i()->DBLink->Insert(C_CODES_TBL, array(
+					'code'  => $code,
+					'UUID'  => $UUIDC,
+					'info'  => 'confirm',
+					'email' => $_SESSION['EMAIL'],
+					'time'  => $_SERVER['REQUEST_TIME']
+				));
 				// insert code end
 			}
 ?>
