@@ -1,62 +1,104 @@
 <?php
 use Aurora\Addon\WebUI\Configs;
 use Aurora\Framework\RegionFlags;
+use Aurora\Framework\QueryFilter;
 if(isset($_SESSION['ADMINID'])){
 
-    $DbLink = new DB;
+#region Update
 
 	if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+		$update = array();
+
 		if(isset($_POST['region'], $_POST['adressset'], $_POST['regtyp'])){
-			$DbLink->query("UPDATE " . C_ADM_TBL . " SET startregion='".cleanQuery($_POST['region'])."'");
-			$DbLink->query("UPDATE " . C_ADM_TBL . " SET adress='".cleanQuery($_POST['adressset'])."',region='".cleanQuery($_POST['regtyp'])."',startregion='".cleanQuery($_POST['region'])."'");
+			$update['startregion'] = $_POST['region'];
+			$update['adress']      = $_POST['adressset'];
+			$update['region']      = $_POST['regtyp'];
 		}
+
+#region Names
+
         if(isset($_POST['lastname']) && trim($_POST['lastname']) != ''){
-            $DbLink->query("SELECT name FROM " . C_NAMES_TBL . " Where name='".cleanQuery($_POST['lastname'])."'");
-            list($checkname) = $DbLink->next_record();
-            if (!$checkname) {
-                $DbLink->query("INSERT INTO " . C_NAMES_TBL . " (name,active)VALUES('".cleanQuery($_POST['lastname'])."','1')");
+			$filter = new QueryFilter;
+			$filter->andFilters['name'] = $_POST['lastname'];
+            if(count(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter)) == 0) {
+				Globals::i()->DBLink->Insert(C_NAMES_TBL, array(
+					'name'   => $_POST['lastname'],
+					'active' => 1
+				));
             }
         }
+
 		if(isset($_POST['deactivelast']) && trim($_POST['deactivelast']) != ''){
-			$DbLink->query("UPDATE " . C_NAMES_TBL . " SET active='0' WHERE name='".cleanQuery($_POST['deactivelast'])."'");
+			$filter = new QueryFilter;
+			$filter->andFilters['name'] = $_POST['deactivelast'];
+			Globals::i()->DBLink->Update(C_NAMES_TBL, array(
+				'active' => 0
+			), $filter);
 		}
 		if(isset($_POST['activatelast']) && trim($_POST['activatelast']) != ''){
-			$DbLink->query("UPDATE " . C_NAMES_TBL . " SET active='1' WHERE name='".cleanQuery($_POST['activatelast'])."'");
+			$filter = new QueryFilter;
+			$filter->andFilters['name'] = $_POST['activatelast'];
+			Globals::i()->DBLink->Update(C_NAMES_TBL, array(
+				'active' => 1
+			), $filter);
 		}
 		if(isset($_POST['delname']) && trim($_POST['delname']) != ''){
-			$DbLink->query("DELETE FROM " . C_NAMES_TBL . " WHERE name='".cleanQuery($_POST['delname'])."'");
+			$filter = new QueryFilter;
+			$filter->andFilters['name'] = $_POST['delname'];
+			Globals::i()->DBLink->Delete(C_NAMES_TBL, $filter);
 		}
+
 		if(isset($_POST['Submitnam2'])){
 			if ($_POST['Submitnam2'] == $webui_admin_settings_activate_bouton){
-				$DbLink->query("UPDATE " . C_ADM_TBL . " SET lastnames='1'");
+				$update['lastnames'] = 1;
 			}else if ($_POST['Submitnam2'] == $webui_admin_settings_desactivate_bouton){
-				$DbLink->query("UPDATE " . C_ADM_TBL . " SET lastnames='0'");
+				$update['lastnames'] = 0;
 			}
 		}
+
+#endregion
+
 		if(isset($_POST['allowRegistrationSubmit'])){
 			if($_POST['allowRegistrationSubmit'] == $webui_admin_settings_activate_bouton){
-				$DbLink->query("UPDATE " . C_ADM_TBL . " SET allowRegistrations='1'");
+				$update['allowRegistrations'] = 1;
 			}else if($_POST['allowRegistrationSubmit'] == $webui_admin_settings_desactivate_bouton){
-				$DbLink->query("UPDATE " . C_ADM_TBL . " SET allowRegistrations='0'");
+				$update['allowRegistrations'] = 0;
 			}
 		}
+
 		if(isset($_POST['verifyusersSubmit'])){
 			if($_POST['verifyusersSubmit'] == $webui_admin_settings_activate_bouton){
-				$DbLink->query("UPDATE " . C_ADM_TBL . " SET verifyUsers='1'");
+				$update['verifyUsers'] = 1;
 			}else if($_POST['verifyusersSubmit'] == $webui_admin_settings_desactivate_bouton){
-				$DbLink->query("UPDATE " . C_ADM_TBL . " SET verifyUsers='0'");
+				$update['verifyUsers'] = 0;
 			}
 		}
+
 		if(isset($_POST['Submitage'])){
 			if ($_POST['Submitage'] == "Activate") {
-				$DbLink->query("UPDATE " . C_ADM_TBL . " SET ForceAge='1'");
+				$update['ForceAge'] = 1;
 			}else if($_POST['Submitage'] == "Deactivate") {
-				$DbLink->query("UPDATE " . C_ADM_TBL . " SET ForceAge='0'");
+				$update['ForceAge'] = 1;
 			}
 		}
+
+		if(count($update) > 0){
+			Globals::i()->DBLink->Update(C_ADM_TBL, $update);
+		}
 	}
-    $DbLink->query("SELECT lastnames,region,startregion,adress,allowRegistrations,verifyUsers,ForceAge FROM " . C_ADM_TBL . "");
-    list($LASTNMS, $REGIOCHECK, $STARTREGION, $ADRESSCHECK, $ALLOWREGISTRATION, $VERIFYUSERS, $FORCEAGE) = $DbLink->next_record();
+
+#endregion
+
+    list($LASTNMS, $REGIOCHECK, $STARTREGION, $ADRESSCHECK, $ALLOWREGISTRATION, $VERIFYUSERS, $FORCEAGE) = Globals::i()->DBLink->Query(array(
+		'lastnames',
+		'region',
+		'startregion',
+		'adress',
+		'allowRegistrations',
+		'verifyUsers',
+		'ForceAge'
+	), C_ADM_TBL);
 ?>
 
 <div id="content">
@@ -138,8 +180,9 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="odd">
 						<select class="box" wide="25" name="deactivelast">
 <?php
-	$DbLink->query("SELECT DISTINCT name FROM " . C_NAMES_TBL . " WHERE active=1 ORDER BY name ASC ");
-	while (list($NAMEDB) = $DbLink->next_record()) {
+	$filter = new QueryFilter;
+	$filter->andFilters['active'] = 1;
+	foreach(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter, array('name'=>true)) as $NAMEDB){
 ?>
 							<option><?php echo $NAMEDB ?></option>
 <?php } ?>
@@ -156,8 +199,9 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="even">
 						<select class="box" wide="25" name="activatelast">
 <?php
-	$DbLink->query("SELECT DISTINCT name FROM " . C_NAMES_TBL . " WHERE active=0 ORDER BY name ASC ");
-	while (list($NAMEDB) = $DbLink->next_record()){
+	$filter = new QueryFilter;
+	$filter->andFilters['active'] = 0;
+	foreach(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter, array('name'=>true)) as $NAMEDB){
 ?>
 							<option><?php echo $NAMEDB ?></option>
 <?php } ?>
@@ -173,10 +217,7 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="odd" width="50%"><?php echo $webui_admin_settings_delete; ?></td>
 					<td class="odd">
 						<select class="box" wide="25" name="delname">
-<?php
-	$DbLink->query("SELECT DISTINCT name FROM " . C_NAMES_TBL . " ORDER BY name ASC ");
-	while (list($NAMEDB) = $DbLink->next_record()){
-?>
+<?php foreach(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, null, array('name'=>true)) as $NAMEDB){ ?>
 							<option><?php echo $NAMEDB ?></option>
 <?php } ?>
 						</select>
