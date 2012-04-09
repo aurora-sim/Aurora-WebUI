@@ -16,7 +16,7 @@ $sortByRegion = $_GET['order'] === 'name' ? true : null;
 $sortByLocX = $_GET['order'] === 'x' ? true : null;
 $sortByLocY = $_GET['order'] === 'y' ? true : null;
 $start = (($_GET['AStart'] - 1) * $_GET['ALimit']);
-$regions = Configs::d()->GetRegions(null, $start, $_GET['ALimit'], $sortByRegion, $sortByLocX, $sortByLocY);
+$regions = Configs::d()->GetRegions(null, 0, $start, $_GET['ALimit'], $sortByRegion, $sortByLocX, $sortByLocY);
 
 $GoPage= "index.php?page=regionlist";
 
