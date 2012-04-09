@@ -272,7 +272,6 @@ $wi_sitemanagement['news_add']         = 'admin/news_add.php';
 $wi_sitemanagement['news_edit']        = 'admin/news_edit.php';
 $wi_sitemanagement['adminsettings']    = 'admin/settings.php';
 $wi_sitemanagement['adminoptions']     = 'admin/options.php';
-$wi_sitemanagement['adminmodules']     = 'admin/modules.php';
 $wi_sitemanagement['adminedit']        = 'admin/edit.php';
 $wi_sitemanagement['account']          = 'account/main.php';
 $wi_sitemanagement['world']            = 'main/worldmain.php';
@@ -291,10 +290,9 @@ $webui_menu_item_adminhome = $wi_pagemanager['webui_menu_item_adminhome'] = WebU
 	$webui_menu_item_adminhome['webui_menu_item_adminmanage']             = WebUIPage::f('webui_menu_item_adminmanage'      , 2.1, 'index.php?page=adminmanage'      , '_self', 3);
 	$webui_menu_item_adminhome['webui_menu_item_adminsettings']           = WebUIPage::f('webui_menu_item_adminsettings'    , 2.2, 'index.php?page=adminsettings'    , '_self', 3);
 	$webui_menu_item_adminhome['webui_menu_item_adminoptions']            = WebUIPage::f('webui_menu_item_adminoptions'     , 2.3, 'index.php?page=adminoptions'     , '_self', 3);
-	$webui_menu_item_adminhome['webui_menu_item_adminmodules']            = WebUIPage::f('webui_menu_item_adminmodules'     , 2.4, 'index.php?page=adminmodules'     , '_self', 3);
-	$webui_menu_item_adminhome['webui_menu_item_adminloginscreen']        = WebUIPage::f('webui_menu_item_adminloginscreen' , 2.5, 'index.php?page=adminloginscreen' , '_self', 3);
-	$webui_menu_item_adminhome['webui_menu_item_adminnewsmanager']        = WebUIPage::f('webui_menu_item_adminnewsmanager' , 2.6, 'index.php?page=adminnewsmanager' , '_self', 3);
-	$webui_menu_item_adminhome['webui_menu_item_adminsupport']            = WebUIPage::f('webui_menu_item_adminsupport'     , 2.7, 'index.php?page=adminsupport'     , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminloginscreen']        = WebUIPage::f('webui_menu_item_adminloginscreen' , 2.4, 'index.php?page=adminloginscreen' , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminnewsmanager']        = WebUIPage::f('webui_menu_item_adminnewsmanager' , 2.5, 'index.php?page=adminnewsmanager' , '_self', 3);
+	$webui_menu_item_adminhome['webui_menu_item_adminsupport']            = WebUIPage::f('webui_menu_item_adminsupport'     , 2.6, 'index.php?page=adminsupport'     , '_self', 3);
 
 $webui_menu_item_account   = $wi_pagemanager['webui_menu_item_account']   = WebUIPage::f('webui_menu_item_account'          , 3  , 'index.php?page=account'          , '_self', 1);
 	$webui_menu_item_account['webui_menu_item_changeaccount']             = WebUIPage::f('webui_menu_item_changeaccount'    , 3.1, 'index.php?page=changeaccount'    , '_self', 1);
