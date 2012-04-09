@@ -1,15 +1,21 @@
 <?php
+use Aurora\Framework\QueryFilter;
 $UUID   = null;
 $WERROR = "This isnt a valid code or maybe the code was older than 24h";
 
 if(isset($_GET['code'])){
-	$DbLink = new DB;
-	$DbLink->query("SELECT UUID, email FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET['code'])."' and info='emailconfirm'");
-	list($UUID, $EMAIL) = $DbLink->next_record();
+	$filter = new QueryFilter;
+	$filter->andFilters['code'] = $_GET['code'];
+	$filter->andFilters['info'] = 'emailconfirm';
+
+	list($UUID, $EMAIL) = Globals::i()->DBLink->Query(array(
+		'UUID',
+		'email'
+	), C_CODES_TBL, $filter);
 	if(isset($UUID, $EMAIL)){
 		if (Configs::d()->SaveEmail( $UUID, $EMAIL)){
 			$WERROR="Thank you, your email address was changed";
-			$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET[code])."' and info='emailconfirm'");
+			Globals::i()->DBLink->Delete(C_CODES_TBL, $filter);
 		}
 	}
 }

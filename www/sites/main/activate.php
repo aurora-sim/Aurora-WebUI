@@ -1,14 +1,17 @@
 <?php
+use Aurora\Framework\QueryFilter;
 $UUID = null;
 $WERROR = $webui_invalid_code;
 if(isset($_GET['code'])){
-	$DbLink = new DB;
-	$DbLink->query("SELECT UUID FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET['code'])."' and info='confirm'");
-	list($UUID) = $DbLink->next_record();
+	$filter = new QueryFilter;
+	$filter->andFilters['code'] = $_GET['code'];
+	$filter->andFilters['info'] = 'confirm';
+
+	list($UUID) = Globals::i()->DBLink->Query(array('UUID'), C_CODES_TBL, $filter);
 	if(isset($UUID)){
 		if(Configs::d()->Authenticated($UUID)){
 			$WERROR= $webui_verified_account;
-			$DbLink->query("DELETE FROM ".C_CODES_TBL." WHERE code='".cleanQuery($_GET['code'])."' and info='confirm'");
+			Globals::i()->DBLink->Delete(C_CODES_TBL, $filter);
 		}else{
 			$WERROR = $webui_internal_error;
 		}
