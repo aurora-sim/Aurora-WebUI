@@ -93,14 +93,9 @@ $date         = date("D d M Y - g:i A", $created);
 						<td class="odd"><?php echo $webui_admin_edit_manage_real_country; ?></td>
 						<td class="odd">
 							<select style="width:100%" class="box" wide="25" name="country">
-<?php
-$DbLink = new DB;
-$DbLink->query("SELECT name FROM ".C_COUNTRY_TBL." ORDER BY name ASC ");
-while(list($COUNTRYDB) = $DbLink->next_record()){ ?>
+<?php foreach(Globals::i()->DBLink->Query(array('name'), C_COUNTRY_TBL, null, array('name'=>true)) as $COUNTRYDB){ ?>
 	<option <?php if($country == $COUNTRYDB){ echo"selected";} ?> value="<?php echo $COUNTRYDB ?>"><?php echo $COUNTRYDB ?></option>
-<?php
-}
-?>
+<?php } ?>
 							</select>
 						</td>
 					</tr>
