@@ -1,22 +1,34 @@
 <?php
+use Aurora\Framework\QueryFilter;
 if(!isset($_SESSION['ADMINID'])){
 	header('Location: ' . SYSURL . 'index.php?page=home');
 	exit;
 }
 
-$DbLink = new DB;
-
 if(isset($_GET['delete']) && $_GET['delete'] == 1){
-	$DbLink->query("DELETE from " . C_NEWS_TBL . " WHERE (id = '" . cleanQuery($_GET['id']) . "')");
+	$filter = new QueryFilter;
+	$filter->andFilters['id'] = $_GET['id'];
+	Globals::i()->DBLink->Delete(C_NEWS_TBL, $filter);
 }
 
 if(isset($_POST['infobox']) && $_POST['infobox'] == 'save'){
-	$message = $_POST['infomessage'];
-	$DbLink->query("UPDATE " . C_INFOWINDOW_TBL . " SET gridstatus='" . cleanQuery($_POST['gridstatus']) . "',active='" . cleanQuery($_POST['boxstatus']) . "',color='" . cleanQuery($_POST['boxcolor']) . "',title='" . cleanQuery($_POST['infotitle']) . "',message='" . cleanQuery($message) . "'");
+	$filter = new QueryFilter;
+	Globals::i()->DBLink->Update(C_INFOWINDOW_TBL, array(
+		'gridstatus' => $_POST['gridstatus'],
+		'active'     => $_POST['boxstatus'],
+		'color'      => $_POST['boxcolor'],
+		'title'      => $_POST['infotitle'],
+		'message'    => $_POST['infomessage']
+	), $filter);
 }
 
-$DbLink->query("SELECT gridstatus,active,color,title,message  FROM " . C_INFOWINDOW_TBL . " ");
-list($gridstatus, $boxstatus, $boxcolor, $infotitle, $infomessage) = $DbLink->next_record();
+list($gridstatus, $boxstatus, $boxcolor, $infotitle, $infomessage) = Globals::i()->DBLink->Query(array(
+	'gridstatus',
+	'active',
+	'color',
+	'title',
+	'message'
+), C_INFOWINDOW_TBL);
 ?>
 
 <div id="content">
