@@ -10,9 +10,13 @@ $regions = Configs::d()->GetRegionsByXY($_GET['x'], $_GET['y']);
 $region = $regions->current();
 $RegionName = $region->RegionName();
 $regionType = $region->RegionType();
-$owner = Configs::d()->GetGridUserInfo($region->EstateOwner());
-$firstN = $owner->FirstName();
-$lastN = $owner->LastName();
+$firstN = 'Unknown';
+$lastN  = 'User';
+if($region->EstateOwner() != '00000000-0000-0000-0000-000000000000'){
+	$owner = Configs::d()->GetGridUserInfo($region->EstateOwner());
+	$firstN = $owner->FirstName();
+	$lastN = $owner->LastName();
+}
 $locX = $region->RegionLocX() / 256;
 $locY = $region->RegionLocY() / 256;
 if ($regionType == ''){
@@ -96,7 +100,7 @@ $adminmodules = $webuicid['adminmodules'];
         </tr>
       
         <tr>
-          <td><? echo $webui_owner; ?>: <a href="<?= SYSURL ?>app/agent/?name=<?= $firstN ?> <?= $lastN ?>"><?= $firstN ?> <?= $lastN ?></a></td>
+          <td><? echo $webui_owner; ?>: <?php if($region->EstateOwner() !== '00000000-0000-0000-0000-000000000000'){ ?><a href="<?= SYSURL ?>app/agent/?name=<?= $firstN ?> <?= $lastN ?>"><?= $firstN ?> <?= $lastN ?></a><?php }else{ ?><?= $firstN ?> <?= $lastN ?><?php } ?></td>
         </tr>
       </table>
     </div>
