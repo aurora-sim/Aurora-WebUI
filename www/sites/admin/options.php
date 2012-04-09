@@ -151,7 +151,9 @@ if ($_SESSION['ADMINID']){
 
 #endregion
 
-		Globals::i()->DBLink->Update(C_ADMINMODULES_TBL, $update);
+		if(count($pdate) > 0){
+			Globals::i()->DBLink->Update(C_ADMINMODULES_TBL, $update);
+		}
 
 	}
 
