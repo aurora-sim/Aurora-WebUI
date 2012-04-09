@@ -442,7 +442,7 @@ if($ALLOWREGISTRATION == '1'){
 				header('Location: index.php?page=register');
 				exit;
 			}
-			
+
 			list($userInfo, $activationCode) = $recieved;
 			if(!($userInfo instanceof \Aurora\Addon\WebUI\GridUserInfo)){
 				$_SESSION['ERROR'] = 'Unknown error. Please try again later.';
