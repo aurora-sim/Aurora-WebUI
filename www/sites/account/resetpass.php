@@ -1,10 +1,12 @@
 <?php
+use Aurora\Framework\QueryFilter;
 $UUID = $email = null;
 $WERROR="This isn't a valid code, or the code is older than 24 hours";
 if(isset($_GET['code'])){
-	$DbLink = new DB;
-	$DbLink->query("SELECT UUID,email FROM " . C_CODES_TBL . " WHERE code='" . cleanQuery($_GET['code']) . "' and info='pwreset'");
-	list($UUID,$email) = $DbLink->next_record();
+	$filter = new QueryFilter;
+	$filter->andFilters['code'] = $_GET['code'];
+	$filter->andFilters['info'] = 'pwreset';
+	list($UUID,$email) = Globals::i()->DBLink->Query(array('UUID', 'email'), C_CODES_TBL, $filter);
 	if(isset($UUID)){
 		$WERROR="Thank you, we sent you a new Password to $email";
 		function gen_pass(){
@@ -28,7 +30,7 @@ if(isset($_GET['code'])){
 		$pass = gen_pass();
 
 		if (Configs::d()->ForgotPassword($UUID, $pass)){
-			$DbLink->query("DELETE FROM " . C_CODES_TBL . " WHERE code='" . cleanQuery($_GET['code']) . "' and info='pwreset'");
+			Globals::i()->DBLink->Delete(C_CODES_TBL, $filter);
 			//-----------------------------------MAIL--------------------------------------
 			 $date_arr    = getdate();
 			 $date        = "$date_arr[mday].$date_arr[mon].$date_arr[year]";
