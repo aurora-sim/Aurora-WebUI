@@ -11,7 +11,7 @@ if ($_SESSION[ADMINID]) {
     $message = $_POST['infomessage'];
     $DbLink->query("UPDATE " . C_INFOWINDOW_TBL . " SET gridstatus='" . cleanQuery($_POST['gridstatus']) . "',active='" . cleanQuery($_POST['boxstatus']) . "',color='" . cleanQuery($_POST['boxcolor']) . "',title='" . cleanQuery($_POST['infotitle']) . "',message='" . cleanQuery($message) . "'");
   }
-} 
+}
 
 else {
   echo "<script language=\"javascript\">
@@ -33,7 +33,7 @@ list($gridstatus, $boxstatus, $boxcolor, $infotitle, $infomessage) = $DbLink->ne
 
   <div id="loginscreen_manager">
     <div id="info"><p><?php echo $webui_admin_loginscreen_info ?></p></div>
-    
+
     <table>
       <form action="index.php?page=adminloginscreen" method="post">
         <input type="hidden" name="infobox" value="save" />
@@ -73,7 +73,7 @@ list($gridstatus, $boxstatus, $boxcolor, $infotitle, $infomessage) = $DbLink->ne
             </select>
           </td>
         </tr>
-  
+
         <tr><td colspan="6"></td></tr>
 
         <tr>
