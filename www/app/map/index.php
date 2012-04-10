@@ -1,7 +1,6 @@
 <?php
 require_once("../../settings/config.php");
 require_once("../../settings/databaseinfo.php");
-require_once("../../settings/mysql.php");
 
 $maxZoom = 8;
 $sizes=array(

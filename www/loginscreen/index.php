@@ -8,7 +8,6 @@
  */
 include("../settings/config.php");
 include("../settings/databaseinfo.php");
-include("../settings/mysql.php");
 include("templates/templates.php");
 use Aurora\Addon\WebUI\Configs;
 
