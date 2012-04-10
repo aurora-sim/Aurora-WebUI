@@ -1,15 +1,17 @@
 <?php
+use Aurora\Addon\WebUI\Configs;
 if(!isset($_SESSION['ADMINID'])){
 	header('Location: ' . SYSURL . 'index.php?page=home');
 	exit;
 }
+$error = null;
 if(isset($_POST['update']) && $_POST['update'] == '1'){
-	$DbLink = new DB;
-	$DbLink->query("UPDATE " . C_NEWS_TBL . " SET title='" . cleanQuery($_POST['title']) . "',message='" . cleanQuery($_POST['message']) . "' WHERE id='" . cleanQuery($_POST['id']) . "'");
-	$DbLink->close();
-	
-	header('Location: ' . SYSURL . 'index.php?page=adminnewsmanager');
-	exit;
+	if(Configs::d()->EditGroupNotice($_POST['id'], $_POST['title'], $_POST['message'])){
+		header('Location: ' . SYSURL . 'index.php?page=adminnewsmanager');
+		exit;
+	}else{
+		$error = 'Failed to update group notice.';
+	}
 }
 ?>
 <div id="content">
@@ -17,17 +19,24 @@ if(isset($_POST['update']) && $_POST['update'] == '1'){
 	<div id="ContentHeaderCenter"></div>
 	<div id="ContentHeaderRight"><h5><?php echo $webui_admin_edit_news; ?></h5></div>
 	<div id="createnews">
-		<div id="info"><p><?php echo $webui_admin_edit_news_info ?></p></div>
 
 <?php
-$DbLink = new DB;
-$DbLink->query("SELECT id,title,message from " . C_NEWS_TBL . " WHERE id = '" . cleanQuery($_GET['editid']) . "'");
-if($DbLink->num_rows() != 0){
-	list($id, $title, $message) = $DbLink->next_record();
-}
-$DbLink->clean_results();
-$DbLink->close();
+try{
+	$newsItem = Configs::d()->GetGroupNotice($_GET['editid']);
+}catch(Aurora\Addon\Exception $e){
 ?>
+		<div id="info"><p><?php echo $e->getMessage(); ?></p></div>
+	</div>
+</div>
+
+<?php
+	return;
+}
+$id       = $newsItem->NoticeID();
+$title    = $newsItem->Subject();
+$message  = $newsItem->Message();
+?>
+		<div id="info"><p><?php echo $webui_admin_edit_news_info ?></p><?php if(isset($error)){ ?><p><?php echo $error; ?></p><?php } ?></div>
 		<form name="update" method="post" action="index.php?page=news_edit">
 			<input type='hidden' name='update' value='1'>
 			<input type='hidden' name='id' value='<?php echo $id; ?>'>

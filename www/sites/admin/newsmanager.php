@@ -1,13 +1,21 @@
 <?php
+use Aurora\Addon\WebUI\Configs;
 if(!isset($_SESSION['ADMINID'])){
 	header('Location: ' . SYSURL . 'index.php?page=home');
 	exit;
 }
 
-$DbLink = new DB;
+$error = null;
 
 if(isset($_GET['delete']) && $_GET['delete'] == 1){
-	$DbLink->query("DELETE from " . C_NEWS_TBL . " WHERE (id = '" . cleanQuery($_GET['id']) . "')");
+	try{
+		$notice = Configs::d()->GetGroupNotice($_GET['id']);
+		if(!Configs::d()->RemoveGroupNotice($notice->GroupID(), $notice->NoticeID())){
+			$error = sprintf('Group notice with id %s was not deleted.', $notice->NoticeID());
+		}
+	}catch(Aurora\Addon\Exception $e){
+		$error = $e->getMessage();
+	}
 }
 ?>
 <div id="content">
@@ -21,6 +29,10 @@ if(isset($_GET['delete']) && $_GET['delete'] == 1){
 		<div id="ContentNewsRight"><a href="index.php?page=news_add"><?php echo $webui_admin_create_news ?></a></div>
 		<div class="clear"></div>
 		<div id="news_online">
+<?php if(isset($error)){ ?>
+			<div id="info"><p><?php echo htmlentities($error); ?></p></div>
+
+<?php } ?>
 			<table>
 				<tr>
 					<td><b><?php echo $webui_admin_news_title ?></b></td>
@@ -28,11 +40,15 @@ if(isset($_GET['delete']) && $_GET['delete'] == 1){
 					<td colspan=2></td>
 				</tr>
 <?php
-$DbLink->query("SELECT id,title,time from " . C_NEWS_TBL . " ORDER BY time DESC");
-while (list($id, $title, $TIME) = $DbLink->next_record()){
-	if (strlen($title) > 67){
-		$title = substr($title, 0, 32) . '...';
-	}
+$news = Configs::d()->NewsFromGroupNotices(0,1);
+if($news->count() >= 1){
+	foreach(Configs::d()->NewsFromGroupNotices(0, $news->count()) as $newsItem){
+		$id    = $newsItem->NoticeID();
+		$title = $newsItem->Subject();
+		$TIME  = $newsItem->Timestamp();
+		if (strlen($title) > 67){
+			$title = substr($title, 0, 32) . '...';
+		}
 ?>
 				<tr><td colspan="4"></td></tr>
 				<tr><td colspan="4"></td></tr>
@@ -40,11 +56,18 @@ while (list($id, $title, $TIME) = $DbLink->next_record()){
 				<tr>
 					<td><b><?php echo date("l M d Y", $TIME); ?></b></td>
 					<td><?php echo $title ?></td>
-					<td><a href=index.php?page=news_edit&editid=<?php echo $id; ?>><?php echo $webui_admin_news_edit ?></a></td>
-					<td><a href=index.php?page=adminloginscreen&delete=1&id=<?php echo $id; ?>><?php echo $webui_admin_news_delete ?></a></td>
+					<td><a href="index.php?page=news_edit&editid=<?php echo $id; ?>"><?php echo $webui_admin_news_edit ?></a></td>
+					<td><a href="index.php?page=adminnewsmanager&delete=1&id=<?php echo $id; ?>"><?php echo $webui_admin_news_delete ?></a></td>
 				</tr>
 				<tr><td colspan="4"><hr /></td></tr>
-<?php } ?>
+<?php
+	}
+}else{
+?>
+				<tr><td colspan="4">There is no news.</td></tr>
+<?php
+}
+?>
 			</table>
 		</div>
 	</div>
