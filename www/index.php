@@ -7,11 +7,11 @@
  *
  */
 
-// Page Load Time 
-$time = microtime(); 
-$time = explode(" ", $time); 
-$time = $time[1] + $time[0]; 
-$start = $time;  
+// Page Load Time
+$time = microtime();
+$time = explode(" ", $time);
+$time = $time[1] + $time[0];
+$start = $time;
 
 //Use gzip if it is supported
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
@@ -114,11 +114,11 @@ $displayRss                      = $adminmodules['displayRss'];
   <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
   <script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
   <script src="javascripts/global.js" type="text/javascript"></script>
-    
+
   <script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>
-    
-  <script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script> 
+
+  <script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script>
   <script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
 
   <script type="text/javascript" src="javascripts/calendar-2.2.js"></script>
@@ -220,11 +220,11 @@ $(document).ready(function($){
 
 <?php if($displayLogoEffect) { ?>
 <script type="text/javascript">
-//<![CDATA[ 
+//<![CDATA[
 var Header = {
 	// Let's write in JSON to make it more modular
 	addFade : function(selector){
-		$("<span class=\"fake-hover\"></span>").css("display", "none").prependTo($(selector)); 
+		$("<span class=\"fake-hover\"></span>").css("display", "none").prependTo($(selector));
 		// Safari dislikes hide() for some reason
 		$(selector+" a").bind("mouseenter",function(){
 			$(selector+" .fake-hover").fadeIn("slow");
@@ -252,7 +252,7 @@ $('#step1, #step2, #step3, #step4, #step5, #step6, #step7, #step10').corner();
 $('#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5').corner();
 $('#ContentHeaderLeft, #ContentHeaderCenter, #ContentHeaderRight').corner("5px");
 $('.news_time, .news_title, .news_content, #news_online').corner();
-	
+
 $(function(){
 $('#dynCorner').click(function() {
 $('#dynamic').corner();
@@ -290,8 +290,8 @@ $('#island_info_part1, #island_info_part2, #island_info_part3, #island_info_part
 <?php if($MegaMenuPreset == 1)  { ?>
 <script type="text/javascript">
 		$('.mega-menu, #mega-menu-1, #mega-menu-1 li a').corner();
-</script>		
-<?php } ?>	
+</script>
+<?php } ?>
 
 
 <?php if($displayBackgroundColorAnimation)  { ?>
@@ -304,7 +304,7 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
-                
+
 	$("#annonce2").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
   },function() {
@@ -316,7 +316,7 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
   });
-                
+
 	$("#annonce4").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep4 ?>'}, 800);
   },function() {
@@ -353,7 +353,7 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
-                
+
 	$("#step2").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
   },function() {
@@ -365,14 +365,14 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
   });
-   
+
 
   $("#info1").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
-                
+
 	$("#info2").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
   },function() {
@@ -384,7 +384,7 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
   });
-                
+
 	$("#aide1").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep4 ?>'}, 800);
   },function() {
@@ -402,25 +402,25 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep6 ?>'}, 800);
   });
-  
+
 	$("#mega-menu-1 a").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepMegaMenu1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepMegaMenu1 ?>'}, 800);
   });
-  
+
 	$("#register_bouton, #login_bouton, #forgot_pass_bouton, #adminlogin_button").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
   });
-  
+
 	$(".adminsettings_bouton").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepAdminSettingBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepAdminSettingBouton1 ?>'}, 800);
   });
-  
+
 	$("#create_news_button, #edit_news_item_button, #info_loginscreen_button").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
@@ -439,14 +439,14 @@ $(document).ready(function(){
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
   });
-  
+
   /* Page News */
 	$(".news_time, .news_title, .news_content").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
-  
+
   /* Grid Status Module */
 	$("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
@@ -465,8 +465,8 @@ $(document).ready(function(){
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
-  });  
-  
+  });
+
   /* Stardust Module */
 	$("#island_input_button1, #island_input_button2, #island_input_button3, #island_input_button4, #island_input_button5, #get_it_now_button").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
@@ -474,12 +474,12 @@ $(document).ready(function(){
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
   });
 
-}); 
+});
 </script>
 <?php } ?>
 
 
-<?php if($displayFontSizer) { ?> 
+<?php if($displayFontSizer) { ?>
 <script src="javascripts/jquery/jquery.cookie.js" type="text/javascript"></script>
 <script src="javascripts/jquery/jquery.fontscale.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -493,7 +493,7 @@ $(document).ready(function(){
 
 
 </head>
-    
+
 <body  class="webui">
 
 <div class="absolute">
@@ -561,15 +561,15 @@ $(document).ready(function(){
         </div>
              <div id="home_content_right"><?php include("sites/modules/slideshow.php"); ?></div>
 		<div id="home_content_right"><?php include("sites/modules/slideeffect.php"); ?></div>
-		
-		
+
+
     </div><!-- fin de #header -->
 
     <!-- <div id="menubar"><?php // include("sites/menubar.php"); ?></div> -->
     <?php if($displayMegaMenu) { ?>
       <div id="menubar"><?php include("sites/menus/megamenu/menubar.php"); ?></div>
     <?php } ?>
-        
+
     <div id="MainContainer">
         <div id="sites"><?php include("sites.php"); ?></div>
     </div><!-- fin de #mainContent -->
@@ -580,11 +580,11 @@ $(document).ready(function(){
 
 <div class="pageloadtime">
 <?php
-// Page Load Time 
-$time = microtime(); 
-$time = explode(" ", $time); 
-$time = $time[1] + $time[0]; 
-$finish = $time; 
+// Page Load Time
+$time = microtime();
+$time = explode(" ", $time);
+$time = $time[1] + $time[0];
+$finish = $time;
 $totaltime = ($finish - $start);
 echo "<p>Copyright 2011 © the Aurora-Sim project</p>";
 echo "<p>All Rights Reserved</p>";
