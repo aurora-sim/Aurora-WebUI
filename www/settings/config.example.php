@@ -221,22 +221,15 @@ $languages=array("en" => "English",
     "slo" => "Slovenski");
 
 ################ Database Tables #########################
-define("C_ADMIN_TBL","wi_admin");
-define("C_WIUSR_TBL","wi_users");
-define("C_WI_APPEARANCE_TBL","wi_appearance");
-define("C_USRBAN_TBL","wi_banned");
 define("C_CODES_TBL","wi_codetable");
 define("C_ADM_TBL","wi_adminsetting");
 define("C_COUNTRY_TBL","wi_country");
 define("C_NAMES_TBL","wi_lastnames");
 define("C_INFOWINDOW_TBL","wi_startscreen_infowindow");
-define("C_NEWS_TBL","wi_startscreen_news");
 define("C_GALLERY_TBL", "wi_gallery");
 
 // Options
 define("C_ADMINMODULES_TBL", "wi_adminmodules");
-define("C_ADMINOPTIONS_TBL", "wi_adminoptions");
-define("C_ADMINBGCOLORANIM_TBL", "wi_adminbgcoloranim");
 
 ################ Recaptcha ###############################
 

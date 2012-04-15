@@ -5,12 +5,6 @@ if(!isset($_SESSION['ADMINID'])){
 	exit;
 }
 
-if(isset($_GET['delete']) && $_GET['delete'] == 1){
-	$filter = new QueryFilter;
-	$filter->andFilters['id'] = $_GET['id'];
-	Globals::i()->DBLink->Delete(C_NEWS_TBL, $filter);
-}
-
 if(isset($_POST['infobox']) && $_POST['infobox'] == 'save'){
 	$filter = new QueryFilter;
 	Globals::i()->DBLink->Update(C_INFOWINDOW_TBL, array(
