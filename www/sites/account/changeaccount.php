@@ -81,7 +81,7 @@ if ($_POST['Submit3'] == $webui_submit) {
 		}
 
 		$code = code_gen();
-		
+
 		Globals::i()->DBLink->Insert(C_CODES_TBL, array(
 			'code'  => $code,
 			'UUID'  =>  $_SESSION['USERID'],
