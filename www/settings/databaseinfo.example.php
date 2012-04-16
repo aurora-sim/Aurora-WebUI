@@ -7,7 +7,8 @@
  *
 */
 
-##################### Database ########################
+#region Database
+
 define("C_DB_TYPE","mysql");
 // Your Hostname here:
 define("C_DB_HOST","localhost");
@@ -20,5 +21,16 @@ define("C_DB_PASS","changeme");
 // PDO DSN
 define('C_PDO_DSN', 'mysql:dbname=' . C_DB_NAME . ';host=' . C_DB_HOST);
 
-Globals::i()->DBLink = new libAurora\DataManager\PDO(new PDO(C_PDO_DSN, C_DB_USER, C_DB_PASS));
+#endregion
+
+#region Migrators
+
+foreach(glob(WEBUI_INSTALL_PATH . 'settings' . DIRECTORY_SEPARATOR . 'Migrators' . DIRECTORY_SEPARATOR . '*Migrator_*.php') as $migrator){
+	require_once($migrator);
+}
+
+Globals::i()->DBLink = new libAurora\DataManager\MySQLDataLoader(C_PDO_DSN, 'Wiredux', false, true);
+
+#endregion
+
 ?>
