@@ -3,8 +3,7 @@ use Aurora\Addon\WebUI\Configs;
 use Aurora\Framework\RegionFlags;
 use Aurora\Framework\QueryFilter;
 require_once('recaptchalib.php');
-$webuicid          = Configs::d()->WebUIClientImplementationData();
-$adminsetting      = $webuicid['adminsetting'];
+$adminsetting      = AuroraWebUI\admin_setting();
 $ADRESSCHECK       = $adminsetting['adress'];
 $REGIOCHECK        = $adminsetting['region'];
 $ALLOWREGISTRATION = $adminsetting['allowRegistrations'];
@@ -26,8 +25,7 @@ if($ALLOWREGISTRATION == '1'){
 
 
 	function printLastNames(){
-		$webuicid     = Configs::d()->WebUIClientImplementationData();
-		$adminsetting = $webuicid['adminsetting'];
+		$adminsetting = AuroraWebUI\admin_setting();
 		$LASTNAMESC   = $adminsetting['lastnames'];
 		if ($LASTNAMESC == "1") {
 			echo "<div class=\"roundedinput\"><select id=\"register_input\" wide=\"25\" name=\"accountlast\">";

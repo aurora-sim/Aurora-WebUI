@@ -3,6 +3,7 @@ include("../../settings/config.php");
 include("../../settings/databaseinfo.php");
 include("../../languages/translator.php");
 include("../../templates/templates.php");
+require_once('../../settings/AuroraWebUI.php');
 
 use Aurora\Addon\WebUI\Configs;
 $regions = Configs::d()->GetRegionsByXY($_GET['x'], $_GET['y']);
@@ -23,7 +24,7 @@ if ($regionType == ''){
 }
 $source = $region->ServerURI() . "/index.php?method=regionImage" . str_replace('-', '', $region->RegionID());
 
-$webuicid = Configs::d()->WebUIClientImplementationData();
+$adminsetting = AuroraWebUI\admin_modules();
 $adminmodules = $webuicid['adminmodules'];
 ?>
 

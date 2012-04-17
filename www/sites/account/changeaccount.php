@@ -5,8 +5,7 @@ if (!isset($_SESSION['USERID'])){
 	exit;
 }
 
-$webuicid     = Configs::d()->WebUIClientImplementationData();
-$adminsetting = $webuicid['adminsetting'];
+$adminsetting = AuroraWebUI\admin_setting();
 $REGIOCHECK   = $adminsetting['region'];
 try{
 	$UserInfo      = Configs::d()->GetGridUserInfo($_SESSION['USERID']);

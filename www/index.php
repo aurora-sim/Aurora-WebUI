@@ -40,6 +40,7 @@ include("settings/webui_bootstrap.php");
 include("settings/databaseinfo.php");
 include("languages/translator.php");
 include("templates/templates.php");
+require_once('settings/AuroraWebUI.php');
 use Aurora\Addon\WebUI\Configs;
 
 define('WEBUI_PAGE', isset($_GET['page']) ? $_GET['page'] : 'home');
@@ -81,8 +82,7 @@ if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
     }
 }
 
-$webuicid                        = Configs::d()->WebUIClientImplementationData();
-$adminmodules                    = $webuicid['adminmodules'];
+$adminmodules                    = AuroraWebUI\admin_modules();
 $id                              = $adminmodules['id'];
 $displayTopPanelSlider           = $adminmodules['displayTopPanelSlider'];
 $displayTemplateSelector         = $adminmodules['displayTemplateSelector'];

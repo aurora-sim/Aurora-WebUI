@@ -3,6 +3,7 @@ include("../../settings/config.php");
 include("../../settings/databaseinfo.php");
 include("../../languages/translator.php");
 include("../../templates/templates.php");
+require_once('../../settings/AuroraWebUI.php');
 use Aurora\Addon\WebUI\Configs;
 
 if (isset($_GET['name'])){
@@ -44,8 +45,7 @@ if (isset($_GET['name'])){
 } 
 
 
-$webuicid                        = Configs::d()->WebUIClientImplementationData();
-$adminmodules                    = $webuicid['adminmodules'];
+$adminsetting                    = AuroraWebUI\admin_modules();
 $id                              = $adminmodules['id'];
 $displayTopPanelSlider           = $adminmodules['displayTopPanelSlider'];
 $displayTemplateSelector         = $adminmodules['displayTemplateSelector'];
