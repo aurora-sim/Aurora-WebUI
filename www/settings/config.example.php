@@ -37,6 +37,8 @@ define('WEBUI_INSTALL_PATH', $dir . DIRECTORY_SEPARATOR);
 
 require_once('phar://' . WEBUI_INSTALL_PATH . 'settings/libAurora.php.phar.gz/load.php');
 
+$config_directory = WEBUI_INSTALL_PATH . 'settings' . DIRECTORY_SEPARATOR;
+
 use Aurora\Addon\WebUI;
 use Aurora\Addon\WebUI\Configs;
 
