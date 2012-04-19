@@ -235,8 +235,10 @@ define("C_ADMINMODULES_TBL", "wi_adminmodules");
 
 ################ Recaptcha ###############################
 
-//define('RECAPTCHA_PUBLIC_KEY', 'foo');
-//define('RECAPTCHA_PRIVATE_KEY', 'bar');
+// get keys from http://recaptcha.net
+
+define('RECAPTCHA_PUBLIC_KEY', 'foo');
+define('RECAPTCHA_PRIVATE_KEY', 'bar');
 
 ################ Optional WebUI Features ###############################
 define('EmailAccountActivation',true);
@@ -274,6 +276,7 @@ $wi_sitemanagement['users']            = 'main/usersmain.php';
 $wi_sitemanagement['help']             = 'main/help.php';
 $wi_sitemanagement['chat']             = 'main/chat.php';
 $wi_sitemanagement['downloads']        = 'main/downloads.php';
+$wi_sitemanagement['addgrid']          = 'main/addgrid.php';
 
 ################ wi_pagemanager replacement ############################
 

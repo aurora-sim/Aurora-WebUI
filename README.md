@@ -11,7 +11,7 @@ Please remember to backup your database regularly.
 2. Copy **./settings/DatabaseInfo.example.php** to **./settings/DatabaseInfo.php**
 3. Make a backup of your database ;)
 
-Config.php (basic must settings)
+## Config.php (basic must-configure settings)
 
 ```php
 ##################### System #########################
@@ -27,7 +27,7 @@ $mapstartX=1000;
 $mapstartY=1000;
 ```
 
-DatabaseInfo.php (basic must settings)
+## DatabaseInfo.php (basic must-configure settings)
 
 ```php
 ##################### Database ########################
@@ -40,6 +40,13 @@ define("C_DB_NAME","aurora");
 define("C_DB_USER","root");
 // Your Database Password here:
 define("C_DB_PASS","***");
+```
+
+### MySQL Version
+If you are using MySQL 5.5 or greater, you will need to specify the version number
+
+```php
+Globals::i()->DBLink = new libAurora\DataManager\MySQLDataLoader(C_PDO_DSN, 'Wiredux', false, true, '5.5');
 ```
 
 
