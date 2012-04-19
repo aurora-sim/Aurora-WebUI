@@ -25,7 +25,7 @@ define('C_PDO_DSN', 'mysql:dbname=' . C_DB_NAME . ';host=' . C_DB_HOST . ';user=
 
 #region Migrators
 
-foreach(glob(WEBUI_INSTALL_PATH . 'settings' . DIRECTORY_SEPARATOR . 'Migrators' . DIRECTORY_SEPARATOR . '*Migrator_*.php') as $migrator){
+foreach(glob(WEBUI_INSTALL_PATH . 'settings' . DIRECTORY_SEPARATOR . 'migrators' . DIRECTORY_SEPARATOR . '*Migrator_*.php') as $migrator){
 	require_once($migrator);
 }
 
