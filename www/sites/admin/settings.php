@@ -2,103 +2,106 @@
 use Aurora\Addon\WebUI\Configs;
 use Aurora\Framework\RegionFlags;
 use Aurora\Framework\QueryFilter;
-if(isset($_SESSION['ADMINID'])){
+if(!isset($_SESSION['ADMINID'])){
+	header('Location: ' . SYSURL . 'index.php?page=home');
+	exit;
+}
 
 #region Update
 
-	if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-		$update = array();
+	$update = array();
 
-		if(isset($_POST['region'], $_POST['adressset'], $_POST['regtyp'])){
-			$update['startregion'] = $_POST['region'];
-			$update['adress']      = $_POST['adressset'];
-			$update['region']      = $_POST['regtyp'];
-		}
+	if(isset($_POST['region'], $_POST['adressset'], $_POST['regtyp'])){
+		$update['startregion'] = $_POST['region'];
+		$update['adress']      = $_POST['adressset'];
+		$update['region']      = $_POST['regtyp'];
+	}
 
-#region Names
+	#region Names
 
-        if(isset($_POST['lastname']) && trim($_POST['lastname']) != ''){
-			$filter = new QueryFilter;
-			$filter->andFilters['name'] = $_POST['lastname'];
-            if(count(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter)) == 0) {
-				Globals::i()->DBLink->Insert(C_NAMES_TBL, array(
-					'name'   => $_POST['lastname'],
-					'active' => 1
-				));
-            }
-        }
-
-		if(isset($_POST['deactivelast']) && trim($_POST['deactivelast']) != ''){
-			$filter = new QueryFilter;
-			$filter->andFilters['name'] = $_POST['deactivelast'];
-			Globals::i()->DBLink->Update(C_NAMES_TBL, array(
-				'active' => 0
-			), $filter);
-		}
-		if(isset($_POST['activatelast']) && trim($_POST['activatelast']) != ''){
-			$filter = new QueryFilter;
-			$filter->andFilters['name'] = $_POST['activatelast'];
-			Globals::i()->DBLink->Update(C_NAMES_TBL, array(
+	if(isset($_POST['lastname']) && trim($_POST['lastname']) != ''){
+		$filter = new QueryFilter;
+		$filter->andFilters['name'] = $_POST['lastname'];
+		if(count(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter)) == 0) {
+			Globals::i()->DBLink->Insert(C_NAMES_TBL, array(
+				'name'   => $_POST['lastname'],
 				'active' => 1
-			), $filter);
-		}
-		if(isset($_POST['delname']) && trim($_POST['delname']) != ''){
-			$filter = new QueryFilter;
-			$filter->andFilters['name'] = $_POST['delname'];
-			Globals::i()->DBLink->Delete(C_NAMES_TBL, $filter);
-		}
-
-		if(isset($_POST['Submitnam2'])){
-			if ($_POST['Submitnam2'] == $webui_admin_settings_activate_bouton){
-				$update['lastnames'] = 1;
-			}else if ($_POST['Submitnam2'] == $webui_admin_settings_desactivate_bouton){
-				$update['lastnames'] = 0;
-			}
-		}
-
-#endregion
-
-		if(isset($_POST['allowRegistrationSubmit'])){
-			if($_POST['allowRegistrationSubmit'] == $webui_admin_settings_activate_bouton){
-				$update['allowRegistrations'] = 1;
-			}else if($_POST['allowRegistrationSubmit'] == $webui_admin_settings_desactivate_bouton){
-				$update['allowRegistrations'] = 0;
-			}
-		}
-
-		if(isset($_POST['verifyusersSubmit'])){
-			if($_POST['verifyusersSubmit'] == $webui_admin_settings_activate_bouton){
-				$update['verifyUsers'] = 1;
-			}else if($_POST['verifyusersSubmit'] == $webui_admin_settings_desactivate_bouton){
-				$update['verifyUsers'] = 0;
-			}
-		}
-
-		if(isset($_POST['Submitage'])){
-			if ($_POST['Submitage'] == "Activate") {
-				$update['ForceAge'] = 1;
-			}else if($_POST['Submitage'] == "Deactivate") {
-				$update['ForceAge'] = 1;
-			}
-		}
-
-		if(count($update) > 0){
-			Globals::i()->DBLink->Update(C_ADM_TBL, $update);
+			));
 		}
 	}
 
+	if(isset($_POST['deactivelast']) && trim($_POST['deactivelast']) != ''){
+		$filter = new QueryFilter;
+		$filter->andFilters['name'] = $_POST['deactivelast'];
+		Globals::i()->DBLink->Update(C_NAMES_TBL, array(
+			'active' => 0
+		), $filter);
+	}
+	if(isset($_POST['activatelast']) && trim($_POST['activatelast']) != ''){
+		$filter = new QueryFilter;
+		$filter->andFilters['name'] = $_POST['activatelast'];
+		Globals::i()->DBLink->Update(C_NAMES_TBL, array(
+			'active' => 1
+		), $filter);
+	}
+	if(isset($_POST['delname']) && trim($_POST['delname']) != ''){
+		$filter = new QueryFilter;
+		$filter->andFilters['name'] = $_POST['delname'];
+		Globals::i()->DBLink->Delete(C_NAMES_TBL, $filter);
+	}
+
+	if(isset($_POST['Submitnam2'])){
+		if ($_POST['Submitnam2'] == $webui_admin_settings_activate_bouton){
+			$update['lastnames'] = 1;
+		}else if ($_POST['Submitnam2'] == $webui_admin_settings_desactivate_bouton){
+			$update['lastnames'] = 0;
+		}
+	}
+
+	#endregion
+
+	if(isset($_POST['allowRegistrationSubmit'])){
+		if($_POST['allowRegistrationSubmit'] == $webui_admin_settings_activate_bouton){
+			$update['allowRegistrations'] = 1;
+		}else if($_POST['allowRegistrationSubmit'] == $webui_admin_settings_desactivate_bouton){
+			$update['allowRegistrations'] = 0;
+		}
+	}
+
+	if(isset($_POST['verifyusersSubmit'])){
+		if($_POST['verifyusersSubmit'] == $webui_admin_settings_activate_bouton){
+			$update['verifyUsers'] = 1;
+		}else if($_POST['verifyusersSubmit'] == $webui_admin_settings_desactivate_bouton){
+			$update['verifyUsers'] = 0;
+		}
+	}
+
+	if(isset($_POST['Submitage'])){
+		if ($_POST['Submitage'] == "Activate") {
+			$update['ForceAge'] = 1;
+		}else if($_POST['Submitage'] == "Deactivate") {
+			$update['ForceAge'] = 1;
+		}
+	}
+
+	if(count($update) > 0){
+		Globals::i()->DBLink->Update(C_ADM_TBL, $update);
+	}
+}
+
 #endregion
 
-    list($LASTNMS, $REGIOCHECK, $STARTREGION, $ADRESSCHECK, $ALLOWREGISTRATION, $VERIFYUSERS, $FORCEAGE) = Globals::i()->DBLink->Query(array(
-		'lastnames',
-		'region',
-		'startregion',
-		'adress',
-		'allowRegistrations',
-		'verifyUsers',
-		'ForceAge'
-	), C_ADM_TBL);
+list($LASTNMS, $REGIOCHECK, $STARTREGION, $ADRESSCHECK, $ALLOWREGISTRATION, $VERIFYUSERS, $FORCEAGE) = Globals::i()->DBLink->Query(array(
+	'lastnames',
+	'region',
+	'startregion',
+	'adress',
+	'allowRegistrations',
+	'verifyUsers',
+	'ForceAge'
+), C_ADM_TBL);
 ?>
 
 <div id="content">
@@ -114,11 +117,11 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="even">
 						<select wide="25" name="regtyp">
 <?php
-	echo
-		'<option value="0" ' . ($REGIOCHECK == '0' ? 'selected' : '') . '>', $webui_admin_settings_create_select, '</option>',"\n",
-		'<option value="1" ' . ($REGIOCHECK == '1' ? 'selected' : '') . '>', $webui_admin_settings_edit_select, '</option>',"\n",
-		'<option value="2" ' . ($REGIOCHECK == '2' ? 'selected' : '') . '>', $webui_admin_settings_adminonly_select, '</option>',"\n"
-	;
+echo
+	'<option value="0" ' . ($REGIOCHECK == '0' ? 'selected' : '') . '>', $webui_admin_settings_create_select, '</option>',"\n",
+	'<option value="1" ' . ($REGIOCHECK == '1' ? 'selected' : '') . '>', $webui_admin_settings_edit_select, '</option>',"\n",
+	'<option value="2" ' . ($REGIOCHECK == '2' ? 'selected' : '') . '>', $webui_admin_settings_adminonly_select, '</option>',"\n"
+;
 ?>
 						</select>
 					</td>
@@ -128,9 +131,9 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="odd">
 						<select class="box" wide="25" name="region">
 <?php
-	foreach(Configs::d()->GetRegions(RegionFlags::RegionOnline, RegionFlags::Hyperlink | RegionFlags::Hidden) as $Region){
-		echo '<option value="', $Region->RegionID(), '" ', ($STARTREGION == $Region->RegionID() ? 'selected' : ''), '>', $Region->RegionName(), '</option>',"\n";
-	}
+foreach(Configs::d()->GetRegions(RegionFlags::RegionOnline, RegionFlags::Hyperlink | RegionFlags::Hidden) as $Region){
+	echo '<option value="', $Region->RegionID(), '" ', ($STARTREGION == $Region->RegionID() ? 'selected' : ''), '>', $Region->RegionName(), '</option>',"\n";
+}
 ?>
 						</select>
 					</td>
@@ -140,10 +143,10 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="even">
 						<select class="box" wide="25" name="adressset" >
 <?php
-	echo
-		'<option value="0" ', ($ADRESSCHECK == '0' ? 'selected' : ''), '>', $webui_admin_settings_yes_select, '</option>', "\n",
-		'<option value="1" ', ($ADRESSCHECK == '1' ? 'selected' : ''), '>', $webui_admin_settings_no_select, '</option>', "\n"
-	;
+echo
+	'<option value="0" ', ($ADRESSCHECK == '0' ? 'selected' : ''), '>', $webui_admin_settings_yes_select, '</option>', "\n",
+	'<option value="1" ', ($ADRESSCHECK == '1' ? 'selected' : ''), '>', $webui_admin_settings_no_select, '</option>', "\n"
+;
 ?>
 						</select>
 					</td>
@@ -180,9 +183,9 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="odd">
 						<select class="box" wide="25" name="deactivelast">
 <?php
-	$filter = new QueryFilter;
-	$filter->andFilters['active'] = 1;
-	foreach(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter, array('name'=>true)) as $NAMEDB){
+$filter = new QueryFilter;
+$filter->andFilters['active'] = 1;
+foreach(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter, array('name'=>true)) as $NAMEDB){
 ?>
 							<option><?php echo $NAMEDB ?></option>
 <?php } ?>
@@ -199,9 +202,9 @@ if(isset($_SESSION['ADMINID'])){
 					<td class="even">
 						<select class="box" wide="25" name="activatelast">
 <?php
-	$filter = new QueryFilter;
-	$filter->andFilters['active'] = 0;
-	foreach(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter, array('name'=>true)) as $NAMEDB){
+$filter = new QueryFilter;
+$filter->andFilters['active'] = 0;
+foreach(Globals::i()->DBLink->Query(array('name'), C_NAMES_TBL, $filter, array('name'=>true)) as $NAMEDB){
 ?>
 							<option><?php echo $NAMEDB ?></option>
 <?php } ?>
@@ -228,4 +231,3 @@ if(isset($_SESSION['ADMINID'])){
 		</form>
 	</div>
 </div>
-<? } ?>
