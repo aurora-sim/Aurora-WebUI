@@ -51,25 +51,31 @@
 <!-- 3) Put the thumbnails inside a div for styling -->
 
 <div id="content">
-    <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
-    <div id="ContentHeaderCenter"></div>
-    <div id="ContentHeaderRight"><h5><? echo $webui_gallery; ?></h5></div>
-    <div id="gallery">
-        <div id="info"><p><? echo $webui_gallery_info; ?></p></div>
-        <div class="highslide-gallery" style="width: 100%; margin: auto" align="center">
-        <!--
-      	4) This is how you mark up the thumbnail images with an anchor tag around it.
-	      The anchor's href attribute defines the URL of the full-size image. Given the captionEval
-	      option is set to 'this.img.alt', the caption is grabbed from the alt attribute of
-	      the thumbnail image.
-        -->
-        <?
-          $DbLink->query("SELECT picture,picturethumbnail,description FROM " . C_GALLERY_TBL . " Where active='1' ORDER BY rank ASC ");
-          while (list($picture, $picturethumbnail, $description) = $DbLink->next_record()) {
-        ?>
-        <a class='highslide' href='images/gallery/<?= $picture ?>' onclick="return hs.expand(this)">
-        <img src='images/gallery/<?= $picturethumbnail ?>' alt='<?= $description ?>'/></a>
-        <? } ?>
-      </div>
-    </div>
+	<div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+	<div id="ContentHeaderCenter"></div>
+	<div id="ContentHeaderRight"><h5><? echo $webui_gallery; ?></h5></div>
+	<div id="gallery">
+		<div id="info"><p><? echo $webui_gallery_info; ?></p></div>
+		<div class="highslide-gallery" style="width: 100%; margin: auto" align="center">
+<!--
+4) This is how you mark up the thumbnail images with an anchor tag around it.
+  The anchor's href attribute defines the URL of the full-size image. Given the captionEval
+  option is set to 'this.img.alt', the caption is grabbed from the alt attribute of
+  the thumbnail image.
+-->
+<?php
+use Aurora\Framework\QueryFilter;
+$filter = new QueryFilter;
+$filter->andFilters['active'] = '1';
+$query = Globals::i()->DBLink->Query(array( 'picture', 'picturethumbnail', 'description' ), C_GALLERY_TBL, $filter, array('rank' =>true));
+$count = count($query);
+for($i=0; $i < $count; $i += 3){
+	list($picture, $picturethumbnail, $description) = array_slice($query, $i, 3);
+?>
+			<a class='highslide' href='images/gallery/<?php echo $picture; ?>' onclick="return hs.expand(this)"><img src='images/gallery/<?php echo $picturethumbnail; ?>' alt='<?php echo $description; ?>'/></a>
+<?php
+}
+?>
+		</div>
+	</div>
 </div>
