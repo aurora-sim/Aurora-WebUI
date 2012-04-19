@@ -50,7 +50,7 @@
 
 <!-- 3) Put the thumbnails inside a div for styling -->
 
-<div id="content">   
+<div id="content">
     <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
     <div id="ContentHeaderCenter"></div>
     <div id="ContentHeaderRight"><h5><? echo $webui_gallery; ?></h5></div>
