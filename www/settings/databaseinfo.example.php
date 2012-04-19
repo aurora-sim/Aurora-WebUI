@@ -19,7 +19,7 @@ define("C_DB_USER","aurora");
 // Your Database Password here:
 define("C_DB_PASS","changeme");
 // PDO DSN
-define('C_PDO_DSN', 'mysql:dbname=' . C_DB_NAME . ';host=' . C_DB_HOST);
+define('C_PDO_DSN', 'mysql:dbname=' . C_DB_NAME . ';host=' . C_DB_HOST . ';user=' . C_DB_USER . ';password=' . C_DB_PASS);
 
 #endregion
 
