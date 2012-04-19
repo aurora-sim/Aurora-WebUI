@@ -381,6 +381,7 @@ h5 {font-size: 10px; color:#ffffff;margin:0px;padding:0px;}
 #changeaccount a:active {text-decoration: none}
 #changeaccount a:hover {text-decoration: underline;}
 
+#loginscreen_manager form {clear:both;}
 #loginscreen_manager {width:100%;background-color: transparent;float:left;}
 #loginscreen_manager table {color: #ffffff; width: 100%;}
 #loginscreen_manager a {color: #ffa500; text-decoration: none;}
