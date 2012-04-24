@@ -1233,7 +1233,7 @@ namespace OpenSim.Services
             int count = map["Count"].AsInteger();
             bool active = map["Active"].AsBoolean();
 
-            List<AbuseReport> lar = ar.GetAbuseReports(start, count, active ? "Active='1'" : "Active='0'");
+            List<AbuseReport> lar = ar.GetAbuseReports(start, count, active);
             OSDArray AbuseReports = new OSDArray();
             foreach (AbuseReport tar in lar)
             {
