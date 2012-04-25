@@ -24,7 +24,7 @@ define("WIREDUX_PASSWORD","***");
 // (until disabled here)?
 $displayMaintenancePage = false;
 
-################ Aurora-Sim.php ########################################
+################ libAurora.php ########################################
 
 $dir = getcwd();
 $i = 0;
@@ -135,6 +135,8 @@ $showSpecialReport = true;
 // $displayScrollingText = true;
 // What message should be displayed in the scrolling text?
 $scrollingTextMessage = "Welcome!         Bienvenue!          Hola!";
+// right-to-left (rtl) or left-to-right (ltr)
+define('SCROLLINGTEXTDIRECTION', 'rtl');
 // Should we show the welcome message at the top of the page?
 // $displayWelcomeMessage = true;
 // Should we show date

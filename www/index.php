@@ -217,7 +217,6 @@ $(document).ready(function($){
 </script>
 <?php } ?>
 
-
 <?php if($displayLogoEffect) { ?>
 <script type="text/javascript">
 //<![CDATA[
@@ -238,7 +237,6 @@ $(function(){Header.addFade("#headerimages");});
 //]]>
 <?php } ?>
 </script>
-
 
 <?php if($displayRoundedCorner)  { ?>
 <script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
@@ -286,13 +284,11 @@ $('#island_info_part1, #island_info_part2, #island_info_part3, #island_info_part
 </script>
 <?php } ?>
 
-
 <?php if($MegaMenuPreset == 1)  { ?>
 <script type="text/javascript">
 		$('.mega-menu, #mega-menu-1, #mega-menu-1 li a').corner();
 </script>
 <?php } ?>
-
 
 <?php if($displayBackgroundColorAnimation)  { ?>
 <!-- include Google's AJAX API loader -->
@@ -478,7 +474,6 @@ $(document).ready(function(){
 </script>
 <?php } ?>
 
-
 <?php if($displayFontSizer) { ?>
 <script src="javascripts/jquery/jquery.cookie.js" type="text/javascript"></script>
 <script src="javascripts/jquery/jquery.fontscale.js" type="text/javascript"></script>
@@ -491,6 +486,14 @@ $(document).ready(function(){
 </script>
 <?php } ?>
 
+<?php if($displayScrollingText){ ?>
+	<script type="text/javascript">
+	$(document).ready(function(){$('#scrollercontrol').ResetScroller(<?php echo json_encode(array(
+	'velocity' => 60,
+	'startfrom' => defined('SCROLLINGTEXTDIRECTION') && SCROLLINGTEXTDIRECTION === 'rtl' ? 'right' : 'left'
+)); ?>);});
+	</script>
+<?php } ?>
 
 </head>
 
