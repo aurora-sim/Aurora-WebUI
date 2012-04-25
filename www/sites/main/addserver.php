@@ -5,10 +5,10 @@
   <div id="gridinfos">
   <div id="info"><p><? echo $webui_addserver_info; ?></p></div>
   <div class="clear"></div>
-	
+
 	<p>
 		<div id="annonce7"><? echo $webui_addserver; ?> ...<br>...<br>...</div>
 	</p>
-	
+
 	</div>
 </div>
