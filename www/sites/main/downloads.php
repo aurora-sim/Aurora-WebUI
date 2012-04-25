@@ -3,7 +3,7 @@
 		<div id="ContentHeaderCenter"></div>
 		<div id="ContentHeaderRight"><h5><? echo $webui_downloads; ?></h5></div>
 		<div id="gridinfos">
-			<div id="info"><p><? echo $webui_downloads_info; ?></p></div>
+			<div id="info" style="float:left;"><p><? echo $webui_downloads_info; ?></p></div>
 			<div class="clear"></div>
 
 			<div id="download1">
