@@ -21,7 +21,7 @@ namespace AuroraWebUI{
                 'verifyUsers',
                 'ForceAge'
 			);
-			$admin_setting = array_combine($fields, Globals::i()->DBLink->Query($fields, 'wi_adminsetting', null, null, 0, 1));
+			$admin_setting = array_combine($fields, array_pad(Globals::i()->DBLink->Query($fields, 'wi_adminsetting', null, null, 0, 1), count($fields), '0'));
 		}
 		return $admin_setting;
 	}
