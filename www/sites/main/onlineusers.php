@@ -1,6 +1,6 @@
 <script>
 function OpenAgent(firstname, lastname){
-	window.open("<?php echo SYSURL; ?>/app/agent/?name="+firstname+" "+lastname,'mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')
+	window.open("<?php echo SYSURL; ?>app/agent/?name="+firstname+" "+lastname,'mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')
 }
 </script>
 
