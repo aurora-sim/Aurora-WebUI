@@ -325,7 +325,7 @@ $wi_sitemanagement['home']             = 'main/home.php';
 
 ################ wi_pagemanager replacement ############################
 
-require_once($config_directory . 'wi_pagemanager.php');
+$wi_pagemanager            = Globals::i()->wi_pagemanager = libAurora\Template\navigation\Pages::f();
 
 $webui_menu_item_home      = $wi_pagemanager['webui_menu_item_home']      = WebUIPage::f('webui_menu_item_home'             , 1  , 'index.php?page=home'             , '_self', 2);
 

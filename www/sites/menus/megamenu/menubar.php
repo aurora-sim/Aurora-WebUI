@@ -6,6 +6,7 @@
  * See LICENSE for the full licensing terms of this file.
  *
 */
+use libAurora\Template\navigation\Pages as WebUIPages;
 
 function WriteMenu(WebUIPages $pages, $a){
 	$display = array(2);
