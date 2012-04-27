@@ -156,63 +156,24 @@ if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
 <script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.3.2.js'></script>
 <?php } ?>
 <script type="text/javascript">
-$(document).ready(function($){
-	$('#mega-menu-1').dcMegaMenu({
-		rowItems: '<?php echo $MegaMenuRowItems; ?>',
-		speed: '<?php echo $MegaMenuSpeed; ?>',
-		effect: '<?php echo $MegaMenuEffect; ?>',
-		event: '<?php echo $MegaMenuEvent; ?>'
-	});
-	$('#mega-menu-2').dcMegaMenu({
-		rowItems: '<?php echo $MegaMenuRowItems; ?>',
-		speed: '<?php echo $MegaMenuSpeed; ?>',
-		effect: '<?php echo $MegaMenuEffect; ?>',
-		event: '<?php echo $MegaMenuEvent; ?>'
-	});
-	$('#mega-menu-3').dcMegaMenu({
-		rowItems: '3',
-		speed: 'fast',
-		effect: 'fade',
-		event: 'hover'
-	});
-	$('#mega-menu-4').dcMegaMenu({
-		rowItems: '4',
-		speed: 'fast',
-		effect: 'fade',
-		event: 'hover'
-	});
-	$('#mega-menu-5').dcMegaMenu({
-		rowItems: '1',
-		speed: 'fast',
-		effect: 'fade',
-		event: 'hover'
-	});
-	$('#mega-menu-6').dcMegaMenu({
-		rowItems: '1',
-		speed: 'slow',
-		effect: 'slide',
-		event: 'hover'
-	});
-	$('#mega-menu-7').dcMegaMenu({
-		rowItems: '3',
-		speed: 'fast',
-		effect: 'slide',
-		event: 'hover'
-	});
-	$('#mega-menu-8').dcMegaMenu({
-		rowItems: '4',
-		speed: 'fast',
-		effect: 'fade',
-		event: 'hover'
-	});
-	$('#mega-menu-9').dcMegaMenu({
-		rowItems: '3',
-		speed: 'fast',
-		effect: 'fade',
-		event: 'hover'
-	});
-});
+var
+	megaMenuConfig = <?php echo json_encode(array(
+		'#mega-menu-1' => array(
+			'rowItems' => $MegaMenuRowItems,
+			'speed'    => $MegaMenuSpeed,
+			'effect'   => $MegaMenuEffect,
+			'event'    => $MegaMenuEvent
+		),
+		'#mega-menu-2' => array(
+			'rowItems' => $MegaMenuRowItems,
+			'speed'    => $MegaMenuSpeed,
+			'effect'   => $MegaMenuEffect,
+			'event'    => $MegaMenuEvent
+		)
+	)); ?>
+;
 </script>
+<script type="text/javascript" src="<?php echo SYSURL; ?>sites/menus/megamenu/javascripts/config.js"></script>
 <?php if($MegaMenuPreset == 1 && $displayRoundedCorner){ ?>
 <script type="text/javascript">
 $('.mega-menu, #mega-menu-1, #mega-menu-1 li a').corner();
