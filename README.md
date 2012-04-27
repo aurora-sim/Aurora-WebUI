@@ -57,8 +57,7 @@ Globals::i()->DBLink = new libAurora\DataManager\MySQLDataLoader(C_PDO_DSN, 'Wir
 
 ## Install WebUI manually
 1. copy the Aurora-Sim-Optional-Modules/AuroraWebUI directory into your ~/Aurora-Sim/addon-modules/ directory
-2. Run runprebuild.bat or runprebuild2010.bat
-3. Run compile.bat
+2. Run runprebuild.bat
 
 ## For grid mode (running Aurora.Server.exe)
 Copy Aurora-Sim-Optional-Modules/AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
