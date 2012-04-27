@@ -128,7 +128,9 @@ if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
 <script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
 
 <script type="text/javascript" src="javascripts/calendar-2.2.js"></script>
-
+<?php if($displayRoundedCorner)  { ?>
+<script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
+<?php } ?>
 <?php if($displayMegaMenu) { ?>
 <!-- start megamenu -->
 <link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/black.css" rel="stylesheet" type="text/css" />
@@ -211,7 +213,7 @@ $(document).ready(function($){
 	});
 });
 </script>
-<?php if($MegaMenuPreset == 1)  { ?>
+<?php if($MegaMenuPreset == 1 && $displayRoundedCorner){ ?>
 <script type="text/javascript">
 $('.mega-menu, #mega-menu-1, #mega-menu-1 li a').corner();
 </script>
@@ -241,7 +243,6 @@ $(function(){Header.addFade("#headerimages");});
 </script>
 
 <?php if($displayRoundedCorner)  { ?>
-<script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
 <script type="text/javascript">
 // http://jquery.malsup.com/corner/
 // Add more class here ...
