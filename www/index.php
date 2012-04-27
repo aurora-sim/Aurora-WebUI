@@ -35,11 +35,14 @@ else if(!empty($_COOKIE['lang']))
 	echo "<html lang=".$_COOKIE['lang']." class=\"no-js\">";
 }
 
-include("settings/config.php");
-include("settings/webui_bootstrap.php");
-include("settings/databaseinfo.php");
-include("languages/translator.php");
-include("templates/templates.php");
+if(!file_exists('settings/config.php') || !file_exists('settings/databaseinfo.php')){
+	die('Configuration not present.');
+}
+require_once("settings/config.php");
+require_once("settings/webui_bootstrap.php");
+require_once("settings/databaseinfo.php");
+require_once("languages/translator.php");
+require_once("templates/templates.php");
 require_once('settings/AuroraWebUI.php');
 use Aurora\Addon\WebUI\Configs;
 
