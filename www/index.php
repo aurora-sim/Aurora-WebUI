@@ -13,27 +13,6 @@ $time = explode(" ", $time);
 $time = $time[1] + $time[0];
 $start = $time;
 
-//Use gzip if it is supported
-if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
-    ob_start("ob_gzhandler");
-else
-ob_start();
-session_start();
-
-echo "<!doctype html>";
-
-if ((empty($_GET['lang'])) && (empty($_COOKIE['lang'])))
-{
-	echo "<html lang=en class=\"no-js\">";
-}
-else if (!empty($_GET['lang']))
-{
-	echo "<html lang=".$_GET['lang']." class=\"no-js\">";
-}
-else if(!empty($_COOKIE['lang']))
-{
-	echo "<html lang=".$_COOKIE['lang']." class=\"no-js\">";
-}
 
 if(!file_exists('settings/config.php') || !file_exists('settings/databaseinfo.php')){
 	die('Configuration not present.');
@@ -48,7 +27,54 @@ use Aurora\Addon\WebUI\Configs;
 
 define('WEBUI_PAGE', isset($_GET['page']) ? $_GET['page'] : 'home');
 
+$adminmodules                    = AuroraWebUI\admin_modules();
+$id                              = $adminmodules['id'];
+$displayTopPanelSlider           = $adminmodules['displayTopPanelSlider'];
+$displayTemplateSelector         = $adminmodules['displayTemplateSelector'];
+$displayStyleSwitcher            = $adminmodules['displayStyleSwitcher'];
+$displayStyleSizer               = $adminmodules['displayStyleSizer'];
+$displayFontSizer                = $adminmodules['displayFontSizer'];
+$displayLanguageSelector         = $adminmodules['displayLanguageSelector'];
+$displayScrollingText            = $adminmodules['displayScrollingText'];
+$displayWelcomeMessage           = $adminmodules['displayWelcomeMessage'];
+$displayLogo                     = $adminmodules['displayLogo'];
+$displayLogoEffect               = $adminmodules['displayLogoEffect'];
+$displaySlideShow                = $adminmodules['displaySlideShow'];
+$displayMegaMenu                 = $adminmodules['displayMegaMenu'];
+$displayDate                     = $adminmodules['displayDate'];
+$displayTime                     = $adminmodules['displayTime'];
+$displayRoundedCorner            = $adminmodules['displayRoundedCorner'];
+$displayBackgroundColorAnimation = $adminmodules['displayBackgroundColorAnimation'];
+$displayPageLoadTime             = $adminmodules['displayPageLoadTime'];
+$displayW3c                      = $adminmodules['displayW3c'];
+$displayRss                      = $adminmodules['displayRss'];
+
+//Use gzip if it is supported
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')){
+    ob_start("ob_gzhandler");
+}else{
+	ob_start();
+}
+
+
+$lang = '';
+if(!empty($_GET['lang'])){
+	$lang = $_GET['lang'];
+}else if(!empty($_COOKIE['lang'])){
+	$lang = $_COOKIE['lang'];
+}
+
+$lang = preg_replace('/[^A-z]/', '', $lang);
+$lang = empty($lang) ? 'en' : $lang;
+
+echo
+	'<!doctype html>',"\n",
+	sprintf('<html lang=%s class="no-js">', $lang), "\n",
+	'<head>'
+;
+
 //LOGIN AUTHENTIFICATION
+session_start();
 if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
 	$login = false;
 	if($_POST['Submit'] == $webui_login){
@@ -84,49 +110,27 @@ if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
 		;
     }
 }
-
-$adminmodules                    = AuroraWebUI\admin_modules();
-$id                              = $adminmodules['id'];
-$displayTopPanelSlider           = $adminmodules['displayTopPanelSlider'];
-$displayTemplateSelector         = $adminmodules['displayTemplateSelector'];
-$displayStyleSwitcher            = $adminmodules['displayStyleSwitcher'];
-$displayStyleSizer               = $adminmodules['displayStyleSizer'];
-$displayFontSizer                = $adminmodules['displayFontSizer'];
-$displayLanguageSelector         = $adminmodules['displayLanguageSelector'];
-$displayScrollingText            = $adminmodules['displayScrollingText'];
-$displayWelcomeMessage           = $adminmodules['displayWelcomeMessage'];
-$displayLogo                     = $adminmodules['displayLogo'];
-$displayLogoEffect               = $adminmodules['displayLogoEffect'];
-$displaySlideShow                = $adminmodules['displaySlideShow'];
-$displayMegaMenu                 = $adminmodules['displayMegaMenu'];
-$displayDate                     = $adminmodules['displayDate'];
-$displayTime                     = $adminmodules['displayTime'];
-$displayRoundedCorner            = $adminmodules['displayRoundedCorner'];
-$displayBackgroundColorAnimation = $adminmodules['displayBackgroundColorAnimation'];
-$displayPageLoadTime             = $adminmodules['displayPageLoadTime'];
-$displayW3c                      = $adminmodules['displayW3c'];
-$displayRss                      = $adminmodules['displayRss'];
 ?>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="templates/no_js.css" type="text/css" />
-  <link rel="stylesheet" href="<?php echo $template_css ?>" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="templates/no_js.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo $template_css ?>" type="text/css" />
 
-  <link rel="shortcut icon" href="<?php echo $favicon_image?>" />
-  <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
-  <script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
-  <script src="javascripts/global.js" type="text/javascript"></script>
+<link rel="shortcut icon" href="<?php echo $favicon_image?>" />
+<title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
+<script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
+<script src="javascripts/global.js" type="text/javascript"></script>
 
-  <script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
-  <script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>
+<script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+<script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>
 
-  <script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script>
-  <script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
+<script src="javascripts/jquery/jquery.Scroller-1.0.min.js" type="text/javascript"></script>
+<script src="javascripts/jquery/divscroller.js" type="text/javascript"></script>
 
-  <script type="text/javascript" src="javascripts/calendar-2.2.js"></script>
+<script type="text/javascript" src="javascripts/calendar-2.2.js"></script>
 
 <?php if($displayMegaMenu) { ?>
+<!-- start megamenu -->
 <link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/black.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/grey.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/blue.css" rel="stylesheet" type="text/css" />
@@ -136,30 +140,19 @@ $displayRss                      = $adminmodules['displayRss'];
 <link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/red.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo SYSURL ?>sites/menus/megamenu/css/skins/white.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo SYSURL ?>templates/jec-styled.css" rel="stylesheet" type="text/css" />
-
 <?php if($template == 'default')  { ?>
-<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/megamenu_default.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SYSURL; ?>sites/menus/megamenu/css/megamenu_default.css" rel="stylesheet" type="text/css" />
+<?php }else if($template == 'white')  { ?>
+<link href="<?php echo SYSURL; ?>sites/menus/megamenu/css/megamenu_white.css" rel="stylesheet" type="text/css" />
+<?php }else if($template == 'astra')  { ?>
+<link href="<?php echo SYSURL; ?>sites/menus/megamenu/css/megamenu_astra.css" rel="stylesheet" type="text/css" />
 <?php } ?>
-
-<?php if($template == 'white')  { ?>
-<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/megamenu_white.css" rel="stylesheet" type="text/css" />
-<?php } ?>
-
-<?php if($template == 'astra')  { ?>
-<link href="<?php echo SYSURL ?>sites/menus/megamenu/css/megamenu_astra.css" rel="stylesheet" type="text/css" />
-<?php } ?>
-
 <script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.hoverIntent.minified.js'></script>
-
 <?php if($MegaMenuVersion == '1.2')  { ?>
-  <script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.2.js'></script>
+<script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.2.js'></script>
+<?php }else if($MegaMenuVersion == '1.3.2')  { ?>
+<script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.3.2.js'></script>
 <?php } ?>
-
-<?php if($MegaMenuVersion == '1.3.2')  { ?>
-  <script type='text/javascript' src='<?php echo SYSURL ?>sites/menus/megamenu/javascripts/jquery.dcmegamenu.1.3.2.js'></script>
-<?php } ?>
-
-
 <script type="text/javascript">
 $(document).ready(function($){
 	$('#mega-menu-1').dcMegaMenu({
@@ -218,6 +211,12 @@ $(document).ready(function($){
 	});
 });
 </script>
+<?php if($MegaMenuPreset == 1)  { ?>
+<script type="text/javascript">
+$('.mega-menu, #mega-menu-1, #mega-menu-1 li a').corner();
+</script>
+<?php } ?>
+<!-- end megamenu -->
 <?php } ?>
 
 <?php if($displayLogoEffect) { ?>
@@ -284,12 +283,6 @@ $('#island1, #island2, #island3, #island4, #island5').corner();
 $('#island_picture1,#island_picture2,#island_picture3,#island_picture4,#island_picture5').corner();
 $('#island_info_part1, #island_info_part2, #island_info_part3, #island_info_part4, #island_info_part5').corner();
 // $('#CurrencyHistory').corner();
-</script>
-<?php } ?>
-
-<?php if($MegaMenuPreset == 1)  { ?>
-<script type="text/javascript">
-		$('.mega-menu, #mega-menu-1, #mega-menu-1 li a').corner();
 </script>
 <?php } ?>
 
