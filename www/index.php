@@ -174,11 +174,11 @@ var
 ;
 </script>
 <script type="text/javascript" src="<?php echo SYSURL; ?>sites/menus/megamenu/javascripts/config.js"></script>
-<?php if($MegaMenuPreset == 1 && $displayRoundedCorner){ ?>
+<?php	if($MegaMenuPreset == 1 && $displayRoundedCorner){ ?>
 <script type="text/javascript">
 $('.mega-menu, #mega-menu-1, #mega-menu-1 li a').corner();
 </script>
-<?php } ?>
+<?php	} ?>
 <!-- end megamenu -->
 <?php } ?>
 
