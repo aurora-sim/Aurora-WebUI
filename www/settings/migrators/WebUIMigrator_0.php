@@ -50,6 +50,7 @@ namespace Aurora\Addon\WebUI\Migrators{
 
 	class WebUI_0 extends Migrator{
 
+
 		const MigrationName = 'Wiredux';
 
 
