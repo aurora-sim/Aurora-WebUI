@@ -49,6 +49,12 @@ $configs[] = WebUI::r(
 	WIREDUX_PASSWORD
 );
 
+try{
+	Configs::d()->get_grid_info();
+}catch(\Aurora\Addon\APIAccessFailedException $e){
+	die($e->getMessage());
+}
+
 ################### Add Grid Page ###################
 define("AddGrid_GridNick", Configs::d()->get_grid_info('gridnick'));
 define("AddGrid_GridName", Configs::d()->get_grid_info('gridname'));
