@@ -1,7 +1,3 @@
-Skidz Partz Aurora WebInterface Redux v0.29
-
-Originally created by Rookiie84
-
 # Install Guide
 
 Please remember to backup your database regularly.
@@ -49,23 +45,28 @@ If you are using MySQL 5.5 or greater, you will need to specify the version numb
 Globals::i()->DBLink = new libAurora\DataManager\MySQLDataLoader(C_PDO_DSN, 'Wiredux', false, true, '5.5');
 ```
 
+## Aurora-sim Addon
 
-## Install WebUI via console
+This release uses the v2.x release candidates of [Aurora-WebAPI](https://github.com/aurora-sim/Aurora-WebAPI)
+
+### Install WebUI via console
 1. Start Aurora.Server.exe (if you want to run in Grid mode) or Aurora.exe (if you want to run in StandAlone mode)
-2. Put into the console 'compile module gui' and browse to the AuroraWebUI folder in your Aurora-Sim-Optional-Modules download and open the build.am file.
-3. Follow the instructions onscreen and it will compile and install your module and you are all done with setup.
+2. Put into the console 'compile module gui' and browse to the WebUI directory in your Aurora-WebAPI download and open the build.am file.
+3. Follow the instructions on-screen and it will compile and install your module and you are all done with setup.
 
-## Install WebUI manually
-1. copy the Aurora-Sim-Optional-Modules/AuroraWebUI directory into your ~/Aurora-Sim/addon-modules/ directory
+### Install WebUI manually
+1. copy the WebUI directory into your ~/Aurora-Sim/addon-modules/ directory
 2. Run runprebuild.bat
 
-## For grid mode (running Aurora.Server.exe)
-Copy Aurora-Sim-Optional-Modules/AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
+## Configuration
 
-## For standalone mode (just running Aurora.exe)
-Copy Aurora-Sim-Optional-Modules/AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/Configuration/Modules directory
+### For grid mode (running Aurora.Server.exe)
+Copy WebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
 
-## Upgrading from older version of WebUI
+### For standalone mode (just running Aurora.exe)
+Copy WebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/Configuration/Modules directory
+
+### Upgrading from older version of WebUI
 * The *WireduxHandler* property is renamed **WebUIHandler**
 * The *WireduxHandler* value is renamed **WebUIHandler**
 * The *WireduxHandlerPort* property is renamed **WebUIHandlerPort**
@@ -76,10 +77,10 @@ Copy Aurora-Sim-Optional-Modules/AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/
 The Admin Panel is located at:
 http://yourdomain.com/admin
 
-To add your user as an Admin Panel User:
+To promote your user as an Admin Panel User:
 Start Aurora (Aurora.Server in grid mode) and after it has started, type
 
-webui add user
+webui promote user
 
 and fill in the information that is asked for.
 
@@ -87,10 +88,10 @@ The user will now be able to use the Admin Panel as given above
 
 Enjoy Aurora WebUI
 
-To remove a user from the Admin Panel:
+To demote a user from the Admin Panel:
 Start Aurora (Aurora.Server in grid mode) and after it has started, type
 
-webui remove user
+webui demote user
 
 and fill in the information that is asked for.
 
@@ -255,4 +256,4 @@ $CONF_center_coord_y   = "1000";      // the Center-Y-Koordinate same as Aurora-
 ```
 
 # Support
-Please report all errors and bugs to #aurora-dev channel on irc.freenode.net
+Please report all errors and bugs to [#aurora-dev channel on irc.freenode.net](http://webchat.freenode.net/?channels=#aurora-dev)
