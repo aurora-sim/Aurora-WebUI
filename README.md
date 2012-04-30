@@ -42,36 +42,27 @@ define("C_DB_USER","root");
 define("C_DB_PASS","***");
 ```
 
+## Aurora-Sim Addon
 
-## Install WebUI via console
+This release uses the v1.x branch of [Aurora-WebAPI](https://github.com/aurora-sim/Aurora-WebAPI/tree/v1.x), current release [v1.1.2](https://github.com/aurora-sim/Aurora-WebAPI/tree/v1.1.2).
+Source for the v1.x branch of Aurora-WebAPI also exists in this repository, but will be removed in future releases.
+
+### Install WebUI via console
 1. Start Aurora.Server.exe (if you want to run in Grid mode) or Aurora.exe (if you want to run in StandAlone mode)
-2. Put into the console 'compile module gui' and browse to the AuroraService folder in your WebUI download and open the build.am file.
-3. Follow the instructions onscreen and it will compile and install your module and you are all done with setup.
+2. Put into the console 'compile module gui' and browse to the AuroraWebUI directory in your Aurora-WebAPI download and open the build.am file.
+3. Follow the instructions on-screen and it will compile and install your module and you are all done with setup.
 
-## Install WebUI manually
-1. copy the contents of the .Aurora-WebUI/AuroraService/addon-modules/ directory into your ~/Aurora-Sim/addon-modules/ directory
-2. Run runprebuild.bat or runprebuild2010.bat
-3. Run compile.bat
+### Install WebUI manually
+1. copy the AuroraWebUI directory into your ~/Aurora-Sim/addon-modules/ directory
+2. Run runprebuild.bat
 
-## For grid mode (running Aurora.Server.exe)
-In the Aurora-Sim\bin\AuroraServerConfiguration\Main.ini file, copy the following info under the [Handlers] line and ensure the password matches the websites in /settings/config.php
+## Configuration
 
-```ini
-    WireduxHandler = WireduxHandler
-    WireduxHandlerPort = 8007
-    WireduxHandlerPassword = "***"
-    WireduxTextureServerPort = 8002
-```
+### For grid mode (running Aurora.Server.exe)
+Copy AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
 
-## For standalone mode (just running Aurora.exe)
-In the Aurora-Sim\bin\Configuration\Standalone\StandaloneCommon.ini file, copy the following info under the [Handlers] line and ensure the password matches the websites in /settings/config.php
-
-```ini
-    WireduxHandler = WireduxHandler
-    WireduxHandlerPort = 8007
-    WireduxHandlerPassword = "***"
-    WireduxTextureServerPort = 8002
-```
+### For standalone mode (just running Aurora.exe)
+Copy AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/Configuration/Modules directory
 
 # Admin Panel
 The Admin Panel is located at:
@@ -256,4 +247,4 @@ $CONF_center_coord_y   = "1000";      // the Center-Y-Koordinate same as Aurora-
 ```
 
 # Support
-Please report all errors and bugs to #aurora-dev channel on irc.freenode.net
+Please report all errors and bugs to [#aurora-dev channel on irc.freenode.net](http://webchat.freenode.net/?channels=#aurora-dev)
