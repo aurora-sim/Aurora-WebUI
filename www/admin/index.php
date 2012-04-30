@@ -1,13 +1,8 @@
-<html> 
-<head> 
-<? include("../settings/config.php"); ?> 
-<script language="javascript"> 
-<!-- 
-window.location.href="<?= SYSURL ?>index.php?page=adminhome"; 
-// --> 
-</script> 
-</head> 
-<body></body> 
-</html> 
-
-
+<?php
+if(!file_exists('../settings/config.php') || !file_exists('../settings/databaseinfo.php')){
+	die('Configuration not present.');
+}
+require_once('../settings/config.php');
+header('Location: ' . SYSURL . 'index.php?page=adminhome');
+exit;
+?>
