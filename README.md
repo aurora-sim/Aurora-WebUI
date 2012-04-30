@@ -45,7 +45,7 @@ If you are using MySQL 5.5 or greater, you will need to specify the version numb
 Globals::i()->DBLink = new libAurora\DataManager\MySQLDataLoader(C_PDO_DSN, 'Wiredux', false, true, '5.5');
 ```
 
-## Aurora-sim Addon
+## Aurora-Sim Addon
 
 This release uses the v2.x release candidates of [Aurora-WebAPI](https://github.com/aurora-sim/Aurora-WebAPI)
 
