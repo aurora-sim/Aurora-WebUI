@@ -194,7 +194,7 @@ if(isset($_SESSION['ADMINID'])) {
 		$user_id = $userInfo->PrincipalID();
 		$username = $userInfo->Name();
 		$created = $userInfo->Created();
-		$flags = $userInfo->UserFlags();
+		$flags = $userInfo->Flags();
 		$create = date("d.m.Y", $created);
 ?>
 					<tr class="<?php echo ($odd = $w%2 )? "even":"odd" ?>" >
@@ -216,7 +216,7 @@ if(isset($_SESSION['ADMINID'])) {
 			echo '<b style="color:#00FF00;">', $webui_admin_manage_active, '</b>';
 		}else if(($flags & 3) == 3){
 			echo '<b style="color:#FF0000;">', $webui_admin_manage_notconf, '</b>';
-		}else if(($flags & 5) == 5){
+		}else if($flags & (16 | 32)){
 			echo '<b style="color:#FF0000;">', $webui_admin_manage_banned, '</b>';
 		}else{
 			echo '<b style="color:#FF0000;">', $webui_admin_manage_inactive, '</b>';
@@ -225,7 +225,7 @@ if(isset($_SESSION['ADMINID'])) {
 
 						</td>
 						<td width="21" align="enter">
-<?php 	if($active ==5) {?>
+<?php 	if($flags & (16 | 32)) {?>
 							<a href="index.php?<?php echo $GoPage ?>&action=unban&unbanusr=<?php echo $username ?>&user_id=<?php echo $user_id ?>">
 								<img src="images/icons/unban.png" alt="<?php echo $webui_admin_manage_userunban; ?>" title="<?php echo $webui_admin_manage_userunban; ?>">
 							</a>
