@@ -29,7 +29,6 @@ $AStart = $_GET['AStart'];
 $ALimit = $_GET['ALimit'];
 $count = $regions->count();
 $sitemax=ceil($count / $_GET['ALimit']);
-$sitestart=ceil($_GET['ALimit'] / 10)+1;
 if($sitemax == 0){$sitemax=1;}
 ?>
 
@@ -61,7 +60,7 @@ if($sitemax == 0){$sitemax=1;}
 							</a>
 						</td>
 						<td>
-						  	<p><? echo $webui_navigation_page; ?> <?=$sitestart ?> <? echo $webui_navigation_of; ?> <?=$sitemax ?></p>
+						  	<p><?php echo $webui_navigation_page, ' ', $_GET['AStart'], ' ', $webui_navigation_of, ' ', $sitemax; ?></p>
 						</td>
 						<td>
 							<a href="<?=$GoPage?>&<?=$Link1?>AStart=<? if($count <= ($AStart + $ALimit)) echo 0; else echo $AStart + $ALimit; ?>&amp;ALimit=<?=$ALimit?>" target="_self" title="<? echo $webui_pagination_tooltips_forward_page; ?>">
