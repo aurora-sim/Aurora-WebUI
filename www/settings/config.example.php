@@ -16,9 +16,6 @@
 //define("SYSNAME","***");
 define("SYSURL","http://your_webui_server_ip_or_dns/");
 define("SYSMAIL","***");
-define("WIREDUX_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WEBUI");
-define("WIREDUX_TEXTURE_SERVICE","http://your_webui_server_ip_or_dns:8002");
-define("WIREDUX_PASSWORD","***");
 
 // Should we display a 'Maintenance' page currently that blocks all access to the website?
 // (until disabled here)?
@@ -45,8 +42,9 @@ use Aurora\Addon\WebUI\Configs;
 $configs = Configs::i();
 
 $configs[] = WebUI::r(
-	WIREDUX_SERVICE_URL,
-	WIREDUX_PASSWORD
+	'http://your_webui_server_ip_or_dns:8007/webapi',
+	'User Name',
+	'API Access Token'
 );
 
 try{

@@ -14,13 +14,24 @@ Please remember to backup your database regularly.
 define("SYSNAME","This_usually_is_what_the_site_is_called");
 define("SYSURL","http://your_aurora_server_ip_or_dns_address");
 define("SYSMAIL","***");
-define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WEBUI");
-define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
-define("WIREDUX_PASSWORD","***");
 
 // Default StartPoint for Map
 $mapstartX=1000;
 $mapstartY=1000;
+```
+
+The service URL, username and password are no longer defined as constants so you'll need to put them directly into the Configs registry method:
+```php
+use Aurora\Addon\WebUI;
+use Aurora\Addon\WebUI\Configs;
+
+$configs = Configs::i();
+
+$configs[] = WebUI::r(
+	'http://your_webui_server_ip_or_dns:8007/webapi',
+	'User Name',
+	'API Access Token'
+);
 ```
 
 ## DatabaseInfo.php (basic must-configure settings)
@@ -47,31 +58,42 @@ Globals::i()->DBLink = new libAurora\DataManager\MySQLDataLoader(C_PDO_DSN, 'Wir
 
 ## Aurora-Sim Addon
 
-This release uses the v2.x release candidates of [Aurora-WebAPI](https://github.com/aurora-sim/Aurora-WebAPI)
+This release uses the v3.x release candidates of [Aurora-WebAPI](https://github.com/aurora-sim/Aurora-WebAPI)
 
-### Install WebUI via console
+### Install WebAPI via console
 1. Start Aurora.Server.exe (if you want to run in Grid mode) or Aurora.exe (if you want to run in StandAlone mode)
-2. Put into the console 'compile module gui' and browse to the WebUI directory in your Aurora-WebAPI download and open the build.am file.
+2. Put into the console 'compile module gui' and browse to the WebAPI directory in your Aurora-WebAPI download and open the build.am file.
 3. Follow the instructions on-screen and it will compile and install your module and you are all done with setup.
 
-### Install WebUI manually
-1. copy the WebUI directory into your ~/Aurora-Sim/addon-modules/ directory
+### Install WebAPI manually
+1. copy the WebAPI directory into your ~/Aurora-Sim/addon-modules/ directory
 2. Run runprebuild.bat
 
 ## Configuration
 
 ### For grid mode (running Aurora.Server.exe)
-Copy WebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
+Copy WebAPI/WebAPI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
 
 ### For standalone mode (just running Aurora.exe)
-Copy WebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/Configuration/Modules directory
+Copy WebAPI/WebAPI.ini to your ~/Aurora-Sim/bin/ directory/Configuration/Modules directory
 
-### Upgrading from older version of WebUI
+### Upgrading
+
+#### WebUI 1.x to WebUI 2.x
 * The *WireduxHandler* property is renamed **WebUIHandler**
 * The *WireduxHandler* value is renamed **WebUIHandler**
 * The *WireduxHandlerPort* property is renamed **WebUIHandlerPort**
 * The *WireduxHandlerPassword* property is renamed **WebUIHandlerPassword**
 * The *WireduxTextureServerPort* property is renamed **WebUIHandlerTextureServerPort**
+
+#### WebUI 2.x to WebAPI 3.x
+* The *Handlers* section is renamed **WebAPI**
+* The *WebUIHandler* property is renamed **Handler**
+* The *WebUIHandler* value is renamed **WebAPIHandler**
+* The *WebUIHandlerPort* property is renamed **Port**
+* The *WebUIHandlerTextureServerPort* property is renamed **TextureServerPort**
+* You'll need to use the **webapi get access token** console command to get the API access token for the account you're going to use with the API
+* You'll need to use the **webapi grant access** console command to give the desired level of access for the account you're going to use with the API
 
 # Admin Panel
 The Admin Panel is located at:
@@ -127,7 +149,7 @@ NOTE: Only pulic ones will be listed on the website
 * Don't forget to set up your php.ini mail
 
 ## Errors with viewing or logging users into WebUI (not admin users)
-* Make sure that an Aurora.Addon.WebUI.dll is in the bin/ folder of the place that are you running Aurora (or Aurora.Server) from. You can get this from https://github.com/aurora-sim/Aurora-WebUI/downloads if you didn't compile Aurora and Aurora-WebUI.
+* Make sure that an Aurora.Addon.WebAPI.dll is in the bin/ folder of the place that are you running Aurora (or Aurora.Server) from.
 
 ## Page editor will not load in Administrator Section.
 * While testing on osgrid.org we resolved this issue by creating a .htaccess file in the root of your website with the following code
