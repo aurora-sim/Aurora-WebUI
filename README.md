@@ -129,17 +129,7 @@ NOTE: Only pulic ones will be listed on the website
         RewriteRule (.*)$ http://yourdomain.com/$1 [R=301,L]
 ```
 
-
-## Says unknown error, or something when wrong right after I turned on opensim.. 
-
-<skidz> oh.. one thing to note.. 
-<skidz> opensim seems to have a bug.. when making calls to the handler.. the first one always fails after you start opensim
-<skidz> It actually runs.. but.. the data is never returned to the php.. 
-<skidz> but.. after that first.. seems to work fine.. 
-<skidz> I have not tried to debug this yet
-<skidz> I should add that in the install.. lol
-
-## I get the following message trying to load opensimwi in my web browser:
+## I get the following message trying to load webui in my web browser:
 
 ```php
 query("SELECT password FROM ".C_ADMIN_TBL." WHERE password='$_SESSION[ADMINUID]'");
@@ -185,7 +175,7 @@ asp_tags = On
 After you save your php.ini restart apache and you should be ok now.
 
 
-## I get the following message trying to load opensimwi in my web browser:
+## I get the following message trying to load webui in my web browser:
 
 ***Notice: Use of undefined constant ......***
 
