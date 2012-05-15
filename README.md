@@ -45,7 +45,6 @@ define("C_DB_PASS","***");
 ## Aurora-Sim Addon
 
 This release uses the v1.x branch of [Aurora-WebAPI](https://github.com/aurora-sim/Aurora-WebAPI/tree/v1.x), current release [v1.1.2](https://github.com/aurora-sim/Aurora-WebAPI/tree/v1.1.2).
-Source for the v1.x branch of Aurora-WebAPI also exists in this repository, but will be removed in future releases.
 
 ### Install WebUI via console
 1. Start Aurora.Server.exe (if you want to run in Grid mode) or Aurora.exe (if you want to run in StandAlone mode)
