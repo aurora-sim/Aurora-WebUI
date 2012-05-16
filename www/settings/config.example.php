@@ -225,6 +225,7 @@ define("C_ADMINOPTIONS_TBL", "wi_adminoptions");
 define("C_ADMINBGCOLORANIM_TBL", "wi_adminbgcoloranim");
 
 ################ Recaptcha ###############################
+#	Obtain your public and private keys from http://www.google.com/recaptcha
 
 //define('RECAPTCHA_PUBLIC_KEY', 'foo');
 //define('RECAPTCHA_PRIVATE_KEY', 'bar');
