@@ -240,6 +240,7 @@ define("C_GALLERY_TBL", "wi_gallery");
 define("C_ADMINMODULES_TBL", "wi_adminmodules");
 
 ################ Recaptcha ###############################
+#	Obtain your public and private keys from http://www.google.com/recaptcha
 
 // get keys from http://recaptcha.net
 
