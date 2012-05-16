@@ -1,7 +1,3 @@
-Skidz Partz Aurora WebInterface Redux v0.29
-
-Originally created by Rookiie84
-
 # Install Guide
 
 Please remember to backup your database regularly.
@@ -12,7 +8,7 @@ Please remember to backup your database regularly.
 4. Make a backup of your database ;)
 5. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
 
-Config.php (basic must settings)
+## Config.php (basic must settings)
 
 ```php
 ##################### System #########################
@@ -28,7 +24,7 @@ $mapstartX=1000;
 $mapstartY=1000;
 ```
 
-DatabaseInfo.php (basic must settings)
+## DatabaseInfo.php (basic must settings)
 
 ```php
 ##################### Database ########################
