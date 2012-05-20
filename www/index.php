@@ -23,7 +23,7 @@ require_once("settings/databaseinfo.php");
 require_once("languages/translator.php");
 require_once("templates/templates.php");
 require_once('settings/AuroraWebUI.php');
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 
 define('WEBUI_PAGE', isset($_GET['page']) ? $_GET['page'] : 'home');
 

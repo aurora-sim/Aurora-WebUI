@@ -9,7 +9,7 @@
 include("../settings/config.php");
 include("../settings/databaseinfo.php");
 include("templates/templates.php");
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 
 list($INFOBOX,$BOXCOLOR,$BOX_TITLE,$BOX_INFOTEXT) = Globals::i()->DBLink->Query(array(
 	'active',

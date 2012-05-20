@@ -3,7 +3,7 @@ include("../../../settings/config.php");
 include("../includes/config.php");
 include("../includes/mt_header.php");
 include("../languages/translator.php");
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 
 
 if(isset($_GET['agent'])){

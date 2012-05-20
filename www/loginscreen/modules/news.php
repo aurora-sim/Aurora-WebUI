@@ -18,7 +18,7 @@
               <table class=newslist cellSpacing=0 cellPadding=0>
                   <tbody>
 <?php
-	use Aurora\Addon\WebUI\Configs;
+	use Aurora\Addon\WebAPI\Configs;
 	//NEWS SYSTEM
 	
 	$news = Configs::d()->NewsFromGroupNotices(0, 4);

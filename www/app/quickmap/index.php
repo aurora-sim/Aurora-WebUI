@@ -40,7 +40,7 @@ $start_y = $grid_y + 10;
 $end_x = $grid_x + 20;
 $end_y = $grid_y - 10;
 
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 $region_sg = array();
 foreach(Configs::d()->GetRegionsInArea($start_x * 256, $start_y * 256, $end_x * 256, $end_y * 256) as $region){
 	$region_sg[] = $region->RegionID() . ';' . $region->RegionName() . ';' . $region->RegionLocX() . ';' . $region->RegionLocY();

@@ -18,7 +18,7 @@ function OpenAgent(firstname, lastname){
 					<td><b>Info</b></td>
 				</tr>
 <?php
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 foreach(Configs::d()->RecentlyOnlineUsers(3930, true) as $UserInfo){
 	if ($UserInfo->CurrentRegionName() != ''){
 		echo

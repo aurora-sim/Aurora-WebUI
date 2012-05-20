@@ -10,7 +10,7 @@
     
 <?php
 	use Aurora\Framework;
-	use Aurora\Addon\WebUI\Configs;
+	use Aurora\Addon\WebAPI\Configs;
 
 	$querypage = max(isset($_GET['pagenum']) ? (integer)$_GET['pagenum'] : 0, 0);
 	try{

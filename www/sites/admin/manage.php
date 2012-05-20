@@ -1,5 +1,5 @@
 <?php
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 if(isset($_SESSION['ADMINID'])) {
 
 	$GoPage       = 'page=adminmanage';

@@ -5,7 +5,7 @@ include("../../languages/translator.php");
 include("../../templates/templates.php");
 require_once('../../settings/AuroraWebUI.php');
 
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 $regions = Configs::d()->GetRegionsByXY($_GET['x'], $_GET['y']);
 $region = $regions->current();
 $RegionName = $region->RegionName();

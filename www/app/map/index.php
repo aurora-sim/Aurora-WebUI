@@ -70,7 +70,7 @@ function loadmap(){
     mapInstance = new WORLDMap(document.getElementById('map-container'), {hasZoomControls: true, hasPanningControls: true});
     mapInstance.centerAndZoomAtWORLDCoord(new XYPoint(<?php echo $mapX; ?>,<?php echo $mapY; ?>),1);
 <?php
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 foreach(Configs::d()->GetRegions() as $region){
 	$MarkerCoordX = $locX = $region->RegionLocX();
 	$MarkerCoordY = $locY = $region->RegionLocY();

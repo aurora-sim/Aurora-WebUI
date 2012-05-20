@@ -1,6 +1,6 @@
 <?
 use Aurora\Addon\WebUI;
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 
 $_GET['AStart'] = isset($_GET['AStart']) ? (integer)$_GET['AStart'] : 1;
 $_GET['ALimit'] = isset($_GET['ALimit']) ? (integer)$_GET['ALimit'] : 10;

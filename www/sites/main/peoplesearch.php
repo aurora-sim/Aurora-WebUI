@@ -1,5 +1,5 @@
 <?php
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 $AnzeigeStart = 0;
 
 // LINK SELECTOR

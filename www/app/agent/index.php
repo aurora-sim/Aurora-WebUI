@@ -4,7 +4,7 @@ include("../../settings/databaseinfo.php");
 include("../../languages/translator.php");
 include("../../templates/templates.php");
 require_once('../../settings/AuroraWebUI.php');
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 
 if (isset($_GET['name'])){
 	try{

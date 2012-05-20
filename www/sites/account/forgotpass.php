@@ -36,7 +36,7 @@ function Form(theForm){
 //-->
 </script>
 <?php
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI\Configs;
 if(isset($_POST['name']) && $_POST['name']!=''){
 	if (Configs::d()->ConfirmUserEmailName($_POST['name'], $_POST['email'])){
 		// CODE generator

@@ -49,7 +49,7 @@
 			<div style=" border:hidden; color:#ffffff; padding:0px; width:300px; height:160px; overflow:auto; ">
 <?php
 	$w=0;
-	use Aurora\Addon\WebUI\Configs;
+	use Aurora\Addon\WebAPI\Configs;
 	foreach(Configs::d()->GetRegions(null,0, 0, 10, $sortByRegion, $sortByLocX, $sortByLocY) as $region){
 		$regionName = $region->RegionName();
 		$locX = $region->RegionLocX();

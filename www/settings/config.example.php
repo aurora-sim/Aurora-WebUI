@@ -36,12 +36,12 @@ require_once('phar://' . WEBUI_INSTALL_PATH . 'settings/libAurora.php.phar.gz/lo
 
 $config_directory = WEBUI_INSTALL_PATH . 'settings' . DIRECTORY_SEPARATOR;
 
-use Aurora\Addon\WebUI;
-use Aurora\Addon\WebUI\Configs;
+use Aurora\Addon\WebAPI;
+use Aurora\Addon\WebAPI\Configs;
 
 $configs = Configs::i();
 
-$configs[] = WebUI::r(
+$configs[] = WebAPI::r(
 	'http://your_webui_server_ip_or_dns:8007/webapi',
 	'User Name',
 	'API Access Token'
