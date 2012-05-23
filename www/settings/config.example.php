@@ -23,14 +23,7 @@ $displayMaintenancePage = false;
 
 ################ libAurora.php ########################################
 
-$dir = getcwd();
-$i = 0;
-while(!is_dir($dir . DIRECTORY_SEPARATOR . 'settings') && !is_file($dir . DIRECTORY_SEPARATOR . 'settings' . DIRECTORY_SEPARATOR . 'libAurora.php.phar.gz') && $i <= 2){
-	++$i;
-	$pathinfo = pathinfo($dir);
-	$dir = $pathinfo['dirname'];
-}
-define('WEBUI_INSTALL_PATH', $dir . DIRECTORY_SEPARATOR);
+define('WEBUI_INSTALL_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
 
 require_once('phar://' . WEBUI_INSTALL_PATH . 'settings/libAurora.php.phar.gz/load.php');
 
