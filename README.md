@@ -73,6 +73,7 @@ Disable error notices to supress messages regarding the use of undefined constan
 error_reporting = E_ALL & ~E_NOTICE
 ```
 
+* Don't forget to set up your php.ini mail
 
 ## Aurora-Sim Addon
 
@@ -164,7 +165,6 @@ NOTE: Only pulic ones will be listed on the website
 
 
 # Trouble Shooting
-* Don't forget to set up your php.ini mail
 
 ## Errors with viewing or logging users into WebUI (not admin users)
 * Make sure that an Aurora.Addon.WebAPI.dll is in the bin/ folder of the place that are you running Aurora (or Aurora.Server) from.
