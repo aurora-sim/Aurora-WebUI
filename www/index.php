@@ -111,13 +111,13 @@ if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
     }
 }
 ?>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $webui_welcome, ' ', SYSNAME; ?></title>
+
 <link rel="stylesheet" href="templates/no_js.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo $template_css ?>" type="text/css" />
-
 <link rel="shortcut icon" href="<?php echo $favicon_image?>" />
-<title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
+
 <script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
 <script src="javascripts/global.js" type="text/javascript"></script>
 
@@ -129,7 +129,7 @@ if($_POST['Submit'] == $webui_login || $_POST['Submit'] == $webui_admin_login){
 
 <script type="text/javascript" src="javascripts/calendar-2.2.js"></script>
 <?php if($displayRoundedCorner)  { ?>
-<script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
+<script type="text/javascript" src="<?php echo SYSURL; ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
 <?php } ?>
 <?php if($displayMegaMenu) { ?>
 <!-- start megamenu -->
