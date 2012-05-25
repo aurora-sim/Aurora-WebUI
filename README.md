@@ -1,14 +1,17 @@
+Skidz Partz Aurora WebInterface Redux v0.29
+
+Originally created by Rookiie84
+
 # Install Guide
 
 Please remember to backup your database regularly.
 
 1. Unzip & Upload these files to your webserver.
-2. Copy **./settings/config.example.php** to **./settings/config.php**
-3. Copy **./settings/DatabaseInfo.example.php** to **./settings/DatabaseInfo.php**
-4. Make a backup of your database ;)
-5. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
+2. Edit "./settings/config.php"
+3. Make a backup of your database ;)
+4. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
 
-## Config.php (basic required settings)
+Config.php (basic must settings)
 
 ```php
 ##################### System #########################
@@ -24,7 +27,7 @@ $mapstartX=1000;
 $mapstartY=1000;
 ```
 
-## DatabaseInfo.php
+DatabaseInfo.php (basic must settings)
 
 ```php
 ##################### Database ########################
@@ -39,26 +42,10 @@ define("C_DB_USER","root");
 define("C_DB_PASS","***");
 ```
 
-## php.ini
-
-Enable short tags and ASP-style tags for PHP scripts.
-```ini
-short_open_tag = On
-
-; Allow ASP-style <% %> tags.
-asp_tags = On
-```
-
-Disable error notices to supress messages regarding the use of undefined constants.
-```ini
-error_reporting = E_ALL & ~E_NOTICE
-```
-
-* Don't forget to set up your php.ini mail
-
 ## Aurora-Sim Addon
 
 This release uses the v1.x branch of [Aurora-WebAPI](https://github.com/aurora-sim/Aurora-WebAPI/tree/v1.x), current release [v1.1.2](https://github.com/aurora-sim/Aurora-WebAPI/tree/v1.1.2).
+Source for the v1.x branch of Aurora-WebAPI also exists in this repository, but will be removed in future releases.
 
 ### Install WebUI via console
 1. Start Aurora.Server.exe (if you want to run in Grid mode) or Aurora.exe (if you want to run in StandAlone mode)
@@ -128,9 +115,10 @@ NOTE: Only pulic ones will be listed on the website
 
 
 # Trouble Shooting
+* Don't forget to set up your php.ini mail
 
 ## Errors with viewing or logging users into WebUI (not admin users)
-* Make sure that an Aurora.Addon.WebUI.dll is in the bin/ folder of the place that are you running Aurora (or Aurora.Server) from.
+* Make sure that an Aurora.Addon.WebUI.dll is in the bin/ folder of the place that are you running Aurora (or Aurora.Server) from. You can get this from https://github.com/aurora-sim/Aurora-WebUI/downloads if you didn't compile Aurora and Aurora-WebUI.
 
 ## Page editor will not load in Administrator Section.
 * While testing on osgrid.org we resolved this issue by creating a .htaccess file in the root of your website with the following code
@@ -139,6 +127,79 @@ NOTE: Only pulic ones will be listed on the website
         RewriteEngine On  
         RewriteCond %{HTTP_HOST} ^www.yourdomain.com$  
         RewriteRule (.*)$ http://yourdomain.com/$1 [R=301,L]
+```
+
+
+## Says unknown error, or something when wrong right after I turned on opensim.. 
+
+<skidz> oh.. one thing to note.. 
+<skidz> opensim seems to have a bug.. when making calls to the handler.. the first one always fails after you start opensim
+<skidz> It actually runs.. but.. the data is never returned to the php.. 
+<skidz> but.. after that first.. seems to work fine.. 
+<skidz> I have not tried to debug this yet
+<skidz> I should add that in the install.. lol
+
+## I get the following message trying to load opensimwi in my web browser:
+
+```php
+query("SELECT password FROM ".C_ADMIN_TBL." WHERE password='$_SESSION[ADMINUID]'");
+list($admpass) = $DbLink->next_record();
+if($admpass){
+	$ADMINCHECK = $admpass;
+}else{
+	$ADMINCHECK = "454";
+}
+if($_POST[adminlogin]=="admincheck"){
+	$pass = $_POST[password];
+	$passcheck = md5(md5($pass) . ":" );
+	$DbLink->query("SELECT username,password FROM ".C_ADMIN_TBL." WHERE username='$_POST[username]'");
+	list($adminname,$adminpass) = $DbLink->next_record();
+	if($adminpass == $passcheck){
+		$_SESSION[ADMINUID] = $adminpass;
+	}
+}
+if($_POST[check]==1){
+	echo "";
+}
+```
+
+###	Resolution
+Your PHP is not configured to use short tags or asp style, to fix the problem edit your php.ini and locate the following lines:
+
+```ini
+short_open_tag = Off
+
+; Allow ASP-style <% %> tags.
+asp_tags = Off
+```
+
+Change to
+
+```ini
+short_open_tag = On
+
+; Allow ASP-style <% %> tags.
+asp_tags = On
+```
+
+After you save your php.ini restart apache and you should be ok now.
+
+
+## I get the following message trying to load opensimwi in my web browser:
+
+***Notice: Use of undefined constant ......***
+
+###	Resolution
+Your PHP is not configured to handle errors properly, to fix the problem edit your php.ini and locate the following lines:
+
+```ini
+error_reporting = E_ALL 
+```
+
+Change to
+
+```ini
+error_reporting = E_ALL & ~E_NOTICE
 ```
 
 # Matto Destiny & djphil Quickmap

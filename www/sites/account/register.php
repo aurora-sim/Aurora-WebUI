@@ -300,7 +300,8 @@ function displayDefaultAvatars()
               <? 
                 echo "<script type=\"text/javascript\">var RecaptchaOptions = {theme : '".$template_captcha_color."'};</script>"; ?>
                 <? require_once('recaptchalib.php');
-                echo recaptcha_get_html(RECAPTCHA_PUBLIC_KEY);
+                $publickey = "6Lf_MQQAAAAAAIGLMWXfw2LWbJglGnvEdEA8fWqk"; // you got this from the signup page
+                echo recaptcha_get_html($publickey);
               ?>
             </div>
           </td>
@@ -378,7 +379,8 @@ function displayDefaultAvatars()
 	}
 	
 	require_once('recaptchalib.php');
-	$resp = recaptcha_check_answer(RECAPTCHA_PRIVATE_KEY,
+	$privatekey = "6Lf_MQQAAAAAAB2vCZraiD2lGDKCkWfULvhG4szK";
+	$resp = recaptcha_check_answer($privatekey,
 					$_SERVER["REMOTE_ADDR"],
 					$_POST["recaptcha_challenge_field"],
 					$_POST["recaptcha_response_field"]);
