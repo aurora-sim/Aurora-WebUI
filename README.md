@@ -54,6 +54,7 @@ Disable error notices to supress messages regarding the use of undefined constan
 error_reporting = E_ALL & ~E_NOTICE
 ```
 
+* Don't forget to set up your php.ini mail
 
 ## Aurora-Sim Addon
 
@@ -127,7 +128,6 @@ NOTE: Only pulic ones will be listed on the website
 
 
 # Trouble Shooting
-* Don't forget to set up your php.ini mail
 
 ## Errors with viewing or logging users into WebUI (not admin users)
 * Make sure that an Aurora.Addon.WebUI.dll is in the bin/ folder of the place that are you running Aurora (or Aurora.Server) from.
@@ -139,30 +139,6 @@ NOTE: Only pulic ones will be listed on the website
         RewriteEngine On  
         RewriteCond %{HTTP_HOST} ^www.yourdomain.com$  
         RewriteRule (.*)$ http://yourdomain.com/$1 [R=301,L]
-```
-
-## I get the following message trying to load webui in my web browser:
-
-```php
-query("SELECT password FROM ".C_ADMIN_TBL." WHERE password='$_SESSION[ADMINUID]'");
-list($admpass) = $DbLink->next_record();
-if($admpass){
-	$ADMINCHECK = $admpass;
-}else{
-	$ADMINCHECK = "454";
-}
-if($_POST[adminlogin]=="admincheck"){
-	$pass = $_POST[password];
-	$passcheck = md5(md5($pass) . ":" );
-	$DbLink->query("SELECT username,password FROM ".C_ADMIN_TBL." WHERE username='$_POST[username]'");
-	list($adminname,$adminpass) = $DbLink->next_record();
-	if($adminpass == $passcheck){
-		$_SESSION[ADMINUID] = $adminpass;
-	}
-}
-if($_POST[check]==1){
-	echo "";
-}
 ```
 
 # Matto Destiny & djphil Quickmap
