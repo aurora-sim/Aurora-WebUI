@@ -7,6 +7,13 @@
  *
  */
 
+//Use gzip if it is supported
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')){
+    ob_start("ob_gzhandler");
+}else{
+	ob_start();
+}
+
 // Page Load Time
 $time = microtime();
 $time = explode(" ", $time);
@@ -48,13 +55,6 @@ $displayBackgroundColorAnimation = $adminmodules['displayBackgroundColorAnimatio
 $displayPageLoadTime             = $adminmodules['displayPageLoadTime'];
 $displayW3c                      = $adminmodules['displayW3c'];
 $displayRss                      = $adminmodules['displayRss'];
-
-//Use gzip if it is supported
-if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')){
-    ob_start("ob_gzhandler");
-}else{
-	ob_start();
-}
 
 
 $lang = '';
