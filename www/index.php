@@ -207,44 +207,43 @@ $(function(){Header.addFade("#headerimages");});
 <script type="text/javascript">
 // http://jquery.malsup.com/corner/
 // Add more class here ...
-$('#annonce1, #annonce2, #annonce3, #annonce4, #annonce5, #annonce6, #annonce7, #annonce10').corner();
-$('#info1, #info2, #info3, #info4, #info5, #info6, #info7, #info10').corner();
-$('#aide1, #aide2, #aide3, #aide4, #aide5, #aide6, #aide7, #aide10').corner();
-$('#step1, #step2, #step3, #step4, #step5, #step6, #step7, #step10').corner();
-$('#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5').corner();
-$('#ContentHeaderLeft, #ContentHeaderCenter, #ContentHeaderRight').corner("5px");
-$('.news_time, .news_title, .news_content, #news_online').corner();
+$(document).ready(function(){
+	$([
+		'#annonce1, #annonce2, #annonce3, #annonce4, #annonce5, #annonce6, #annonce7, #annonce10',
+		'#info1, #info2, #info3, #info4, #info5, #info6, #info7, #info10',
+		'#aide1, #aide2, #aide3, #aide4, #aide5, #aide6, #aide7, #aide10',
+		'#step1, #step2, #step3, #step4, #step5, #step6, #step7, #step10',
+		'#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5',
+		'.news_time, .news_title, .news_content, #news_online',
+		'#container,#header,#content',
+		'#region_map',
+		'.menu',
+		'#chat',
+		'#download1, #download2, #download3, #download1 a, #download2 a, #download3 a', // Download Page
+		'#addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10, #addgrid h3 a', // AddGrid Page
+		'#island1, #island2, #island3, #island4, #island5', // StarDust Currency Pages
+		'#island_picture1,#island_picture2,#island_picture3,#island_picture4,#island_picture5', // StarDust Currency Pages
+		'#island_info_part1, #island_info_part2, #island_info_part3, #island_info_part4, #island_info_part5', // StarDust Currency Pages
+//		'#CurrencyHistory' // StarDust Currency Pages
+	].join(', ')).corner();
+	$([
+		'#ContentHeaderLeft, #ContentHeaderCenter, #ContentHeaderRight',
+		'#translator, #welcomeText',
+		'#login, #register, #forget_pass',
+	].join(', ')).corner('5px');
+	$([
+		'button, .roundedinput, .forgot_pass_bouton, .adminsettings_bouton',
+		'#roundedcoord',
+		'#info_loginscreen_button'
+	].join(', ')).corner('10px');
 
-$(function(){
-$('#dynCorner').click(function() {
-$('#dynamic').corner();
+	$('#dynCorner').click(function(){
+		$('#dynamic').corner();
+	});
+	$('#dynUncorner').click(function() {
+		$('#dynamic').uncorner();
+	});
 });
-
-$('#dynUncorner').click(function() {
-$('#dynamic').uncorner();
-});
-
-$("#translator, #welcomeText").corner("5px");
-$('#container,#header,#content').corner(); // (add to curvycorner)
-$('#region_map').corner();
-$('#login, #register, #forget_pass').corner("5px");
-$('.menu').corner();
-$('#chat').corner();
-$('button, .roundedinput, .forgot_pass_bouton, .adminsettings_bouton').corner("10px");
-$('#roundedcoord').corner("10px");
-$('#info_loginscreen_button').corner("10px");
-});
-/* Downlaod Page */
-$('#download1, #download2, #download3, #download1 a, #download2 a, #download3 a').corner();
-
-/* AddGrid Page */
-$('#addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10, #addgrid h3 a').corner();
-
-/* StarDust Currency Pages */
-$('#island1, #island2, #island3, #island4, #island5').corner();
-$('#island_picture1,#island_picture2,#island_picture3,#island_picture4,#island_picture5').corner();
-$('#island_info_part1, #island_info_part2, #island_info_part3, #island_info_part4, #island_info_part5').corner();
-// $('#CurrencyHistory').corner();
 </script>
 <?php } ?>
 
@@ -253,185 +252,186 @@ $('#island_info_part1, #island_info_part2, #island_info_part3, #island_info_part
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#annonce1").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
-  });
+	var
+		bgColorConfig = <?php echo json_encode(array(
+			array(
+				'hover'    => $BackgroundColorHoverStep1,
+				'end'      => $BackgroundColorEndStep1,
+				'selector' => implode(', ', array(
+					'#annonce1',
+					'#step1',
+					'#info1',
 
-	$("#annonce2").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
-  });
+					#region Page Downloads
 
-	$("#annonce3").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
-  });
+					'#download1',
+					'#download2',
+					'#download3',
 
-	$("#annonce4").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep4 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep4 ?>'}, 800);
-  });
+					#endregion
 
-	$("#annonce5").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep5 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep5 ?>'}, 800);
-  });
+					#region Page News
 
-	$("#annonce6").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep6 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep6 ?>'}, 800);
-  });
+					'.news_time',
+					'.news_title',
+					'.news_content',
 
-	$("#annonce7").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep7 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep7 ?>'}, 800);
-  });
+					#endregion
 
-	$("#annonce10").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep10 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep10 ?>'}, 800);
-  });
+					#region Grid Status Module
 
+					'#gridstatus1',
+					'#gridstatus2',
+					'#gridstatus3',
+					'#gridstatus4',
+					'#gridstatus5',
 
-  $("#step1").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
-  });
+					#endregion
 
-	$("#step2").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
-  });
+					#region AddGrid Page
 
-	$("#step3").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
-  });
+					'#addgrid01',
+					'#addgrid02',
+					'#addgrid03',
+					'#addgrid04',
+					'#addgrid05',
+					'#addgrid06',
+					'#addgrid07',
+					'#addgrid08',
+					'#addgrid09',
+					'#addgrid10',
+
+					#endregion
 
 
-  $("#info1").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
-  });
+				)),
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStep2,
+				'end'      => $BackgroundColorEndStep2,
+				'selector' => implode(', ', array(
+					'#annonce2',
+					'#step2',
+					'#info2'
+				)),
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStep3,
+				'end'      => $BackgroundColorEndStep3,
+				'selector' => implode(', ', array(
+					'#annonce3',
+					'#step3',
+					'#info3'
+				)),
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStep4,
+				'end'      => $BackgroundColorEndStep4,
+				'selector' => implode(', ', array(
+					'#annonce4',
+					'#aide1',
+				)),
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStep5,
+				'end'      => $BackgroundColorEndStep5,
+				'selector' => implode(', ', array(
+					'#annonce5',
+					'#aide2',
+				)),
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStep6,
+				'end'      => $BackgroundColorEndStep6,
+				'selector' => implode(', ', array(
+					'#annonce6',
+					'#aide3',
+				)),
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStep7,
+				'end'      => $BackgroundColorEndStep7,
+				'selector' => implode(', ', array(
+					'#annonce7',
+				)),
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStep10,
+				'end'      => $BackgroundColorEndStep10,
+				'selector' => implode(', ', array(
+					'#annonce10',
+				)),
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStepMegaMenu1,
+				'end'      => $BackgroundColorEndStepMegaMenu1,
+				'selector' => implode(', ', array(
+					'#mega-menu-1 a',
+				))
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStepLoginBouton1,
+				'end'      => $BackgroundColorEndStepLoginBouton1,
+				'selector' => implode(', ', array(
+					'#register_bouton',
+					'#login_bouton',
+					'#forgot_pass_bouton',
+					'#adminlogin_button',
+					'#create_news_button',
+					'#edit_news_item_button',
+					'#info_loginscreen_button',
 
-	$("#info2").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
-  });
+					#region Page Downloads
 
-	$("#info3").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
-  });
+					'#download1 a',
+					'#download2 a',
+					'#download3 a',
 
-	$("#aide1").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep4 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep4 ?>'}, 800);
-  });
+					#endregion
 
-	$("#aide2").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep5 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep5 ?>'}, 800);
-  });
+					#region AddGrid Page
 
-	$("#aide3").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep6 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep6 ?>'}, 800);
-  });
+					'#addgrid h3 a',
 
-	$("#mega-menu-1 a").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepMegaMenu1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepMegaMenu1 ?>'}, 800);
-  });
+					#endregion
 
-	$("#register_bouton, #login_bouton, #forgot_pass_bouton, #adminlogin_button").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
-  });
+					#region Stardust Module
 
-	$(".adminsettings_bouton").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepAdminSettingBouton1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepAdminSettingBouton1 ?>'}, 800);
-  });
+					'#island_input_button1',
+					'#island_input_button2',
+					'#island_input_button3',
+					'#island_input_button4',
+					'#island_input_button5',
+					'#get_it_now_button',
 
-	$("#create_news_button, #edit_news_item_button, #info_loginscreen_button").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
-  });
-
-  /* Page Downloads */
-  	$("#download1, #download2, #download3").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
-  });
-
-  	$("#download1 a, #download2 a, #download3 a").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
-  });
-
-  /* Page News */
-	$(".news_time, .news_title, .news_content").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
-  });
-
-  /* Grid Status Module */
-	$("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
-  });
-
-  /* AddGrid Page */
-	$("#addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
-  });
-
-  	$("#addgrid h3 a").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
-  });
-
-  /* Stardust Module */
-	$("#island_input_button1, #island_input_button2, #island_input_button3, #island_input_button4, #island_input_button5, #get_it_now_button").hover(function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
-  },function() {
-    $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
-  });
-
+					#endregion
+				))
+			),
+			array(
+				'hover'    => $BackgroundColorHoverStepAdminSettingBouton1,
+				'end'      => $BackgroundColorEndStepAdminSettingBouton1,
+				'selector' => implode(', ', array(
+					'.adminsettings_bouton',
+				))
+			)
+		)); ?>
+	;
+	for(var i=0;i<bgColorConfig.length;++i){
+		$(bgColorConfig[i].selector).attr('data-bgcolor-hover', bgColorConfig[i].hover);
+		$(bgColorConfig[i].selector).attr('data-bgcolor-end', bgColorConfig[i].end);
+		$(bgColorConfig[i].selector).hover(function(){
+			$(this).stop().animate({
+				backgroundColor : $(this).attr('data-bgcolor-hover')
+			}, 800);
+		}, function(){
+			$(this).stop().animate({
+				backgroundColor : $(this).attr('data-bgcolor-end')
+			}, 800);
+		});
+	}
 });
 </script>
 <?php } ?>
-
 <?php if($displayFontSizer) { ?>
 <script src="javascripts/jquery/jquery.cookie.js" type="text/javascript"></script>
 <script src="javascripts/jquery/jquery.fontscale.js" type="text/javascript"></script>
