@@ -1,11 +1,11 @@
 <?php
 /*
- * Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
- * See CONTRIBUTORS for a full list of copyright holders.
- *
- * See LICENSE for the full licensing terms of this file.
- *
- */
+* Copyright (c) 2007 - 2011 Contributors, http://opensimulator.org/, http://aurora-sim.org/
+* See CONTRIBUTORS for a full list of copyright holders.
+*
+* See LICENSE for the full licensing terms of this file.
+*
+*/
 
 //Use gzip if it is supported
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')){
@@ -443,7 +443,6 @@ $(document).ready(function(){
 });
 </script>
 <?php } ?>
-
 <?php if($displayScrollingText){ ?>
 	<script type="text/javascript">
 	$(document).ready(function(){$('#scrollercontrol').ResetScroller(<?php echo json_encode(array(
@@ -452,108 +451,77 @@ $(document).ready(function(){
 )); ?>);});
 	</script>
 <?php } ?>
-
 </head>
-
-<body  class="webui">
-
-<div class="absolute">
-  <!-- Top Panel Slider -->
-  <?php if($displayTopPanelSlider) {include("sites/modules/slidepanel.php");} ?>
-</div>
-
-<div class="maintenance">
-  <!-- If we are supposed to only display the maintenance page currently, do so now -->
-  <?php if($displayMaintenancePage) {include("sites/main/maintenance.php"); return;} ?>
-
-  <!--[if lt IE 8]>
-    <div id="alert"><p>Hummm, You should upgrade your copy of Internet Explorer.</p></div>
-  <![endif]-->
-</div>
-
-<div id="topcontainer">
-    <!--<div id="date">
-     <?php /*$date = date("d-m-Y");
-    $heure = date("H:i");
-    Print("$webui_before_date $date $webui_after_date $heure");*/
-    ?> -->
-    <!-- </div>-->
-
+<body class="webui">
+	<div class="absolute">
+<!-- Top Panel Slider -->
+<?php if($displayTopPanelSlider) {include("sites/modules/slidepanel.php");} ?>
+	</div>
+	<div class="maintenance">
+<!-- If we are supposed to only display the maintenance page currently, do so now -->
+<?php if($displayMaintenancePage) {include("sites/main/maintenance.php"); return;} ?>
+<!--[if lt IE 8]>
+		<div id="alert"><p>Hummm, You should upgrade your copy of Internet Explorer.</p></div>
+<![endif]-->
+	</div>
+	<div id="topcontainer">
 <?php if($displayLanguageSelector) {
       echo('<div id="translator">');
       include("languages/translator_page.php");
       echo('</div>');}
-?>
-
-
-<?php if($displayScrollingText) { ?>
-  <div class="horizontal_scroller" id="scrollercontrol">
-    <div class="scrollingtext">
-      <?php echo $scrollingTextMessage; ?>
-    </div>
-  </div>
+	  if($displayScrollingText) { ?>
+		<div class="horizontal_scroller" id="scrollercontrol">
+			<div class="scrollingtext"><?php echo $scrollingTextMessage; ?></div>
+		</div>
 <?php } ?>
-
 <?php if($displayWelcomeMessage) { ?>
-  <div id="welcomeText">
-    <?php
-      if($_SESSION[NAME] != "") {
-        echo $webui_welcome_back." ";
-        echo $_SESSION[NAME];
-        if($allowWebLogin == 'true')
-        {
-          echo " ";
-          echo "<a href=\"secondlife:///app/login?first_name=$_SESSION[FIRSTNAME]&last_name=$_SESSION[LASTNAME]&location=last&grid=$gridNickName&web_login_key=$_SESSION[WEBLOGINKEY]\">$webui_login</a>";
-        }
-      }
-      else {
-        echo $webui_welcome." ";
-        echo SYSNAME." ";
-        echo $webui_welcome_visitor;
-      }
-    ?>
-  </div>
+		<div id="welcomeText"><?php
+		if($_SESSION['NAME'] != ""){
+			echo $webui_welcome_back, ' ', $_SESSION['NAME'];
+			if($allowWebLogin == 'true'){
+				echo " <a href=\"secondlife:///app/login?first_name=$_SESSION[FIRSTNAME]&last_name=$_SESSION[LASTNAME]&location=last&grid=$gridNickName&web_login_key=$_SESSION[WEBLOGINKEY]\">$webui_login</a>";
+			}
+		}else{
+			echo $webui_welcome, ' ', SYSNAME, ' ', $webui_welcome_visitor;
+		}
+?>
+		</div>
 <?php } ?>
+		<div id="container">
+			<div id="header">
+				<div id="headerimages"><a href="<?php echo SYSURL ?>"><h1><?php echo SYSNAME; ?></h1></a></div>
+				<div id="home_content_right"><?php include("sites/modules/slideshow.php"); ?></div>
+				<div id="home_content_right"><?php include("sites/modules/slideeffect.php"); ?></div>
+			</div>
+<?php if($displayMegaMenu) { ?>
+			<div id="menubar"><?php include("sites/menus/megamenu/menubar.php"); ?></div>
+<?php } ?>
+			<div id="MainContainer">
+				<div id="sites">
+<?php include("sites.php"); ?>
 
-<div id="container">
-    <div id="header">
-        <div id="headerimages">
-            <a href="<?php echo SYSURL ?>"><h1><?php echo SYSNAME ?></h1></a>
-        </div>
-             <div id="home_content_right"><?php include("sites/modules/slideshow.php"); ?></div>
-		<div id="home_content_right"><?php include("sites/modules/slideeffect.php"); ?></div>
-
-
-    </div><!-- fin de #header -->
-
-    <!-- <div id="menubar"><?php // include("sites/menubar.php"); ?></div> -->
-    <?php if($displayMegaMenu) { ?>
-      <div id="menubar"><?php include("sites/menus/megamenu/menubar.php"); ?></div>
-    <?php } ?>
-
-    <div id="MainContainer">
-        <div id="sites"><?php include("sites.php"); ?></div>
-    </div><!-- fin de #mainContent -->
-</div><!-- fin de #container -->
-
+				</div>
+			</div><!-- fin de #mainContent -->
+		</div><!-- fin de #container -->
 <?php include("sites/main/footer.php"); ?>
 <!-- fin de #footer -->
-
-<div class="pageloadtime">
+		<div class="pageloadtime">
+			<p>Copyright 2011 © the Aurora-Sim project</p>
+			<p>All Rights Reserved</p>
 <?php
 // Page Load Time
-$time = microtime();
-$time = explode(" ", $time);
-$time = $time[1] + $time[0];
-$finish = $time;
-$totaltime = ($finish - $start);
-echo "<p>Copyright 2011 © the Aurora-Sim project</p>";
-echo "<p>All Rights Reserved</p>";
-if($displayPageLoadTime) {printf ("$this_page_took %f $seconds_to_load.", $totaltime);}
+if($displayPageLoadTime){
+	$time = microtime();
+	$time = explode(" ", $time);
+	$time = $time[1] + $time[0];
+	$finish = $time;
+	$totaltime = ($finish - $start);
+	printf ('			<p>%1$s %2$f %3$s.</p>', $this_page_took, $totaltime, $seconds_to_load);
+}
 ?>
-</div>
 
-</div>
-<span id="problem">You do not have your Javascript enabled, and this site requires it.</span>
+		</div>
+	</div>
+	<span id="problem">You do not have your Javascript enabled, and this site requires it.</span>
 </body>
 </html>
