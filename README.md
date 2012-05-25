@@ -42,11 +42,6 @@ define("C_DB_USER","root");
 define("C_DB_PASS","***");
 ```
 
-## Aurora-Sim Addon
-
-This release uses the v1.x branch of [Aurora-WebAPI](https://github.com/aurora-sim/Aurora-WebAPI/tree/v1.x), current release [v1.1.2](https://github.com/aurora-sim/Aurora-WebAPI/tree/v1.1.2).
-Source for the v1.x branch of Aurora-WebAPI also exists in this repository, but will be removed in future releases.
-
 ### Install WebUI via console
 1. Start Aurora.Server.exe (if you want to run in Grid mode) or Aurora.exe (if you want to run in StandAlone mode)
 2. Put into the console 'compile module gui' and browse to the AuroraWebUI directory in your Aurora-WebAPI download and open the build.am file.
@@ -118,7 +113,7 @@ NOTE: Only pulic ones will be listed on the website
 * Don't forget to set up your php.ini mail
 
 ## Errors with viewing or logging users into WebUI (not admin users)
-* Make sure that an Aurora.Addon.WebUI.dll is in the bin/ folder of the place that are you running Aurora (or Aurora.Server) from. You can get this from https://github.com/aurora-sim/Aurora-WebUI/downloads if you didn't compile Aurora and Aurora-WebUI.
+* Make sure that an Aurora.Addon.WebUI.dll is in the bin/ folder of the place that are you running Aurora (or Aurora.Server) from.
 
 ## Page editor will not load in Administrator Section.
 * While testing on osgrid.org we resolved this issue by creating a .htaccess file in the root of your website with the following code
