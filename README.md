@@ -8,7 +8,7 @@ Please remember to backup your database regularly.
 4. Make a backup of your database ;)
 5. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
 
-## Config.php (basic must settings)
+## Config.php (basic required settings)
 
 ```php
 ##################### System #########################
@@ -24,7 +24,7 @@ $mapstartX=1000;
 $mapstartY=1000;
 ```
 
-## DatabaseInfo.php (basic must settings)
+## DatabaseInfo.php
 
 ```php
 ##################### Database ########################
@@ -38,6 +38,22 @@ define("C_DB_USER","root");
 // Your Database Password here:
 define("C_DB_PASS","***");
 ```
+
+## php.ini
+
+Enable short tags and ASP-style tags for PHP scripts.
+```ini
+short_open_tag = On
+
+; Allow ASP-style <% %> tags.
+asp_tags = On
+```
+
+Disable error notices to supress messages regarding the use of undefined constants.
+```ini
+error_reporting = E_ALL & ~E_NOTICE
+```
+
 
 ## Aurora-Sim Addon
 
@@ -147,45 +163,6 @@ if($_POST[adminlogin]=="admincheck"){
 if($_POST[check]==1){
 	echo "";
 }
-```
-
-###	Resolution
-Your PHP is not configured to use short tags or asp style, to fix the problem edit your php.ini and locate the following lines:
-
-```ini
-short_open_tag = Off
-
-; Allow ASP-style <% %> tags.
-asp_tags = Off
-```
-
-Change to
-
-```ini
-short_open_tag = On
-
-; Allow ASP-style <% %> tags.
-asp_tags = On
-```
-
-After you save your php.ini restart apache and you should be ok now.
-
-
-## I get the following message trying to load webui in my web browser:
-
-***Notice: Use of undefined constant ......***
-
-###	Resolution
-Your PHP is not configured to handle errors properly, to fix the problem edit your php.ini and locate the following lines:
-
-```ini
-error_reporting = E_ALL 
-```
-
-Change to
-
-```ini
-error_reporting = E_ALL & ~E_NOTICE
 ```
 
 # Matto Destiny & djphil Quickmap
