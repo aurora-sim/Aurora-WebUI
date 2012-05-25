@@ -49,12 +49,30 @@ define("C_DB_USER","root");
 define("C_DB_PASS","***");
 ```
 
+
 ### MySQL Version
 If you are using MySQL 5.5 or greater, you will need to specify the version number
 
 ```php
 Globals::i()->DBLink = new libAurora\DataManager\MySQLDataLoader(C_PDO_DSN, 'Wiredux', false, true, '5.5');
 ```
+
+
+## php.ini
+
+Enable short tags and ASP-style tags for PHP scripts.
+```ini
+short_open_tag = On
+
+; Allow ASP-style <% %> tags.
+asp_tags = On
+```
+
+Disable error notices to supress messages regarding the use of undefined constants.
+```ini
+error_reporting = E_ALL & ~E_NOTICE
+```
+
 
 ## Aurora-Sim Addon
 
@@ -158,69 +176,6 @@ NOTE: Only pulic ones will be listed on the website
         RewriteEngine On  
         RewriteCond %{HTTP_HOST} ^www.yourdomain.com$  
         RewriteRule (.*)$ http://yourdomain.com/$1 [R=301,L]
-```
-
-## I get the following message trying to load webui in my web browser:
-
-```php
-query("SELECT password FROM ".C_ADMIN_TBL." WHERE password='$_SESSION[ADMINUID]'");
-list($admpass) = $DbLink->next_record();
-if($admpass){
-	$ADMINCHECK = $admpass;
-}else{
-	$ADMINCHECK = "454";
-}
-if($_POST[adminlogin]=="admincheck"){
-	$pass = $_POST[password];
-	$passcheck = md5(md5($pass) . ":" );
-	$DbLink->query("SELECT username,password FROM ".C_ADMIN_TBL." WHERE username='$_POST[username]'");
-	list($adminname,$adminpass) = $DbLink->next_record();
-	if($adminpass == $passcheck){
-		$_SESSION[ADMINUID] = $adminpass;
-	}
-}
-if($_POST[check]==1){
-	echo "";
-}
-```
-
-###	Resolution
-Your PHP is not configured to use short tags or asp style, to fix the problem edit your php.ini and locate the following lines:
-
-```ini
-short_open_tag = Off
-
-; Allow ASP-style <% %> tags.
-asp_tags = Off
-```
-
-Change to
-
-```ini
-short_open_tag = On
-
-; Allow ASP-style <% %> tags.
-asp_tags = On
-```
-
-After you save your php.ini restart apache and you should be ok now.
-
-
-## I get the following message trying to load webui in my web browser:
-
-***Notice: Use of undefined constant ......***
-
-###	Resolution
-Your PHP is not configured to handle errors properly, to fix the problem edit your php.ini and locate the following lines:
-
-```ini
-error_reporting = E_ALL 
-```
-
-Change to
-
-```ini
-error_reporting = E_ALL & ~E_NOTICE
 ```
 
 # Matto Destiny & djphil Quickmap
