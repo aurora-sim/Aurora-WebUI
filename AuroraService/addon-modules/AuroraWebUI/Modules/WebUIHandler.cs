@@ -1327,7 +1327,7 @@ namespace OpenSim.Services
                 }
             }
 
-            List<GridRegion> regions = regiondata.Get(type, sort);
+            List<GridRegion> regions = regiondata.Get(type, sort, null, null);
             OSDArray Regions = new OSDArray();
             if (start < regions.Count)
             {
