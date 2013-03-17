@@ -17,10 +17,10 @@ Config.php (basic must settings)
 ##################### System #########################
 define("SYSNAME","This_usually_is_what_the_site_is_called");
 define("SYSURL","http://your_aurora_server_ip_or_dns_address");
-define("SYSMAIL","***");
+define("SYSMAIL","YourEmail@exmaple.com");
 define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WEBUI");
 define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
-define("WIREDUX_PASSWORD","***");
+define("WIREDUX_PASSWORD","password");
 
 // Default StartPoint for Map
 $mapstartX=1000;
