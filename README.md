@@ -11,13 +11,13 @@ Please remember to backup your database regularly.
 3. Make a backup of your database ;)
 4. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
 
-Config.php (basic must settings)
+Config.php (Change the basic settings, to match your own) 
 
 ```php
 ##################### System #########################
 define("SYSNAME","This_usually_is_what_the_site_is_called");
 define("SYSURL","http://your_aurora_server_ip_or_dns_address");
-define("SYSMAIL","YourEmail@exmaple.com");
+define("SYSMAIL","you@yourdomain.com");
 define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WEBUI");
 define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
 define("WIREDUX_PASSWORD","password");
@@ -27,7 +27,7 @@ $mapstartX=1000;
 $mapstartY=1000;
 ```
 
-DatabaseInfo.php (basic must settings)
+DatabaseInfo.php (Change the basic settings, to match your own)
 
 ```php
 ##################### Database ########################
