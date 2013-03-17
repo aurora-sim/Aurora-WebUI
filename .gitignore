@@ -12,7 +12,6 @@
 *.exe
 *.frm
 *.index
-*.ini
 *.lang
 *.lib
 *.log

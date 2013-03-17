@@ -11,23 +11,23 @@ Please remember to backup your database regularly.
 3. Make a backup of your database ;)
 4. Import the .sql files inside "./www/sql_update/" into your MySql database (I placed mine in the aurora database)
 
-Config.php (basic must settings)
+Config.php (Change the basic settings, to match your own) 
 
 ```php
 ##################### System #########################
 define("SYSNAME","This_usually_is_what_the_site_is_called");
 define("SYSURL","http://your_aurora_server_ip_or_dns_address");
-define("SYSMAIL","***");
+define("SYSMAIL","you@yourdomain.com");
 define("WIREDUX_SERVICE_URL","http://your_aurora_server_ip_or_dns:8007/WEBUI");
 define("WIREDUX_TEXTURE_SERVICE","http://your_aurora_server_ip_or_dns:8002");
-define("WIREDUX_PASSWORD","***");
+define("WIREDUX_PASSWORD","password");
 
 // Default StartPoint for Map
 $mapstartX=1000;
 $mapstartY=1000;
 ```
 
-DatabaseInfo.php (basic must settings)
+DatabaseInfo.php (Change the basic settings, to match your own)
 
 ```php
 ##################### Database ########################
@@ -54,10 +54,10 @@ define("C_DB_PASS","***");
 ## Configuration
 
 ### For grid mode (running Aurora.Server.exe)
-Copy AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
+Copy AuroraService/WebAPI.ini to your ~/Aurora-Sim/bin/AuroraServerConfiguration/Modules directory
 
 ### For standalone mode (just running Aurora.exe)
-Copy AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/Configuration/Modules directory
+Copy AuroraService/WebAPI.ini to your ~/Aurora-Sim/bin/Configuration/Modules directory
 
 # Admin Panel
 The Admin Panel is located at:
@@ -106,7 +106,7 @@ example:
 save avatar archive Skidz Tweak EvilOverlord.database / 00000-0000-0000-0000-00000 1
 ```
 
-NOTE: Only pulic ones will be listed on the website
+NOTE: Only public ones will be listed on the website
 
 
 # Trouble Shooting
