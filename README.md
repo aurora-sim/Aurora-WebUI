@@ -54,10 +54,10 @@ define("C_DB_PASS","***");
 ## Configuration
 
 ### For grid mode (running Aurora.Server.exe)
-Copy AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/AuroraServerConfiguration/Modules directory
+Copy AuroraService/WebAPI.ini to your ~/Aurora-Sim/bin/AuroraServerConfiguration/Modules directory
 
 ### For standalone mode (just running Aurora.exe)
-Copy AuroraWebUI/WebUI.ini to your ~/Aurora-Sim/bin/ directory/Configuration/Modules directory
+Copy AuroraService/WebAPI.ini to your ~/Aurora-Sim/bin/Configuration/Modules directory
 
 # Admin Panel
 The Admin Panel is located at:
@@ -106,7 +106,7 @@ example:
 save avatar archive Skidz Tweak EvilOverlord.database / 00000-0000-0000-0000-00000 1
 ```
 
-NOTE: Only pulic ones will be listed on the website
+NOTE: Only public ones will be listed on the website
 
 
 # Trouble Shooting
