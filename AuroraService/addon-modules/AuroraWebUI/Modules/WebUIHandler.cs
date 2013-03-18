@@ -33,7 +33,6 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using Nini.Config;
-using Aurora.Simulation.Base;
 using FriendInfo = Aurora.Framework.FriendInfo;
 using Aurora.Framework.Servers.HttpServer;
 
@@ -41,7 +40,6 @@ using OpenMetaverse;
 using OpenMetaverse.Imaging;
 using Aurora.DataManager;
 using Aurora.Framework;
-using Aurora.Services.DataService;
 using OpenMetaverse.StructuredData;
 
 using System.Collections.Specialized;
