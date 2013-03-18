@@ -102,8 +102,8 @@ namespace OpenSim.Services
                 //This handler allows sims to post CAPS for their sims on the CAPS server.
                 m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero));
                 m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
-                m_server2.AddHTTPHandler("GridTexture", OnHTTPGetTextureImage);
-                m_server2.AddHTTPHandler("MapTexture", OnHTTPGetMapImage);
+                m_server2.AddHTTPHandler(new GenericStreamHandler("GET", "GridTexture", OnHTTPGetTextureImage));
+                m_server2.AddHTTPHandler(new GenericStreamHandler("GET", "MapTexture", OnHTTPGetMapImage));
                 gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
 
                 MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
@@ -121,15 +121,12 @@ namespace OpenSim.Services
 
         #region textures
 
-        public Hashtable OnHTTPGetTextureImage(Hashtable keysvals)
+        public byte[] OnHTTPGetTextureImage(string path, Stream request, OSHttpRequest httpRequest, OSHttpResponse httpResponse)
         {
-            Hashtable reply = new Hashtable();
-
-            if (keysvals["method"].ToString() != "GridTexture")
-                return reply;
+            if (httpRequest.QueryString.Get("method") != "GridTexture")
+                return MainServer.NoResponse;
 
             MainConsole.Instance.Debug("[WebUI]: Sending image jpeg");
-            int statuscode = 200;
             byte[] jpeg = new byte[0];
             IAssetService m_AssetService = m_registry.RequestModuleInterface<IAssetService>();
 
@@ -145,7 +142,7 @@ namespace OpenSim.Services
                 imgstream = new MemoryStream();
 
                 // non-async because we know we have the asset immediately.
-                AssetBase mapasset = m_AssetService.Get(keysvals["uuid"].ToString());
+                AssetBase mapasset = m_AssetService.Get(httpRequest.QueryString.Get("uuid"));
 
                 // Decode image to System.Drawing.Image
                 if (OpenJPEG.DecodeToImage(mapasset.Data, out managedImage, out image))
@@ -187,34 +184,27 @@ namespace OpenSim.Services
                 }
             }
 
-
-            reply["str_response_string"] = Convert.ToBase64String(jpeg);
-            reply["int_response_code"] = statuscode;
-            reply["content_type"] = "image/jpeg";
-
-            return reply;
+            httpResponse.ContentType = "image/jpeg";
+            return jpeg;
         }
 
-        public Hashtable OnHTTPGetMapImage(Hashtable keysvals)
+        public byte[] OnHTTPGetMapImage(string path, Stream request, OSHttpRequest httpRequest, OSHttpResponse httpResponse)
         {
-            Hashtable reply = new Hashtable();
-
-            if (keysvals["method"].ToString() != "MapTexture")
-                return reply;
+            if (httpRequest.QueryString.Get("method") != "MapTexture")
+                return MainServer.NoResponse;
 
             int zoom = 20;
             int x = 0;
             int y = 0;
 
-            if (keysvals.ContainsKey("zoom"))
-                zoom = int.Parse(keysvals["zoom"].ToString());
-            if (keysvals.ContainsKey("x"))
-                x = (int)float.Parse(keysvals["x"].ToString());
-            if (keysvals.ContainsKey("y"))
-                y = (int)float.Parse(keysvals["y"].ToString());
+            if (httpRequest.QueryString.Get("zoom") != null)
+                zoom = int.Parse(httpRequest.QueryString.Get("zoom"));
+            if (httpRequest.QueryString.Get("x") != null)
+                x = (int)float.Parse(httpRequest.QueryString.Get("x"));
+            if (httpRequest.QueryString.Get("y") != null)
+                y = (int)float.Parse(httpRequest.QueryString.Get("y"));
 
             MainConsole.Instance.Debug("[WebUI]: Sending map image jpeg");
-            int statuscode = 200;
             byte[] jpeg = new byte[0];
             
             MemoryStream imgstream = new MemoryStream();
@@ -239,11 +229,8 @@ namespace OpenSim.Services
                 imgstream.Dispose();
             }
 
-            reply["str_response_string"] = Convert.ToBase64String(jpeg);
-            reply["int_response_code"] = statuscode;
-            reply["content_type"] = "image/jpeg";
-
-            return reply;
+            httpResponse.ContentType = "image/jpeg";
+            return jpeg;
         }
 
         public Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
@@ -1093,16 +1080,18 @@ namespace OpenSim.Services
         #region banning
 
         private void doBan(UUID agentID, DateTime? until){
-            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
-            if (GetAgent != null)
+            var conn = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+            IAgentInfo agentInfo = conn.GetAgent(agentID);
+            if (agentInfo != null)
             {
-                GetAgent.Flags &= (until.HasValue) ? ~IAgentFlags.TempBan : ~IAgentFlags.PermBan;
+                agentInfo.Flags |= (until.HasValue) ? IAgentFlags.TempBan : IAgentFlags.PermBan;
+
                 if (until.HasValue)
                 {
-                    GetAgent.OtherAgentInformation["TemperaryBanInfo"] = until.Value.ToString("s");
+                    agentInfo.OtherAgentInformation["TemperaryBanInfo"] = until.Value.ToString("s");
                     MainConsole.Instance.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
                 }
-                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+                conn.UpdateAgent(agentInfo);
             }
         }
 
@@ -1140,9 +1129,8 @@ namespace OpenSim.Services
                 GetAgent.Flags &= IAgentFlags.PermBan;
                 GetAgent.Flags &= IAgentFlags.TempBan;
                 if (GetAgent.OtherAgentInformation.ContainsKey("TemperaryBanInfo") == true)
-                {
                     GetAgent.OtherAgentInformation.Remove("TemperaryBanInfo");
-                }
+
                 DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
             }
 
