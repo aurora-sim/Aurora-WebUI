@@ -1161,7 +1161,7 @@ namespace Aurora.Addon.WebUI
             OSDMap resp = new OSDMap();
             resp["Finished"] = OSD.FromBoolean(true);
             UUID agentID = map["UserID"].AsUUID();
-            DateTime until = Util.ToDateTime(map["BannedUntil"].AsInteger()); //BannedUntil is a unixtime stamp of the day the user should be banned till
+            DateTime until = Util.ToDateTime(map["BannedUntil"].AsInteger()); //BannedUntil is a unixtime stamp of the date and time the user should be banned till
             doBan(agentID, until);
 
             return resp;
