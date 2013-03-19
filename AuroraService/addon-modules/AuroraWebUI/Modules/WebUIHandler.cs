@@ -1131,7 +1131,7 @@ namespace OpenSim.Services
 
                 if (until.HasValue)
                 {
-                    agentInfo.OtherAgentInformation["TemperaryBanInfo"] = until.Value.ToString("s");
+                    agentInfo.OtherAgentInformation["TemperaryBanInfo"] = until.Value;
                     MainConsole.Instance.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
                 }
                 conn.UpdateAgent(agentInfo);
