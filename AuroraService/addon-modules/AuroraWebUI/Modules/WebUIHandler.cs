@@ -25,34 +25,42 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+using Aurora.Framework;
+using Aurora.Framework.ClientInterfaces;
+using Aurora.Framework.ConsoleFramework;
+using Aurora.Framework.DatabaseInterfaces;
+using Aurora.Framework.Modules;
+using Aurora.Framework.SceneInfo;
+using Aurora.Framework.Servers;
+using Aurora.Framework.Servers.HttpServer;
+using Aurora.Framework.Servers.HttpServer.Implementation;
+using Aurora.Framework.Servers.HttpServer.Interfaces;
+using Aurora.Framework.Services;
+using Aurora.Framework.Services.ClassHelpers.Assets;
+using Aurora.Framework.Services.ClassHelpers.Profile;
+using Aurora.Framework.Utilities;
+using Nini.Config;
+using OpenMetaverse;
+using OpenMetaverse.Imaging;
+using OpenMetaverse.StructuredData;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Reflection;
-using System.Text;
-using Nini.Config;
-using FriendInfo = Aurora.Framework.FriendInfo;
-using Aurora.Framework.Servers.HttpServer;
-
-using OpenMetaverse;
-using OpenMetaverse.Imaging;
-using Aurora.DataManager;
-using Aurora.Framework;
-using OpenMetaverse.StructuredData;
-
 using System.Collections.Specialized;
-
 using System.Drawing;
 using System.Drawing.Text;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using GridRegion = Aurora.Framework.GridRegion;
-using BitmapProcessing;
-using RegionFlags = Aurora.Framework.RegionFlags;
+using System.IO;
+using System.Net;
+using System.Reflection;
+using System.Text;
+using DataPlugins = Aurora.Framework.Utilities.DataManager;
+using FriendInfo = Aurora.Framework.Services.FriendInfo;
+using GridRegion = Aurora.Framework.Services.GridRegion;
+using RegionFlags = Aurora.Framework.Services.RegionFlags;
 
-namespace OpenSim.Services
+namespace Aurora.Addon.WebUI
 {
     public class WireduxHandler : IService
     {
@@ -330,7 +338,7 @@ namespace OpenSim.Services
                 MainConsole.Instance.Warn ("You must create the user before promoting them.");
                 return;
             }
-            IAgentConnector agents = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+            IAgentConnector agents = DataPlugins.RequestPlugin<IAgentConnector>();
             if (agents == null)
             {
                 MainConsole.Instance.Warn("Could not get IAgentConnector plugin");
@@ -343,7 +351,7 @@ namespace OpenSim.Services
                 return;
             }
             agent.OtherAgentInformation["WebUIEnabled"] = true;
-            Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
+            DataPlugins.RequestPlugin<IAgentConnector>().UpdateAgent(agent);
             MainConsole.Instance.Warn ("Admin added");
         }
 
@@ -356,7 +364,7 @@ namespace OpenSim.Services
                 MainConsole.Instance.Warn ("User does not exist, no action taken.");
                 return;
             }
-            IAgentConnector agents = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+            IAgentConnector agents = DataPlugins.RequestPlugin<IAgentConnector>();
             if (agents == null)
             {
                 MainConsole.Instance.Warn("Could not get IAgentConnector plugin");
@@ -369,7 +377,7 @@ namespace OpenSim.Services
                 return;
             }
             agent.OtherAgentInformation["WebUIEnabled"] = false;
-            Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ().UpdateAgent (agent);
+            DataPlugins.RequestPlugin<IAgentConnector>().UpdateAgent(agent);
             MainConsole.Instance.Warn ("Admin removed");
         }
 
@@ -559,7 +567,7 @@ namespace OpenSim.Services
                 string RLCountry = map["RLCountry"].AsString();
                 string RLIP = map["RLIP"].AsString();
 
-                IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector> ();
+                IAgentConnector con = DataPlugins.RequestPlugin<IAgentConnector>();
                 con.CreateNewAgent (userID);
 
                 IAgentInfo agent = con.GetAgent (userID);
@@ -581,7 +589,7 @@ namespace OpenSim.Services
                 
                 accountService.StoreUserAccount(user);
 
-                IProfileConnector profileData = DataManager.RequestPlugin<IProfileConnector>();
+                IProfileConnector profileData = DataPlugins.RequestPlugin<IProfileConnector>();
                 IUserProfileInfo profile = profileData.GetUserProfile(user.PrincipalID);
                 if (profile == null)
                 {
@@ -603,7 +611,7 @@ namespace OpenSim.Services
         {
             OSDMap resp = new OSDMap();
 
-            List<AvatarArchive> temp = DataManager.RequestPlugin<IAvatarArchiverConnector>().GetAvatarArchives(true);
+            List<AvatarArchive> temp = DataPlugins.RequestPlugin<IAvatarArchiverConnector>().GetAvatarArchives(true);
 
             OSDArray names = new OSDArray();
             OSDArray snapshot = new OSDArray();
@@ -635,7 +643,7 @@ namespace OpenSim.Services
             {
                 user.UserLevel = 0;
                 accountService.StoreUserAccount(user);
-                IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                IAgentConnector con = DataPlugins.RequestPlugin<IAgentConnector>();
                 IAgentInfo agent = con.GetAgent(user.PrincipalID);
                 if (agent != null && agent.OtherAgentInformation.ContainsKey("WebUIActivationToken"))
                 {
@@ -658,7 +666,7 @@ namespace OpenSim.Services
                 UserAccount user = accountService.GetUserAccount(null, map["UserName"].ToString());
                 if (user != null)
                 {
-                    IAgentConnector con = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                    IAgentConnector con = DataPlugins.RequestPlugin<IAgentConnector>();
                     IAgentInfo agent = con.GetAgent(user.PrincipalID);
                     if (agent != null && agent.OtherAgentInformation.ContainsKey("WebUIActivationToken"))
                     {
@@ -715,7 +723,7 @@ namespace OpenSim.Services
             {
                 if (asAdmin)
                 {
-                    IAgentInfo agent = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>().GetAgent(account.PrincipalID);
+                    IAgentInfo agent = DataPlugins.RequestPlugin<IAgentConnector>().GetAgent(account.PrincipalID);
                     if (agent.OtherAgentInformation["WebUIEnabled"].AsBoolean() == false)
                     {
                         return resp;
@@ -742,7 +750,7 @@ namespace OpenSim.Services
             if (authService != null)
             {
                 //Remove the old
-                Aurora.DataManager.DataManager.RequestPlugin<IAuthenticationData> ().Delete (principalID, "WebLoginKey");
+                DataPlugins.RequestPlugin<IAuthenticationData>().Delete(principalID, "WebLoginKey");
                 authService.SetPlainPassword(principalID, "WebLoginKey", webLoginKey.ToString());
                 resp["WebLoginKey"] = webLoginKey;
             }
@@ -923,7 +931,7 @@ namespace OpenSim.Services
 
                 if (editRLInfo)
                 {
-                    IAgentConnector agentConnector = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                    IAgentConnector agentConnector = DataPlugins.RequestPlugin<IAgentConnector>();
                     IAgentInfo agent = agentConnector.GetAgent(account.PrincipalID);
                     if (agent == null)
                     {
@@ -972,7 +980,7 @@ namespace OpenSim.Services
             {
                 userinfo = agentService.GetUserInfo(uuid);
                 IGridService gs = m_registry.RequestModuleInterface<IGridService>();
-                Aurora.Framework.GridRegion gr = null;
+                GridRegion gr = null;
                 if (userinfo != null)
                 {
                     gr = gs.GetRegionByUUID(null, userinfo.HomeRegionID);
@@ -1014,7 +1022,7 @@ namespace OpenSim.Services
                 int days = years > 0 ? (int)diff.TotalDays / years : (int)diff.TotalDays;
                 accountMap["TimeSinceCreated"] = years + " years, " + days + " days"; // if we're sending account.Created do we really need to send this string ?
 
-                IProfileConnector profileConnector = Aurora.DataManager.DataManager.RequestPlugin<IProfileConnector>();
+                IProfileConnector profileConnector = DataPlugins.RequestPlugin<IProfileConnector>();
                 IUserProfileInfo profile = profileConnector.GetUserProfile(account.PrincipalID);
                 if (profile != null)
                 {
@@ -1041,7 +1049,7 @@ namespace OpenSim.Services
                     }
 
                 }
-                IAgentConnector agentConnector = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+                IAgentConnector agentConnector = DataPlugins.RequestPlugin<IAgentConnector>();
                 IAgentInfo agent = agentConnector.GetAgent(account.PrincipalID);
                 if(agent != null)
                 {
@@ -1065,12 +1073,12 @@ namespace OpenSim.Services
             resp["Finished"] = OSD.FromBoolean(true);
 
             UUID agentID = map["UserID"].AsUUID();
-            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            IAgentInfo GetAgent = DataPlugins.RequestPlugin<IAgentConnector>().GetAgent(agentID);
 
             if (GetAgent != null)
             {
                 GetAgent.Flags &= ~IAgentFlags.PermBan;
-                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+                DataPlugins.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
             }
             return resp;
         }
@@ -1078,7 +1086,7 @@ namespace OpenSim.Services
         #region banning
 
         private void doBan(UUID agentID, DateTime? until){
-            var conn = Aurora.DataManager.DataManager.RequestPlugin<IAgentConnector>();
+            var conn = DataPlugins.RequestPlugin<IAgentConnector>();
             IAgentInfo agentInfo = conn.GetAgent(agentID);
             if (agentInfo != null)
             {
@@ -1086,7 +1094,7 @@ namespace OpenSim.Services
 
                 if (until.HasValue)
                 {
-                    agentInfo.OtherAgentInformation["TemperaryBanInfo"] = until.Value.ToString("s");
+                    agentInfo.OtherAgentInformation["TemperaryBanInfo"] = until.Value;
                     MainConsole.Instance.TraceFormat("Temp ban for {0} until {1}", agentID, until.Value.ToString("s"));
                 }
                 conn.UpdateAgent(agentInfo);
@@ -1120,7 +1128,7 @@ namespace OpenSim.Services
             resp["Finished"] = OSD.FromBoolean(true);
 
             UUID agentID = map["UserID"].AsUUID();
-            IAgentInfo GetAgent = DataManager.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+            IAgentInfo GetAgent = DataPlugins.RequestPlugin<IAgentConnector>().GetAgent(agentID);
 
             if (GetAgent != null)
             {
@@ -1129,7 +1137,7 @@ namespace OpenSim.Services
                 if (GetAgent.OtherAgentInformation.ContainsKey("TemperaryBanInfo") == true)
                     GetAgent.OtherAgentInformation.Remove("TemperaryBanInfo");
 
-                DataManager.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+                DataPlugins.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
             }
 
             return resp;
@@ -1289,7 +1297,7 @@ namespace OpenSim.Services
                 count = 1;
             }
 
-            IRegionData regiondata = Aurora.DataManager.DataManager.RequestPlugin<IRegionData>();
+            IRegionData regiondata = DataPlugins.RequestPlugin<IRegionData>();
 
             Dictionary<string, bool> sort = new Dictionary<string, bool>();
 
@@ -1328,7 +1336,7 @@ namespace OpenSim.Services
         private OSDMap GetRegion(OSDMap map)
         {
             OSDMap resp = new OSDMap();
-            IRegionData regiondata = Aurora.DataManager.DataManager.RequestPlugin<IRegionData>();
+            IRegionData regiondata = DataPlugins.RequestPlugin<IRegionData>();
             if (regiondata != null && (map.ContainsKey("RegionID") || map.ContainsKey("Region")))
             {
                 string regionName = map.ContainsKey("Region") ? map["Region"].ToString().Trim() : "";
@@ -1366,7 +1374,7 @@ namespace OpenSim.Services
             resp["Parcels"] = new OSDArray();
             resp["Total"] = OSD.FromInteger(0);
 
-            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
+            IDirectoryServiceConnector directory = DataPlugins.RequestPlugin<IDirectoryServiceConnector>();
 
             if (directory != null && map.ContainsKey("Region") == true)
             {
@@ -1406,7 +1414,7 @@ namespace OpenSim.Services
             UUID parcelID = map.ContainsKey("ParcelInfoUUID") ? UUID.Parse(map["ParcelInfoUUID"].ToString()) : UUID.Zero;
             string parcelName = map.ContainsKey("Parcel") ? map["Parcel"].ToString().Trim() : string.Empty;
 
-            IDirectoryServiceConnector directory = DataManager.RequestPlugin<IDirectoryServiceConnector>();
+            IDirectoryServiceConnector directory = DataPlugins.RequestPlugin<IDirectoryServiceConnector>();
 
             if (directory != null && (parcelID != UUID.Zero || (regionID != UUID.Zero && parcelName != string.Empty)))
             {
@@ -1457,7 +1465,7 @@ namespace OpenSim.Services
             resp["Start"] = start;
             resp["Total"] = 0;
 
-            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            IGroupsServiceConnector groups = DataPlugins.RequestPlugin<IGroupsServiceConnector>();
             OSDArray Groups = new OSDArray();
             if (groups != null)
             {
@@ -1504,7 +1512,7 @@ namespace OpenSim.Services
         private OSDMap GetGroup(OSDMap map)
         {
             OSDMap resp = new OSDMap();
-            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            IGroupsServiceConnector groups = DataPlugins.RequestPlugin<IGroupsServiceConnector>();
             resp["Group"] = false;
             if (groups != null && (map.ContainsKey("Name") || map.ContainsKey("UUID")))
             {
@@ -1525,7 +1533,7 @@ namespace OpenSim.Services
         {
             OSDMap resp = new OSDMap();
             resp["Verified"] = OSD.FromBoolean(false);
-            IGenericsConnector generics = DataManager.RequestPlugin<IGenericsConnector>();
+            IGenericsConnector generics = DataPlugins.RequestPlugin<IGenericsConnector>();
             UUID groupID;
             if (generics != null && map.ContainsKey("Group") == true && map.ContainsKey("Use") && UUID.TryParse(map["Group"], out groupID) == true)
             {
@@ -1549,7 +1557,7 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             resp["GroupNotices"] = new OSDArray();
             resp["Total"] = 0;
-            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            IGroupsServiceConnector groups = DataPlugins.RequestPlugin<IGroupsServiceConnector>();
 
             if (map.ContainsKey("Groups") && groups != null && map["Groups"].Type.ToString() == "Array")
             {
@@ -1598,8 +1606,8 @@ namespace OpenSim.Services
             OSDMap resp = new OSDMap();
             resp["GroupNotices"] = new OSDArray();
             resp["Total"] = 0;
-            IGenericsConnector generics = DataManager.RequestPlugin<IGenericsConnector>();
-            IGroupsServiceConnector groups = DataManager.RequestPlugin<IGroupsServiceConnector>();
+            IGenericsConnector generics = DataPlugins.RequestPlugin<IGenericsConnector>();
+            IGroupsServiceConnector groups = DataPlugins.RequestPlugin<IGroupsServiceConnector>();
             if (generics == null || groups == null)
             {
                 return resp;
