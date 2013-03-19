@@ -1075,6 +1075,51 @@ namespace OpenSim.Services
             return resp;
         }
 
+        #region messaging
+
+        private OSDMap KickUser(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["Finished"] = OSD.FromBoolean(true);
+
+            UUID agentID = map["UserID"].AsUUID();
+            
+            IGridWideMessageModule messageModule = m_registry.RequestModuleInterface<IGridWideMessageModule>();
+            if (messageModule != null)
+                messageModule.KickUser(agentID, map["Message"].AsString());
+            
+            return resp;
+        }
+        
+        private OSDMap GridWideAlert(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["Finished"] = OSD.FromBoolean(true);
+            
+            IGridWideMessageModule messageModule = m_registry.RequestModuleInterface<IGridWideMessageModule>();
+            if (messageModule != null)
+                messageModule.SendAlert(map["Message"].AsString());
+            
+            return resp;
+        }
+        
+        private OSDMap MessageUser(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+            resp["Finished"] = OSD.FromBoolean(true);
+            
+            UUID agentID = map["UserID"].AsUUID();
+            
+            IGridWideMessageModule messageModule = m_registry.RequestModuleInterface<IGridWideMessageModule>();
+            if (messageModule != null)
+                messageModule.MessageUser(agentID, map["Message"].AsString());
+            
+            return resp;
+        }
+
+        #endregion
+
+
         #region banning
 
         private void doBan(UUID agentID, DateTime? until){
