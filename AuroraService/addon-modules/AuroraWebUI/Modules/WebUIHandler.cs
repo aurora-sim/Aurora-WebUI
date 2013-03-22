@@ -1161,7 +1161,7 @@ namespace Aurora.Addon.WebUI
             OSDMap resp = new OSDMap();
             resp["Finished"] = OSD.FromBoolean(true);
             UUID agentID = map["UserID"].AsUUID();
-            DateTime until = map["BannedUntil"].AsDate();
+            DateTime until = Util.ToDateTime(map["BannedUntil"].AsInteger()); //BannedUntil is a unix timestamp of the date and time the user should be banned till
             doBan(agentID, until);
 
             return resp;
@@ -1183,6 +1183,53 @@ namespace Aurora.Addon.WebUI
                     GetAgent.OtherAgentInformation.Remove("TemperaryBanInfo");
 
                 DataPlugins.RequestPlugin<IAgentConnector>().UpdateAgent(GetAgent);
+            }
+
+            return resp;
+        }
+
+        private OSDMap CheckBan(OSDMap map)
+        {
+            OSDMap resp = new OSDMap();
+
+            UUID agentID = map["UserID"].AsUUID();
+            IAgentInfo agentInfo = DataPlugins.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+
+            if (agentInfo != null) //found
+            {
+                resp["UserFound"] = OSD.FromBoolean(true);
+
+                bool banned = ((agentInfo.Flags & IAgentFlags.TempBan) == IAgentFlags.TempBan) || ((agentInfo.Flags & IAgentFlags.PermBan) == IAgentFlags.PermBan);
+
+                resp["banned"] = OSD.FromBoolean(banned);
+
+                if (banned) //get ban type
+                {
+                    if ((agentInfo.Flags & IAgentFlags.PermBan) == IAgentFlags.PermBan)
+                    {
+                        resp["BanType"] = OSD.FromString("PermBan");
+                    }
+                    else if ((agentInfo.Flags & IAgentFlags.TempBan) == IAgentFlags.TempBan)
+                    {
+                        resp["BanType"] = OSD.FromString("TempBan");
+                        if (agentInfo.OtherAgentInformation.ContainsKey("TemperaryBanInfo") == true)
+                        {
+                            resp["BannedUntil"] = OSD.FromInteger(Util.ToUnixTime(agentInfo.OtherAgentInformation["TemperaryBanInfo"]));
+                        }
+                        else
+                        {
+                            resp["BannedUntil"] = OSD.FromInteger(0);
+                        }
+                    }
+                    else
+                    {
+                        resp["BanType"] = OSD.FromString("Unknown");
+                    }
+                }
+            }
+            else //not found
+            {
+                resp["UserFound"] = OSD.FromBoolean(false);
             }
 
             return resp;
