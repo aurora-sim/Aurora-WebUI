@@ -741,6 +741,86 @@ namespace Aurora.Addon.WebUI
             return resp;
         }
 
+		private OSDMap Login2(OSDMap map)
+		{
+			string Name = map["Name"].AsString();
+			string Password = map["Password"].AsString();
+
+			OSDMap resp = new OSDMap ();
+			resp["GoodLogin"] = OSD.FromBoolean(false);
+			
+			ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
+			IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
+			UserAccount account = null;
+
+			if (accountService == null || CheckIfUserExists(map)["Verified"] != true)
+			{
+				resp["why"] = OSD.FromString("AccountNotFound");
+				return resp;
+			}
+
+			account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(null, Name);
+
+			//Null means it went through without an error
+
+			if (loginService.VerifyClient (account.PrincipalID, Name, "UserAccount", Password))
+			{
+				UUID agentID = account.PrincipalID;
+
+				IAgentInfo agentInfo = DataPlugins.RequestPlugin<IAgentConnector>().GetAgent(agentID);
+
+				bool banned = ((agentInfo.Flags & IAgentFlags.TempBan) == IAgentFlags.TempBan) || ((agentInfo.Flags & IAgentFlags.PermBan) == IAgentFlags.PermBan);
+
+				if (banned) //get ban type
+				{
+
+					if ((agentInfo.Flags & IAgentFlags.PermBan) == IAgentFlags.PermBan)
+					{
+						resp["why"] = OSD.FromString("PermBan");
+					}
+					else if ((agentInfo.Flags & IAgentFlags.TempBan) == IAgentFlags.TempBan)
+					{
+						resp["why"] = OSD.FromString("TempBan");
+
+						if (agentInfo.OtherAgentInformation.ContainsKey("TemperaryBanInfo") == true)
+						{
+							resp["BannedUntil"] = OSD.FromInteger(Util.ToUnixTime(agentInfo.OtherAgentInformation["TemperaryBanInfo"]));
+						}
+						else
+						{
+							resp["BannedUntil"] = OSD.FromInteger(0);
+						}
+
+					}
+					else
+					{
+						resp["why"] = OSD.FromString("UnknownBan");
+					}
+
+					return resp;
+				}
+				else
+				{
+					resp["GoodLogin"] = OSD.FromBoolean(true);
+
+					resp["UserLevel"] = OSD.FromInteger(account.UserLevel);
+					resp["UUID"] = OSD.FromUUID (agentID);
+					resp["FirstName"] = OSD.FromString (account.FirstName);
+					resp["LastName"] = OSD.FromString (account.LastName);
+					resp["Email"] = OSD.FromString(account.Email);
+
+					return resp;
+				}
+
+			}
+			else
+			{
+				resp["why"] = OSD.FromString("BadPassword");
+				return resp;
+			}
+
+		}
+
         private OSDMap SetWebLoginKey(OSDMap map)
         {
             OSDMap resp = new OSDMap ();
