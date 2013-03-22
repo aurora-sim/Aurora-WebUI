@@ -130,7 +130,7 @@ namespace Aurora.Addon.WebUI
         public byte[] OnHTTPGetTextureImage(string path, Stream request, OSHttpRequest httpRequest, OSHttpResponse httpResponse)
         {
             if (httpRequest.QueryString.Get("method") != "GridTexture")
-                return MainServer.NoResponse;
+                return MainServer.BlankResponse;
 
             MainConsole.Instance.Debug("[WebUI]: Sending image jpeg");
             byte[] jpeg = new byte[0];
@@ -197,7 +197,7 @@ namespace Aurora.Addon.WebUI
         public byte[] OnHTTPGetMapImage(string path, Stream request, OSHttpRequest httpRequest, OSHttpResponse httpResponse)
         {
             if (httpRequest.QueryString.Get("method") != "MapTexture")
-                return MainServer.NoResponse;
+                return MainServer.BlankResponse;
 
             int zoom = 20;
             int x = 0;
