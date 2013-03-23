@@ -611,7 +611,7 @@ namespace Aurora.Addon.WebUI
         {
             OSDMap resp = new OSDMap();
 
-            List<AvatarArchive> temp = DataPlugins.RequestPlugin<IAvatarArchiverConnector>().GetAvatarArchives(true);
+            List<AvatarArchive> temp = m_registry.RequestModuleInterface<IAvatarAppearanceArchiver>().GetAvatarArchives();
 
             OSDArray names = new OSDArray();
             OSDArray snapshot = new OSDArray();
@@ -620,8 +620,8 @@ namespace Aurora.Addon.WebUI
 
             foreach (AvatarArchive a in temp)
             {
-                names.Add(OSD.FromString(a.Name));
-                snapshot.Add(OSD.FromUUID(UUID.Parse(a.Snapshot)));
+                names.Add(OSD.FromString(a.FileName));
+                snapshot.Add(OSD.FromUUID(a.Snapshot));
             }
 
             resp["names"] = names;
