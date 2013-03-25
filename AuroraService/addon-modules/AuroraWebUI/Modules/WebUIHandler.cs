@@ -559,8 +559,7 @@ namespace Aurora.Addon.WebUI
 
                 // could not find a way to save this data here.
                 DateTime RLDOB = map["RLDOB"].AsDate();
-                string RLFirstName = map["RLFirstName"].AsString();
-                string RLLastName = map["RLLastName"].AsString();
+				string RLName = map["RLName"].AsString();
                 string RLAddress = map["RLAddress"].AsString();
                 string RLCity = map["RLCity"].AsString();
                 string RLZip = map["RLZip"].AsString();
@@ -572,8 +571,7 @@ namespace Aurora.Addon.WebUI
 
                 IAgentInfo agent = con.GetAgent (userID);
                 agent.OtherAgentInformation["RLDOB"] = RLDOB;
-                agent.OtherAgentInformation["RLFirstName"] = RLFirstName;
-                agent.OtherAgentInformation["RLLastName"] = RLLastName;
+				agent.OtherAgentInformation["RLName"] = RLName;
                 agent.OtherAgentInformation["RLAddress"] = RLAddress;
                 agent.OtherAgentInformation["RLCity"] = RLCity;
                 agent.OtherAgentInformation["RLZip"] = RLZip;
