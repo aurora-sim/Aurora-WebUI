@@ -837,6 +837,34 @@ namespace Aurora.Addon.WebUI
             return resp;
         }
 
+		private OSDMap SetUserLevel(OSDMap map) //just sets a user level
+		{
+			OSDMap resp = new OSDMap();
+
+			UUID agentID = map ["UserID"].AsUUID();
+            int userLevel = map["UserLevel"].AsInteger();
+
+            IUserAccountService userService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount account = userService.GetUserAccount(null, agentID);
+
+            if (account != null) //found
+            {
+                account.UserLevel = userLevel;
+                
+                userService.StoreUserAccount(account);
+                
+                resp["UserFound"] = OSD.FromBoolean(true);
+                resp["Updated"] = OSD.FromBoolean(true);
+            }
+            else //not found
+            {
+                resp["UserFound"] = OSD.FromBoolean(false);
+                resp["Updated"] = OSD.FromBoolean(false);
+            }
+            
+			return resp;
+		}
+
         #endregion
 
         #region Email
