@@ -511,25 +511,51 @@ namespace Aurora.Addon.WebUI
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
-            string PasswordHash = map["PasswordHash"].AsString();
-            //string PasswordSalt = map["PasswordSalt"].AsString();
+            
+            string Password = "";
+            
+            if (map.ContainsKey("Password"))
+            {
+            	Password = map["Password"].AsString();
+            }
+            else
+            {
+            	Password = map["PasswordHash"].AsString(); //is really plaintext password, the system hashes it later. Not sure why it was called PasswordHash to start with. I guess the original design was to have the PHP code generate the salt and password hash, then just simply store it here
+            }
+            
+            //string PasswordSalt = map["PasswordSalt"].AsString(); //not being used
             string HomeRegion = map["HomeRegion"].AsString();
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
             int userLevel = map["UserLevel"].AsInteger();
-
+            string UserTitle = map["UserTitle"].AsString();
+            
+            //13 is PG, 21 is Mature, 42 is Adult
+            
+            int MaxMaturity = 42; //set to adult by default
+            if (map.ContainsKey("MaxMaturity")) //MaxMaturity is the highest level that they can change the maturity rating to in the viewer
+            {
+            	MaxMaturity = map["MaxMaturity"].AsInteger();
+            }
+            
+            int MaturityRating = MaxMaturity; //set the default to whatever MaxMaturity was set tom incase they didn't define MaturityRating
+            
+            if (map.ContainsKey("MaturityRating")) //MaturityRating is the rating the user wants to be able to see
+            {
+            	MaturityRating = map["MaturityRating"].AsInteger();
+            }
+            
             bool activationRequired = map.ContainsKey("ActivationRequired") ? map["ActivationRequired"].AsBoolean() : false;
-  
 
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             if (accountService == null)
                 return null;
 
-            if (!PasswordHash.StartsWith("$1$"))
-                PasswordHash = "$1$" + Util.Md5Hash(PasswordHash);
-            PasswordHash = PasswordHash.Remove(0, 3); //remove $1$
+            if (!Password.StartsWith("$1$"))
+                Password = "$1$" + Util.Md5Hash(Password);
+            Password = Password.Remove(0, 3); //remove $1$
 
-            accountService.CreateUser(Name, PasswordHash, Email);
+            accountService.CreateUser(Name, Password, Email);
             UserAccount user = accountService.GetUserAccount(null, Name);
             IAgentInfoService agentInfoService = m_registry.RequestModuleInterface<IAgentInfoService> ();
             IGridService gridService = m_registry.RequestModuleInterface<IGridService> ();
@@ -559,19 +585,27 @@ namespace Aurora.Addon.WebUI
 
                 // could not find a way to save this data here.
                 DateTime RLDOB = map["RLDOB"].AsDate();
-				string RLName = map["RLName"].AsString();
+				string RLGender = map["RLGender"].AsString();
+                string RLName = map["RLName"].AsString();
                 string RLAddress = map["RLAddress"].AsString();
                 string RLCity = map["RLCity"].AsString();
                 string RLZip = map["RLZip"].AsString();
                 string RLCountry = map["RLCountry"].AsString();
                 string RLIP = map["RLIP"].AsString();
 
+
+
                 IAgentConnector con = DataPlugins.RequestPlugin<IAgentConnector>();
                 con.CreateNewAgent (userID);
 
                 IAgentInfo agent = con.GetAgent (userID);
+                
+                agent.MaxMaturity = MaxMaturity;
+                agent.MaturityRating = MaturityRating;
+                         
                 agent.OtherAgentInformation["RLDOB"] = RLDOB;
-				agent.OtherAgentInformation["RLName"] = RLName;
+				agent.OtherAgentInformation["RLGender"] = RLGender;
+                agent.OtherAgentInformation["RLName"] = RLName;
                 agent.OtherAgentInformation["RLAddress"] = RLAddress;
                 agent.OtherAgentInformation["RLCity"] = RLCity;
                 agent.OtherAgentInformation["RLZip"] = RLZip;
@@ -580,7 +614,7 @@ namespace Aurora.Addon.WebUI
                 if (activationRequired)
                 {
                     UUID activationToken = UUID.Random();
-                    agent.OtherAgentInformation["WebUIActivationToken"] = Util.Md5Hash(activationToken.ToString() + ":" + PasswordHash);
+                    agent.OtherAgentInformation["WebUIActivationToken"] = Util.Md5Hash(activationToken.ToString() + ":" + Password);
                     resp["WebUIActivationToken"] = activationToken;
                 }
                 con.UpdateAgent (agent);
@@ -598,6 +632,10 @@ namespace Aurora.Addon.WebUI
                     profile.AArchiveName = AvatarArchive + ".database";
 
                 profile.IsNewUser = true;
+                
+                profile.MembershipGroup = UserTitle;
+                profile.CustomType = UserTitle;
+                
                 profileData.UpdateUserProfile(profile);
             }
 
@@ -1161,6 +1199,7 @@ namespace Aurora.Addon.WebUI
                 {
                     OSDMap agentMap = new OSDMap();
                     agentMap["RLName"] = agent.OtherAgentInformation["RLName"].AsString();
+                    agentMap["RLGender"] = agent.OtherAgentInformation["RLGender"].AsString();
                     agentMap["RLAddress"] = agent.OtherAgentInformation["RLAddress"].AsString();
                     agentMap["RLZip"] = agent.OtherAgentInformation["RLZip"].AsString();
                     agentMap["RLCity"] = agent.OtherAgentInformation["RLCity"].AsString();
