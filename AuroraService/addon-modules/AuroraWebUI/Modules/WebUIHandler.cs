@@ -511,8 +511,19 @@ namespace Aurora.Addon.WebUI
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
-            string PasswordHash = map["PasswordHash"].AsString();
-            //string PasswordSalt = map["PasswordSalt"].AsString();
+            
+            string Password = "";
+            
+            if (map.ContainsKey("Password"))
+            {
+            	Password = map["Password"].AsString();
+            }
+            else
+            {
+            	Password = map["PasswordHash"].AsString(); //is really plaintext password, the system hashes it later. Not sure why it was called PasswordHash to start with. I guess the original design was to have the PHP code generate the salt and password hash, then just simply store it here
+            }
+            
+            //string PasswordSalt = map["PasswordSalt"].AsString(); //not being used
             string HomeRegion = map["HomeRegion"].AsString();
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
@@ -540,11 +551,11 @@ namespace Aurora.Addon.WebUI
             if (accountService == null)
                 return null;
 
-            if (!PasswordHash.StartsWith("$1$"))
-                PasswordHash = "$1$" + Util.Md5Hash(PasswordHash);
-            PasswordHash = PasswordHash.Remove(0, 3); //remove $1$
+            if (!Password.StartsWith("$1$"))
+                Password = "$1$" + Util.Md5Hash(Password);
+            Password = Password.Remove(0, 3); //remove $1$
 
-            accountService.CreateUser(Name, PasswordHash, Email);
+            accountService.CreateUser(Name, Password, Email);
             UserAccount user = accountService.GetUserAccount(null, Name);
             IAgentInfoService agentInfoService = m_registry.RequestModuleInterface<IAgentInfoService> ();
             IGridService gridService = m_registry.RequestModuleInterface<IGridService> ();
@@ -603,7 +614,7 @@ namespace Aurora.Addon.WebUI
                 if (activationRequired)
                 {
                     UUID activationToken = UUID.Random();
-                    agent.OtherAgentInformation["WebUIActivationToken"] = Util.Md5Hash(activationToken.ToString() + ":" + PasswordHash);
+                    agent.OtherAgentInformation["WebUIActivationToken"] = Util.Md5Hash(activationToken.ToString() + ":" + Password);
                     resp["WebUIActivationToken"] = activationToken;
                 }
                 con.UpdateAgent (agent);
