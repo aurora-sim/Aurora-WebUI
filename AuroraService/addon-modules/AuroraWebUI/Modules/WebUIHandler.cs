@@ -538,7 +538,7 @@ namespace Aurora.Addon.WebUI
             	MaxMaturity = map["MaxMaturity"].AsInteger();
             }
             
-            int MaturityRating = 42; //set to adult by default
+            int MaturityRating = MaxMaturity; //set the default to whatever MaxMaturity was set tom incase they didn't define MaturityRating
             
             if (map.ContainsKey("MaturityRating")) //MaturityRating is the rating the user wants to be able to see
             {
