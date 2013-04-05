@@ -519,8 +519,22 @@ namespace Aurora.Addon.WebUI
             int userLevel = map["UserLevel"].AsInteger();
             string UserTitle = map["UserTitle"].AsString();
             
+            //13 is PG, 21 is Mature, 42 is Adult
+            
+            int MaxMaturity = 42; //set to adult by default
+            if (map.ContainsKey("MaxMaturity")) //MaxMaturity is the highest level that they can change the maturity rating to in the viewer
+            {
+            	MaxMaturity = map["MaxMaturity"].AsInteger();
+            }
+            
+            int MaturityRating = 42; //set to adult by default
+            
+            if (map.ContainsKey("MaturityRating")) //MaturityRating is the rating the user wants to be able to see
+            {
+            	MaturityRating = map["MaturityRating"].AsInteger();
+            }
+            
             bool activationRequired = map.ContainsKey("ActivationRequired") ? map["ActivationRequired"].AsBoolean() : false;
-  
 
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             if (accountService == null)
@@ -574,6 +588,10 @@ namespace Aurora.Addon.WebUI
                 con.CreateNewAgent (userID);
 
                 IAgentInfo agent = con.GetAgent (userID);
+                
+                agent.MaxMaturity = MaxMaturity;
+                agent.MaturityRating = MaturityRating;
+                         
                 agent.OtherAgentInformation["RLDOB"] = RLDOB;
 				agent.OtherAgentInformation["RLGender"] = RLGender;
                 agent.OtherAgentInformation["RLName"] = RLName;
