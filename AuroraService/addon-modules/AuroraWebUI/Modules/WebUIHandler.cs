@@ -517,7 +517,8 @@ namespace Aurora.Addon.WebUI
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
             int userLevel = map["UserLevel"].AsInteger();
-
+            string UserTitle = map["UserTitle"].AsString();
+            
             bool activationRequired = map.ContainsKey("ActivationRequired") ? map["ActivationRequired"].AsBoolean() : false;
   
 
@@ -559,19 +560,23 @@ namespace Aurora.Addon.WebUI
 
                 // could not find a way to save this data here.
                 DateTime RLDOB = map["RLDOB"].AsDate();
-				string RLName = map["RLName"].AsString();
+				string RLGender = map["RLGender"].AsString();
+                string RLName = map["RLName"].AsString();
                 string RLAddress = map["RLAddress"].AsString();
                 string RLCity = map["RLCity"].AsString();
                 string RLZip = map["RLZip"].AsString();
                 string RLCountry = map["RLCountry"].AsString();
                 string RLIP = map["RLIP"].AsString();
 
+
+
                 IAgentConnector con = DataPlugins.RequestPlugin<IAgentConnector>();
                 con.CreateNewAgent (userID);
 
                 IAgentInfo agent = con.GetAgent (userID);
                 agent.OtherAgentInformation["RLDOB"] = RLDOB;
-				agent.OtherAgentInformation["RLName"] = RLName;
+				agent.OtherAgentInformation["RLGender"] = RLGender;
+                agent.OtherAgentInformation["RLName"] = RLName;
                 agent.OtherAgentInformation["RLAddress"] = RLAddress;
                 agent.OtherAgentInformation["RLCity"] = RLCity;
                 agent.OtherAgentInformation["RLZip"] = RLZip;
@@ -598,6 +603,10 @@ namespace Aurora.Addon.WebUI
                     profile.AArchiveName = AvatarArchive + ".database";
 
                 profile.IsNewUser = true;
+                
+                profile.MembershipGroup = UserTitle;
+                profile.CustomType = UserTitle;
+                
                 profileData.UpdateUserProfile(profile);
             }
 
@@ -1161,6 +1170,7 @@ namespace Aurora.Addon.WebUI
                 {
                     OSDMap agentMap = new OSDMap();
                     agentMap["RLName"] = agent.OtherAgentInformation["RLName"].AsString();
+                    agentMap["RLGender"] = agent.OtherAgentInformation["RLGender"].AsString();
                     agentMap["RLAddress"] = agent.OtherAgentInformation["RLAddress"].AsString();
                     agentMap["RLZip"] = agent.OtherAgentInformation["RLZip"].AsString();
                     agentMap["RLCity"] = agent.OtherAgentInformation["RLCity"].AsString();
