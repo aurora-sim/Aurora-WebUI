@@ -17,7 +17,7 @@ if($_GET[region]){
     $sizeX          = $regiondb[SizeX];
     $sizeY          = $regiondb[SizeY];
     $owner          = $regiondb[OwnerUUID];
-    $regionOnline   = ($regiondb[Flags] % 2048) == 2048;    //Check for isOnline flag
+    $regionOnline   = ($regiondb[Flags] % 4);    //Check for isOnline flag
     $mapTexture     = $regiondb[regionMapTexture];
   }
 
@@ -66,7 +66,7 @@ if($_GET[region]){
      
       <tr>
         <td align="right" class="styleItem"><?=$CONF_txt_status?>:&nbsp;</td> 
-        <td align="left"><? if($regionOnline == '21'){echo"<span class='styleOnline'>Online</span>";}else{echo"<span class='styleOffline'>Offline</span>";} ?>         </td>
+        <td align="left"><? if($regionOnline){echo"<span class='styleOnline'>Online</span>";}else{echo"<span class='styleOffline'>Offline</span>";} ?>         </td>
       </tr>
 
       <tr>
