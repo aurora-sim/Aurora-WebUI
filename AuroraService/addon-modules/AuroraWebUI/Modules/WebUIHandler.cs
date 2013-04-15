@@ -532,7 +532,7 @@ namespace Aurora.Addon.WebUI
             
             //13 is PG, 21 is Mature, 42 is Adult
             
-            int MaxMaturity = 42; //set to adult by default
+            int MaxMaturity = 2; //set to adult by default
             if (map.ContainsKey("MaxMaturity")) //MaxMaturity is the highest level that they can change the maturity rating to in the viewer
             {
             	MaxMaturity = map["MaxMaturity"].AsInteger();
