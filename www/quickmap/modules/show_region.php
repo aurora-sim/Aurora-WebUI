@@ -7,7 +7,7 @@ if($_GET[region]){
 
   mysql_connect($CONF_db_server,$CONF_db_user,$CONF_db_pass);
   mysql_select_db($CONF_db_database);
-  $z=mysql_query("SELECT RegionUUID,RegionName,Access,LocX,LocY,SizeX,SizeY,OwnerUUID FROM gridregions where RegionUUID='$_GET[region]'");
+  $z=mysql_query("SELECT RegionUUID,RegionName,Flags,LocX,LocY,SizeX,SizeY,OwnerUUID FROM gridregions where RegionUUID='$_GET[region]'");
   while($regiondb=mysql_fetch_array($z))
   {
     $UUID           = $regiondb[RegionUUID];
@@ -17,7 +17,7 @@ if($_GET[region]){
     $sizeX          = $regiondb[SizeX];
     $sizeY          = $regiondb[SizeY];
     $owner          = $regiondb[OwnerUUID];
-    $regionOnline   = $regiondb[Access];    
+    $regionOnline   = ($regiondb[Flags] % 4);    //Check for isOnline flag
     $mapTexture     = $regiondb[regionMapTexture];
   }
 
@@ -66,7 +66,7 @@ if($_GET[region]){
      
       <tr>
         <td align="right" class="styleItem"><?=$CONF_txt_status?>:&nbsp;</td> 
-        <td align="left"><? if($regionOnline == '21'){echo"<span class='styleOnline'>Online</span>";}else{echo"<span class='styleOffline'>Offline</span>";} ?>         </td>
+        <td align="left"><? if($regionOnline){echo"<span class='styleOnline'>Online</span>";}else{echo"<span class='styleOffline'>Offline</span>";} ?>         </td>
       </tr>
 
       <tr>
