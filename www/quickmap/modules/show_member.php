@@ -3,6 +3,7 @@ include("../includes/config.php");
 include("../includes/mt_header.php");
 include("../languages/translator.php");
 
+
 $agent = $_GET[agent];
 
 if($agent){
@@ -11,6 +12,7 @@ if($agent){
   mysql_select_db($CONF_db_database);
 
   $z = mysql_query("SELECT PrincipalID,FirstName,LastName,Created FROM useraccounts where PrincipalID='$agent'");
+	
  while($userdb=mysql_fetch_array($z))
    {
      $uuid           = $userdb[PrincipalID];
@@ -33,7 +35,9 @@ if($agent){
      $RegionUUID     = $regiondb[RegionUUID];
      $RegionName     = $regiondb[RegionName];
    }
+
   $q = mysql_query("SELECT Archive FROM wi_appearance where Picture='$profileImage'");
+ 
   while($imagedb=mysql_fetch_array($q))
   {
     $data = $imagedb[data];
@@ -43,9 +47,7 @@ if($agent){
     if (strlen($data) >= 1000)
     {$counter = 1;}
   }
-
-
-
+  
  $date=date("d.m.Y - H:i",$created);
  $last_login=date("d.m.Y - H:i",$lastLogin);
  $last_logout=date("d.m.Y - H:i",$lastLogout);
@@ -81,7 +83,7 @@ if($agent){
       
       <tr>
         <td align="right" class="styleItem"><?=$CONF_txt_status?>:&nbsp;</td> 
-        <td align="left"><? if($agentOnline == '1'){echo"<span class='styleOnline'>Online</span>";}else{echo"<span class='styleOffline'>Offline</span>";} ?>         </td>
+        <td align="left"><? if($agentOnline == '1'){echo"<span class='styleOnline'>$CONF_txt_status_online</span>";}else{echo"<span class='styleOffline'>$CONF_txt_status_offline</span>";} ?>         </td>
       </tr>
       
       <tr>
