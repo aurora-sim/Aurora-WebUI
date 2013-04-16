@@ -62,7 +62,7 @@ using RegionFlags = Aurora.Framework.Services.RegionFlags;
 
 namespace Aurora.Addon.WebUI
 {
-    public class WireduxHandler : IService
+    public class WebUIHandler : IService
     {
         public IHttpServer m_server = null;
         public IHttpServer m_server2 = null;
@@ -85,10 +85,10 @@ namespace Aurora.Addon.WebUI
                 m_servernick = config.Configs["GridInfoService"].GetString("gridnick", m_servernick);
             m_registry = registry;
             IConfig handlerConfig = config.Configs["Handlers"];
-            string name = handlerConfig.GetString("WireduxHandler", "");
+            string name = handlerConfig.GetString("WebUIHandler", "");
             if (name != Name)
                 return;
-            string Password = handlerConfig.GetString("WireduxHandlerPassword", String.Empty);
+            string Password = handlerConfig.GetString("WebUIHandlerPassword", String.Empty);
             if (Password != "")
             {
                 IConfig gridCfg = config.Configs["GridInfoService"];
@@ -104,13 +104,13 @@ namespace Aurora.Addon.WebUI
                     }
                 }
 
-                m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxHandlerPort"));
+                m_server = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WebUIHandlerPort"));
                 //This handler allows sims to post CAPS for their sims on the CAPS server.
-                m_server.AddStreamHandler(new WireduxHTTPHandler(Password, registry, gridInfo, UUID.Zero));
-                m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WireduxTextureServerPort"));
+                m_server.AddStreamHandler(new WebUIHTTPHandler(Password, registry, gridInfo, UUID.Zero));
+                m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WebUITextureServerPort"));
                 m_server2.AddHTTPHandler(new GenericStreamHandler("GET", "GridTexture", OnHTTPGetTextureImage));
                 m_server2.AddHTTPHandler(new GenericStreamHandler("GET", "MapTexture", OnHTTPGetMapImage));
-                gridInfo["WireduxTextureServer"] = m_server2.ServerURI;
+                gridInfo["WebUITextureServer"] = m_server2.ServerURI;
 
                 MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
                 MainConsole.Instance.Commands.AddCommand("webui demote user", "Revokes administrative powers for webui from the specified user.", "webui demote user", DemoteUser);
@@ -384,7 +384,7 @@ namespace Aurora.Addon.WebUI
         #endregion
     }
 
-    public class WireduxHTTPHandler : BaseRequestHandler, IStreamedRequestHandler
+    public class WebUIHTTPHandler : BaseRequestHandler, IStreamedRequestHandler
     {
         protected string m_password;
         protected IRegistryCore m_registry;
@@ -392,8 +392,9 @@ namespace Aurora.Addon.WebUI
         private UUID AdminAgentID;
         private Dictionary<string, MethodInfo> APIMethods = new Dictionary<string, MethodInfo>();
 
-        public WireduxHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID) :
-            base("POST", "/WIREDUX")
+        public WebUIHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID) :
+        
+		base("POST", "/WEBUI")
         {
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
@@ -511,25 +512,51 @@ namespace Aurora.Addon.WebUI
         {
             bool Verified = false;
             string Name = map["Name"].AsString();
-            string PasswordHash = map["PasswordHash"].AsString();
-            //string PasswordSalt = map["PasswordSalt"].AsString();
+            
+            string Password = "";
+            
+            if (map.ContainsKey("Password"))
+            {
+            	Password = map["Password"].AsString();
+            }
+            else
+            {
+            	Password = map["PasswordHash"].AsString(); //is really plaintext password, the system hashes it later. Not sure why it was called PasswordHash to start with. I guess the original design was to have the PHP code generate the salt and password hash, then just simply store it here
+            }
+            
+            //string PasswordSalt = map["PasswordSalt"].AsString(); //not being used
             string HomeRegion = map["HomeRegion"].AsString();
             string Email = map["Email"].AsString();
             string AvatarArchive = map["AvatarArchive"].AsString();
             int userLevel = map["UserLevel"].AsInteger();
-
+            string UserTitle = map["UserTitle"].AsString();
+            
+            //0 is PG, 1 is Mature, 2 is Adult
+            
+            int MaxMaturity = 2; //set to adult by default
+            if (map.ContainsKey("MaxMaturity")) //MaxMaturity is the highest level that they can change the maturity rating to in the viewer
+            {
+            	MaxMaturity = map["MaxMaturity"].AsInteger();
+            }
+            
+            int MaturityRating = MaxMaturity; //set the default to whatever MaxMaturity was set tom incase they didn't define MaturityRating
+            
+            if (map.ContainsKey("MaturityRating")) //MaturityRating is the rating the user wants to be able to see
+            {
+            	MaturityRating = map["MaturityRating"].AsInteger();
+            }
+            
             bool activationRequired = map.ContainsKey("ActivationRequired") ? map["ActivationRequired"].AsBoolean() : false;
-  
 
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             if (accountService == null)
                 return null;
 
-            if (!PasswordHash.StartsWith("$1$"))
-                PasswordHash = "$1$" + Util.Md5Hash(PasswordHash);
-            PasswordHash = PasswordHash.Remove(0, 3); //remove $1$
+            if (!Password.StartsWith("$1$"))
+                Password = "$1$" + Util.Md5Hash(Password);
+            Password = Password.Remove(0, 3); //remove $1$
 
-            accountService.CreateUser(Name, PasswordHash, Email);
+            accountService.CreateUser(Name, Password, Email);
             UserAccount user = accountService.GetUserAccount(null, Name);
             IAgentInfoService agentInfoService = m_registry.RequestModuleInterface<IAgentInfoService> ();
             IGridService gridService = m_registry.RequestModuleInterface<IGridService> ();
@@ -559,8 +586,8 @@ namespace Aurora.Addon.WebUI
 
                 // could not find a way to save this data here.
                 DateTime RLDOB = map["RLDOB"].AsDate();
-                string RLFirstName = map["RLFirstName"].AsString();
-                string RLLastName = map["RLLastName"].AsString();
+				string RLGender = map["RLGender"].AsString();
+                string RLName = map["RLName"].AsString();
                 string RLAddress = map["RLAddress"].AsString();
                 string RLCity = map["RLCity"].AsString();
                 string RLZip = map["RLZip"].AsString();
@@ -571,9 +598,13 @@ namespace Aurora.Addon.WebUI
                 con.CreateNewAgent (userID);
 
                 IAgentInfo agent = con.GetAgent (userID);
+                
+                agent.MaxMaturity = MaxMaturity;
+                agent.MaturityRating = MaturityRating;
+                         
                 agent.OtherAgentInformation["RLDOB"] = RLDOB;
-                agent.OtherAgentInformation["RLFirstName"] = RLFirstName;
-                agent.OtherAgentInformation["RLLastName"] = RLLastName;
+				agent.OtherAgentInformation["RLGender"] = RLGender;
+                agent.OtherAgentInformation["RLName"] = RLName;
                 agent.OtherAgentInformation["RLAddress"] = RLAddress;
                 agent.OtherAgentInformation["RLCity"] = RLCity;
                 agent.OtherAgentInformation["RLZip"] = RLZip;
@@ -582,7 +613,7 @@ namespace Aurora.Addon.WebUI
                 if (activationRequired)
                 {
                     UUID activationToken = UUID.Random();
-                    agent.OtherAgentInformation["WebUIActivationToken"] = Util.Md5Hash(activationToken.ToString() + ":" + PasswordHash);
+                    agent.OtherAgentInformation["WebUIActivationToken"] = Util.Md5Hash(activationToken.ToString() + ":" + Password);
                     resp["WebUIActivationToken"] = activationToken;
                 }
                 con.UpdateAgent (agent);
@@ -600,6 +631,10 @@ namespace Aurora.Addon.WebUI
                     profile.AArchiveName = AvatarArchive + ".database";
 
                 profile.IsNewUser = true;
+                
+                profile.MembershipGroup = UserTitle;
+                profile.CustomType = UserTitle;
+                
                 profileData.UpdateUserProfile(profile);
             }
 
@@ -790,7 +825,6 @@ namespace Aurora.Addon.WebUI
 						{
 							resp["BannedUntil"] = OSD.FromInteger(0);
 						}
-
 					}
 					else
 					{
@@ -811,14 +845,12 @@ namespace Aurora.Addon.WebUI
 
 					return resp;
 				}
-
 			}
 			else
 			{
 				resp["why"] = OSD.FromString("BadPassword");
 				return resp;
 			}
-
 		}
 
         private OSDMap SetWebLoginKey(OSDMap map)
@@ -838,6 +870,34 @@ namespace Aurora.Addon.WebUI
 
             return resp;
         }
+
+		private OSDMap SetUserLevel(OSDMap map) //just sets a user level
+		{
+			OSDMap resp = new OSDMap();
+
+			UUID agentID = map ["UserID"].AsUUID();
+            int userLevel = map["UserLevel"].AsInteger();
+
+            IUserAccountService userService = m_registry.RequestModuleInterface<IUserAccountService>();
+            UserAccount account = userService.GetUserAccount(null, agentID);
+
+            if (account != null) //found
+            {
+                account.UserLevel = userLevel;
+                
+                userService.StoreUserAccount(account);
+                
+                resp["UserFound"] = OSD.FromBoolean(true);
+                resp["Updated"] = OSD.FromBoolean(true);
+            }
+            else //not found
+            {
+                resp["UserFound"] = OSD.FromBoolean(false);
+                resp["Updated"] = OSD.FromBoolean(false);
+            }
+            
+			return resp;
+		}
 
         #endregion
 
@@ -866,7 +926,6 @@ namespace Aurora.Addon.WebUI
             }
             return resp;
         }
-
 
         private OSDMap ConfirmUserEmailName(OSDMap map)
         {
@@ -903,7 +962,6 @@ namespace Aurora.Addon.WebUI
                 resp["ErrorCode"] = OSD.FromInteger(1);
             }
 
-
             return resp;
         }
 
@@ -919,14 +977,8 @@ namespace Aurora.Addon.WebUI
             ILoginService loginService = m_registry.RequestModuleInterface<ILoginService>();
             IUserAccountService accountService = m_registry.RequestModuleInterface<IUserAccountService>();
             UUID userID = map["UUID"].AsUUID();
-
-            
-
             UserAccount account = m_registry.RequestModuleInterface<IUserAccountService>().GetUserAccount(null, userID);
-
-
             IAuthenticationService auths = m_registry.RequestModuleInterface<IAuthenticationService>();
-
             OSDMap resp = new OSDMap();
             //Null means it went through without an error
             bool Verified = loginService.VerifyClient(account.PrincipalID, account.Name, "UserAccount", Password);
@@ -1135,6 +1187,7 @@ namespace Aurora.Addon.WebUI
                 {
                     OSDMap agentMap = new OSDMap();
                     agentMap["RLName"] = agent.OtherAgentInformation["RLName"].AsString();
+                    agentMap["RLGender"] = agent.OtherAgentInformation["RLGender"].AsString();
                     agentMap["RLAddress"] = agent.OtherAgentInformation["RLAddress"].AsString();
                     agentMap["RLZip"] = agent.OtherAgentInformation["RLZip"].AsString();
                     agentMap["RLCity"] = agent.OtherAgentInformation["RLCity"].AsString();

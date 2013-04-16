@@ -6,14 +6,20 @@
  * See LICENSE for the full licensing terms of this file.
  *
 */
+##################### PHP ############################
+date_default_timezone_set('America/Los_Angeles');
+set_error_handler(function($errno, $errstr, $errfile, $errline){
+	throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+
+});
 
 ##################### System #########################
 define("SYSNAME","***");
 define("SYSURL","http://your_webui_server_ip_or_dns/");
 define("SYSMAIL","***");
-define("WIREDUX_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WIREDUX");
-define("WIREDUX_TEXTURE_SERVICE","http://your_webui_server_ip_or_dns:8002");
-define("WIREDUX_PASSWORD","***");
+define("WEBUI_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WEBUI");
+define("WEBUI_TEXTURE_SERVICE","http://your_webui_server_ip_or_dns:8002");
+define("WEBUI_PASSWORD","***");
 
 // Should we display a 'Maintenance' page currently that blocks all access to the website?
 // (until disabled here)?
@@ -218,4 +224,13 @@ define("C_USERS_RL_TBL", "useraccounts_rl");
 define("C_ADMINMODULES_TBL", "wi_adminmodules");
 define("C_ADMINOPTIONS_TBL", "wi_adminoptions");
 define("C_ADMINBGCOLORANIM_TBL", "wi_adminbgcoloranim");
+
+################ Recaptcha ###############################
+#	Obtain your public and private keys from http://www.google.com/recaptcha
+
+//define('RECAPTCHA_PUBLIC_KEY', 'foo');
+//define('RECAPTCHA_PRIVATE_KEY', 'bar');
+
+################ Optional WebUI Features ###############################
+define('EmailAccountActivation',true);
 ?>

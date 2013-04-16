@@ -54,7 +54,7 @@ if ($_GET[page] != '') {
 if ($_POST[Submit] == $webui_login) {
 
     $found = array();
-    $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => md5(WIREDUX_PASSWORD),
+    $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => md5(WEBUI_PASSWORD),
                                  'Name' => cleanQuery($_POST[logname]),
                                  'Password' => cleanQuery($_POST[logpassword])));
     $do_post_request = do_post_request($found);
@@ -67,7 +67,7 @@ if ($_POST[Submit] == $webui_login) {
         $_SESSION[FIRSTNAME] = $recieved->{'FirstName'};
         $_SESSION[LASTNAME] = $recieved->{'LastName'};
 
-        $found[0] = json_encode(array('Method' => 'SetWebLoginKey', 'WebPassword' => md5(WIREDUX_PASSWORD),
+        $found[0] = json_encode(array('Method' => 'SetWebLoginKey', 'WebPassword' => md5(WEBUI_PASSWORD),
                                  'PrincipalID' => $UUIDC));
         $do_post_request = do_post_request($found);
         $recieved = json_decode($do_post_request);
@@ -85,7 +85,7 @@ if ($_POST[Submit] == $webui_login) {
 if ($_POST[Submit] == $webui_admin_login) {
 
     $found = array();
-    $found[0] = json_encode(array('Method' => 'AdminLogin', 'WebPassword' => md5(WIREDUX_PASSWORD),
+    $found[0] = json_encode(array('Method' => 'AdminLogin', 'WebPassword' => md5(WEBUI_PASSWORD),
                                  'Name' => $_POST[logname],
                                  'Password' => $_POST[logpassword]));
     $do_post_request = do_post_request($found);

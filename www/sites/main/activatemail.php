@@ -9,7 +9,7 @@ list($UUID, $EMAIL) = $DbLink->next_record();
 if($UUID)
 {	
 	$found = array();
-	$found[0] = json_encode(array('Method' => 'SaveEmail', 'WebPassword' => md5(WIREDUX_PASSWORD)
+	$found[0] = json_encode(array('Method' => 'SaveEmail', 'WebPassword' => md5(WEBUI_PASSWORD)
 		, 'UUID' => cleanQuery($UUID)
 		, 'Email' => cleanQuery($EMAIL)));
 	$do_post_requested = do_post_request($found);

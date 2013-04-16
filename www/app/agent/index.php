@@ -12,7 +12,7 @@ if ($_GET[name]) {
     $userName = $_GET['name'];
 
     $found = array();
-    $found[0] = json_encode(array('Method' => 'GetProfile', 'WebPassword' => md5(WIREDUX_PASSWORD),
+    $found[0] = json_encode(array('Method' => 'GetProfile', 'WebPassword' => md5(WEBUI_PASSWORD),
         'Name' => cleanQuery($_GET['name'])));
 
     $do_post_requested = do_post_request($found);
