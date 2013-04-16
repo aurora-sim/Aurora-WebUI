@@ -7,17 +7,18 @@ if($_GET[region]){
 
   mysql_connect($CONF_db_server,$CONF_db_user,$CONF_db_pass);
   mysql_select_db($CONF_db_database);
-  $z=mysql_query("SELECT RegionUUID,RegionName,Flags,LocX,LocY,SizeX,SizeY,OwnerUUID FROM gridregions where RegionUUID='$_GET[region]'");
+  $z = mysql_query("SELECT RegionUUID,RegionName,Access,Flags,LocX,LocY,SizeX,SizeY,OwnerUUID FROM gridregions where RegionUUID='$_GET[region]'");
   while($regiondb=mysql_fetch_array($z))
   {
     $UUID           = $regiondb[RegionUUID];
-    $regionName     = $regiondb[RegionName];  
+    $regionName     = $regiondb[RegionName];
+	$regionMaturity = $regiondb[Access];
     $locX           = $regiondb[LocX];
     $locY           = $regiondb[LocY];
     $sizeX          = $regiondb[SizeX];
     $sizeY          = $regiondb[SizeY];
     $owner          = $regiondb[OwnerUUID];
-    $regionOnline   = ($regiondb[Flags] % 4);    //Check for isOnline flag
+    $regionOnline   = (((int)$regiondb[Flags]) % 4);    //Check for isOnline flag
     $mapTexture     = $regiondb[regionMapTexture];
   }
 
@@ -69,6 +70,11 @@ if($_GET[region]){
         <td align="left"><? if($regionOnline){echo"<span class='styleOnline'>Online</span>";}else{echo"<span class='styleOffline'>Offline</span>";} ?>         </td>
       </tr>
 
+	  <tr>
+        <td align="right" class="styleItem"><?=$CONF_txt_maturity?>:&nbsp;</td> 
+		<td align="left"><? if($regionMaturity == '13'){echo"<span>General</span>";}elseif($regionMaturity=='21'){echo"<span>Mature</span>";}elseif($regionMaturity=='42'){echo"<span>Adult</span>";} ?>   </td>
+      </tr>
+	  
       <tr>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -117,7 +123,7 @@ if($_GET[region]){
     if ($counter == 1)
     { 
     ?> 
-      <iframe width="275" height="275" frameborder="0" src="regionimage.php?uuid=<?=$mapTexture?>&image=<?=$CONF_sim_domain?><?=$CONF_install_path?>/tmp/<?=$mapTexture?>.jp2"></iframe>
+      <iframe width="275" height="275" frameborder="0" src="http://metropolis.hypergrid.org/webassets/jp2-to-jpg.php?uuid=<?=$mapTexture?>&image=<?=$CONF_sim_domain?><?=$CONF_install_path?>/tmp/<?=$mapTexture?>.jp2"></iframe>
       </iframe>
     <?
     }
@@ -147,6 +153,3 @@ if($_GET[region]){
 
 
 </body></html>
-
-
-
