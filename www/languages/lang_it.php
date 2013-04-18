@@ -51,9 +51,8 @@ $webui_location='Posizione';
 $webui_info='Informazioni';
 $webui_regions_found='Regioni trovate';
 $webui_region_list='Lista delle Regioni';
-
-$webui_region_list_page_info='Lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
 $webui_more_info='Maggiori informazioni';
+$webui_region_list_page_info='Lista delle Regioni, clicca sul nome della Regione per avere maggiori informazioni.';
 $webui_user_name='Nome avatar';
 $webui_successfully = 'Il tuo account e stato creato con successo!';
 

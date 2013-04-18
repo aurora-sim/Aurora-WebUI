@@ -1,5 +1,4 @@
 <?php
-/**translated by MrNapz**/
 $webui_language_code='pt';
 $webui_actual_language='Portugu&ecirc;s';
 
@@ -51,8 +50,8 @@ $webui_location='Localiza&ccedil;&atilde;o';
 $webui_info='Informa&ccedil;&atilde;o';
 $webui_regions_found='Regi&otilde;es Encontradas';
 $webui_region_list='Lista de Regi&otilde;es';
-$webui_region_list_page_info='Esta &eacute; a lista de regi&otilde;es, clique no nome de uma regi&atilde;o para obter mais informa&ccedil;&atilde;o.';
 $webui_more_info='Mais Informa&ccedil;&atilde;o';
+$webui_region_list_page_info='Esta &eacute; a lista de regi&otilde;es, clique no nome de uma regi&atilde;o para obter mais informa&ccedil;&atilde;o.';
 $webui_user_name='Nome de Utilizador';
 $webui_successfully = 'Conta criada com sucesso!';
 $webui_successfully_info = 'Conta criada com sucesso; para logar, precisa de clicar no link que foi-lhe enviado para o email.';
