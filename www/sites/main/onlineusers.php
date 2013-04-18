@@ -1,34 +1,34 @@
 <script>
 function OpenAgent(firstname, lastname)
 {
-	locate = "<?=SYSURL?>/app/agent/?name="+firstname+" "+lastname
+	locate = "<?php echo $SYSURL ?>app/agent/?name="+firstname+" "+lastname
 	window.open(locate,'mywindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=800,height=400')
 }
 </script>
 
 <div id="content">
-  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+  <div id="ContentHeaderLeft"><h5><?php echo $SYSURL ?></h5></div>
   <div id="ContentHeaderCenter"></div>
-  <div id="ContentHeaderRight"><h5><? echo $webui_online_users; ?></h5></div>
+  <div id="ContentHeaderRight"><h5><?php echo $webui_online_users; ?></h5></div>
   <div id="usersonline">
-  <div id="info"><p><? echo $webui_online_users_info ?></p></div>
+  <div id="info"><p><?php echo $webui_online_users_info ?></p></div>
 
 <table>
   <tbody>
-    <tr class="<? echo ($odd = $w%2 )? "even":"odd" ?>" >
+    <tr class = "<?php echo ($odd = $w%2 )? "even":"odd" ?>" >
       <td>
-        <b><? echo $webui_user_name ?>:</b>
+        <b><?php echo $webui_user_name ?>:</b>
       </td>
       
       <td>
-        <b><? echo $webui_region_name ?>:</b>
+        <b><?php echo $webui_region_name ?>:</b>
       </td>
       
       <td>
         <b>Info</b>
       </td>
     </tr>
-<?
+<?php
 	$DbLink = new DB;
 	$DbLink->query("SELECT UserID FROM ".C_USERINFO_TBL." where IsOnline = '1' AND ".
 					"LastLogin < (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now())))) AND ".
@@ -66,9 +66,7 @@ function OpenAgent(firstname, lastname)
 </div>
 </div>
 
-<?
-
-
+<?php
 $DbLink->query("SELECT count(*) FROM ".C_USERINFO_TBL." where IsOnline = '1' and
 LastLogin > (UNIX_TIMESTAMP(FROM_UNIXTIME(UNIX_TIMESTAMP(now()) - 86400)))");
 list($NOWONLINE) = $DbLink->next_record();
