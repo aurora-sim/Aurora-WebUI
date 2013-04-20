@@ -1,15 +1,27 @@
-<div id="content">
-  <div id="ContentHeaderLeft"><h5><?= SYSNAME ?>: <? echo $webui_world_map ?></h5></div>
-  <div id="ContentHeaderCenter"></div>
-  <div id="ContentHeaderRight">
-  <h5><a <?= "onclick=\"window.open('".SYSURL."app/map/index.php','mywindow')\"" ?> style="float:right; display:inline-block;"><? echo $webui_fullscreen; ?></a></h5></div>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <title><?= SYSNAME ?>: <? echo $webui_world_map ?></title>
+    <meta name="keywords" content="{SystemName}" />
+    <meta name="description" content="{SystemName}"/>
+    <link rel="shortcut icon" href="images/icons/favicon.ico" />
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key="></script>
+    <script type="text/javascript" src="javascripts/jquery/jquery.min.js"></script>
+    <script src="map/slmapapi.php"></script>
+    <link rel="stylesheet" type="text/css" href="map/slmapapi.css" />
 
-<br /><br /><br /><br /><br />
+    <style type="text/css">
+	    html, body, {width: 100%; height: 100%; margin: 0px; padding: 0px;}
+		#map-container {width: 100%; height: 100%;}
+    </style>
 
-  <div id="region_map">
+    <script type="text/javascript">
+    function loadmap(){
+        var coords = {'x' : <?  echo $webui_map_GridCenterX ?> + 0.5, 'y' : <? echo $webui_map_GridCenterY ?> + 0.5},
+        mapInstance = new SLURL.Map(document.getElementById('map-container'), {'overviewMapControl':true});
+        mapInstance.centerAndZoomAtSLCoord(new SLURL.XYPoint(coords.x, coords.y), 3);}
+    $(document).ready(loadmap);
+    </script>
+</head>
 
-    <iframe src="<?=SYSURL?>app/map/index.php" frameborder="0" width="100%" height="100%">
-    <p>Your browser does not support iframes.</p>
-  </iframe>
-  </div>
-</div>
+<body><div id=map-container></div></body></html>
