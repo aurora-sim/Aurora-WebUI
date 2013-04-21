@@ -140,7 +140,7 @@ if ($_GET[name]) {
       
       <div id="profil_picture">
           <?php
-            if($profileImage == "")
+            if ($profileImage == "00000000-0000-0000-0000-000000000000" || $profileImage == "")
             {
                 $profileLink = "info.jpg";
             }
