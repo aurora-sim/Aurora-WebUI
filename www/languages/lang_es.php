@@ -141,7 +141,10 @@ $webui_home_page='
         <p>unete a nosotros y marca la diferencia!</p>';
 
 $webui_home_page_warning = ' Por favor Manten en mente que la plataforma de Aurora estÃ¡ todavia en desarrollo y no todo siempre puede funcionar como se espera.';
-
+$webui_home_page_loggedin = "
+		<p>welcome back $_SESSION[FIRSTNAME] please keep loging in.</p>
+		";
+//
 //
 // 404 page
 //

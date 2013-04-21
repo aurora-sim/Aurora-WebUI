@@ -142,7 +142,10 @@ $webui_home_page='
         <p>Venha fazer a diferenca!</p>';
 
 $webui_home_page_warning = 'Por favor entenda que a plataforma Aurora est&aacute; ainda em fase de desenvolvimento, podendo por isso ocasionalmente n&atilde;o funcionar da forma desejada.';
-
+$webui_home_page_loggedin = "
+		<p>welcome back $_SESSION[FIRSTNAME] please keep loging in.</p>
+		";
+//
 //
 // 404 page
 //

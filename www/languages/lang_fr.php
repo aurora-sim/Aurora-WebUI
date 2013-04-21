@@ -143,7 +143,10 @@ $webui_home_page='
     <p>Rejoignez-nous maintenant, et faites la différence!</p>';
 
 $webui_home_page_warning = 'S\'il vous plaît garder à l\'esprit que la plate-forme Aurora est encore en version alpha et donc ne sont pas toujours les résultats escomptés.';
-
+$webui_home_page_loggedin = "
+		<p>welcome back $_SESSION[FIRSTNAME] please keep loging in.</p>
+		";
+//
 //
 // 404 page
 //
