@@ -143,7 +143,10 @@ $webui_home_page='
 		<p>Join us now, and make a difference!</p>';
 
 $webui_home_page_warning = 'Ne pozabite, da platforma Aurora je še vedno v preizkuševalni verziji in tako ne deluje vedno v skladu s pričakovanji.';
-
+$webui_home_page_loggedin = "
+		<p>welcome back $_SESSION[FIRSTNAME] please keep loging in.</p>
+		";
+//
 //
 // 404 page
 //

@@ -142,7 +142,10 @@ $webui_home_page='
     <p>Volg ons voorbeeld, en maak het verschil!</p>';
 
 $webui_home_page_warning = 'Hou wel in gedachten dat het Aurora platform nog steeds experimenteel is, en dat sommige dingen (nog) niet zoals verwacht kunnen werken.';
-
+$webui_home_page_loggedin = "
+		<p>welcome back $_SESSION[FIRSTNAME] please keep loging in.</p>
+		";
+//
 //
 // 404 page
 //
