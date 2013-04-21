@@ -10,17 +10,12 @@
     ?>
     </div>
 </div>
-
 <div id="ContentHeaderRight"><h5><? echo $webui_home; ?></h5></div>
 <?php } ?>
-
 <div class="clear"></div>
-        
-<? include("sites/modules/steps123.php"); ?>
-        
-<div id="annonce7"><h3><? echo $webui_welcome; ?> <?= SYSNAME ?></h3><? echo $webui_home_page; ?></div>
-<div id="annonce10"><p><? echo $webui_home_page_warning; ?></p></div>
-
-<? include("sites/modules/infos123.php"); ?>
+    <?php
+    if($_SESSION[NAME]) include("sites/modules/homeusers.php");
+    else include("sites/modules/homevisitor.php");
+    ?>
 
 </div>
