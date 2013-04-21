@@ -1,4 +1,4 @@
-<?
+<?php
 include("../../settings/config.php");
 include("../../settings/databaseinfo.php");
 include("../../settings/json.php");
@@ -75,13 +75,13 @@ if ($_GET[name]) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="<?= SYSURL ?><? echo $template_css ?>" type="text/css" />
-    <link rel="icon" href="<?= SYSURL ?><?=$favicon_image?>" />
-    <title><?= SYSNAME ?>: <? echo $webui_users_profile; ?> <? echo $userName ?></title>
+    <link rel="stylesheet" href="<?php echo SYSURL; ?><?php echo $template_css; ?>" type="text/css" />
+    <link rel="icon" href="<?php echo SYSURL; ?><?php echo $favicon_image; ?>" />
+    <title><?= SYSNAME ?>: <?php echo $webui_users_profile; ?> <?php echo $userName; ?></title>
     
 <?php if($displayRoundedCorner)  { ?>
-<script src="<?= SYSURL ?>javascripts/jquery/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?= SYSURL ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
+<script src="<?php echo SYSURL; ?>javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo SYSURL; ?>javascripts/jquery/jquery.corner.js?v2.11"></script>
 <script type="text/javascript">
 	  $("#profil_picture").corner("15px");
 		$('#container_popup, #content_popup').corner();
@@ -93,63 +93,63 @@ if ($_GET[name]) {
 <body class="webui">
 <div id="container_popup">
 <div id="content_popup">
-  <h2><?= SYSNAME ?>: <? echo $webui_users_profile; ?> <? echo $userName ?></h2>
+  <h2><?php echo SYSNAME; ?>: <?php echo $webui_users_profile; ?> <?php echo $userName; ?></h2>
   
   <div id="useragentprofil">
-	<!--  <div id="info"><p><? echo $webui_region_list_page_info ?></p></div> -->
+	<!--  <div id="info"><p><?php echo $webui_region_list_page_info; ?></p></div> -->
 
   <hr>
       <table>
           <tr>
               <td>
-                  <? echo $webui_resident_since ?>: <?= $date ?> <br /> <? echo $webui_resident_age ?>: (<?= $diff ?>)
+                  <?php echo $webui_resident_since; ?>: <?php echo $date; ?> <br /> <?php echo $webui_resident_age; ?>: (<?php echo $diff; ?>)
               </td>
           </tr>
           <tr>
               <td>
-                  <? echo $webui_account_info ?>: <?= $type ?>
+                  <?php echo $webui_account_info; ?>: <?php echo $type; ?>
               </td>
           </tr>         
           <tr>
               <td></td>
           </tr>
-              <? if ($partner != '') { ?>
+              <?php if ($partner != '') { ?>
           <tr>
               <td>
-                  <? echo $webui_partner; ?>: <? echo $partner ?>
+                  <?php echo $webui_partner; ?>: <?php echo $partner ?>
               </td>
           </tr>
           <tr>
               <td></td>
           </tr>
-              <? } ?>
+              <?php } ?>
           <tr>
               <td>
-                  <h2><? echo $webui_about_me; ?></h2>
+                  <h2><?php echo $webui_about_me; ?></h2>
               </td>
           </tr>       
           <tr>
               <td>
-                <?
-                  if ($profileTXT != '') { echo $profileTXT; }
-                  else { echo $webui_no_information_set; }
+                <?php
+                  if ($profileTXT != '') {echo $profileTXT;}
+                  else {echo $webui_no_information_set;}
                 ?>
               </td>
           </tr>
       </table>
       
       <div id="profil_picture">
-          <?
-            if($profileImage == "")
+          <?php
+            if ($profileImage == "00000000-0000-0000-0000-000000000000" || $profileImage == "")
             {
                 $profileLink = "info.jpg";
             }
             else
-                $profileLink = WIREDUX_TEXTURE_SERVICE . '/index.php?method=GridTexture&uuid=' . $profileImage;
+                $profileLink = WEBUI_TEXTURE_SERVICE . '/index.php?method=GridTexture&uuid=' . $profileImage;
           ?>
-          <img alt="<? echo $profileImage ?>" src="<? echo $profileLink ?>" title="<? echo $userName ?>" />
+          <img alt="<?php echo $profileImage; ?>" src="<?php echo $profileLink; ?>" title="<?php echo $userName; ?>" />
       </div>
   </div>
-</div>  </div>
+</div></div>
 </body>
 </html>
