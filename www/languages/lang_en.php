@@ -81,7 +81,7 @@ $webui_register='Register';
 //
 // News Page
 //
-$webui_news = 'Aurora-Sim News';
+$webui_news = 'Velus Universe News';
 $webui_history = 'History';
 $webui_news_history = 'News History';
 $webui_no_news = 'No news';
@@ -143,8 +143,13 @@ $webui_home_page='
 		<p><a href="index.php?page=register">Create a free account today</a> build a virtual you and play in our world.</p>
 		<p>Join us now, and make a difference!</p>';
 
-$webui_home_page_warning = 'Please keep in mind that the Aurora platform is still in alpha release and so may not always perform as expected.';
-
+$webui_home_page_warning = 'Please keep in mind that the Velus Universe is still being updated.';
+$webui_home_page_loggedin = "
+		<p>welcome back $_SESSION[FIRSTNAME] please keep loging in.</p>
+		<p>We are currently going through some changes atm so please be patient.</p>
+		<p>We will keep you up to date and try to give advanced notice of any downtime.</p>
+		<p></p>
+		<p></p>";
 //
 // 404 page
 //
@@ -437,7 +442,7 @@ $webui_help_step1_title = 'Step 1';
 $webui_help_step2_title = 'Step 2';
 $webui_help_step3_title = 'Step 3';
 $webui_help_step1 = '<a href="index.php?page=register">Create your FREE Account</a> right here on our pages.';
-$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. We recommend Imprudence / Kokua.';
+$webui_help_step2 = 'Download a viewer</a>. We recommend Imprudence / Kokua.';
 $webui_help_step3 = '<a href="index.php?page=addgrid">Add our grid</a> to your favorite viewer. Don\'t forget it!';
 
 $webui_help_title_comment01 = 'Free Downloads';
@@ -532,13 +537,13 @@ $webui_addgrid_KokuaViewer = 'Kokua Viewer';
 $webui_addgrid_SecondLifeViewer = 'Second Life Viewer';
 $webui_addgrid_KristenViewer = 'Kristen Viewer';
 
-$webui_addgrid_IWC_info = 'Our Server also works with IWC (Inter World Connector).';
+$webui_addgrid_IWC_info = "Our Server don't works with IWC (Inter World Connector).";
 $webui_addgrid_IWC_title = 'Inter World Connector (IWC)';
-$webui_addgrid_IWC_content = 'Here is our IWC link';
+$webui_addgrid_IWC_content = 'We dont have IWC';
 
-$webui_addgrid_HG_info = 'Our Server also works with HG (HyperGrid).';
+$webui_addgrid_HG_info = 'Our Server Will Never work with HG (HyperGrid).';
 $webui_addgrid_HG_title = 'Hypergrid (HG)';
-$webui_addgrid_HG_content = 'Here is our HG link';
+$webui_addgrid_HG_content = 'We dont have HG';
 
 $webui_addgrid_banned_info = 'The given viewers are banned from our system.';
 $webui_addgrid_banned_title = 'Banned Viewer';
@@ -621,7 +626,7 @@ $webui_modernizer_problem = 'You do not have your Javascript enabled, and this s
 //
 $webui_menu_item_getregion='Buy Land';
 
-$webui_menu_item_getcurrency='Buy D$';
+$webui_menu_item_getcurrency='Buy VU$';
 $webui_menu_item_getcurrencyhistory='History';
 $webui_menu_item_currencytransfer='Transfer';
 
@@ -629,19 +634,17 @@ $site_not_a_member='Not a member?';
 $site_sign_up_today='Create your FREE Account right here on our pages.';
 
 $site_sign_up_benifit='
-<ul><li>Large wonderful world with friendly people</li>
-<li>Security is a top priority</li>
-<li>Choose your default avatar when you sign up</li>
-<li>Latest physics engine</li>
-<li>Over 100 Regions</li>
-<li>Currency compatible with lindens and us and euros</li>
-<li>No purchase fee</li>
-<li>No set up fee</li>
-<li>The worlds only virtual 3D dating environment</li>
-<li>You can keep you sl name and  identity</li>
-<li>Friendly personal owners</li>
-<li>Kick ass administer and scripters</li>
-</ul>
+<p>Large wonderful world with friendly people</p>
+<p>Security is a top priority</p>
+<p>Choose your default avatar when you sign up</p>
+<p>Latest physics engine</p>
+<p>Over 100 Regions</p>
+<p>Currency compatible with lindens and us and euros</p>
+<p>No purchase fee</p>
+<p>No set up fee</p>
+<p>You can keep you sl name and  identity</p>
+<p>Friendly personal owners</p>
+<p>Kick ass administer and scripters</p>
 ';
 
 $site_terms_of_service_agree='I agree with the Terms of Service.';

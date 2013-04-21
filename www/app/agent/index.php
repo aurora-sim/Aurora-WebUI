@@ -140,12 +140,12 @@ if ($_GET[name]) {
       
       <div id="profil_picture">
           <?
-            if($profileImage == "")
+            if($profileImage == "00000000-0000-0000-0000-000000000000"|| $profileImage == "")
             {
                 $profileLink = "info.jpg";
             }
             else
-                $profileLink = WIREDUX_TEXTURE_SERVICE . '/index.php?method=GridTexture&uuid=' . $profileImage;
+                $profileLink = WEBUI_TEXTURE_SERVICE . '/index.php?method=GridTexture&uuid=' . $profileImage;
           ?>
           <img alt="<? echo $profileImage ?>" src="<? echo $profileLink ?>" title="<? echo $userName ?>" />
       </div>
