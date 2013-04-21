@@ -44,14 +44,14 @@ include("languages/translator.php");
 include("templates/templates.php");
 
 
-if ($_GET[page] != '') {
-    $_SESSION[page] = $_GET[page];
+if (isset($_GET['page'])) {
+    $_SESSION['page'] = $_GET['page'];
 } else {
-    $_SESSION[page] = 'home';
+    $_SESSION['page'] = 'home';
 }
 
 //LOGIN AUTHENTIFICATION
-if ($_POST[Submit] == $webui_login) {
+if (isset($_POST['Submit']) && $_POST['Submit'] == $webui_login) {
 
     $found = array();
     $found[0] = json_encode(array('Method' => 'Login', 'WebPassword' => md5(WEBUI_PASSWORD),
@@ -82,7 +82,7 @@ if ($_POST[Submit] == $webui_login) {
     }
 }
 
-if ($_POST[Submit] == $webui_admin_login) {
+if (isset($_POST['Submit']) && $_POST['Submit'] == $webui_admin_login) {
 
     $found = array();
     $found[0] = json_encode(array('Method' => 'AdminLogin', 'WebPassword' => md5(WEBUI_PASSWORD),

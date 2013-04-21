@@ -26,10 +26,6 @@ define("WEBUI_PASSWORD","***");
 // (until disabled here)?
 $displayMaintenancePage = false;
 
-// The center of the grid for the world map
-$webui_map_GridCenterX = 1000;
-$webui_map_GridCenterY = 1000;
-
 ################### Add Grid Page ###################
 define("AddGrid_GridNick","Your Grid Nick");
 define("AddGrid_GridName","Your Grid Full Name");

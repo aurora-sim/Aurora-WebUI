@@ -1,5 +1,5 @@
 <?
-include("settings/config.php");
+include("../settings/config.php");
 ?>
 
 /**
