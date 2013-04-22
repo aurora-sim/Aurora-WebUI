@@ -108,8 +108,8 @@ $webui_menu_item_home = 'Home';
 $webui_menu_item_changeaccount = 'Editar';
 $webui_menu_item_news = 'Noticias';
 $webui_menu_item_regions = 'Regiones';
+$webui_menu_item_worldmap = 'Mundo Mapa';
 $webui_menu_item_quickmap = 'Mapa rÃ¡pido';
-$webui_menu_item_worldmap = 'Mapa';
 $webui_menu_item_register = 'Registro';
 $webui_menu_item_logout = 'Logout';
 $webui_menu_item_login = 'Login';
@@ -434,7 +434,7 @@ $webui_help_step1_title = 'Paso 1';
 $webui_help_step2_title = 'Paso 2';
 $webui_help_step3_title = 'Paso 3';
 $webui_help_step1 = '<a href="index.php?page=register">Crea tu cuenta gratis</a> Aqui en nuesta pÃ¡gina.';
-$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. Nosotros recomendamos Imprudence / Kokua.';
+$webui_help_step2 = '<a href="index.php?page=downloads">Download the viewer</a>. Nosotros recomendamos Imprudence / Kokua.';
 $webui_help_step3 = '<a href="index.php?page=addgrid">Adiciona nuestro grid</a> a tu visor favorito. No lo olvides!';
 
 $webui_help_title_comment01 = 'Descargas gratis';

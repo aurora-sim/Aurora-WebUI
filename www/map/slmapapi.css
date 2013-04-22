@@ -86,7 +86,7 @@ a:hover img { border: 0px #FFFFFF none; }
 	display: block;
 	width: 92px;
 	height: 23px;
-	background: url(http://slurl.com/_img/teleport_btn.gif) no-repeat left top;
+	background: url('teleport_btn.gif') no-repeat left top;
 	text-indent:-2000em;
 	float:right;
 }
@@ -178,7 +178,7 @@ body {
 	padding: 0;
 	margin: 0;
 	border: 0;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 body#slurl-about,
@@ -203,6 +203,7 @@ body#slurl-builder{
 	border-color: #ccc;
 }
 
+/*
 #content {
 	top: 75px;
 	margin: 0;
@@ -211,6 +212,7 @@ body#slurl-builder{
 	width: 100%;
 	border: 1px #4378a4 solid;
 }
+*/
 
 #slurl-builder #content,
 #slurl-about #content{ 
@@ -231,9 +233,10 @@ body#slurl-builder{
 	background-color: #fff;
 }
 
+
 #map-container {
-	width: 100%;
-	height: 100%;
+	/* width: 100%;
+	height: 100%; */
 	background-color: #1D475F; /* SL_OCEAN_COLOR */
 }
 
@@ -261,7 +264,7 @@ body#slurl-builder{
 
 #sl-logo h1 a {
 	display: block;
-	background: #fff url('http://slurl.com/_img/logo.png') no-repeat scroll top left;
+	background: #fff url('logo.png') no-repeat scroll top left;
 	width: 286px;
 	height: 63px;
 }
