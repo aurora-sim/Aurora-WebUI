@@ -18,8 +18,8 @@ define("SYSURL","http://your_webui_server_ip_or_dns/");
 define("SYSMAIL","***");
 define("WEBUI_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WEBUI");
 define("WEBUI_TEXTURE_SERVICE","http://your_webui_server_ip_or_dns:8002");
-define("WEBUI_MAP_SERVICE","http://your_webui_server_ip_or_dns:8002/MapService");
-define("WEBUI_MAPAPI_SERVICE","http://your_webui_server_ip_or_dns:8002/MapAPI");
+define("WEBUI_MAP_SERVICE","http://your_webui_server_ip_or_dns:8012/MapService");
+define("WEBUI_MAPAPI_SERVICE","http://your_webui_server_ip_or_dns:8012/MapAPI");
 define("WEBUI_PASSWORD","***");
 
 // Should we display a 'Maintenance' page currently that blocks all access to the website?
