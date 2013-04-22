@@ -1,4 +1,4 @@
-<?
+<?php
 include("../settings/config.php");
 ?>
 
@@ -137,7 +137,7 @@ var SLURL = {
 	getRegionNameByCoords      : function(x, y, onLoadHandler, variable){
 		variable = variable || 'slRegionName';
 		SLURL.loadScript(
-			'<? echo WEBUI_MAPAPI_SERVICE; ?>/get-region-name-by-coords?var=' + encodeURIComponent(variable) + '&grid_x=' + encodeURIComponent(x) + '&grid_y=' + encodeURIComponent(y),
+			'<?php echo WEBUI_MAPAPI_SERVICE; ?>/get-region-name-by-coords?var=' + encodeURIComponent(variable) + '&grid_x=' + encodeURIComponent(x) + '&grid_y=' + encodeURIComponent(y),
 			function(){
 				onLoadHandler(window[variable]);
 			}
@@ -233,8 +233,8 @@ var SLURL = {
 //  Add 2 hosts so that we get faster performance on clients with lots
 //  of bandwidth but possible browser limits on number of open files
 //
-				"<?=WEBUI_MAP_SERVICE?>",
-				"<?=WEBUI_MAP_SERVICE?>"
+				"<?php echo WEBUI_MAP_SERVICE; ?>",
+				"<?php echo WEBUI_MAP_SERVICE; ?>"
 			][((x / regions_per_tile_edge) % 2)] //  Pick a server
 			+ ["/map", sl_zoom, x, y, "objects.jpg"].join("-") //  Get image tiles from Amazon S3
 		);

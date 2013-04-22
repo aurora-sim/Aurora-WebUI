@@ -12,8 +12,8 @@ include("../languages/translator.php");
     <link rel="shortcut icon" href="../images/icons/favicon.ico" />
 	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key="></script>
     <script type="text/javascript" src="../javascripts/jquery/jquery.min.js"></script>
-    <script src="../map/slmapapi.php"></script>
-    <link rel="stylesheet" type="text/css" href="../map/slmapapi.css" />
+    <script src="../worldmap/slmapapi.php"></script>
+    <link rel="stylesheet" type="text/css" href="../worldmap/css/slmapapi.css" />
     <style type="text/css">#map-container {width: 100%; height: 100%;}</style>
 
     <script type="text/javascript">
