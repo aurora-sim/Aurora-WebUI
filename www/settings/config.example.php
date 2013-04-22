@@ -13,14 +13,14 @@
 // });
 
 ##################### System #########################
-define("SYSNAME","***");
+define("SYSNAME","This_usually_is_what_the_site_is_called");
 define("SYSURL","http://your_webui_server_ip_or_dns/");
-define("SYSMAIL","***");
+define("SYSMAIL","you@yourdomain.com");
 define("WEBUI_SERVICE_URL","http://your_webui_server_ip_or_dns:8007/WEBUI");
 define("WEBUI_TEXTURE_SERVICE","http://your_webui_server_ip_or_dns:8002");
 define("WEBUI_MAP_SERVICE","http://your_webui_server_ip_or_dns:8012/MapService");
 define("WEBUI_MAPAPI_SERVICE","http://your_webui_server_ip_or_dns:8012/MapAPI");
-define("WEBUI_PASSWORD","***");
+define("WEBUI_PASSWORD","Password");
 
 // Should we display a 'Maintenance' page currently that blocks all access to the website?
 // (until disabled here)?
@@ -140,8 +140,8 @@ $zoomSize = 64;
 $antiZoomSize = 64;
 
 // Default StartPoint for Map
-$mapstartX=1000;
-$mapstartY=1000;
+$mapstartX = 1000;
+$mapstartY = 1000;
 
 // Direction where Info Image has to stay 
 // ex.: dr = down right ; dl =down left ; tr = top right ; tl = top left ; c = center
