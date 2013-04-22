@@ -99,7 +99,7 @@ Note: When displaying textures from the texture server they will be resized to 1
 3. in the console of the grid server issue this command
 
 ```
-save avatar archive <First> <Last> <Filename> <FolderNameToSaveInto> [<SnapshotUUID>] [<Public>]
+save avatar archive <First> <Last> <Filename> <FolderNameToSaveInto> (--snapshot <UUID>) (--public)
 ```
 
 example:
