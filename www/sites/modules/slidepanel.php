@@ -1,7 +1,3 @@
-<? if($displayStyleSizer) { ?>  
-
-<? } ?>
-    
 <div id="panel">
 <div id="switchers">
 <table id="options">
