@@ -135,7 +135,7 @@ $webui_welcome_visitor = 'Visitante';
 $webui_welcome_back = 'Bienvenido de nuevo';
 $webui_welcome_userid = 'Hola Userid!';
 $webui_home_page='
-        <p>Este es nuestro mundo virtual donde podrÃ¡s aprender, divertir, encontrar gente, chatear, jugar, explorar, crear y compartir tus         	experiencias.</p>
+        <p>Este es nuestro mundo virtual donde podrÃ¡s aprender, divertir, encontrar gente, chatear, jugar, explorar, crear y compartir tus                 experiencias.</p>
        
         <p><a href="index.php?page=register">Crea una cuenta gratis </a> Construye tu avatar y entra en nuestro mundo.</p>
         <p>unete a nosotros y marca la diferencia!</p>';
@@ -468,13 +468,13 @@ $webui_chat_info = 'Esto le permite\'obtener ayuda a travÃ©s de nuestra sala d
 // Downloads Page
 //
 $webui_downloads = 'Aprender descargas';
-$webui_downloads_info = 'Nosotros ofrecemos descargar estos visores ... recomendamos Imprudence / Kokua';
-$webui_downloads_imprudence_windows_title = 'Imprudence para Windows';
-$webui_downloads_imprudence_linux_title = 'Imprudence para Linux';
-$webui_downloads_imprudence_mac_title = 'Imprudence para Mac';
-$webui_downloads_imprudence_windows = '<a href="#">TÃ©lÃ©charger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_linux = '<a href="#">TÃ©lÃ©charger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_mac = '<a href="#">TÃ©lÃ©charger</a> Imprudence / Kokua.';
+$webui_downloads_info = 'Nosotros ofrecemos descargar estos visores ... recomendamos <b>'.$FirestormVersion.'</b>';
+$webui_downloads_firestorm_windows_title = 'Firestorm para Windows';
+$webui_downloads_firestorm_linux_title = 'Firestorm para Linux';
+$webui_downloads_firestorm_mac_title = 'Firestorm para Mac';
+$webui_downloads_firestorm_windows = '<a href=\''.Firestorm_Windows.'\'>Descargar</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_linux = '<a href=\''.Firestorm_Mac.'\'>Descargar</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_mac = '<a href=\''.Firestorm_Linux.'\'>Descargar</a> '.$FirestormVersion.'';
 
 //
 // Addgrid Page
@@ -639,5 +639,4 @@ $site_sign_up_benifit='
 
 $site_terms_of_service_agree='Estoy de acuerdo con los terminos de servicio.';
 $ErrorMessagePurchaseAlreadyComplete = "Esta compra ha sido completada. Si usted no ve su moneda aplicada todavia, por favor sea paciente, podria estar en proceso.";
-
 ?>
