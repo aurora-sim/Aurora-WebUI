@@ -19,6 +19,10 @@
 
 <?php include("sites/modules/steps123.php"); ?>
 
+<?php if($showSpecialReportHomePage) { ?>
+    <div id="annonce10"><p><?php include("sites/modules/specialinfo.php"); ?></p></div>
+<?php } ?>
+
 <div id="annonce7"><h3><? echo $webui_welcome; ?> <?php echo SYSNAME; ?></h3><?php echo $webui_home_page; ?></div>
 <div id="annonce10"><p><? echo $webui_home_page_warning; ?></p></div>
 
