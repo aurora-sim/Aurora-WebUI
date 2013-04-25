@@ -445,7 +445,7 @@ $webui_help_step1_title = 'Step 1';
 $webui_help_step2_title = 'Step 2';
 $webui_help_step3_title = 'Step 3';
 $webui_help_step1 = '<a href="index.php?page=register">Crea il tuo accoun GRATUITO</a> direttamente da questa pagina.';
-$webui_help_step2 = '<a href="index.php?page=downloads">Scarica il viewer</a>. Ti raccomandiamo Imprudence / Kokua.';
+$webui_help_step2 = '<a href="index.php?page=downloads">Scarica il viewer</a>. Ti raccomandiamo <b>'.$FirestormVersion.'</b>.';
 $webui_help_step3 = '<a href="index.php?page=addgrid">Aggiungi la nostra grid</a> al tuo viewer favorito. Non dimenticarlo!';
 
 $webui_help_title_comment01 = 'Downloads gratuiti';
@@ -478,14 +478,14 @@ $webui_chat_info = 'Da qui puoi connetterti direttamente sul nostro canale di su
 //
 // Downloads Page
 //
-$webui_downloads = 'Download';
-$webui_downloads_info = 'Vi proponiamo il download del viewer ... consigliandovi Imprudence / Kokua';
-$webui_downloads_imprudence_windows_title = 'Imprudence pre Windows';
-$webui_downloads_imprudence_linux_title = 'Imprudence per Linux';
-$webui_downloads_imprudence_mac_title = 'Imprudence per Mac';
-$webui_downloads_imprudence_windows = '<a href="#">Scarica</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_linux = '<a href="#">Scarica</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_mac = '<a href="#">Scarica</a> Imprudence / Kokua.';
+$webui_downloads = 'Downloads';
+$webui_downloads_info = 'Vi proponiamo il download del viewer ... consigliandovi <b>'.$FirestormVersion.'</b>';
+$webui_downloads_firestorm_windows_title = 'Firestorm per Windows';
+$webui_downloads_firestorm_linux_title = 'Firestorm per Linux';
+$webui_downloads_firestorm_mac_title = 'Firestorm per Mac';
+$webui_downloads_firestorm_windows = '<a href=\''.Firestorm_Windows.'\'>Download</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_linux = '<a href=\''.Firestorm_Mac.'\'>Download</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_mac = '<a href=\''.Firestorm_Linux.'\'>Download</a> '.$FirestormVersion.'';
 
 //
 // Addgrid Page
@@ -650,5 +650,4 @@ $site_sign_up_benifit='
 
 $site_terms_of_service_agree='Sono daccordo con i termini di servizio.';
 $ErrorMessagePurchaseAlreadyComplete = "Questo acquisto e gia stato effettuato. Se ancora non vedi il tuo bilancio aggiornato, per favore sii paziente, potreebe essere necessario ulteriore tempo.";
-
 ?>
