@@ -436,7 +436,7 @@ $webui_help_step1_title = 'Etape 1';
 $webui_help_step2_title = 'Etape 2';
 $webui_help_step3_title = 'Etape 3';
 $webui_help_step1 = '<a href="index.php?page=register">Créez votre compte</a> gratuit sur notre site dés aujourd\'hui!';
-$webui_help_step2 = '<a href="index.php?page=downloads">Télécharger le Chat</a> (Client) Imprudence / Kokua.';
+$webui_help_step2 = '<a href="index.php?page=downloads">Télécharger le Chat</a> Nous recommandons <b>'.$FirestormVersion.'</b>.';
 $webui_help_step3 = '<a href="index.php?page=addgrid">Ajouter notre grille</a> à votre Chat (Client) préféré.';
 
 $webui_help_title_comment01 = 'Téléchargements Gratuits';
@@ -464,13 +464,13 @@ $webui_chat_info = 'Ceci vous permet d\'obtenir une aide en directe grace à not
 // Downloads Page
 //
 $webui_downloads = 'Téléchargements';
-$webui_downloads_info = 'Nous vous proposons ici quelques téléchargements de Viewer ... nous vous conseillons Imprudence / Kokua';
-$webui_downloads_imprudence_windows_title = 'Imprudence pour Windows';
-$webui_downloads_imprudence_linux_title = 'Imprudence pour Linux';
-$webui_downloads_imprudence_mac_title = 'Imprudence pour Mac';
-$webui_downloads_imprudence_windows = '<a href="#">Télécharger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_linux = '<a href="#">Télécharger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_mac = '<a href="#">Télécharger</a> Imprudence / Kokua.';
+$webui_downloads_info = 'Nous vous proposons ici quelques Viewers en téléchargements, cependant nous recommandons <b>'.$FirestormVersion.'</b>';
+$webui_downloads_firestorm_windows_title = 'Firestorm pour Windows';
+$webui_downloads_firestorm_linux_title = 'Firestorm pour Linux';
+$webui_downloads_firestorm_mac_title = 'Firestorm pour Mac';
+$webui_downloads_firestorm_windows = '<a href=\''.Firestorm_Windows.'\'>Download</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_linux = '<a href=\''.Firestorm_Mac.'\'>Download</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_mac = '<a href=\''.Firestorm_Linux.'\'>Download</a> '.$FirestormVersion.'';
 
 //
 // Addgrid Page
@@ -635,5 +635,4 @@ $site_sign_up_benifit='
 
 $site_terms_of_service_agree='Je suis d\'accord avec les Conditions d\'utilisation.';
 $ErrorMessagePurchaseAlreadyComplete = "Cet achat a déjà été complété. Si vous n'avez pas vu la monnaie encore appliqué, s\'il vous plaît soyez patient, car cela pourrait être en attente.";
-
 ?>
