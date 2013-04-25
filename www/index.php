@@ -601,7 +601,7 @@ $(document).ready(function(){
 <div id="container">
     <div id="header">
         <div id="headerimages">
-            <a href="<?php echo SYSURL ?>"><h1><?php echo SYSNAME ?></h1></a>
+            <a href="<?php echo SYSURL; ?>index.php?page=home"><h1><?php echo SYSNAME; ?></h1></a>
         </div>
         <!-- <div id="gridstatus"><?php //php include("sites/gridstatus.php"); ?></div> -->
              <div id="home_content_right"><?php include("sites/modules/slideshow.php"); ?></div>
