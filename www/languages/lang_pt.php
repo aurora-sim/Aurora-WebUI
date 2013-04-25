@@ -137,7 +137,7 @@ $webui_welcome_userid='Olá Userid!';
 $webui_home_page='
         <p>Este &eacute; o nosso novo Mundo Virtual onde se pode divertir, conhecer pessoas, jogar, explorar, criar e partilhar sonhos.</p>
               <p>Tudo &eacute possivel neste novo Mundo 3D onde tudo &eacute construido pelos seus Residentes.</p>
-    	<p>O limite &eacute; a sua Imagina&ccedil;&atilde;o.</p>   	  
+            <p>O limite &eacute; a sua Imagina&ccedil;&atilde;o.</p>   	  
   	    <p><a href="index.php?page=register">Regista uma conta agora</a> constroi o teu mundo virtual..</p>
         <p>Venha fazer a diferenca!</p>';
 
@@ -435,7 +435,7 @@ $webui_help_step1_title = 'Passo 1';
 $webui_help_step2_title = 'Passo 2';
 $webui_help_step3_title = 'Passo 3';
 $webui_help_step1 = '<a href="index.php?page=register">Crie sua conta GRÁTIS</a> bem aqui na nossa página.';
-$webui_help_step2 = '<a href="index.php?page=downloads">Descarregue o Cliente</a>. Nós recomendamos Imprudence / Kokua.';
+$webui_help_step2 = '<a href="index.php?page=downloads">Descarregue o Cliente</a>. Nós recomendamos <b>'.$FirestormVersion.'</b>.';
 $webui_help_step3 = '<a href="index.php?page=addgrid">Adicione a nossa grid</a> no seu cliente. Não se esqueça disso!';
 
 $webui_help_title_comment01 = 'Downloads Grátis';
@@ -463,13 +463,13 @@ $webui_chat_info = 'Isto permite-lhe Suporte ao Vivo via Chat.';
 // Downloads Page
 //
 $webui_downloads = 'Downloads';
-$webui_downloads_info = 'Disponíbilizamos aqui alguns clientes nos quais recomendamos Imprudence / Kokua';
-$webui_downloads_imprudence_windows_title = 'Imprudence para Windows';
-$webui_downloads_imprudence_linux_title = 'Imprudence para Linux';
-$webui_downloads_imprudence_mac_title = 'Imprudence para Mac';
-$webui_downloads_imprudence_windows = '<a href="#">Descarregar</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_linux = '<a href="#">Descarregar</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_mac = '<a href="#">Descarregar</a> Imprudence / Kokua.';
+$webui_downloads_info = 'Disponíbilizamos aqui alguns clientes nos quais recomendamos <b>'.$FirestormVersion.'</b>';
+$webui_downloads_firestorm_windows_title = 'Firestorm para Windows';
+$webui_downloads_firestorm_linux_title = 'Firestorm para Linux';
+$webui_downloads_firestorm_mac_title = 'Firestorm para Mac';
+$webui_downloads_firestorm_windows = '<a href=\''.Firestorm_Windows.'\'>Download</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_linux = '<a href=\''.Firestorm_Mac.'\'>Download</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_mac = '<a href=\''.Firestorm_Linux.'\'>Download</a> '.$FirestormVersion.'';
 
 //
 // Addgrid Page
@@ -633,5 +633,4 @@ $site_sign_up_benifit='
 
 $site_terms_of_service_agree='Aceito os Termos do Serviço.';
 $ErrorMessagePurchaseAlreadyComplete = "Esta compra já foi concluída. Se você ainda não viu a moeda aplicada, por favor, seja paciente, pois pode estar em espera.";
-
 ?>
