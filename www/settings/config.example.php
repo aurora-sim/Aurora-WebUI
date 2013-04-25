@@ -6,10 +6,11 @@
  * See LICENSE for the full licensing terms of this file.
  *
 */
+
 ##################### PHP ############################
 // date_default_timezone_set('America/Los_Angeles');
 // set_error_handler(function($errno, $errstr, $errfile, $errline){
-// 	throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+//     throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
 // });
 
 ##################### System #########################
@@ -25,6 +26,12 @@ define("WEBUI_PASSWORD","Password");
 // Should we display a 'Maintenance' page currently that blocks all access to the website?
 // (until disabled here)?
 $displayMaintenancePage = false;
+
+################### Downloads Page ###################
+$FirestormVersion = "Firestorm v4.4.0.33720";
+define("Firestorm_Windows","http://downloads.phoenixviewer.com/windows/Phoenix_Firestorm-Release_4-4-0-33720_SetupOS.exe");
+define("Firestorm_Mac","http://downloads.phoenixviewer.com/Linux/Phoenix_Firestorm-Release_i686_4.4.0.33720OS.tar.bz2");
+define("Firestorm_Linux","http://downloads.phoenixviewer.com/Mac/Phoenix_Firestorm-Release_4_4_0_33720OS.dmg");
 
 ################### Add Grid Page ###################
 define("AddGrid_GridNick","Your Grid Nick");
@@ -81,14 +88,14 @@ $displaySlideShow = true;
 $SlideShowStyle = "turnDown";
 $SlideShowSpeed = 1000;
 $SlideShowTimeout = 5000;
-$SlideShowSync = 0;             // 1 or 0
+$SlideShowSync = 0;       // 1 or 0
 // $SlideShowPrev = '#prev2';
 // $SlideShowNext = '#next2';
-$SlideShowPause = 0;            // 1 or 0
-$SlideShowRandom = 0;           // 1 or 0
-$SlideShowPager = "";           // #nav
-$SlideShowEaseing = "";         // bounceout
-$SlideShowDelay = -1000;        // -5000
+$SlideShowPause = 0;      // 1 or 0
+$SlideShowRandom = 0;     // 1 or 0
+$SlideShowPager = "";     // #nav
+$SlideShowEaseing = "";   // bounceout
+$SlideShowDelay = -1000;  // -5000
 
 ################### Loginscreen ###################
 // Should the pictures on the loginscreen be random or by time?
@@ -101,8 +108,10 @@ $showRegionsPanel = true;
 $showGridStatus = true;
 // Show the panel that shows grid alerts?
 $showAlertPanel = true;
-// Show the panel that shows special reports?
+// Show the panel that shows special reports (loginscreen)?
 $showSpecialReport = true;
+// Show the panel that shows special reports (home page)?
+$showSpecialReportHomePage = true;
 
 ################### Main Site #######################
 // Should we show any scrolling text at the top of the page?
@@ -118,7 +127,6 @@ $scrollingTextMessage = "Welcome!         Bienvenue!          Hola!";
 // $displayPageLoadTime = true;
 // $displayW3c = false;
 // $displayRss = true;
-
 
 ############ Delete Unconfirmed accounts ################
 // e.g. 24 for 24 hours  leave empty for no timed delete
@@ -180,8 +188,6 @@ $MegaMenuEvent      = "hover";  // hover, clic
 // WARNING! Styles 'basic' requiere MegaMenuPreset setup to 1
 $MegaMenuSkin       = "basic";
 
-
-
 #################### Languages ########################
 // TODO $displayLanguageSelector = true;
 $languages=array("en" => "English",
@@ -218,7 +224,7 @@ define("C_APPEARANCE_TBL", "avatar");
 define("C_USERINFO_TBL", "userinfo");
 define("C_PROFILE_TBL", "profilegeneral");
 
-// other
+// Other
 define("C_USERS_RL_TBL", "useraccounts_rl");
 
 // Options
