@@ -157,7 +157,6 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == $webui_admin_login) {
   <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
   <script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
   <script src="javascripts/global.js" type="text/javascript"></script>
-  <script src="javascripts/droppanel/dropdown.js" type="text/javascript"></script>
     
   <script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>
