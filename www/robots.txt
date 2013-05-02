@@ -10,3 +10,4 @@ Disallow: /settings/
 Disallow: /sites/
 Disallow: /sql_update/
 Disallow: /templates/
+Disallow: /worldmap/
