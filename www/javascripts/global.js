@@ -13,7 +13,7 @@ function validate(form)
 			{
 				if (form.elements[i].attributes["nospecial"].value == "true")
 				{                      
-					if(form.elements[i].value.match("/[A-z_0-9]/g").length != form.elements[i].value.length)
+					if(form.elements[i].value.match("/[A-Z_a-z_0-9_@]/g").length != form.elements[i].value.length)
 					return false;                  
 				}
 			}
