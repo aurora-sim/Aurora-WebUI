@@ -9,6 +9,14 @@ function validate(form)
 	{ 
 		if (form.elements[i].attributes["require"])
 		{
+			if (form.elements[i].attributes["nospecial"])
+			{
+				if (form.elements[i].attributes["nospecial"].value == "true")
+				{                      
+					if(form.elements[i].value.match("/[A-z_0-9]/g").length != form.elements[i].value.length)
+					return false;                  
+				}
+			}
 			if (form.elements[i].attributes["require"].value == "true")
 			{
 				if (form.elements[i].type == "checkbox")
