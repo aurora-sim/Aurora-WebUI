@@ -560,13 +560,20 @@ function displayDefaultAvatars()
 				// insert code end
 ?>
 
+
 <div id="content">
-<h2><?php echo $webui_successfully; ?></h2>
-    <div id="info">
-        <p><?php echo $webui_successfully_info; ?></p><br />
-        <p><?php echo SYSNAME; ?> <?php echo $webui_avatar_first_name; ?>: <b><?php echo $_SESSION[ACCFIRST]; ?></b></p><br />
-        <p><?php echo SYSNAME; ?> <?php echo $webui_avatar_last_name; ?>:  <b><?php echo $_SESSION[ACCLAST]; ?></b></p><br />
-        <p><?php echo SYSNAME; ?> <?php echo $webui_email; ?>: <?php echo $_SESSION[EMAIL]; ?></b></p><br />
+    <div id="ContentHeaderLeft"><h5><?php echo SYSNAME; ?></h5></div>
+    <div id="ContentHeaderCenter"><p class="register"><b><?php echo $webui_successfully; ?></b></p></div>
+    <div id="ContentHeaderRight"><h5><?php echo $webui_register; ?></h5></div>
+	
+    <div class="clear"></div>
+
+    <div id="message"><p><?php echo $webui_successfully_info; ?></p></div>
+
+    <div id="register">
+        <p><?php echo SYSNAME; ?> <?php echo $webui_avatar_first_name; ?>: <b><?php echo $_SESSION[ACCFIRST]; ?></b></p>
+        <p><?php echo SYSNAME; ?> <?php echo $webui_avatar_last_name; ?>:  <b><?php echo $_SESSION[ACCLAST]; ?></b></p>
+        <p><?php echo SYSNAME; ?> <?php echo $webui_email; ?>: <?php echo $_SESSION[EMAIL]; ?></b></p>
     </div>
 </div>
 
@@ -594,7 +601,8 @@ else { ?>
 <div id="content">
     <div id="ContentHeaderLeft"><h5><?php echo SYSNAME; ?></h5></div>
     <div id="ContentHeaderCenter"></div>
-    <div id="ContentHeaderRight"><h5><?php echo $webui_register; ?></h5></div> 
+    <div id="ContentHeaderRight"><h5><?php echo $webui_register; ?></h5></div>
+    <div class="clear"></div>
     <div id="alert"><p><?php echo $webui_registrations_disabled; ?></p></div>
 </div>
 
