@@ -43,7 +43,7 @@ if ($_SESSION[ADMINID]) {
     <div id="ContentHeaderCenter"></div>
     <div id="ContentHeaderRight"><h5><? echo $webui_admin_login; ?></h5></div>
 		<div id="login">        
-			<form action="index.php" method="POST" onsubmit="if (!validate(this)) return false;">
+			<form action="index.php?page=adminhome" method="POST" onsubmit="if (!validate(this)) return false;">
 				<table>
 					<tr><td class="error" colspan="2" align="center" id="error_message"><?=$_SESSION[ERROR];$_SESSION[ERROR]="";?><?=$_GET[ERROR]?></td></tr>
 					<tr>
