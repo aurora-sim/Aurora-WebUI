@@ -157,7 +157,6 @@ if (isset($_POST['Submit']) && $_POST['Submit'] == $webui_admin_login) {
   <title><? echo $webui_welcome; ?> <?= SYSNAME ?></title>
   <script src="javascripts/modernizr-1.7.min.js" type="text/javascript"></script>
   <script src="javascripts/global.js" type="text/javascript"></script>
-  <script src="javascripts/droppanel/dropdown.js" type="text/javascript"></script>
     
   <script src="javascripts/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="javascripts/jquery/slidepanel.js" type="text/javascript"></script>
@@ -601,7 +600,7 @@ $(document).ready(function(){
 <div id="container">
     <div id="header">
         <div id="headerimages">
-            <a href="<?php echo SYSURL ?>"><h1><?php echo SYSNAME ?></h1></a>
+            <a href="<?php echo SYSURL; ?>index.php?page=home"><h1><?php echo SYSNAME; ?></h1></a>
         </div>
         <!-- <div id="gridstatus"><?php //php include("sites/gridstatus.php"); ?></div> -->
              <div id="home_content_right"><?php include("sites/modules/slideshow.php"); ?></div>

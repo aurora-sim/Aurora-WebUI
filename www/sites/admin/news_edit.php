@@ -32,6 +32,7 @@ window.location.href=\"index.php?page=home\";
 
   <div id="createnews">
     <div id="info"><p><? echo $webui_admin_edit_news_info ?></p></div>
+    <div class="clear"></div>
 
     <?
       $DbLink = new DB;

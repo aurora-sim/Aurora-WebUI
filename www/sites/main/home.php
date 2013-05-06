@@ -1,21 +1,31 @@
 <div id="content">
 <?php if($displayDate) { ?>
-<div id="ContentHeaderLeft"><h5><?= SYSNAME ?></h5></div>
+<div id="ContentHeaderLeft"><h5><?php echo SYSNAME; ?></h5></div>
 
 <div id="ContentHeaderCenter">
     <div id="date">
-     <?php $date = date("d-m-Y");
-    $heure = date("H:i");
-    Print("$webui_before_date $date $webui_after_date $heure");
-    ?>
+        <?php
+            $date = date("d-m-Y");
+            $heure = date("H:i");
+            Print("$webui_before_date $date $webui_after_date $heure");
+        ?>
     </div>
 </div>
-<div id="ContentHeaderRight"><h5><? echo $webui_home; ?></h5></div>
+
+<div id="ContentHeaderRight"><h5><?php echo $webui_home; ?></h5></div>
 <?php } ?>
+
 <div class="clear"></div>
-    <?php
-    if($_SESSION[NAME]) include("sites/modules/homeusers.php");
-    else include("sites/modules/homevisitor.php");
-    ?>
+
+<?php include("sites/modules/steps123.php"); ?>
+
+<?php if($showSpecialReportHomePage) { ?>
+    <div id="annonce10"><p><?php include("sites/modules/specialinfo.php"); ?></p></div>
+<?php } ?>
+
+<div id="annonce7"><h3><? echo $webui_welcome; ?> <?php echo SYSNAME; ?></h3><?php echo $webui_home_page; ?></div>
+<div id="annonce10"><p><? echo $webui_home_page_warning; ?></p></div>
+
+<?php include("sites/modules/infos123.php"); ?>
 
 </div>

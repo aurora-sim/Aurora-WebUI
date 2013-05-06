@@ -58,8 +58,8 @@ if ($_GET[delete] == 1) {
         <tr><td></td></tr>
         <tr><td></td></tr>
         
-        <td><b><? $TIMES = date("l M d Y", $TIME); echo"$TIMES"; ?></b></td>
         <td><?= $title ?></td>
+        <td><? $TIMES = date("l M d Y", $TIME); ?></td>
         <td><a href=index.php?page=news_edit&editid=<?= $id ?>><? echo $webui_admin_news_edit ?></a></td>
         <td><a href=index.php?page=adminloginscreen&delete=1&id=<?= $id ?>><? echo $webui_admin_news_delete ?></a></td>
         

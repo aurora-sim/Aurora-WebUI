@@ -31,7 +31,7 @@ window.location.href=\"index.php?page=hometest\";
 
   <div id="createnews">
   <div id="info"><p><? echo $webui_admin_create_news_info ?></p></div>
-
+  <div class="clear"></div>
   <?
     $DbLink = new DB;
     $DbLink->query("SELECT id,title,message from " . C_NEWS_TBL . " WHERE id = '" . cleanQuery($_GET[editid]) . "'");

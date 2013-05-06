@@ -108,8 +108,8 @@ $webui_menu_item_home = 'Home';
 $webui_menu_item_changeaccount = 'Editar';
 $webui_menu_item_news = 'Noticias';
 $webui_menu_item_regions = 'Regiones';
+$webui_menu_item_worldmap = 'Mundo Mapa';
 $webui_menu_item_quickmap = 'Mapa rÃ¡pido';
-$webui_menu_item_worldmap = 'Mapa';
 $webui_menu_item_register = 'Registro';
 $webui_menu_item_logout = 'Logout';
 $webui_menu_item_login = 'Login';
@@ -135,7 +135,7 @@ $webui_welcome_visitor = 'Visitante';
 $webui_welcome_back = 'Bienvenido de nuevo';
 $webui_welcome_userid = 'Hola Userid!';
 $webui_home_page='
-        <p>Este es nuestro mundo virtual donde podrÃ¡s aprender, divertir, encontrar gente, chatear, jugar, explorar, crear y compartir tus         	experiencias.</p>
+        <p>Este es nuestro mundo virtual donde podrÃ¡s aprender, divertir, encontrar gente, chatear, jugar, explorar, crear y compartir tus                 experiencias.</p>
        
         <p><a href="index.php?page=register">Crea una cuenta gratis </a> Construye tu avatar y entra en nuestro mundo.</p>
         <p>unete a nosotros y marca la diferencia!</p>';
@@ -434,7 +434,7 @@ $webui_help_step1_title = 'Paso 1';
 $webui_help_step2_title = 'Paso 2';
 $webui_help_step3_title = 'Paso 3';
 $webui_help_step1 = '<a href="index.php?page=register">Crea tu cuenta gratis</a> Aqui en nuesta pÃ¡gina.';
-$webui_help_step2 = '<a target="_blank" href="http://wiki.kokuaviewer.org/wiki/Downloads">Download the viewer</a>. Nosotros recomendamos Imprudence / Kokua.';
+$webui_help_step2 = '<a href="index.php?page=downloads">Download the viewer</a>. Nosotros recomendamos Imprudence / Kokua.';
 $webui_help_step3 = '<a href="index.php?page=addgrid">Adiciona nuestro grid</a> a tu visor favorito. No lo olvides!';
 
 $webui_help_title_comment01 = 'Descargas gratis';
@@ -468,13 +468,13 @@ $webui_chat_info = 'Esto le permite\'obtener ayuda a travÃ©s de nuestra sala d
 // Downloads Page
 //
 $webui_downloads = 'Aprender descargas';
-$webui_downloads_info = 'Nosotros ofrecemos descargar estos visores ... recomendamos Imprudence / Kokua';
-$webui_downloads_imprudence_windows_title = 'Imprudence para Windows';
-$webui_downloads_imprudence_linux_title = 'Imprudence para Linux';
-$webui_downloads_imprudence_mac_title = 'Imprudence para Mac';
-$webui_downloads_imprudence_windows = '<a href="#">TÃ©lÃ©charger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_linux = '<a href="#">TÃ©lÃ©charger</a> Imprudence / Kokua.';
-$webui_downloads_imprudence_mac = '<a href="#">TÃ©lÃ©charger</a> Imprudence / Kokua.';
+$webui_downloads_info = 'Nosotros ofrecemos descargar estos visores ... recomendamos <b>'.$FirestormVersion.'</b>';
+$webui_downloads_firestorm_windows_title = 'Firestorm para Windows';
+$webui_downloads_firestorm_linux_title = 'Firestorm para Linux';
+$webui_downloads_firestorm_mac_title = 'Firestorm para Mac';
+$webui_downloads_firestorm_windows = '<a href=\''.Firestorm_Windows.'\'>Descargar</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_linux = '<a href=\''.Firestorm_Mac.'\'>Descargar</a> '.$FirestormVersion.'';
+$webui_downloads_firestorm_mac = '<a href=\''.Firestorm_Linux.'\'>Descargar</a> '.$FirestormVersion.'';
 
 //
 // Addgrid Page
@@ -639,5 +639,4 @@ $site_sign_up_benifit='
 
 $site_terms_of_service_agree='Estoy de acuerdo con los terminos de servicio.';
 $ErrorMessagePurchaseAlreadyComplete = "Esta compra ha sido completada. Si usted no ve su moneda aplicada todavia, por favor sea paciente, podria estar en proceso.";
-
 ?>
