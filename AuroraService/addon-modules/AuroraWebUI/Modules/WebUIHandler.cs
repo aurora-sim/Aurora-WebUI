@@ -108,8 +108,7 @@ namespace Aurora.Addon.WebUI
                 //This handler allows sims to post CAPS for their sims on the CAPS server.
                 m_server.AddStreamHandler(new WebUIHTTPHandler(Password, registry, gridInfo, UUID.Zero));
                 m_server2 = registry.RequestModuleInterface<ISimulationBase>().GetHttpServer(handlerConfig.GetUInt("WebUITextureServerPort"));
-                m_server2.AddHTTPHandler(new GenericStreamHandler("GET", "GridTexture", OnHTTPGetTextureImage));
-                m_server2.AddHTTPHandler(new GenericStreamHandler("GET", "MapTexture", OnHTTPGetMapImage));
+                m_server2.AddStreamHandler(new GenericStreamHandler("GET", "/index.php?method=GridTexture", OnHTTPGetTextureImage));
                 gridInfo["WebUITextureServer"] = m_server2.ServerURI;
 
                 MainConsole.Instance.Commands.AddCommand("webui promote user", "Grants the specified user administrative powers within webui.", "webui promote user", PromoteUser);
@@ -135,38 +134,34 @@ namespace Aurora.Addon.WebUI
             MainConsole.Instance.Debug("[WebUI]: Sending image jpeg");
             byte[] jpeg = new byte[0];
             IAssetService m_AssetService = m_registry.RequestModuleInterface<IAssetService>();
+            IJ2KDecoder m_j2kDecoder = m_registry.RequestModuleInterface<IJ2KDecoder>();
 
             MemoryStream imgstream = new MemoryStream();
-            Bitmap mapTexture = new Bitmap(1, 1);
-            ManagedImage managedImage;
-            Image image = (Image)mapTexture;
+            Image mapTexture = null;
+            imgstream = new MemoryStream();
 
             try
             {
                 // Taking our jpeg2000 data, decoding it, then saving it to a byte array with regular jpeg data
-
-                imgstream = new MemoryStream();
-
-                // non-async because we know we have the asset immediately.
                 AssetBase mapasset = m_AssetService.Get(httpRequest.QueryString.Get("uuid"));
 
                 // Decode image to System.Drawing.Image
-                if (OpenJPEG.DecodeToImage(mapasset.Data, out managedImage, out image))
-                {
-                    // Save to bitmap
+                mapTexture = m_j2kDecoder.DecodeToImage(mapasset.Data);
+                if (mapTexture == null)
+                    return jpeg;
+                // Save to bitmap
 
-                    mapTexture = ResizeBitmap(image, 128, 128);
-                    EncoderParameters myEncoderParameters = new EncoderParameters();
-                    myEncoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 75L);
+                mapTexture = ResizeBitmap(mapTexture, 128, 128);
+                EncoderParameters myEncoderParameters = new EncoderParameters();
+                myEncoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 75L);
 
-                    // Save bitmap to stream
-                    mapTexture.Save(imgstream, GetEncoderInfo("image/jpeg"), myEncoderParameters);
+                // Save bitmap to stream
+                mapTexture.Save(imgstream, GetEncoderInfo("image/jpeg"), myEncoderParameters);
 
 
 
-                    // Write the stream to a byte array for output
-                    jpeg = imgstream.ToArray();
-                }
+                // Write the stream to a byte array for output
+                jpeg = imgstream.ToArray();
             }
             catch (Exception)
             {
@@ -180,9 +175,6 @@ namespace Aurora.Addon.WebUI
                 if (mapTexture != null)
                     mapTexture.Dispose();
 
-                if (image != null)
-                    image.Dispose();
-
                 if (imgstream != null)
                 {
                     imgstream.Close();
@@ -194,52 +186,7 @@ namespace Aurora.Addon.WebUI
             return jpeg;
         }
 
-        public byte[] OnHTTPGetMapImage(string path, Stream request, OSHttpRequest httpRequest, OSHttpResponse httpResponse)
-        {
-            if (httpRequest.QueryString.Get("method") != "MapTexture")
-                return MainServer.BlankResponse;
-
-            int zoom = 20;
-            int x = 0;
-            int y = 0;
-
-            if (httpRequest.QueryString.Get("zoom") != null)
-                zoom = int.Parse(httpRequest.QueryString.Get("zoom"));
-            if (httpRequest.QueryString.Get("x") != null)
-                x = (int)float.Parse(httpRequest.QueryString.Get("x"));
-            if (httpRequest.QueryString.Get("y") != null)
-                y = (int)float.Parse(httpRequest.QueryString.Get("y"));
-
-            MainConsole.Instance.Debug("[WebUI]: Sending map image jpeg");
-            byte[] jpeg = new byte[0];
-            
-            MemoryStream imgstream = new MemoryStream();
-            Bitmap mapTexture = CreateZoomLevel(zoom, x, y);
-            EncoderParameters myEncoderParameters = new EncoderParameters();
-            myEncoderParameters.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 75L);
-
-            // Save bitmap to stream
-            mapTexture.Save(imgstream, GetEncoderInfo("image/jpeg"), myEncoderParameters);
-
-            // Write the stream to a byte array for output
-            jpeg = imgstream.ToArray();
-
-            // Reclaim memory, these are unmanaged resources
-            // If we encountered an exception, one or more of these will be null
-            if (mapTexture != null)
-                mapTexture.Dispose();
-
-            if (imgstream != null)
-            {
-                imgstream.Close();
-                imgstream.Dispose();
-            }
-
-            httpResponse.ContentType = "image/jpeg";
-            return jpeg;
-        }
-
-        public Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
+        private Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
         {
             Bitmap newsize = new Bitmap(nWidth, nHeight);
             Graphics temp = Graphics.FromImage(newsize);
@@ -248,68 +195,6 @@ namespace Aurora.Addon.WebUI
             temp.DrawString(m_servernick, new Font("Arial", 8, FontStyle.Regular), new SolidBrush(Color.FromArgb(90, 255, 255, 50)), new Point(2, 115));
 
             return newsize;
-        }
-
-        private Bitmap CreateZoomLevel(int zoomLevel, int centerX, int centerY)
-        {
-            if (!Directory.Exists("MapTiles"))
-                Directory.CreateDirectory("MapTiles");
-
-            string fileName = Path.Combine("MapTiles", "Zoom" + zoomLevel + "X" + centerX + "Y" + centerY + ".jpg");
-            if (File.Exists(fileName))
-            {
-                DateTime lastWritten = File.GetLastWriteTime(fileName);
-                if ((DateTime.Now - lastWritten).Minutes < 10) //10 min cache
-                    return (Bitmap)Bitmap.FromFile(fileName);
-            }
-
-            List<GridRegion> regions = m_registry.RequestModuleInterface<IGridService>().GetRegionRange(null,
-                    (int)(centerX * (int)Constants.RegionSize - (zoomLevel * (int)Constants.RegionSize)),
-                    (int)(centerX * (int)Constants.RegionSize + (zoomLevel * (int)Constants.RegionSize)),
-                    (int)(centerY * (int)Constants.RegionSize - (zoomLevel * (int)Constants.RegionSize)),
-                    (int)(centerY * (int)Constants.RegionSize + (zoomLevel * (int)Constants.RegionSize)));
-            List<Image> bitImages = new List<Image>();
-            List<FastBitmap> fastbitImages = new List<FastBitmap>();
-
-            foreach (GridRegion r in regions)
-            {
-                AssetBase texAsset = m_registry.RequestModuleInterface<IAssetService>().Get(r.TerrainImage.ToString());
-
-                if (texAsset != null)
-                {
-                    ManagedImage managedImage;
-                    Image image;
-                    if (OpenJPEG.DecodeToImage(texAsset.Data, out managedImage, out image))
-                    {
-                        bitImages.Add(image);
-                        fastbitImages.Add(new FastBitmap((Bitmap)image));
-                    }
-                }
-            }
-
-            int imageSize = 2560;
-            float zoomScale = (imageSize / zoomLevel);
-            Bitmap mapTexture = new Bitmap(imageSize, imageSize);
-            Graphics g = Graphics.FromImage(mapTexture);
-            Color seaColor = Color.FromArgb(29, 71, 95);
-            SolidBrush sea = new SolidBrush(seaColor);
-            g.FillRectangle(sea, 0, 0, imageSize, imageSize);
-
-            for (int i = 0; i < regions.Count; i++)
-            {
-                float x = ((regions[i].RegionLocX - (centerX * (float)Constants.RegionSize) + Constants.RegionSize / 2) / (float)Constants.RegionSize);
-                float y = ((regions[i].RegionLocY - (centerY * (float)Constants.RegionSize) + Constants.RegionSize / 2) / (float)Constants.RegionSize);
-
-                int regionWidth = regions[i].RegionSizeX / Constants.RegionSize;
-                int regionHeight = regions[i].RegionSizeY / Constants.RegionSize;
-                float posX = (x * zoomScale) + imageSize / 2;
-                float posY = (y * zoomScale) + imageSize / 2;
-                g.DrawImage(bitImages[i], posX, imageSize - posY, zoomScale * regionWidth, zoomScale * regionHeight); // y origin is top
-            }
-
-            mapTexture.Save(fileName, ImageFormat.Jpeg);
-
-            return mapTexture;
         }
 
         // From msdn
@@ -392,9 +277,8 @@ namespace Aurora.Addon.WebUI
         private UUID AdminAgentID;
         private Dictionary<string, MethodInfo> APIMethods = new Dictionary<string, MethodInfo>();
 
-        public WebUIHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID) :
-        
-		base("POST", "/WEBUI")
+        public WebUIHTTPHandler(string pass, IRegistryCore reg, OSDMap gridInfo, UUID adminAgentID) : 
+            base("POST", "/WEBUI")
         {
             m_registry = reg;
             m_password = Util.Md5Hash(pass);
@@ -415,10 +299,7 @@ namespace Aurora.Addon.WebUI
         public override byte[] Handle(string path, Stream requestData,
                 OSHttpRequest httpRequest, OSHttpResponse httpResponse)
         {
-            StreamReader sr = new StreamReader(requestData);
-            string body = sr.ReadToEnd();
-            sr.Close();
-            body = body.Trim();
+            string body = HttpServerHandlerHelpers.ReadString(requestData).Trim();
 
             MainConsole.Instance.TraceFormat("[WebUI]: query String: {0}", body);
             string method = string.Empty;
