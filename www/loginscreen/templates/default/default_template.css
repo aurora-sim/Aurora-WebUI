@@ -127,17 +127,10 @@ td.gridbox_br {
 	PADDING-RIGHT: 0px; padding-left: 0px; Z-INDEX: 71; padding-bottom: 0px; 
   margin: 0px 0px 7px; padding-top: 0px; POSITION: relative
 }
-.boxtext {
-	PADDING-RIGHT: 3px; padding-left: 3px; padding-bottom: 1px; padding-top: 2px; TEXT-ALIGN: left
-}
-.boxnotext {
-	PADDING-RIGHT: 3px;
-        padding-left: 3px;
-        padding-bottom: 1px;
-        PADDING-TOP: 2px;
-        TEXT-ALIGN: left;
-        color: transparent;
-}
+
+.boxtext {padding: 3px;}
+.boxnotext {padding: 3px; text-align: left; color: #ff0000;}
+
 .black_content {
 	FONT-SIZE: 1.2em; COLOR: #ccc; BACKGROUND-COLOR: #000
 }
