@@ -97,17 +97,10 @@ TD.gridbox_br {
 #Infobox {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; Z-INDEX: 71; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 7px; PADDING-TOP: 0px; POSITION: relative
 }
-.boxtext {
-	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 1px; PADDING-TOP: 2px; TEXT-ALIGN: left
-}
-.boxnotext {
-	PADDING-RIGHT: 3px;
-        PADDING-LEFT: 3px;
-        PADDING-BOTTOM: 1px;
-        PADDING-TOP: 2px;
-        TEXT-ALIGN: left;
-        color: transparent;
-}
+
+.boxtext {padding: 3px;}
+.boxnotext {padding: 3px; text-align: left; color: #ff0000;}
+
 .black_content {
 	FONT-SIZE: 1.2em; COLOR: #000000; BACKGROUND-COLOR: #FFFFFF
 }
