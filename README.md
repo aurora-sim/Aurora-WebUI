@@ -105,7 +105,7 @@ save avatar archive <First> <Last> <Filename> <FolderNameToSaveInto> (--snapshot
 example:
 
 ```
-save avatar archive Skidz Tweak EvilOverlord.database / 00000-0000-0000-0000-00000 1
+save avatar archive first last hippo.aa folder --snapshot 12345678-1234-1234-1234-123456789012 --public
 ```
 
 NOTE: Only public ones will be listed on the website
