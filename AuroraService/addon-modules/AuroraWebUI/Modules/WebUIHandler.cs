@@ -512,7 +512,7 @@ namespace Aurora.Addon.WebUI
                     profile = profileData.GetUserProfile(user.PrincipalID);
                 }
                 if (AvatarArchive.Length > 0)
-                    profile.AArchiveName = AvatarArchive + ".database";
+                    profile.AArchiveName = AvatarArchive;
 
                 profile.IsNewUser = true;
                 
