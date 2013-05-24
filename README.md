@@ -213,35 +213,27 @@ Blue Tiles = Free Space
 Quickmap configuration is found in Aurora-WebUI/quickmap/includes/config.php. 
 You may want to call Aurora-WebUI somthing different just remember this must reflect in the configuration below.
 
-```php
-// General items
-// For Statics Images Folder
-define("SYSURL","http://your_aurora_server_ip_or_dns_address/Aurora-WebUI/quickmap/"); 
+// Database Connection
+$CONF_db_server      = "localhost";
+$CONF_db_user        = "*********";
+$CONF_db_pass        = "*********";
+$CONF_db_database    = "*********";
 
-//Your Grid-Domain
-$CONF_sim_domain =     "http://your_aurora_server_ip_or_dns_address/";
-//Installation path
-$CONF_install_path =   "Aurora-WebUI/quickmap/";
+// QuickMap URL's
+$SYSURL = "http://SERVER_ADDRESS_IP_OR_DNS/webui/quickmap/";
+$IMGURL = "http://SERVER_ADDRESS_IP_OR_DNS:8002/";
 
-// style-sheet items
-//Link to StyleSheet
-$CONF_style_sheet =    "templates/default/style.css";
-$CONF_style_sheet_webui =    "templates/default/style_webui.css";
+// QuickMap Coordinates
+$CONF_center_coord_x = "1000";
+$CONF_center_coord_y = "1000";
 
-// Your Grid-Logo
-// Link to your Grid-Logo
-$CONF_logo =           "http://your_aurora_server_ip_or_dns_address/Aurora-WebUI/quickmap/templates/default/images/aurora-webui-logo.png"; 
+// QuickMap Template
+$CONF_template   = "default";
+$CONF_image_size = 230;
 
-// mysql database items
-$CONF_db_server =      "mysql";   // Your Database-Server 
-$CONF_db_user =        "root";        // Database-User
-$CONF_db_database =    "aurora";  // Name of Database
-$CONF_db_pass =        "***";      // Password of User
-
-// The Coordinates of the Grid-Center
-$CONF_center_coord_x   = "1000";      // the Center-X-Coordinate same as Aurora-WebUI $mapstart
-$CONF_center_coord_y   = "1000";      // the Center-Y-Koordinate same as Aurora-WebUI $mapstart
-```
+// QuickMap Options
+$displayRoundedCorner = true;
+$displayLogoEffect    = true;
 
 # Support
 Please report all errors and bugs to [#aurora-dev channel on irc.freenode.net](http://webchat.freenode.net/?channels=#aurora-dev)
