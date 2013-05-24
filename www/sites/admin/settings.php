@@ -108,11 +108,11 @@ if ($_SESSION[ADMINID]) {
                       
           <tr>
               <td class="even">
-                  <? echo $webui_admin_settings_require; ?>: 
+                  <?php echo $webui_admin_settings_require; ?>: 
                       <select class="box" wide="25" name="adressset" >
-                        <?
-                            echo "<option value='0' " . ($ADRESSCHECK == '0' ? 'selected' : '') . ">$webui_admin_settings_yes_select</option>
-                                  <option value='1' " . ($ADRESSCHECK == '1' ? 'selected' : '') . ">$webui_admin_settings_no_select</option>";
+                        <?php
+                            echo "<option value='0' " . ($ADRESSCHECK == '1' ? 'selected' : '') . ">$webui_admin_settings_yes_select</option>
+                                  <option value='1' " . ($ADRESSCHECK == '0' ? 'selected' : '') . ">$webui_admin_settings_no_select</option>";
                        ?>
                       </select>
               </td>
