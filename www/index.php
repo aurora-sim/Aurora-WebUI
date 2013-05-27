@@ -316,6 +316,10 @@ $('button, .roundedinput, .forgot_pass_bouton, .adminsettings_bouton').corner("1
 $('#roundedcoord').corner("10px");
 $('#info_loginscreen_button').corner("10px");
 });
+
+/* Asmin Settings Page */
+$('#admin_settings_save_bouton, #admin_settings_activate_bouton, #admin_settings_desactivate_bouton').corner();
+
 /* Downlaod Page */
 $('#download1, #download2, #download3, #download1 a, #download2 a, #download3 a').corner();
 
@@ -349,170 +353,176 @@ $(document).ready(function(){
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
                 
-	$("#annonce2").hover(function() {
+    $("#annonce2").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
   });
 
-	$("#annonce3").hover(function() {
+    $("#annonce3").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
   });
                 
-	$("#annonce4").hover(function() {
+    $("#annonce4").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep4 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep4 ?>'}, 800);
   });
 
-	$("#annonce5").hover(function() {
+    $("#annonce5").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep5 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep5 ?>'}, 800);
   });
 
-	$("#annonce6").hover(function() {
+    $("#annonce6").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep6 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep6 ?>'}, 800);
   });
 
-	$("#annonce7").hover(function() {
+    $("#annonce7").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep7 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep7 ?>'}, 800);
   });
 
-	$("#annonce10").hover(function() {
+    $("#annonce10").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep10 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep10 ?>'}, 800);
   });
 
 
-  $("#step1").hover(function() {
+    $("#step1").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
                 
-	$("#step2").hover(function() {
+    $("#step2").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
   });
 
-	$("#step3").hover(function() {
+    $("#step3").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
   });
    
 
-  $("#info1").hover(function() {
+    $("#info1").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
                 
-	$("#info2").hover(function() {
+    $("#info2").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep2 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep2 ?>'}, 800);
   });
 
-	$("#info3").hover(function() {
+    $("#info3").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep3 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep3 ?>'}, 800);
   });
                 
-	$("#aide1").hover(function() {
+    $("#aide1").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep4 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep4 ?>'}, 800);
   });
 
-	$("#aide2").hover(function() {
+    $("#aide2").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep5 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep5 ?>'}, 800);
   });
 
-	$("#aide3").hover(function() {
+    $("#aide3").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep6 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep6 ?>'}, 800);
   });
   
-	$("#mega-menu-1 a").hover(function() {
+    $("#mega-menu-1 a").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepMegaMenu1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepMegaMenu1 ?>'}, 800);
   });
   
-	$("#register_bouton, #login_bouton, #forgot_pass_bouton, #adminlogin_button").hover(function() {
+    $("#register_bouton, #login_bouton, #forgot_pass_bouton, #adminlogin_button").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
   });
   
-	$(".adminsettings_bouton").hover(function() {
+    $(".adminsettings_bouton").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepAdminSettingBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepAdminSettingBouton1 ?>'}, 800);
   });
+
+    $("#admin_settings_save_bouton, #admin_settings_activate_bouton, #admin_settings_desactivate_bouton").hover(function() {
+    $(this).stop().animate({ backgroundColor: '<?php echo $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
+  },function() {
+    $(this).stop().animate({ backgroundColor: '<?php echo $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
+  });
   
-	$("#create_news_button, #edit_news_item_button, #info_loginscreen_button").hover(function() {
+    $("#create_news_button, #edit_news_item_button, #info_loginscreen_button").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
   });
 
   /* Page Downloads */
-  	$("#download1, #download2, #download3").hover(function() {
+    $("#download1, #download2, #download3").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
 
-  	$("#download1 a, #download2 a, #download3 a").hover(function() {
+    $("#download1 a, #download2 a, #download3 a").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
   });
   
   /* Page News */
-	$(".news_time, .news_title, .news_content").hover(function() {
+    $(".news_time, .news_title, .news_content").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
   
   /* Grid Status Module */
-	$("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").hover(function() {
+    $("#gridstatus1, #gridstatus2, #gridstatus3, #gridstatus4, #gridstatus5").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
 
   /* AddGrid Page */
-	$("#addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10").hover(function() {
+    $("#addgrid01, #addgrid02, #addgrid03, #addgrid04, #addgrid05, #addgrid06, #addgrid07, #addgrid08, #addgrid09, #addgrid10").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStep1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStep1 ?>'}, 800);
   });
 
-  	$("#addgrid h3 a").hover(function() {
+    $("#addgrid h3 a").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
   });  
   
   /* Stardust Module */
-	$("#island_input_button1, #island_input_button2, #island_input_button3, #island_input_button4, #island_input_button5, #get_it_now_button").hover(function() {
+    $("#island_input_button1, #island_input_button2, #island_input_button3, #island_input_button4, #island_input_button5, #get_it_now_button").hover(function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorHoverStepLoginBouton1 ?>'}, 800);
   },function() {
     $(this).stop().animate({ backgroundColor: '<?= $BackgroundColorEndStepLoginBouton1 ?>'}, 800);
