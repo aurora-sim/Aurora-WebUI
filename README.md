@@ -213,6 +213,7 @@ Blue Tiles = Free Space
 Quickmap configuration is found in Aurora-WebUI/quickmap/includes/config.php. 
 You may want to call Aurora-WebUI somthing different just remember this must reflect in the configuration below.
 
+```php
 // Database Connection
 $CONF_db_server      = "localhost";
 $CONF_db_user        = "*********";
@@ -234,6 +235,7 @@ $CONF_image_size = 230;
 // QuickMap Options
 $displayRoundedCorner = true;
 $displayLogoEffect    = true;
+...
 
 # Support
 Please report all errors and bugs to [#aurora-dev channel on irc.freenode.net](http://webchat.freenode.net/?channels=#aurora-dev)
