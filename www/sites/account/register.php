@@ -503,7 +503,7 @@ function displayDefaultAvatars()
 			$code = code_gen();
 			
 			$userLevel = -1;
-			if($VERIFYUSERS == 0)
+			if($VERIFYUSERS == 1)
 				$userLevel = 0;
 
 			$found = array();

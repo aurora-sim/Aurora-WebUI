@@ -538,23 +538,26 @@ h5 {font-size: 10px; color:#ffffff;margin:0px;padding:0px;}
   padding:5px; padding-left: 20px;
 }
 
+/* Buttons */
 #register_bouton, #login_bouton, #forgot_pass_bouton, #adminlogin_button,
-#create_news_button, #edit_news_item_button, #info_loginscreen_button {
-  font-size: 14px; 
-  outline:none;
-  padding:5px;  
-  background-color: #ffa500;
-  background-image: url("shadow_02.png");
-  background-repeat: repeat-x;
-  border: 0px solid #00ff00;
+#create_news_button, #edit_news_item_button, #info_loginscreen_button ,
+#admin_settings_save_bouton, #admin_settings_activate_bouton, #admin_settings_desactivate_bouton {
+    font-size: 14px; 
+    outline: none;
+    padding: 5px;
+    background-color: #FFA500;
+    background-image: url("shadow_02.png");
+    background-repeat: repeat-x;
+    border: 0px solid #00FF00;
 }
 
 #register_bouton:hover, #login_bouton:hover, #forgot_pass_bouton:hover, #adminlogin_button:hover,
-#create_news_button:hover, #edit_news_item_button:hover {
-  font-size: 14px;
-  outline:none;
-  padding:5px;
-  background-color: #00ff00;
+#create_news_button:hover, #edit_news_item_button:hover, #info_loginscreen_button:hover,
+#admin_settings_save_bouton:hover, #admin_settings_activate_bouton:hover, #admin_settings_desactivate_bouton:hover {
+    font-size: 14px;
+    outline: none;
+    padding: 5px;
+    /* background-color: #00FF00; */
 }
 
 #search_input {
