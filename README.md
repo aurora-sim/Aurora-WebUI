@@ -94,7 +94,7 @@ To save a archive in the database you must give it a name ending with ".database
 
 Note: When displaying textures from the texture server they will be resized to 128x128 and at the bottom will be writen the grid nickname
 
-1. Dress a avatar up like you want it to look
+1. Dress an avatar up how you would like it to look
 2. Take a picture of it and upload this to the grid
 3. in the console of the grid server issue this command
 
